@@ -6,83 +6,142 @@
 	objectVersion = 46;
 	objects = {
 
-/* Begin PBXBuildFile section */
-		A26449321DCFEA71007F7CF4 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A26449311DCFEA71007F7CF4 /* main.cpp */; };
-/* End PBXBuildFile section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		A264492C1DCFEA71007F7CF4 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 1;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
-		A264492E1DCFEA71007F7CF4 /* SketchUp API C++ Wrapper */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "SketchUp API C++ Wrapper"; sourceTree = BUILT_PRODUCTS_DIR; };
-		A26449311DCFEA71007F7CF4 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		A29CB24B1DCFF8FD004462C6 /* Color.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Color.cpp; sourceTree = "<group>"; };
+		A29CB24C1DCFF8FD004462C6 /* Color.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Color.hpp; sourceTree = "<group>"; };
+		A29CB24D1DCFF8FD004462C6 /* Geometry.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Geometry.cpp; sourceTree = "<group>"; };
+		A29CB24E1DCFF8FD004462C6 /* Geometry.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Geometry.hpp; sourceTree = "<group>"; };
+		A29CB2501DCFF8FD004462C6 /* AttributeDictionary.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AttributeDictionary.cpp; sourceTree = "<group>"; };
+		A29CB2511DCFF8FD004462C6 /* AttributeDictionary.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = AttributeDictionary.hpp; sourceTree = "<group>"; };
+		A29CB2521DCFF8FD004462C6 /* Axes.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Axes.cpp; sourceTree = "<group>"; };
+		A29CB2531DCFF8FD004462C6 /* Axes.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Axes.hpp; sourceTree = "<group>"; };
+		A29CB2541DCFF8FD004462C6 /* ComponentDefinition.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ComponentDefinition.cpp; sourceTree = "<group>"; };
+		A29CB2551DCFF8FD004462C6 /* ComponentDefinition.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ComponentDefinition.hpp; sourceTree = "<group>"; };
+		A29CB2561DCFF8FD004462C6 /* ComponentInstance.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ComponentInstance.cpp; sourceTree = "<group>"; };
+		A29CB2571DCFF8FD004462C6 /* ComponentInstance.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ComponentInstance.hpp; sourceTree = "<group>"; };
+		A29CB2581DCFF8FD004462C6 /* Curve.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Curve.cpp; sourceTree = "<group>"; };
+		A29CB2591DCFF8FD004462C6 /* Curve.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Curve.hpp; sourceTree = "<group>"; };
+		A29CB25A1DCFF8FD004462C6 /* DrawingElement.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = DrawingElement.cpp; sourceTree = "<group>"; };
+		A29CB25B1DCFF8FD004462C6 /* DrawingElement.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = DrawingElement.hpp; sourceTree = "<group>"; };
+		A29CB25C1DCFF8FD004462C6 /* Edge.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Edge.cpp; sourceTree = "<group>"; };
+		A29CB25D1DCFF8FD004462C6 /* Edge.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Edge.hpp; sourceTree = "<group>"; };
+		A29CB25E1DCFF8FD004462C6 /* Entities.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Entities.cpp; sourceTree = "<group>"; };
+		A29CB25F1DCFF8FD004462C6 /* Entities.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Entities.hpp; sourceTree = "<group>"; };
+		A29CB2601DCFF8FD004462C6 /* Entity.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Entity.cpp; sourceTree = "<group>"; };
+		A29CB2611DCFF8FD004462C6 /* Entity.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Entity.hpp; sourceTree = "<group>"; };
+		A29CB2621DCFF8FD004462C6 /* Face.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Face.cpp; sourceTree = "<group>"; };
+		A29CB2631DCFF8FD004462C6 /* Face.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Face.hpp; sourceTree = "<group>"; };
+		A29CB2641DCFF8FD004462C6 /* GeometryInput.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GeometryInput.cpp; sourceTree = "<group>"; };
+		A29CB2651DCFF8FD004462C6 /* GeometryInput.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = GeometryInput.hpp; sourceTree = "<group>"; };
+		A29CB2661DCFF8FD004462C6 /* Group.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Group.cpp; sourceTree = "<group>"; };
+		A29CB2671DCFF8FD004462C6 /* Group.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Group.hpp; sourceTree = "<group>"; };
+		A29CB2681DCFF8FD004462C6 /* Layer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Layer.cpp; sourceTree = "<group>"; };
+		A29CB2691DCFF8FD004462C6 /* Layer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Layer.hpp; sourceTree = "<group>"; };
+		A29CB26A1DCFF8FD004462C6 /* Loop.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Loop.cpp; sourceTree = "<group>"; };
+		A29CB26B1DCFF8FD004462C6 /* Loop.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Loop.hpp; sourceTree = "<group>"; };
+		A29CB26C1DCFF8FD004462C6 /* LoopInput.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = LoopInput.cpp; sourceTree = "<group>"; };
+		A29CB26D1DCFF8FD004462C6 /* LoopInput.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = LoopInput.hpp; sourceTree = "<group>"; };
+		A29CB26E1DCFF8FD004462C6 /* Material.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Material.cpp; sourceTree = "<group>"; };
+		A29CB26F1DCFF8FD004462C6 /* Material.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Material.hpp; sourceTree = "<group>"; };
+		A29CB2701DCFF8FD004462C6 /* MaterialInput.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MaterialInput.cpp; sourceTree = "<group>"; };
+		A29CB2711DCFF8FD004462C6 /* MaterialInput.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MaterialInput.hpp; sourceTree = "<group>"; };
+		A29CB2721DCFF8FD004462C6 /* Model.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Model.cpp; sourceTree = "<group>"; };
+		A29CB2731DCFF8FD004462C6 /* Model.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Model.hpp; sourceTree = "<group>"; };
+		A29CB2741DCFF8FD004462C6 /* TextureWriter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TextureWriter.cpp; sourceTree = "<group>"; };
+		A29CB2751DCFF8FD004462C6 /* TextureWriter.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = TextureWriter.hpp; sourceTree = "<group>"; };
+		A29CB2761DCFF8FD004462C6 /* TypedValue.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TypedValue.cpp; sourceTree = "<group>"; };
+		A29CB2771DCFF8FD004462C6 /* TypedValue.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = TypedValue.hpp; sourceTree = "<group>"; };
+		A29CB2781DCFF8FD004462C6 /* UVHelper.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = UVHelper.cpp; sourceTree = "<group>"; };
+		A29CB2791DCFF8FD004462C6 /* UVHelper.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = UVHelper.hpp; sourceTree = "<group>"; };
+		A29CB27A1DCFF8FD004462C6 /* Vertex.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Vertex.cpp; sourceTree = "<group>"; };
+		A29CB27B1DCFF8FD004462C6 /* Vertex.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Vertex.hpp; sourceTree = "<group>"; };
+		A29CB27C1DCFF8FD004462C6 /* String.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = String.cpp; sourceTree = "<group>"; };
+		A29CB27D1DCFF8FD004462C6 /* String.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = String.hpp; sourceTree = "<group>"; };
+		A29CB27E1DCFF8FD004462C6 /* Transformation.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Transformation.cpp; sourceTree = "<group>"; };
+		A29CB27F1DCFF8FD004462C6 /* Transformation.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Transformation.hpp; sourceTree = "<group>"; };
+		A29CB2801DCFF90A004462C6 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		A29CB2811DCFF921004462C6 /* SketchUpAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SketchUpAPI.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFrameworksBuildPhase section */
-		A264492B1DCFEA71007F7CF4 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		A26449251DCFEA71007F7CF4 = {
 			isa = PBXGroup;
 			children = (
-				A26449301DCFEA71007F7CF4 /* SketchUp API C++ Wrapper */,
-				A264492F1DCFEA71007F7CF4 /* Products */,
+				A29CB2811DCFF921004462C6 /* SketchUpAPI.framework */,
+				A29CB2801DCFF90A004462C6 /* README.md */,
+				A26449301DCFEA71007F7CF4 /* src */,
 			);
 			sourceTree = "<group>";
 		};
-		A264492F1DCFEA71007F7CF4 /* Products */ = {
+		A26449301DCFEA71007F7CF4 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				A264492E1DCFEA71007F7CF4 /* SketchUp API C++ Wrapper */,
+				A29CB24B1DCFF8FD004462C6 /* Color.cpp */,
+				A29CB24C1DCFF8FD004462C6 /* Color.hpp */,
+				A29CB24D1DCFF8FD004462C6 /* Geometry.cpp */,
+				A29CB24E1DCFF8FD004462C6 /* Geometry.hpp */,
+				A29CB24F1DCFF8FD004462C6 /* model */,
+				A29CB27C1DCFF8FD004462C6 /* String.cpp */,
+				A29CB27D1DCFF8FD004462C6 /* String.hpp */,
+				A29CB27E1DCFF8FD004462C6 /* Transformation.cpp */,
+				A29CB27F1DCFF8FD004462C6 /* Transformation.hpp */,
 			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		A26449301DCFEA71007F7CF4 /* SketchUp API C++ Wrapper */ = {
-			isa = PBXGroup;
-			children = (
-				A26449311DCFEA71007F7CF4 /* main.cpp */,
-			);
+			name = src;
 			path = "SketchUp API C++ Wrapper";
 			sourceTree = "<group>";
 		};
-/* End PBXGroup section */
-
-/* Begin PBXNativeTarget section */
-		A264492D1DCFEA71007F7CF4 /* SketchUp API C++ Wrapper */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = A26449351DCFEA71007F7CF4 /* Build configuration list for PBXNativeTarget "SketchUp API C++ Wrapper" */;
-			buildPhases = (
-				A264492A1DCFEA71007F7CF4 /* Sources */,
-				A264492B1DCFEA71007F7CF4 /* Frameworks */,
-				A264492C1DCFEA71007F7CF4 /* CopyFiles */,
+		A29CB24F1DCFF8FD004462C6 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				A29CB2501DCFF8FD004462C6 /* AttributeDictionary.cpp */,
+				A29CB2511DCFF8FD004462C6 /* AttributeDictionary.hpp */,
+				A29CB2521DCFF8FD004462C6 /* Axes.cpp */,
+				A29CB2531DCFF8FD004462C6 /* Axes.hpp */,
+				A29CB2541DCFF8FD004462C6 /* ComponentDefinition.cpp */,
+				A29CB2551DCFF8FD004462C6 /* ComponentDefinition.hpp */,
+				A29CB2561DCFF8FD004462C6 /* ComponentInstance.cpp */,
+				A29CB2571DCFF8FD004462C6 /* ComponentInstance.hpp */,
+				A29CB2581DCFF8FD004462C6 /* Curve.cpp */,
+				A29CB2591DCFF8FD004462C6 /* Curve.hpp */,
+				A29CB25A1DCFF8FD004462C6 /* DrawingElement.cpp */,
+				A29CB25B1DCFF8FD004462C6 /* DrawingElement.hpp */,
+				A29CB25C1DCFF8FD004462C6 /* Edge.cpp */,
+				A29CB25D1DCFF8FD004462C6 /* Edge.hpp */,
+				A29CB25E1DCFF8FD004462C6 /* Entities.cpp */,
+				A29CB25F1DCFF8FD004462C6 /* Entities.hpp */,
+				A29CB2601DCFF8FD004462C6 /* Entity.cpp */,
+				A29CB2611DCFF8FD004462C6 /* Entity.hpp */,
+				A29CB2621DCFF8FD004462C6 /* Face.cpp */,
+				A29CB2631DCFF8FD004462C6 /* Face.hpp */,
+				A29CB2641DCFF8FD004462C6 /* GeometryInput.cpp */,
+				A29CB2651DCFF8FD004462C6 /* GeometryInput.hpp */,
+				A29CB2661DCFF8FD004462C6 /* Group.cpp */,
+				A29CB2671DCFF8FD004462C6 /* Group.hpp */,
+				A29CB2681DCFF8FD004462C6 /* Layer.cpp */,
+				A29CB2691DCFF8FD004462C6 /* Layer.hpp */,
+				A29CB26A1DCFF8FD004462C6 /* Loop.cpp */,
+				A29CB26B1DCFF8FD004462C6 /* Loop.hpp */,
+				A29CB26C1DCFF8FD004462C6 /* LoopInput.cpp */,
+				A29CB26D1DCFF8FD004462C6 /* LoopInput.hpp */,
+				A29CB26E1DCFF8FD004462C6 /* Material.cpp */,
+				A29CB26F1DCFF8FD004462C6 /* Material.hpp */,
+				A29CB2701DCFF8FD004462C6 /* MaterialInput.cpp */,
+				A29CB2711DCFF8FD004462C6 /* MaterialInput.hpp */,
+				A29CB2721DCFF8FD004462C6 /* Model.cpp */,
+				A29CB2731DCFF8FD004462C6 /* Model.hpp */,
+				A29CB2741DCFF8FD004462C6 /* TextureWriter.cpp */,
+				A29CB2751DCFF8FD004462C6 /* TextureWriter.hpp */,
+				A29CB2761DCFF8FD004462C6 /* TypedValue.cpp */,
+				A29CB2771DCFF8FD004462C6 /* TypedValue.hpp */,
+				A29CB2781DCFF8FD004462C6 /* UVHelper.cpp */,
+				A29CB2791DCFF8FD004462C6 /* UVHelper.hpp */,
+				A29CB27A1DCFF8FD004462C6 /* Vertex.cpp */,
+				A29CB27B1DCFF8FD004462C6 /* Vertex.hpp */,
 			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "SketchUp API C++ Wrapper";
-			productName = "SketchUp API C++ Wrapper";
-			productReference = A264492E1DCFEA71007F7CF4 /* SketchUp API C++ Wrapper */;
-			productType = "com.apple.product-type.tool";
+			path = model;
+			sourceTree = "<group>";
 		};
-/* End PBXNativeTarget section */
+/* End PBXGroup section */
 
 /* Begin PBXProject section */
 		A26449261DCFEA71007F7CF4 /* Project object */ = {
@@ -90,11 +149,6 @@
 			attributes = {
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = TommyKaneko;
-				TargetAttributes = {
-					A264492D1DCFEA71007F7CF4 = {
-						CreatedOnToolsVersion = 7.2.1;
-					};
-				};
 			};
 			buildConfigurationList = A26449291DCFEA71007F7CF4 /* Build configuration list for PBXProject "SketchUp API C++ Wrapper" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -104,25 +158,13 @@
 				en,
 			);
 			mainGroup = A26449251DCFEA71007F7CF4;
-			productRefGroup = A264492F1DCFEA71007F7CF4 /* Products */;
+			productRefGroup = A26449251DCFEA71007F7CF4;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A264492D1DCFEA71007F7CF4 /* SketchUp API C++ Wrapper */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXSourcesBuildPhase section */
-		A264492A1DCFEA71007F7CF4 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A26449321DCFEA71007F7CF4 /* main.cpp in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
 		A26449331DCFEA71007F7CF4 /* Debug */ = {
@@ -204,20 +246,6 @@
 			};
 			name = Release;
 		};
-		A26449361DCFEA71007F7CF4 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		A26449371DCFEA71007F7CF4 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -229,14 +257,6 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
-		};
-		A26449351DCFEA71007F7CF4 /* Build configuration list for PBXNativeTarget "SketchUp API C++ Wrapper" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A26449361DCFEA71007F7CF4 /* Debug */,
-				A26449371DCFEA71007F7CF4 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
