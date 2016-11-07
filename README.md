@@ -1,7 +1,7 @@
-###### C++ Wrapper for SketchUp C API
+# C++ Wrapper for SketchUp C API
 
 ================
-### Introduction
+## Introduction
 
 SketchUp C API is made for the C programming language:
 [ml]: http://extensions.sketchup.com/developer_center/sketchup_c_api/sketchup/index.html
@@ -27,7 +27,7 @@ Added to this benefit, the wrapper classes have helper functions to help with ge
 
 
 ======================
-### Project Objectives
+## Project Objectives
 
 The aims of this set of wrapper classes are:
 - to make the SketchUp C API quicker and easier to use, from a C++ programmer's perspective.
@@ -36,16 +36,16 @@ The aims of this set of wrapper classes are:
 
 
 ==========================
-### Programming Principles
+## Programming Principles
 
-# Data Structure
+##### Data Structure
 Each C++ Wrapper class object holds its equivalent C API class object as a member variable (ie - CW::Face holds SUFaceRef).  Further variables should be kept to a minimum, if at all.
 
-# Releasing Objects
+##### Releasing Objects
 With the use of the C++ Wrapper, the SketchUp API should "feel" like a native C++ API.  This means the idea of "releasing" objects that are not attached to a model object, for example, should not have to be considered by the programmer.  Instead, the wrapper class will deal with releasing of an object when the object goes out of scope.
 
 The only exception to this rule is if the wrapped object (`CW::Face`, for example), is converted to a regular C object ( `SUFaceRef`, for example), in which case it can be assumed that the programmer is taking charge of the C object and will be dealing with any releasing.
 
-# Method Names
+##### Method Names
 Method names take inspiration mostly from the SketchUp Ruby API.  That said, these are not wholy consistent, and some liberties have been taken to make the method names make sense.
 
