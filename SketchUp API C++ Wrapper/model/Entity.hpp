@@ -98,8 +98,8 @@ class Entity {
   * @param default_value (optional) default TypedValue to return if no attribute is found
   * @return value TypedValue of the attribute.  If no attribute found, the default value passed is returned.
   */
-  TypedValue get_attribute(const std::string dict_name, const std::string key, const TypedValue default_value = "") const;
-  TypedValue get_attribute(const AttributeDictionary &dict, const std::string key, const TypedValue default_value = "") const;
+  TypedValue get_attribute(const std::string dict_name, const std::string key, const TypedValue default_value = TypedValue()) const;
+  TypedValue get_attribute(const AttributeDictionary &dict, const std::string key, const TypedValue default_value = TypedValue()) const;
   
   /*
   // TODO: C API does not currently allow traversing upwards

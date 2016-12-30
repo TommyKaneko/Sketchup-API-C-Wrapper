@@ -24,10 +24,10 @@ namespace CW {
 class Radians
 {
 private:
-	const double PI = 3.141592653589793;
 
 public:
   double m_val;
+	static constexpr double PI = 3.141592653589793;
 
   Radians() {};
   Radians(const double &rhs);
@@ -73,6 +73,7 @@ class Vector3D {
 
 	protected:
   SUVector3D m_vector;
+  const bool null = false; // Invalid flag
   
   public:
   double &x;
@@ -85,11 +86,22 @@ class Vector3D {
   */
   Vector3D( SUVector3D su_vector);
   Vector3D( double x, double y, double z);
+  
+  /**
+  * Invaid, or NULL Vector3D objects can be simulated with this constructor.
+  */
+  Vector3D(bool invalid);
+  
   /**
   * Returns the vector between start and end points of an edge.
   */
   Vector3D( const SUEdgeRef &su_edge);
-
+	
+  /**
+  * Allow conversion from Point3D.
+  */
+  explicit Vector3D( const Point3D point);
+  
   /*
   * Cast to SUVector3D object
   */
@@ -115,6 +127,7 @@ class Vector3D {
   * Arithmetic operator overloads
   */
   Vector3D operator+(const Vector3D &vector);
+  Vector3D operator+(const Point3D &point);
   Vector3D operator+(const SUVector3D &vector) {return *this + Vector3D(vector);}
   Vector3D operator-(const Vector3D &vector);
   Vector3D operator-(const SUVector3D &vector) {return *this - Vector3D(vector);}
@@ -127,6 +140,12 @@ class Vector3D {
   bool operator==(const Vector3D &vector) const;
 
   bool operator!=(const Vector3D &vector) const;
+
+	/**
+  * Validty check
+  */
+  bool operator!() const;
+
   
   /*
   * Returns the length of the vector
@@ -147,6 +166,7 @@ class Vector3D {
   * Returns dot product with another vector
   */
   double dot(const Vector3D vector2) const;
+  double dot(const Point3D point) const;
   
   /**
   * Returns cross product with another vector
@@ -180,13 +200,25 @@ static Vector3D operator*(const double &lhs, const Vector3D &rhs)
 *
 * Point3D inherits from Vector3D, as the concept of a point and a vector is interchangeable in vector mathematics.
 */
-class Point3D : public Vector3D {
+class Point3D {
 	private:
   SUPoint3D m_point;
+  const bool null = false; // Invalid flag
 
 	public:
+  double &x;
+  double &y;
+  double &z;
+
+  Point3D();
   Point3D( SUPoint3D su_point);
   Point3D( SUVector3D su_vector);
+  Point3D(double x, double y, double z);
+
+  /**
+  * Invaid, or NULL Point3D objects can be simulated with this constructor.
+  */
+  Point3D(bool invalid);
   
   // Copy assignment operator
   Point3D &operator=(const Point3D &vector);
@@ -194,38 +226,65 @@ class Point3D : public Vector3D {
   /*
   * Cast to SUPoint3D struct
   */
-  operator SUPoint3D() { return SUPoint3D {m_vector.x, m_vector.y, m_vector.z}; }
-  operator SUPoint3D*() {
-  	// TODO - in hindsight, Point3D shouldn't use the m_vector SUVector3D variables.
-  	m_point = SUPoint3D{m_vector.x, m_vector.y, m_vector.z};
-    return &m_point;
-  }
+  operator SUPoint3D();
+  operator SUPoint3D*();
   
-  Vector3D operator-(const Point3D &point) const {return *this - Vector3D(point);}
+	/*
+  * Cast to Vector3D
+  */
+  operator Vector3D();
+  
+  /**
+  * Arithmetic operator overloads
+  */
+  Point3D operator+(const Point3D &point) const;
+  Point3D operator+(const Vector3D &vector) const;
+  Point3D operator+(const SUPoint3D &point) const;
+  Point3D operator-(const Point3D &point) const;
+  Point3D operator-(const Vector3D &vector) const;
+  Point3D operator-(const SUPoint3D &point) const;
+  Point3D operator*(const double &scalar) const;
+  Point3D operator/(const double &scalar) const;
+  
+  /**
+  * Comparative operators
+  */
+  bool operator!() const;
+  
 };
 
+// Forward declaration
+class Line3D;
 /*
 * Plane3D class is analagous to SUPlane3D struct, and holds the same variables.
 * 
 * Class methods are included to allow easy vector mathematics.
 */
 class Plane3D {
-	protected:
+	private:
   SUPlane3D m_plane;
-  
+  const bool null = false; // Invalid flag
+
   public:
   double &a;
   double &b;
   double &c;
   double &d;
-  
+
+  Plane3D();
   Plane3D(const SUPlane3D plane);
   Plane3D(double a, double b, double c, double d);
   Plane3D(const SUFaceRef &face);
-	
+
+  /**
+  * Invaid, or NULL Plane3D objects can be simulated with this constructor.
+  */
+  Plane3D(bool invalid);
+  
   /**
   * Create a plane using a point and a vector.
   */
+  Plane3D(const Vector3D normal, const Point3D point);
   Plane3D(const Point3D point, const Vector3D normal);
 
  // Copy constructor
@@ -235,18 +294,28 @@ class Plane3D {
   Plane3D &operator=(const Plane3D &plane);
   
   /**
+  * Comparative operators
+  */
+  bool operator!() const;
+  
+  /**
   * Returns the normal of the plane
   */
   Vector3D normal() const;
   
   /**
-  * Returns unit vector along line of intersection between two planes
+  * Returns line of intersection between two planes
   */
-  Vector3D intersection(const Plane3D plane2) const;
+  Line3D intersection(const Plane3D plane2) const;
   
 	double angle_with(const Plane3D plane2) const;
 	double angle(const Plane3D plane2) const { return angle_with(plane2);};
 	
+  /**
+  * Returns the distance of a point from the plane.
+  */
+  double distance(const Point3D point) const;
+  
   /**
   * Returns a plane moved along normal by given amount.
   */
@@ -271,6 +340,78 @@ class Plane3D {
   * Implicit conversion to SUPlane3D
   */
   operator SUPlane3D();
+  
+};
+
+class BoundingBox3D {
+	private:
+  SUBoundingBox3D m_bounding_box;
+  const bool null = false; // Invalid flag
+
+  public:
+  BoundingBox3D();
+  BoundingBox3D(SUBoundingBox3D bounding_box);
+
+  /**
+  * Invaid, or NULL BoundingBox3D objects can be simulated with this constructor.
+  */
+  BoundingBox3D(bool invalid);
+ 
+  /**
+  * Comparative operators
+  */
+  bool operator!() const;
+  
+  /**
+  * Returns the point where x,y and z are at their minimum
+  */
+  Point3D min();
+  
+  /**
+  * Returns the point where x,y and z are at their maximum
+  */
+  Point3D max();
+
+};
+
+
+/**
+* A Line3D represents a point and a vector, which carries on into infinity in two directions.
+*/
+class Line3D {
+	private:
+  Point3D m_point;
+  Vector3D m_direction;
+  const bool null = false; // Invalid flag
+
+  public:
+  Line3D();
+  Line3D(const Point3D point, const Vector3D direction);
+
+  /**
+  * Invaid, or NULL Line3D objects can be simulated with this constructor.
+  */
+  Line3D(bool invalid);
+  
+  Point3D &point;
+  Vector3D &direction;
+
+  // Overload copy assignment operator
+  Line3D &operator=(const Line3D &line);
+
+  /**
+  * Comparative operators
+  */
+  bool operator!() const;
+  
+  Point3D intersection(const Line3D &line);
+  Point3D intersection(const Plane3D &plane);
+  
+  /**
+  * Returns true if the Line or vector given is parallel to this line.
+  */
+  bool parallel(const Line3D &line);
+  bool parallel(const Vector3D &vector);
   
 };
 

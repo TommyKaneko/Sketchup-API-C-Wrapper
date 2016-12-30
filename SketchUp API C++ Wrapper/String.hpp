@@ -46,23 +46,31 @@ class String {
   
   ~String();
   
+  operator SUStringRef&() {return m_string;}
   operator SUStringRef*() {return &m_string;}
   operator SUStringRef() {return m_string;}
   
   /*
   * Convert to std::string
   */
-  operator std::string();
+  operator std::string() const;
+
+//	char& operator [](size_t i);
 
   /*
   * Return the SUStringRef object.
   */
-  SUStringRef ref();
+  SUStringRef ref() const;
 	
   /*
   * Return the length of the string, in bytes. Including the null terminator at the end.
   */
-  size_t size();
+  size_t size() const;
+  
+  /**
+  * Return whether this string is empty or not.
+  */
+  bool empty() const;
   
 };
 

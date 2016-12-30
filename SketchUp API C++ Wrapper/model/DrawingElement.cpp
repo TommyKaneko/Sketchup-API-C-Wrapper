@@ -8,12 +8,24 @@
 
 #include "DrawingElement.hpp"
 
+#include "Layer.hpp"
+#include "Material.hpp"
+#include "Geometry.hpp"
+
+
 namespace CW {
 
 DrawingElement::DrawingElement(SUDrawingElementRef drawing_element):
 	m_drawing_element(drawing_element),
   Entity(SUDrawingElementToEntity(drawing_element))
 {
+}
+
+
+BoundingBox3D DrawingElement::bounds() {
+	SUBoundingBox3D box;
+	SUDrawingElementGetBoundingBox(m_drawing_element, &box);
+  return BoundingBox3D(box);
 }
 
 

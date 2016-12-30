@@ -9,7 +9,10 @@
 #include <cassert>
 
 #include "GeometryInput.hpp"
+#include "Entities.hpp"
 #include "LoopInput.hpp"
+#include "Layer.hpp"
+
 
 namespace CW {
 
@@ -58,7 +61,6 @@ SU_RESULT GeometryInput::add_loop(LoopInput &loop) {
   }
   return SU_ERROR_NONE;
 }
-
 
 size_t GeometryInput::add_face(Face &face) {
 	//SULoopInputRef outer_loop = face.outer_loop().loop_input().ref();

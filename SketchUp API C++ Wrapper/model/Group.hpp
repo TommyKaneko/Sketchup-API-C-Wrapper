@@ -17,12 +17,27 @@
 
 namespace CW {
 
+// Forward Declarations
+class Entities;
+class Transformation;
+
 class Group :public Entity {
 	private:
   SUGroupRef m_group;
 	
   public:
+  Group();
   Group(SUGroupRef group);
+  
+  /**
+  * Return the Entities object of the Group.
+  */
+  Entities entities() const;
+  
+  /**
+  * Return the Transformation object of the group.
+  */
+  Transformation transformation() const;
   
 };
 

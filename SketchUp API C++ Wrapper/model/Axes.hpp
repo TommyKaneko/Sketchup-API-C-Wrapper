@@ -30,16 +30,16 @@ class Axes {
   public:
   Axes(SUAxesRef axes);
   
-  Vector3D get_x_axis() const;
-  Vector3D get_y_axis() const;
-  Vector3D get_z_axis() const;
+  Vector3D x_axis() const;
+  Vector3D y_axis() const;
+  Vector3D z_axis() const;
 	
-  Point3D get_origin() const;
+  Point3D origin() const;
   
   /**
   * Return the transformation object of the axes.
   */
-  Transformation transformation();
+  Transformation transformation() const;
 };
 
 } /* namespace CW */

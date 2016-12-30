@@ -15,10 +15,16 @@
 
 #include "Geometry.hpp"
 #include "DrawingElement.hpp"
-#include "Vertex.hpp"
-#include "Color.hpp"
+
 namespace CW {
 
+// Forward Declarations
+class Vertex;
+class Color;
+
+/**
+*
+*/
 class Edge :public DrawingElement {
 	private:
   SUEdgeRef m_edge;

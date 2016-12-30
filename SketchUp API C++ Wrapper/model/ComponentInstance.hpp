@@ -15,10 +15,11 @@
 
 #include "Entity.hpp"
 #include "Transformation.hpp"
+#include "ComponentDefinition.hpp"
 
 namespace CW {
 
-class ComponentInstance :public Entity {
+class ComponentInstance :public DrawingElement {
 	private:
   SUComponentInstanceRef m_instance;
 	
@@ -26,10 +27,19 @@ class ComponentInstance :public Entity {
   ComponentInstance(SUComponentInstanceRef instance);
   
   /**
+  * Returns the raw SUComponentInstance object.
+  */
+  SUComponentInstanceRef ref();
+  
+  /**
   * Returns the Transformation object applied to this instance.
   */
   Transformation transformation();
 
+  /**
+  * Returns the Component Definition object of this instance.
+  */
+  ComponentDefinition definition();
 };
 
 } /* namespace CW */

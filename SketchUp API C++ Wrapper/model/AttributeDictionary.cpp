@@ -10,6 +10,7 @@
 #include <algorithm>
 
 #include "AttributeDictionary.hpp"
+#include "TypedValue.hpp"
 
 namespace CW {
 
@@ -56,15 +57,16 @@ std::vector<std::string> AttributeDictionary::get_keys() const {
   	keys_ref[i] = SU_INVALID;
   }
   SUAttributeDictionaryGetKeys(m_dict, num_keys, &keys_ref[0], &num_keys);
-  std::vector<std::string> keys(num_keys);
+  std::vector<std::string> keys;
+  keys.reserve(num_keys);
   for (size_t i=0; i < num_keys; i++) {
-  	keys[i] = String(keys_ref[i]);
+  	keys.push_back(String(keys_ref[i]));
   }
   return keys;
 }
 
 TypedValue AttributeDictionary::get_value(std::string key) const {
-  return get_attribute(key, TypedValue(""));
+  return get_attribute(key, TypedValue());
 }
 
 std::string AttributeDictionary::get_name() const {

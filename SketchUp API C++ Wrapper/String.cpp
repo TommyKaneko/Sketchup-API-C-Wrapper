@@ -7,6 +7,9 @@
 //
 
 #include "String.hpp"
+
+#include <cassert>
+
 namespace CW {
 
 SUStringRef m_string;
@@ -79,13 +82,37 @@ String::~String() {
 	SUStringRelease(&m_string);
 }
 
-SUStringRef String::ref() {
+SUStringRef String::ref() const {
 	return m_string;
 }
 
-String::operator std::string() {
-	std::string string;
-  // TODO
+String::operator std::string() const {
+	size_t out_length;
+  SU_RESULT res = SUStringGetUTF8Length(m_string, &out_length);
+  assert(res == SU_ERROR_NONE);
+  char char_array[out_length];
+  res = SUStringGetUTF8(m_string, out_length+1, &char_array[0], &out_length);
+  assert(res == SU_ERROR_NONE);
+  return std::string(char_array);
 }
+
+//char& String::operator [](size_t i) {
+  
+//}
+
+
+size_t String::size() const {
+  size_t out_length;
+  SUStringGetUTF8Length(m_string, &out_length);
+  return out_length;
+}
+  
+bool String::empty() const {
+  if (size() == 0) {
+    return true;
+  }
+  return false;
+}
+
 
 } /* namespace CW */

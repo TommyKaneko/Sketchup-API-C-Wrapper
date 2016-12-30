@@ -23,6 +23,9 @@
 
 namespace CW {
 
+// Forward declarations:
+class Entities;
+  
 /**
 * Geometry Input class is an abstraction of Sketchup C API's SUGeometryInputRef object.  It allows a much quicker way for programmers to build Sketchup geometry within this class, before exporting it into a built SUGeometryInputRef object.
 * See below for an example of GeometryInput operates:
@@ -97,14 +100,6 @@ class GeometryInput {
   */
   size_t add_vertex(Point3D vertex);
 	std::vector<size_t> add_vertices(std::vector<Point3D> vertices);
-  
-  /*
-  * Inputs the geometry built in this class to an Entities object.  If the Entities object is not empty, any geometry will not be build in GeometryInput class will not be merged with it.  This function uses the SUEntitiesFill() function, and will return the SU_RESULT from there.
-  * @param &entities SUEntitiesRef object in which to fill with geometry
-  * @param weld_vertices bool flag indicating whether vertices should be welded
-  * @return SU_RESULT object, which can be SU_ERROR_NONE on success, or SU_ERROR_INVALID_INPUT if entities or geom_input are invalid objects
-  */
-  //SU_RESULT fill(SUEntitiesRef &entities, bool weld_vertices = true);
   
   /**
   * Adds a face to the Geometry Input object.

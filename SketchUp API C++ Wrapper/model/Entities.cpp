@@ -8,6 +8,11 @@
 #include <cassert>
 
 #include "Entities.hpp"
+#include "GeometryInput.hpp"
+#include "Transformation.hpp"
+#include "ComponentDefinition.hpp"
+#include "ComponentInstance.hpp"
+#include "Group.hpp"
 
 namespace CW {
 
@@ -59,9 +64,9 @@ SU_RESULT Entities::fill(GeometryInput &geom_input) {
             new_edges[new_edge_index].copy_attributes_from(old_edges[old_edge_index]);
             ++new_edge_index;
           }
-          while (old_edges.size() < new_edges.size() &&
-            new_edge_index < new_edges.size() &&
-            Point3D(new_edges[new_edge_index-1].end()) != Point3D(old_edges[old_edge_index+1].end()));
+          while ((old_edges.size() < new_edges.size()) &&
+                 (new_edge_index < new_edges.size()) &&
+                 (new_edges[new_edge_index-1].end().position() != old_edges[old_edge_index+1].end().position()));
           ++old_edge_index;
         }
       }
@@ -74,7 +79,7 @@ std::vector<Face> Entities::add_faces(std::vector<Face> faces) {
 	size_t len = faces.size();
   SUFaceRef faces_array[len];
   for (size_t i = 0; i < len; ++i) {
-  	faces_array[i] = faces[i].face_ref();
+  	faces_array[i] = faces[i].ref();
   }
   
   SU_RESULT res = SUEntitiesAddFaces(m_entities, len, &faces_array[0]);
@@ -82,12 +87,81 @@ std::vector<Face> Entities::add_faces(std::vector<Face> faces) {
   return faces;
 }
 
-
-
-Entities::operator SUEntiesRef&() {
-	return &m_entities;
+bool Entities::add_edges(const std::vector<Edge> edges) {
+  SUEdgeRef edge_refs[edges.size()];
+  for (size_t i=0; i < edges.size(); ++i) {
+    edge_refs[i] = edges[i].ref();
+  }
+  SU_RESULT res = SUEntitiesAddEdges(m_entities, edges.size(), edge_refs);
+  if(res == SU_ERROR_NONE) {
+    return true;
+  }
+  return false;
 }
-Entities::operator SUEntiesRef() {
+
+bool Entities::add_edge(const Edge edge) {
+  return add_edges(std::vector<Edge>{edge});
+}
+
+
+ComponentInstance Entities::add_instance(const ComponentDefinition definition, const Transformation transformation, const String name){
+  SUComponentInstanceRef instance = SU_INVALID;
+  SU_RESULT res = SUComponentDefinitionCreateInstance(definition.ref(), &instance);
+	assert(res == SU_ERROR_NONE);
+  SUTransformation transform = transformation.ref();
+  res = SUComponentInstanceSetTransform(instance, &transform);
+  assert(res == SU_ERROR_NONE);
+  if (name.empty()) {
+    res = SUEntitiesAddInstance(m_entities, instance, NULL);
+  }
+  else {
+    SUStringRef name_ref = name.ref();
+    res = SUEntitiesAddInstance(m_entities, instance, &name_ref);
+  }
+	assert(res == SU_ERROR_NONE);
+  return ComponentInstance(instance);
+}
+
+
+// TODO: add_group needs to be refined
+
+Group Entities::add_group(ComponentDefinition definition, Transformation transformation) {
+  // Groups cannot be created with a component definition and transformation objects.  Instead, the geometry must be copied in to a new Entities object in the group.
+  Group new_group;
+  Entities group_entities = new_group.entities();
+  Entities def_entities = definition.entities();
+  // Add geometry one by one to Geometry input.
+  GeometryInput geom_input;
+  std::vector<Face> def_faces = def_entities.faces();
+  for (size_t i=0; i < def_faces.size(); ++i) {
+  	geom_input.add_face(def_faces[i]);
+  }
+  std::vector<Edge> def_edges = def_entities.edges(true);
+  for (size_t i=0; i < def_edges.size(); ++i) {
+  	group_entities.add_edge(def_edges[i]);
+  }
+  group_entities.fill(geom_input);
+  // Also add instances and groups
+  std::vector<Group> def_groups = def_entities.groups();
+  for (size_t i=0; i < def_groups.size(); ++i) {
+  	group_entities.add_group(def_groups[i].definition(), def_groups[i].transformation());
+  }
+  std::vector<ComponentInstance> def_instances = def_entities.instances();
+  for (size_t i=0; i < def_instances.size(); ++i) {
+  	group_entities.add_instance(def_instances[i].definition(), def_instances[i].transformation());
+  }
+  
+  // TODO: the way groups are implemented are a problem.  Come back to this.
+  SU_RESULT res = SUComponentDefinitionCreateGroup(definition.ref(), &group);
+	assert(res == SU_ERROR_NONE);
+  SUTransformation transform = transformation.ref();
+  res = SUComponentInstanceSetTransform(instance, &transform);
+  SU_RESULT res = SUEntitiesAddGroup(m_entities, group );
+}
+
+
+
+Entities::operator SUEntitiesRef() {
 	return m_entities;
 }
 

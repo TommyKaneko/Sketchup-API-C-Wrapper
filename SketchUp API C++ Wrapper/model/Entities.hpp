@@ -10,19 +10,24 @@
 #define Entities_hpp
 
 #include <stdio.h>
+#include <vector>
 
 #include <SketchUpAPI/model/entities.h>
 
-#include "Entity.hpp"
-#include "Face.hpp"
-#include "ComponentInstance.hpp"
-#include "Group.hpp"
-#include "ComponentDefinition.hpp"
-#include "GeometryInput.hpp"
-#include "Geometry.hpp"
-#include "Transformation.hpp"
+#include "String.hpp"
 
 namespace CW {
+
+// Forward declarations
+class Entity;
+class Edge;
+class Face;
+class ComponentInstance;
+class Group;
+class ComponentDefinition;
+class GeometryInput;
+class Transformation;
+class String;
 
 /*
 * Entities wrapper
@@ -60,27 +65,27 @@ class Entities {
   * Note that this function does not merge overlapping geometry. See GeometryInput for merging functionality.
   * @param vector of Face objects from CW
 	*/
-  std::vector<Edge> add_edges(std::vector<Edge> edges);
-  Face add_edge(Edge edge);
+  bool add_edges(const std::vector<Edge> edges);
+  bool add_edge(const Edge edge);
 
   /*
   * Creates a ComponentInstance in the Entities object.
   * @param definition ComponentDefinition object to create an instance of
   * @param transformation transformation of the definition (placement, rotation and scale)
 	*/
-  ComponentInstance add_instance(ComponentDefinition definition, Transformation transformation);
+  ComponentInstance add_instance(const ComponentDefinition definition, const Transformation transformation, const String name = "");
 
   /*
   * Creates a Group in the Entities object.
   * @param definition ComponentDefinition object to create an group of
   * @param transformation transformation of the definition (placement, rotation and scale)
   */
-  Group add_group(ComponentDefinition definition, Transformation transformation);
+  // TODO: this needs to be revised.
+  Group add_group(const ComponentDefinition definition, const Transformation transformation);
   
   /*
   * The class object can be converted to a SUEntitiesRef without loss of data.
   */
-  operator SUEntitiesRef&();
   operator SUEntitiesRef();
 
 };

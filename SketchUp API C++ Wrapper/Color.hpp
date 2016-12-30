@@ -23,12 +23,15 @@ class Color {
   SUColor m_color;
   
   public:
+  Color();
   Color(SUColor color_input);
   
   /*
   * Return the SUColor object.
   */
-  SUColor ref();
+  SUColor ref() const;
+  
+  operator SUColor() const;
   
 };
 

@@ -7,6 +7,8 @@
 //
 
 #include "Edge.hpp"
+#include "Color.hpp"
+#include "Vertex.hpp"
 
 namespace CW {
 
@@ -98,7 +100,7 @@ SU_RESULT Edge::get_result() const {
 
 
 Vector3D Edge::vector() const {
-	return Point3D(end()) - Point3D(start());
+	return end().position() - start().position();
 }
 
 

@@ -104,6 +104,15 @@ Vector3D::Vector3D( double x, double y, double z):
   z(m_vector.z)
 {}
 
+Vector3D::Vector3D(bool invalid):
+  null(true),
+	m_vector(SUVector3D{0.0,0.0,0.0}),
+  x(m_vector.x),
+  y(m_vector.y),
+  z(m_vector.z)
+{}
+
+
 Vector3D::Vector3D(const SUEdgeRef &su_edge):
 	Vector3D(vector_from_edge(su_edge))
 {}
@@ -114,6 +123,12 @@ Vector3D::Vector3D(const Vector3D &vector):
   y(m_vector.y),
   z(m_vector.z)
 {}
+
+
+Vector3D::Vector3D( const Point3D point):
+	Vector3D(SUVector3D{point.x, point.y, point.z})
+{}
+
 
 Vector3D& Vector3D::operator=(const Vector3D &vector) {
   if (this == &vector)
@@ -160,6 +175,7 @@ bool Vector3D::operator==(const Vector3D &vector) const {
   }
 }
 
+
 bool Vector3D::operator!=(const Vector3D &vector) const {
 	if (x != vector.x || y != vector.y || z != vector.z) {
   	return true;
@@ -168,6 +184,15 @@ bool Vector3D::operator!=(const Vector3D &vector) const {
   	return false;
   }
 }
+
+
+bool Vector3D::operator!() const {
+	if (this->null) {
+  	return true;
+  }
+  return false;
+}
+
 
 double Vector3D::length() const {
 	return sqrt(pow(x,2) + pow(y,2) + pow(z,2));
@@ -215,13 +240,37 @@ SUVector3D Vector3D::vector_from_edge(const SUEdgeRef &su_edge) {
 /********
 * Point3D
 *********/
+Point3D::Point3D():
+	m_point(),
+  x(m_point.x),
+  y(m_point.y),
+  z(m_point.z)
+{}
+
 Point3D::Point3D( SUPoint3D su_point):
-	Vector3D(su_point.x, su_point.y, su_point.z)
+	m_point(su_point),
+  x(m_point.x),
+  y(m_point.y),
+  z(m_point.z)
 {}
 
 Point3D::Point3D( SUVector3D su_vector):
-	Vector3D(su_vector)
+	Point3D(SUPoint3D{su_vector.x, su_vector.y, su_vector.z})
 {}
+
+Point3D::Point3D(double x, double y, double z):
+	Point3D(SUPoint3D{x, y, z})
+{}
+
+
+Point3D::Point3D(bool invalid):
+  null(true),
+  m_point(SUPoint3D{0.0,0.0,0.0}),
+  x(m_point.x),
+  y(m_point.y),
+  z(m_point.z)
+{}
+
 
 Point3D& Point3D::operator=(const Point3D &point) {
   if (this == &point)
@@ -233,9 +282,56 @@ Point3D& Point3D::operator=(const Point3D &point) {
   return *this;
 }
 
+
+Point3D::operator SUPoint3D() { return SUPoint3D {m_point.x, m_point.y, m_point.z}; }
+
+Point3D::operator SUPoint3D*() {
+  m_point = SUPoint3D{m_point.x, m_point.y, m_point.z};
+  return &m_point;
+}
+
+Point3D::operator Vector3D() { return Vector3D(m_point.x, m_point.y, m_point.z); }
+
+// Operator overloads
+Point3D Point3D::operator+(const Point3D &point) const {
+  return Point3D(m_point.x + point.x, m_point.y + point.y, m_point.z + point.z);
+}
+Point3D Point3D::operator+(const Vector3D &vector) const { return *this + vector;}
+Point3D Point3D::operator+(const SUPoint3D &point) const { return *this + Point3D(point);}
+
+Point3D Point3D::operator-(const Point3D &point) const {
+  return Point3D(m_point.x - point.x, m_point.y - point.y, m_point.z - point.z);
+}
+Point3D Point3D::operator-(const Vector3D &vector) const { return *this - vector;}
+Point3D Point3D::operator-(const SUPoint3D &point) const  { return *this - Point3D(point);}
+
+Point3D Point3D::operator*(const double &scalar) const {
+  return Point3D(m_point.x * scalar, m_point.y * scalar, m_point.z * scalar);
+}
+
+Point3D Point3D::operator/(const double &scalar) const {
+  return Point3D(m_point.x / scalar, m_point.y / scalar, m_point.z / scalar);
+}
+
+/**
+* Comparative operators
+*/
+bool Point3D::operator!() const {
+	if (null) {
+  	return true;
+  }
+  return false;
+}
+
+  
+  
 /********
 * Plane3D
 *********/
+Plane3D::Plane3D():
+	Plane3D(SUPlane3D{0.0,0.0,0.0,0.0})
+{}
+
 Plane3D::Plane3D(SUPlane3D plane):
 	m_plane(plane),
   a(m_plane.a),
@@ -244,13 +340,16 @@ Plane3D::Plane3D(SUPlane3D plane):
   d(m_plane.d)
 {}
 
+
 Plane3D::Plane3D(double a, double b, double c, double d):
 	Plane3D(SUPlane3D{a,b,c,d})
 {}
 
+
 Plane3D::Plane3D(const SUFaceRef &face):
 	Plane3D(get_plane(face))
 {}
+
 
 Plane3D::Plane3D(const Plane3D &plane):
   m_plane(plane.m_plane),
@@ -259,6 +358,26 @@ Plane3D::Plane3D(const Plane3D &plane):
   c(m_plane.c),
   d(m_plane.d)
 {}
+
+
+Plane3D::Plane3D(const Vector3D normal, const Point3D point):
+	Plane3D(SUPlane3D{normal.unit().x, normal.unit().y, normal.unit().z, normal.dot(point)})
+{}
+Plane3D::Plane3D(const Point3D point, const Vector3D normal):
+  Plane3D(normal, point)
+{}
+
+
+Plane3D::Plane3D(bool invalid):
+	null(true),
+  m_plane(SUPlane3D{0.0,0.0,0.0,0.0}),
+  a(m_plane.a),
+  b(m_plane.b),
+  c(m_plane.c),
+  d(m_plane.d)
+{}
+
+
 
 Plane3D& Plane3D::operator=(const Plane3D &plane) {
   if (this == &plane)
@@ -271,18 +390,33 @@ Plane3D& Plane3D::operator=(const Plane3D &plane) {
   return *this;
 }
 
-Vector3D Plane3D::intersection(const Plane3D plane2) const {
-  // MathGeoLib's 'vec' type is vector of floats
-  Plane lib_plane1 (vec(a, b, c), d); // Note: Type conversion from double to float
-  Plane lib_plane2 (vec(plane2.a, plane2.b, plane2.c), plane2.d); // Note: Type conversion from double to float
-  Line line;
-  bool result = lib_plane1.Intersects(lib_plane2, &line);
-  assert(result== true);
-  return Vector3D{line.dir.x, line.dir.y, line.dir.z}; // Note: Type conversion from float to double
+bool Plane3D::operator!() const {
+	if (null) {
+  	return true;
+  }
+  return false;
+}
+
+
+Line3D Plane3D::intersection(const Plane3D plane2) const {
+  // TODO: check for parallel planes?
+  const Vector3D line_vector = this->normal().cross(plane2.normal());
+  const double determinant = pow(line_vector.length(), 2);
+  
+  if (determinant == 0.0) {
+    return Line3D(false);
+  }
+  Point3D line_point = ((line_vector.cross(plane2.normal()) * this->d) +
+             (this->normal().cross(line_vector) * plane2.d)) / determinant;
+  return Line3D(line_point, line_vector);
 }
 
 Vector3D Plane3D::normal() const {
 	return Vector3D{a,b,c};
+}
+
+double Plane3D::distance(const Point3D point) const {
+	return normal().dot(point) - d;
 }
 
 Plane3D Plane3D::offset(double offset_by){
@@ -291,11 +425,7 @@ Plane3D Plane3D::offset(double offset_by){
 
 
 bool Plane3D::parallel(const Plane3D plane2) const {
-  // MathGeoLib's 'vec' type is vector of floats
-  Plane lib_plane1 (vec(a, b, c), d); // Note: Type conversion from double to float
-  Plane lib_plane2 (vec(plane2.a, plane2.b, plane2.c), plane2.d); // Note: Type conversion from double to float
-	
-  return lib_plane1.IsParallel(lib_plane2);
+  return this->normal() == plane2.normal();
 }
 
 Plane3D Plane3D::reverse(){
@@ -318,5 +448,101 @@ SUPlane3D Plane3D::get_plane(const SUFaceRef &face) {
 
 
 Plane3D::operator SUPlane3D() { return m_plane; }
+
+
+/**
+* BoundingBox3D
+*/
+
+BoundingBox3D::BoundingBox3D():
+	BoundingBox3D(SUBoundingBox3D{Point3D(), Point3D()})
+{}
+
+BoundingBox3D::BoundingBox3D(SUBoundingBox3D bounding_box):
+	m_bounding_box(bounding_box)
+{}
+
+bool BoundingBox3D::operator!() const {
+	if (null) {
+  	return true;
+  }
+  return false;
+}
+
+
+Point3D BoundingBox3D::min() {
+	return Point3D(m_bounding_box.min_point);
+}
+
+Point3D BoundingBox3D::max() {
+	return Point3D(m_bounding_box.max_point);
+}
+
+
+/**
+* Line3D
+*/
+
+Line3D::Line3D():
+	Line3D(Point3D(), Vector3D())
+{}
+
+Line3D::Line3D(const Point3D point, const Vector3D direction):
+	m_point(point),
+  m_direction(direction.unit()),
+  point(m_point),
+  direction(m_direction)
+{}
+
+Line3D::Line3D(bool invalid):
+	m_point(Point3D(true)),
+  m_direction(Vector3D(true)),
+  point(m_point),
+  direction(m_direction),
+  null(true)
+{}
+
+
+Line3D& Line3D::operator=(const Line3D &line) {
+  if (this == &line)
+    return *this;
+  
+  m_point = line.point;
+  m_direction = line.direction;
+  return *this;
+}
+
+bool Line3D::operator!() const {
+	if (null) {
+  	return true;
+  }
+  return false;
+}
+
+Point3D Line3D::intersection(const Line3D &line) {
+	// TODO
+}
+
+Point3D Line3D::intersection(const Plane3D &plane) {
+	// TODO
+}
+
+/**
+* Returns true if the Line or vector given is parallel to this line.
+*/
+bool Line3D::parallel(const Line3D &line) {
+	if (line.direction == direction) {
+  	return true;
+  }
+	else if (line.direction == (direction * -1)) {
+  	return true;
+  }
+  return false;
+}
+bool Line3D::parallel(const Vector3D &vector) {
+	// TODO
+}
+
+
 
 } /* namespace CW */

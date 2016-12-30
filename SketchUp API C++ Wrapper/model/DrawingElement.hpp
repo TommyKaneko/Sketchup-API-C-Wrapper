@@ -10,11 +10,17 @@
 #define DrawingElement_hpp
 
 #include <stdio.h>
-#include "Entity.hpp"
-#include "Layer.hpp"
-#include "Material.hpp"
+
 #include <SketchUpAPI/model/drawing_element.h>
+
+#include "Geometry.hpp"
+#include "Entity.hpp"
 namespace CW {
+
+// Forward declarations:
+class Entity;
+class Layer;
+class Material;
 
 /*
 * Drawing Element wrapper
@@ -25,6 +31,12 @@ class DrawingElement :public Entity {
   
   public:
   DrawingElement(SUDrawingElementRef drawing_element);
+  
+  
+  /**
+  * Returns the bounding box of the drawing element.
+  */
+  BoundingBox3D bounds();
   
   /**
   * Copies all DrawingElement properties from the given element to this one.

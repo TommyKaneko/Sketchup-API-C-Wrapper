@@ -21,6 +21,7 @@
 
 namespace CW {
 
+class TypedValue;
 /*
 * Entity object wrapper
 */

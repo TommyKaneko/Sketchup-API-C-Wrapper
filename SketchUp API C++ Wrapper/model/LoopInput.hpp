@@ -13,11 +13,12 @@
 #include <vector>
 
 #include "Edge.hpp"
-#include "GeometryInput.hpp"
+#include "Curve.hpp"
 
 #include <SketchUpAPI/model/geometry_input.h>
 
 namespace CW {
+class GeometryInput;
 
 class LoopInput {
 	private:
@@ -25,7 +26,7 @@ class LoopInput {
   bool m_release_on_destroy;
   
   std::vector<Edge> m_edges;
-  std::vector<Curve> m_edges;
+  std::vector<Curve> m_curves;
   
   static SULoopInputRef create_loop_input_ref();
   
@@ -50,6 +51,11 @@ class LoopInput {
   */
   SULoopInputRef ref();
 
+  /*
+  * The class object can be converted to a SULoopInputRef without loss of data.
+  */
+  operator SULoopInputRef();
+  
   /*
   * Returns the stored m_edges array.
   */

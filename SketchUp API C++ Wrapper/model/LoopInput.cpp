@@ -7,6 +7,7 @@
 //
 
 #include "LoopInput.hpp"
+#include "GeometryInput.hpp"
 
 namespace CW {
 

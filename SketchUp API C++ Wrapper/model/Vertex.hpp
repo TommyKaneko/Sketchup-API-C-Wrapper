@@ -10,6 +10,9 @@
 #define Vertex_hpp
 
 #include <stdio.h>
+
+#include <SketchUpAPI/model/vertex.h>
+
 #include "Entity.hpp"
 #include "Geometry.hpp"
 
@@ -22,13 +25,15 @@ class Vertex :public Entity {
 	private:
   SUVertexRef m_vertex;
   
+  static SUEntityRef entity_from_vertex(const SUVertexRef vertex);
+  
   public:
   Vertex(SUVertexRef vertex);
   
   /**
   * Returns the position of the vertex.
   */
-  SUPoint3D position();
+  Point3D position() const;
   
   /*
   * The class object can be converted to a SUVertexRef without loss of data.

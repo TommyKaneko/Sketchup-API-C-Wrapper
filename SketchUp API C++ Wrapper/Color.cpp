@@ -7,3 +7,24 @@
 //
 
 #include "Color.hpp"
+
+namespace CW {
+
+
+Color::Color():
+  m_color(SUColor{})
+{}
+
+Color::Color(SUColor color_input):
+  m_color(color_input)
+{}
+
+SUColor Color::ref() const {
+  return m_color;
+}
+
+Color::operator SUColor() const {
+  return ref();
+}
+
+} /* namespace CW */

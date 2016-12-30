@@ -11,13 +11,14 @@
 
 #include <stdio.h>
 #include "DrawingElement.hpp"
-#include "GeometryInput.hpp"
+#include "Edge.hpp"
 
 #include <SketchUpAPI/geometry.h>
 #include <SketchUpAPI/model/geometry_input.h>
 #include <SketchUpAPI/model/loop.h>
 
 namespace CW {
+class LoopInput;
 
 class Loop {
   private:

@@ -48,9 +48,10 @@ std::vector<Edge> Curve::get_edges() const{
   SUEdgeRef ref_edges[num_edges];
   res = SUCurveGetEdges(m_curve, num_edges, &ref_edges[0], &num_edges);
   
-  std::vector<Edge> edges(num_edges);
+  std::vector<Edge> edges;
+  edges.reserve(num_edges);
   for (size_t i=0; i < num_edges; ++i) {
-    edges[i] = Edge{ref_edges[i]};
+    edges.push_back(Edge(ref_edges[i]));
   }
   return edges;
 }

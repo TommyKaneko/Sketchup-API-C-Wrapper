@@ -19,10 +19,16 @@ namespace CW {
 class Layer :public Entity {
 	private:
   SULayerRef m_layer;
+  bool m_release_on_destroy;
+  
+  static SULayerRef create_layer();
+  
   public:
   Layer();
   Layer(SULayerRef layer_ref, bool release_on_destroy = false);
-  
+
+  ~Layer();
+
   SULayerRef ref();
   
   operator SULayerRef();
