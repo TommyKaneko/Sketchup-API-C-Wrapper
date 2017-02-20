@@ -75,6 +75,15 @@ Radians Radians::operator/(const double divider) const {
 	return m_val * divider;
 }
 
+
+bool Radians::operator==(const Radians rhs) const {
+  return ((*this) - rhs) < EPSILON;
+}
+
+bool Radians::operator==(const double rhs) const {
+  return (m_val - rhs) < EPSILON;
+}
+  
 // Comparator TODO
 bool Radians::closest(const Radians value) {
   return Radians(m_val - value);
@@ -114,7 +123,7 @@ Vector3D::Vector3D(bool invalid):
 
 
 Vector3D::Vector3D(const SUEdgeRef &su_edge):
-	Vector3D(vector_from_edge(su_edge))
+	Vector3D(get_vector(su_edge))
 {}
 
 Vector3D::Vector3D(const Vector3D &vector):
@@ -153,10 +162,10 @@ Vector3D::operator SUVector3D() { return m_vector; }
 Vector3D::operator Point3D() { return Point3D(m_vector); }
 
 // Operator overloads
-Vector3D Vector3D::operator+(const Vector3D &vector) {
+Vector3D Vector3D::operator+(const Vector3D &vector) const {
   return Vector3D(m_vector.x + vector.x, m_vector.y + vector.y, m_vector.z + vector.z);
 }
-Vector3D Vector3D::operator-(const Vector3D &vector) {
+Vector3D Vector3D::operator-(const Vector3D &vector) const {
   return Vector3D(m_vector.x - vector.x, m_vector.y - vector.y, m_vector.z - vector.z);
 }
 Vector3D Vector3D::operator*(const double &scalar) const {
@@ -210,14 +219,33 @@ double Vector3D::dot(const Vector3D vector2) const {
 	return (x * vector2.x) + (y * vector2.y) + (z * vector2.z);
 }
 
+double Vector3D::dot(const Point3D point) const {
+	return (x * point.x) + (y * point.y) + (z * point.z);
+}
+
+
 Vector3D Vector3D::cross(const Vector3D vector2) const {
   return Vector3D{y * vector2.z - z * vector2.y,
 	              z * vector2.x - x * vector2.z,
 	              x * vector2.y - y * vector2.x};
 }
 
+
+Vector3D Vector3D::rotate_about(double angle, Vector3D axis) const {
+	// This solution is derived from this page: http://math.stackexchange.com/questions/511370/how-to-rotate-one-vector-about-another
+  double b_dot_b = axis.dot(axis);
+  Vector3D a_component_b_dir = ((*this).dot(axis) * b_dot_b) * axis;
+  Vector3D a_component_b_orth = (*this) - (((*this).dot(axis) / b_dot_b) * axis);
+  Vector3D w = axis.cross(a_component_b_orth);
+  double x1 = cos(angle) / a_component_b_orth.length();
+	double x2 = sin(angle) / w.length();
+  Vector3D a_component_b_orth_rot = a_component_b_orth.length() * ((x1 * a_component_b_orth) + (x2 * w));
+  return a_component_b_orth_rot + a_component_b_dir;
+}
+
+
 // Static method
-SUVector3D Vector3D::vector_from_edge(const SUEdgeRef &su_edge) {
+SUVector3D Vector3D::get_vector(const SUEdgeRef &su_edge) {
 	SUVertexRef vertex_a, vertex_b;
   SU_RESULT res = SUEdgeGetStartVertex(su_edge, &vertex_a);
   assert(res == SU_ERROR_NONE);
@@ -283,27 +311,29 @@ Point3D& Point3D::operator=(const Point3D &point) {
 }
 
 
-Point3D::operator SUPoint3D() { return SUPoint3D {m_point.x, m_point.y, m_point.z}; }
+Point3D::operator SUPoint3D() const { return SUPoint3D {m_point.x, m_point.y, m_point.z}; }
 
 Point3D::operator SUPoint3D*() {
-  m_point = SUPoint3D{m_point.x, m_point.y, m_point.z};
+  //m_point = SUPoint3D{m_point.x, m_point.y, m_point.z};
   return &m_point;
 }
 
-Point3D::operator Vector3D() { return Vector3D(m_point.x, m_point.y, m_point.z); }
+Point3D::operator Vector3D() const { return Vector3D(m_point.x, m_point.y, m_point.z); }
 
 // Operator overloads
 Point3D Point3D::operator+(const Point3D &point) const {
   return Point3D(m_point.x + point.x, m_point.y + point.y, m_point.z + point.z);
 }
-Point3D Point3D::operator+(const Vector3D &vector) const { return *this + vector;}
-Point3D Point3D::operator+(const SUPoint3D &point) const { return *this + Point3D(point);}
+Point3D Point3D::operator+(const Vector3D &vector) const {
+  return Point3D(m_point.x + vector.x, m_point.y + vector.y, m_point.z + vector.z);
+}
+Point3D Point3D::operator+(const SUPoint3D &point) const { return (*this) + Point3D(point);}
 
 Point3D Point3D::operator-(const Point3D &point) const {
   return Point3D(m_point.x - point.x, m_point.y - point.y, m_point.z - point.z);
 }
-Point3D Point3D::operator-(const Vector3D &vector) const { return *this - vector;}
-Point3D Point3D::operator-(const SUPoint3D &point) const  { return *this - Point3D(point);}
+Point3D Point3D::operator-(const Vector3D &vector) const { return (*this) - vector;}
+Point3D Point3D::operator-(const SUPoint3D &point) const  { return (*this) - Point3D(point);}
 
 Point3D Point3D::operator*(const double &scalar) const {
   return Point3D(m_point.x * scalar, m_point.y * scalar, m_point.z * scalar);
@@ -398,16 +428,26 @@ bool Plane3D::operator!() const {
 }
 
 
+bool Plane3D::coplanar(const Plane3D test_plane) const {
+	if (this->parallel(test_plane)) {
+  	if ((this->normal() * this->d) == (test_plane.normal() * test_plane.d)) {
+    	return true;
+    }
+  }
+  return false;
+}
+
+
 Line3D Plane3D::intersection(const Plane3D plane2) const {
-  // TODO: check for parallel planes?
-  const Vector3D line_vector = this->normal().cross(plane2.normal());
+  const Vector3D line_vector = (*this).normal().cross(plane2.normal());
   const double determinant = pow(line_vector.length(), 2);
   
-  if (determinant == 0.0) {
+  if (determinant < EPSILON) {
+    // Parallel planes
     return Line3D(false);
   }
-  Point3D line_point = ((line_vector.cross(plane2.normal()) * this->d) +
-             (this->normal().cross(line_vector) * plane2.d)) / determinant;
+  Point3D line_point = ((line_vector.cross(plane2.normal()) * (*this).d) +
+             ((*this).normal().cross(line_vector) * plane2.d)) / determinant;
   return Line3D(line_point, line_vector);
 }
 
@@ -419,21 +459,30 @@ double Plane3D::distance(const Point3D point) const {
 	return normal().dot(point) - d;
 }
 
-Plane3D Plane3D::offset(double offset_by){
+Plane3D Plane3D::offset(double offset_by) const {
 	return Plane3D(a, b, c, (d + offset_by));
 }
 
 
 bool Plane3D::parallel(const Plane3D plane2) const {
-  return this->normal() == plane2.normal();
+	// The following assumes that the plane normals are unit vectors.
+  if (this->normal() == plane2.normal() || this->normal() == (plane2.normal() * -1)) {
+  	return true;
+  }
+  return false;
 }
 
-Plane3D Plane3D::reverse(){
-  return Plane3D(a*-1, b*-1, c*-1, d*-1);
+Plane3D& Plane3D::reverse(){
+  a = a*-1;
+  b = b*-1;
+  c = c*-1;
+  d = d*-1;
+  return (*this);
 }
 
 double Plane3D::angle_with(const Plane3D plane2) const {
-	return normal().dot(plane2.normal());
+	// Solution taken form this: https://www.youtube.com/watch?v=C6ElQdRbHaE
+  return acos(std::abs(normal().dot(plane2.normal())));
 }
 
 /**
@@ -512,6 +561,7 @@ Line3D& Line3D::operator=(const Line3D &line) {
   return *this;
 }
 
+
 bool Line3D::operator!() const {
 	if (null) {
   	return true;
@@ -519,13 +569,86 @@ bool Line3D::operator!() const {
   return false;
 }
 
-Point3D Line3D::intersection(const Line3D &line) {
-	// TODO
+
+Point3D Line3D::intersection(const Line3D &other_line) {
+	// @see http://paulbourke.net/geometry/pointlineplane/
+	std::pair<Point3D, Point3D> close_points = this->closest_points(other_line);
+  if (!close_points.first) {
+  	return close_points.first;
+  }
+  Vector3D vector_between = close_points.first - close_points.second;
+  double distance = vector_between.length();
+  if (distance > EPSILON) {
+  	// The lines do not intersect
+  	return Point3D(false);
+  }
+  return close_points.first;
 }
 
+
 Point3D Line3D::intersection(const Plane3D &plane) {
-	// TODO
+	// @see http://paulbourke.net/geometry/pointlineplane/
+	double u = ((plane.a * this->point.x) + (plane.b * this->point.y) + (plane.c * this->point.z) + plane.d) /
+  						(-(plane.a * this->direction.x) - (plane.b * this->direction.y) - (plane.c * this->direction.z));
+  if (std::abs(u) < EPSILON) {
+  	// The line is parallel to or on the plane
+    return Point3D(false);
+  }
+  Point3D point_of_intersection = this->point + (u * this->direction);
+	return point_of_intersection;
 }
+
+
+std::pair<Point3D, Point3D> Line3D::closest_points(const Line3D &other_line) const {
+	// @see http://paulbourke.net/geometry/pointlineplane/
+	double d1343,d4321,d1321,d4343,d2121;
+  double numer,denom;
+	// p13 is a vector betwee two points on different lines
+  Vector3D p13 = this->point - other_line.point;
+  Vector3D p43 = other_line.direction;
+  if (std::abs(p43.x) < EPSILON && std::abs(p43.y) < EPSILON && std::abs(p43.z) < EPSILON) {
+  	// The two lines are along each other
+    return std::pair<Point3D,Point3D> (Point3D(false), Point3D(false));
+  }
+  Vector3D p21 = this->direction;
+  //if (std::abs(p21.x) < EPSILON/2 && std::abs(p21.y) < EPSILON/2 && std::abs(p21.z) < EPSILON/2) {
+  	// The vector is zero - should not happen
+  //  return std::pair<Point3D,Point3D> (Point3D(false), Point3D(false));
+  //}
+  d1343 = p13.x * p43.x + p13.y * p43.y + p13.z * p43.z;
+  d4321 = p43.x * p21.x + p43.y * p21.y + p43.z * p21.z;
+  d1321 = p13.x * p21.x + p13.y * p21.y + p13.z * p21.z;
+  d4343 = p43.x * p43.x + p43.y * p43.y + p43.z * p43.z;
+  d2121 = p21.x * p21.x + p21.y * p21.y + p21.z * p21.z;
+	
+  denom = d2121 * d4343 - d4321 * d4321;
+  if (std::abs(denom) < EPSILON) {
+    return std::pair<Point3D,Point3D> (Point3D(false), Point3D(false));
+  }
+  numer = d1343 * d4321 - d1321 * d4343;
+
+  double mua = numer / denom;
+  double mub = (d1343 + d4321 * mua) / d4343;
+	Point3D pa = this->point + (this->direction * mua);
+	Point3D pb = other_line.point + (other_line.direction * mub);
+  return std::pair<Point3D,Point3D> (pa, pb);
+}
+
+
+bool Line3D::on_line(const Point3D test_point) const {
+	// Get the factor with which to multiply the x value, and see if it is the same for y and z values too.
+  double factor = (test_point.x - this->point.x) / this->direction.x;
+  double y_test = this->point.y + (this->direction.y * factor);
+  if (std::abs(y_test - test_point.y) > EPSILON) {
+  	return false;
+  }
+  double z_test = this->point.z + (this->direction.z * factor);
+  if (std::abs(z_test - test_point.z) > EPSILON) {
+  	return false;
+  }
+  return true;
+}
+
 
 /**
 * Returns true if the Line or vector given is parallel to this line.
@@ -539,8 +662,15 @@ bool Line3D::parallel(const Line3D &line) {
   }
   return false;
 }
+
+
 bool Line3D::parallel(const Vector3D &vector) {
-	// TODO
+	Vector3D difference = this->direction.unit() - vector.unit();
+  double length = difference.length();
+  if (length < EPSILON || (length - 2.0) < EPSILON) {
+  	return true;
+  }
+  return false;
 }
 
 

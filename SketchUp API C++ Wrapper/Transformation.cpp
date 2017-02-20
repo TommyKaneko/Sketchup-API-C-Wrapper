@@ -12,6 +12,11 @@
 #include "Transformation.hpp"
 
 #include "Axes.hpp"
+#include "Face.hpp"
+#include "Loop.hpp"
+#include "LoopInput.hpp"
+#include "Vertex.hpp"
+#include "Material.hpp"
 
 namespace CW {
 
@@ -85,7 +90,12 @@ SUTransformation Transformation::ref() const {
 Transformation::operator SUTransformation() const {
   return ref();
 }
-  
+
+Transformation::operator SUTransformation*() {
+	return &m_transformation;
+}
+
+
 Transformation Transformation::inverse() {
 	assert( m_transformation.values[3] == 0.0 &&
   				m_transformation.values[7] == 0.0 &&
@@ -247,6 +257,37 @@ Plane3D operator*(const Plane3D &lhs, const Transformation &rhs) {
   return Plane3D(Point3D(trans_plane_point[0], trans_plane_point[1], trans_plane_point[2]), Vector3D(trans_plane_normal[0], trans_plane_normal[1], trans_plane_normal[2]));
 }
 
+/**
+* Friend Functions of class Transformation
+*/
+Face operator*(const Face &lhs, const Transformation &rhs) {
+	// We transform all the vertices then create loops
+  std::vector<Vertex> outer_vertices = lhs.outer_loop().vertices();
+  std::vector<Point3D> trans_outer_points;
+  trans_outer_points.reserve(outer_vertices.size());
+  for (size_t i=0; i < outer_vertices.size(); ++i) {
+  	trans_outer_points.push_back(outer_vertices[i].position() * rhs);
+  }
+  LoopInput outer_loop_input = lhs.outer_loop().loop_input();
+  Face trans_face(trans_outer_points, outer_loop_input);
+  // Now add inner loops
+  std::vector<Loop> inner_loops = lhs.inner_loops();
+  for (size_t j=0; j < inner_loops.size(); ++j) {
+    std::vector<Vertex> inner_vertices = inner_loops[j].vertices();
+    std::vector<Point3D> trans_inner_points;
+    trans_inner_points.reserve(inner_vertices.size());
+    for (size_t i=0; i < inner_vertices.size(); ++i) {
+      trans_inner_points.push_back(inner_vertices[i].position() * rhs);
+    }
+    LoopInput inner_loop_input = inner_loops[j].loop_input();
+    trans_face.add_inner_loop(trans_inner_points, inner_loop_input);
+  }
+  if (!!lhs.material()) {
+  	trans_face.material(lhs.material());
+  }
+  trans_face.copy_attributes_from(lhs);
+  return trans_face;
+}
   
 
 bool Transformation::equal(const Transformation transform, const double epsilon) const {
@@ -266,6 +307,55 @@ bool Transformation::equal(const Transformation transform, const double epsilon)
 bool Transformation::operator==(const Transformation transform) const {
 	return this->equal(transform);
 }
+
+
+/**
+* Publc Static Methods
+*/
+Transformation Transformation::transformation_rotate_about_line(const double angle, const Line3D line){
+  // Solution derived from this article: http://inside.mines.edu/fs_home/gmurray/ArbitraryAxisRotation/
+  SUTransformation transform;
+  double u = line.direction.x;
+  double v = line.direction.y;
+  double w = line.direction.z;
+  double a = line.point.x;
+  double b = line.point.y;
+  double c = line.point.z;
+  double cos_angle = cos(angle);
+  double sin_angle = sin(angle);
+  double u2 = pow(u,2);
+  double v2 = pow(v,2);
+  double w2 = pow(w,2);
+  double au = a * u;
+  double av = a * v;
+  double aw = a * w;
+  double bu = b * u;
+  double bv = b * v;
+  double bw = b * w;
+  double cu = c * u;
+  double cv = c * v;
+  double cw = c * w;
+
+  transform.values[0] = u2 + (cos_angle * (v2 + w2));
+  transform.values[1] = (u * v * (1 - cos_angle)) + (w * sin_angle);
+  transform.values[2] = (u * w * (1 - cos_angle)) + (v * sin_angle);
+  transform.values[3] = 0;
   
+  transform.values[4] = (u * v * (1 - cos_angle)) - (w * sin_angle);
+  transform.values[5] = v2 + ((u2 + w2) * cos_angle);
+  transform.values[6] = (v * w * (1 - cos_angle)) + (u * sin_angle);
+  transform.values[7] = 0;
   
+  transform.values[8] = (u * w * (1 - cos_angle)) + (v * sin_angle);
+  transform.values[9] = (v * w * (1 - cos_angle)) - (u * sin_angle);
+  transform.values[10] = w2 + ((u2 + v2) * cos_angle);
+  transform.values[11] = 0;
+
+  transform.values[12] = (( (a * (v2 + w2)) - (u * (bv + cw)) ) * (1 - cos_angle)) + ((bw - cv) * sin_angle);
+  transform.values[13] = (( (b * (u2 + w2)) - (v * (au + cw)) ) * (1 - cos_angle)) + ((cu - aw) * sin_angle);
+  transform.values[14] = (( (c * (u2 + v2)) - (w * (au + bv)) ) * (1 - cos_angle)) + ((av - bu) * sin_angle);
+  transform.values[15] = 1;
+  return Transformation(transform);
+}
+
 } /* namespace CW */

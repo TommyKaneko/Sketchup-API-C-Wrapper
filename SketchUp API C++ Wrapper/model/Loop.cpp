@@ -7,8 +7,10 @@
 //
 
 #include "Loop.hpp"
+
 #include "LoopInput.hpp"
 #include "Vertex.hpp"
+#include "Edge.hpp"
 
 #include <cassert>
 
@@ -19,19 +21,14 @@ Loop::Loop(SULoopRef loop):
 {}
 
 
-LoopInput Loop::loop_input() {
-  std::vector<Vertex> vertices = this->vertices();
-  std::vector<Point3D> points;
-  points.reserve(vertices.size());
-  for (size_t i=0; i < vertices.size(); ++i) {
-    points.push_back(vertices[i].position());
-  }
-  return LoopInput(points);
+LoopInput Loop::loop_input() const {
+	std::vector<Edge> edges = this->edges();
+  return LoopInput (this->edges());
 }
 
 
-std::vector<Edge> Loop::edges() {
-  size_t count;
+std::vector<Edge> Loop::edges() const {
+  size_t count = 0;
   SU_RESULT res = SULoopGetNumVertices(m_loop, &count);
   assert(res == SU_ERROR_NONE);
   SUEdgeRef edge_array[count];
@@ -46,8 +43,8 @@ std::vector<Edge> Loop::edges() {
 }
 
 
-std::vector<Vertex> Loop::vertices() {
-  size_t count;
+std::vector<Vertex> Loop::vertices() const {
+  size_t count = 0;
   SU_RESULT res = SULoopGetNumVertices(m_loop, &count);
   assert(res == SU_ERROR_NONE);
   SUVertexRef verts_array[count];
@@ -60,6 +57,20 @@ std::vector<Vertex> Loop::vertices() {
   }
   return vertices;
 }
-  
+
+std::vector<Point3D> Loop::points() const {
+	std::vector<Vertex> verts = vertices();
+  std::vector<Point3D> points;
+  points.reserve(verts.size());
+  for (size_t i=0; i < verts.size(); ++i) {
+  	points.push_back(verts[i].position());
+  }
+  return points;
+}
+
+
+SULoopRef Loop::ref() const {
+	return m_loop;
+}
   
 } /* namespace CW */

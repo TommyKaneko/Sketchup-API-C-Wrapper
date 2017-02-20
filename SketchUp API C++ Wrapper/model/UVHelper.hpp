@@ -21,7 +21,7 @@ namespace CW {
 class UVHelper {
 	private:
   SUUVHelperRef m_uv_helper;
-  bool m_release_on_destroy;
+  bool m_attached;
   
   public:
   UVHelper();

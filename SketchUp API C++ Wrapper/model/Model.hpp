@@ -43,17 +43,23 @@ class Model {
   Model(SUModelRef model_ref, bool release_on_destroy = false);
   Model(std::string file_path);
 	
+  /** Copy Constructor **/
+  Model(const Model& other);
+  
   ~Model();
+  
+  /** Copy Assignment Operator **/
+  Model& operator=(const Model& other);
 
   /**
   * Returns SUModelRef object for the Model.
   */
-  SUModelRef ref();
+  SUModelRef ref() const;
 
   /*
   * The class object can be converted to a SUModelRef without loss of data.
   */
-  operator SUModelRef();
+  operator SUModelRef() const;
   operator SUModelRef*();
   
   /*
@@ -87,8 +93,8 @@ class Model {
   * @param definition the ComponentDefinition object to add to the model.
   * @return true if definition was succeffully added, false, if error.
   */
-  bool add_definition(ComponentDefinition definition);
-  bool add_definitions(std::vector<ComponentDefinition> definitions);
+  bool add_definition(const ComponentDefinition& definition);
+  bool add_definitions(const std::vector<ComponentDefinition>& definitions);
   
   /*
   * The attribute_dictionaries method is used to retrieve the AttributeDictionaries collection attached to the model.
@@ -101,7 +107,7 @@ class Model {
   * @param dict_name string name of the AttributeDictionary object to get.  If it does not exist, a new AttributeDictionary object will be created with the name.
   * @return attribtue_dictionary AttributeDictionary of the smae name.
   */
-  AttributeDictionary attribute_dictionary(const std::string dict_name) const;
+  AttributeDictionary attribute_dictionary(const std::string& dict_name) const;
   
   /*
   * Returns the Axes object of the model.
@@ -151,8 +157,8 @@ class Model {
   * @param key string key to find.
   * @param default_value if no attribute found, the default value to return
   */
-  TypedValue get_attribute(AttributeDictionary dict, std::string key, TypedValue default_value) const;
-  TypedValue get_attribute(std::string dict_name, std::string key, TypedValue default_value) const;
+  TypedValue get_attribute(const AttributeDictionary& dict, const std::string& key, const TypedValue& default_value) const;
+  TypedValue get_attribute(const std::string& dict_name, const std::string& key, const TypedValue& default_value) const;
   
   /*
   * Returns the GUID of the model.
@@ -187,7 +193,7 @@ class Model {
   * Sets the name of the model.
   * @param name_string string to name the model with.
   */
-	bool name(String name_string);
+	bool name(const String& name_string);
 	
   /*
   * The number of faces in the model.  Useful for statistics.
@@ -217,7 +223,7 @@ class Model {
   * @param file_path string path to the file
   * @return true on success, false on failure
   */
-  bool save(std::string file_path);
+  bool save(const std::string& file_path);
 
   /*
   * Saves the model in the file path given, in the given SU version.
@@ -225,7 +231,7 @@ class Model {
   * @param version SUModelVersion to save
   * @return true on success, false on failure
   */
-  bool save_with_version(std::string file_path, SUModelVersion version);
+  bool save_with_version(const std::string& file_path, SUModelVersion version);
 
   
   /*
@@ -241,8 +247,8 @@ class Model {
   * @param std::string value to set
   * @return true on success, false on failure
   */
-  bool set_attribute(AttributeDictionary dict, std::string key, TypedValue value);
-  bool set_attribute(std::string dict_name, std::string key, TypedValue value);
+  bool set_attribute(AttributeDictionary& dict, const std::string& key, const TypedValue& value);
+  bool set_attribute(const std::string& dict_name, const std::string& key, const TypedValue& value);
   
   // set_datum()
 	
@@ -271,7 +277,7 @@ class ModelStatistics {
   
   public:
   ModelStatistics(SUModelStatistics model_statistics);
-  ModelStatistics(Model model);
+  ModelStatistics(const Model& model);
   
   /**
   * Return the number of faces in the model.

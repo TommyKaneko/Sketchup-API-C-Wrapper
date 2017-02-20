@@ -15,7 +15,9 @@
 namespace CW {
 
 
-AttributeDictionary::AttributeDictionary() {
+AttributeDictionary::AttributeDictionary():
+	m_dict(SU_INVALID)
+{
 }
 
 AttributeDictionary::AttributeDictionary(SUAttributeDictionaryRef dict_ref):
@@ -28,18 +30,22 @@ AttributeDictionary::AttributeDictionary(SUEntityRef entity_ref):
 {
 }
 
-TypedValue AttributeDictionary::get_attribute(const std::string key, const TypedValue default_value) const {
+TypedValue AttributeDictionary::get_attribute(const std::string &key, const TypedValue &default_value) const {
 	TypedValue value_out;
   SUTypedValueRef *val = value_out;
   const char* key_char = key.c_str();
-  SUAttributeDictionaryGetValue(m_dict, &key_char[0], val);
+  SU_RESULT res = SUAttributeDictionaryGetValue(m_dict, &key_char[0], val);
+  if (res == SU_ERROR_NO_DATA) {
+  	return default_value;
+  }
+  assert(res == SU_ERROR_NONE);
   return value_out;
 }
 
-bool AttributeDictionary::set_attribute(const std::string key, TypedValue value) {
-  SUTypedValueRef *val = value;
+bool AttributeDictionary::set_attribute(const std::string &key, const TypedValue &value) {
+  SUTypedValueRef val = value.ref();
   const char* key_char = key.c_str();
-  SU_RESULT res = SUAttributeDictionarySetValue(m_dict, &key_char[0], *val);
+  SU_RESULT res = SUAttributeDictionarySetValue(m_dict, &key_char[0], val);
   if (res == SU_ERROR_NONE) {
   	return true;
   }
@@ -49,7 +55,7 @@ bool AttributeDictionary::set_attribute(const std::string key, TypedValue value)
 }
 
 std::vector<std::string> AttributeDictionary::get_keys() const {
-	size_t num_keys;
+	size_t num_keys = 0;
   SU_RESULT res = SUAttributeDictionaryGetNumKeys(m_dict, &num_keys);
   assert(res == SU_ERROR_NONE);
   SUStringRef keys_ref[num_keys];
@@ -65,7 +71,7 @@ std::vector<std::string> AttributeDictionary::get_keys() const {
   return keys;
 }
 
-TypedValue AttributeDictionary::get_value(std::string key) const {
+TypedValue AttributeDictionary::get_value(const std::string &key) const {
   return get_attribute(key, TypedValue());
 }
 
@@ -76,5 +82,13 @@ std::string AttributeDictionary::get_name() const {
   assert(res == SU_ERROR_NONE);
   return string;
 }
+
+AttributeDictionary::operator bool() {
+	if (SUIsValid(m_dict)) {
+  	return true;
+  }
+  return false;
+}
+
 
 } /* namespace CW */

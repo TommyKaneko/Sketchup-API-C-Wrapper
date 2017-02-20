@@ -8,6 +8,8 @@
 
 #include "DrawingElement.hpp"
 
+#include <cassert>
+
 #include "Layer.hpp"
 #include "Material.hpp"
 #include "Geometry.hpp"
@@ -15,10 +17,33 @@
 
 namespace CW {
 
-DrawingElement::DrawingElement(SUDrawingElementRef drawing_element):
-	m_drawing_element(drawing_element),
-  Entity(SUDrawingElementToEntity(drawing_element))
+DrawingElement::DrawingElement(SUDrawingElementRef drawing_element, bool attached):
+  Entity(SUDrawingElementToEntity(drawing_element), attached),
+	m_drawing_element(drawing_element)
 {
+	#ifdef DEBUG
+  bool is_valid = SUIsValid(m_drawing_element);
+	#endif
+}
+
+
+DrawingElement::DrawingElement(const DrawingElement& other, SUDrawingElementRef element_ref):
+	Entity(other, SUDrawingElementToEntity(element_ref)),
+  m_drawing_element(element_ref)
+{}
+
+DrawingElement::DrawingElement():
+	Entity(),
+  m_drawing_element(SU_INVALID)
+{}
+
+
+/** Copy assignment operator */
+DrawingElement& DrawingElement::operator=(const DrawingElement& other) {
+  if (!other.m_attached && SUIsValid(other.m_drawing_element)) {
+    this->copy_attributes_from(other);
+  }
+  return (*this);
 }
 
 
@@ -29,7 +54,7 @@ BoundingBox3D DrawingElement::bounds() {
 }
 
 
-bool DrawingElement::copy_properties_from(DrawingElement element) {
+bool DrawingElement::copy_properties_from(const DrawingElement& element) {
   bool success = casts_shadows(element.casts_shadows());
   if (!success)
   	return false;
@@ -84,12 +109,16 @@ bool DrawingElement::hidden(bool hidden) {
 
 Layer DrawingElement::layer() const {
 	SULayerRef layer_ref = SU_INVALID;
-	SUDrawingElementGetLayer(m_drawing_element, &layer_ref);
-	return Layer(layer_ref);
+	SU_RESULT res = SUDrawingElementGetLayer(m_drawing_element, &layer_ref);
+  if (res == SU_ERROR_NULL_POINTER_OUTPUT) {
+  	return Layer();
+  }
+  assert(res == SU_ERROR_NONE);
+  return Layer(layer_ref, true);
 }
 
 
-bool DrawingElement::layer(Layer layer){
+bool DrawingElement::layer(const Layer& layer){
 	SU_RESULT res = SUDrawingElementSetLayer(m_drawing_element, layer);
   if (res == SU_ERROR_NONE) {
   	return true;
@@ -100,12 +129,16 @@ bool DrawingElement::layer(Layer layer){
 
 Material DrawingElement::material() const {
 	SUMaterialRef material_ref = SU_INVALID;
-	SUDrawingElementGetMaterial(m_drawing_element, &material_ref);
-	return Material(material_ref);
+	SU_RESULT res = SUDrawingElementGetMaterial(m_drawing_element, &material_ref);
+  if (res == SU_ERROR_NO_DATA || res == SU_ERROR_NULL_POINTER_OUTPUT) {
+  	return Material();
+  }
+  assert(res == SU_ERROR_NONE);
+  return Material(material_ref, true);
 }
 
 
-bool DrawingElement::material(const Material material) {
+bool DrawingElement::material(const Material& material) {
 	SU_RESULT res = SUDrawingElementSetMaterial(m_drawing_element, material);
   if (res == SU_ERROR_NONE) {
   	return true;

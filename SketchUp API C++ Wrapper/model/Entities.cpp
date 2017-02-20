@@ -8,27 +8,125 @@
 #include <cassert>
 
 #include "Entities.hpp"
+
 #include "GeometryInput.hpp"
+#include "Vertex.hpp"
+#include "Loop.hpp"
 #include "Transformation.hpp"
 #include "ComponentDefinition.hpp"
 #include "ComponentInstance.hpp"
 #include "Group.hpp"
+#include "Face.hpp"
+#include "Edge.hpp"
 
 namespace CW {
+
 
 Entities::Entities(SUEntitiesRef entities):
 	m_entities(entities)
 {
 }
 
+
+
+std::vector<Face> Entities::faces() const {
+	size_t count = 0;
+	SU_RESULT res = SUEntitiesGetNumFaces(m_entities, &count);
+  assert(res == SU_ERROR_NONE);
+  SUFaceRef face_refs[count];
+	res = SUEntitiesGetFaces(m_entities, count, &face_refs[0], &count);
+  assert(res == SU_ERROR_NONE);
+  std::vector<Face> faces;
+  faces.reserve(count);
+  for (size_t i=0; i < count; ++i) {
+  	faces.push_back(Face(face_refs[i]));
+  }
+  return faces;
+}
+
+
+std::vector<Edge> Entities::edges(bool stray_only) const {
+	size_t count = 0;
+	SU_RESULT res = SUEntitiesGetNumEdges(m_entities, stray_only, &count);
+  assert(res == SU_ERROR_NONE);
+  SUEdgeRef edge_refs[count];
+	res = SUEntitiesGetEdges(m_entities, stray_only, count, &edge_refs[0], &count);
+  assert(res == SU_ERROR_NONE);
+  std::vector<Edge> edges;
+  edges.reserve(count);
+  for (size_t i=0; i < count; ++i) {
+  	edges.push_back(Edge(edge_refs[i]));
+  }
+  return edges;
+}
+
+
+std::vector<ComponentInstance> Entities::instances() const {
+	size_t count = 0;
+	SU_RESULT res = SUEntitiesGetNumInstances(m_entities, &count);
+  assert(res == SU_ERROR_NONE);
+  SUComponentInstanceRef instance_refs[count];
+	res = SUEntitiesGetInstances(m_entities, count, &instance_refs[0], &count);
+  assert(res == SU_ERROR_NONE);
+  std::vector<ComponentInstance> instances;
+  instances.reserve(count);
+  for (size_t i=0; i < count; ++i) {
+  	instances.push_back(ComponentInstance(instance_refs[i]));
+  }
+  return instances;
+}
+
+
+std::vector<Group> Entities::groups() const {
+	size_t count = 0;
+	SU_RESULT res = SUEntitiesGetNumGroups(m_entities, &count);
+  assert(res == SU_ERROR_NONE);
+  SUGroupRef group_refs[count];
+	res = SUEntitiesGetGroups(m_entities, count, &group_refs[0], &count);
+  assert(res == SU_ERROR_NONE);
+  std::vector<Group> groups;
+  groups.reserve(count);
+  for (size_t i=0; i < count; ++i) {
+  	groups.push_back(Group(group_refs[i]));
+  }
+  return groups;
+}
+
+
+void Entities::add(const Entities& other) {
+	GeometryInput geom_input;
+  geom_input.add_faces(other.faces());
+  geom_input.add_edges(other.edges());
+	this->fill(geom_input);
+  std::vector<ComponentInstance> instances = other.instances();
+  for (size_t i=0; i < instances.size(); ++i) {
+  	this->add_instance(instances[i].definition(), instances[i].transformation(), instances[i].name());
+  }
+  std::vector<Group> other_groups = other.groups();
+  for (size_t i=0; i < other_groups.size(); ++i) {
+  	Group new_group = this->add_group();
+    new_group.entities().add(other_groups[i].entities());
+    new_group.transformation(other_groups[i].transformation());
+    new_group.name(other_groups[i].name());
+  }
+  // TODO: other geometry types need to be added.
+}
+
+
+
 SU_RESULT Entities::fill(GeometryInput &geom_input) {
-	// For the indexes of the GeometryInputRef to make sense after we fill the Entities object with its contents, we need to know how many of each entitity currently exists in the Entities object
+	// Check geom_input is not empty.
+  if (geom_input.empty()) {
+  	return SU_ERROR_NONE;
+  }
+  
+  // For the indexes of the GeometryInputRef to make sense after we fill the Entities object with its contents, we need to know how many of each entitity currently exists in the Entities object
   size_t num_faces_before = 0;
   SU_RESULT res = SUEntitiesGetNumFaces(m_entities, &num_faces_before);
   assert(res == SU_ERROR_NONE);
   
-  SU_RESULT fill_res = SUEntitiesFill(m_entities, geom_input.input_ref(), true);
-  assert(res == SU_ERROR_NONE);
+  SU_RESULT fill_res = SUEntitiesFill(m_entities, geom_input.ref(), true);
+  assert(fill_res == SU_ERROR_NONE);
   
   // Now add other data that SUEntitiesFill cannot add to the entities.
   // Apply properties to Faces
@@ -36,24 +134,27 @@ SU_RESULT Entities::fill(GeometryInput &geom_input) {
   size_t num_faces_after = 0;
   res = SUEntitiesGetNumFaces(m_entities, &num_faces_after);
   assert(res == SU_ERROR_NONE);
-  std::vector<Face> faces_to_add = geom_input.faces();
+  /*
+  std::vector<std::pair<size_t, Face>> faces_to_add = geom_input.faces();
   // If all of the faces in the geom_input were not added, it will not be possible to find the added face by looking at its index.
   // TODO: it is clear that if two overlapping faces are put into GeometryInput object, when output into the Entities object, the result could be three or more faces.  The following code will not recognise this. This shortcoming needs to be overcome.
-  if ((num_faces_after-num_faces_before) == faces_to_add.size()) {
-  	SUFaceRef faces_after[num_faces_after];
-  	res = SUEntitiesGetFaces(m_entities, num_faces_after, &faces_after[0], &num_faces_after);
-  	assert(res == SU_ERROR_NONE);
+  if ((num_faces_after-num_faces_before) == geom_input.num_faces()) {
+  	
+    SUFaceRef faces_after[num_faces_after];
+    res = SUEntitiesGetFaces(m_entities, num_faces_after, &faces_after[0], &num_faces_after);
+    assert(res == SU_ERROR_NONE);
     for (size_t i=0; i < faces_to_add.size(); ++i) {
-    	Face new_face(faces_after[(num_faces_before+i-1)]);
-      new_face.copy_properties_from(faces_to_add[i]);
-      new_face.copy_attributes_from(faces_to_add[i]);
-    	// Set attributes for the edges that bound the face.
-      std::vector<Loop> loops = faces_to_add[i].loops();
+      size_t new_face_index = faces_to_add[i].first;
+      Face new_face(faces_after[(num_faces_before+new_face_index-1)]);
+      new_face.copy_properties_from(faces_to_add[i].second);
+      new_face.copy_attributes_from(faces_to_add[i].second);
+      // Set attributes for the edges that bound the face.
+      std::vector<Loop> loops = faces_to_add[i].second.loops();
       std::vector<Loop> new_loops = new_face.loops();
       
       for (size_t j=0; j < loops.size(); ++j) {
-      	std::vector<Edge> old_edges = loops[j].edges();
-      	std::vector<Edge> new_edges = new_loops[j].edges();
+        std::vector<Edge> old_edges = loops[j].edges();
+        std::vector<Edge> new_edges = new_loops[j].edges();
         // If there are more new edges, then it means that some edges have been split during a merging operation.  The trick to find these is to see if the end location of the new and old edges match.
         size_t new_edge_index = 0;
         size_t old_edge_index = 0;
@@ -72,10 +173,11 @@ SU_RESULT Entities::fill(GeometryInput &geom_input) {
       }
     }
   }
+  */
   return fill_res;
 }
 
-std::vector<Face> Entities::add_faces(std::vector<Face> faces) {
+std::vector<Face> Entities::add_faces(const std::vector<Face>& faces) {
 	size_t len = faces.size();
   SUFaceRef faces_array[len];
   for (size_t i = 0; i < len; ++i) {
@@ -87,24 +189,24 @@ std::vector<Face> Entities::add_faces(std::vector<Face> faces) {
   return faces;
 }
 
-bool Entities::add_edges(const std::vector<Edge> edges) {
+std::vector<Edge> Entities::add_edges(const std::vector<Edge>& edges) {
   SUEdgeRef edge_refs[edges.size()];
   for (size_t i=0; i < edges.size(); ++i) {
     edge_refs[i] = edges[i].ref();
   }
   SU_RESULT res = SUEntitiesAddEdges(m_entities, edges.size(), edge_refs);
-  if(res == SU_ERROR_NONE) {
-    return true;
-  }
-  return false;
-}
-
-bool Entities::add_edge(const Edge edge) {
-  return add_edges(std::vector<Edge>{edge});
+  assert(res == SU_ERROR_NONE);
+  return edges;
 }
 
 
-ComponentInstance Entities::add_instance(const ComponentDefinition definition, const Transformation transformation, const String name){
+Edge Entities::add_edge(const Edge& edge) {
+  add_edges(std::vector<Edge>{edge});
+  return edge;
+}
+
+
+ComponentInstance Entities::add_instance(const ComponentDefinition& definition, const Transformation& transformation, const String& name){
   SUComponentInstanceRef instance = SU_INVALID;
   SU_RESULT res = SUComponentDefinitionCreateInstance(definition.ref(), &instance);
 	assert(res == SU_ERROR_NONE);
@@ -125,9 +227,12 @@ ComponentInstance Entities::add_instance(const ComponentDefinition definition, c
 
 // TODO: add_group needs to be refined
 
-Group Entities::add_group(ComponentDefinition definition, Transformation transformation) {
+Group Entities::add_group(const ComponentDefinition& definition, const Transformation& transformation) {
   // Groups cannot be created with a component definition and transformation objects.  Instead, the geometry must be copied in to a new Entities object in the group.
   Group new_group;
+  // Add group to the entities object before populating it.
+  SU_RESULT res = SUEntitiesAddGroup(m_entities, new_group);
+	assert(res == SU_ERROR_NONE);
   Entities group_entities = new_group.entities();
   Entities def_entities = definition.entities();
   // Add geometry one by one to Geometry input.
@@ -144,21 +249,30 @@ Group Entities::add_group(ComponentDefinition definition, Transformation transfo
   // Also add instances and groups
   std::vector<Group> def_groups = def_entities.groups();
   for (size_t i=0; i < def_groups.size(); ++i) {
-  	group_entities.add_group(def_groups[i].definition(), def_groups[i].transformation());
+  	group_entities.add_group(def_groups[i].definition() , def_groups[i].transformation());
   }
   std::vector<ComponentInstance> def_instances = def_entities.instances();
   for (size_t i=0; i < def_instances.size(); ++i) {
   	group_entities.add_instance(def_instances[i].definition(), def_instances[i].transformation());
   }
   
+  // TODO: add other entities to the group (construction lines, curves, etc)
+  return new_group;
+  
   // TODO: the way groups are implemented are a problem.  Come back to this.
-  SU_RESULT res = SUComponentDefinitionCreateGroup(definition.ref(), &group);
-	assert(res == SU_ERROR_NONE);
-  SUTransformation transform = transformation.ref();
-  res = SUComponentInstanceSetTransform(instance, &transform);
-  SU_RESULT res = SUEntitiesAddGroup(m_entities, group );
+  //SU_RESULT res = SUComponentDefinitionCreateGroup(definition.ref(), &group);
+	//assert(res == SU_ERROR_NONE);
+  //SUTransformation transform = transformation.ref();
+  //res = SUComponentInstanceSetTransform(instance, &transform);
 }
 
+Group Entities::add_group() {
+  Group new_group;
+  // Add group to the entities object before populating it.
+  SU_RESULT res = SUEntitiesAddGroup(m_entities, new_group.ref());
+	assert(res == SU_ERROR_NONE);
+  return new_group;
+}
 
 
 Entities::operator SUEntitiesRef() {

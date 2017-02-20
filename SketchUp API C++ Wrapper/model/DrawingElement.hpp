@@ -30,8 +30,27 @@ class DrawingElement :public Entity {
   SUDrawingElementRef m_drawing_element;
   
   public:
-  DrawingElement(SUDrawingElementRef drawing_element);
+ 	/**
+  * Most common constructor.
+  * @param drawing_element - SUDrawingElementRef object to assign to the object.
+  * @param attached - flag indicating if the entity should be treated as attached to another object @see CW::Entity
+  */
+  DrawingElement(SUDrawingElementRef drawing_element, bool attached = true);
   
+ 	/**
+  * Copy constructor with an optional parameter for the entity reference.  SUDrawingElementRef objects cannot be created from this class, so the Ref object must be passed to this constructor from a derived class object.
+  * @param other - DrawingElement object from which properties will be copied.
+  * @param element_ref - SUDrawingElementRef object to assign to the copied object.
+  */
+  DrawingElement(const DrawingElement& other, SUDrawingElementRef element_ref = SU_INVALID);
+  
+  /**
+  * Constructor representing a null object.
+  */
+  DrawingElement();
+  
+  /** Copy assignment operator */
+  DrawingElement& operator=(const DrawingElement& other);
   
   /**
   * Returns the bounding box of the drawing element.
@@ -43,7 +62,7 @@ class DrawingElement :public Entity {
   * @param element DrawingElement object from which to get properties
   * @return bool true for success, or false for a failure.
   */
-  bool copy_properties_from(DrawingElement element);
+  bool copy_properties_from(const DrawingElement& element);
   
   /*
   * Determine if the Drawingelement is casting shadows.
@@ -80,7 +99,7 @@ class DrawingElement :public Entity {
   * Sets the Layer for the drawing element
   * @param Layer object
   */
-  bool layer(Layer layer);
+  bool layer(const Layer& layer);
 
   /*
   * Retrieves the Material object of the drawing element.
@@ -93,7 +112,7 @@ class DrawingElement :public Entity {
   * @param Material object to assign to the drawing element.
   * @return Material object assigned to the drawing element.
   */
-  bool material(const Material material);
+  bool material(const Material& material);
   
   /*
   * Determine if the Drawingelement receives shadows.

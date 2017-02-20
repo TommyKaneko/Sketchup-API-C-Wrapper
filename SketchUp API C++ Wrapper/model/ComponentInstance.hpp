@@ -40,6 +40,17 @@ class ComponentInstance :public DrawingElement {
   * Returns the Component Definition object of this instance.
   */
   ComponentDefinition definition();
+
+  /**
+  * Returns the name of this instance.
+  */
+  String name() const;
+
+  /**
+  * Sets the name of this instance.
+  */
+  void name(const String& string);
+  
 };
 
 } /* namespace CW */

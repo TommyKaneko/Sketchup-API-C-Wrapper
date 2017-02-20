@@ -7,40 +7,102 @@
 //
 
 #include "Edge.hpp"
+
+#include <cassert>
+
 #include "Color.hpp"
 #include "Vertex.hpp"
+#include "Face.hpp"
 
 namespace CW {
-
-SUEdgeRef Edge::create_edge(std::vector<SUPoint3D> points, SU_RESULT &result) {
+/**************************
+* Private static methods **
+***************************/
+SUEdgeRef Edge::create_edge(const Point3D& start, const Point3D& end) {
 	SUEdgeRef edge = SU_INVALID;
-  result = SUEdgeCreate(&edge, &points[0], &points[1]);
+  SUPoint3D start_ref = start;
+  SUPoint3D end_ref = end;
+  SU_RESULT res = SUEdgeCreate(&edge, &start_ref, &end_ref);
+  assert(res == SU_ERROR_NONE);
   return edge;
 }
 
-Edge::Edge(std::vector<SUPoint3D> points):
-	Edge(create_edge(points, m_create_result), true)
+
+SUEdgeRef Edge::copy_reference(const Edge& other) {
+	if (other.m_attached) {
+  	return other.m_edge;
+  }
+	SUEdgeRef new_edge = create_edge(other.start().position(), other.end().position());
+  return new_edge;
+}
+
+/*****************************
+* Constructors / Destructor **
+******************************/
+Edge::Edge():
+	DrawingElement(SU_INVALID, true),
+  m_edge(SU_INVALID)
+{}
+
+
+Edge::Edge(const std::vector<Point3D>& points):
+	Edge(create_edge(points[0], points[1]), false)
 {
 }
 
 
-Edge::Edge(SUPoint3D start, SUPoint3D end):
-	Edge(std::vector<SUPoint3D>{start, end})
-{
-}
+Edge::Edge(const Point3D& start, const Point3D& end):
+	Edge(create_edge(start, end), false)
+{}
 
 
-Edge::Edge(SUEdgeRef edge, bool release_on_destroy):
-	m_edge(edge),
-  m_release_on_destroy(release_on_destroy),
-  DrawingElement(SUEdgeToDrawingElement(edge))
+Edge::Edge(const Vertex& start, const Vertex& end):
+	Edge(start.position(), end.position())
+{}
+
+
+Edge::Edge(SUEdgeRef edge, bool attached):
+  DrawingElement(SUEdgeToDrawingElement(edge), attached),
+	m_edge(edge)
+{}
+
+
+Edge::Edge(const Edge& other):
+	DrawingElement(other, SUEdgeToDrawingElement(copy_reference(other))),
+  m_edge(SUEdgeFromDrawingElement(m_drawing_element))
 {
+	if (!other.m_attached && SUIsValid(other.m_edge)) {
+    this->color(other.color());
+    this->smooth(other.smooth());
+    this->soft(other.soft());
+  }
 }
+
 
 Edge::~Edge() {
-	if (m_release_on_destroy) {
-  	SUEdgeRelease(&m_edge);
+	if (!m_attached && SUIsValid(m_edge)) {
+  	SU_RESULT res = SUEdgeRelease(&m_edge);
+    assert(res == SU_ERROR_NONE);
   }
+}
+
+/******************
+* Public Methods **
+*******************/
+Edge& Edge::operator=(const Edge& other) {
+  if (!m_attached && SUIsValid(m_edge)) {
+    SU_RESULT res = SUEdgeRelease(&m_edge);
+    assert(res == SU_ERROR_NONE);
+  }
+  m_edge = copy_reference(other);
+  m_drawing_element = SUEdgeToDrawingElement(m_edge);
+  DrawingElement::operator=(other);
+  if (!other.m_attached) {
+    this->color(other.color());
+    this->smooth(other.smooth());
+    this->soft(other.soft());
+  }
+  return *this;
 }
 
 
@@ -56,17 +118,20 @@ Edge::operator SUEdgeRef*() {
 	return &m_edge;
 }
   
-
+/*
 Edge::operator bool() const {
 	if (m_create_result == SU_ERROR_NONE) {
   	return true;
   }
   return false;
 }
-
+*/
 
 bool Edge::operator!() const {
-	return !bool(this);
+	if (SUIsInvalid(m_edge)) {
+  	return true;
+  }
+  return false;
 }
 
 
@@ -77,7 +142,7 @@ Color Edge::color() const {
 }
 
 
-bool Edge::color(Color input_color) {
+bool Edge::color(const Color& input_color) {
 	SUColor color = input_color.ref();
 	SU_RESULT result = SUEdgeSetColor(m_edge, &color);
   if (result == SU_ERROR_NONE) {
@@ -94,10 +159,23 @@ Vertex Edge::end() const {
 }
 
 
-SU_RESULT Edge::get_result() const {
-	return m_create_result;
+std::vector<Face> Edge::faces() const {
+	size_t count = 0;
+	SU_RESULT res = SUEdgeGetNumFaces(m_edge, &count);
+  SUFaceRef faces[count];
+  assert(res == SU_ERROR_NONE);
+	if (count == 0) {
+  	return std::vector<Face>();
+  }
+	res = SUEdgeGetFaces(m_edge, count, &faces[0], &count);
+  assert(res == SU_ERROR_NONE);
+  std::vector<Face> return_faces;
+  return_faces.reserve(count);
+  for (size_t i=0; i < count; ++i) {
+  	return_faces.push_back(Face(faces[i]));
+  }
+  return return_faces;
 }
-
 
 Vector3D Edge::vector() const {
 	return end().position() - start().position();

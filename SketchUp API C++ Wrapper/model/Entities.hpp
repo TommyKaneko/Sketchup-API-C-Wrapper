@@ -44,36 +44,40 @@ class Entities {
   */
 	SU_RESULT fill(GeometryInput &geom_input);
 
-
-  std::vector<Face> faces();
-  std::vector<Edge> edges(bool stray_only = true);
-  std::vector<ComponentInstance> instances();
-  std::vector<Group> groups();
-    
+  std::vector<Face> faces() const;
+  std::vector<Edge> edges(bool stray_only = true) const;
+  std::vector<ComponentInstance> instances() const;
+  std::vector<Group> groups() const;
+  
+  /**
+  * Adds the contents of an entities object into this one.
+  */
+  void add(const Entities& other);
+  
   /*
   * Creates faces in the Entities object.
   *
   * Note that this function does not merge overlapping geometry. See GeometryInput for merging functionality.
   * @param vector of Face objects from CW
 	*/
-  std::vector<Face> add_faces(std::vector<Face> faces);
-  Face add_face(Face face);
+  std::vector<Face> add_faces(const std::vector<Face>& faces);
+  Face add_face(const Face& face);
 
   /*
   * Creates edges in the Entities object.
   *
-  * Note that this function does not merge overlapping geometry. See GeometryInput for merging functionality.
-  * @param vector of Face objects from CW
+  * Note that this function does not merge overlapping geometry. @see GeometryInput and Entities::fill() for merging functionality.
+  * @param vector of Edge objects to add
 	*/
-  bool add_edges(const std::vector<Edge> edges);
-  bool add_edge(const Edge edge);
+  std::vector<Edge> add_edges(const std::vector<Edge>& edges);
+  Edge add_edge(const Edge& edge);
 
   /*
   * Creates a ComponentInstance in the Entities object.
   * @param definition ComponentDefinition object to create an instance of
   * @param transformation transformation of the definition (placement, rotation and scale)
 	*/
-  ComponentInstance add_instance(const ComponentDefinition definition, const Transformation transformation, const String name = "");
+  ComponentInstance add_instance(const ComponentDefinition& definition, const Transformation& transformation, const String& name = "");
 
   /*
   * Creates a Group in the Entities object.
@@ -81,7 +85,8 @@ class Entities {
   * @param transformation transformation of the definition (placement, rotation and scale)
   */
   // TODO: this needs to be revised.
-  Group add_group(const ComponentDefinition definition, const Transformation transformation);
+  Group add_group(const ComponentDefinition& definition, const Transformation& transformation);
+  Group add_group();
   
   /*
   * The class object can be converted to a SUEntitiesRef without loss of data.

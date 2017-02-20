@@ -18,7 +18,8 @@
 
 namespace CW {
 
-class Axes; // TODO: may be a bad thing to do this.
+class Axes;
+class Face;
 
 class Transformation {
 	private:
@@ -53,6 +54,7 @@ class Transformation {
   */
   SUTransformation ref() const;
   operator SUTransformation() const;
+  operator SUTransformation*();
   
   /**
   * Return the inverse Transformation object (see inverse Transformation matrices)
@@ -86,7 +88,6 @@ class Transformation {
   */
   Transformation operator*(Transformation transform);
 
-  
   /**
   * Return transformed vectors.
   */
@@ -101,12 +102,22 @@ class Transformation {
   * Return transformed plane.
   */
   friend Plane3D operator*(const Plane3D &lhs, const Transformation &rhs);
+
+  /**
+  * Return transformed face.
+  */
+  friend Face operator*(const Face &lhs, const Transformation &rhs);
   
   /**
   * Compare equality of tranformation objects.
   */
   bool equal(const Transformation transform, const double epsilon = EPSILON) const;
   bool operator==(const Transformation transform) const;
+  
+  /**
+  * Returns a Transformation object that represents rotation of the given angle in radians about a line.
+  */
+  static Transformation transformation_rotate_about_line(const double angle, const Line3D line);
 };
 
 /**

@@ -17,6 +17,9 @@
 #include "Classifications.hpp"
 #include "ComponentDefinition.hpp"
 #include "Material.hpp"
+#include "AttributeDictionary.hpp"
+#include "TypedValue.hpp"
+
 
 namespace CW {
 
@@ -49,25 +52,23 @@ Model::Model(std::string file_path):
 
 
 Model::~Model() {
-  if (m_release_on_destroy) {
+  if (m_release_on_destroy && SUIsValid(m_model)) {
     SUModelRelease(&m_model);
   }
 }
 
 
-SUModelRef Model::ref() {
-  m_release_on_destroy = false;
+SUModelRef Model::ref() const {
   return m_model;
 }
 
 
-Model::operator SUModelRef() {
+Model::operator SUModelRef() const {
   return ref();
 }
 
 
 Model::operator SUModelRef*() {
-  m_release_on_destroy = false;
   return &m_model;
 }
 
@@ -101,12 +102,12 @@ Layer Model::active_layer() const {
 //bool active_layer(Layer default_layer) {}
 
 
-bool Model::add_definition(ComponentDefinition definition) {
+bool Model::add_definition(const ComponentDefinition& definition) {
 	return add_definitions(std::vector<ComponentDefinition>{definition});
 }
 
 
-bool Model::add_definitions(std::vector<ComponentDefinition> definitions) {
+bool Model::add_definitions(const std::vector<ComponentDefinition>& definitions) {
 	size_t count = definitions.size();
   SUComponentDefinitionRef def_refs[count];
   for (size_t i=0; i < count; ++i) {
@@ -121,7 +122,7 @@ bool Model::add_definitions(std::vector<ComponentDefinition> definitions) {
 
 
 std::vector<AttributeDictionary>	Model::attribute_dictionaries() const {
-	size_t count;
+	size_t count = 0;
   SU_RESULT res = SUModelGetNumAttributeDictionaries(m_model, &count);
   assert(res == SU_ERROR_NONE);
   SUAttributeDictionaryRef dicts[count];
@@ -136,7 +137,7 @@ std::vector<AttributeDictionary>	Model::attribute_dictionaries() const {
 }
 
 
-AttributeDictionary Model::attribute_dictionary(const std::string dict_name) const {
+AttributeDictionary Model::attribute_dictionary(const std::string& dict_name) const {
 	SUAttributeDictionaryRef dict = SU_INVALID;
   SU_RESULT res = SUModelGetAttributeDictionary(m_model, dict_name.c_str(), &dict);
   assert(res == SU_ERROR_NONE);
@@ -172,7 +173,7 @@ Classifications Model::classifications() const {
 
 
 std::vector<ComponentDefinition> Model::definitions() const {
-	size_t count;
+	size_t count = 0;
 	SU_RESULT res = SUModelGetNumComponentDefinitions(m_model, &count);
   assert(res == SU_ERROR_NONE);
   SUComponentDefinitionRef defs[count];
@@ -212,10 +213,10 @@ bool Model::georeferenced() const {
 */
 
 
-TypedValue Model::get_attribute(AttributeDictionary dict, std::string key, TypedValue default_value) const {
+TypedValue Model::get_attribute(const AttributeDictionary& dict, const std::string& key, const TypedValue& default_value) const {
 	return dict.get_attribute(key, default_value);
 }
-TypedValue Model::get_attribute(std::string dict_name, std::string key, TypedValue default_value) const {
+TypedValue Model::get_attribute(const std::string& dict_name, const std::string& key, const TypedValue& default_value) const {
 	AttributeDictionary dictionary = attribute_dictionary(dict_name);
   return get_attribute(dictionary, key, default_value);
 }
@@ -231,7 +232,7 @@ TypedValue Model::get_attribute(std::string dict_name, std::string key, TypedVal
 * @return layers a vector array of Layer objects in the model.
 */
 std::vector<Layer> Model::layers() const {
-	size_t count;
+	size_t count = 0;
 	SU_RESULT res = SUModelGetNumLayers(m_model, &count);
   assert(res == SU_ERROR_NONE);
   SULayerRef layer_refs[count];
@@ -253,7 +254,7 @@ std::vector<Layer> Model::layers() const {
 
 
 std::vector<Material> Model::materials() const {
-	size_t count;
+	size_t count = 0;
 	SU_RESULT res = SUModelGetNumMaterials(m_model, &count);
   assert(res == SU_ERROR_NONE);
   SUMaterialRef mats[count];
@@ -275,7 +276,7 @@ String Model::name() const {
 }
 
 
-bool Model::name(String name_string) {
+bool Model::name(const String& name_string) {
   std::string std_string = name_string;
 	SU_RESULT res = SUModelSetName(m_model, std_string.c_str());
   if (res == SU_ERROR_NONE) {
@@ -308,7 +309,7 @@ size_t Model::num_faces() const {
 //Entity raytest(Point3D point, Vector3D vector);
 
 
-bool Model::save(std::string file_path) {
+bool Model::save(const std::string& file_path) {
   SU_RESULT res = SUModelSaveToFile(m_model, file_path.c_str());
   if (res == SU_ERROR_NONE) {
     return true;
@@ -317,7 +318,7 @@ bool Model::save(std::string file_path) {
 }
 
 
-bool Model::save_with_version(std::string file_path, SUModelVersion version) {
+bool Model::save_with_version(const std::string& file_path, SUModelVersion version) {
   SU_RESULT res = SUModelSaveToFileWithVersion(m_model, file_path.c_str(), version);
   if (res == SU_ERROR_NONE) {
     return true;
@@ -333,11 +334,11 @@ bool Model::save_with_version(std::string file_path, SUModelVersion version) {
 // std::vector<Scene> scenes();
 
 
-bool Model::set_attribute(AttributeDictionary dict, std::string key, TypedValue value) {
+bool Model::set_attribute(AttributeDictionary& dict, const std::string& key, const TypedValue& value) {
   return dict.set_attribute(key, value);
 }
 
-bool Model::set_attribute(std::string dict_name, std::string key, TypedValue value) {
+bool Model::set_attribute(const std::string& dict_name, const std::string& key, const TypedValue& value) {
 	AttributeDictionary dict = attribute_dictionary(dict_name);
   return set_attribute(dict, key, value);
 }
@@ -368,7 +369,7 @@ ModelStatistics::ModelStatistics(SUModelStatistics model_statistics):
   m_model_statistics(model_statistics)
 {}
 
-ModelStatistics::ModelStatistics(Model model):
+ModelStatistics::ModelStatistics(const Model& model):
   m_model_statistics(SUModelStatistics{})
 {
   SU_RESULT res = SUModelGetStatistics(model, &m_model_statistics);

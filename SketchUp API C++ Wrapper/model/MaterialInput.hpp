@@ -15,16 +15,24 @@
 
 namespace CW {
 
+// Forward declarations
+class Material;
+
 class MaterialInput {
 	private:
   SUMaterialInput m_material_input;
-  bool m_release_on_destroy;
+	
+  /**
+  * Creates a SUMaterialInput struct, with default values derived from the Material object.
+  */
+  static SUMaterialInput create_material_input(Material material);
   
   public:
-  MaterialInput();
+  //MaterialInput();
+  MaterialInput(Material material);
   MaterialInput(SUMaterialInput material_input);
   
-  SUMaterialInput ref() { return m_material_input;}
+  SUMaterialInput ref();
 };
 
 } /* namespace CW */

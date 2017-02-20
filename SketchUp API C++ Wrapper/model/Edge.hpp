@@ -20,6 +20,7 @@ namespace CW {
 
 // Forward Declarations
 class Vertex;
+class Face;
 class Color;
 
 /**
@@ -28,27 +29,48 @@ class Color;
 class Edge :public DrawingElement {
 	private:
   SUEdgeRef m_edge;
-  bool m_release_on_destroy; // Indicates whether the SUEdgeRef should be released on destruction of the object.
-	SU_RESULT m_create_result;
   
-  static SUEdgeRef create_edge(std::vector<SUPoint3D> points, SU_RESULT &result);
+  static SUEdgeRef create_edge(const Point3D& start, const Point3D& end);
+
+  static SUEdgeRef copy_reference(const Edge& other);
   
   public:
+  /**
+  * Constructor for null Edge object.
+  */
+  Edge();
   
   /*
-  * Face constructor, which takes an array of points representing the outer loop, and an array of arrays of points representing the inner loops of the face.  A new SUFaceRef object will be created within this class and handled internally.
+  * Construct an Edge from a vector of two points.
+  * @param points - where points[0] is the start vertex and points[1] is the end vertex.
   */
-  Edge(std::vector<SUPoint3D> points);
-  Edge(SUPoint3D start, SUPoint3D end);
-  
-  /*
-  * Face constructor that essentially wraps around an already created SUFaceRef object.
-  * @param SUFaceRef* pointer to the face.
-  * @param bool true if the face should be released when this class object is destroyed.  False, if the release of the face object is handled elsewhere (use with caution).
-  */
-  Edge(SUEdgeRef edge, bool release_on_destroy = false);
+  Edge(const std::vector<Point3D>& points);
 
+  /*
+  * Construct an Edge from a vector of two points.
+  * @param start - the start vertex
+  * @param end - the end vertex.
+  */
+  Edge(const Point3D& start, const Point3D& end);
+	
+  /**
+  * Creates new edge using vertices position.  Note that this will not join the new edge to existing vertices.  Use GeometryInput for welding edges.
+  */
+  Edge(const Vertex& start, const Vertex& end);
+  
+  /*
+  * Edge constructor that essentially wraps around an already created SUFaceRef object.
+  * @param SUEdgeRef pointer to the edge.
+  * @param bool true if the edge should be released when this class object is destroyed.  False, if the release of the face object is handled elsewhere (use with caution).
+  */
+  Edge(SUEdgeRef edge, bool attached = true);
+	
+  /** Copy Constructor */
+  Edge(const Edge& other);
+  
   ~Edge();
+  
+  Edge& operator=(const Edge& other);
   
   
   /**
@@ -65,13 +87,13 @@ class Edge :public DrawingElement {
   /*
   * Returns whether the class is a valid object.
   */
-  operator bool() const;
+  // operator bool() const;
   /**
   * NOT operator.  Checks if the SUEdgeRef is valid.
   * @return true if the edge is invalid
   */
 	bool operator!() const;
-
+  
 	/*
   * Returns the Color object assigned to the Edge
   */
@@ -80,7 +102,7 @@ class Edge :public DrawingElement {
   /*
   * Sets the color of the Edge.
   */
-  bool color(Color input_color);
+  bool color(const Color& input_color);
   
   /*
   * Return the vertex at the end of the Edge.
@@ -88,13 +110,18 @@ class Edge :public DrawingElement {
   Vertex end() const;
 
   /*
+  * Return the faces connected to this edge.
+  */
+  std::vector<Face> faces() const;
+  
+  /*
   * Gets the SU_RESULT of the create edge operation.
   * @return * SU_ERROR_NONE on success
             * SU_ERROR_NULL_POINTER_INPUT if start or end is NULL
             * SU_ERROR_NULL_POINTER_OUTPUT if edge is NULL
             * SU_ERROR_GENERIC if start and end specify the same position.
   */
-  SU_RESULT get_result() const;
+  // SU_RESULT get_result() const;
 
   /*
   * Determine if the Edge is smooth.

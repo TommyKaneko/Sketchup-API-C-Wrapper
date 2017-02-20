@@ -28,7 +28,9 @@ private:
 public:
   double m_val;
 	static constexpr double PI = 3.141592653589793;
-
+  // Estimate the degree of correctness of angles (Sketchup Tolerance is 1/1000", so try to make some sort of guess - suggest discrepancies of 1/1000" over radians rotations over 30m (approx 1000")
+  constexpr static double EPSILON = 0.0000000000005; // Sketchup Tolerance is 1/1000"
+  
   Radians() {};
   Radians(const double &rhs);
 	
@@ -55,6 +57,9 @@ public:
   Radians operator*(const double multiplier) const;
   Radians operator/(const double divider) const;
   
+  bool operator==(const Radians rhs) const;
+  bool operator==(const double rhs) const;
+  
   // TODO: below does not look right
  	bool closest(const Radians value);
 };
@@ -74,7 +79,8 @@ class Vector3D {
 	protected:
   SUVector3D m_vector;
   const bool null = false; // Invalid flag
-  
+  constexpr static double EPSILON = 0.0005; // Sketchup Tolerance is 1/1000"
+
   public:
   double &x;
   double &y;
@@ -126,11 +132,11 @@ class Vector3D {
   /**
   * Arithmetic operator overloads
   */
-  Vector3D operator+(const Vector3D &vector);
-  Vector3D operator+(const Point3D &point);
-  Vector3D operator+(const SUVector3D &vector) {return *this + Vector3D(vector);}
-  Vector3D operator-(const Vector3D &vector);
-  Vector3D operator-(const SUVector3D &vector) {return *this - Vector3D(vector);}
+  Vector3D operator+(const Vector3D &vector) const;
+  Vector3D operator+(const Point3D &point) const;
+  Vector3D operator+(const SUVector3D &vector) const {return *this + Vector3D(vector);}
+  Vector3D operator-(const Vector3D &vector) const;
+  Vector3D operator-(const SUVector3D &vector) const {return *this - Vector3D(vector);}
   Vector3D operator*(const double &scalar) const;
   Vector3D operator/(const double &scalar) const;
 	
@@ -178,12 +184,12 @@ class Vector3D {
   * @param angle in radians to rotate.
   * @param vector which will be used as the axis through which it will be rotated.
   */
-	Vector3D rotate_about(double angle, Vector3D axis);
+	Vector3D rotate_about(double angle, Vector3D axis) const;
   
   /**
   * Returns the vector of the Edge object
   */
-  static SUVector3D vector_from_edge(const SUEdgeRef &su_edge);
+  static SUVector3D get_vector(const SUEdgeRef &edge);
 };
 
 /**
@@ -204,8 +210,10 @@ class Point3D {
 	private:
   SUPoint3D m_point;
   const bool null = false; // Invalid flag
+  //constexpr static double EPSILON = 0.001; // Sketchup Tolerance is 1/1000"
 
 	public:
+  constexpr static double EPSILON = 0.0005; // Sketchup Tolerance is 1/1000"
   double &x;
   double &y;
   double &z;
@@ -226,13 +234,13 @@ class Point3D {
   /*
   * Cast to SUPoint3D struct
   */
-  operator SUPoint3D();
+  operator SUPoint3D() const;
   operator SUPoint3D*();
   
 	/*
   * Cast to Vector3D
   */
-  operator Vector3D();
+  operator Vector3D() const;
   
   /**
   * Arithmetic operator overloads
@@ -264,6 +272,7 @@ class Plane3D {
 	private:
   SUPlane3D m_plane;
   const bool null = false; // Invalid flag
+  constexpr static double EPSILON = 0.0005; // Sketchup Tolerance is 1/1000"
 
   public:
   double &a;
@@ -297,7 +306,12 @@ class Plane3D {
   * Comparative operators
   */
   bool operator!() const;
-  
+	
+  /**
+  * Checks if geometry is on the plane
+  */
+  bool coplanar(const Plane3D test_plane) const;
+    
   /**
   * Returns the normal of the plane
   */
@@ -312,24 +326,25 @@ class Plane3D {
 	double angle(const Plane3D plane2) const { return angle_with(plane2);};
 	
   /**
-  * Returns the distance of a point from the plane.
+  * Returns the distance of a point from the plane.  It can be negative as the plane has a front and back side.
   */
   double distance(const Point3D point) const;
   
   /**
   * Returns a plane moved along normal by given amount.
   */
-  Plane3D offset(double offset_by);
+  Plane3D offset(double offset_by) const;
   
   /**
   * Checks if the plane is parallel with another.
   */
 	bool parallel(const Plane3D plane2) const;
-	
+
+  
   /**
   * Returns a Plane with normals reversed.
   */
-  Plane3D reverse();
+  Plane3D& reverse();
   
   /**
   * Returns SUPlane3D of SUFaceRef object
@@ -383,6 +398,7 @@ class Line3D {
   Point3D m_point;
   Vector3D m_direction;
   const bool null = false; // Invalid flag
+  constexpr static double EPSILON = 0.0005; // Sketchup Tolerance is 1/1000"
 
   public:
   Line3D();
@@ -406,6 +422,20 @@ class Line3D {
   
   Point3D intersection(const Line3D &line);
   Point3D intersection(const Plane3D &plane);
+  
+  
+  /**
+  * Return the closest points on two lines.
+  * @param other_line the line with which to find the shortest.
+  * @return pair of Point3D objects representing the point (first) on this line, and the point (second) on the other line. If the lines are parallel, the point3D objects returned will be invalid.
+  */
+  std::pair<Point3D, Point3D> closest_points(const Line3D &line) const;
+  
+  
+  /**
+  * Check if point is on line.
+  */
+  bool on_line(const Point3D) const;
   
   /**
   * Returns true if the Line or vector given is parallel to this line.

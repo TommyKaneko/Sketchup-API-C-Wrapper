@@ -25,10 +25,22 @@ class Vertex :public Entity {
 	private:
   SUVertexRef m_vertex;
   
-  static SUEntityRef entity_from_vertex(const SUVertexRef vertex);
+  static SUVertexRef copy_reference(const Vertex& other);
   
   public:
+  /** Constructor for null Vertex value */
+  Vertex();
+
   Vertex(SUVertexRef vertex);
+
+	/** Copy constructor */
+  Vertex(const Vertex& other);
+  
+  /** Destructor */
+  ~Vertex();
+
+  /** Copy assignment operator */
+  Vertex& operator=(const Vertex& other);
   
   /**
   * Returns the position of the vertex.
@@ -38,7 +50,8 @@ class Vertex :public Entity {
   /*
   * The class object can be converted to a SUVertexRef without loss of data.
   */
-  operator SUVertexRef();
+  SUVertexRef ref() const;
+  operator SUVertexRef() const;
   operator SUVertexRef*();
   
   /**

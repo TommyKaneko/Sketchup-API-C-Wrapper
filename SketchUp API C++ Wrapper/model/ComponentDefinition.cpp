@@ -12,34 +12,79 @@
 
 namespace CW {
 
+/******************************
+** Private Static Methods **
+*******************************/
+SUComponentDefinitionRef ComponentDefinition::create_definition() {
+  SUComponentDefinitionRef definition = SU_INVALID;
+	SU_RESULT res = SUComponentDefinitionCreate(&definition);
+  assert(res == SU_ERROR_NONE);
+  return definition;
+}
 
+SUComponentDefinitionRef ComponentDefinition::copy_reference(const ComponentDefinition& other) {
+	if (other.m_attached) {
+  	return other.m_definition;
+  }
+  // The other definition has not been attached to the model, so copy its properties to a new object
+  SUComponentDefinitionRef new_definition = create_definition();
+  // Copy across all nested geometry
+  SUEntitiesRef new_entities_ref = SU_INVALID;
+  SU_RESULT res = SUComponentDefinitionGetEntities(new_definition, &new_entities_ref);
+  assert(res == SU_ERROR_NONE);
+  Entities new_entities(new_entities_ref);
+	new_entities.add(other.entities());
+  return new_definition;
+}
+
+
+/******************************
+** Constructors / Destructor **
+*******************************/
 ComponentDefinition::ComponentDefinition():
   ComponentDefinition(create_definition(), true)
 {
 }
 
 
-ComponentDefinition::ComponentDefinition(SUComponentDefinitionRef definition, bool release_on_destroy):
-  DrawingElement(SUComponentDefinitionToDrawingElement(definition)),
-  m_definition(definition),
-  m_release_on_destroy(release_on_destroy)
-{
-}
-  
+ComponentDefinition::ComponentDefinition(SUComponentDefinitionRef definition, bool attached):
+  DrawingElement(SUComponentDefinitionToDrawingElement(definition), attached),
+  m_definition(definition)
+{}
+
+
+/**
+* Copy constructor.
+*/
+ComponentDefinition::ComponentDefinition(const ComponentDefinition& other):
+  DrawingElement(SUComponentDefinitionToDrawingElement(copy_reference(other))),
+  m_definition(SUComponentDefinitionFromDrawingElement(m_drawing_element))
+{}
+
 
 ComponentDefinition::~ComponentDefinition() {
-  if (m_release_on_destroy) {
+  if (!m_attached && SUIsValid(m_definition)) {
     SUComponentDefinitionRelease(&m_definition);
   }
 }
 
 
 /**
-* Static Function
+* Copy assignment operator.
 */
-SUComponentDefinitionRef ComponentDefinition::create_definition() {
-  SUComponentDefinitionRef definition = SU_INVALID;
-  return definition;
+ComponentDefinition& ComponentDefinition::operator=(const ComponentDefinition& other) {
+  if (m_attached && SUIsValid(m_definition)) {
+    SU_RESULT res = SUComponentDefinitionRelease(&m_definition);
+    assert(res == SU_ERROR_NONE);
+  }
+  m_definition = copy_reference(other);
+  m_drawing_element = SUComponentDefinitionToDrawingElement(m_definition);
+  DrawingElement::operator=(other);
+  
+  // Copy across all ComponentDefinition properties
+  this->name(other.name());
+  this->behavior(other.behavior());
+  return *this;
 }
 
 
@@ -93,6 +138,11 @@ Behavior ComponentDefinition::behavior() const {
   return Behavior(behavior);
 }
 
+void ComponentDefinition::behavior(const Behavior& behavior) const {
+  SUComponentBehavior behavior_ref = behavior.ref();
+  SU_RESULT res = SUComponentDefinitionSetBehavior(m_definition, &behavior_ref);
+  assert(res == SU_ERROR_NONE);
+}
   
 /****************
 * Behavior class
@@ -102,5 +152,10 @@ Behavior::Behavior(SUComponentBehavior behavior):
 m_behavior(behavior)
 {
 }
+
+SUComponentBehavior Behavior::ref() const {
+	return m_behavior;
+}
+
 
 } /* namespace CW */

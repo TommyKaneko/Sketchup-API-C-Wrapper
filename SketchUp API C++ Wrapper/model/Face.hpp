@@ -12,13 +12,7 @@
 #include <stdio.h>
 #include <vector>
 
-#include "Geometry.hpp"
 #include "DrawingElement.hpp"
-#include "Material.hpp"
-#include "Vertex.hpp"
-#include "Edge.hpp"
-#include "Loop.hpp"
-#include "LoopInput.hpp"
 #include "TextureWriter.hpp"
 #include "UVHelper.hpp"
 
@@ -37,35 +31,78 @@ enum FacePointClass {
 	PointNotOnPlane // (point off the face's plane).
 };
 
+class Point3D;
+class Vector3D;
+class Material;
+class Vertex;
+class Loop;
+class LoopInput;
+class Edge;
+
 class Face :public DrawingElement {
 	private:
   SUFaceRef m_face;
-  bool m_release_on_destroy; // Indicates whether the SUFaceRef should be released on destruction of the object.
-	SU_RESULT m_create_result = SU_ERROR_NONE;
+	//SU_RESULT m_create_result = SU_ERROR_NONE;
   
-  static SUFaceRef create_face(std::vector<Point3D> outer_loop, std::vector<std::vector<Point3D>> inner_loops, SU_RESULT &create_result);
+  /**
+  * Creates a SUFaceRef object from an array of points that represent the outer loop.
+  * @param outer_loop vector of points for the vertices in the outer loop.
+  * @return SUFaceRef object with the defined loops.  If there was an error, a SU_INVALID SUFaceRef will be returned.
+  */
+  static SUFaceRef create_face(const std::vector<Point3D>& outer_points);
+  static SUFaceRef create_face(const std::vector<Point3D>& outer_points, LoopInput& loop_input);
+  
+	/**
+  * Creates a SUFaceRef object from an array of points that represent the loops.
+  * @param outer_loop vector of points for the vertices in the outer loop.
+  * @param inner_loops vector of vectors of points.  The first dimension represents the inner loops, and the second represents the points in each loop.
+  * @return SUFaceRef object with the defined loops.  If there was an error, a SU_INVALID SUFaceRef will be returned.
+  */
+  //static SUFaceRef create_face(std::vector<Point3D> outer_loop, std::vector<std::vector<Point3D>> inner_loops);
+  
+  /**
+  * Creates a SUFaceRef derived from an existing Face object.
+  * @param face - Face object to derive the new SUFaceRef object from
+  * @return if the Face object is already attached to a model, its SUFaceRef object will be returned. If the Face object has not been attached to a model, a new SUFaceRef object will be created. Bear in mind all properties will not be copied in the latter case
+  */
+  static SUFaceRef copy_reference(const Face& face);
+  
+  //static SUFaceRef create_face(std::vector<Point3D> outer_loop, std::vector<std::vector<Point3D>> inner_loops, SU_RESULT &create_result);
   //static SUFaceRef check_face(SUFaceRef face, SU_RESULT &create_result);
   
   public:
+  /**
+  * Constructor for creating a null object.
+  */
+  Face();
   
   /*
   * Face constructor, which takes an array of points representing the outer loop, and an array of arrays of points representing the inner loops of the face.  A new SUFaceRef object will be created within this class and handled internally.
   */
-  Face(std::vector<Point3D> outer_loop, std::vector<std::vector<Point3D>> inner_loops = {{}});
+  Face(std::vector<Point3D>& outer_loop);
+  Face(std::vector<Point3D>& outer_loop, LoopInput& loop_input);
+  //Face(std::vector<Point3D> outer_loop, std::vector<std::vector<Point3D>> inner_loops = {{}});
   
   /*
   * Face constructor that essentially wraps around an already created SUFaceRef object.
   * @param SUFaceRef* pointer to the face.
-  * @param bool true if the face should be released when this class object is destroyed.  False, if the destruction of the face object is handled elsewhere (use with caution).
+  * @param bool false if the face should be released when this class object is destroyed.  True, if the destruction of the face object is handled elsewhere (use with caution).
   */
-  Face(SUFaceRef face, bool release_on_destroy = false);
+  Face(SUFaceRef face, bool attached = true);
 
+	/** Copy constructor */
+  Face(const Face& other);
+  
+  /** Destructor */
   ~Face();
+
+  /** Copy assignment operator */
+  Face& operator=(const Face& other);
   
   /*
   * Returns the C-style face_ref object
   */
-  SUFaceRef ref();
+  SUFaceRef ref() const;
   
   /*
   * The class object can be converted to a SUFaceRef without loss of data.
@@ -90,6 +127,13 @@ class Face :public DrawingElement {
   */
   double area() const;
 	
+  /**
+  * Adds an inner loop to the face.
+  * @param points - a vector of points representing the vertices of the inner loop.
+  * @param loop_input - the loop input object with details about the edges
+  */
+  void add_inner_loop(const std::vector<Point3D>& points, LoopInput &loop_input);
+  
   /*
   * Retrieves the material assigned to the back side of the face.
   * @return Material object of the back side of the face
@@ -101,7 +145,7 @@ class Face :public DrawingElement {
   * @param Material object or the name of a valid material.
   * @return Material object of the back side of the face
   */
-  Material back_material(const Material material);
+  Material back_material(const Material& material);
   
   /*
   * determine if a given Point3d is on the referenced Face. The return value is calculated from this list:
@@ -114,7 +158,7 @@ class Face :public DrawingElement {
   * @param SUPoint3D object.
   * @return FacePointClass enum indicating the status of the point relative to the face.
 	*/
-  FacePointClass classify_point(Point3D point);
+  FacePointClass classify_point(const Point3D& point);
   
   /*
   * Get an array of edges that bound the face, including the edges of inner loops.
@@ -129,7 +173,8 @@ class Face :public DrawingElement {
   * @param TextureWriter object.
   * @return a UVHelper object.
   */
-  UVHelper get_UVHelper(bool front = true, bool back = true, TextureWriter tex_writer = TextureWriter());
+  // TODO
+  //UVHelper get_UVHelper(bool front = true, bool back = true, TextureWriter tex_writer = TextureWriter());
   
   /*
   * Returns a vector representing the projection for either the front or back side of the face.
@@ -174,7 +219,7 @@ class Face :public DrawingElement {
   * @param vector of Point3d objects used to position the material.
   * @param bool true to position the texture on the front of the Face or false to position it on the back of the Face.
   */
-  bool position_material(const Material &material, std::vector<Point3D> pt_array, bool o_front);
+  bool position_material(const Material& material, const std::vector<Point3D>& pt_array, bool o_front);
 
 	/*
   * Reverses the face's orientation, meaning the front becomes the back.
@@ -188,7 +233,7 @@ class Face :public DrawingElement {
   * @param bool true for front side, false for back side.
   * @return true on success
   */
-  bool set_texture_projection(const Vector3D vector, bool frontside);
+  bool set_texture_projection(const Vector3D& vector, bool frontside);
   bool set_texture_projection(bool remove, bool frontside);
   
 	/*
@@ -200,7 +245,7 @@ class Face :public DrawingElement {
   /**
   * Returns the result of the SUFaceCreate operation.
   */
-  SU_RESULT get_result() const;
+  // SU_RESULT get_result() const;
   
 };
 

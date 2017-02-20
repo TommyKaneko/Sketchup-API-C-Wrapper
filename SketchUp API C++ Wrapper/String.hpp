@@ -40,9 +40,16 @@ class String {
   public:
   String();
   String(SUStringRef string_ref);
-  String(const std::string string_input, StringEncoding enc = StringEncoding::UTF8);
+  String(const std::string &string_input, StringEncoding enc = StringEncoding::UTF8);
   String(const char string_input[]);
   String(const unichar string_input[]);
+  
+  /** Copy Constructor */
+  String(const String& other);
+  
+  /** Copy Assignment operator */
+  String& operator=(String& other);
+  
   
   ~String();
   
@@ -50,11 +57,17 @@ class String {
   operator SUStringRef*() {return &m_string;}
   operator SUStringRef() {return m_string;}
   
+  /**
+  * Compares two strings for equality.
+  */
+  friend bool operator==(const String &lhs, const String &rhs);
+  
   /*
   * Convert to std::string
   */
+  std::string std_string() const;
   operator std::string() const;
-
+  
 //	char& operator [](size_t i);
 
   /*

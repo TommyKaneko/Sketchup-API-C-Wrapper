@@ -6,24 +6,63 @@
 //  Copyright © 2016 Tom Kaneko. All rights reserved.
 //
 
-#include <cassert>
 #include "Entity.hpp"
+
+#include <cassert>
+#include "AttributeDictionary.hpp"
+
 
 namespace CW {
 
-Entity::Entity(SUEntityRef entity):
-	m_entity(entity)
-{
-}
+/******************************
+** Constructors / Destructor **
+*******************************/
+Entity::Entity():
+	m_entity(SU_INVALID),
+  m_attached(true)
+{}
+
+
+Entity::Entity(SUEntityRef entity, bool attached):
+	m_entity(entity),
+  m_attached(attached)
+{}
+
+
+Entity::Entity(const Entity& other, SUEntityRef entity_ref):
+	m_entity(entity_ref),
+	m_attached(other.m_attached)
+{}
+
 
 Entity::~Entity() {
+	// Entity objects cannot release themselves.
 }
+
+/*******************
+** Public Methods **
+********************/
+Entity& Entity::operator=(const Entity& other) {
+  m_attached = other.m_attached;
+  if (!other.m_attached && SUIsValid(other.m_entity)) {
+    this->copy_attributes_from(other);
+  }
+  return (*this);
+}
+
 
 Entity::operator SUEntityRef() {
 	return m_entity;
 }
+
+
 Entity::operator SUEntityRef*() {
 	return &m_entity;
+}
+
+
+void Entity::attached(bool attach) {
+	m_attached = attach;
 }
 
 
@@ -41,15 +80,18 @@ std::vector<AttributeDictionary>	Entity::attribute_dictionaries() const {
   return dicts;
 }
 
-AttributeDictionary Entity::attribute_dictionary(const std::string name) const {
+AttributeDictionary Entity::attribute_dictionary(const std::string& name) const {
   char const *c_name = name.c_str();
   SUAttributeDictionaryRef dict_ref = SU_INVALID;
   SU_RESULT res = SUEntityGetAttributeDictionary(m_entity, &c_name[0], &dict_ref);
-  assert(res == SU_ERROR_NONE);
-  return AttributeDictionary(dict_ref);
+  if (res == SU_ERROR_NONE) {
+  	return AttributeDictionary(dict_ref);
+  }
+  // Otherwise return null object
+  return AttributeDictionary();
 }
 
-bool Entity::copy_attributes_from(Entity entity) {
+bool Entity::copy_attributes_from(const Entity& entity) {
   std::vector<AttributeDictionary> atts_from = entity.attribute_dictionaries();
   for (size_t i=0; i < atts_from.size(); i++) {
     std::vector<std::string> from_keys = atts_from[i].get_keys();
@@ -75,12 +117,22 @@ int32_t Entity::entityID() const{
   return entity_id;
 }
 
-TypedValue Entity::get_attribute(const std::string dict_name, const std::string key, const TypedValue default_value) const {
+TypedValue Entity::get_attribute(const std::string& dict_name, const std::string& key) const {
+  TypedValue default_value;
+  return get_attribute(dict_name, key, default_value);
+}
+
+TypedValue Entity::get_attribute(const std::string& dict_name, const std::string& key, const TypedValue& default_value) const {
   AttributeDictionary dict = attribute_dictionary(dict_name);
   return get_attribute(dict, key, default_value);
 }
 
-TypedValue Entity::get_attribute(const AttributeDictionary &dict, const std::string key, const TypedValue default_value) const {
+TypedValue Entity::get_attribute(const AttributeDictionary& dict, const std::string& key) const {
+  TypedValue default_value;
+  return get_attribute(dict, key, default_value);
+}
+
+TypedValue Entity::get_attribute(const AttributeDictionary& dict, const std::string& key, const TypedValue& default_value) const {
   return dict.get_attribute(key, default_value);
 }
 
@@ -90,11 +142,11 @@ parent()
 */
 
 
-bool Entity::set_attribute(const std::string dict_name, const std::string key, const TypedValue value) {
+bool Entity::set_attribute(const std::string& dict_name, const std::string& key, const TypedValue& value) {
   AttributeDictionary dict = attribute_dictionary(dict_name);
   return set_attribute(dict, key, value);
 }
-bool Entity::set_attribute(AttributeDictionary &dict, const std::string key, const TypedValue value) {
+bool Entity::set_attribute(AttributeDictionary& dict, const std::string& key, const TypedValue& value) {
   return dict.set_attribute(key, value);
 }
 
@@ -103,5 +155,13 @@ enum SURefType Entity::entity_type() const{
   return SUEntityGetType(m_entity);
 }
 
+
+bool Entity::operator==(const Entity& entity) const {
+  if (m_entity.ptr == entity.m_entity.ptr) {
+  	return true;
+  }
+  return false;
+  //return entityID() == entity.entityID();
+}
 
 } /* namespace CW */

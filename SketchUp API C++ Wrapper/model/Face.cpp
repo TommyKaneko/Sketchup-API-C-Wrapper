@@ -12,30 +12,148 @@
 
 #include "Face.hpp"
 
+#include "Geometry.hpp"
+#include "Material.hpp"
+#include "Vertex.hpp"
+#include "Edge.hpp"
+#include "Loop.hpp"
+#include "LoopInput.hpp"
+
 namespace CW {
 
-Face::Face(std::vector<Point3D> outer_loop, std::vector<std::vector<Point3D>> inner_loops):
-	Face(create_face(outer_loop, inner_loops, m_create_result), true)
-{
-}
-
-
-Face::Face(SUFaceRef face, bool release_on_destroy):
-	m_face(face),
-  m_release_on_destroy(release_on_destroy),
-	DrawingElement(SUFaceToDrawingElement(face))
-{
-}
-  
-Face::~Face() {
-	if (m_release_on_destroy) {
-  	SUFaceRelease(&m_face);
+/**************************
+* Private static methods **
+***************************/
+SUFaceRef Face::create_face(const std::vector<Point3D>& outer_points) {
+	LoopInput loop_input;
+  for (size_t i=0; i < outer_points.size(); ++i) {
+  	loop_input.add_vertex_index(i);
   }
-  //delete m_face;
+  return create_face(outer_points, loop_input);
 }
 
+SUFaceRef Face::create_face(const std::vector<Point3D>& outer_points, LoopInput& loop_input) {
+	SUFaceRef face = SU_INVALID;
+  size_t num_vertices = outer_points.size();
+  SUPoint3D vertices[num_vertices];
   
-SUFaceRef Face::create_face(std::vector<Point3D> outer_loop, std::vector<std::vector<Point3D>> inner_loops, SU_RESULT &create_result) {
+  for (size_t i = 0; i < outer_points.size(); ++i){
+  	vertices[i] = outer_points[i];
+	}
+  SU_RESULT res = SUFaceCreate(&face, &vertices[0], loop_input);
+  assert(res == SU_ERROR_NONE);
+	return face;
+}
+
+/**
+SUFaceRef Face::create_face(std::vector<Point3D> outer_loop, std::vector<std::vector<Point3D>> inner_loops) {
+	SUFaceRef face = create_face(outer_loop);
+  // Add inner loops
+  if (SUIsValid(face)) {
+    for (size_t i = 0; i < inner_loops.size(); ++i){
+      size_t num_il_vertices = inner_loops[i].size();
+      SUPoint3D vertices[num_il_vertices];
+      LoopInput loop(inner_loops[i]);
+      SULoopInputRef inner_loop_input = loop.ref();
+      SU_RESULT res = SUFaceAddInnerLoop(face, &vertices[0], &inner_loop_input);
+      assert(res == SU_ERROR_NONE);
+    }
+  }
+	return face;
+}
+*/
+
+
+SUFaceRef Face::copy_reference(const Face& other) {
+	if (other.m_attached) {
+  	return other.m_face;
+  }
+  // The other face has not been attached to the model, so copy its properties to a new object
+  Loop other_outer_loop = other.outer_loop();
+  std::vector<Point3D> other_outer_points = other_outer_loop.points();
+	LoopInput outer_loop_input = other_outer_loop.loop_input();
+  SUFaceRef new_face = create_face(other_outer_points, outer_loop_input);
+  return new_face;
+}
+
+/*****************************
+* Constructors / Destructor **
+******************************/
+Face::Face():
+	DrawingElement(SU_INVALID, true),
+	m_face(SU_INVALID)
+{}
+
+
+Face::Face(std::vector<Point3D>& outer_loop):
+	Face(create_face(outer_loop), false)
+{
+	
+}
+
+Face::Face(std::vector<Point3D>& outer_loop, LoopInput& loop_input):
+	Face(create_face(outer_loop, loop_input), false)
+{
+}
+/*
+Face::Face(std::vector<Point3D> outer_loop, std::vector<std::vector<Point3D>> inner_loops):
+	Face(create_face(outer_loop, inner_loops), true)
+{
+}
+*/
+
+Face::Face(SUFaceRef face, bool attached):
+	DrawingElement(SUFaceToDrawingElement(face), attached),
+	m_face(face)
+{}
+
+
+/** Copy constructor */
+Face::Face(const Face& other):
+	DrawingElement(other, SUFaceToDrawingElement(copy_reference(other))),
+  m_face(SUFaceFromDrawingElement(m_drawing_element))
+{
+	if (!other.m_attached && SUIsValid(other.m_face)) {
+    // Add the inner loops
+    std::vector<Loop> inner_loops = other.inner_loops();
+    std::vector<std::vector<Point3D>> inner_loops_points;
+    inner_loops_points.reserve(inner_loops.size());
+    for (size_t i=0; i < inner_loops.size(); ++i) {
+      std::vector<Point3D> inner_points = inner_loops[i].points();
+      LoopInput inner_loop_input = inner_loops[i].loop_input();
+      add_inner_loop(inner_points, inner_loop_input);
+    }
+    this->back_material(other.back_material());
+  }
+}
+
+
+Face::~Face() {
+	if (!m_attached && SUIsValid(m_face)) {
+  	SU_RESULT res = SUFaceRelease(&m_face);
+		assert(res == SU_ERROR_NONE);
+  }
+}
+
+/******************
+* Public Methods **
+*******************/
+/** Copy assignment operator */
+Face& Face::operator=(const Face& other) {
+  if (m_attached && SUIsValid(m_face)) {
+    SU_RESULT res = SUFaceRelease(&m_face);
+    assert(res == SU_ERROR_NONE);
+  }
+  m_face = copy_reference(other);
+  m_drawing_element = SUFaceToDrawingElement(m_face);
+  DrawingElement::operator=(other);
+  return *this;
+}
+
+
+/**
+For alternative use of 
+SUFaceRef create_face(LoopInput outer_loop, std::vector<LoopInput> inner_loops, SU_RESULT &create_result) {
 	SUFaceRef face = SU_INVALID;
   size_t num_vertices = outer_loop.size();
   SUPoint3D* vertices[num_vertices];
@@ -46,7 +164,8 @@ SUFaceRef Face::create_face(std::vector<Point3D> outer_loop, std::vector<std::ve
     ++j;
 	}
   LoopInput loop_input{outer_loop};
-  SULoopInputRef loop_input_ref = loop_input.ref();
+  // TODO
+  SULoopInputRef outer_loop_ref = outer_loop.ref();
   create_result = SUFaceCreate(&face, vertices[0], &loop_input_ref);
   // Add inner loops
   if (create_result == SU_ERROR_NONE) {
@@ -61,6 +180,9 @@ SUFaceRef Face::create_face(std::vector<Point3D> outer_loop, std::vector<std::ve
   }
 	return face;
 }
+**/
+
+
 
 /*
 SUFaceRef Face::check_face(SUFaceRef face, SU_RESULT &create_result) {
@@ -68,19 +190,15 @@ SUFaceRef Face::check_face(SUFaceRef face, SU_RESULT &create_result) {
 }
 */
   
-SUFaceRef Face::ref() {	return m_face; }
+SUFaceRef Face::ref() const {	return m_face; }
 Face::operator SUFaceRef() {	return m_face;}
 Face::operator SUFaceRef*() {	return &m_face;}
 
-Face::operator bool() const {
-	if (m_create_result == SU_ERROR_NONE) {
+bool Face::operator!() const {
+	if (SUIsInvalid(m_face)) {
   	return true;
   }
   return false;
-}
-
-bool Face::operator!() const {
-	return !bool(this);
 }
 
 
@@ -92,6 +210,16 @@ double Face::area() const {
 }
 
 
+void Face::add_inner_loop(const std::vector<Point3D>& points, LoopInput &loop_input) {
+	SUPoint3D vertices[points.size()];
+  for (size_t i=0; i < points.size(); ++i) {
+  	vertices[i] = points[i];
+  }
+  SU_RESULT res = SUFaceAddInnerLoop(m_face, &vertices[0], loop_input);
+  assert(res == SU_ERROR_NONE);
+}
+
+
 Material Face::back_material() const {
 	Material material{};
 	SUFaceGetBackMaterial(m_face, material);
@@ -99,7 +227,7 @@ Material Face::back_material() const {
 }
 
 
-Material Face::back_material(const Material material) {
+Material Face::back_material(const Material& material) {
   SUFaceSetBackMaterial(m_face, material);
   return material;
 }
@@ -115,7 +243,7 @@ Material Face::back_material(const Material material) {
 * @param SUPoint3D object.
 * @return FacePointClass enum indicating the status of the point relative to the face.
 */
-FacePointClass Face::classify_point(Point3D point) {
+FacePointClass Face::classify_point(const Point3D& point) {
 	// TODO
 }
 
@@ -131,12 +259,16 @@ std::vector<Edge> Face::edges() {
   return total_edges;
 }
 
+/*
+// TODO
 UVHelper Face::get_UVHelper(bool front, bool back, TextureWriter tex_writer) {
 	//SUUVHelperRef uv_helper = SU_INVALID;
   UVHelper uv_helper{};
   SUFaceGetUVHelper(m_face, front, back, tex_writer, uv_helper);
   return uv_helper;
 }
+*/
+
 
 /*
 * Returns a vector representing the projection for either the front or back side of the face.
@@ -183,8 +315,9 @@ Vector3D Face::normal() const {
 
 
 Loop Face::outer_loop() const {
-  SULoopRef lp = SU_INVALID;;
-  SUFaceGetOuterLoop(m_face, &lp);
+  SULoopRef lp = SU_INVALID;
+  SU_RESULT res = SUFaceGetOuterLoop(m_face, &lp);
+  assert(res == SU_ERROR_NONE);
   return Loop(lp);
 }
 
@@ -202,7 +335,7 @@ Plane3D Face::plane() const {
 * @param vector of Point3d objects used to position the material.
 * @param bool true to position the texture on the front of the Face or false to position it on the back of the Face.
 */
-bool Face::position_material(const Material &material, std::vector<Point3D> pt_array, bool o_front) {
+bool Face::position_material(const Material& material, const std::vector<Point3D>& pt_array, bool o_front) {
 	// TODO
 }
 
@@ -223,7 +356,7 @@ Face* Face::reverse() {
 * @param bool true for front side, false for back side.
 * @return true on success
 */
-bool Face::set_texture_projection(const Vector3D vector, bool frontside) {
+bool Face::set_texture_projection(const Vector3D& vector, bool frontside) {
 	// TODO
 }
 bool Face::set_texture_projection(bool remove, bool frontside) {

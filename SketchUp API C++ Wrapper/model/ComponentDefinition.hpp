@@ -29,9 +29,13 @@ class String;
 class ComponentDefinition :public DrawingElement {
 	private:
   SUComponentDefinitionRef m_definition;
-  bool m_release_on_destroy;
   
   static SUComponentDefinitionRef create_definition();
+	
+  /**
+  * Copies a ComponentDefinition object into a new SUComponentDefinitionRef.  If the other ComponentDefinition object has been attached to a model already, it will return the same SUComponentDefinitionRef object that it points to.
+  */
+  static SUComponentDefinitionRef copy_reference(const ComponentDefinition& other);
   
   public:
   /**
@@ -42,12 +46,22 @@ class ComponentDefinition :public DrawingElement {
   /**
   * Constructor creates Component Definition from existing SUComponentDefinitionRef.
   */
-  ComponentDefinition(SUComponentDefinitionRef definition, bool release_on_destroy = false);
+  ComponentDefinition(SUComponentDefinitionRef definition, bool attached = true);
+  
+  /**
+  * Copy constructor.
+  */
+  ComponentDefinition(const ComponentDefinition& other);
   
   /**
   * Destructor will release the definition object if it had not been added to a model.
   */
   ~ComponentDefinition();
+  
+  /**
+  * Copy assignment operator.
+  */
+  ComponentDefinition& operator=(const ComponentDefinition& other);
   
   /**
   * Gets the entities in the definition.
@@ -78,6 +92,7 @@ class ComponentDefinition :public DrawingElement {
   * Returns the Behavior object of this component.
   */
   Behavior behavior() const;
+  void behavior(const Behavior& behavior) const;
   
   /**
   * Returns the instances of this ComponentDefinition. TODO: Not possible
@@ -94,6 +109,8 @@ public:
   Behavior(SUComponentBehavior behavior);
   
   SUComponentBehavior::SUSnapToBehavior &snap = m_behavior.component_snap;
+
+  SUComponentBehavior ref() const;
   
   bool &cuts_opening = m_behavior.component_cuts_opening;
   

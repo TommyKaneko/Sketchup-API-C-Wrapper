@@ -34,15 +34,20 @@ class AttributeDictionary {
   AttributeDictionary(SUAttributeDictionaryRef dict);
   AttributeDictionary(SUEntityRef entity_ref);
 	
-  TypedValue get_attribute(const std::string key, const TypedValue default_value) const;
+  TypedValue get_attribute(const std::string &key, const TypedValue &default_value) const;
 
-  bool set_attribute(const std::string key, const TypedValue value);
+  bool set_attribute(const std::string &key, const TypedValue &value);
 
   std::vector<std::string> get_keys() const;
 
-  TypedValue get_value(std::string key) const;
+  TypedValue get_value(const std::string &key) const;
 
   std::string get_name() const;
+  
+  /**
+  * Checks whether this is a valid object.
+  */
+  operator bool();
 
 };
 

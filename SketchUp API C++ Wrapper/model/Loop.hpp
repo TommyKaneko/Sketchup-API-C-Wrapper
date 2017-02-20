@@ -10,15 +10,21 @@
 #define Loop_hpp
 
 #include <stdio.h>
-#include "DrawingElement.hpp"
-#include "Edge.hpp"
+#include <vector>
+//#include "DrawingElement.hpp"
+//#include "Edge.hpp"
 
-#include <SketchUpAPI/geometry.h>
-#include <SketchUpAPI/model/geometry_input.h>
+//#include <SketchUpAPI/geometry.h>
+//#include <SketchUpAPI/model/geometry_input.h>
 #include <SketchUpAPI/model/loop.h>
 
 namespace CW {
+
+// Forward Declarations
 class LoopInput;
+class Edge;
+class Vertex;
+class Point3D;
 
 class Loop {
   private:
@@ -34,17 +40,28 @@ class Loop {
   /*
   * Returns the LoopInput object for this loop. A SULoopInputRef will be created using the values of the original SULoopRef object.
   */
-  LoopInput loop_input();
+  LoopInput loop_input() const;
   
   /**
   * Returns the Edges in the Loop
   */
-  std::vector<Edge> edges();
+  std::vector<Edge> edges() const;
 
   /**
   * Returns the Vertices in the Loop
   */
-  std::vector<Vertex> vertices();
+  std::vector<Vertex> vertices() const;
+  
+  /**
+  * Returns the points representing the vertices in the Loop
+  */
+  std::vector<Point3D> points() const;
+  
+  /**
+  * Returns the SULoopRef object stored in this loop.
+  */
+  SULoopRef ref() const;
+  
 };
 
 } /* namespace CW */

@@ -32,6 +32,11 @@ class Color {
   SUColor ref() const;
   
   operator SUColor() const;
+	
+  /**
+  * Compare equality of the Color object
+  */
+  friend bool operator ==(const Color &lhs, const Color &rhs);
   
 };
 

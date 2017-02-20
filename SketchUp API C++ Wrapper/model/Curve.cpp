@@ -42,7 +42,7 @@ SUCurveRef Curve::ref(){ return m_curve;}
 
 
 std::vector<Edge> Curve::get_edges() const{
-	size_t num_edges;
+	size_t num_edges = 0;
   SU_RESULT res = SUCurveGetNumEdges(m_curve, &num_edges);
   assert(res == SU_ERROR_NONE);
   SUEdgeRef ref_edges[num_edges];

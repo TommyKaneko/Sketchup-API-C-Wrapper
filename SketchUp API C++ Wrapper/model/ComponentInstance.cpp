@@ -10,6 +10,8 @@
 
 #include "ComponentInstance.hpp"
 
+#include "String.hpp"
+
 namespace CW {
 
 
@@ -38,5 +40,22 @@ ComponentDefinition ComponentInstance::definition() {
   assert(res == SU_ERROR_NONE);
   return ComponentDefinition(component);
 }
+
+
+String ComponentInstance::name() const {
+  String string;
+  SUStringRef * const string_ref = string;
+	SU_RESULT res = SUComponentInstanceGetName(m_instance, string_ref);
+  assert(res == SU_ERROR_NONE);
+  return string;
+}
+
+
+void ComponentInstance::name(const String& string) {
+	std::string name_string = string.std_string();
+	SU_RESULT res = SUComponentInstanceSetName(m_instance, name_string.c_str());
+  assert(res == SU_ERROR_NONE);
+}
+
 
 } /* namespace CW */
