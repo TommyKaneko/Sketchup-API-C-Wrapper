@@ -117,18 +117,14 @@ Layer Model::active_layer() const {
 //bool active_layer(Layer default_layer) {}
 
 
-bool Model::add_definition(const ComponentDefinition& definition) {
-	return add_definitions(std::vector<ComponentDefinition>{definition});
+bool Model::add_definition(ComponentDefinition& definition) {
+	std::vector<ComponentDefinition> defs = {definition};
+  return add_definitions(defs);
 }
 
 
-bool Model::add_definitions(const std::vector<ComponentDefinition>& definitions) {
-	size_t count = definitions.size();
-  SUComponentDefinitionRef def_refs[count];
-  for (size_t i=0; i < count; ++i) {
-  	def_refs[i] = definitions[i].ref();
-  }
-  SU_RESULT res = SUModelAddComponentDefinitions(m_model, count, def_refs);
+bool Model::add_definitions(std::vector<ComponentDefinition>& definitions) {
+  SU_RESULT res = SUModelAddComponentDefinitions(m_model, definitions.size(), definitions[0]);
   if (res == SU_ERROR_NONE) {
   	return true;
   }

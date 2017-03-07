@@ -152,7 +152,7 @@ class TypedValue {
   * Retrieve/Set the array of typed value objects of a type value object.
   */
   std::vector<TypedValue> typed_value_array() const;
-  TypedValue& typed_value_array(const std::vector<TypedValue> &typed_val_array);
+  TypedValue& typed_value_array(std::vector<TypedValue> &typed_val_array);
 	operator std::vector<TypedValue>() const;
   
   /**

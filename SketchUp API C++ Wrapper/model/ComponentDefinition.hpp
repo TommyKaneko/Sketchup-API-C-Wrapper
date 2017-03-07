@@ -70,11 +70,12 @@ class ComponentDefinition :public DrawingElement {
   */
   ~ComponentDefinition();
   
-  /**
-  * Copy assignment operator.
-  */
+  /** Copy assignment operator */
   ComponentDefinition& operator=(const ComponentDefinition& other);
   
+  /** Cast to native objects */
+  operator SUComponentDefinitionRef() const;
+  operator SUComponentDefinitionRef*();
   
   /**
   * Returns the bounding box of this Component Definition

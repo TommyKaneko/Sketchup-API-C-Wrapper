@@ -169,9 +169,9 @@ Vector3D& Vector3D::operator=(const SUVector3D &vector) {
 }
 
 // Casting
-Vector3D::operator SUVector3D() { return m_vector; }
+Vector3D::operator SUVector3D() const { return m_vector; }
 
-Vector3D::operator Point3D() { return Point3D(m_vector); }
+Vector3D::operator Point3D() const { return Point3D(m_vector); }
 
 // Operator overloads
 Vector3D Vector3D::operator+(const Vector3D &vector) const {
@@ -531,7 +531,7 @@ SUPlane3D Plane3D::get_plane(const SUFaceRef &face) {
 }
 
 
-Plane3D::operator SUPlane3D() { return m_plane; }
+Plane3D::operator SUPlane3D() const { return m_plane; }
 
 
 /**
@@ -556,6 +556,10 @@ bool BoundingBox3D::operator!() const {
   	return true;
   }
   return false;
+}
+
+BoundingBox3D::operator SUBoundingBox3D() const {
+	return m_bounding_box;
 }
 
 

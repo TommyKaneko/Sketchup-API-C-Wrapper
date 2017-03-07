@@ -61,8 +61,8 @@ class Face :public DrawingElement {
   * @param outer_loop vector of points for the vertices in the outer loop.
   * @return SUFaceRef object with the defined loops.  If there was an error, a SU_INVALID SUFaceRef will be returned.
   */
-  static SUFaceRef create_face(const std::vector<Point3D>& outer_points);
-  static SUFaceRef create_face(const std::vector<Point3D>& outer_points, LoopInput& loop_input);
+  static SUFaceRef create_face(std::vector<Point3D>& outer_points);
+  static SUFaceRef create_face(std::vector<Point3D>& outer_points, LoopInput& loop_input);
   
 	/**
   * Creates a SUFaceRef object from an array of points that represent the loops.
@@ -119,7 +119,7 @@ class Face :public DrawingElement {
   /*
   * The class object can be converted to a SUFaceRef without loss of data.
   */
-  operator SUFaceRef();
+  operator SUFaceRef() const;
   operator SUFaceRef*();
   
   /*
@@ -144,7 +144,7 @@ class Face :public DrawingElement {
   * @param points - a vector of points representing the vertices of the inner loop.
   * @param loop_input - the loop input object with details about the edges
   */
-  void add_inner_loop(const std::vector<Point3D>& points, LoopInput &loop_input);
+  void add_inner_loop(std::vector<Point3D>& points, LoopInput &loop_input);
   
   /*
   * Retrieves the material assigned to the back side of the face.

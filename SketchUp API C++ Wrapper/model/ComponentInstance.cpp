@@ -85,6 +85,13 @@ SUComponentInstanceRef ComponentInstance::ref() {
 	return m_instance;
 }
 
+ComponentInstance::operator SUComponentInstanceRef() const {
+	return m_instance;
+}
+ComponentInstance::operator SUComponentInstanceRef*() {
+	return &m_instance;
+}
+
 Transformation ComponentInstance::transformation() const {
   SUTransformation transform;
   SU_RESULT res = SUComponentInstanceGetTransform(m_instance, &transform);

@@ -83,7 +83,7 @@ class Entities {
   * Note that this function does not merge overlapping geometry. See GeometryInput for merging functionality.
   * @param vector of Face objects from CW
 	*/
-  std::vector<Face> add_faces(const std::vector<Face>& faces);
+  std::vector<Face> add_faces(std::vector<Face>& faces);
   Face add_face(const Face& face);
 
   /*
@@ -92,7 +92,7 @@ class Entities {
   * Note that this function does not merge overlapping geometry. @see GeometryInput and Entities::fill() for merging functionality.
   * @param vector of Edge objects to add
 	*/
-  std::vector<Edge> add_edges(const std::vector<Edge>& edges);
+  std::vector<Edge> add_edges(std::vector<Edge>& edges);
   Edge add_edge(const Edge& edge);
 
   /*
@@ -119,12 +119,20 @@ class Entities {
   
   
   /**
-  * Transforms given entities by the transforamtion object
+  * Transforms given entities by the transformation object
   * @param elems - vector array of Entity objects
   * @param transform - the transformation to apply to the elements.
-  * @return true if the operation was successful.  False, if transform failed for any reason.
+  * @return true if the operation was successful.  false, if transform failed.
   */
   bool transform_entities(std::vector<Entity>& elems, const Transformation& transform);
+
+  /**
+  * Transforms given entities each by their transformation object
+  * @param elems - vector array of Entity objects
+  * @param transforms - the vector array of transformations to apply to the elements.  The number of Transformation objects must match the number of elements given.
+  * @return true if the operation was successful.  false, if transform failed.
+  */
+  bool transform_entities(std::vector<Entity>& elems, std::vector<Transformation>& transforms);
   
   /*
   * The class object can be converted to a SUEntitiesRef without loss of data.

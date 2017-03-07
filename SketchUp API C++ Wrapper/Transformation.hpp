@@ -62,7 +62,7 @@ class Transformation {
   double& operator[](size_t i);
   
   /*
-  * Cast to SUTransformation object
+  * Cast to SUTransformation struct
   */
   SUTransformation ref() const;
   operator SUTransformation() const;

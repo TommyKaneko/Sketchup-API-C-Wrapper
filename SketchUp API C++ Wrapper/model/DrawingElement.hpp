@@ -64,6 +64,10 @@ class DrawingElement :public Entity {
   /** Copy assignment operator */
   DrawingElement& operator=(const DrawingElement& other);
   
+  /** Cast to native objects */
+  operator SUDrawingElementRef() const;
+  operator SUDrawingElementRef*();
+  
   /**
   * Returns the bounding box of the drawing element.
   */

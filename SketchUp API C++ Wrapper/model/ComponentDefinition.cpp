@@ -101,6 +101,14 @@ ComponentDefinition& ComponentDefinition::operator=(const ComponentDefinition& o
 }
 
 
+ComponentDefinition::operator SUComponentDefinitionRef() const {
+	return m_definition;
+}
+ComponentDefinition::operator SUComponentDefinitionRef*() {
+	return &m_definition;
+}
+
+
 BoundingBox3D ComponentDefinition::bounds() const {
 	// If this definition is empty, then the bounding box returned by SUDrawingElementGetBoundingBox has wild numbers.  So return min 0 and max 0.
   if (entities().size() == 0) {

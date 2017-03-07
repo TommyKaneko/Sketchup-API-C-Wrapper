@@ -105,8 +105,8 @@ class Model {
   * @param definition the ComponentDefinition object to add to the model.
   * @return true if definition was succeffully added, false, if error.
   */
-  bool add_definition(const ComponentDefinition& definition);
-  bool add_definitions(const std::vector<ComponentDefinition>& definitions);
+  bool add_definition(ComponentDefinition& definition);
+  bool add_definitions(std::vector<ComponentDefinition>& definitions);
   
   /*
   * The attribute_dictionaries method is used to retrieve the AttributeDictionaries collection attached to the model.

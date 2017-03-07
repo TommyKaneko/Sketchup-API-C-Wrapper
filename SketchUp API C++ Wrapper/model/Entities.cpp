@@ -214,37 +214,29 @@ SU_RESULT Entities::fill(GeometryInput &geom_input) {
   return fill_res;
 }
 
-std::vector<Face> Entities::add_faces(const std::vector<Face>& faces) {
-	size_t len = faces.size();
-  SUFaceRef faces_array[len];
-  for (size_t i = 0; i < len; ++i) {
-  	faces_array[i] = faces[i].ref();
-  }
-  
-  SU_RESULT res = SUEntitiesAddFaces(m_entities, len, &faces_array[0]);
+std::vector<Face> Entities::add_faces(std::vector<Face>& faces) {
+  SU_RESULT res = SUEntitiesAddFaces(m_entities, faces.size(), faces[0]);
 	assert(res == SU_ERROR_NONE);
   return faces;
 }
 
-std::vector<Edge> Entities::add_edges(const std::vector<Edge>& edges) {
-  SUEdgeRef edge_refs[edges.size()];
-  for (size_t i=0; i < edges.size(); ++i) {
-    edge_refs[i] = edges[i].ref();
-  }
-  SU_RESULT res = SUEntitiesAddEdges(m_entities, edges.size(), edge_refs);
+std::vector<Edge> Entities::add_edges(std::vector<Edge>& edges) {
+  SU_RESULT res = SUEntitiesAddEdges(m_entities, edges.size(), edges[0]);
   assert(res == SU_ERROR_NONE);
   return edges;
 }
 
 
 Edge Entities::add_edge(const Edge& edge) {
-  add_edges(std::vector<Edge>{edge});
+	SUEdgeRef edge_ref = edge.ref();
+  SU_RESULT res = SUEntitiesAddEdges(m_entities, 1, &edge_ref);
+  assert(res == SU_ERROR_NONE);
   return edge;
 }
 
 
 void Entities::add_instance(ComponentInstance& instance) {
-  SU_RESULT res = SUEntitiesAddInstance(m_entities, instance.ref(), nullptr);
+  SU_RESULT res = SUEntitiesAddInstance(m_entities, instance, nullptr);
 	assert(res == SU_ERROR_NONE);
   instance.attached(true);
 }
@@ -328,6 +320,18 @@ bool Entities::transform_entities(std::vector<Entity>& elems, const Transformati
   }
   return true;
 }
+
+
+bool Entities::transform_entities(std::vector<Entity>& elems, std::vector<Transformation>& transforms) {
+  assert(elems.size() == transforms.size());
+  SU_RESULT res = SUEntitiesTransformMultiple(m_entities, elems.size(), elems[0], transforms[0]);
+  assert(res == SU_ERROR_NONE || res == SU_ERROR_GENERIC);
+  if (SU_ERROR_GENERIC) {
+  	return false;
+  }
+  return true;
+}
+
 
 
 

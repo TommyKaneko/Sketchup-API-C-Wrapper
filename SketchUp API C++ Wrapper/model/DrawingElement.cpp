@@ -58,6 +58,15 @@ DrawingElement& DrawingElement::operator=(const DrawingElement& other) {
 }
 
 
+DrawingElement::operator SUDrawingElementRef() const {
+	return m_drawing_element;
+}
+
+DrawingElement::operator SUDrawingElementRef*() {
+	return &m_drawing_element;
+}
+
+
 BoundingBox3D DrawingElement::bounds() {
 	SUBoundingBox3D box = SU_INVALID;
 	SU_RESULT res = SUDrawingElementGetBoundingBox(m_drawing_element, &box);

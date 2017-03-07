@@ -123,12 +123,12 @@ class Vector3D {
   /*
   * Cast to SUVector3D object
   */
-  operator SUVector3D();
+  operator SUVector3D() const;
   
   /*
   * Cast to Point3D object
   */
-  operator Point3D();
+  operator Point3D() const;
   
  	/*
   * Copy constructor
@@ -323,6 +323,11 @@ class Plane3D {
   Plane3D &operator=(const Plane3D &plane);
   
   /**
+  * Implicit conversion to SUPlane3D
+  */
+  operator SUPlane3D() const;
+  
+  /**
   * Comparative operators
   */
   bool operator!() const;
@@ -371,11 +376,6 @@ class Plane3D {
   */
   static SUPlane3D get_plane(const SUFaceRef &face);
   
-  /**
-  * Implicit conversion to SUPlane3D
-  */
-  operator SUPlane3D();
-  
 };
 
 class BoundingBox3D {
@@ -391,7 +391,10 @@ class BoundingBox3D {
   * Invalid, or NULL BoundingBox3D objects can be simulated with this constructor.
   */
   BoundingBox3D(bool valid);
- 
+  
+  /** Casting overload */
+  operator SUBoundingBox3D() const;
+  
   /**
   * Comparative operators
   */
@@ -411,7 +414,7 @@ class BoundingBox3D {
 
 
 /**
-* A Line3D represents a point and a vector, which carries on into infinity in two directions.
+* A Line3D represents a point and a vector, which carries on into infinity in two directions.  There is no equivalent native object in the Sketchup C API.
 */
 class Line3D {
 	private:
@@ -434,7 +437,7 @@ class Line3D {
 
   // Overload copy assignment operator
   Line3D &operator=(const Line3D &line);
-
+  
   /**
   * Comparative operators
   */

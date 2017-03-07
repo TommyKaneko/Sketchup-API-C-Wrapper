@@ -37,10 +37,15 @@ AttributeDictionary::AttributeDictionary(SUAttributeDictionaryRef dict_ref):
 {
 }
 
-AttributeDictionary::AttributeDictionary(SUEntityRef entity_ref):
-	m_dict(SUAttributeDictionaryFromEntity(entity_ref))
-{
+
+AttributeDictionary::operator SUAttributeDictionaryRef() const {
+	return m_dict;
 }
+
+AttributeDictionary::operator SUAttributeDictionaryRef*() {
+	return &m_dict;
+}
+
 
 TypedValue AttributeDictionary::get_attribute(const std::string &key, const TypedValue &default_value) const {
 	TypedValue value_out;
@@ -95,11 +100,11 @@ std::string AttributeDictionary::get_name() const {
   return string;
 }
 
-AttributeDictionary::operator bool() {
+bool AttributeDictionary::operator !() {
 	if (SUIsValid(m_dict)) {
-  	return true;
+  	return false;
   }
-  return false;
+  return true;
 }
 
 

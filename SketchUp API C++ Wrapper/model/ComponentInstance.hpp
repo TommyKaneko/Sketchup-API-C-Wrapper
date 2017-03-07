@@ -50,11 +50,14 @@ class ComponentInstance :public DrawingElement {
   /** Copy assignment operator */
   ComponentInstance& operator=(const ComponentInstance& other);
   
-  
   /**
   * Returns the raw SUComponentInstance object.
   */
   SUComponentInstanceRef ref();
+
+  /** Cast to native objects */
+  operator SUComponentInstanceRef() const;
+  operator SUComponentInstanceRef*();
   
   /**
   * Returns the Transformation object applied to this instance.

@@ -63,7 +63,7 @@ Entity& Entity::operator=(const Entity& other) {
 }
 
 
-Entity::operator SUEntityRef() {
+Entity::operator SUEntityRef() const {
 	return m_entity;
 }
 

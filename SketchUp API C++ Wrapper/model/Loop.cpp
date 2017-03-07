@@ -93,6 +93,14 @@ std::vector<Point3D> Loop::points() const {
 }
 
 
+size_t Loop::size() const {
+  size_t count = 0;
+  SU_RESULT res = SULoopGetNumVertices(m_loop, &count);
+  assert(res == SU_ERROR_NONE);
+	return count;
+}
+
+
 SULoopRef Loop::ref() const {
 	return m_loop;
 }

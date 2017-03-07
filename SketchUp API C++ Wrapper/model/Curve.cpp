@@ -39,13 +39,9 @@ Curve::Curve(SUCurveRef curve,  SUCurveType curve_type):
 Curve::~Curve(){
 }
 
-SUCurveRef Curve::create_curve(std::vector<Edge> edges, SU_RESULT &result) {
+SUCurveRef Curve::create_curve(std::vector<Edge>& edges, SU_RESULT &result) {
 	SUCurveRef curve_ref = SU_INVALID;
-  SUEdgeRef edge_array[edges.size()];
-  for (size_t i=0; i < edges.size(); i++) {
-  	edge_array[i] = edges[i].ref();
-  }
-  result = SUCurveCreateWithEdges(&curve_ref, &edge_array[0], edges.size());
+  result = SUCurveCreateWithEdges(&curve_ref, edges[0], edges.size());
   return curve_ref;
 }
 

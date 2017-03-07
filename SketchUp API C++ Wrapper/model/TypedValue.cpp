@@ -415,16 +415,11 @@ std::vector<TypedValue> TypedValue::typed_value_array() const {
   return typed_vals;
 }
 
-TypedValue& TypedValue::typed_value_array(const std::vector<TypedValue> &typed_val_array) {
+TypedValue& TypedValue::typed_value_array(std::vector<TypedValue> &typed_val_array) {
   if (!(*this)) {
   	m_typed_value = create_typed_value();
   }
-  size_t count = typed_val_array.size();
-  SUTypedValueRef values[count];
-  for (size_t i=0; i < count; ++i) {
-  	values[i] = typed_val_array[i].ref();
-  }
-  SU_RESULT res = SUTypedValueSetArrayItems(m_typed_value, count, &values[0]);
+  SU_RESULT res = SUTypedValueSetArrayItems(m_typed_value, typed_val_array.size(), typed_val_array[0]);
   assert(res == SU_ERROR_NONE);
   return *this;
 }

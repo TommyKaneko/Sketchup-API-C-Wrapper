@@ -71,7 +71,7 @@ class Entity {
   /*
   * The class object can be converted to a SUEntityRef without loss of data.
   */
-  operator SUEntityRef();
+  operator SUEntityRef() const;
   operator SUEntityRef*();
 
   /**

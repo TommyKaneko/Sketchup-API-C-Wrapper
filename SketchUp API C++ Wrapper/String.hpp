@@ -67,7 +67,7 @@ class String {
   
   operator SUStringRef&() {return m_string;}
   operator SUStringRef*() {return &m_string;}
-  operator SUStringRef() {return m_string;}
+  operator SUStringRef() const {return m_string;}
   
   /**
   * Compares two strings for equality.

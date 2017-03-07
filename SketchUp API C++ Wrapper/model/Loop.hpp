@@ -80,6 +80,11 @@ class Loop {
   std::vector<Point3D> points() const;
   
   /**
+  * Returns the number of edges/vertices in the loop.
+  */
+  size_t size() const;
+  
+  /**
   * Returns the SULoopRef object stored in this loop.
   */
   SULoopRef ref() const;

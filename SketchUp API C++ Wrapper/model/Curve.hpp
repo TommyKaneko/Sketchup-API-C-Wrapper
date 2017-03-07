@@ -36,7 +36,7 @@ class Curve :public Entity {
   SUCurveType m_curve_type;
   SU_RESULT m_create_result;
   
-  static SUCurveRef create_curve(std::vector<Edge> edges, SU_RESULT &result);
+  static SUCurveRef create_curve(std::vector<Edge>& edges, SU_RESULT &result);
   
   public:
   /**

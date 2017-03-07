@@ -122,7 +122,7 @@ SUEdgeRef Edge::ref() const {
 	return m_edge;
 }
 
-Edge::operator SUEdgeRef() {
+Edge::operator SUEdgeRef() const {
 	return m_edge;
 }
 

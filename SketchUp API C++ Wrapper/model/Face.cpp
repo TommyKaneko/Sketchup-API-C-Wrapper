@@ -36,7 +36,7 @@ namespace CW {
 /**************************
 * Private static methods **
 ***************************/
-SUFaceRef Face::create_face(const std::vector<Point3D>& outer_points) {
+SUFaceRef Face::create_face(std::vector<Point3D>& outer_points) {
 	LoopInput loop_input;
   for (size_t i=0; i < outer_points.size(); ++i) {
   	loop_input.add_vertex_index(i);
@@ -44,15 +44,9 @@ SUFaceRef Face::create_face(const std::vector<Point3D>& outer_points) {
   return create_face(outer_points, loop_input);
 }
 
-SUFaceRef Face::create_face(const std::vector<Point3D>& outer_points, LoopInput& loop_input) {
+SUFaceRef Face::create_face(std::vector<Point3D>& outer_points, LoopInput& loop_input) {
 	SUFaceRef face = SU_INVALID;
-  size_t num_vertices = outer_points.size();
-  SUPoint3D vertices[num_vertices];
-  
-  for (size_t i = 0; i < outer_points.size(); ++i){
-  	vertices[i] = outer_points[i];
-	}
-  SU_RESULT res = SUFaceCreate(&face, &vertices[0], loop_input);
+  SU_RESULT res = SUFaceCreate(&face, outer_points[0], loop_input);
   assert(res == SU_ERROR_NONE);
 	return face;
 }
@@ -203,7 +197,7 @@ SUFaceRef Face::check_face(SUFaceRef face, SU_RESULT &create_result) {
 */
   
 SUFaceRef Face::ref() const {	return m_face; }
-Face::operator SUFaceRef() {	return m_face;}
+Face::operator SUFaceRef() const {	return m_face;}
 Face::operator SUFaceRef*() {	return &m_face;}
 
 bool Face::operator!() const {
@@ -222,12 +216,8 @@ double Face::area() const {
 }
 
 
-void Face::add_inner_loop(const std::vector<Point3D>& points, LoopInput &loop_input) {
-	SUPoint3D vertices[points.size()];
-  for (size_t i=0; i < points.size(); ++i) {
-  	vertices[i] = points[i];
-  }
-  SU_RESULT res = SUFaceAddInnerLoop(m_face, &vertices[0], loop_input);
+void Face::add_inner_loop(std::vector<Point3D>& points, LoopInput &loop_input) {
+  SU_RESULT res = SUFaceAddInnerLoop(m_face, points[0], loop_input);
   assert(res == SU_ERROR_NONE);
 }
 
@@ -263,9 +253,13 @@ FacePointClass Face::classify_point(const Point3D& point) {
 std::vector<Edge> Face::edges() {
 	std::vector<Edge> total_edges = outer_loop().edges();
   std::vector<Loop> all_loops = loops();
+  size_t total_edge_num = 0;
+  for (size_t i=0; i < all_loops.size(); i++) {
+		total_edge_num += all_loops[i].size();
+  }
+  total_edges.reserve(total_edge_num);
   for (size_t i=0; i < all_loops.size(); i++) {
   	std::vector<Edge> loop_edges = all_loops[i].edges();
-  	total_edges.reserve(total_edges.size() + loop_edges.size());
     total_edges.insert(total_edges.end(), loop_edges.begin(), loop_edges.end());
   }
   return total_edges;
