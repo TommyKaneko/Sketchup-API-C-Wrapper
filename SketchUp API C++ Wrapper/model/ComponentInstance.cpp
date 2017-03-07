@@ -26,19 +26,66 @@
 
 namespace CW {
 
+/**************************
+* Private static methods **
+***************************/
 
-ComponentInstance::ComponentInstance(SUComponentInstanceRef instance):
-  DrawingElement(SUComponentInstanceToDrawingElement(instance)),
+SUComponentInstanceRef ComponentInstance::copy_reference(const ComponentInstance& other) {
+	if (other.m_attached) {
+  	return other.m_instance;
+  }
+  // The other face has not been attached to the model, so copy its properties to a new object
+  ComponentInstance new_instance = other.definition().create_instance();
+  new_instance.transformation(other.transformation());
+  new_instance.name(other.name());
+  return new_instance.ref();
+}
+
+/*****************************
+* Constructors / Destructor **
+******************************/
+ComponentInstance::ComponentInstance(SUComponentInstanceRef instance, bool attached):
+  DrawingElement(SUComponentInstanceToDrawingElement(instance), attached),
   m_instance(instance)
 {
 }
+
+
+ComponentInstance::ComponentInstance(const ComponentInstance& other):
+	DrawingElement(other, SUComponentInstanceToDrawingElement(copy_reference(other))),
+  m_instance(SUComponentInstanceFromDrawingElement(m_drawing_element))
+{}
+
+
+ComponentInstance::~ComponentInstance() {
+	if (!m_attached && SUIsValid(m_instance)) {
+  	SU_RESULT res = SUComponentInstanceRelease(&m_instance);
+		assert(res == SU_ERROR_NONE);
+  }
+}
+
+/******************
+* Public Methods **
+*******************/
+/** Copy assignment operator */
+ComponentInstance& ComponentInstance::operator=(const ComponentInstance& other) {
+  if (!m_attached && SUIsValid(m_instance)) {
+    SU_RESULT res = SUComponentInstanceRelease(&m_instance);
+    assert(res == SU_ERROR_NONE);
+  }
+  m_instance = copy_reference(other);
+  m_drawing_element = SUComponentInstanceToDrawingElement(m_instance);
+  DrawingElement::operator=(other);
+  return *this;
+}
+
 
 
 SUComponentInstanceRef ComponentInstance::ref() {
 	return m_instance;
 }
 
-Transformation ComponentInstance::transformation() {
+Transformation ComponentInstance::transformation() const {
   SUTransformation transform;
   SU_RESULT res = SUComponentInstanceGetTransform(m_instance, &transform);
   assert(res == SU_ERROR_NONE);
@@ -46,7 +93,14 @@ Transformation ComponentInstance::transformation() {
 }
 
 
-ComponentDefinition ComponentInstance::definition() {
+void ComponentInstance::transformation(const Transformation& transform) {
+	SUTransformation su_transform = transform.ref();
+  SU_RESULT res = SUComponentInstanceSetTransform(m_instance, &su_transform);
+  assert(res == SU_ERROR_NONE);
+}
+
+
+ComponentDefinition ComponentInstance::definition() const{
   SUComponentDefinitionRef component = SU_INVALID;
   SU_RESULT res = SUComponentInstanceGetDefinition(m_instance, &component);
   assert(res == SU_ERROR_NONE);

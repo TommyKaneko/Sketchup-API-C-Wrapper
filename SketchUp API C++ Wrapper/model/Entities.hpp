@@ -51,6 +51,12 @@ class Entities {
   public:
   Entities(SUEntitiesRef entities);
   
+  
+  /**
+  * Null Entities object
+  */
+  Entities();
+  
   /**
   * Fills an Entities object with geometry in GeometryInput object.
   */
@@ -60,6 +66,11 @@ class Entities {
   std::vector<Edge> edges(bool stray_only = true) const;
   std::vector<ComponentInstance> instances() const;
   std::vector<Group> groups() const;
+  
+  /**
+  * Returns the number of entities that exist in the entities object.
+  */
+  size_t size() const;
   
   /**
   * Adds the contents of an entities object into this one.
@@ -86,6 +97,12 @@ class Entities {
 
   /*
   * Creates a ComponentInstance in the Entities object.
+  * @param instance ComponentInstance object to add to the Entities object.
+	*/
+  void add_instance(ComponentInstance& instance);
+
+  /*
+  * Creates a ComponentInstance in the Entities object.
   * @param definition ComponentDefinition object to create an instance of
   * @param transformation transformation of the definition (placement, rotation and scale)
 	*/
@@ -99,6 +116,15 @@ class Entities {
   // TODO: this needs to be revised.
   Group add_group(const ComponentDefinition& definition, const Transformation& transformation);
   Group add_group();
+  
+  
+  /**
+  * Transforms given entities by the transforamtion object
+  * @param elems - vector array of Entity objects
+  * @param transform - the transformation to apply to the elements.
+  * @return true if the operation was successful.  False, if transform failed for any reason.
+  */
+  bool transform_entities(std::vector<Entity>& elems, const Transformation& transform);
   
   /*
   * The class object can be converted to a SUEntitiesRef without loss of data.

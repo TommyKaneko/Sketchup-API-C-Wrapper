@@ -48,6 +48,16 @@ class Loop {
   * @param SULoopRef object that is already attached to a SUFaceRef
   */
   Loop(SULoopRef loop);
+  
+  /**
+  * Creates an invalid Loop object.
+  */
+  Loop();
+  
+  /**
+  * Tests for valid object.
+  */
+  bool operator!() const;
 
   /*
   * Returns the LoopInput object for this loop. A SULoopInputRef will be created using the values of the original SULoopRef object.

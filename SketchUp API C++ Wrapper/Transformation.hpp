@@ -103,11 +103,15 @@ class Transformation {
   /**
   * Return transformed vectors.
   */
+  friend Vector3D operator*(const Transformation &lhs, const Vector3D &rhs);
+  /** You can't technically multiply a 4x1 matrix by a 4x4 matrix (only the other way around), so return it flipped */
   friend Vector3D operator*(const Vector3D &lhs, const Transformation &rhs);
 
   /**
   * Return transformed point.
   */
+  friend Point3D operator*(const Transformation &lhs, const Point3D &rhs);
+  /** You can't technically multiply a 4x1 matrix by a 4x4 matrix (only the other way around), so return it flipped */
   friend Point3D operator*(const Point3D &lhs, const Transformation &rhs);
   
   /**

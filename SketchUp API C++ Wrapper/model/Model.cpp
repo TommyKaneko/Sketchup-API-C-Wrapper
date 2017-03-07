@@ -61,7 +61,10 @@ Model::Model(std::string file_path):
   m_release_on_destroy(true)
 {}
 
-
+Model::Model(const Model& other):
+	m_model(other.m_model),
+  m_release_on_destroy(other.m_release_on_destroy)
+{}
 
 Model::~Model() {
   if (m_release_on_destroy && SUIsValid(m_model)) {
@@ -321,12 +324,9 @@ size_t Model::num_faces() const {
 //Entity raytest(Point3D point, Vector3D vector);
 
 
-bool Model::save(const std::string& file_path) {
+SU_RESULT Model::save(const std::string& file_path) {
   SU_RESULT res = SUModelSaveToFile(m_model, file_path.c_str());
-  if (res == SU_ERROR_NONE) {
-    return true;
-  }
-  return false;
+  return res;
 }
 
 

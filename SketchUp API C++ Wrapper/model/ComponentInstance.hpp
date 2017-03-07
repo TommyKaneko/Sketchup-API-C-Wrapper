@@ -35,8 +35,21 @@ class ComponentInstance :public DrawingElement {
 	private:
   SUComponentInstanceRef m_instance;
 	
+  /** Creates a copy of the ComponentInstance */
+	SUComponentInstanceRef copy_reference(const ComponentInstance& other);
+
   public:
-  ComponentInstance(SUComponentInstanceRef instance);
+  ComponentInstance(SUComponentInstanceRef instance, bool attached = true);
+  
+	/** Copy constructor */
+  ComponentInstance(const ComponentInstance& other);
+  
+  /** Destructor */
+  ~ComponentInstance();
+
+  /** Copy assignment operator */
+  ComponentInstance& operator=(const ComponentInstance& other);
+  
   
   /**
   * Returns the raw SUComponentInstance object.
@@ -46,12 +59,17 @@ class ComponentInstance :public DrawingElement {
   /**
   * Returns the Transformation object applied to this instance.
   */
-  Transformation transformation();
+  Transformation transformation() const;
+  
+  /**
+  * Set the transformation applied to this Component Instance
+  */
+  void transformation(const Transformation& tranform);
 
   /**
   * Returns the Component Definition object of this instance.
   */
-  ComponentDefinition definition();
+  ComponentDefinition definition() const;
 
   /**
   * Returns the name of this instance.

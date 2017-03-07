@@ -155,9 +155,9 @@ class Vector3D {
   /**
   * Comparator operator overloads
   */
-  bool operator==(const Vector3D &vector) const;
+  friend bool operator==(const Vector3D& lhs, const Vector3D& rhs);
 
-  bool operator!=(const Vector3D &vector) const;
+  friend bool operator!=(const Vector3D& lhs, const Vector3D& rhs);
 
 	/**
   * Validty check
@@ -235,6 +235,11 @@ class Point3D {
   Point3D( SUVector3D su_vector);
   Point3D(double x, double y, double z);
 
+	/**
+  * Allow conversion from Vecgtor3D
+  */
+  explicit Point3D( const Vector3D vector);
+
   /**
   * Invaid, or NULL Point3D objects can be simulated with this constructor.
   */
@@ -270,6 +275,9 @@ class Point3D {
   * Comparative operators
   */
   bool operator!() const;
+  
+  friend bool operator==(const Point3D& lhs, const Point3D& rhs);
+  friend bool operator!=(const Point3D& lhs, const Point3D& rhs);
   
 };
 
@@ -380,9 +388,9 @@ class BoundingBox3D {
   BoundingBox3D(SUBoundingBox3D bounding_box);
 
   /**
-  * Invaid, or NULL BoundingBox3D objects can be simulated with this constructor.
+  * Invalid, or NULL BoundingBox3D objects can be simulated with this constructor.
   */
-  BoundingBox3D(bool invalid);
+  BoundingBox3D(bool valid);
  
   /**
   * Comparative operators
@@ -392,12 +400,12 @@ class BoundingBox3D {
   /**
   * Returns the point where x,y and z are at their minimum
   */
-  Point3D min();
+  Point3D min() const;
   
   /**
   * Returns the point where x,y and z are at their maximum
   */
-  Point3D max();
+  Point3D max() const;
 
 };
 

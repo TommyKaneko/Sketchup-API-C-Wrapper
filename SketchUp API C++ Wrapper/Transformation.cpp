@@ -74,10 +74,17 @@ Transformation::Transformation(Point3D translation):
 std::array<double, 4> Transformation::multiply4x1(std::array<double, 4> matrix4_1) const {
 	std::array<double, 4> output;
   for (size_t i=0; i < 4; ++i) {
-  	output[i] = matrix4_1[i] * (m_transformation.values[i] +
-    														m_transformation.values[i+4] +
-    														m_transformation.values[i+8] +
-    														m_transformation.values[i+12]);
+  	// This one is for multiplying 1x4 by 4x4:
+    //output[i] = matrix4_1[i] * (m_transformation.values[i] +
+    //														m_transformation.values[i+4] +
+    //														m_transformation.values[i+8] +
+    //														m_transformation.values[i+12]);
+  	// This one is for multiplying 4x4 by 4x1:
+    output[i] = (m_transformation.values[i] * matrix4_1[0]) +
+    						(m_transformation.values[i+4] * matrix4_1[1]) +
+    						(m_transformation.values[i+8] * matrix4_1[2]) +
+    						(m_transformation.values[i+12] * matrix4_1[3]);
+
   }
   return output;
 }
@@ -236,26 +243,34 @@ Transformation Transformation::operator*(Transformation transform) {
 /**
 * Friend Functions of class Transformation
 */
-Vector3D operator*(const Vector3D &lhs, const Transformation &rhs) {
+Vector3D operator*(const Transformation &lhs, const Vector3D &rhs) {
 	// More info about multiplying vectors here: http://www.euclideanspace.com/maths/geometry/affine/matrix4x4/index.htm
-  std::array<double, 4> matrix4x1{lhs.x, lhs.y, lhs.z, 0.0}; // Set w value to 0 (unaffected by translation)
-  std::array<double, 4> return4x1 = rhs.multiply4x1(matrix4x1);
+  std::array<double, 4> matrix4x1{rhs.x, rhs.y, rhs.z, 0.0}; // Set w value to 0 (unaffected by translation)
+  std::array<double, 4> return4x1 = lhs.multiply4x1(matrix4x1);
   return Vector3D(return4x1[0], return4x1[1], return4x1[2]);
+}
+Vector3D operator*(const Vector3D &lhs, const Transformation &rhs) {
+	// Can't actually multiply a vector by transformation, so return the transforamtion multiplied by the vector
+  return rhs * lhs;
 }
 
 /**
 * Friend Functions of class Transformation
 */
-Point3D operator*(const Point3D &lhs, const Transformation &rhs) {
+Point3D operator*(const Transformation &lhs, const Point3D &rhs) {
 	// More info about multiplying vectors here: http://www.euclideanspace.com/maths/geometry/affine/matrix4x4/index.htm
-  std::array<double, 4> matrix4x1{lhs.x, lhs.y, lhs.z, 1.0}; // Set w value to 1 (affected by translation)
-  std::array<double, 4> return4x1 = rhs.multiply4x1(matrix4x1);
+  std::array<double, 4> matrix4x1{rhs.x, rhs.y, rhs.z, 1.0}; // Set w value to 1 (affected by translation)
+  std::array<double, 4> return4x1 = lhs.multiply4x1(matrix4x1);
   if (return4x1[3] == 1.0) {
     return Point3D(return4x1[0], return4x1[1], return4x1[2]);
   }
   else {
-    return Vector3D(return4x1[0] / return4x1[3], return4x1[1] / return4x1[3], return4x1[2] / return4x1[3]);
+    return Point3D(return4x1[0] / return4x1[3], return4x1[1] / return4x1[3], return4x1[2] / return4x1[3]);
   }
+}
+Point3D operator*(const Point3D &lhs, const Transformation &rhs) {
+	// Can't actually multiply a vector by transformation, so return the transforamtion multiplied by the vector
+	return rhs * lhs;
 }
 
 /**

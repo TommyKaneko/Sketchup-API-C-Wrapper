@@ -58,6 +58,11 @@ class Axes :public DrawingElement {
   ~Axes();
   
   Axes& operator=(const Axes& other);
+	
+  /**
+  * Operator overload signifies if this a valid object.
+  */
+  bool operator!() const;
  
   Vector3D x_axis() const;
   Vector3D y_axis() const;

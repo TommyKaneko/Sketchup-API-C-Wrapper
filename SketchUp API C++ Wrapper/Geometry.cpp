@@ -89,11 +89,11 @@ Radians Radians::operator/(const double divider) const {
 
 
 bool Radians::operator==(const Radians rhs) const {
-  return ((*this) - rhs) < EPSILON;
+  return (fabs(static_cast<double>(*this) - static_cast<double>(rhs))) < EPSILON;
 }
 
 bool Radians::operator==(const double rhs) const {
-  return (m_val - rhs) < EPSILON;
+  return (fabs(m_val - rhs)) < EPSILON;
 }
   
 // Comparator TODO
@@ -187,8 +187,8 @@ Vector3D Vector3D::operator/(const double &scalar) const {
 	return Vector3D( x / scalar, y / scalar, z / scalar);
 }
 
-bool Vector3D::operator==(const Vector3D &vector) const {
-	if (x == vector.x && y == vector.y && z == vector.z) {
+bool operator==(const Vector3D &lhs, const Vector3D &rhs) {
+	if (lhs.x == rhs.x && lhs.y == rhs.y && lhs.z == rhs.z) {
   	return true;
   }
   else {
@@ -197,9 +197,9 @@ bool Vector3D::operator==(const Vector3D &vector) const {
 }
 
 
-bool Vector3D::operator!=(const Vector3D &vector) const {
-	if (x != vector.x || y != vector.y || z != vector.z) {
-  	return true;
+bool operator!=(const Vector3D &lhs, const Vector3D &rhs) {
+	if (lhs == rhs) {
+  	return false;
   }
   else {
   	return false;
@@ -311,6 +311,9 @@ Point3D::Point3D(bool invalid):
   z(m_point.z)
 {}
 
+Point3D::Point3D( const Vector3D vector):
+	Point3D(SUPoint3D{vector.x, vector.y, vector.z})
+{}
 
 Point3D& Point3D::operator=(const Point3D &point) {
   if (this == &point)
@@ -344,7 +347,7 @@ Point3D Point3D::operator+(const SUPoint3D &point) const { return (*this) + Poin
 Point3D Point3D::operator-(const Point3D &point) const {
   return Point3D(m_point.x - point.x, m_point.y - point.y, m_point.z - point.z);
 }
-Point3D Point3D::operator-(const Vector3D &vector) const { return (*this) - vector;}
+Point3D Point3D::operator-(const Vector3D &vector) const { return (*this) - static_cast<Point3D>(vector);}
 Point3D Point3D::operator-(const SUPoint3D &point) const  { return (*this) - Point3D(point);}
 
 Point3D Point3D::operator*(const double &scalar) const {
@@ -365,7 +368,25 @@ bool Point3D::operator!() const {
   return false;
 }
 
-  
+bool operator==(const Point3D &lhs, const Point3D &rhs) {
+	if (lhs.x == rhs.x && lhs.y == rhs.y && lhs.z == rhs.z) {
+  	return true;
+  }
+  else {
+  	return false;
+  }
+}
+
+
+bool operator!=(const Point3D &lhs, const Point3D &rhs) {
+	if (lhs == rhs) {
+  	return false;
+  }
+  else {
+  	return false;
+  }
+}
+
   
 /********
 * Plane3D
@@ -379,7 +400,8 @@ Plane3D::Plane3D(SUPlane3D plane):
   a(m_plane.a),
   b(m_plane.b),
   c(m_plane.c),
-  d(m_plane.d)
+  d(m_plane.d),
+  null((m_plane.a == 0.0 && m_plane.b == 0.0 && m_plane.c == 0.0))
 {}
 
 
@@ -404,7 +426,8 @@ Plane3D::Plane3D(const Plane3D &plane):
 
 Plane3D::Plane3D(const Vector3D normal, const Point3D point):
 	Plane3D(SUPlane3D{normal.unit().x, normal.unit().y, normal.unit().z, normal.dot(point)})
-{}
+{
+}
 Plane3D::Plane3D(const Point3D point, const Vector3D normal):
   Plane3D(normal, point)
 {}
@@ -519,6 +542,11 @@ BoundingBox3D::BoundingBox3D():
 	BoundingBox3D(SUBoundingBox3D{Point3D(), Point3D()})
 {}
 
+BoundingBox3D::BoundingBox3D(bool valid):
+	null(!valid),
+	m_bounding_box(SUBoundingBox3D{Point3D(), Point3D()})
+{}
+
 BoundingBox3D::BoundingBox3D(SUBoundingBox3D bounding_box):
 	m_bounding_box(bounding_box)
 {}
@@ -531,11 +559,11 @@ bool BoundingBox3D::operator!() const {
 }
 
 
-Point3D BoundingBox3D::min() {
+Point3D BoundingBox3D::min() const {
 	return Point3D(m_bounding_box.min_point);
 }
 
-Point3D BoundingBox3D::max() {
+Point3D BoundingBox3D::max() const {
 	return Point3D(m_bounding_box.max_point);
 }
 

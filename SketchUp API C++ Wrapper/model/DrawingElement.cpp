@@ -59,8 +59,9 @@ DrawingElement& DrawingElement::operator=(const DrawingElement& other) {
 
 
 BoundingBox3D DrawingElement::bounds() {
-	SUBoundingBox3D box;
-	SUDrawingElementGetBoundingBox(m_drawing_element, &box);
+	SUBoundingBox3D box = SU_INVALID;
+	SU_RESULT res = SUDrawingElementGetBoundingBox(m_drawing_element, &box);
+  assert(res == SU_ERROR_NONE);
   return BoundingBox3D(box);
 }
 
@@ -88,7 +89,8 @@ bool DrawingElement::copy_properties_from(const DrawingElement& element) {
 
 bool DrawingElement::casts_shadows() const {
 	bool cast_shadows_flag;
-	SUDrawingElementGetCastsShadows(m_drawing_element, &cast_shadows_flag);
+	SU_RESULT res = SUDrawingElementGetCastsShadows(m_drawing_element, &cast_shadows_flag);
+  assert(res == SU_ERROR_NONE);
   return cast_shadows_flag;
 }
 
@@ -160,7 +162,8 @@ bool DrawingElement::material(const Material& material) {
 
 bool DrawingElement::receive_shadows() const {
 	bool receives_shadows_flag;
-	SUDrawingElementGetReceivesShadows(m_drawing_element, &receives_shadows_flag);
+	SU_RESULT res = SUDrawingElementGetReceivesShadows(m_drawing_element, &receives_shadows_flag);
+	assert (res == SU_ERROR_NONE);
 	return receives_shadows_flag;
 }
 

@@ -21,6 +21,7 @@
 
 #include "ComponentDefinition.hpp"
 #include "Entities.hpp"
+#include "ComponentInstance.hpp"
 
 namespace CW {
 
@@ -97,6 +98,26 @@ ComponentDefinition& ComponentDefinition::operator=(const ComponentDefinition& o
   this->name(other.name());
   this->behavior(other.behavior());
   return *this;
+}
+
+
+BoundingBox3D ComponentDefinition::bounds() const {
+	// If this definition is empty, then the bounding box returned by SUDrawingElementGetBoundingBox has wild numbers.  So return min 0 and max 0.
+  if (entities().size() == 0) {
+  	return BoundingBox3D(false);
+  }
+  SUBoundingBox3D box = SU_INVALID;
+	SU_RESULT res = SUDrawingElementGetBoundingBox(m_drawing_element, &box);
+  assert(res == SU_ERROR_NONE);
+  return BoundingBox3D(box);
+}
+
+
+ComponentInstance ComponentDefinition::create_instance() const {
+	SUComponentInstanceRef instance = SU_INVALID;
+  SU_RESULT res = SUComponentDefinitionCreateInstance(m_definition, &instance);
+  assert(res == SU_ERROR_NONE);
+  return ComponentInstance(instance, false);
 }
 
 

@@ -33,6 +33,16 @@ Loop::Loop(SULoopRef loop):
 {}
 
 
+Loop::Loop():
+	m_loop(SU_INVALID)
+{}
+
+
+bool Loop::operator!() const {
+	return SUIsInvalid(m_loop);
+}
+
+
 LoopInput Loop::loop_input() const {
 	std::vector<Edge> edges = this->edges();
   return LoopInput (this->edges());
@@ -40,6 +50,7 @@ LoopInput Loop::loop_input() const {
 
 
 std::vector<Edge> Loop::edges() const {
+  assert(!!(*this));
   size_t count = 0;
   SU_RESULT res = SULoopGetNumVertices(m_loop, &count);
   assert(res == SU_ERROR_NONE);
@@ -56,6 +67,7 @@ std::vector<Edge> Loop::edges() const {
 
 
 std::vector<Vertex> Loop::vertices() const {
+  assert(!!(*this));
   size_t count = 0;
   SU_RESULT res = SULoopGetNumVertices(m_loop, &count);
   assert(res == SU_ERROR_NONE);

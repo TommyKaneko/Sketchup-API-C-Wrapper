@@ -152,7 +152,7 @@ Face::~Face() {
 *******************/
 /** Copy assignment operator */
 Face& Face::operator=(const Face& other) {
-  if (m_attached && SUIsValid(m_face)) {
+  if (!m_attached && SUIsValid(m_face)) {
     SU_RESULT res = SUFaceRelease(&m_face);
     assert(res == SU_ERROR_NONE);
   }

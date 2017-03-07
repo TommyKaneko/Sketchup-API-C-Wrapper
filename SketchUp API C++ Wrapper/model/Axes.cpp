@@ -109,6 +109,14 @@ Axes& Axes::operator=(const Axes& other) {
 }
 
 
+bool Axes::operator!() const {
+	if (SUIsInvalid(m_axes)) {
+  	return true;
+  }
+  return false;
+}
+
+
 Vector3D Axes::x_axis() const {
   SUVector3D axis;
   SU_RESULT res = SUAxesGetXAxis(m_axes, &axis);

@@ -39,6 +39,9 @@ Entities::Entities(SUEntitiesRef entities):
 {
 }
 
+Entities::Entities():
+	m_entities(SU_INVALID)
+{}
 
 
 std::vector<Face> Entities::faces() const {
@@ -102,6 +105,28 @@ std::vector<Group> Entities::groups() const {
   	groups.push_back(Group(group_refs[i]));
   }
   return groups;
+}
+
+
+size_t Entities::size() const {
+	size_t total_count = 0;
+  size_t count = 0;
+	SU_RESULT res = SUEntitiesGetNumFaces(m_entities, &count);
+  assert(res == SU_ERROR_NONE);
+  total_count += count;
+  count = 0;
+	res = SUEntitiesGetNumEdges(m_entities, true, &count);
+  assert(res == SU_ERROR_NONE);
+  total_count += count;
+  count = 0;
+	res = SUEntitiesGetNumInstances(m_entities, &count);
+  assert(res == SU_ERROR_NONE);
+  total_count += count;
+  count = 0;
+	res = SUEntitiesGetNumGroups(m_entities, &count);
+  assert(res == SU_ERROR_NONE);
+  total_count += count;
+	return total_count;
 }
 
 
@@ -218,6 +243,13 @@ Edge Entities::add_edge(const Edge& edge) {
 }
 
 
+void Entities::add_instance(ComponentInstance& instance) {
+  SU_RESULT res = SUEntitiesAddInstance(m_entities, instance.ref(), nullptr);
+	assert(res == SU_ERROR_NONE);
+  instance.attached(true);
+}
+
+  
 ComponentInstance Entities::add_instance(const ComponentDefinition& definition, const Transformation& transformation, const String& name){
   SUComponentInstanceRef instance = SU_INVALID;
   SU_RESULT res = SUComponentDefinitionCreateInstance(definition.ref(), &instance);
@@ -285,6 +317,18 @@ Group Entities::add_group() {
 	assert(res == SU_ERROR_NONE);
   return new_group;
 }
+
+
+bool Entities::transform_entities(std::vector<Entity>& elems, const Transformation& transform) {
+	SUTransformation trans_ref = transform.ref();
+	SU_RESULT res = SUEntitiesTransform(m_entities, elems.size(), elems[0], &trans_ref);
+  assert(res == SU_ERROR_NONE || res == SU_ERROR_GENERIC);
+  if (SU_ERROR_GENERIC) {
+  	return false;
+  }
+  return true;
+}
+
 
 
 Entities::operator SUEntitiesRef() {

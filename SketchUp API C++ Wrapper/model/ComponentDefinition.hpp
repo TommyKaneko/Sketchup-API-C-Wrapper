@@ -75,6 +75,17 @@ class ComponentDefinition :public DrawingElement {
   */
   ComponentDefinition& operator=(const ComponentDefinition& other);
   
+  
+  /**
+  * Returns the bounding box of this Component Definition
+  */
+  BoundingBox3D bounds() const;
+  
+  /**
+  * Creates a new ComponentInstance from this ComponetnDefinition.
+  */
+  ComponentInstance create_instance() const;
+  
   /**
   * Gets the entities in the definition.
   */
@@ -110,7 +121,7 @@ class ComponentDefinition :public DrawingElement {
   * Returns the instances of this ComponentDefinition. TODO: Not possible
   */
   //std::vector<ComponentInstance> instances() const;
-  
+
 };
   
 class Behavior {

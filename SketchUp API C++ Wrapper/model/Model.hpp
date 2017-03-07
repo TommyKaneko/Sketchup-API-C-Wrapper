@@ -233,9 +233,9 @@ class Model {
   /*
   * Saves the model in the file path given.
   * @param file_path string path to the file
-  * @return true on success, false on failure
+  * @return SU_RESULT - SU_ERROR_NONE on success. @see SUModelSaveFileToFile for possible return values
   */
-  bool save(const std::string& file_path);
+  SU_RESULT save(const std::string& file_path);
 
   /*
   * Saves the model in the file path given, in the given SU version.
