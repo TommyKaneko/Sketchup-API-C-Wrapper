@@ -6,6 +6,36 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		A2BB13821DDF16DE005714E1 /* Color.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A29CB24B1DCFF8FD004462C6 /* Color.cpp */; };
+		A2BB13831DDF16DE005714E1 /* Geometry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A29CB24D1DCFF8FD004462C6 /* Geometry.cpp */; };
+		A2BB13841DDF16DE005714E1 /* AttributeDictionary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A29CB2501DCFF8FD004462C6 /* AttributeDictionary.cpp */; };
+		A2BB13851DDF16DE005714E1 /* Axes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A29CB2521DCFF8FD004462C6 /* Axes.cpp */; };
+		A2BB13861DDF16DE005714E1 /* ComponentDefinition.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A29CB2541DCFF8FD004462C6 /* ComponentDefinition.cpp */; };
+		A2BB13871DDF16DE005714E1 /* ComponentInstance.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A29CB2561DCFF8FD004462C6 /* ComponentInstance.cpp */; };
+		A2BB13881DDF16DE005714E1 /* Curve.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A29CB2581DCFF8FD004462C6 /* Curve.cpp */; };
+		A2BB13891DDF16DE005714E1 /* DrawingElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A29CB25A1DCFF8FD004462C6 /* DrawingElement.cpp */; };
+		A2BB138A1DDF16DE005714E1 /* Edge.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A29CB25C1DCFF8FD004462C6 /* Edge.cpp */; };
+		A2BB138B1DDF16DE005714E1 /* Entities.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A29CB25E1DCFF8FD004462C6 /* Entities.cpp */; };
+		A2BB138C1DDF16DE005714E1 /* Entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A29CB2601DCFF8FD004462C6 /* Entity.cpp */; };
+		A2BB138D1DDF16DE005714E1 /* Face.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A29CB2621DCFF8FD004462C6 /* Face.cpp */; };
+		A2BB138E1DDF16DE005714E1 /* GeometryInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A29CB2641DCFF8FD004462C6 /* GeometryInput.cpp */; };
+		A2BB138F1DDF16DE005714E1 /* Group.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A29CB2661DCFF8FD004462C6 /* Group.cpp */; };
+		A2BB13901DDF16DE005714E1 /* Layer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A29CB2681DCFF8FD004462C6 /* Layer.cpp */; };
+		A2BB13911DDF16DE005714E1 /* Loop.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A29CB26A1DCFF8FD004462C6 /* Loop.cpp */; };
+		A2BB13921DDF16DE005714E1 /* LoopInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A29CB26C1DCFF8FD004462C6 /* LoopInput.cpp */; };
+		A2BB13931DDF16DE005714E1 /* Material.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A29CB26E1DCFF8FD004462C6 /* Material.cpp */; };
+		A2BB13941DDF16DE005714E1 /* MaterialInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A29CB2701DCFF8FD004462C6 /* MaterialInput.cpp */; };
+		A2BB13951DDF16DE005714E1 /* Model.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A29CB2721DCFF8FD004462C6 /* Model.cpp */; };
+		A2BB13961DDF16DE005714E1 /* TextureWriter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A29CB2741DCFF8FD004462C6 /* TextureWriter.cpp */; };
+		A2BB13971DDF16DE005714E1 /* TypedValue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A29CB2761DCFF8FD004462C6 /* TypedValue.cpp */; };
+		A2BB13981DDF16DE005714E1 /* UVHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A29CB2781DCFF8FD004462C6 /* UVHelper.cpp */; };
+		A2BB13991DDF16DE005714E1 /* Vertex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A29CB27A1DCFF8FD004462C6 /* Vertex.cpp */; };
+		A2BB139A1DDF16DE005714E1 /* String.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A29CB27C1DCFF8FD004462C6 /* String.cpp */; };
+		A2BB139B1DDF16DE005714E1 /* Transformation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A29CB27E1DCFF8FD004462C6 /* Transformation.cpp */; };
+		A2BB13A41DDF186A005714E1 /* SketchUpAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2BB13A31DDF186A005714E1 /* SketchUpAPI.framework */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		A29CB24B1DCFF8FD004462C6 /* Color.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Color.cpp; sourceTree = "<group>"; };
 		A29CB24C1DCFF8FD004462C6 /* Color.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Color.hpp; sourceTree = "<group>"; };
@@ -60,16 +90,29 @@
 		A29CB27E1DCFF8FD004462C6 /* Transformation.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Transformation.cpp; sourceTree = "<group>"; };
 		A29CB27F1DCFF8FD004462C6 /* Transformation.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Transformation.hpp; sourceTree = "<group>"; };
 		A29CB2801DCFF90A004462C6 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		A29CB2811DCFF921004462C6 /* SketchUpAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SketchUpAPI.framework; sourceTree = "<group>"; };
+		A2BB137E1DDF1681005714E1 /* libSketchup-C-API-Wrapper.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = "libSketchup-C-API-Wrapper.dylib"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A2BB13A31DDF186A005714E1 /* SketchUpAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SketchUpAPI.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A2BB137B1DDF1681005714E1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A2BB13A41DDF186A005714E1 /* SketchUpAPI.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		A26449251DCFEA71007F7CF4 = {
 			isa = PBXGroup;
 			children = (
-				A29CB2811DCFF921004462C6 /* SketchUpAPI.framework */,
+				A2BB13A31DDF186A005714E1 /* SketchUpAPI.framework */,
 				A29CB2801DCFF90A004462C6 /* README.md */,
 				A26449301DCFEA71007F7CF4 /* src */,
+				A2BB137E1DDF1681005714E1 /* libSketchup-C-API-Wrapper.dylib */,
 			);
 			sourceTree = "<group>";
 		};
@@ -143,12 +186,47 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		A2BB137C1DDF1681005714E1 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		A2BB137D1DDF1681005714E1 /* Sketchup-C-API-Wrapper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A2BB13811DDF1681005714E1 /* Build configuration list for PBXNativeTarget "Sketchup-C-API-Wrapper" */;
+			buildPhases = (
+				A2BB137A1DDF1681005714E1 /* Sources */,
+				A2BB137B1DDF1681005714E1 /* Frameworks */,
+				A2BB137C1DDF1681005714E1 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Sketchup-C-API-Wrapper";
+			productName = "Sketchup-C-API-Wrapper";
+			productReference = A2BB137E1DDF1681005714E1 /* libSketchup-C-API-Wrapper.dylib */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+/* End PBXNativeTarget section */
+
 /* Begin PBXProject section */
 		A26449261DCFEA71007F7CF4 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = TommyKaneko;
+				TargetAttributes = {
+					A2BB137D1DDF1681005714E1 = {
+						CreatedOnToolsVersion = 7.2.1;
+					};
+				};
 			};
 			buildConfigurationList = A26449291DCFEA71007F7CF4 /* Build configuration list for PBXProject "SketchUp API C++ Wrapper" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -162,9 +240,46 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				A2BB137D1DDF1681005714E1 /* Sketchup-C-API-Wrapper */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A2BB137A1DDF1681005714E1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A2BB13821DDF16DE005714E1 /* Color.cpp in Sources */,
+				A2BB13831DDF16DE005714E1 /* Geometry.cpp in Sources */,
+				A2BB13841DDF16DE005714E1 /* AttributeDictionary.cpp in Sources */,
+				A2BB13851DDF16DE005714E1 /* Axes.cpp in Sources */,
+				A2BB13861DDF16DE005714E1 /* ComponentDefinition.cpp in Sources */,
+				A2BB13871DDF16DE005714E1 /* ComponentInstance.cpp in Sources */,
+				A2BB13881DDF16DE005714E1 /* Curve.cpp in Sources */,
+				A2BB13891DDF16DE005714E1 /* DrawingElement.cpp in Sources */,
+				A2BB138A1DDF16DE005714E1 /* Edge.cpp in Sources */,
+				A2BB138B1DDF16DE005714E1 /* Entities.cpp in Sources */,
+				A2BB138C1DDF16DE005714E1 /* Entity.cpp in Sources */,
+				A2BB138D1DDF16DE005714E1 /* Face.cpp in Sources */,
+				A2BB138E1DDF16DE005714E1 /* GeometryInput.cpp in Sources */,
+				A2BB138F1DDF16DE005714E1 /* Group.cpp in Sources */,
+				A2BB13901DDF16DE005714E1 /* Layer.cpp in Sources */,
+				A2BB13911DDF16DE005714E1 /* Loop.cpp in Sources */,
+				A2BB13921DDF16DE005714E1 /* LoopInput.cpp in Sources */,
+				A2BB13931DDF16DE005714E1 /* Material.cpp in Sources */,
+				A2BB13941DDF16DE005714E1 /* MaterialInput.cpp in Sources */,
+				A2BB13951DDF16DE005714E1 /* Model.cpp in Sources */,
+				A2BB13961DDF16DE005714E1 /* TextureWriter.cpp in Sources */,
+				A2BB13971DDF16DE005714E1 /* TypedValue.cpp in Sources */,
+				A2BB13981DDF16DE005714E1 /* UVHelper.cpp in Sources */,
+				A2BB13991DDF16DE005714E1 /* Vertex.cpp in Sources */,
+				A2BB139A1DDF16DE005714E1 /* String.cpp in Sources */,
+				A2BB139B1DDF16DE005714E1 /* Transformation.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
 		A26449331DCFEA71007F7CF4 /* Debug */ = {
@@ -246,6 +361,34 @@
 			};
 			name = Release;
 		};
+		A2BB137F1DDF1681005714E1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				EXECUTABLE_PREFIX = lib;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		A2BB13801DDF1681005714E1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				EXECUTABLE_PREFIX = lib;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -257,6 +400,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		A2BB13811DDF1681005714E1 /* Build configuration list for PBXNativeTarget "Sketchup-C-API-Wrapper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A2BB137F1DDF1681005714E1 /* Debug */,
+				A2BB13801DDF1681005714E1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

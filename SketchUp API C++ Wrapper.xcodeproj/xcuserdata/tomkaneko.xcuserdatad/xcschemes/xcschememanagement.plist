@@ -9,10 +9,20 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>Sketchup-C-API-Wrapper.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>A264492D1DCFEA71007F7CF4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A2BB137D1DDF1681005714E1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
