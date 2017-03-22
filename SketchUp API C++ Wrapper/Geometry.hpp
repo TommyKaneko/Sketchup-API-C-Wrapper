@@ -147,6 +147,7 @@ class Vector3D {
   Vector3D operator+(const Vector3D &vector) const;
   Vector3D operator+(const Point3D &point) const;
   Vector3D operator+(const SUVector3D &vector) const {return *this + Vector3D(vector);}
+  Vector3D operator-() const;
   Vector3D operator-(const Vector3D &vector) const;
   Vector3D operator-(const SUVector3D &vector) const {return *this - Vector3D(vector);}
   Vector3D operator*(const double &scalar) const;
@@ -316,7 +317,7 @@ class Plane3D {
   Plane3D(const Vector3D normal, const Point3D point);
   Plane3D(const Point3D point, const Vector3D normal);
 
- // Copy constructor
+ 	// Copy constructor
   Plane3D(const Plane3D &plane);
   
   // Overload copy assignment operator
@@ -346,6 +347,11 @@ class Plane3D {
   * Returns line of intersection between two planes
   */
   Line3D intersection(const Plane3D plane2) const;
+  
+  /**
+  * Returns point where a line intersects this plane.
+  */
+  Point3D intersection(const Line3D &line) const;
   
 	double angle_with(const Plane3D plane2) const;
 	double angle(const Plane3D plane2) const { return angle_with(plane2);};
@@ -443,8 +449,8 @@ class Line3D {
   */
   bool operator!() const;
   
-  Point3D intersection(const Line3D &line);
-  Point3D intersection(const Plane3D &plane);
+  Point3D intersection(const Line3D &line) const;
+  Point3D intersection(const Plane3D &plane) const;
   
   
   /**
@@ -463,8 +469,8 @@ class Line3D {
   /**
   * Returns true if the Line or vector given is parallel to this line.
   */
-  bool parallel(const Line3D &line);
-  bool parallel(const Vector3D &vector);
+  bool parallel(const Line3D &line) const;
+  bool parallel(const Vector3D &vector) const;
   
 };
 

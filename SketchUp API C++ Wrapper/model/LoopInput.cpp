@@ -44,12 +44,13 @@ LoopInput::LoopInput():
 {}
 
 
-LoopInput::LoopInput(SULoopInputRef loop_input):
-	m_loop_input(loop_input)
+LoopInput::LoopInput(SULoopInputRef loop_input, bool attached):
+	m_loop_input(loop_input),
+  m_attached(attached)
 {}
 
 
-LoopInput::LoopInput(const std::vector<Edge>& loop_edges,  size_t vertex_index):
+LoopInput::LoopInput(std::vector<Edge> loop_edges,  size_t vertex_index):
 	LoopInput()
 {
 	for (size_t i=0; i < loop_edges.size(); ++i) {
@@ -88,8 +89,10 @@ LoopInput::~LoopInput() {
 ** Public Methods **
 ********************/
 LoopInput& LoopInput::operator=(const LoopInput& other) {
-	// LoopInputRef cannot be copied across at this stage. If it is important, something can be done, but let's see.
+  // There is no easy way to copy a LoopInput object.
   assert(false);
+  // Note that this is a crude copying operation - we are simply creating a reference to the other object.
+  //m_loop_input = other.m_loop_input;
   /**
   size_t vertex_index = 0;
   SULoopInputRef other_loop_input = other.ref();

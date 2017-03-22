@@ -177,6 +177,11 @@ Vector3D::operator Point3D() const { return Point3D(m_vector); }
 Vector3D Vector3D::operator+(const Vector3D &vector) const {
   return Vector3D(m_vector.x + vector.x, m_vector.y + vector.y, m_vector.z + vector.z);
 }
+
+Vector3D Vector3D::operator-() const {
+	return Vector3D(-x, -y, -z);
+}
+
 Vector3D Vector3D::operator-(const Vector3D &vector) const {
   return Vector3D(m_vector.x - vector.x, m_vector.y - vector.y, m_vector.z - vector.z);
 }
@@ -486,6 +491,11 @@ Line3D Plane3D::intersection(const Plane3D plane2) const {
   return Line3D(line_point, line_vector);
 }
 
+Point3D Plane3D::intersection(const Line3D &line) const {
+	return line.intersection(*this);
+}
+
+
 Vector3D Plane3D::normal() const {
 	return Vector3D{a,b,c};
 }
@@ -614,7 +624,7 @@ bool Line3D::operator!() const {
 }
 
 
-Point3D Line3D::intersection(const Line3D &other_line) {
+Point3D Line3D::intersection(const Line3D &other_line) const {
 	// @see http://paulbourke.net/geometry/pointlineplane/
 	std::pair<Point3D, Point3D> close_points = this->closest_points(other_line);
   if (!close_points.first) {
@@ -630,7 +640,7 @@ Point3D Line3D::intersection(const Line3D &other_line) {
 }
 
 
-Point3D Line3D::intersection(const Plane3D &plane) {
+Point3D Line3D::intersection(const Plane3D &plane) const {
 	// @see http://paulbourke.net/geometry/pointlineplane/
 	double u = ((plane.a * this->point.x) + (plane.b * this->point.y) + (plane.c * this->point.z) + plane.d) /
   						(-(plane.a * this->direction.x) - (plane.b * this->direction.y) - (plane.c * this->direction.z));
@@ -697,7 +707,7 @@ bool Line3D::on_line(const Point3D test_point) const {
 /**
 * Returns true if the Line or vector given is parallel to this line.
 */
-bool Line3D::parallel(const Line3D &line) {
+bool Line3D::parallel(const Line3D &line) const {
 	if (line.direction == direction) {
   	return true;
   }
@@ -708,7 +718,7 @@ bool Line3D::parallel(const Line3D &line) {
 }
 
 
-bool Line3D::parallel(const Vector3D &vector) {
+bool Line3D::parallel(const Vector3D &vector) const {
 	Vector3D difference = this->direction.unit() - vector.unit();
   double length = difference.length();
   if (length < EPSILON || (length - 2.0) < EPSILON) {

@@ -52,7 +52,10 @@ TypedValue::TypedValue(const TypedValue& other):
 TypedValue& TypedValue::operator= (const TypedValue& other) {
   switch (other.get_type()) {
   	case SUTypedValueType_Array:
-    	typed_value_array(other.typed_value_array());
+    	{
+      std::vector<TypedValue> other_typed = other.typed_value_array();
+      typed_value_array(other_typed);
+      }
     	break;
     case SUTypedValueType_Bool:
     	bool_value(other.bool_value());
@@ -89,6 +92,7 @@ TypedValue& TypedValue::operator= (const TypedValue& other) {
 			vector_value(other.vector_value());
     	break;
   }
+  return (*this);
 }
 
 

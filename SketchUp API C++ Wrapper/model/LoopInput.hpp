@@ -34,11 +34,26 @@ class Curve;
 class Material;
 class Layer;
 
+/**
+* Struct holds information for an edge that was added to a vertex.
+*/
+struct InputEdgeProperties {
+	bool hidden = false;
+  bool soft = false;
+  bool smooth = false;
+  Material material();
+  Layer layer();
+};
 
 class LoopInput {
 	private:
   SULoopInputRef m_loop_input;
   size_t m_edge_num = 0;
+  bool m_attached;
+  
+  /** Array holds information about the added edges of the vertex.  This is to allow the copying of this object.
+  std::vector<std::pair<size_t, InputEdgeProperties>> m_edge_properties;
+  */
   
   //std::vector<Edge> m_edges;
   //std::vector<Curve> m_curves;
@@ -54,14 +69,14 @@ class LoopInput {
   /**
   * Create LoopInput object from preexisting SULoopInputRef object
   */
-  LoopInput(SULoopInputRef loop_input);
+  LoopInput(SULoopInputRef loop_input, bool attached = false);
   
   /**
   * Create LoopInput object from vector of edges that can form a loop.
   * @param loop_edges - vector of edges from which properties will be copied into the new loop input.
   * @param vertex_index - 0 by default.  This is the first index of the vertex to be added to the loop.  Only when using SUGeometryInputRef object would you use an index higher than 0.
   */
-  LoopInput(const std::vector<Edge>& loop_edges, size_t vertex_index = 0);
+  LoopInput(std::vector<Edge> loop_edges, size_t vertex_index = 0);
 
 	/** Copy constructor */
 	LoopInput(const LoopInput& other);

@@ -45,7 +45,7 @@ bool Loop::operator!() const {
 
 LoopInput Loop::loop_input() const {
 	std::vector<Edge> edges = this->edges();
-  return LoopInput (this->edges());
+  return LoopInput(this->edges());
 }
 
 

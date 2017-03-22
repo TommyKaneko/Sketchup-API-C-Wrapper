@@ -46,7 +46,14 @@ class Transformation {
 	std::array<double, 4> multiply4x1(std::array<double, 4> matrix4_1) const;
   
   public:
+  /**
+  * Construct a Transformation object which would conduct no transformations.
+  */
   Transformation();
+  
+  /**
+  *
+  */
   Transformation(SUTransformation transformation);
   Transformation(Axes axes, Vector3D translation, double scalar);
   Transformation(Vector3D x_axis, Vector3D y_axis, Vector3D z_axis, Vector3D translation, double scalar);  

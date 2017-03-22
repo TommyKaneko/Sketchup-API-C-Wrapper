@@ -32,9 +32,6 @@ DrawingElement::DrawingElement(SUDrawingElementRef drawing_element, bool attache
   Entity(SUDrawingElementToEntity(drawing_element), attached),
 	m_drawing_element(drawing_element)
 {
-	#ifdef DEBUG
-  bool is_valid = SUIsValid(m_drawing_element);
-	#endif
 }
 
 
