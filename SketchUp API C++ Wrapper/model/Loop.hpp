@@ -38,6 +38,20 @@ class Edge;
 class Vertex;
 class Point3D;
 
+/**
+* PointLoopClassify is used to describe where a point sits on a loop object.
+*/
+enum class PointLoopClassify {
+	PointOutside,
+  PointInside,
+  PointOnVertex,
+  PointOnEdge,
+  PointNotOnPlane
+};
+
+/**
+* A face is made up of an outer loop and inner loops.
+*/
 class Loop {
   private:
   SULoopRef m_loop;
@@ -78,6 +92,12 @@ class Loop {
   * Returns the points representing the vertices in the Loop
   */
   std::vector<Point3D> points() const;
+  
+  /**
+  * Determine where on the loop a point lies.  @see PointLoopClassify.
+  * @param point - the Point3D object ot check.
+  */
+  PointLoopClassify classify_point(const Point3D& point) const;
   
   /**
   * Returns the number of edges/vertices in the loop.

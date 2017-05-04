@@ -199,6 +199,22 @@ std::vector<ComponentDefinition> Model::definitions() const {
 }
 
 
+std::vector<ComponentDefinition> Model::group_definitions() const {
+	size_t count = 0;
+	SU_RESULT res = SUModelGetNumGroupDefinitions(m_model, &count);
+  assert(res == SU_ERROR_NONE);
+  SUComponentDefinitionRef defs[count];
+	res = SUModelGetGroupDefinitions(m_model, count, &defs[0], &count);
+  assert(res == SU_ERROR_NONE);
+  std::vector<ComponentDefinition> definitions;
+  definitions.reserve(count);
+  for (size_t i=0; i < count; ++i) {
+  	definitions.push_back(ComponentDefinition(defs[i]));
+  }
+  return definitions;
+}
+
+
 Entities Model::entities() const {
 	SUEntitiesRef entities = SU_INVALID;
 	SU_RESULT res = SUModelGetEntities(m_model, &entities);

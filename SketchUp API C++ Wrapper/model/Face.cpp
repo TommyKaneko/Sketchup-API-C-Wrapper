@@ -46,7 +46,12 @@ SUFaceRef Face::create_face(std::vector<Point3D>& outer_points) {
 
 SUFaceRef Face::create_face(std::vector<Point3D>& outer_points, LoopInput& loop_input) {
 	SUFaceRef face = SU_INVALID;
-  SU_RESULT res = SUFaceCreate(&face, outer_points[0], loop_input);
+  SULoopInputRef loop_input_ref = loop_input.ref();
+  SUPoint3D su_points[outer_points.size()];
+  for (size_t i=0; i < outer_points.size(); i++) {
+    su_points[i] = SUPoint3D(outer_points[i]);
+  }
+  SU_RESULT res = SUFaceCreate(&face, &su_points[0], &loop_input_ref);
   assert(res == SU_ERROR_NONE);
 	return face;
 }

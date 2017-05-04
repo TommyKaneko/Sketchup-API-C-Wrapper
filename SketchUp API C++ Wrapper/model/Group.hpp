@@ -25,7 +25,7 @@
 
 #include <SketchUpAPI/model/group.h>
 
-#include "Entity.hpp"
+#include "ComponentInstance.hpp"
 
 namespace CW {
 
@@ -35,7 +35,7 @@ class Transformation;
 class ComponentDefinition;
 class String;
 
-class Group :public Entity {
+class Group :public ComponentInstance {
 	private:
   SUGroupRef m_group;
   
@@ -44,9 +44,27 @@ class Group :public Entity {
   */
   static SUGroupRef create_group();
 	
+	static SUGroupRef copy_reference(const Group& other);
+
   public:
+  /**
+  * Construct a new, empty Group object.
+  */
   Group();
-  Group(SUGroupRef group);
+  
+  /**
+  * Construct a Group from an existing SUGroupRef object.
+  */
+  Group(SUGroupRef group, bool attached = false);
+    
+	/** Copy constructor */
+  Group(const Group& other);
+  
+	/** Destructor */
+  ~Group();
+
+  /** Copy assignment operator */
+  Group& operator=(const Group& other);
   
   /*
   * The class object can be converted to a SUGroupRef.

@@ -32,7 +32,7 @@
 namespace CW {
 
 class ComponentInstance :public DrawingElement {
-	private:
+	protected:
   SUComponentInstanceRef m_instance;
 	
   /** Creates a copy of the ComponentInstance */
@@ -44,11 +44,16 @@ class ComponentInstance :public DrawingElement {
 	/** Copy constructor */
   ComponentInstance(const ComponentInstance& other);
   
+  /** Copy constructor for derived classes (Group) */
+  ComponentInstance(const ComponentInstance& other, SUComponentInstanceRef instance_ref);
+  
   /** Destructor */
   ~ComponentInstance();
 
   /** Copy assignment operator */
   ComponentInstance& operator=(const ComponentInstance& other);
+  
+
   
   /**
   * Returns the raw SUComponentInstance object.

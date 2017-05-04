@@ -48,6 +48,7 @@ SUMaterialRef Material::copy_reference(const Material& mat) {
 * Constructors / Destructor **
 ****************************/
 Material::Material():
+	Entity(SU_INVALID, false),
 	m_material(SU_INVALID)
 {}
 
@@ -74,7 +75,12 @@ Material& Material::operator=(const Material& other) {
     SU_RESULT res = SUMaterialRelease(&m_material);
     assert(res == SU_ERROR_NONE);
   }
-  if (!other.m_attached) {
+  if (!other) {
+  	m_material = other.m_material;
+    Entity::operator=(other);
+		return *this;
+  }
+  else if (!other.m_attached) {
   	// The other material has not been attached to the model, so copy its properties to a new object
     m_material = create_material();
     m_attached = other.m_attached;

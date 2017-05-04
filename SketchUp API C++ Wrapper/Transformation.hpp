@@ -78,14 +78,14 @@ class Transformation {
   /**
   * Return the inverse Transformation object (see inverse Transformation matrices)
   */
-  Transformation inverse();
+  Transformation inverse() const;
   
   /**
   * Returns the axis of the rigid transformation.
   */
-  Vector3D x_axis();
-  Vector3D y_axis();
-  Vector3D z_axis();
+  Vector3D x_axis() const;
+  Vector3D y_axis() const;
+  Vector3D z_axis() const;
   
   /**
   * Normalise the transformation, so that the bottom row of the 4x4 matrix reads (0,0,0,1)

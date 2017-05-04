@@ -69,11 +69,11 @@ public:
   Radians operator*(const double multiplier) const;
   Radians operator/(const double divider) const;
   
-  bool operator==(const Radians rhs) const;
+  bool operator==(const Radians& rhs) const;
   bool operator==(const double rhs) const;
   
   // TODO: below does not look right
- 	bool closest(const Radians value);
+ 	bool closest(const Radians& value);
 };
 
 class Point3D;
@@ -91,12 +91,12 @@ class Vector3D {
 	protected:
   SUVector3D m_vector;
   const bool null = false; // Invalid flag
-  constexpr static double EPSILON = 0.0005; // Sketchup Tolerance is 1/1000"
 
   public:
   double &x;
   double &y;
   double &z;
+  constexpr static double EPSILON = 0.0005; // Sketchup Tolerance is 1/1000"
   
   Vector3D();
   /**
@@ -118,7 +118,7 @@ class Vector3D {
   /**
   * Allow conversion from Point3D.
   */
-  explicit Vector3D( const Point3D point);
+  explicit Vector3D( const Point3D& point);
   
   /*
   * Cast to SUVector3D object
@@ -179,25 +179,25 @@ class Vector3D {
   /*
   * Returns the angle between this vector and that of another.
   */
-  double angle(const Vector3D vector_b) const;
+  double angle(const Vector3D& vector_b) const;
   
   /**
   * Returns dot product with another vector
   */
-  double dot(const Vector3D vector2) const;
-  double dot(const Point3D point) const;
+  double dot(const Vector3D& vector2) const;
+  double dot(const Point3D& point) const;
   
   /**
   * Returns cross product with another vector
   */
-  Vector3D cross(const Vector3D vector2) const;
+  Vector3D cross(const Vector3D& vector2) const;
 	
   /**
   * Returns a vector rotated about another vector, which is used as the axis.
   * @param angle in radians to rotate.
   * @param vector which will be used as the axis through which it will be rotated.
   */
-	Vector3D rotate_about(double angle, Vector3D axis) const;
+	Vector3D rotate_about(double angle, const Vector3D& axis) const;
   
   /**
   * Returns the vector of the Edge object
@@ -233,13 +233,14 @@ class Point3D {
 
   Point3D();
   Point3D( SUPoint3D su_point);
-  Point3D( SUVector3D su_vector);
+  Point3D( SUVector3D& su_vector);
   Point3D(double x, double y, double z);
+  Point3D(const Point3D& other);
 
 	/**
   * Allow conversion from Vecgtor3D
   */
-  explicit Point3D( const Vector3D vector);
+  explicit Point3D( const Vector3D& vector);
 
   /**
   * Invaid, or NULL Point3D objects can be simulated with this constructor.
@@ -314,8 +315,8 @@ class Plane3D {
   /**
   * Create a plane using a point and a vector.
   */
-  Plane3D(const Vector3D normal, const Point3D point);
-  Plane3D(const Point3D point, const Vector3D normal);
+  Plane3D(const Vector3D& normal, const Point3D& point);
+  Plane3D(const Point3D& point, const Vector3D& normal);
 
  	// Copy constructor
   Plane3D(const Plane3D &plane);
@@ -332,11 +333,14 @@ class Plane3D {
   * Comparative operators
   */
   bool operator!() const;
-	
+
+  friend bool operator==(const Plane3D& lhs, const Plane3D& rhs);
+  friend bool operator!=(const Plane3D& lhs, const Plane3D& rhs);
+  
   /**
   * Checks if geometry is on the plane
   */
-  bool coplanar(const Plane3D test_plane) const;
+  bool coplanar(const Plane3D& test_plane) const;
     
   /**
   * Returns the normal of the plane
@@ -346,20 +350,29 @@ class Plane3D {
   /**
   * Returns line of intersection between two planes
   */
-  Line3D intersection(const Plane3D plane2) const;
+  Line3D intersection(const Plane3D& plane2) const;
   
   /**
   * Returns point where a line intersects this plane.
   */
   Point3D intersection(const Line3D &line) const;
+
+  /**
+  * Returns point where a ray drawn from the given point intersects this plane. Note that this is different from a line, which effectively draws a ray in both directions of the point.
+  * @param start_point - the point from which the ray will be drawn from.
+  * @param direction - vector representing the direction of the ray.
+  * @return point of the intersection, or a null Point3D object if no intersection exists.
+  */
+  Point3D intersection(const Point3D& start_point, const Vector3D& direction) const;
+
   
-	double angle_with(const Plane3D plane2) const;
-	double angle(const Plane3D plane2) const { return angle_with(plane2);};
+	double angle_with(const Plane3D& plane2) const;
+	double angle(const Plane3D& plane2) const { return angle_with(plane2);};
 	
   /**
   * Returns the distance of a point from the plane.  It can be negative as the plane has a front and back side.
   */
-  double distance(const Point3D point) const;
+  double distance(const Point3D& point) const;
   
   /**
   * Returns a plane moved along normal by given amount.
@@ -369,7 +382,7 @@ class Plane3D {
   /**
   * Checks if the plane is parallel with another.
   */
-	bool parallel(const Plane3D plane2) const;
+	bool parallel(const Plane3D& plane2) const;
 
   
   /**
@@ -381,7 +394,7 @@ class Plane3D {
   * Returns SUPlane3D of SUFaceRef object
   */
   static SUPlane3D get_plane(const SUFaceRef &face);
-  
+
 };
 
 class BoundingBox3D {
@@ -451,6 +464,14 @@ class Line3D {
   
   Point3D intersection(const Line3D &line) const;
   Point3D intersection(const Plane3D &plane) const;
+	
+  /**
+  * Returns the intersection between this line and a line segment drawn between two points, given by a point and a vector from that point.
+  * @param point - point representing the start of the line segment.
+  * @param vector - vector representing the direction and length of the line segment from the start point.
+  * @return point3D object, representing the point of intersection.  If there is no intersection between the line and the line segment, a null point3D object will be returned.
+  */
+  Point3D intersection(const Point3D& point, const Vector3D& vector) const;
   
   
   /**
@@ -464,7 +485,7 @@ class Line3D {
   /**
   * Check if point is on line.
   */
-  bool on_line(const Point3D) const;
+  bool on_line(const Point3D& point) const;
   
   /**
   * Returns true if the Line or vector given is parallel to this line.

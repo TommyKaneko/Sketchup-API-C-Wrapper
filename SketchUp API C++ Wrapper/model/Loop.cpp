@@ -92,6 +92,11 @@ std::vector<Point3D> Loop::points() const {
   return points;
 }
 
+PointLoopClassify Loop::classify_point(const Point3D& point) const {
+	// TODO:
+  assert(false);
+}
+
 
 size_t Loop::size() const {
   size_t count = 0;

@@ -55,6 +55,7 @@ LoopInput::LoopInput(std::vector<Edge> loop_edges,  size_t vertex_index):
 {
 	for (size_t i=0; i < loop_edges.size(); ++i) {
   	add_vertex_index(vertex_index);
+    
     set_edge_hidden(i, loop_edges[i].hidden());
     set_edge_soft(i, loop_edges[i].soft());
     set_edge_smooth(i, loop_edges[i].smooth());

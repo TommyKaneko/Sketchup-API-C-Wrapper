@@ -115,7 +115,7 @@ Transformation::operator SUTransformation*() {
 }
 
 
-Transformation Transformation::inverse() {
+Transformation Transformation::inverse() const {
 	assert( m_transformation.values[3] == 0.0 &&
   				m_transformation.values[7] == 0.0 &&
           m_transformation.values[11] == 0.0 &&
@@ -186,9 +186,9 @@ Transformation Transformation::inverse() {
   /**
   * Returns the axis of the rigid transformation.
   */
-  Vector3D x_axis();
-  Vector3D y_axis();
-  Vector3D z_axis();
+  //Vector3D x_axis();
+  //Vector3D y_axis();
+  //Vector3D z_axis();
 
 
 Transformation& Transformation::normalize() {

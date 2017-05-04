@@ -57,6 +57,12 @@ ComponentInstance::ComponentInstance(const ComponentInstance& other):
 {}
 
 
+ComponentInstance::ComponentInstance(const ComponentInstance& other, SUComponentInstanceRef instance_ref):
+	DrawingElement(other, SUComponentInstanceToDrawingElement(instance_ref)),
+  m_instance(instance_ref)
+{}
+
+
 ComponentInstance::~ComponentInstance() {
 	if (!m_attached && SUIsValid(m_instance)) {
   	SU_RESULT res = SUComponentInstanceRelease(&m_instance);

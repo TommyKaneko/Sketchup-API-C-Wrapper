@@ -88,7 +88,7 @@ Radians Radians::operator/(const double divider) const {
 }
 
 
-bool Radians::operator==(const Radians rhs) const {
+bool Radians::operator==(const Radians& rhs) const {
   return (fabs(static_cast<double>(*this) - static_cast<double>(rhs))) < EPSILON;
 }
 
@@ -97,7 +97,7 @@ bool Radians::operator==(const double rhs) const {
 }
   
 // Comparator TODO
-bool Radians::closest(const Radians value) {
+bool Radians::closest(const Radians& value) {
   return Radians(m_val - value);
 }
 
@@ -146,7 +146,7 @@ Vector3D::Vector3D(const Vector3D &vector):
 {}
 
 
-Vector3D::Vector3D( const Point3D point):
+Vector3D::Vector3D(const Point3D& point):
 	Vector3D(SUVector3D{point.x, point.y, point.z})
 {}
 
@@ -228,27 +228,26 @@ Vector3D Vector3D::unit() const {
 	return *this / length();
 }
 
-double Vector3D::angle(const Vector3D vector_b) const {
+double Vector3D::angle(const Vector3D& vector_b) const {
   return acos(unit().dot(vector_b.unit()));
 }
 
-double Vector3D::dot(const Vector3D vector2) const {
+double Vector3D::dot(const Vector3D& vector2) const {
 	return (x * vector2.x) + (y * vector2.y) + (z * vector2.z);
 }
 
-double Vector3D::dot(const Point3D point) const {
+double Vector3D::dot(const Point3D& point) const {
 	return (x * point.x) + (y * point.y) + (z * point.z);
 }
 
 
-Vector3D Vector3D::cross(const Vector3D vector2) const {
+Vector3D Vector3D::cross(const Vector3D& vector2) const {
   return Vector3D{y * vector2.z - z * vector2.y,
 	              z * vector2.x - x * vector2.z,
 	              x * vector2.y - y * vector2.x};
 }
 
-
-Vector3D Vector3D::rotate_about(double angle, Vector3D axis) const {
+Vector3D Vector3D::rotate_about(double angle, const Vector3D& axis) const {
 	// This solution is derived from this page: http://math.stackexchange.com/questions/511370/how-to-rotate-one-vector-about-another
   double b_dot_b = axis.dot(axis);
   Vector3D a_component_b_dir = ((*this).dot(axis) * b_dot_b) * axis;
@@ -299,12 +298,19 @@ Point3D::Point3D( SUPoint3D su_point):
   z(m_point.z)
 {}
 
-Point3D::Point3D( SUVector3D su_vector):
+Point3D::Point3D( SUVector3D& su_vector):
 	Point3D(SUPoint3D{su_vector.x, su_vector.y, su_vector.z})
 {}
 
 Point3D::Point3D(double x, double y, double z):
 	Point3D(SUPoint3D{x, y, z})
+{}
+
+Point3D::Point3D(const Point3D& other):
+	m_point(other.m_point),
+  x(m_point.x),
+  y(m_point.y),
+  z(m_point.z)
 {}
 
 
@@ -316,7 +322,7 @@ Point3D::Point3D(bool invalid):
   z(m_point.z)
 {}
 
-Point3D::Point3D( const Vector3D vector):
+Point3D::Point3D( const Vector3D& vector):
 	Point3D(SUPoint3D{vector.x, vector.y, vector.z})
 {}
 
@@ -324,9 +330,7 @@ Point3D& Point3D::operator=(const Point3D &point) {
   if (this == &point)
     return *this;
   
-  x = point.x;
-  y = point.y;
-  z = point.z;
+  m_point = point.m_point;
   return *this;
 }
 
@@ -374,7 +378,9 @@ bool Point3D::operator!() const {
 }
 
 bool operator==(const Point3D &lhs, const Point3D &rhs) {
-	if (lhs.x == rhs.x && lhs.y == rhs.y && lhs.z == rhs.z) {
+	if (std::abs(lhs.x - rhs.x) < Point3D::EPSILON &&
+  		std::abs(lhs.y - rhs.y) < Point3D::EPSILON &&
+      std::abs(lhs.z - rhs.z) < Point3D::EPSILON) {
   	return true;
   }
   else {
@@ -421,6 +427,7 @@ Plane3D::Plane3D(const SUFaceRef &face):
 
 
 Plane3D::Plane3D(const Plane3D &plane):
+  null(plane.null),
   m_plane(plane.m_plane),
   a(m_plane.a),
   b(m_plane.b),
@@ -429,11 +436,11 @@ Plane3D::Plane3D(const Plane3D &plane):
 {}
 
 
-Plane3D::Plane3D(const Vector3D normal, const Point3D point):
+Plane3D::Plane3D(const Vector3D& normal, const Point3D& point):
 	Plane3D(SUPlane3D{normal.unit().x, normal.unit().y, normal.unit().z, normal.dot(point)})
 {
 }
-Plane3D::Plane3D(const Point3D point, const Vector3D normal):
+Plane3D::Plane3D(const Point3D& point, const Vector3D& normal):
   Plane3D(normal, point)
 {}
 
@@ -467,8 +474,32 @@ bool Plane3D::operator!() const {
   return false;
 }
 
+/**
+* Comparative operators
+*/
+bool operator==(const Plane3D &lhs, const Plane3D &rhs) {
+	if (std::abs(lhs.a - rhs.a) < Plane3D::EPSILON &&
+  		std::abs(lhs.c - rhs.b) < Plane3D::EPSILON &&
+      std::abs(lhs.c - rhs.c) < Plane3D::EPSILON &&
+      std::abs(lhs.d - rhs.d) < Plane3D::EPSILON) {
+  	return true;
+  }
+  else {
+  	return false;
+  }
+}
 
-bool Plane3D::coplanar(const Plane3D test_plane) const {
+bool operator!=(const Plane3D &lhs, const Plane3D &rhs) {
+	if (lhs == rhs) {
+  	return false;
+  }
+  else {
+  	return false;
+  }
+}
+
+
+bool Plane3D::coplanar(const Plane3D& test_plane) const {
 	if (this->parallel(test_plane)) {
   	if ((this->normal() * this->d) == (test_plane.normal() * test_plane.d)) {
     	return true;
@@ -478,7 +509,7 @@ bool Plane3D::coplanar(const Plane3D test_plane) const {
 }
 
 
-Line3D Plane3D::intersection(const Plane3D plane2) const {
+Line3D Plane3D::intersection(const Plane3D& plane2) const {
   const Vector3D line_vector = (*this).normal().cross(plane2.normal());
   const double determinant = pow(line_vector.length(), 2);
   
@@ -496,11 +527,35 @@ Point3D Plane3D::intersection(const Line3D &line) const {
 }
 
 
+Point3D Plane3D::intersection(const Point3D& start_point, const Vector3D& direction) const {
+	// First check that an intersection exists, by checking if the ray is pointing towards the plane
+  Vector3D unit_direction = direction.unit();
+  double combined_length = Vector3D(this->normal() + unit_direction).length();
+  double distance_from_plane = this->distance(start_point);
+  if (combined_length > 1.0) {
+  	if (distance_from_plane > EPSILON) {
+    	return Point3D(false);
+    }
+    else {
+    	return this->intersection(Line3D(start_point, unit_direction));
+    }
+  }
+  else {
+  	if (distance_from_plane < -EPSILON) {
+    	return Point3D(false);
+    }
+    else {
+    	return this->intersection(Line3D(start_point, unit_direction));
+    }
+  }
+}
+
+
 Vector3D Plane3D::normal() const {
 	return Vector3D{a,b,c};
 }
 
-double Plane3D::distance(const Point3D point) const {
+double Plane3D::distance(const Point3D& point) const {
 	return normal().dot(point) - d;
 }
 
@@ -509,7 +564,7 @@ Plane3D Plane3D::offset(double offset_by) const {
 }
 
 
-bool Plane3D::parallel(const Plane3D plane2) const {
+bool Plane3D::parallel(const Plane3D& plane2) const {
 	// The following assumes that the plane normals are unit vectors.
   if (this->normal() == plane2.normal() || this->normal() == (plane2.normal() * -1)) {
   	return true;
@@ -525,7 +580,7 @@ Plane3D& Plane3D::reverse(){
   return (*this);
 }
 
-double Plane3D::angle_with(const Plane3D plane2) const {
+double Plane3D::angle_with(const Plane3D& plane2) const {
 	// Solution taken form this: https://www.youtube.com/watch?v=C6ElQdRbHaE
   return acos(std::abs(normal().dot(plane2.normal())));
 }
@@ -689,7 +744,7 @@ std::pair<Point3D, Point3D> Line3D::closest_points(const Line3D &other_line) con
 }
 
 
-bool Line3D::on_line(const Point3D test_point) const {
+bool Line3D::on_line(const Point3D& test_point) const {
 	// Get the factor with which to multiply the x value, and see if it is the same for y and z values too.
   double factor = (test_point.x - this->point.x) / this->direction.x;
   double y_test = this->point.y + (this->direction.y * factor);

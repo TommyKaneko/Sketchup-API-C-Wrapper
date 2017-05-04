@@ -96,13 +96,16 @@ std::vector<Group> Entities::groups() const {
 	size_t count = 0;
 	SU_RESULT res = SUEntitiesGetNumGroups(m_entities, &count);
   assert(res == SU_ERROR_NONE);
-  SUGroupRef group_refs[count];
+  if (count == 0) {
+    return std::vector<Group>(0);
+  }
+  std::vector<SUGroupRef> group_refs(count);
 	res = SUEntitiesGetGroups(m_entities, count, &group_refs[0], &count);
   assert(res == SU_ERROR_NONE);
   std::vector<Group> groups;
   groups.reserve(count);
-  for (size_t i=0; i < count; ++i) {
-  	groups.push_back(Group(group_refs[i]));
+  for (size_t i=0; i < group_refs.size(); ++i) {
+  	groups.push_back(Group(group_refs[i], true));
   }
   return groups;
 }

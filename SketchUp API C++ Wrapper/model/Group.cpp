@@ -24,13 +24,16 @@
 
 #include "String.hpp"
 #include "ComponentDefinition.hpp"
+#include "ComponentInstance.hpp"
 #include "Entities.hpp"
 #include "Transformation.hpp"
 
 
 namespace CW {
 
-
+/**************************
+* Private static methods **
+***************************/
 SUGroupRef Group::create_group() {
 	SUGroupRef group_ref = SU_INVALID;
   SU_RESULT res = SUGroupCreate(&group_ref);
@@ -38,16 +41,48 @@ SUGroupRef Group::create_group() {
   return group_ref;
 }
 
+SUGroupRef Group::copy_reference(const Group& other) {
+	if (other.m_attached) {
+  	return other.m_group;
+  }
+  // The other group has not been attached to the model, so copy its properties to a new object
+  Group new_group;
+  new_group.transformation(other.transformation());
+  new_group.name(other.name());
+  new_group.entities().add(other.entities());
+  return new_group.ref();
+}
 
 Group::Group():
-	Group(create_group())
+	Group(create_group(), false)
 {}
 
 
-Group::Group(SUGroupRef group):
-	m_group(group),
-  Entity(SUGroupToEntity(group))
+Group::Group(SUGroupRef group, bool attached):
+  ComponentInstance(SUGroupToComponentInstance(group), attached),
+	m_group(group)
 {}
+
+/** Copy constructor */
+Group::Group(const Group& other):
+	ComponentInstance(other, SUGroupToComponentInstance(copy_reference(other))),
+  m_group(SUGroupFromComponentInstance(m_instance))
+{}
+
+
+Group::~Group() {
+	if (!m_attached && SUIsValid(m_group)) {
+  }
+}
+
+
+Group& Group::operator=(const Group& other) {
+  // SUGroupRef does not have a release function, so we rely on the component instance to do that for us.
+  ComponentInstance::operator=(other);
+  m_group = SUGroupFromComponentInstance(m_instance);
+  // Groups have nothing else to copy.
+  return *this;
+}
 
 
 Group::operator SUGroupRef() const {

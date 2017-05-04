@@ -22,6 +22,7 @@
 #include "ComponentDefinition.hpp"
 #include "Entities.hpp"
 #include "ComponentInstance.hpp"
+#include "Group.hpp"
 
 namespace CW {
 
@@ -127,6 +128,17 @@ ComponentInstance ComponentDefinition::create_instance() const {
   assert(res == SU_ERROR_NONE);
   return ComponentInstance(instance, false);
 }
+
+/*
+Group ComponentDefinition::create_group() const {
+	assert(this->is_group());
+	SUComponentInstanceRef instance = SU_INVALID;
+  SU_RESULT res = SUComponentDefinitionCreateInstance(m_definition, &instance);
+  assert(res == SU_ERROR_NONE);
+  SUGroupRef group = SUGroupFromComponentInstance(instance);
+  return Group(group, false);
+}
+*/
 
 
 Entities ComponentDefinition::entities() const {

@@ -32,6 +32,7 @@ namespace CW {
 // Forward declarations:
 class Entities;
 class ComponentInstance;
+class Group;
 class Behavior;
 class String;
 
@@ -83,9 +84,16 @@ class ComponentDefinition :public DrawingElement {
   BoundingBox3D bounds() const;
   
   /**
-  * Creates a new ComponentInstance from this ComponetnDefinition.
+  * Creates a new ComponentInstance from this ComponentDefinition.
   */
   ComponentInstance create_instance() const;
+
+  /**
+  * Creates a new Group from this ComponentDefinition. If the definition is not a Group definition, the method will fail. TODO: requires testing
+  *
+  * This method is not possible to implement with the current API (2017)
+  */
+  //Group create_group() const;
   
   /**
   * Gets the entities in the definition.

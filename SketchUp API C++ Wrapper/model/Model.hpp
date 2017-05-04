@@ -147,6 +147,12 @@ class Model {
   * @return definitions vector array of definitions.
   */
   std::vector<ComponentDefinition> definitions() const;
+
+	/*
+  * Returns the list of Group ComponentDefinitions in this model
+  * @return definitions vector array of definitions.
+  */
+  std::vector<ComponentDefinition> group_definitions() const;
   
   /*
   * Returns the Entities object for this model.

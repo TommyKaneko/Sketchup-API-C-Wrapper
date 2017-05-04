@@ -56,7 +56,10 @@ Entity::~Entity() {
 ********************/
 Entity& Entity::operator=(const Entity& other) {
   m_attached = other.m_attached;
-  if (!other.m_attached && SUIsValid(other.m_entity)) {
+  if (SUIsInvalid(other.m_entity)) {
+ 		m_entity = other.m_entity;
+  }
+  else if (!other.m_attached && SUIsValid(other.m_entity)) {
     this->copy_attributes_from(other);
   }
   return (*this);
