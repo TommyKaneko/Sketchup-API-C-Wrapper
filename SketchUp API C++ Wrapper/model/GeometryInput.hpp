@@ -49,7 +49,9 @@ SU_RESULT result = entities.fill(geom_input); // the geometry must be output int
 
 */
 class GeometryInput {
-	private:
+	friend class Entities;
+  
+  private:
   SUGeometryInputRef m_geometry_input;
 
   /**

@@ -46,7 +46,10 @@ struct InputEdgeProperties {
 };
 
 class LoopInput {
-	private:
+	friend class Face;
+	friend class GeometryInput;
+  
+  private:
   SULoopInputRef m_loop_input;
   size_t m_edge_num = 0;
   bool m_attached;

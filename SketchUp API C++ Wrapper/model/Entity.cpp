@@ -31,7 +31,7 @@ namespace CW {
 *******************************/
 Entity::Entity():
 	m_entity(SU_INVALID),
-  m_attached(true)
+  m_attached(false)
 {}
 
 
@@ -55,11 +55,11 @@ Entity::~Entity() {
 ** Public Methods **
 ********************/
 Entity& Entity::operator=(const Entity& other) {
-  m_attached = other.m_attached;
+	m_attached = other.m_attached;
   if (SUIsInvalid(other.m_entity)) {
  		m_entity = other.m_entity;
   }
-  else if (!other.m_attached && SUIsValid(other.m_entity)) {
+  else if (!other.m_attached) {
     this->copy_attributes_from(other);
   }
   return (*this);
@@ -74,6 +74,12 @@ Entity::operator SUEntityRef() const {
 Entity::operator SUEntityRef*() {
 	return &m_entity;
 }
+
+
+bool Entity::operator!() const {
+	return SUIsInvalid(m_entity);
+}
+
 
 
 void Entity::attached(bool attach) {

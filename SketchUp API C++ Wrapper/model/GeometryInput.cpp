@@ -25,6 +25,7 @@
 
 #include <SketchupAPI/sketchup_info.h>
 
+#include "Initialize.hpp"
 #include "Entities.hpp"
 #include "Vertex.hpp"
 #include "Loop.hpp"
@@ -138,6 +139,7 @@ std::vector<size_t> GeometryInput::add_vertices(std::vector<Point3D> vertices) {
 */
 
 size_t GeometryInput::add_face(const Face &face) {
+  assert(!!face);
   SULoopInputRef loop_input = SU_INVALID;
 	SU_RESULT res =  SULoopInputCreate(&loop_input);
   assert(res == SU_ERROR_NONE);
@@ -200,8 +202,13 @@ size_t GeometryInput::add_face(const Face &face) {
   }
   // TODO: deallocate LoopInputRef?  It doesn't FEEL necessary because it has been added to the Geometry Input object. Needs testing.
   // Add layer
-  res = SUGeometryInputFaceSetLayer(m_geometry_input, added_face_index, face.layer().ref());
-	assert(res == SU_ERROR_NONE);
+  // TODO: there are problems with releasing a model that gets a layer from another model.  The following code causes a EXEC_BAD_ACCESS error when calling SUModelRelease, during CLayerDestroy process.
+  /*
+  Layer face_layer = face.layer();
+  if (!!face_layer) {
+    res = SUGeometryInputFaceSetLayer(m_geometry_input, added_face_index, face_layer.ref());
+    assert(res == SU_ERROR_NONE);
+  }
   // Set Materials TODO: not done quite right here, I don't think... uv coords are not set.
   SUMaterialInput material = MaterialInput(face.material()).ref();
   res = SUGeometryInputFaceSetFrontMaterial(m_geometry_input, added_face_index, &material);
@@ -209,6 +216,7 @@ size_t GeometryInput::add_face(const Face &face) {
   SUMaterialInput back_material = MaterialInput(face.back_material()).ref();
   res = SUGeometryInputFaceSetBackMaterial(m_geometry_input, added_face_index, &back_material);
 	assert(res == SU_ERROR_NONE);
+  */
   // There are further properties that need to be added, such as attributes, and these must be added after the entities::fill() operation.
   m_faces.push_back(std::pair<size_t, Face> (added_face_index, face));
   ++m_num_faces;
@@ -217,7 +225,7 @@ size_t GeometryInput::add_face(const Face &face) {
 
 
 size_t GeometryInput::add_faces(const std::vector<Face>& faces) {
-	size_t index;
+  size_t index = m_num_faces;
   for (size_t i=0; i < faces.size(); ++i) {
   	index = add_face(faces[i]);
   }
@@ -226,17 +234,11 @@ size_t GeometryInput::add_faces(const std::vector<Face>& faces) {
 
 
 size_t GeometryInput::add_edge(const Edge &edge) {
-  // TODO: SUGeometryInputAddEdge only works since 2016.  So skip this for now.
-  return 0;
-  // Edges can only be added since SU2017
-  /*
-  size_t major;
-  size_t minor;
-  SUGetAPIVersion(&major, &minor);
-  if (major < 17) {
+  assert(!!edge);
+  if (SU_API_VERSION_MAJOR < 5) {
+    // Edges can only be added since SU2017
     return 0;
   }
-  */
   size_t start_vertex_index = m_vertex_index;
   SUPoint3D start_point = edge.start().position();
   SU_RESULT res = SUGeometryInputAddVertex(m_geometry_input, &start_point);
@@ -275,7 +277,7 @@ size_t GeometryInput::add_edge(const Edge &edge) {
 
 
 size_t GeometryInput::add_edges(const std::vector<Edge>& edges) {
-	size_t index;
+	size_t index = m_num_edges;
   for (size_t i=0; i < edges.size(); ++i) {
   	index = add_edge(edges[i]);
   }

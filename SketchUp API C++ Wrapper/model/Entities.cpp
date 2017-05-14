@@ -165,7 +165,7 @@ SU_RESULT Entities::fill(GeometryInput &geom_input) {
   SU_RESULT res = SUEntitiesGetNumFaces(m_entities, &num_faces_before);
   assert(res == SU_ERROR_NONE);
   
-  SU_RESULT fill_res = SUEntitiesFill(m_entities, geom_input.ref(), true);
+  SU_RESULT fill_res = SUEntitiesFill(m_entities, geom_input.m_geometry_input, true);
   assert(fill_res == SU_ERROR_NONE);
   
   // Now add other data that SUEntitiesFill cannot add to the entities.
@@ -230,10 +230,11 @@ std::vector<Edge> Entities::add_edges(std::vector<Edge>& edges) {
 }
 
 
-Edge Entities::add_edge(const Edge& edge) {
+Edge Entities::add_edge(Edge& edge) {
 	SUEdgeRef edge_ref = edge.ref();
   SU_RESULT res = SUEntitiesAddEdges(m_entities, 1, &edge_ref);
   assert(res == SU_ERROR_NONE);
+  edge.attached(true);
   return edge;
 }
 
@@ -260,7 +261,7 @@ ComponentInstance Entities::add_instance(const ComponentDefinition& definition, 
     res = SUEntitiesAddInstance(m_entities, instance, &name_ref);
   }
 	assert(res == SU_ERROR_NONE);
-  return ComponentInstance(instance);
+  return ComponentInstance(instance, true);
 }
 
 

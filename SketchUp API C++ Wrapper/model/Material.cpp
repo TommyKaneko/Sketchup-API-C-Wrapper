@@ -119,7 +119,7 @@ Material::operator SUMaterialRef*() {
 }
 
 bool Material::operator!() const {
-  if (SUIsValid(m_material)) {
+  if (SUIsInvalid(m_material)) {
   	return true;
   }
   return false;

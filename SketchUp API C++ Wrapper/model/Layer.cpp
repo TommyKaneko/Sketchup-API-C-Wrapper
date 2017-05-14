@@ -36,7 +36,7 @@ SULayerRef Layer::create_layer() {
 }
 
 SULayerRef Layer::copy_reference(const Layer& other) {
-	if (other.m_attached) {
+	if (other.m_attached || SUIsInvalid(other.m_layer)) {
   	return other.m_layer;
   }
 	SULayerRef new_layer = create_layer();
@@ -47,8 +47,8 @@ SULayerRef Layer::copy_reference(const Layer& other) {
 ** Constructors / Destructor **
 *******************************/
 Layer::Layer():
-  Entity(SULayerToEntity(create_layer()), false),
-  m_layer(SULayerFromEntity(m_entity))
+  Entity(SU_INVALID, false),
+  m_layer(SU_INVALID)
 {}
 
 
@@ -59,7 +59,7 @@ Layer::Layer(SULayerRef layer_ref, bool attached):
 
 
 Layer::Layer(const Layer& other):
-	Entity(SULayerToEntity(copy_reference(other))),
+	Entity(SULayerToEntity(copy_reference(other)), other.m_attached),
   m_layer(SULayerFromEntity(m_entity))
 {
 	if (!other.m_attached && SUIsValid(other.m_layer)) {
@@ -88,8 +88,9 @@ Layer& Layer::operator=(const Layer& other) {
   m_layer = copy_reference(other);
   m_entity = SULayerToEntity(m_layer);
   Entity::operator=(other);
-  if (!other.m_attached) {
-    this->name(other.name());
+	if (!other.m_attached && SUIsValid(other.m_layer)) {
+		this->name(other.name());
+    // TODO: Set layer material
   }
   return (*this);
 }

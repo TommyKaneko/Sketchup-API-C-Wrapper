@@ -73,6 +73,11 @@ class Entity {
   */
   operator SUEntityRef() const;
   operator SUEntityRef*();
+  
+  /**
+  * Returns true if this entity is not valid.
+  */
+  bool operator!() const;
 
   /**
   * Function lets the object know that it has been attached to a model.  This is important as it will let the object know that it does not need to "release" the object.

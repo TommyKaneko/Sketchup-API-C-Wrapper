@@ -14,6 +14,23 @@ extern size_t SU_VERSION_MAJOR = 15;
 extern size_t SU_VERSION_MINOR = 0;
 extern size_t SU_VERSION_BUILD = 0;
 
+extern size_t SU_API_VERSION_MAJOR = 1;
+extern size_t SU_API_VERSION_MINOR = 0;
+
+void initialize() {
+  SUInitialize();
+  set_api_version();
+}
+
+
+void terminate() {
+  SUTerminate();
+}
+
+
+void set_api_version() {
+  SUGetAPIVersion(&SU_API_VERSION_MAJOR, &SU_API_VERSION_MINOR);
+}
 
 size_t get_api_version_major() {
   size_t major;

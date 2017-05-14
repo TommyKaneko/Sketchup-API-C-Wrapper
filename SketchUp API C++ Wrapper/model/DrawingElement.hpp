@@ -115,7 +115,7 @@ class DrawingElement :public Entity {
   * Sets the Layer for the drawing element
   * @param Layer object
   */
-  bool layer(const Layer& layer);
+  bool layer(Layer& layer);
 
   /*
   * Retrieves the Material object of the drawing element.

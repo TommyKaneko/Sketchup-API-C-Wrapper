@@ -60,6 +60,7 @@ Vertex::~Vertex() {
 Vertex& Vertex::operator=(const Vertex& other) {
 	// Simply assign the other vertex to this object.
 	m_vertex = other.m_vertex;
+  m_entity = SUVertexToEntity(m_vertex);
   Entity::operator=(other);
   return (*this);
 }

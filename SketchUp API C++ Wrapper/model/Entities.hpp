@@ -84,7 +84,7 @@ class Entities {
   * @param vector of Face objects from CW
 	*/
   std::vector<Face> add_faces(std::vector<Face>& faces);
-  Face add_face(const Face& face);
+  Face add_face(Face& face);
 
   /*
   * Creates edges in the Entities object.
@@ -93,7 +93,7 @@ class Entities {
   * @param vector of Edge objects to add
 	*/
   std::vector<Edge> add_edges(std::vector<Edge>& edges);
-  Edge add_edge(const Edge& edge);
+  Edge add_edge(Edge& edge);
 
   /*
   * Creates a ComponentInstance in the Entities object.

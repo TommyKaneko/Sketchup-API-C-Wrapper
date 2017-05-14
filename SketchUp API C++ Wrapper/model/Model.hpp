@@ -52,7 +52,7 @@ class Model {
   
   public:
   Model();
-  Model(SUModelRef model_ref, bool release_on_destroy = false);
+  Model(SUModelRef model_ref, bool release_on_destroy = true);
   Model(std::string file_path);
 	
   /** Copy Constructor **/

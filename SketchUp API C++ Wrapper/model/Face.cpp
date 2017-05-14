@@ -52,7 +52,11 @@ SUFaceRef Face::create_face(std::vector<Point3D>& outer_points, LoopInput& loop_
     su_points[i] = SUPoint3D(outer_points[i]);
   }
   SU_RESULT res = SUFaceCreate(&face, &su_points[0], &loop_input_ref);
-  assert(res == SU_ERROR_NONE);
+  if (res != SU_ERROR_NONE) {
+  	// The points cannot be made into a face: either the points do not lie in a plane, or is somehow problematic.
+    return SU_INVALID;
+  }
+  loop_input.m_attached = true;
 	return face;
 }
 
@@ -76,7 +80,7 @@ SUFaceRef Face::create_face(std::vector<Point3D> outer_loop, std::vector<std::ve
 
 
 SUFaceRef Face::copy_reference(const Face& other) {
-	if (other.m_attached) {
+	if (other.m_attached || !other) {
   	return other.m_face;
   }
   // The other face has not been attached to the model, so copy its properties to a new object
@@ -91,21 +95,18 @@ SUFaceRef Face::copy_reference(const Face& other) {
 * Constructors / Destructor **
 ******************************/
 Face::Face():
-	DrawingElement(SU_INVALID, true),
+	DrawingElement(SU_INVALID, false),
 	m_face(SU_INVALID)
 {}
 
 
 Face::Face(std::vector<Point3D>& outer_loop):
 	Face(create_face(outer_loop), false)
-{
-	
-}
+{}
 
 Face::Face(std::vector<Point3D>& outer_loop, LoopInput& loop_input):
 	Face(create_face(outer_loop, loop_input), false)
-{
-}
+{}
 /*
 Face::Face(std::vector<Point3D> outer_loop, std::vector<std::vector<Point3D>> inner_loops):
 	Face(create_face(outer_loop, inner_loops), true)
@@ -206,7 +207,7 @@ Face::operator SUFaceRef() const {	return m_face;}
 Face::operator SUFaceRef*() {	return &m_face;}
 
 bool Face::operator!() const {
-	if (SUIsInvalid(m_face)) {
+	if (SUIsInvalid(this->m_face)) {
   	return true;
   }
   return false;

@@ -21,7 +21,9 @@
 #include "LoopInput.hpp"
 
 #include <cassert>
+#include <iostream>
 
+#include "Initialize.hpp"
 #include "Edge.hpp"
 #include "Curve.hpp"
 #include "GeometryInput.hpp"
@@ -55,17 +57,18 @@ LoopInput::LoopInput(std::vector<Edge> loop_edges,  size_t vertex_index):
 {
 	for (size_t i=0; i < loop_edges.size(); ++i) {
   	add_vertex_index(vertex_index);
-    
-    set_edge_hidden(i, loop_edges[i].hidden());
-    set_edge_soft(i, loop_edges[i].soft());
-    set_edge_smooth(i, loop_edges[i].smooth());
-    Material edge_material = loop_edges[i].material();
-    if (!!edge_material) {
-    	set_edge_material(i, edge_material);
-    }
-    Layer edge_layer = loop_edges[i].layer();
-    if (!!edge_layer) {
-    	set_edge_layer(i, edge_layer);
+    if (SU_API_VERSION_MAJOR >= 5) {
+      set_edge_hidden(i, loop_edges[i].hidden());
+      set_edge_soft(i, loop_edges[i].soft());
+      set_edge_smooth(i, loop_edges[i].smooth());
+      Material edge_material = loop_edges[i].material();
+      if (!!edge_material) {
+        set_edge_material(i, edge_material);
+      }
+      Layer edge_layer = loop_edges[i].layer();
+      if (!!edge_layer) {
+        set_edge_layer(i, edge_layer);
+      }
     }
     ++vertex_index;
   }
@@ -81,8 +84,9 @@ LoopInput::LoopInput(const LoopInput& other):
 }
 
 LoopInput::~LoopInput() {
-	if (SUIsValid(m_loop_input)) {
-  	SULoopInputRelease(&m_loop_input);
+	if (!m_attached && SUIsValid(m_loop_input)) {
+  	SU_RESULT res = SULoopInputRelease(&m_loop_input);
+    assert(res == SU_ERROR_NONE);
   }
 }
 

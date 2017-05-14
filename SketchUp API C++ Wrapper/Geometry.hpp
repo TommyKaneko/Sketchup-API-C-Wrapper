@@ -231,23 +231,50 @@ class Point3D {
   double &y;
   double &z;
 
-  Point3D();
-  Point3D( SUPoint3D su_point);
-  Point3D( SUVector3D& su_vector);
-  Point3D(double x, double y, double z);
-  Point3D(const Point3D& other);
-
-	/**
-  * Allow conversion from Vecgtor3D
-  */
-  explicit Point3D( const Vector3D& vector);
-
   /**
   * Invaid, or NULL Point3D objects can be simulated with this constructor.
   */
-  Point3D(bool invalid);
+  Point3D();
   
-  // Copy assignment operator
+  /**
+  * Constructs a NULL object, or a point with zero values as coordinates.
+  * @param valid - true for an object with zero values, or false for a null object.
+  */
+  Point3D(bool valid);
+	
+  /**
+  * Constructs a Point3D object from a SUPoint3D object.
+  * @param su_point - SUPoint3D object to be wrapped in this object.
+  */
+  Point3D(SUPoint3D su_point);
+  
+  /**
+  * Constructs a Point3D object from a SUVector3D object.
+  * @param su_vector - SUVector3D object to be converted to this object.
+  */
+  Point3D(SUVector3D& su_vector);
+  
+  /**
+  * Constructs a Point3D object from given x y z coordinates.
+  * @param x - the X coordinate of the point.
+  * @param y - the Y coordinate of the point.
+  * @param z - the Z coordinate of the point.
+  */
+  Point3D(double x, double y, double z);
+  
+  /**
+  * Copy Constructor
+  */
+  Point3D(const Point3D& other);
+
+	/**
+  * Allows conversion from Vecgtor3D
+  */
+  explicit Point3D( const Vector3D& vector);
+  
+  /**
+  * Copy assignment operator
+  */
   Point3D &operator=(const Point3D &vector);
 
   /*

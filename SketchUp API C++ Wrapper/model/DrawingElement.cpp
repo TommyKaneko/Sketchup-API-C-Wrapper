@@ -51,6 +51,8 @@ DrawingElement& DrawingElement::operator=(const DrawingElement& other) {
   if (!other.m_attached && SUIsValid(other.m_drawing_element)) {
     this->copy_attributes_from(other);
   }
+  m_entity = SUDrawingElementToEntity(m_drawing_element);
+  Entity::operator=(other);
   return (*this);
 }
 
@@ -73,19 +75,20 @@ BoundingBox3D DrawingElement::bounds() {
 
 
 bool DrawingElement::copy_properties_from(const DrawingElement& element) {
-  bool success = casts_shadows(element.casts_shadows());
+  bool success = this->casts_shadows(element.casts_shadows());
   if (!success)
   	return false;
-  success = hidden(element.hidden());
+  success = this->hidden(element.hidden());
   if (!success)
   	return false;
-  success = receive_shadows(element.receive_shadows());
+  success = this->receive_shadows(element.receive_shadows());
   if (!success)
   	return false;
-  success = layer(element.layer());
+  Layer elem_layer = element.layer();
+  success = this->layer(elem_layer);
   if (!success)
   	return false;
-  success = material(element.material());
+  success = this->material(element.material());
   if (!success)
   	return false;
   
@@ -129,7 +132,7 @@ bool DrawingElement::hidden(bool hidden) {
 Layer DrawingElement::layer() const {
 	SULayerRef layer_ref = SU_INVALID;
 	SU_RESULT res = SUDrawingElementGetLayer(m_drawing_element, &layer_ref);
-  if (res == SU_ERROR_NULL_POINTER_OUTPUT) {
+  if (res == SU_ERROR_NULL_POINTER_OUTPUT || res == SU_ERROR_NO_DATA) {
   	return Layer();
   }
   assert(res == SU_ERROR_NONE);
@@ -137,10 +140,11 @@ Layer DrawingElement::layer() const {
 }
 
 
-bool DrawingElement::layer(const Layer& layer){
+bool DrawingElement::layer(Layer& layer){
 	SU_RESULT res = SUDrawingElementSetLayer(m_drawing_element, layer);
   if (res == SU_ERROR_NONE) {
-  	return true;
+  	layer.attached(true);
+    return true;
   }
   return false;
 }

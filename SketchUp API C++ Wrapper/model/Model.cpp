@@ -337,7 +337,8 @@ size_t Model::num_faces() const {
 
 
 SU_RESULT Model::save(const std::string& file_path) {
-  SU_RESULT res = SUModelSaveToFile(m_model, file_path.c_str());
+  const char * c_string = file_path.c_str();
+  SU_RESULT res = SUModelSaveToFile(m_model, c_string);
   return res;
 }
 

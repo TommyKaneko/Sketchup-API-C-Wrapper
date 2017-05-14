@@ -285,7 +285,12 @@ SUVector3D Vector3D::get_vector(const SUEdgeRef &su_edge) {
 * Point3D
 *********/
 Point3D::Point3D():
-	m_point(),
+	Point3D(false)
+{}
+
+Point3D::Point3D(bool valid):
+  null(!valid),
+  m_point(SUPoint3D{0.0,0.0,0.0}),
   x(m_point.x),
   y(m_point.y),
   z(m_point.z)
@@ -313,14 +318,6 @@ Point3D::Point3D(const Point3D& other):
   z(m_point.z)
 {}
 
-
-Point3D::Point3D(bool invalid):
-  null(true),
-  m_point(SUPoint3D{0.0,0.0,0.0}),
-  x(m_point.x),
-  y(m_point.y),
-  z(m_point.z)
-{}
 
 Point3D::Point3D( const Vector3D& vector):
 	Point3D(SUPoint3D{vector.x, vector.y, vector.z})
@@ -697,12 +694,13 @@ Point3D Line3D::intersection(const Line3D &other_line) const {
 
 Point3D Line3D::intersection(const Plane3D &plane) const {
 	// @see http://paulbourke.net/geometry/pointlineplane/
-	double u = ((plane.a * this->point.x) + (plane.b * this->point.y) + (plane.c * this->point.z) + plane.d) /
-  						(-(plane.a * this->direction.x) - (plane.b * this->direction.y) - (plane.c * this->direction.z));
-  if (std::abs(u) < EPSILON) {
+	double numerator = ((plane.a * this->point.x) + (plane.b * this->point.y) + (plane.c * this->point.z) + plane.d);
+  double denominator = (-(plane.a * this->direction.x) - (plane.b * this->direction.y) - (plane.c * this->direction.z));
+  if (std::abs(denominator) < EPSILON) {
   	// The line is parallel to or on the plane
     return Point3D(false);
   }
+  double u = numerator / denominator;
   Point3D point_of_intersection = this->point + (u * this->direction);
 	return point_of_intersection;
 }

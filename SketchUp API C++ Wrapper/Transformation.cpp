@@ -229,7 +229,7 @@ Transformation Transformation::operator*(Transformation transform) {
   	for (size_t row=0; row < 4; ++row) {
   		new_matrix[col][row] = 0.0;
       for (size_t i=0; i < 4; ++i) {
-      	new_matrix[col][row] += ((*this)[(col*4)+i] * transform[(i*4)+row]);
+      	new_matrix[col][row] += ((*this)[(i*4)+row] * transform[(col*4)+i]);
       }
     }
   }
@@ -249,6 +249,7 @@ Vector3D operator*(const Transformation &lhs, const Vector3D &rhs) {
   std::array<double, 4> return4x1 = lhs.multiply4x1(matrix4x1);
   return Vector3D(return4x1[0], return4x1[1], return4x1[2]);
 }
+
 Vector3D operator*(const Vector3D &lhs, const Transformation &rhs) {
 	// Can't actually multiply a vector by transformation, so return the transforamtion multiplied by the vector
   return rhs * lhs;
