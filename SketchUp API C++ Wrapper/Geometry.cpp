@@ -105,13 +105,10 @@ bool Radians::closest(const Radians& value) {
 * Vector3D
 *********/
 Vector3D::Vector3D():
-	m_vector(SUVector3D{ 0.0, 0.0, 0.0}),
-  x(m_vector.x),
-  y(m_vector.y),
-  z(m_vector.z)
+	Vector3D(false)
 {}
 
-Vector3D::Vector3D( SUVector3D su_vector):
+Vector3D::Vector3D(SUVector3D su_vector):
 	m_vector(su_vector),
   x(m_vector.x),
   y(m_vector.y),
@@ -125,8 +122,8 @@ Vector3D::Vector3D( double x, double y, double z):
   z(m_vector.z)
 {}
 
-Vector3D::Vector3D(bool invalid):
-  null(true),
+Vector3D::Vector3D(bool valid):
+  null(!valid),
 	m_vector(SUVector3D{0.0,0.0,0.0}),
   x(m_vector.x),
   y(m_vector.y),
@@ -142,22 +139,26 @@ Vector3D::Vector3D(const Vector3D &vector):
   m_vector(vector.m_vector),
   x(m_vector.x),
   y(m_vector.y),
-  z(m_vector.z)
+  z(m_vector.z),
+  null(vector.null)
 {}
 
 
 Vector3D::Vector3D(const Point3D& point):
 	Vector3D(SUVector3D{point.x, point.y, point.z})
-{}
+{
+	null = !point;
+}
 
 
 Vector3D& Vector3D::operator=(const Vector3D &vector) {
-  if (this == &vector)
+  if (this == &vector) {
     return *this;
-  
+  }
   x = vector.x;
   y = vector.y;
   z = vector.z;
+  null = vector.null;
   return *this;
 }
 
@@ -165,6 +166,7 @@ Vector3D& Vector3D::operator=(const SUVector3D &vector) {
   x = vector.x;
   y = vector.y;
   z = vector.z;
+  null = false;
   return *this;
 }
 
@@ -193,12 +195,16 @@ Vector3D Vector3D::operator/(const double &scalar) const {
 }
 
 bool operator==(const Vector3D &lhs, const Vector3D &rhs) {
-	if (lhs.x == rhs.x && lhs.y == rhs.y && lhs.z == rhs.z) {
+	if (!lhs && !rhs) {
   	return true;
   }
-  else {
-  	return false;
+  if (!!lhs && !!rhs &&
+  		std::abs(lhs.x - rhs.x) < Vector3D::EPSILON &&
+  		std::abs(lhs.y - rhs.y) < Vector3D::EPSILON &&
+      std::abs(lhs.z - rhs.z) < Vector3D::EPSILON) {
+  	return true;
   }
+  return false;
 }
 
 
@@ -206,9 +212,7 @@ bool operator!=(const Vector3D &lhs, const Vector3D &rhs) {
 	if (lhs == rhs) {
   	return false;
   }
-  else {
-  	return false;
-  }
+  return true;
 }
 
 
@@ -303,7 +307,7 @@ Point3D::Point3D( SUPoint3D su_point):
   z(m_point.z)
 {}
 
-Point3D::Point3D( SUVector3D& su_vector):
+Point3D::Point3D( SUVector3D su_vector):
 	Point3D(SUPoint3D{su_vector.x, su_vector.y, su_vector.z})
 {}
 
@@ -315,7 +319,8 @@ Point3D::Point3D(const Point3D& other):
 	m_point(other.m_point),
   x(m_point.x),
   y(m_point.y),
-  z(m_point.z)
+  z(m_point.z),
+  null(other.null)
 {}
 
 
@@ -324,15 +329,19 @@ Point3D::Point3D( const Vector3D& vector):
 {}
 
 Point3D& Point3D::operator=(const Point3D &point) {
-  if (this == &point)
+  if (this == &point) {
     return *this;
-  
-  m_point = point.m_point;
+  }
+  x = point.x;
+  y = point.y;
+  z = point.z;
+  null = point.null;
   return *this;
 }
 
 
 Point3D::operator SUPoint3D() const { return SUPoint3D {m_point.x, m_point.y, m_point.z}; }
+
 
 Point3D::operator SUPoint3D*() {
   //m_point = SUPoint3D{m_point.x, m_point.y, m_point.z};
@@ -375,14 +384,16 @@ bool Point3D::operator!() const {
 }
 
 bool operator==(const Point3D &lhs, const Point3D &rhs) {
-	if (std::abs(lhs.x - rhs.x) < Point3D::EPSILON &&
+	if (!lhs && !rhs) {
+  	return true;
+  }
+  if (!!lhs && !!rhs &&
+  		std::abs(lhs.x - rhs.x) < Point3D::EPSILON &&
   		std::abs(lhs.y - rhs.y) < Point3D::EPSILON &&
       std::abs(lhs.z - rhs.z) < Point3D::EPSILON) {
   	return true;
   }
-  else {
-  	return false;
-  }
+  return false;
 }
 
 
@@ -390,10 +401,66 @@ bool operator!=(const Point3D &lhs, const Point3D &rhs) {
 	if (lhs == rhs) {
   	return false;
   }
-  else {
-  	return false;
-  }
+  return true;
 }
+
+
+Point3D Point3D::ray_line_intersection(const Point3D& point_a, const Vector3D& vector_a, const Point3D& point_b, const Vector3D& ray_b, bool return_colinear) {
+  // Solution to finding intersection between two line segments derived from this answer: http://stackoverflow.com/questions/563198/how-do-you-detect-where-two-line-segments-intersect
+  assert(ray_b.length() > EPSILON);
+  Vector3D a_to_b = point_b - point_a;
+  Vector3D b_to_a = -a_to_b;
+  Vector3D vec_a_cross_b_z_comp =  vector_a.unit().cross(ray_b.unit()); // Use unit vectors for easier comparisons with zero vector
+  Vector3D a_to_b_cross_vec_a_z_comp = a_to_b.unit().cross(vector_a.unit()); // Use unit vectors for easier comparisons with zero vector
+  Vector3D zero_vector(0.0,0.0,0.0);
+	// Check for collinearity
+  if (vec_a_cross_b_z_comp == zero_vector) {
+    if (a_to_b_cross_vec_a_z_comp == zero_vector) {
+      // Lines are collinear, so there is no intersection
+      if (!return_colinear) {
+      	return Point3D(false);
+      }
+      double b_to_a_factor = b_to_a.dot(ray_b) / ray_b.dot(ray_b);
+      double b_to_a_end_factor = b_to_a_factor + (vector_a.dot(ray_b) / ray_b.dot(ray_b));
+      if ((b_to_a_factor < 0.0 && b_to_a_end_factor > 0.0) || (b_to_a_factor > 0.0 && b_to_a_end_factor < 0.0)) {
+      	// The start of ray B is on line A
+        return point_b;
+      }
+      if (b_to_a_factor > 0.0) {
+        if (b_to_a_factor < b_to_a_end_factor) {
+      		// The intersection is at the start of line A
+        	return point_a;
+        }
+        else {
+        	// The intersection is at the end of line B
+        	return point_a + vector_a;
+        }
+      }
+      // Lines are disjoint
+      return Point3D(false);
+      
+		}
+    else {
+    	// Lines are parallel, and so there is no intersection.
+      return Point3D(false);
+    }
+  }
+  else if (a_to_b_cross_vec_a_z_comp != zero_vector) {
+    Vector3D vec_a_cross_b = vector_a.cross(ray_b);
+    double line_a_factor = a_to_b.cross(ray_b).length() / vec_a_cross_b.length();
+    double a_epsilon = Vector3D::EPSILON / vector_a.length(); // Note accuracy needs to be determined
+  	double line_b_factor = b_to_a.cross(vector_a).length() / vec_a_cross_b.length();
+    double b_epsilon = Vector3D::EPSILON / ray_b.length();
+    if (-a_epsilon <= line_a_factor && line_a_factor <= (1.0 + a_epsilon) &&
+    		-b_epsilon <= line_b_factor) {
+    	Point3D intersection = point_a + (vector_a * line_a_factor);
+    	return intersection;
+    }
+  }
+  // The lines do not intersect
+  return Point3D(false);
+}
+
 
   
 /********
@@ -434,7 +501,7 @@ Plane3D::Plane3D(const Plane3D &plane):
 
 
 Plane3D::Plane3D(const Vector3D& normal, const Point3D& point):
-	Plane3D(SUPlane3D{normal.unit().x, normal.unit().y, normal.unit().z, normal.dot(point)})
+	Plane3D(SUPlane3D{normal.unit().x, normal.unit().y, normal.unit().z, -normal.unit().dot(point)})
 {
 }
 Plane3D::Plane3D(const Point3D& point, const Vector3D& normal):
@@ -442,9 +509,9 @@ Plane3D::Plane3D(const Point3D& point, const Vector3D& normal):
 {}
 
 
-Plane3D::Plane3D(bool invalid):
-	null(true),
-  m_plane(SUPlane3D{0.0,0.0,0.0,0.0}),
+Plane3D::Plane3D(bool valid):
+	null(!valid),
+  m_plane(SUPlane3D{1.0,0.0,0.0,0.0}),
   a(m_plane.a),
   b(m_plane.b),
   c(m_plane.c),
@@ -456,11 +523,11 @@ Plane3D::Plane3D(bool invalid):
 Plane3D& Plane3D::operator=(const Plane3D &plane) {
   if (this == &plane)
     return *this;
-  
   a = plane.a;
   b = plane.b;
   c = plane.c;
   d = plane.d;
+  null = plane.null;
   return *this;
 }
 
@@ -475,24 +542,24 @@ bool Plane3D::operator!() const {
 * Comparative operators
 */
 bool operator==(const Plane3D &lhs, const Plane3D &rhs) {
-	if (std::abs(lhs.a - rhs.a) < Plane3D::EPSILON &&
+	if (!lhs && !rhs) {
+  	return true;
+  }
+  if (!!lhs && !!rhs &&
+  		std::abs(lhs.a - rhs.a) < Plane3D::EPSILON &&
   		std::abs(lhs.c - rhs.b) < Plane3D::EPSILON &&
       std::abs(lhs.c - rhs.c) < Plane3D::EPSILON &&
       std::abs(lhs.d - rhs.d) < Plane3D::EPSILON) {
   	return true;
   }
-  else {
-  	return false;
-  }
+  return false;
 }
 
 bool operator!=(const Plane3D &lhs, const Plane3D &rhs) {
 	if (lhs == rhs) {
   	return false;
   }
-  else {
-  	return false;
-  }
+  return true;
 }
 
 
@@ -553,28 +620,33 @@ Vector3D Plane3D::normal() const {
 }
 
 double Plane3D::distance(const Point3D& point) const {
-	return normal().dot(point) - d;
+	return normal().dot(point) + d;
 }
 
-Plane3D Plane3D::offset(double offset_by) const {
-	return Plane3D(a, b, c, (d + offset_by));
-}
-
-
-bool Plane3D::parallel(const Plane3D& plane2) const {
-	// The following assumes that the plane normals are unit vectors.
-  if (this->normal() == plane2.normal() || this->normal() == (plane2.normal() * -1)) {
+bool Plane3D::on_plane(const Point3D& point) const {
+	double distance = this->distance(point);
+  if (fabs(distance) < EPSILON) {
   	return true;
   }
   return false;
 }
 
-Plane3D& Plane3D::reverse(){
-  a = a*-1;
-  b = b*-1;
-  c = c*-1;
-  d = d*-1;
-  return (*this);
+
+Plane3D Plane3D::offset(double offset_by) const {
+	return Plane3D(a, b, c, (d - offset_by));
+}
+
+
+bool Plane3D::parallel(const Plane3D& plane2) const {
+	// The following assumes that the plane normals are unit vectors.
+  if (this->normal() == plane2.normal() || this->normal() == -plane2.normal()) {
+  	return true;
+  }
+  return false;
+}
+
+Plane3D Plane3D::inverse() const {
+  return Plane3D(a*-1, b*-1, c*-1, d*-1);
 }
 
 double Plane3D::angle_with(const Plane3D& plane2) const {
@@ -594,6 +666,39 @@ SUPlane3D Plane3D::get_plane(const SUFaceRef &face) {
 
 
 Plane3D::operator SUPlane3D() const { return m_plane; }
+
+
+Plane3D Plane3D::plane_from_loop(const std::vector<Point3D>& loop_points) {
+	if(loop_points.size() < 3) {
+  	// This is an invalid plane
+    return Plane3D();
+  }
+  // Find 3 points which we can use to create this plane.
+  Point3D point_a = loop_points[0];
+  Point3D point_b = loop_points[1];
+  Line3D ab_line(point_a, Vector3D(point_b - point_a).unit());
+  Point3D point_c; // We first need to find a point that is not colinear with the other two points.
+  for (size_t i=2; i < loop_points.size(); i++) {
+  	if (!ab_line.on_line(loop_points[i])) {
+    	point_c = loop_points[i];
+      break;
+    }
+  }
+  if (!point_c) {
+    return Plane3D();
+  }
+  // Create a plane from the 3 points;
+  Vector3D normal = Vector3D(point_b-point_a).cross(Vector3D(point_c-point_b));
+  Plane3D temp_plane(point_a, normal);
+  // Check that all points given are on the plane.
+  for (size_t i=2; i < loop_points.size(); i++) {
+  	if (!temp_plane.on_plane(loop_points[i])) {
+    	return Plane3D();
+    }
+  }
+  return temp_plane;
+}
+
 
 
 /**
@@ -639,7 +744,7 @@ Point3D BoundingBox3D::max() const {
 */
 
 Line3D::Line3D():
-	Line3D(Point3D(), Vector3D())
+	Line3D(false)
 {}
 
 Line3D::Line3D(const Point3D point, const Vector3D direction):
@@ -649,21 +754,32 @@ Line3D::Line3D(const Point3D point, const Vector3D direction):
   direction(m_direction)
 {}
 
-Line3D::Line3D(bool invalid):
-	m_point(Point3D(true)),
-  m_direction(Vector3D(true)),
+Line3D::Line3D(bool valid):
+	m_point(Point3D(valid)),
+  m_direction(Vector3D(valid)),
   point(m_point),
   direction(m_direction),
-  null(true)
+  null(!valid)
 {}
+
+
+Line3D::Line3D(const Line3D& other):
+	m_point(other.m_point),
+  m_direction(other.m_direction),
+  point(m_point),
+  direction(m_direction),
+  null(other.null)
+{}
+
 
 
 Line3D& Line3D::operator=(const Line3D &line) {
   if (this == &line)
     return *this;
   
-  m_point = line.point;
-  m_direction = line.direction;
+ 	point = line.point;
+  direction = line.direction;
+  null = line.null;
   return *this;
 }
 
@@ -694,8 +810,8 @@ Point3D Line3D::intersection(const Line3D &other_line) const {
 
 Point3D Line3D::intersection(const Plane3D &plane) const {
 	// @see http://paulbourke.net/geometry/pointlineplane/
-	double numerator = ((plane.a * this->point.x) + (plane.b * this->point.y) + (plane.c * this->point.z) + plane.d);
-  double denominator = (-(plane.a * this->direction.x) - (plane.b * this->direction.y) - (plane.c * this->direction.z));
+	double numerator = (plane.a * this->point.x) + (plane.b * this->point.y) + (plane.c * this->point.z) + plane.d;
+  double denominator = -(plane.a * this->direction.x) - (plane.b * this->direction.y) - (plane.c * this->direction.z);
   if (std::abs(denominator) < EPSILON) {
   	// The line is parallel to or on the plane
     return Point3D(false);
@@ -751,6 +867,29 @@ bool Line3D::on_line(const Point3D& test_point) const {
   }
   double z_test = this->point.z + (this->direction.z * factor);
   if (std::abs(z_test - test_point.z) > EPSILON) {
+  	return false;
+  }
+  return true;
+}
+
+
+bool Line3D::on_line_segment(const Point3D& point_a, const Point3D& point_b, const Point3D& test_point) {
+  // From: https://stackoverflow.com/questions/328107/how-can-you-determine-a-point-is-between-two-other-points-on-a-line-segment
+  Vector3D a_to_b = point_b - point_a;
+  Vector3D a_to_c = test_point - point_a;
+  Vector3D crossproduct = a_to_b.unit().cross(a_to_c.unit());
+  if (fabs(crossproduct.length()) > EPSILON) {
+  	// Not aligned
+    return false;
+  }
+	// Check that the distance matches.
+  double dotproduct = a_to_b.dot(a_to_c);
+  if (dotproduct < EPSILON) {
+  	return false;
+  }
+
+  double squaredlengthba = pow(a_to_b.length()+EPSILON, 2);
+  if (dotproduct > squaredlengthba) {
   	return false;
   }
   return true;

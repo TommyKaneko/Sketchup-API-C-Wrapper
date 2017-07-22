@@ -71,6 +71,83 @@ Transformation::Transformation(Point3D translation):
 	Transformation(Vector3D(translation))
 {}
 
+
+double Transformation::determinant() const {
+  // From: http://www.euclideanspace.com/maths/algebra/matrix/functions/determinant/fourD/index.htm
+  // Note this is for general 4x4 matrix, and it is excessive for a 3x3 matrix.
+  double value =
+    m_transformation.values[12] * m_transformation.values[9] * m_transformation.values[6] * m_transformation.values[3]-m_transformation.values[8] * m_transformation.values[13] * m_transformation.values[6] * m_transformation.values[3]-m_transformation.values[12] * m_transformation.values[5] * m_transformation.values[10] * m_transformation.values[3]+m_transformation.values[4] * m_transformation.values[13] * m_transformation.values[10] * m_transformation.values[3]+
+    m_transformation.values[8] * m_transformation.values[5] * m_transformation.values[14] * m_transformation.values[3]-m_transformation.values[4] * m_transformation.values[9] * m_transformation.values[14] * m_transformation.values[3]-m_transformation.values[12] * m_transformation.values[9] * m_transformation.values[2] * m_transformation.values[7]+m_transformation.values[8] * m_transformation.values[13] * m_transformation.values[2] * m_transformation.values[7]+
+    m_transformation.values[12] * m_transformation.values[1] * m_transformation.values[10] * m_transformation.values[7]-m_transformation.values[0] * m_transformation.values[13] * m_transformation.values[10] * m_transformation.values[7]-m_transformation.values[8] * m_transformation.values[1] * m_transformation.values[14] * m_transformation.values[7]+m_transformation.values[0] * m_transformation.values[9] * m_transformation.values[14] * m_transformation.values[7]+
+    m_transformation.values[12] * m_transformation.values[5] * m_transformation.values[2] * m_transformation.values[11]-m_transformation.values[4] * m_transformation.values[13] * m_transformation.values[2] * m_transformation.values[11]-m_transformation.values[12] * m_transformation.values[1] * m_transformation.values[6] * m_transformation.values[11]+m_transformation.values[0] * m_transformation.values[13] * m_transformation.values[6] * m_transformation.values[11]+
+    m_transformation.values[4] * m_transformation.values[1] * m_transformation.values[14] * m_transformation.values[11]-m_transformation.values[0] * m_transformation.values[5] * m_transformation.values[14] * m_transformation.values[11]-m_transformation.values[8] * m_transformation.values[5] * m_transformation.values[2] * m_transformation.values[15]+m_transformation.values[4] * m_transformation.values[9] * m_transformation.values[2] * m_transformation.values[15]+
+    m_transformation.values[8] * m_transformation.values[1] * m_transformation.values[6] * m_transformation.values[15]-m_transformation.values[0] * m_transformation.values[9] * m_transformation.values[6] * m_transformation.values[15]-m_transformation.values[4] * m_transformation.values[1] * m_transformation.values[10] * m_transformation.values[15]+m_transformation.values[0] * m_transformation.values[5] * m_transformation.values[10] * m_transformation.values[15];
+ return value;
+}
+
+
+Transformation Transformation::matrix_inverse() const {
+  // Method for transformation is illustrated here: http://stackoverflow.com/questions/2624422/efficient-4x4-matrix-inverse-affine-transform
+  const double& i00 = m_transformation.values[0];
+  const double& i01 = m_transformation.values[1];
+  const double& i02 = m_transformation.values[2];
+  const double& i03 = m_transformation.values[3];
+  const double& i10 = m_transformation.values[4];
+  const double& i11 = m_transformation.values[5];
+  const double& i12 = m_transformation.values[6];
+  const double& i13 = m_transformation.values[7];
+  const double& i20 = m_transformation.values[8];
+  const double& i21 = m_transformation.values[9];
+  const double& i22 = m_transformation.values[10];
+  const double& i23 = m_transformation.values[11];
+  const double& i30 = m_transformation.values[12];
+  const double& i31 = m_transformation.values[13];
+  const double& i32 = m_transformation.values[14];
+  const double& i33 = m_transformation.values[15];
+  
+  double s0 = i00 * i11 - i10 * i01;
+  double s1 = i00 * i12 - i10 * i02;
+  double s2 = i00 * i13 - i10 * i03;
+  double s3 = i01 * i12 - i11 * i02;
+  double s4 = i01 * i13 - i11 * i03;
+  double s5 = i02 * i13 - i12 * i03;
+
+  double c5 = i22 * i33 - i32 * i23;
+  double c4 = i21 * i33 - i31 * i23;
+  double c3 = i21 * i32 - i31 * i22;
+  double c2 = i20 * i33 - i30 * i23;
+  double c1 = i20 * i32 - i30 * i22;
+  double c0 = i20 * i31 - i30 * i21;
+
+	double det = s0 * c5 - s1 * c4 + s2 * c3 + s3 * c2 - s4 * c1 + s5 * c0;
+  assert(det != 0.0);
+  double invdet = 1 / det;
+  
+  SUTransformation inverted_t;
+  inverted_t.values[0] = (i11 * c5 - i12 * c4 + i13 * c3) * invdet;
+  inverted_t.values[1] = (-i01 * c5 + i02 * c4 - i03 * c3) * invdet;
+  inverted_t.values[2] = (i31 * s5 - i32 * s4 + i33 * s3) * invdet;
+  inverted_t.values[3] = (-i21 * s5 + i22 * s4 - i23 * s3) * invdet;
+
+  inverted_t.values[4] = (-i10 * c5 + i12 * c2 - i13 * c1) * invdet;
+  inverted_t.values[5] = (i00 * c5 - i02 * c2 + i03 * c1) * invdet;
+  inverted_t.values[6] = (-i30 * s5 + i32 * s2 - i33 * s1) * invdet;
+  inverted_t.values[7] = (i20 * s5 - i22 * s2 + i23 * s1) * invdet;
+
+  inverted_t.values[8] = (i10 * c4 - i11 * c2 + i13 * c0) * invdet;
+  inverted_t.values[9] = (-i00 * c4 + i01 * c2 - i03 * c0) * invdet;
+  inverted_t.values[10] = (i30 * s4 - i31 * s2 + i33 * s0) * invdet;
+  inverted_t.values[11] = (-i20 * s4 + i21 * s2 - i23 * s0) * invdet;
+
+  inverted_t.values[12] = (-i10 * c3 + i11 * c1 - i12 * c0) * invdet;
+  inverted_t.values[13] = (i00 * c3 - i01 * c1 + i02 * c0) * invdet;
+  inverted_t.values[14] = (-i30 * s3 + i31 * s1 - i32 * s0) * invdet;
+  inverted_t.values[15] = (i20 * s3 - i21 * s1 + i22 * s0) * invdet;
+
+  return Transformation(inverted_t);
+}
+
+
 std::array<double, 4> Transformation::multiply4x1(std::array<double, 4> matrix4_1) const {
 	std::array<double, 4> output;
   for (size_t i=0; i < 4; ++i) {
@@ -116,10 +193,12 @@ Transformation::operator SUTransformation*() {
 
 
 Transformation Transformation::inverse() const {
-	assert( m_transformation.values[3] == 0.0 &&
-  				m_transformation.values[7] == 0.0 &&
-          m_transformation.values[11] == 0.0 &&
-          m_transformation.values[15] == 1.0);
+	if (m_transformation.values[3] != 0.0 ||
+  				m_transformation.values[7] != 0.0 ||
+          m_transformation.values[11] != 0.0 ||
+          m_transformation.values[15] != 1.0) {
+  	return this->matrix_inverse();
+  }
 
   SUTransformation inverted_t;
   // Method for transformation is illustrated here: http://stackoverflow.com/questions/2624422/efficient-4x4-matrix-inverse-affine-transform
@@ -135,6 +214,7 @@ Transformation Transformation::inverse() const {
   // [ 1 5 9 ]
   // [ 2 6 10]
   // matrix value = ((1. matrix of minors) * 2. cofactor, 3. swap_diagonals) / 4. determinant
+  /*
   double matrix_minors3x3[9];
   // 1. Get matrix of minors
   matrix_minors3x3[0] = ((m_transformation.values[5] * m_transformation.values[10]) - (m_transformation.values[6] * m_transformation.values[9]));
@@ -146,7 +226,9 @@ Transformation Transformation::inverse() const {
   matrix_minors3x3[6] = ((m_transformation.values[1] * m_transformation.values[6]) - (m_transformation.values[2] * m_transformation.values[5]));
   matrix_minors3x3[7] = ((m_transformation.values[0] * m_transformation.values[6]) - (m_transformation.values[2] * m_transformation.values[4]));
   matrix_minors3x3[8] = ((m_transformation.values[1] * m_transformation.values[5]) - (m_transformation.values[1] * m_transformation.values[4]));
-	// 4. find determinant
+  b[2, 2] = ( values[12]a[3, 0] * s4 - a[3, 1] * s2 + a[3, 3] * s0) * invdet;
+  matrix_minors3x3[8] = ((m_transformation.values[1] * m_transformation.values[5]) - (m_transformation.values[1] * m_transformation.values[4]));
+  // 4. find determinant
   double determinant = (m_transformation.values[0] * matrix_minors3x3[0]) -
                        (m_transformation.values[4] * matrix_minors3x3[3]) +
                        (m_transformation.values[8] * matrix_minors3x3[6]);
@@ -180,6 +262,63 @@ Transformation Transformation::inverse() const {
   inverted_t.values[7] = 0;
   inverted_t.values[11] = 0;
   inverted_t.values[15] = 1.0;
+  return Transformation(inverted_t);
+  */
+  const double& i00 = m_transformation.values[0];
+  const double& i01 = m_transformation.values[1];
+  const double& i02 = m_transformation.values[2];
+  //const double& i03 = m_transformation.values[3];
+  const double& i10 = m_transformation.values[4];
+  const double& i11 = m_transformation.values[5];
+  const double& i12 = m_transformation.values[6];
+  //const double& i13 = m_transformation.values[7];
+  const double& i20 = m_transformation.values[8];
+  const double& i21 = m_transformation.values[9];
+  const double& i22 = m_transformation.values[10];
+  //const double& i23 = m_transformation.values[11];
+  const double& i30 = m_transformation.values[12];
+  const double& i31 = m_transformation.values[13];
+  const double& i32 = m_transformation.values[14];
+  //const double& i33 = m_transformation.values[15];
+  
+  double s0 = i00 * i11 - i10 * i01;
+  double s1 = i00 * i12 - i10 * i02;
+  //double s2 = 0.0;
+  double s3 = i01 * i12 - i11 * i02;
+  //double s4 = 0.0;
+  //double s5 = 0.0;
+
+  //double c5 = i22;
+  //double c4 = i21;
+  double c3 = i21 * i32 - i31 * i22;
+  //double c2 = i20;
+  double c1 = i20 * i32 - i30 * i22;
+  double c0 = i20 * i31 - i30 * i21;
+
+	double det = s0 * i22 - s1 * i21 + s3 * i20;
+  assert(det != 0.0);
+  double invdet = 1 / det;
+
+  inverted_t.values[0] = (i11 * i22 - i12 * i21) * invdet;
+  inverted_t.values[1] = (-i01 * i22 + i02 * i21) * invdet;
+  inverted_t.values[2] = s3 * invdet;
+  inverted_t.values[3] = 0.0;
+
+  inverted_t.values[4] = (-i10 * i22 + i12 * i20) * invdet;
+  inverted_t.values[5] = (i00 * i22 - i02 * i20) * invdet;
+  inverted_t.values[6] = -s1 * invdet;
+  inverted_t.values[7] = 0.0;
+
+  inverted_t.values[8] = (i10 * i21 - i11 * i20) * invdet;
+  inverted_t.values[9] = (-i00 * i21 + i01 * i20) * invdet;
+  inverted_t.values[10] = s0 * invdet;
+  inverted_t.values[11] = 0.0;
+
+  inverted_t.values[12] = (-i10 * c3 + i11 * c1 - i12 * c0) * invdet;
+  inverted_t.values[13] = (i00 * c3 - i01 * c1 + i02 * c0) * invdet;
+  inverted_t.values[14] = (-i30 * s3 + i31 * s1 - i32 * s0) * invdet;
+  inverted_t.values[15] = 1.0;
+
   return Transformation(inverted_t);
 }
   

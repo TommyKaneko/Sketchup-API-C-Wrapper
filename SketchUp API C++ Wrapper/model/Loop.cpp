@@ -25,6 +25,7 @@
 #include "Edge.hpp"
 
 #include <cassert>
+#include <math.h>
 
 namespace CW {
 
@@ -110,4 +111,97 @@ SULoopRef Loop::ref() const {
 	return m_loop;
 }
   
+  
+PointLoopClassify Loop::classify_point(const std::vector<Point3D>& loop_points, const Point3D& test_point) {
+	// http://www.geeksforgeeks.org/how-to-check-if-a-given-point-lies-inside-a-polygon/
+  // First check that the test point is on the plane
+  Plane3D loop_plane = Plane3D::plane_from_loop(loop_points);
+  if (!loop_plane) {
+  	return PointLoopClassify::PointNotOnPlane;
+  }
+  else if (!loop_plane.on_plane(test_point)) {
+  	return PointLoopClassify::PointNotOnPlane;
+  }
+  // Now check if it is on the vertices
+  for (size_t i=0; i < loop_points.size(); i++) {
+    if (loop_points[i] == test_point) {
+  		return PointLoopClassify::PointOnVertex;
+    }
+  }
+  // Now check if it is on the edges
+  for (size_t i=0; i < loop_points.size(); i++) {
+    Point3D next_point;
+    if (i == loop_points.size()-1) {
+    	next_point = loop_points[0];
+    }
+    else {
+    	next_point = loop_points[i+1];
+    }
+    if (Line3D::on_line_segment(loop_points[i], next_point, test_point)) {
+    	return PointLoopClassify::PointOnEdge;
+    }
+  }
+  // Now check if it is inside or outside, given that we know that the point is (a) on the same plane of the loop, and (b) not on the edge, and (c) not on the vertices.
+	// From: http://www.geeksforgeeks.org/how-to-check-if-a-given-point-lies-inside-a-polygon/
+  // We draw a line from the point, and if it intersects with the loop an even number of times, then it is outside, if it intersects an odd number of times, it is inside.
+  // The line to draw can be any vector that is coplanar to the loop's plane - the simple one is get a vector of two points within the loop.
+  assert(loop_points[0] != loop_points[1]);
+  Vector3D ray = loop_points[1] - loop_points[0];
+  // Colinear line segments create problems for the algorith below, so we ignore them by creating a new list of points to calculate that exclude colinear edges.
+  struct LoopPoint {
+  	Point3D point;
+    Vector3D vector_to_next;
+  };
+  std::vector<LoopPoint> red_loop_points;
+  red_loop_points.reserve(loop_points.size());
+  for (size_t i=0; i < loop_points.size(); i++) {
+  	Point3D next_point;
+    if (i == loop_points.size()-1) {
+    	next_point = loop_points[0];
+    } else {
+    	next_point = loop_points[i];
+    }
+  	Vector3D next_vector = next_point - loop_points[i];
+    if (next_vector.unit() != ray.unit() && next_vector.unit() != -ray.unit()) {
+    	red_loop_points.push_back(LoopPoint{loop_points[i], next_vector});
+    }
+  }
+  // Now we have a list of points with colinear points removed, find intersections with the line segments
+  size_t num_intersections = 0;
+  for (size_t i=0; i < red_loop_points.size(); i++) {
+	  Point3D intersection = Point3D::ray_line_intersection(red_loop_points[i].point, red_loop_points[i].vector_to_next, test_point, ray);
+    if (!!intersection) {
+    	// There is a case where the ray intersection lies on a vertex of the loop. Whether this should be counted as an intersection of both lines connected to the loop or just once through depends on the orientation of the ray relative to the lines connected to that vertex
+      if (intersection == red_loop_points[i].point) {
+      	// Get the directions of the lines connected to the vertex
+        LoopPoint prev_point;
+        if (i == 0) {
+        	prev_point = red_loop_points[loop_points.size()-1];
+        }
+        else {
+        	prev_point = red_loop_points[i-1];
+        }
+        Vector3D prev_cross = ray.cross(prev_point.vector_to_next);
+        Vector3D next_cross = ray.cross(red_loop_points[i].vector_to_next);
+        assert(fabs(next_cross.length()) > Vector3D::EPSILON);
+        if (prev_cross.unit() != next_cross.unit()) {
+        	// The cross product direction is in opposite directions - ie the lines connected to the vertex are on the same side of the ray, therefore, count this as an additional intersection
+          num_intersections++;
+        }
+      }
+      else {
+      	num_intersections++;
+      }
+    }
+  }
+  if (num_intersections % 2 == 0) {
+  	// Even number of intersections
+    return PointLoopClassify::PointOutside;
+  }
+  else {
+    return PointLoopClassify::PointInside;
+  }
+}
+
+
 } /* namespace CW */

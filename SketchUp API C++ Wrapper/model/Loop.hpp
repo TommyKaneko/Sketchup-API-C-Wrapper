@@ -109,6 +109,14 @@ class Loop {
   */
   SULoopRef ref() const;
   
+  /**
+  * Returns whether a point is within a loop, given by the vector of points.
+  * @param loop_points - a vector of points representing the vertices of a loop.
+  * @param test_point - the point to test within the loop.
+  * @return PointLoopClassify object describing the location of the point relative to the loop.
+  */
+  static PointLoopClassify classify_point(const std::vector<Point3D>& loop_points, const Point3D& test_point);
+  
 };
 
 } /* namespace CW */

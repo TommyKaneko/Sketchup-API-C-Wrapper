@@ -90,7 +90,7 @@ class Vector3D {
 
 	protected:
   SUVector3D m_vector;
-  const bool null = false; // Invalid flag
+  bool null = false; // Invalid flag
 
   public:
   double &x;
@@ -108,7 +108,7 @@ class Vector3D {
   /**
   * Invaid, or NULL Vector3D objects can be simulated with this constructor.
   */
-  Vector3D(bool invalid);
+  Vector3D(bool valid);
   
   /**
   * Returns the vector between start and end points of an edge.
@@ -222,7 +222,7 @@ static Vector3D operator*(const double &lhs, const Vector3D &rhs)
 class Point3D {
 	private:
   SUPoint3D m_point;
-  const bool null = false; // Invalid flag
+  bool null = false; // Invalid flag
   //constexpr static double EPSILON = 0.001; // Sketchup Tolerance is 1/1000"
 
 	public:
@@ -252,7 +252,7 @@ class Point3D {
   * Constructs a Point3D object from a SUVector3D object.
   * @param su_vector - SUVector3D object to be converted to this object.
   */
-  Point3D(SUVector3D& su_vector);
+  Point3D(SUVector3D su_vector);
   
   /**
   * Constructs a Point3D object from given x y z coordinates.
@@ -308,6 +308,19 @@ class Point3D {
   friend bool operator==(const Point3D& lhs, const Point3D& rhs);
   friend bool operator!=(const Point3D& lhs, const Point3D& rhs);
   
+  
+  /**
+  * Returns the point of intersection between a line segment and a ray drawn from a point.
+  * @param point_a - start point of the line segment to intersect
+  * @param vector_a - vector to the end point of the line segment to intersect
+  * @param point_b - start point of the ray that will be intersected with the line.
+  * @param ray_b - the vector of the direction of the ray to intersect with the line.
+  * @param return_colinear - (optional) if the line and ray is collinear, setting this flag to false will mean no intersection will be returned.  Otherwise, the first point at which the ray and line becomes colinear is returned.
+  * @return point representing the intersection.  If there is no intersection, then a null point will be returned.
+  */
+  static Point3D ray_line_intersection(const Point3D& point_a, const Vector3D& vector_a, const Point3D& point_b, const Vector3D& ray_b, bool return_colinear = false);
+
+  
 };
 
 // Forward declaration
@@ -320,7 +333,7 @@ class Line3D;
 class Plane3D {
 	private:
   SUPlane3D m_plane;
-  const bool null = false; // Invalid flag
+  bool null = false; // Invalid flag
   constexpr static double EPSILON = 0.0005; // Sketchup Tolerance is 1/1000"
 
   public:
@@ -392,6 +405,13 @@ class Plane3D {
   */
   Point3D intersection(const Point3D& start_point, const Vector3D& direction) const;
 
+  /**
+  * Returns point at which a line segment drawn from point A to point B intersects the plane.
+  * @param point_a - the start of the line segment.
+  * @param point_b - the end of the line segment.
+  * @return point of the intersection, or a null Point3D object if no intersection exists.
+  */
+  Point3D intersection_between(const Point3D& point_a, const Point3D& point_b) const;
   
 	double angle_with(const Plane3D& plane2) const;
 	double angle(const Plane3D& plane2) const { return angle_with(plane2);};
@@ -400,6 +420,11 @@ class Plane3D {
   * Returns the distance of a point from the plane.  It can be negative as the plane has a front and back side.
   */
   double distance(const Point3D& point) const;
+  
+  /**
+  * Returns true if the point is on the plane, within SketchUp's tolerance.
+  */
+  bool on_plane(const Point3D& point) const;
   
   /**
   * Returns a plane moved along normal by given amount.
@@ -415,19 +440,26 @@ class Plane3D {
   /**
   * Returns a Plane with normals reversed.
   */
-  Plane3D& reverse();
+  Plane3D inverse() const;
   
   /**
   * Returns SUPlane3D of SUFaceRef object
   */
   static SUPlane3D get_plane(const SUFaceRef &face);
-
+	
+  /**
+  * Create a plane from a series of points (normally vertexes within a loop).
+  *
+  * Note that the normal of the returned plane (if successful) will point in the direction expected of an OUTER_LOOP.
+  */
+  static Plane3D plane_from_loop(const std::vector<Point3D>& loop_points);
+  
 };
 
 class BoundingBox3D {
 	private:
   SUBoundingBox3D m_bounding_box;
-  const bool null = false; // Invalid flag
+  bool null = false; // Invalid flag
 
   public:
   BoundingBox3D();
@@ -466,7 +498,7 @@ class Line3D {
 	private:
   Point3D m_point;
   Vector3D m_direction;
-  const bool null = false; // Invalid flag
+  bool null = false; // Invalid flag
   constexpr static double EPSILON = 0.0005; // Sketchup Tolerance is 1/1000"
 
   public:
@@ -475,8 +507,14 @@ class Line3D {
 
   /**
   * Invaid, or NULL Line3D objects can be simulated with this constructor.
+  * @param valid - if true, a valid line will be created with a point and no direction.
   */
-  Line3D(bool invalid);
+  Line3D(bool valid);
+  
+  /**
+  * Copy constructor
+  */
+  Line3D(const Line3D& other);
   
   Point3D &point;
   Vector3D &direction;
@@ -513,6 +551,15 @@ class Line3D {
   * Check if point is on line.
   */
   bool on_line(const Point3D& point) const;
+  
+  /**
+  * Check if a point lies on a line segment.
+  * @param point_a - the start point of the line segment.
+  * @param point_b - the end point of the line segment.
+  * @param test_point - the point to test.
+  * @return true if the point lies between the line segment.
+  */
+  static bool on_line_segment(const Point3D& point_a, const Point3D& point_b, const Point3D& test_point);
   
   /**
   * Returns true if the Line or vector given is parallel to this line.

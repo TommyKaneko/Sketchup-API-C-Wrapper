@@ -45,6 +45,16 @@ class Transformation {
   */
 	std::array<double, 4> multiply4x1(std::array<double, 4> matrix4_1) const;
   
+  /**
+  * Returns the determinant of the matrix.
+  */
+  double determinant() const;
+  
+  /**
+  * Inverts the transformation matrix, regardless of the values on the bottom row of the matrix.
+  */
+  Transformation matrix_inverse() const;
+  
   public:
   /**
   * Construct a Transformation object which would conduct no transformations.

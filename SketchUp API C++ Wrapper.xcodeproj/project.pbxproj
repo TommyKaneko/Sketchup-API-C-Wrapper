@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A2169DBF1EBB51B4007FD8AA /* Initialize.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A2169DBD1EBB51B4007FD8AA /* Initialize.cpp */; };
+		A2169DC01EBB51B4007FD8AA /* Initialize.hpp in Headers */ = {isa = PBXBuildFile; fileRef = A2169DBE1EBB51B4007FD8AA /* Initialize.hpp */; };
+		A293406A1EC914C600A5A9A5 /* Classifications.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A29340661EC914C600A5A9A5 /* Classifications.cpp */; };
+		A293406B1EC914C600A5A9A5 /* Classifications.hpp in Headers */ = {isa = PBXBuildFile; fileRef = A29340671EC914C600A5A9A5 /* Classifications.hpp */; };
+		A293406C1EC914C600A5A9A5 /* OptionsManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A29340681EC914C600A5A9A5 /* OptionsManager.cpp */; };
+		A293406D1EC914C600A5A9A5 /* OptionsManager.hpp in Headers */ = {isa = PBXBuildFile; fileRef = A29340691EC914C600A5A9A5 /* OptionsManager.hpp */; };
 		A2BB13821DDF16DE005714E1 /* Color.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A29CB24B1DCFF8FD004462C6 /* Color.cpp */; };
 		A2BB13831DDF16DE005714E1 /* Geometry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A29CB24D1DCFF8FD004462C6 /* Geometry.cpp */; };
 		A2BB13841DDF16DE005714E1 /* AttributeDictionary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A29CB2501DCFF8FD004462C6 /* AttributeDictionary.cpp */; };
@@ -37,6 +43,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A2169DBD1EBB51B4007FD8AA /* Initialize.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Initialize.cpp; sourceTree = "<group>"; };
+		A2169DBE1EBB51B4007FD8AA /* Initialize.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Initialize.hpp; sourceTree = "<group>"; };
+		A29340661EC914C600A5A9A5 /* Classifications.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Classifications.cpp; sourceTree = "<group>"; };
+		A29340671EC914C600A5A9A5 /* Classifications.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Classifications.hpp; sourceTree = "<group>"; };
+		A29340681EC914C600A5A9A5 /* OptionsManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OptionsManager.cpp; sourceTree = "<group>"; };
+		A29340691EC914C600A5A9A5 /* OptionsManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OptionsManager.hpp; sourceTree = "<group>"; };
 		A29CB24B1DCFF8FD004462C6 /* Color.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Color.cpp; sourceTree = "<group>"; };
 		A29CB24C1DCFF8FD004462C6 /* Color.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Color.hpp; sourceTree = "<group>"; };
 		A29CB24D1DCFF8FD004462C6 /* Geometry.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Geometry.cpp; sourceTree = "<group>"; };
@@ -128,6 +140,8 @@
 				A29CB27D1DCFF8FD004462C6 /* String.hpp */,
 				A29CB27E1DCFF8FD004462C6 /* Transformation.cpp */,
 				A29CB27F1DCFF8FD004462C6 /* Transformation.hpp */,
+				A2169DBD1EBB51B4007FD8AA /* Initialize.cpp */,
+				A2169DBE1EBB51B4007FD8AA /* Initialize.hpp */,
 			);
 			name = src;
 			path = "SketchUp API C++ Wrapper";
@@ -136,6 +150,10 @@
 		A29CB24F1DCFF8FD004462C6 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				A29340661EC914C600A5A9A5 /* Classifications.cpp */,
+				A29340671EC914C600A5A9A5 /* Classifications.hpp */,
+				A29340681EC914C600A5A9A5 /* OptionsManager.cpp */,
+				A29340691EC914C600A5A9A5 /* OptionsManager.hpp */,
 				A29CB2501DCFF8FD004462C6 /* AttributeDictionary.cpp */,
 				A29CB2511DCFF8FD004462C6 /* AttributeDictionary.hpp */,
 				A29CB2521DCFF8FD004462C6 /* Axes.cpp */,
@@ -191,6 +209,9 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A293406B1EC914C600A5A9A5 /* Classifications.hpp in Headers */,
+				A293406D1EC914C600A5A9A5 /* OptionsManager.hpp in Headers */,
+				A2169DC01EBB51B4007FD8AA /* Initialize.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,7 +282,9 @@
 				A2BB138A1DDF16DE005714E1 /* Edge.cpp in Sources */,
 				A2BB138B1DDF16DE005714E1 /* Entities.cpp in Sources */,
 				A2BB138C1DDF16DE005714E1 /* Entity.cpp in Sources */,
+				A293406A1EC914C600A5A9A5 /* Classifications.cpp in Sources */,
 				A2BB138D1DDF16DE005714E1 /* Face.cpp in Sources */,
+				A293406C1EC914C600A5A9A5 /* OptionsManager.cpp in Sources */,
 				A2BB138E1DDF16DE005714E1 /* GeometryInput.cpp in Sources */,
 				A2BB138F1DDF16DE005714E1 /* Group.cpp in Sources */,
 				A2BB13901DDF16DE005714E1 /* Layer.cpp in Sources */,
@@ -276,6 +299,7 @@
 				A2BB13991DDF16DE005714E1 /* Vertex.cpp in Sources */,
 				A2BB139A1DDF16DE005714E1 /* String.cpp in Sources */,
 				A2BB139B1DDF16DE005714E1 /* Transformation.cpp in Sources */,
+				A2169DBF1EBB51B4007FD8AA /* Initialize.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -408,6 +432,7 @@
 				A2BB13801DDF1681005714E1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
