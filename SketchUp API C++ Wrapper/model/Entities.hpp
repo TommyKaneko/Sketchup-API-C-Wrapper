@@ -31,6 +31,7 @@
 namespace CW {
 
 // Forward declarations
+class Model;
 class Entity;
 class Edge;
 class Face;
@@ -47,9 +48,10 @@ class String;
 class Entities {
 	private:
   SUEntitiesRef m_entities;
+  //Model * const m_model;
   
   public:
-  Entities(SUEntitiesRef entities);
+  Entities(SUEntitiesRef entities/*, Model* model*/);
   
   
   /**

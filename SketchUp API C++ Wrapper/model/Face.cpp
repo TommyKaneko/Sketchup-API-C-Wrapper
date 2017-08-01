@@ -252,7 +252,38 @@ Material Face::back_material(const Material& material) {
 * @return FacePointClass enum indicating the status of the point relative to the face.
 */
 FacePointClass Face::classify_point(const Point3D& point) {
-	// TODO
+	Loop outer_loop = this->outer_loop();
+  PointLoopClassify outer_class = outer_loop.classify_point(point);
+  switch (outer_class) {
+  	case (PointLoopClassify::PointUnknown):
+    	return FacePointClass::PointUnknown;
+    case (PointLoopClassify::PointNotOnPlane):
+    	return FacePointClass::PointNotOnPlane;
+    case (PointLoopClassify::PointOnEdge):
+    	return FacePointClass::PointOnEdge;
+    case (PointLoopClassify::PointOnVertex):
+    	return FacePointClass::PointOnVertex;
+    case (PointLoopClassify::PointOutside):
+    	return FacePointClass::PointOutside;
+    case (PointLoopClassify::PointInside): {
+    	std::vector<Loop> inner_loops = this->inner_loops();
+      for (size_t i=0; i < inner_loops.size(); i++) {
+        PointLoopClassify inner_class = inner_loops[i].classify_point(point);
+				switch (inner_class) {
+          case (PointLoopClassify::PointOnEdge):
+            return FacePointClass::PointOnEdge;
+          case (PointLoopClassify::PointOnVertex):
+            return FacePointClass::PointOnVertex;
+          case (PointLoopClassify::PointOutside):
+            break;
+          case (PointLoopClassify::PointInside):
+          	return FacePointClass::PointOutside;
+        }
+      }
+      return FacePointClass::PointOutside;
+    } break;
+  }
+  return FacePointClass::PointUnknown;
 }
 
 

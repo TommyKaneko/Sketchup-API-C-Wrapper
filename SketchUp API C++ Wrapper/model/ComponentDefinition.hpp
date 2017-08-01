@@ -35,6 +35,7 @@ class ComponentInstance;
 class Group;
 class Behavior;
 class String;
+class Model;
 
 /**
 * This class represents a component definition.

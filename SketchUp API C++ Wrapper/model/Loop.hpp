@@ -46,7 +46,8 @@ enum class PointLoopClassify {
   PointInside,
   PointOnVertex,
   PointOnEdge,
-  PointNotOnPlane
+  PointNotOnPlane,
+  PointUnknown // indicates an error
 };
 
 /**

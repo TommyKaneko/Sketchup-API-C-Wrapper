@@ -22,6 +22,8 @@
 
 #include <cassert>
 #include "String.hpp"
+#include "Color.hpp"
+#include "Texture.hpp"
 
 namespace CW {
 
@@ -125,6 +127,39 @@ bool Material::operator!() const {
   return false;
 }
 
+Material Material::copy() const {
+	Material new_material(create_material());
+  new_material.name(this->name());
+  new_material.opacity(this->opacity());
+  new_material.texture(this->texture());
+  new_material.color(this->color());
+  new_material.type(this->type());
+  
+  return new_material;
+}
+
+
+Color Material::color() const {
+	if (!(*this)) {
+  	return Color();
+  }
+	SUColor new_color = SU_INVALID;
+	SU_RESULT res =	SUMaterialGetColor(m_material, &new_color);
+  if (res == SU_ERROR_NONE) {
+		return Color(new_color);
+  }
+  return Color();
+}
+
+
+void Material::color(const Color& color) {
+	assert(!!(*this));
+  SUColor set_color = color.ref();
+  SU_RESULT res = SUMaterialSetColor(m_material, &set_color);
+  assert(res != SU_ERROR_INVALID_INPUT);
+}
+
+
 String Material::name() const {
 	if (!(*this)) {
   	return String();
@@ -139,5 +174,89 @@ String Material::name() const {
   	return String();
   }
 }
+
+void Material::name(const String& string) {
+	if (!(*this)) {
+  	return;
+  }
+  const char *cstr = string.std_string().c_str();
+  SU_RESULT res = SUMaterialSetName(m_material, cstr);
+  assert(res == SU_ERROR_NONE);
+  return;
+}
+
+
+double Material::opacity() const {
+  double alpha;
+  SU_RESULT res = SUMaterialGetOpacity(m_material, &alpha);
+  if (res == SU_ERROR_NONE) {
+  	return alpha;
+  }
+  return 1.0;
+}
+  
+
+void Material::opacity(const double alpha) {
+	double input_alpha = 1.0;
+  if (alpha > 1.0) {
+  	input_alpha = 1.0;
+  }
+  else if (alpha < 0.0) {
+  	input_alpha = 0.0;
+  }
+  SU_RESULT res = SUMaterialSetOpacity(m_material, input_alpha);
+  assert(res != SU_ERROR_OUT_OF_RANGE);
+}
+  
+
+Texture Material::texture() const {
+	SUTextureRef get_texture = SU_INVALID;
+	SU_RESULT res = SUMaterialGetTexture(m_material, &get_texture);
+  if (res != SU_ERROR_NONE) {
+  	return Texture();
+  }
+	return Texture(get_texture);
+}
+
+
+void Material::texture(const Texture& texture) {
+	assert(!!(*this));
+  SUTextureRef texture_ref = texture.ref();
+	SU_RESULT res = SUMaterialSetTexture(m_material, texture_ref);
+}
+  
+  
+SUMaterialType Material::type() const {
+	assert(!!(*this));
+  SUMaterialType mat_type;
+	SU_RESULT res = SUMaterialGetType(m_material, &mat_type);
+	assert(res == SU_ERROR_NONE);
+  return mat_type;
+}
+
+
+void Material::type(const SUMaterialType& material_type) {
+	assert(!!(*this));
+	SU_RESULT res = SUMaterialSetType(m_material, material_type);
+	assert(res == SU_ERROR_NONE);
+}
+
+
+bool Material::use_alpha() const {
+	assert(!!(*this));
+  bool flag;
+  SU_RESULT res = SUMaterialGetUseOpacity(m_material, &flag);
+	assert(res == SU_ERROR_NONE);
+	return flag;
+}
+
+
+void Material::use_alpha(bool flag) {
+	assert(!!(*this));
+  SU_RESULT res = SUMaterialSetUseOpacity(m_material, flag);
+	assert(res == SU_ERROR_NONE);
+}
+
+
 
 } /* namespace CW */

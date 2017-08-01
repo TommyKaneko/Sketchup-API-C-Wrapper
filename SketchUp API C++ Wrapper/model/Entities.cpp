@@ -30,17 +30,19 @@
 #include "Group.hpp"
 #include "Face.hpp"
 #include "Edge.hpp"
+#include "Model.hpp"
 
 namespace CW {
 
 
-Entities::Entities(SUEntitiesRef entities):
-	m_entities(entities)
-{
-}
+Entities::Entities(SUEntitiesRef entities/*, Model* model*/):
+	m_entities(entities)/*,
+  m_model(model)*/
+{}
 
 Entities::Entities():
-	m_entities(SU_INVALID)
+	m_entities(SU_INVALID)/*,
+  m_model(nullptr)*/
 {}
 
 

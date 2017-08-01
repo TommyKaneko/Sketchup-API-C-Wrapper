@@ -30,6 +30,8 @@ namespace CW {
 
 // Forward declarations
 class String;
+class Color;
+class Texture;
 
 class Material :public Entity {
 	private:
@@ -71,10 +73,73 @@ class Material :public Entity {
   bool operator !() const;
   
   /**
+  * Returns a copy of the Material object, which is not attached to a model.
+  */
+  Material copy() const;
+  
+  /**
+  * Returns the color of the material.
+  */
+  Color color() const;
+
+  /**
+  * Sets the color of the material.
+  */
+  void color(const Color& color);
+
+  /**
   * Returns the name of the material.
   * @return string name of the material.
   */
   String name() const;
+  
+  /**
+  * Sets the name of the material.
+  * @param string name of the material.
+  */
+  void name(const String& string);
+
+  /**
+  * Returns the alpha value of the material.
+  * @return opacity The alpha value within range [0.0, 1.0].
+  */
+  double opacity() const;
+  
+  /**
+  * Sets the alpha value of the material.
+  * @param alpha The alpha value within range [0.0, 1.0].
+  */
+  void opacity(const double alpha);
+  
+  /**
+  * Returns the texture of the material
+  */
+  Texture texture() const;
+  
+  /**
+  * Sets the texture of the material
+  */
+  void texture(const Texture& texture);
+  
+  /**
+  * Returns the type of the material
+  */
+  SUMaterialType type() const;
+  
+  /**
+  * Sets the texture of the material
+  */
+  void type(const SUMaterialType& material_type);
+  
+  /**
+  * Returns whether the opacity value is used
+  */
+  bool use_alpha() const;
+
+  /**
+  * Sets whether the opacity value is used
+  */
+  void use_alpha(bool flag);
   
 };
 
