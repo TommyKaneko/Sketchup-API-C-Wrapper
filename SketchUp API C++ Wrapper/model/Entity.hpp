@@ -166,7 +166,13 @@ class Entity {
   /**
   * Returns whether these objects are the same.
   */
-  bool operator==(const Entity& entity) const;
+  //bool operator==(const Entity& entity) const;
+  
+  /**
+  * Comparison operator for two entity objects
+  */
+  friend bool operator==(const Entity& lhs, const Entity& rhs);
+  friend bool operator!=(const Entity& lhs, const Entity& rhs);
   
 };
 

@@ -140,5 +140,4 @@ String Material::name() const {
   }
 }
 
-
 } /* namespace CW */

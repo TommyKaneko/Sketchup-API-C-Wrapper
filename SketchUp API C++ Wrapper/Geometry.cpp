@@ -251,6 +251,24 @@ Vector3D Vector3D::cross(const Vector3D& vector2) const {
 	              x * vector2.y - y * vector2.x};
 }
 
+Vector3D::Colinearity Vector3D::colinear(Vector3D& vector_b) const {
+	if (this->length() < EPSILON || vector_b.length() < EPSILON) {
+  	return Vector3D::Colinearity::UNDEFINED;
+  }
+  Vector3D combined = (*this) + vector_b;
+  double combined_length = combined.length();
+  double added_length = (*this).length() + vector_b.length();
+	if (added_length == combined_length) {
+  	return Vector3D::Colinearity::COLINEAR_PRO;
+  }
+  double subtracted_length = (*this).length() - vector_b.length();
+	if (subtracted_length == combined_length) {
+  	return Vector3D::Colinearity::COLINEAR_ANTI;
+  }
+  return Vector3D::Colinearity::NO;
+}
+
+
 Vector3D Vector3D::rotate_about(double angle, const Vector3D& axis) const {
 	// This solution is derived from this page: http://math.stackexchange.com/questions/511370/how-to-rotate-one-vector-about-another
   double b_dot_b = axis.dot(axis);
@@ -405,6 +423,86 @@ bool operator!=(const Point3D &lhs, const Point3D &rhs) {
 }
 
 
+/**
+* Static method
+*/
+Point3D Point3D::intersection_between_lines(const Point3D& point_a, const Vector3D& vector_a, const Point3D& point_b, const Vector3D& vector_b, bool return_colinear) {
+  // Find the closest points according to this solution: http://paulbourke.net/geometry/pointlineplane/
+  // And this: http://stackoverflow.com/questions/563198/how-do-you-detect-where-two-line-segments-intersect
+  Vector3D a_to_b = point_b - point_a;
+  Vector3D vec_a_cross_b = vector_a.unit().cross(vector_b.unit());
+  Vector3D a_to_b_cross_vec_a = a_to_b.unit().cross(vector_a.unit());
+  Vector3D zero_vector(0.0,0.0,0.0);
+	// Check for collinearity
+  if (vec_a_cross_b == zero_vector) {
+    if (a_to_b_cross_vec_a == zero_vector) {
+      // Lines are collinear, so there is no intersection
+      if (!return_colinear) {
+      	return Point3D(false);
+      }
+      bool opposite_direction;
+      if (vector_a.unit() == vector_b.unit())
+      	opposite_direction = false;
+      else
+      	opposite_direction = true;
+      double vec_a_factor_0 = a_to_b.dot(vector_a) / vector_a.dot(vector_a);
+      double vec_a_factor_1 = vec_a_factor_0 + (vector_b.dot(vector_a) / vector_a.dot(vector_a));
+	    double vec_a_epsilon = Vector3D::EPSILON / vector_a.length(); // Note accuracy needs to be determined
+      if ((!opposite_direction && vec_a_factor_0 < vec_a_epsilon && vec_a_factor_1 > -vec_a_epsilon) ||
+      		(opposite_direction && vec_a_factor_1 < vec_a_epsilon && vec_a_factor_0 > -vec_a_epsilon)) {
+        // The intersection is at the start of line A
+      	return point_a;
+      }
+      if ((!opposite_direction && vec_a_factor_0 > -vec_a_epsilon && vec_a_factor_0 < (1 + vec_a_epsilon))) {
+        // The intersection is at the start of line B
+        return point_b;
+      }
+      if (opposite_direction && vec_a_factor_1 > -vec_a_epsilon && vec_a_factor_1 < (1 + vec_a_epsilon)) {
+        // The intersection is at the end of line B
+        return point_b + vector_b;
+      }
+      // Lines are disjoint
+      return Point3D(false);
+      
+		}
+    else {
+    	// Lines are parallel, and so there is no intersection.
+      return Point3D(false);
+    }
+  }
+  // We create lines and find the closest points between them.
+  Line3D line_a(point_a, vector_a);
+  Line3D line_b(point_b, vector_b);
+  std::pair<Point3D, Point3D> closest_points = line_a.closest_points(line_b);
+  // Check closest points are actually the same.
+  if (closest_points.first != closest_points.second) {
+  	// No intersection
+    return Point3D(false);
+  }
+  // Otherwise, we need to see if the intersection of the lines lie between the line segments
+  Point3D intersection = closest_points.first;
+  Vector3D a_to_int = intersection - point_a;
+  Vector3D b_to_int = intersection - point_b;
+  // Express the point of intersection as a scalar of the vectors from point A and point B
+  double a_direction_factor = 0.0;
+  if (a_to_int != zero_vector)
+  	a_direction_factor = vector_a.unit().dot(a_to_int.unit());
+  double b_direction_factor = 0.0;
+  if (b_to_int != zero_vector)
+  	b_direction_factor = vector_b.unit().dot(b_to_int.unit());
+ 
+  double a_factor = a_direction_factor * a_to_int.length() / vector_a.length();
+  double b_factor = b_direction_factor * b_to_int.length() / vector_b.length();
+  double a_epsilon = Vector3D::EPSILON / vector_a.length();
+  double b_epsilon = Vector3D::EPSILON / vector_b.length();
+  if (a_factor > -a_epsilon && a_factor < 1.0 + a_epsilon &&
+  		b_factor > -b_epsilon && b_factor < 1.0 + b_epsilon) {
+  	return intersection;
+  }
+  return Point3D(false);
+}
+
+
 Point3D Point3D::ray_line_intersection(const Point3D& point_a, const Vector3D& vector_a, const Point3D& point_b, const Vector3D& ray_b, bool return_colinear) {
   // Solution to finding intersection between two line segments derived from this answer: http://stackoverflow.com/questions/563198/how-do-you-detect-where-two-line-segments-intersect
   assert(ray_b.length() > EPSILON);
@@ -445,6 +543,38 @@ Point3D Point3D::ray_line_intersection(const Point3D& point_a, const Vector3D& v
       return Point3D(false);
     }
   }
+    // We create lines and find the closest points between them.
+  Line3D line_a(point_a, vector_a);
+  Line3D line_b(point_b, ray_b);
+  std::pair<Point3D, Point3D> closest_points = line_a.closest_points(line_b);
+  // Check closest points are actually the same.
+  if (closest_points.first != closest_points.second) {
+  	// No intersection
+    return Point3D(false);
+  }
+  // Otherwise, we need to see if the intersection of the lines lie between the line segments
+  Point3D intersection = closest_points.first;
+  Vector3D a_to_int = intersection - point_a;
+  Vector3D b_to_int = intersection - point_b;
+  // Express the point of intersection as a scalar of the vectors from point A and point B
+  double a_direction_factor = 0.0;
+  if (a_to_int != zero_vector)
+  	a_direction_factor = vector_a.unit().dot(a_to_int.unit());
+  double b_direction_factor = 0.0;
+  if (b_to_int != zero_vector)
+  	b_direction_factor = ray_b.unit().dot(b_to_int.unit());
+ 
+  double a_factor = a_direction_factor * a_to_int.length() / vector_a.length();
+  double b_factor = b_direction_factor * b_to_int.length() / ray_b.length();
+  double a_epsilon = Vector3D::EPSILON / vector_a.length();
+  double b_epsilon = Vector3D::EPSILON / ray_b.length();
+  if (a_factor > -a_epsilon && a_factor < 1.0 + a_epsilon &&
+  		b_factor > -b_epsilon) {
+  	return intersection;
+  }
+  return Point3D(false);
+  
+  /*
   else if (a_to_b_cross_vec_a_z_comp != zero_vector) {
     Vector3D vec_a_cross_b = vector_a.cross(ray_b);
     double line_a_factor = a_to_b.cross(ray_b).length() / vec_a_cross_b.length();
@@ -459,6 +589,7 @@ Point3D Point3D::ray_line_intersection(const Point3D& point_a, const Vector3D& v
   }
   // The lines do not intersect
   return Point3D(false);
+  */
 }
 
 
@@ -859,15 +990,44 @@ std::pair<Point3D, Point3D> Line3D::closest_points(const Line3D &other_line) con
 
 
 bool Line3D::on_line(const Point3D& test_point) const {
-	// Get the factor with which to multiply the x value, and see if it is the same for y and z values too.
-  double factor = (test_point.x - this->point.x) / this->direction.x;
-  double y_test = this->point.y + (this->direction.y * factor);
-  if (std::abs(y_test - test_point.y) > EPSILON) {
-  	return false;
+  double factor;
+  enum class OnLineFactorCoords {
+  	X,
+    Y,
+    Z
+  };
+  OnLineFactorCoords factor_val; // This is to save extra calculations.
+  // To get the most accurate factor, use one of the larger values among x, y OR z to calculate the factor.  The smallest possible value for all three x, y, z to have (given that direction is a unit vector) is 1 / sqrt(3) = 0.577
+  if (this->direction.x > 0.56) {
+		// Get the factor with which to multiply the x value, and see if it is the same for y and z values too.
+    factor = (test_point.x - this->point.x) / this->direction.x;
+    factor_val = OnLineFactorCoords::X;
   }
-  double z_test = this->point.z + (this->direction.z * factor);
-  if (std::abs(z_test - test_point.z) > EPSILON) {
-  	return false;
+  else if (this->direction.y > 0.56) {
+    factor = (test_point.y - this->point.y) / this->direction.y;
+    factor_val = OnLineFactorCoords::Y;
+	}
+  else {
+    factor = (test_point.z - this->point.z) / this->direction.z;
+    factor_val = OnLineFactorCoords::Z;
+  }
+  if (factor_val != OnLineFactorCoords::X) {
+    double x_test = this->point.x + (this->direction.x * factor);
+    if (std::abs(x_test - test_point.x) > EPSILON) {
+      return false;
+    }
+  }
+  if (factor_val != OnLineFactorCoords::Y) {
+  double y_test = this->point.y + (this->direction.y * factor);
+  	if (std::abs(y_test - test_point.y) > EPSILON) {
+   	 return false;
+  	}
+  }
+  if (factor_val != OnLineFactorCoords::Z) {
+    double z_test = this->point.z + (this->direction.z * factor);
+    if (std::abs(z_test - test_point.z) > EPSILON) {
+      return false;
+    }
   }
   return true;
 }

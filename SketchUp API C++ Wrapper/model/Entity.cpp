@@ -176,13 +176,29 @@ enum SURefType Entity::entity_type() const{
   return SUEntityGetType(m_entity);
 }
 
-
+/*
 bool Entity::operator==(const Entity& entity) const {
   if (m_entity.ptr == entity.m_entity.ptr) {
   	return true;
   }
   return false;
   //return entityID() == entity.entityID();
+}
+*/
+
+bool operator==(const Entity& lhs, const Entity& rhs) {
+	if (!lhs || !rhs) {
+  	if (!lhs && !rhs) {
+    	return true;
+    }
+    return false;
+  }
+  
+  return &lhs.m_entity == &rhs.m_entity;
+}
+
+bool operator!=(const Entity& lhs, const Entity& rhs) {
+	return !(lhs == rhs);
 }
 
 } /* namespace CW */

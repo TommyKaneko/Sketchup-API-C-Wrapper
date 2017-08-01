@@ -418,10 +418,14 @@ Point3D operator*(const Point3D &lhs, const Transformation &rhs) {
 */
 Plane3D operator*(const Plane3D &lhs, const Transformation &rhs) {
 	Vector3D plane_normal = lhs.normal();
-  Point3D plane_point = plane_normal * lhs.d;
+  Point3D plane_point = plane_normal * -lhs.d;
   std::array<double, 4> trans_plane_point = rhs.multiply4x1({plane_point.x, plane_point.y, plane_point.z, 1.0});
   std::array<double, 4> trans_plane_normal = rhs.multiply4x1({plane_normal.x, plane_normal.y, plane_normal.z, 0.0});
   return Plane3D(Point3D(trans_plane_point[0], trans_plane_point[1], trans_plane_point[2]), Vector3D(trans_plane_normal[0], trans_plane_normal[1], trans_plane_normal[2]));
+}
+
+Plane3D operator*(const Transformation &lhs, const Plane3D &rhs) {
+	return rhs * lhs;
 }
 
 /**

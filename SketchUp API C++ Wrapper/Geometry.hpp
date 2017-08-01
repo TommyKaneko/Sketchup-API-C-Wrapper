@@ -191,6 +191,17 @@ class Vector3D {
   * Returns cross product with another vector
   */
   Vector3D cross(const Vector3D& vector2) const;
+  
+  enum class Colinearity {
+  	UNDEFINED,
+    COLINEAR_PRO,
+    COLINEAR_ANTI,
+    NO
+  };
+  /**
+  * Returns whether the vector is colinear.
+  */
+  Colinearity colinear(Vector3D& vector_b) const;
 	
   /**
   * Returns a vector rotated about another vector, which is used as the axis.
@@ -309,6 +320,13 @@ class Point3D {
   friend bool operator!=(const Point3D& lhs, const Point3D& rhs);
   
   
+  /**
+  * Returns intersection between two line segments.  Each line segment is represented by a point and a vector.
+  *	@param return_colinear - if line segments overlap, return the point at which line A first interacts. with line B.  If set to false, a null point will be returned for overlapping lines.
+  * @return if intersection is found the point of intersection is returned.  If no intersection exists, a null Point3D object is returned.
+  */
+  static Point3D intersection_between_lines(const Point3D& point_a, const Vector3D& vector_a, const Point3D& point_b, const Vector3D& vector_b, bool return_colinear = false);
+
   /**
   * Returns the point of intersection between a line segment and a ray drawn from a point.
   * @param point_a - start point of the line segment to intersect

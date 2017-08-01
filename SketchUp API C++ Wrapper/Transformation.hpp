@@ -135,6 +135,7 @@ class Transformation {
   * Return transformed plane.
   */
   friend Plane3D operator*(const Plane3D &lhs, const Transformation &rhs);
+  friend Plane3D operator*(const Transformation &lhs, const Plane3D &rhs);
 
   /**
   * Return transformed face.

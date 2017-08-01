@@ -113,7 +113,8 @@ SULoopRef Loop::ref() const {
   
   
 PointLoopClassify Loop::classify_point(const std::vector<Point3D>& loop_points, const Point3D& test_point) {
-	// http://www.geeksforgeeks.org/how-to-check-if-a-given-point-lies-inside-a-polygon/
+	assert(loop_points.size() > 2);
+  // http://www.geeksforgeeks.org/how-to-check-if-a-given-point-lies-inside-a-polygon/
   // First check that the test point is on the plane
   Plane3D loop_plane = Plane3D::plane_from_loop(loop_points);
   if (!loop_plane) {
@@ -146,7 +147,7 @@ PointLoopClassify Loop::classify_point(const std::vector<Point3D>& loop_points, 
   // We draw a line from the point, and if it intersects with the loop an even number of times, then it is outside, if it intersects an odd number of times, it is inside.
   // The line to draw can be any vector that is coplanar to the loop's plane - the simple one is get a vector of two points within the loop.
   assert(loop_points[0] != loop_points[1]);
-  Vector3D ray = loop_points[1] - loop_points[0];
+  Vector3D ray = Vector3D(loop_points[1] - loop_points[0]).unit();
   // Colinear line segments create problems for the algorith below, so we ignore them by creating a new list of points to calculate that exclude colinear edges.
   struct LoopPoint {
   	Point3D point;
@@ -159,7 +160,7 @@ PointLoopClassify Loop::classify_point(const std::vector<Point3D>& loop_points, 
     if (i == loop_points.size()-1) {
     	next_point = loop_points[0];
     } else {
-    	next_point = loop_points[i];
+    	next_point = loop_points[i+1];
     }
   	Vector3D next_vector = next_point - loop_points[i];
     if (next_vector.unit() != ray.unit() && next_vector.unit() != -ray.unit()) {
@@ -169,14 +170,14 @@ PointLoopClassify Loop::classify_point(const std::vector<Point3D>& loop_points, 
   // Now we have a list of points with colinear points removed, find intersections with the line segments
   size_t num_intersections = 0;
   for (size_t i=0; i < red_loop_points.size(); i++) {
-	  Point3D intersection = Point3D::ray_line_intersection(red_loop_points[i].point, red_loop_points[i].vector_to_next, test_point, ray);
+	  Point3D intersection = Point3D::ray_line_intersection(red_loop_points[i].point, red_loop_points[i].vector_to_next, test_point, ray, false);
     if (!!intersection) {
     	// There is a case where the ray intersection lies on a vertex of the loop. Whether this should be counted as an intersection of both lines connected to the loop or just once through depends on the orientation of the ray relative to the lines connected to that vertex
       if (intersection == red_loop_points[i].point) {
       	// Get the directions of the lines connected to the vertex
         LoopPoint prev_point;
         if (i == 0) {
-        	prev_point = red_loop_points[loop_points.size()-1];
+        	prev_point = red_loop_points[red_loop_points.size()-1];
         }
         else {
         	prev_point = red_loop_points[i-1];
