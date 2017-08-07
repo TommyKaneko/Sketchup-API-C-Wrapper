@@ -67,6 +67,9 @@ DrawingElement::operator SUDrawingElementRef*() {
 
 
 BoundingBox3D DrawingElement::bounds() {
+  if (!(*this)) {
+  	throw std::logic_error("CW::DrawingElement::bounds(): DrawingElement is null");
+  }
 	SUBoundingBox3D box = SU_INVALID;
 	SU_RESULT res = SUDrawingElementGetBoundingBox(m_drawing_element, &box);
   assert(res == SU_ERROR_NONE);
@@ -97,6 +100,9 @@ bool DrawingElement::copy_properties_from(const DrawingElement& element) {
 
 
 bool DrawingElement::casts_shadows() const {
+  if (!(*this)) {
+  	throw std::logic_error("CW::DrawingElement::casts_shadows(): DrawingElement is null");
+  }
 	bool cast_shadows_flag;
 	SU_RESULT res = SUDrawingElementGetCastsShadows(m_drawing_element, &cast_shadows_flag);
   assert(res == SU_ERROR_NONE);
@@ -105,6 +111,9 @@ bool DrawingElement::casts_shadows() const {
 
 
 bool DrawingElement::casts_shadows(bool casts_shadows) {
+  if (!(*this)) {
+  	throw std::logic_error("CW::DrawingElement::casts_shadows(): DrawingElement is null");
+  }
 	SU_RESULT res = SUDrawingElementSetCastsShadows(m_drawing_element, casts_shadows);
   if (res == SU_ERROR_NONE) {
   	return true;
@@ -114,6 +123,9 @@ bool DrawingElement::casts_shadows(bool casts_shadows) {
 
 
 bool DrawingElement::hidden() const {
+  if (!(*this)) {
+  	throw std::logic_error("CW::DrawingElement::hidden(): DrawingElement is null");
+  }
 	bool hide_flag;
 	SUDrawingElementGetHidden(m_drawing_element, &hide_flag);
 	return hide_flag;
@@ -121,6 +133,9 @@ bool DrawingElement::hidden() const {
 
 
 bool DrawingElement::hidden(bool hidden) {
+  if (!(*this)) {
+  	throw std::logic_error("CW::DrawingElement::hidden(): DrawingElement is null");
+  }
 	SU_RESULT res = SUDrawingElementSetHidden(m_drawing_element, hidden);
   if (res == SU_ERROR_NONE) {
   	return true;
@@ -130,6 +145,9 @@ bool DrawingElement::hidden(bool hidden) {
 
 
 Layer DrawingElement::layer() const {
+  if (!(*this)) {
+  	throw std::logic_error("CW::DrawingElement::layer(): DrawingElement is null");
+  }
 	SULayerRef layer_ref = SU_INVALID;
 	SU_RESULT res = SUDrawingElementGetLayer(m_drawing_element, &layer_ref);
   if (res == SU_ERROR_NULL_POINTER_OUTPUT || res == SU_ERROR_NO_DATA) {
@@ -141,6 +159,9 @@ Layer DrawingElement::layer() const {
 
 
 bool DrawingElement::layer(Layer& layer){
+  if (!(*this)) {
+  	throw std::logic_error("CW::DrawingElement::layer(): DrawingElement is null");
+  }
 	SU_RESULT res = SUDrawingElementSetLayer(m_drawing_element, layer);
   if (res == SU_ERROR_NONE) {
   	layer.attached(true);
@@ -151,6 +172,9 @@ bool DrawingElement::layer(Layer& layer){
 
 
 Material DrawingElement::material() const {
+  if (!(*this)) {
+  	throw std::logic_error("CW::DrawingElement::material(): DrawingElement is null");
+  }
 	SUMaterialRef material_ref = SU_INVALID;
 	SU_RESULT res = SUDrawingElementGetMaterial(m_drawing_element, &material_ref);
   if (res == SU_ERROR_NO_DATA || res == SU_ERROR_NULL_POINTER_OUTPUT) {
@@ -162,6 +186,9 @@ Material DrawingElement::material() const {
 
 
 bool DrawingElement::material(const Material& material) {
+  if (!(*this)) {
+  	throw std::logic_error("CW::DrawingElement::material(): DrawingElement is null");
+  }
 	SU_RESULT res = SUDrawingElementSetMaterial(m_drawing_element, material);
   if (res == SU_ERROR_NONE) {
   	return true;
@@ -171,6 +198,9 @@ bool DrawingElement::material(const Material& material) {
 
 
 bool DrawingElement::receive_shadows() const {
+  if (!(*this)) {
+  	throw std::logic_error("CW::DrawingElement::receive_shadows(): DrawingElement is null");
+  }
 	bool receives_shadows_flag;
 	SU_RESULT res = SUDrawingElementGetReceivesShadows(m_drawing_element, &receives_shadows_flag);
 	assert (res == SU_ERROR_NONE);
@@ -179,6 +209,9 @@ bool DrawingElement::receive_shadows() const {
 
 
 bool DrawingElement::receive_shadows(bool receives_shadows_flag) {
+  if (!(*this)) {
+  	throw std::logic_error("CW::DrawingElement::receive_shadows(): DrawingElement is null");
+  }
 	SU_RESULT res = SUDrawingElementSetReceivesShadows(m_drawing_element, receives_shadows_flag);
   if (res == SU_ERROR_NONE) {
   	return true;

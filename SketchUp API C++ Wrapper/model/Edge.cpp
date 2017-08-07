@@ -31,6 +31,12 @@ namespace CW {
 * Private static methods **
 ***************************/
 SUEdgeRef Edge::create_edge(const Point3D& start, const Point3D& end) {
+  if (!start || !end) {
+  	throw std::invalid_argument("CW::Edge::create_edge(): given Point3D is null");
+  }
+  if (start == end) {
+  	throw std::invalid_argument("CW::Edge::create_edge(): start and end points are equal - cannot create edge of zero length");
+  }
 	SUEdgeRef edge = SU_INVALID;
   SUPoint3D start_ref = start;
   SUPoint3D end_ref = end;
@@ -148,6 +154,9 @@ bool Edge::operator!() const {
 
 
 Color Edge::color() const {
+  if (!(*this)) {
+  	throw std::logic_error("CW::Edge::color(): Edge is null");
+  }
 	SUColor color = SU_INVALID;
 	SUEdgeGetColor(m_edge, &color);
   return Color(color);
@@ -155,6 +164,9 @@ Color Edge::color() const {
 
 
 bool Edge::color(const Color& input_color) {
+  if (!(*this)) {
+  	throw std::logic_error("CW::Edge::color(): Edge is null");
+  }
 	SUColor color = input_color.ref();
 	SU_RESULT result = SUEdgeSetColor(m_edge, &color);
   if (result == SU_ERROR_NONE) {
@@ -165,6 +177,9 @@ bool Edge::color(const Color& input_color) {
 
 
 Vertex Edge::end() const {
+  if (!(*this)) {
+  	throw std::logic_error("CW::Edge::end(): Edge is null");
+  }
 	SUVertexRef vertex = SU_INVALID;
   SUEdgeGetEndVertex(m_edge, &vertex);
   return Vertex(vertex);
@@ -172,6 +187,9 @@ Vertex Edge::end() const {
 
 
 std::vector<Face> Edge::faces() const {
+  if (!(*this)) {
+  	throw std::logic_error("CW::Edge::faces(): Edge is null");
+  }
 	size_t count = 0;
 	SU_RESULT res = SUEdgeGetNumFaces(m_edge, &count);
   SUFaceRef faces[count];
@@ -190,11 +208,17 @@ std::vector<Face> Edge::faces() const {
 }
 
 Vector3D Edge::vector() const {
+  if (!(*this)) {
+  	throw std::logic_error("CW::Edge::vector(): Edge is null");
+  }
 	return end().position() - start().position();
 }
 
 
 bool Edge::smooth() const {
+  if (!(*this)) {
+  	throw std::logic_error("CW::Edge::smooth(): Edge is null");
+  }
 	bool smooth_flag;
 	SUEdgeGetSmooth(m_edge, &smooth_flag);
 	return smooth_flag;
@@ -202,6 +226,9 @@ bool Edge::smooth() const {
 
 
 bool Edge::smooth(bool smooth) {
+  if (!(*this)) {
+  	throw std::logic_error("CW::Edge::smooth(): Edge is null");
+  }
 	SU_RESULT result = SUEdgeSetSmooth(m_edge, smooth);
   if (result == SU_ERROR_NONE) {
   	return true;
@@ -211,6 +238,9 @@ bool Edge::smooth(bool smooth) {
 
 
 bool Edge::soft() const {
+  if (!(*this)) {
+  	throw std::logic_error("CW::Edge::soft(): Edge is null");
+  }
 	bool soft_flag;
 	SUEdgeGetSoft(m_edge, &soft_flag);
 	return soft_flag;
@@ -218,6 +248,9 @@ bool Edge::soft() const {
 
 
 bool Edge::soft(bool soft) {
+  if (!(*this)) {
+  	throw std::logic_error("CW::Edge::soft(): Edge is null");
+  }
 	SU_RESULT result = SUEdgeSetSoft(m_edge, soft);
   if (result == SU_ERROR_NONE) {
   	return true;
@@ -227,6 +260,9 @@ bool Edge::soft(bool soft) {
 
 
 Vertex Edge::start() const {
+  if (!(*this)) {
+  	throw std::logic_error("CW::Edge::start(): Edge is null");
+  }
 	SUVertexRef vertex = SU_INVALID;
   SUEdgeGetStartVertex(m_edge, &vertex);
   return Vertex(vertex);

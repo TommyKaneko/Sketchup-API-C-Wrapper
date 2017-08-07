@@ -90,7 +90,7 @@ class AttributeDictionary {
   /**
   * Returns true if this is a null object.
   */
-  bool operator !();
+  bool operator!() const;
 
 };
 

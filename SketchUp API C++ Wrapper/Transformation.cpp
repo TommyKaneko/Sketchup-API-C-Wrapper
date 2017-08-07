@@ -169,12 +169,16 @@ std::array<double, 4> Transformation::multiply4x1(std::array<double, 4> matrix4_
 
 
 double Transformation::operator[](size_t i) const {
-	assert(i < 16);
+  if (i > 15) {
+  	throw std::out_of_range("CW::Transformation::operator[](): index range is between 0 and 15");
+  }
   return m_transformation.values[i];
 }
 
 double& Transformation::operator[](size_t i) {
-	assert(i < 16);
+  if (i > 15) {
+  	throw std::out_of_range("CW::Transformation::operator[](): index range is between 0 and 15");
+  }
   return m_transformation.values[i];
 }
 

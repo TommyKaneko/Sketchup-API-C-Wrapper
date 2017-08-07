@@ -215,11 +215,11 @@ std::vector<ComponentDefinition> Model::group_definitions() const {
 }
 
 
-Entities Model::entities() {
+Entities Model::entities() const {
 	SUEntitiesRef entities = SU_INVALID;
 	SU_RESULT res = SUModelGetEntities(m_model, &entities);
   assert(res == SU_ERROR_NONE);
-	return Entities(entities, this);
+	return Entities(entities);
 }
 
 

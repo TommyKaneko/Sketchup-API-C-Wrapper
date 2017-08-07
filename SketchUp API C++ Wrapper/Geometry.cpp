@@ -20,12 +20,14 @@
 
 #include <stdio.h>
 #include <cmath>
-#include <cassert>
-
+#include <stdexcept>
 
 #include <SketchUpAPI/model/vertex.h>
 
 #include "Geometry.hpp"
+
+#include "Face.hpp"
+#include "Edge.hpp"
 
 //#include "Plane.h"
 //#include "Line.h"
@@ -84,7 +86,10 @@ Radians Radians::operator*(const double multiplier) const {
 
 // Divide
 Radians Radians::operator/(const double divider) const {
-	return m_val * divider;
+	if (std::abs(divider) < EPSILON) {
+  	throw std::invalid_argument("CW::Radians::operator/() cannot divide by zero");
+  }
+  return m_val * divider;
 }
 
 
@@ -131,8 +136,8 @@ Vector3D::Vector3D(bool valid):
 {}
 
 
-Vector3D::Vector3D(const SUEdgeRef &su_edge):
-	Vector3D(get_vector(su_edge))
+Vector3D::Vector3D(const Edge &edge):
+	Vector3D(edge.vector())
 {}
 
 Vector3D::Vector3D(const Vector3D &vector):
@@ -191,6 +196,9 @@ Vector3D Vector3D::operator*(const double &scalar) const {
 	return Vector3D( x * scalar, y * scalar, z * scalar);
 }
 Vector3D Vector3D::operator/(const double &scalar) const {
+	if (std::abs(scalar) < EPSILON) {
+  	throw std::invalid_argument("CW::Vector3D::operator/() - cannot divide by zero");
+  }
 	return Vector3D( x / scalar, y / scalar, z / scalar);
 }
 
@@ -282,27 +290,6 @@ Vector3D Vector3D::rotate_about(double angle, const Vector3D& axis) const {
 }
 
 
-// Static method
-SUVector3D Vector3D::get_vector(const SUEdgeRef &su_edge) {
-	SUVertexRef vertex_a, vertex_b;
-  SU_RESULT res = SUEdgeGetStartVertex(su_edge, &vertex_a);
-  assert(res == SU_ERROR_NONE);
-  res = SUEdgeGetEndVertex(su_edge, &vertex_b);
-  assert(res == SU_ERROR_NONE);
-  
-  SUPoint3D point_a, point_b;
-  res = SUVertexGetPosition(vertex_a, &point_a);
-  assert(res == SU_ERROR_NONE);
-  res = SUVertexGetPosition(vertex_b, &point_b);
-  assert(res == SU_ERROR_NONE);
-  
-  
-  Vector3D vector_b = Point3D(point_b) - Point3D(point_a);
-  
-  return vector_b;
-}
-
-
 /********
 * Point3D
 *********/
@@ -388,6 +375,9 @@ Point3D Point3D::operator*(const double &scalar) const {
 }
 
 Point3D Point3D::operator/(const double &scalar) const {
+	if (std::abs(scalar) < EPSILON) {
+  	throw std::invalid_argument("Point3D::operator/: cannot divide by zero");
+  }
   return Point3D(m_point.x / scalar, m_point.y / scalar, m_point.z / scalar);
 }
 
@@ -427,6 +417,9 @@ bool operator!=(const Point3D &lhs, const Point3D &rhs) {
 * Static method
 */
 Point3D Point3D::intersection_between_lines(const Point3D& point_a, const Vector3D& vector_a, const Point3D& point_b, const Vector3D& vector_b, bool return_colinear) {
+	if (vector_a.length() < EPSILON || vector_b.length() < EPSILON) {
+  	throw std::invalid_argument("CW::Point3D::intersection_between_lines() - cannot find intersection of lines with zero length");
+  }
   // Find the closest points according to this solution: http://paulbourke.net/geometry/pointlineplane/
   // And this: http://stackoverflow.com/questions/563198/how-do-you-detect-where-two-line-segments-intersect
   Vector3D a_to_b = point_b - point_a;
@@ -505,7 +498,9 @@ Point3D Point3D::intersection_between_lines(const Point3D& point_a, const Vector
 
 Point3D Point3D::ray_line_intersection(const Point3D& point_a, const Vector3D& vector_a, const Point3D& point_b, const Vector3D& ray_b, bool return_colinear) {
   // Solution to finding intersection between two line segments derived from this answer: http://stackoverflow.com/questions/563198/how-do-you-detect-where-two-line-segments-intersect
-  assert(ray_b.length() > EPSILON);
+  if (ray_b.length() < EPSILON || vector_a.length() < EPSILON) {
+  	throw std::invalid_argument("CW::Point3D::ray_line_intersection() - given ray/line have zero length");
+  }
   Vector3D a_to_b = point_b - point_a;
   Vector3D b_to_a = -a_to_b;
   Vector3D vec_a_cross_b_z_comp =  vector_a.unit().cross(ray_b.unit()); // Use unit vectors for easier comparisons with zero vector
@@ -616,8 +611,8 @@ Plane3D::Plane3D(double a, double b, double c, double d):
 {}
 
 
-Plane3D::Plane3D(const SUFaceRef &face):
-	Plane3D(get_plane(face))
+Plane3D::Plane3D(const Face &face):
+	Plane3D(face.plane())
 {}
 
 
@@ -678,7 +673,7 @@ bool operator==(const Plane3D &lhs, const Plane3D &rhs) {
   }
   if (!!lhs && !!rhs &&
   		std::abs(lhs.a - rhs.a) < Plane3D::EPSILON &&
-  		std::abs(lhs.c - rhs.b) < Plane3D::EPSILON &&
+  		std::abs(lhs.b - rhs.b) < Plane3D::EPSILON &&
       std::abs(lhs.c - rhs.c) < Plane3D::EPSILON &&
       std::abs(lhs.d - rhs.d) < Plane3D::EPSILON) {
   	return true;
@@ -769,7 +764,13 @@ Plane3D Plane3D::offset(double offset_by) const {
 
 
 bool Plane3D::parallel(const Plane3D& plane2) const {
-	// The following assumes that the plane normals are unit vectors.
+	if (!plane2) {
+  	throw std::invalid_argument("CW::Plane3D::parallel(): given plane is null");
+  }
+	if (!(*this)) {
+  	throw std::logic_error("CW::Plane3D::parallel(): plane is null");
+  }
+  // The following assumes that the plane normals are unit vectors.
   if (this->normal() == plane2.normal() || this->normal() == -plane2.normal()) {
   	return true;
   }
@@ -777,22 +778,21 @@ bool Plane3D::parallel(const Plane3D& plane2) const {
 }
 
 Plane3D Plane3D::inverse() const {
+	if (!(*this)) {
+  	throw std::logic_error("CW::Plane3D::inverse(): plane is null");
+  }
   return Plane3D(a*-1, b*-1, c*-1, d*-1);
 }
 
 double Plane3D::angle_with(const Plane3D& plane2) const {
-	// Solution taken form this: https://www.youtube.com/watch?v=C6ElQdRbHaE
+	if (!plane2) {
+  	throw std::invalid_argument("CW::Plane3D::angle_with(): given plane is null");
+  }
+	if (!(*this)) {
+  	throw std::logic_error("CW::Plane3D::angle_with(): plane is null");
+  }
+  // Solution taken form this: https://www.youtube.com/watch?v=C6ElQdRbHaE
   return acos(std::abs(normal().dot(plane2.normal())));
-}
-
-/**
-* Static Function
-*/
-SUPlane3D Plane3D::get_plane(const SUFaceRef &face) {
-	SUPlane3D plane;
-	SU_RESULT res = SUFaceGetPlane(face, &plane);
-  assert(res == SU_ERROR_NONE);
-  return plane;
 }
 
 
@@ -924,7 +924,13 @@ bool Line3D::operator!() const {
 
 
 Point3D Line3D::intersection(const Line3D &other_line) const {
-	// @see http://paulbourke.net/geometry/pointlineplane/
+	if (!other_line) {
+  	throw std::invalid_argument("CW::Line3D::intersection(): given line is null");
+  }
+	if (!(*this)) {
+  	throw std::logic_error("CW::Line3D::intersection(): this line is null");
+  }
+  // @see http://paulbourke.net/geometry/pointlineplane/
 	std::pair<Point3D, Point3D> close_points = this->closest_points(other_line);
   if (!close_points.first) {
   	return close_points.first;
@@ -940,7 +946,13 @@ Point3D Line3D::intersection(const Line3D &other_line) const {
 
 
 Point3D Line3D::intersection(const Plane3D &plane) const {
-	// @see http://paulbourke.net/geometry/pointlineplane/
+	if (!plane) {
+  	throw std::invalid_argument("CW::Line3D::intersection(): given plane is null");
+  }
+	if (!(*this)) {
+  	throw std::logic_error("CW::Line3D::intersection(): this line is null");
+  }
+  // @see http://paulbourke.net/geometry/pointlineplane/
 	double numerator = (plane.a * this->point.x) + (plane.b * this->point.y) + (plane.c * this->point.z) + plane.d;
   double denominator = -(plane.a * this->direction.x) - (plane.b * this->direction.y) - (plane.c * this->direction.z);
   if (std::abs(denominator) < EPSILON) {
@@ -954,6 +966,12 @@ Point3D Line3D::intersection(const Plane3D &plane) const {
 
 
 std::pair<Point3D, Point3D> Line3D::closest_points(const Line3D &other_line) const {
+	if (!other_line) {
+  	throw std::invalid_argument("CW::Line3D::closest_points(): given line is null");
+  }
+	if (!(*this)) {
+  	throw std::logic_error("CW::Line3D::closest_points(): this line is null");
+  }
 	// @see http://paulbourke.net/geometry/pointlineplane/
 	double d1343,d4321,d1321,d4343,d2121;
   double numer,denom;
@@ -990,6 +1008,12 @@ std::pair<Point3D, Point3D> Line3D::closest_points(const Line3D &other_line) con
 
 
 bool Line3D::on_line(const Point3D& test_point) const {
+	if (!test_point) {
+  	throw std::invalid_argument("CW::Line3D::on_line(): given point is null");
+  }
+	if (!(*this)) {
+  	throw std::logic_error("CW::Line3D::on_line(): this line is null");
+  }
   double factor;
   enum class OnLineFactorCoords {
   	X,
@@ -1034,6 +1058,9 @@ bool Line3D::on_line(const Point3D& test_point) const {
 
 
 bool Line3D::on_line_segment(const Point3D& point_a, const Point3D& point_b, const Point3D& test_point) {
+	if (!point_a || !test_point || !point_b) {
+  	throw std::invalid_argument("CW::Line3D::on_line_segment(): given point is null");
+  }
   // From: https://stackoverflow.com/questions/328107/how-can-you-determine-a-point-is-between-two-other-points-on-a-line-segment
   Vector3D a_to_b = point_b - point_a;
   Vector3D a_to_c = test_point - point_a;
@@ -1060,7 +1087,13 @@ bool Line3D::on_line_segment(const Point3D& point_a, const Point3D& point_b, con
 * Returns true if the Line or vector given is parallel to this line.
 */
 bool Line3D::parallel(const Line3D &line) const {
-	if (line.direction == direction) {
+	if (!line) {
+  	throw std::invalid_argument("CW::Line3D::parallel(): given line is null");
+  }
+	if (!(*this)) {
+  	throw std::logic_error("CW::Line3D::parallel(): this line is null");
+  }
+  if (line.direction == direction) {
   	return true;
   }
 	else if (line.direction == (direction * -1)) {
@@ -1071,7 +1104,16 @@ bool Line3D::parallel(const Line3D &line) const {
 
 
 bool Line3D::parallel(const Vector3D &vector) const {
-	Vector3D difference = this->direction.unit() - vector.unit();
+	if (!vector) {
+  	throw std::invalid_argument("CW::Line3D::parallel(): given vector is null");
+  }
+	if (vector.length() < EPSILON) {
+  	throw std::invalid_argument("CW::Line3D::parallel(): given vector has zero length");
+  }
+  if (!(*this)) {
+  	throw std::logic_error("CW::Line3D::parallel(): this line is null");
+  }
+  Vector3D difference = this->direction.unit() - vector.unit();
   double length = difference.length();
   if (length < EPSILON || (length - 2.0) < EPSILON) {
   	return true;

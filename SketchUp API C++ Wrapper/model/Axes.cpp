@@ -118,6 +118,9 @@ bool Axes::operator!() const {
 
 
 Vector3D Axes::x_axis() const {
+  if (!(*this)) {
+  	throw std::logic_error("CW::Axes::x_axis(): Axes is null");
+  }
   SUVector3D axis;
   SU_RESULT res = SUAxesGetXAxis(m_axes, &axis);
   assert(res == SU_ERROR_NONE);
@@ -125,6 +128,9 @@ Vector3D Axes::x_axis() const {
 }
 
 Vector3D Axes::y_axis() const {
+  if (!(*this)) {
+  	throw std::logic_error("CW::Axes::x_axis(): Axes is null");
+  }
   SUVector3D axis;
   SU_RESULT res = SUAxesGetYAxis(m_axes, &axis);
   assert(res == SU_ERROR_NONE);
@@ -132,6 +138,9 @@ Vector3D Axes::y_axis() const {
 }
 
 Vector3D Axes::z_axis() const {
+  if (!(*this)) {
+  	throw std::logic_error("CW::Axes::x_axis(): Axes is null");
+  }
   SUVector3D axis;
   SU_RESULT res = SUAxesGetZAxis(m_axes, &axis);
   assert(res == SU_ERROR_NONE);
@@ -140,6 +149,9 @@ Vector3D Axes::z_axis() const {
 
 
 Point3D Axes::origin() const {
+  if (!(*this)) {
+  	throw std::logic_error("CW::Axes::x_axis(): Axes is null");
+  }
   SUPoint3D origin;
   SU_RESULT res = SUAxesGetOrigin(m_axes, &origin);
   assert(res == SU_ERROR_NONE);
@@ -148,6 +160,9 @@ Point3D Axes::origin() const {
 
 
 Transformation Axes::transformation() const {
+  if (!(*this)) {
+  	throw std::logic_error("CW::Axes::x_axis(): Axes is null");
+  }
   SUTransformation transform;
   SU_RESULT res = SUAxesGetTransform(m_axes, &transform);
   assert(res == SU_ERROR_NONE);

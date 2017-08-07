@@ -50,6 +50,9 @@ SUCurveRef Curve::ref(){ return m_curve;}
 
 
 std::vector<Edge> Curve::get_edges() const{
+  if (!(*this)) {
+  	throw std::logic_error("CW::Curve::get_edges(): Curve is null");
+  }
 	size_t num_edges = 0;
   SU_RESULT res = SUCurveGetNumEdges(m_curve, &num_edges);
   assert(res == SU_ERROR_NONE);
@@ -66,6 +69,9 @@ std::vector<Edge> Curve::get_edges() const{
 
 
 SUCurveType Curve::get_type() {
+  if (!(*this)) {
+  	throw std::logic_error("CW::Curve::get_type(): Curve is null");
+  }
 	SUCurveGetType(m_curve, &m_curve_type);
   return m_curve_type;
 }

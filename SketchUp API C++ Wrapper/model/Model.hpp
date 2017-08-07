@@ -158,7 +158,7 @@ class Model {
   * Returns the Entities object for this model.
   * @return entities Entities object
   */
-  Entities entities();
+  Entities entities() const;
 	
   //find_entity_by_id();  // TODO can this be done?
   

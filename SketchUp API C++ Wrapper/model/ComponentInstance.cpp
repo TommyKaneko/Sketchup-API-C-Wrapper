@@ -99,6 +99,9 @@ ComponentInstance::operator SUComponentInstanceRef*() {
 }
 
 Transformation ComponentInstance::transformation() const {
+  if (!(*this)) {
+  	throw std::logic_error("CW::ComponentInstance::transformation(): ComponentInstance is null");
+  }
   SUTransformation transform;
   SU_RESULT res = SUComponentInstanceGetTransform(m_instance, &transform);
   assert(res == SU_ERROR_NONE);
@@ -107,6 +110,9 @@ Transformation ComponentInstance::transformation() const {
 
 
 void ComponentInstance::transformation(const Transformation& transform) {
+  if (!(*this)) {
+  	throw std::logic_error("CW::ComponentInstance::transformation(): ComponentInstance is null");
+  }
 	SUTransformation su_transform = transform.ref();
   SU_RESULT res = SUComponentInstanceSetTransform(m_instance, &su_transform);
   assert(res == SU_ERROR_NONE);
@@ -114,6 +120,9 @@ void ComponentInstance::transformation(const Transformation& transform) {
 
 
 ComponentDefinition ComponentInstance::definition() const{
+  if (!(*this)) {
+  	throw std::logic_error("CW::ComponentInstance::definition(): ComponentInstance is null");
+  }
   SUComponentDefinitionRef component = SU_INVALID;
   SU_RESULT res = SUComponentInstanceGetDefinition(m_instance, &component);
   assert(res == SU_ERROR_NONE);
@@ -122,6 +131,9 @@ ComponentDefinition ComponentInstance::definition() const{
 
 
 String ComponentInstance::name() const {
+  if (!(*this)) {
+  	throw std::logic_error("CW::ComponentInstance::name(): ComponentInstance is null");
+  }
   String string;
   SUStringRef * const string_ref = string;
 	SU_RESULT res = SUComponentInstanceGetName(m_instance, string_ref);
@@ -131,6 +143,9 @@ String ComponentInstance::name() const {
 
 
 void ComponentInstance::name(const String& string) {
+  if (!(*this)) {
+  	throw std::logic_error("CW::ComponentInstance::name(): ComponentInstance is null");
+  }
 	std::string name_string = string.std_string();
 	SU_RESULT res = SUComponentInstanceSetName(m_instance, name_string.c_str());
   assert(res == SU_ERROR_NONE);

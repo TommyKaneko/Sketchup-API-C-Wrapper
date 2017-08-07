@@ -48,6 +48,9 @@ AttributeDictionary::operator SUAttributeDictionaryRef*() {
 
 
 TypedValue AttributeDictionary::get_attribute(const std::string &key, const TypedValue &default_value) const {
+  if (!(*this)) {
+  	throw std::logic_error("CW::AttributeDictionary::get_attribute(): AttributeDictionary is null");
+  }
 	TypedValue value_out;
   SUTypedValueRef *val = value_out;
   const char* key_char = key.c_str();
@@ -55,11 +58,17 @@ TypedValue AttributeDictionary::get_attribute(const std::string &key, const Type
   if (res == SU_ERROR_NO_DATA) {
   	return default_value;
   }
-  assert(res == SU_ERROR_NONE);
+  if (res != SU_ERROR_NONE) {
+  	assert(false);
+    //throw std::logic_error("CW::AttributeDictionary::get_attribute(): index range is between 0 and 15");
+  }
   return value_out;
 }
 
 bool AttributeDictionary::set_attribute(const std::string &key, const TypedValue &value) {
+  if (!(*this)) {
+  	throw std::logic_error("CW::AttributeDictionary::set_attribute(): AttributeDictionary is null");
+  }
   SUTypedValueRef val = value.ref();
   const char* key_char = key.c_str();
   SU_RESULT res = SUAttributeDictionarySetValue(m_dict, &key_char[0], val);
@@ -72,6 +81,9 @@ bool AttributeDictionary::set_attribute(const std::string &key, const TypedValue
 }
 
 std::vector<std::string> AttributeDictionary::get_keys() const {
+  if (!(*this)) {
+  	throw std::logic_error("CW::AttributeDictionary::get_keys(): AttributeDictionary is null");
+  }
 	size_t num_keys = 0;
   SU_RESULT res = SUAttributeDictionaryGetNumKeys(m_dict, &num_keys);
   assert(res == SU_ERROR_NONE);
@@ -100,7 +112,7 @@ std::string AttributeDictionary::get_name() const {
   return string;
 }
 
-bool AttributeDictionary::operator !() {
+bool AttributeDictionary::operator !() const {
 	if (SUIsValid(m_dict)) {
   	return false;
   }

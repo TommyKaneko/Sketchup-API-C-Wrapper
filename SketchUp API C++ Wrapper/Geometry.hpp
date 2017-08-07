@@ -29,6 +29,11 @@
 #include <SketchUpAPI/model/face.h>
 
 namespace CW {
+
+// Forward declarations
+class Face;
+class Edge;
+
 /**
 * Radians class deals with calculating radians.
 * Usage: Radians(double) - converts double into radians.  Negative and values more than 2*pi will be made into a value between 0 and 2*pi.
@@ -113,7 +118,7 @@ class Vector3D {
   /**
   * Returns the vector between start and end points of an edge.
   */
-  Vector3D( const SUEdgeRef &su_edge);
+  Vector3D( const Edge &edge);
 	
   /**
   * Allow conversion from Point3D.
@@ -209,11 +214,6 @@ class Vector3D {
   * @param vector which will be used as the axis through which it will be rotated.
   */
 	Vector3D rotate_about(double angle, const Vector3D& axis) const;
-  
-  /**
-  * Returns the vector of the Edge object
-  */
-  static SUVector3D get_vector(const SUEdgeRef &edge);
 };
 
 /**
@@ -363,7 +363,7 @@ class Plane3D {
   Plane3D();
   Plane3D(const SUPlane3D plane);
   Plane3D(double a, double b, double c, double d);
-  Plane3D(const SUFaceRef &face);
+  Plane3D(const Face &face);
 
   /**
   * Invaid, or NULL Plane3D objects can be simulated with this constructor.
@@ -459,11 +459,6 @@ class Plane3D {
   * Returns a Plane with normals reversed.
   */
   Plane3D inverse() const;
-  
-  /**
-  * Returns SUPlane3D of SUFaceRef object
-  */
-  static SUPlane3D get_plane(const SUFaceRef &face);
 	
   /**
   * Create a plane from a series of points (normally vertexes within a loop).
@@ -471,7 +466,6 @@ class Plane3D {
   * Note that the normal of the returned plane (if successful) will point in the direction expected of an OUTER_LOOP.
   */
   static Plane3D plane_from_loop(const std::vector<Point3D>& loop_points);
-  
 };
 
 class BoundingBox3D {

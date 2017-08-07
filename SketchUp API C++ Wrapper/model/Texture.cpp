@@ -27,14 +27,14 @@ namespace CW {
 ** Private Static Methods *****
 *******************************/
 
-SUTextureRef create_texture(ImageRep& image_rep) {
+SUTextureRef Texture::create_texture(ImageRep& image_rep) {
 	SUImageRepRef image = image_rep.ref();
   SUTextureRef texture = SU_INVALID;
 	SU_RESULT res = SUTextureCreateFromImageRep(&texture, image);
 	return texture;
 }
 
-SUTextureRef create_texture(const std::string file_path, double s_scale, double t_scale) {
+SUTextureRef Texture::create_texture(const std::string file_path, double s_scale, double t_scale) {
 	SUTextureRef texture = SU_INVALID;
   SU_RESULT res = SUTextureCreateFromFile(&texture, file_path.c_str(), s_scale,t_scale);
   if (res != SU_ERROR_NONE) {

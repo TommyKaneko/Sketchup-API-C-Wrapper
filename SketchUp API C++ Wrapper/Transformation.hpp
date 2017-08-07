@@ -149,7 +149,7 @@ class Transformation {
   bool operator==(const Transformation transform) const;
   
   /**
-  * Returns a Transformation object that represents rotation of the given angle in radians about a line.
+  * Returns a Transformation object that represents rotation of the given angle in radians about a line.  The rotation direction follows the right hand rule along the direction vector of the line.
   */
   static Transformation transformation_rotate_about_line(const double angle, const Line3D line);
 };
