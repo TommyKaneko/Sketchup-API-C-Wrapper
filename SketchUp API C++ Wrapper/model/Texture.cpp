@@ -31,6 +31,7 @@ SUTextureRef Texture::create_texture(ImageRep& image_rep) {
 	SUImageRepRef image = image_rep.ref();
   SUTextureRef texture = SU_INVALID;
 	SU_RESULT res = SUTextureCreateFromImageRep(&texture, image);
+  assert(res == SU_ERROR_NONE);
 	return texture;
 }
 
@@ -108,7 +109,9 @@ SUTextureRef Texture::ref() const {
 
 
 size_t Texture::width() const {
-	assert(!!(*this));
+  if (!(*this)) {
+  	throw std::logic_error("CW::Texture::width(): Texture is null");
+  }
   size_t width;
   size_t height;
   double s_scale;
@@ -120,7 +123,9 @@ size_t Texture::width() const {
 
 
 size_t Texture::height() const {
-	assert(!!(*this));
+  if (!(*this)) {
+  	throw std::logic_error("CW::Texture::height(): Texture is null");
+  }
   size_t width;
   size_t height;
   double s_scale;
@@ -132,7 +137,9 @@ size_t Texture::height() const {
 
 
 double Texture::s_scale() const {
-	assert(!!(*this));
+  if (!(*this)) {
+  	throw std::logic_error("CW::Texture::s_scale(): Texture is null");
+  }
   size_t width;
   size_t height;
   double s_scale;
@@ -144,7 +151,9 @@ double Texture::s_scale() const {
 
 
 double Texture::t_scale() const {
-	assert(!!(*this));
+  if (!(*this)) {
+  	throw std::logic_error("CW::Texture::t_scale(): Texture is null");
+  }
   size_t width;
   size_t height;
   double s_scale;

@@ -102,6 +102,9 @@ bool Model::operator!() const {
 
 
 Layer Model::active_layer() const {
+  if(!(*this)) {
+  	throw std::logic_error("CW::Model::active_layer(): Model is null");
+  }
 	SULayerRef layer = SU_INVALID;
   SU_RESULT res = SUModelGetDefaultLayer(m_model, &layer);
   assert(res == SU_ERROR_NONE);
@@ -118,12 +121,18 @@ Layer Model::active_layer() const {
 
 
 bool Model::add_definition(ComponentDefinition& definition) {
+  if(!(*this)) {
+  	throw std::logic_error("CW::Model::add_definition(): Model is null");
+  }
 	std::vector<ComponentDefinition> defs = {definition};
   return add_definitions(defs);
 }
 
 
 bool Model::add_definitions(std::vector<ComponentDefinition>& definitions) {
+  if(!(*this)) {
+  	throw std::logic_error("CW::Model::add_definitions(): Model is null");
+  }
   SU_RESULT res = SUModelAddComponentDefinitions(m_model, definitions.size(), definitions[0]);
   if (res == SU_ERROR_NONE) {
   	return true;
@@ -133,6 +142,9 @@ bool Model::add_definitions(std::vector<ComponentDefinition>& definitions) {
 
 
 std::vector<AttributeDictionary>	Model::attribute_dictionaries() const {
+  if(!(*this)) {
+  	throw std::logic_error("CW::Model::attribute_dictionaries(): Model is null");
+  }
 	size_t count = 0;
   SU_RESULT res = SUModelGetNumAttributeDictionaries(m_model, &count);
   assert(res == SU_ERROR_NONE);
@@ -149,6 +161,9 @@ std::vector<AttributeDictionary>	Model::attribute_dictionaries() const {
 
 
 AttributeDictionary Model::attribute_dictionary(const std::string& dict_name) const {
+  if(!(*this)) {
+  	throw std::logic_error("CW::Model::attribute_dictionary(): Model is null");
+  }
 	SUAttributeDictionaryRef dict = SU_INVALID;
   SU_RESULT res = SUModelGetAttributeDictionary(m_model, dict_name.c_str(), &dict);
   assert(res == SU_ERROR_NONE);
@@ -158,6 +173,9 @@ AttributeDictionary Model::attribute_dictionary(const std::string& dict_name) co
 
 
 Axes Model::axes() const {
+  if(!(*this)) {
+  	throw std::logic_error("CW::Model::axes(): Model is null");
+  }
 	SUAxesRef axes = SU_INVALID;
 	SU_RESULT res = SUModelGetAxes(m_model, &axes);
   assert(res == SU_ERROR_NONE);
@@ -169,6 +187,9 @@ Axes Model::axes() const {
 
 
 Classifications Model::classifications() const {
+  if(!(*this)) {
+  	throw std::logic_error("CW::Model::classifications(): Model is null");
+  }
 	SUClassificationsRef classifications = SU_INVALID;
 	SU_RESULT res = SUModelGetClassifications(m_model, &classifications);
   assert(res == SU_ERROR_NONE);
@@ -184,6 +205,9 @@ Classifications Model::classifications() const {
 
 
 std::vector<ComponentDefinition> Model::definitions() const {
+  if(!(*this)) {
+  	throw std::logic_error("CW::Model::definitions(): Model is null");
+  }
 	size_t count = 0;
 	SU_RESULT res = SUModelGetNumComponentDefinitions(m_model, &count);
   assert(res == SU_ERROR_NONE);
@@ -200,6 +224,9 @@ std::vector<ComponentDefinition> Model::definitions() const {
 
 
 std::vector<ComponentDefinition> Model::group_definitions() const {
+  if(!(*this)) {
+  	throw std::logic_error("CW::Model::group_definitions(): Model is null");
+  }
 	size_t count = 0;
 	SU_RESULT res = SUModelGetNumGroupDefinitions(m_model, &count);
   assert(res == SU_ERROR_NONE);
@@ -216,6 +243,9 @@ std::vector<ComponentDefinition> Model::group_definitions() const {
 
 
 Entities Model::entities() const {
+  if(!(*this)) {
+  	throw std::logic_error("CW::Model::entities(): Model is null");
+  }
 	SUEntitiesRef entities = SU_INVALID;
 	SU_RESULT res = SUModelGetEntities(m_model, &entities);
   assert(res == SU_ERROR_NONE);
@@ -241,9 +271,16 @@ bool Model::georeferenced() const {
 
 
 TypedValue Model::get_attribute(const AttributeDictionary& dict, const std::string& key, const TypedValue& default_value) const {
+  if (!(*this)) {
+  	throw std::logic_error("CW::Model::get_attribute(): Model is null");
+  }
 	return dict.get_attribute(key, default_value);
 }
+
 TypedValue Model::get_attribute(const std::string& dict_name, const std::string& key, const TypedValue& default_value) const {
+  if (!(*this)) {
+  	throw std::logic_error("CW::Model::get_attribute(): Model is null");
+  }
 	AttributeDictionary dictionary = attribute_dictionary(dict_name);
   return get_attribute(dictionary, key, default_value);
 }
@@ -259,6 +296,9 @@ TypedValue Model::get_attribute(const std::string& dict_name, const std::string&
 * @return layers a vector array of Layer objects in the model.
 */
 std::vector<Layer> Model::layers() const {
+  if (!(*this)) {
+  	throw std::logic_error("CW::Model::layers(): Model is null");
+  }
 	size_t count = 0;
 	SU_RESULT res = SUModelGetNumLayers(m_model, &count);
   assert(res == SU_ERROR_NONE);
@@ -281,6 +321,9 @@ std::vector<Layer> Model::layers() const {
 
 
 std::vector<Material> Model::materials() const {
+  if (!(*this)) {
+  	throw std::logic_error("CW::Model::materials(): Model is null");
+  }
 	size_t count = 0;
 	SU_RESULT res = SUModelGetNumMaterials(m_model, &count);
   assert(res == SU_ERROR_NONE);
@@ -297,6 +340,9 @@ std::vector<Material> Model::materials() const {
 
 
 String Model::name() const {
+  if (!(*this)) {
+  	throw std::logic_error("CW::Model::name(): Model is null");
+  }
 	SUStringRef name = SU_INVALID;
 	SUModelGetName(m_model, &name);
   return String(name);
@@ -304,6 +350,9 @@ String Model::name() const {
 
 
 bool Model::name(const String& name_string) {
+  if (!(*this)) {
+  	throw std::logic_error("CW::Model::name(): Model is null");
+  }
   std::string std_string = name_string;
 	SU_RESULT res = SUModelSetName(m_model, std_string.c_str());
   if (res == SU_ERROR_NONE) {
@@ -314,6 +363,9 @@ bool Model::name(const String& name_string) {
 
 
 size_t Model::num_faces() const {
+  if (!(*this)) {
+  	throw std::logic_error("CW::Model::num_faces(): Model is null");
+  }
   ModelStatistics model_statistics((*this));
   return model_statistics.num_faces();
 }
@@ -337,6 +389,9 @@ size_t Model::num_faces() const {
 
 
 SU_RESULT Model::save(const std::string& file_path) {
+  if (!(*this)) {
+  	throw std::logic_error("CW::Model::save(): Model is null");
+  }
   const char * c_string = file_path.c_str();
   SU_RESULT res = SUModelSaveToFile(m_model, c_string);
   return res;
@@ -344,6 +399,9 @@ SU_RESULT Model::save(const std::string& file_path) {
 
 
 bool Model::save_with_version(const std::string& file_path, SUModelVersion version) {
+  if (!(*this)) {
+  	throw std::logic_error("CW::Model::save_with_version(): Model is null");
+  }
   SU_RESULT res = SUModelSaveToFileWithVersion(m_model, file_path.c_str(), version);
   if (res == SU_ERROR_NONE) {
     return true;
@@ -360,10 +418,16 @@ bool Model::save_with_version(const std::string& file_path, SUModelVersion versi
 
 
 bool Model::set_attribute(AttributeDictionary& dict, const std::string& key, const TypedValue& value) {
+  if (!(*this)) {
+  	throw std::logic_error("CW::Model::set_attribute(): Model is null");
+  }
   return dict.set_attribute(key, value);
 }
 
 bool Model::set_attribute(const std::string& dict_name, const std::string& key, const TypedValue& value) {
+  if (!(*this)) {
+  	throw std::logic_error("CW::Model::set_attribute(): Model is null");
+  }
 	AttributeDictionary dict = attribute_dictionary(dict_name);
   return set_attribute(dict, key, value);
 }

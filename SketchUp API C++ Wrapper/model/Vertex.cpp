@@ -70,6 +70,9 @@ Vertex& Vertex::operator=(const Vertex& other) {
 ** Public Methods **
 ********************/
 Point3D Vertex::position() const {
+  if (!(*this)) {
+  	throw std::logic_error("CW::Vertex::position(): Vertex is null");
+  }
   SUPoint3D point;
   SU_RESULT res = SUVertexGetPosition(m_vertex, &point);
   assert(res == SU_ERROR_NONE);

@@ -23,6 +23,8 @@
 #include "LoopInput.hpp"
 #include "Vertex.hpp"
 #include "Edge.hpp"
+#include "Material.hpp"
+#include "Layer.hpp"
 
 #include <cassert>
 #include <math.h>
@@ -45,13 +47,29 @@ bool Loop::operator!() const {
 
 
 LoopInput Loop::loop_input() const {
+  if(!(*this)) {
+  	throw std::logic_error("CW::Loop::loop_input(): Loop is null");
+  }
 	std::vector<Edge> edges = this->edges();
-  return LoopInput(this->edges());
+  std::vector<InputEdgeProperties> edge_properties;
+  edge_properties.reserve(edges.size());
+  for (size_t i=0; i < edges.size(); i++) {
+    InputEdgeProperties edge_prop;
+    edge_prop.hidden = edges[i].hidden();
+    edge_prop.soft = edges[i].soft();
+    edge_prop.smooth = edges[i].smooth();
+    edge_prop.material = edges[i].material();
+    edge_prop.layer = edges[i].layer();
+    edge_properties.push_back(edge_prop);
+	}
+  return LoopInput(edge_properties);
 }
 
 
 std::vector<Edge> Loop::edges() const {
-  assert(!!(*this));
+  if(!(*this)) {
+  	throw std::logic_error("CW::Loop::edges(): Loop is null");
+  }
   size_t count = 0;
   SU_RESULT res = SULoopGetNumVertices(m_loop, &count);
   assert(res == SU_ERROR_NONE);
@@ -68,7 +86,9 @@ std::vector<Edge> Loop::edges() const {
 
 
 std::vector<Vertex> Loop::vertices() const {
-  assert(!!(*this));
+  if(!(*this)) {
+  	throw std::logic_error("CW::Loop::vertices(): Loop is null");
+  }
   size_t count = 0;
   SU_RESULT res = SULoopGetNumVertices(m_loop, &count);
   assert(res == SU_ERROR_NONE);
@@ -83,7 +103,11 @@ std::vector<Vertex> Loop::vertices() const {
   return vertices;
 }
 
+
 std::vector<Point3D> Loop::points() const {
+  if(!(*this)) {
+  	throw std::logic_error("CW::Loop::points(): Loop is null");
+  }
 	std::vector<Vertex> verts = vertices();
   std::vector<Point3D> points;
   points.reserve(verts.size());
@@ -93,13 +117,22 @@ std::vector<Point3D> Loop::points() const {
   return points;
 }
 
+
 PointLoopClassify Loop::classify_point(const Point3D& point) const {
-	// TODO:
-  assert(false);
+  if(!(*this)) {
+  	throw std::logic_error("CW::Loop::classify_point(): Loop is null");
+  }
+  if(!point) {
+  	throw std::invalid_argument("CW::Loop::classify_point(): Point3D given is null");
+  }
+  return classify_point(this->points(), point);
 }
 
 
 size_t Loop::size() const {
+  if(!(*this)) {
+  	throw std::logic_error("CW::Loop::size(): Loop is null");
+  }
   size_t count = 0;
   SU_RESULT res = SULoopGetNumVertices(m_loop, &count);
   assert(res == SU_ERROR_NONE);
@@ -113,12 +146,17 @@ SULoopRef Loop::ref() const {
   
   
 PointLoopClassify Loop::classify_point(const std::vector<Point3D>& loop_points, const Point3D& test_point) {
-	assert(loop_points.size() > 2);
+  if(loop_points.size() < 3) {
+  	throw std::invalid_argument("CW::Loop::classify_point(): Fewer than 3 points given - not a valid loop.");
+  }
+  if(!test_point) {
+  	throw std::invalid_argument("CW::Loop::classify_point(): Point3D given is null");
+  }
   // http://www.geeksforgeeks.org/how-to-check-if-a-given-point-lies-inside-a-polygon/
   // First check that the test point is on the plane
   Plane3D loop_plane = Plane3D::plane_from_loop(loop_points);
   if (!loop_plane) {
-  	return PointLoopClassify::PointNotOnPlane;
+  	throw std::invalid_argument("CW::Loop::classify_point(): Points given does not form a  valid loop.");
   }
   else if (!loop_plane.on_plane(test_point)) {
   	return PointLoopClassify::PointNotOnPlane;

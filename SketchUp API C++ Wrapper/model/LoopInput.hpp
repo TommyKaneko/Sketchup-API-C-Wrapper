@@ -26,6 +26,9 @@
 
 #include <SketchUpAPI/model/geometry_input.h>
 
+#include "Material.hpp"
+#include "Layer.hpp"
+
 namespace CW {
 // Forward declarations
 class GeometryInput;
@@ -33,6 +36,7 @@ class Edge;
 class Curve;
 class Material;
 class Layer;
+class Vertex
 
 /**
 * Struct holds information for an edge that was added to a vertex.
@@ -41,8 +45,8 @@ struct InputEdgeProperties {
 	bool hidden = false;
   bool soft = false;
   bool smooth = false;
-  Material material();
-  Layer layer();
+  Material material = Material();
+  Layer layer = Layer();
 };
 
 class LoopInput {
@@ -79,7 +83,14 @@ class LoopInput {
   * @param loop_edges - vector of edges from which properties will be copied into the new loop input.
   * @param vertex_index - 0 by default.  This is the first index of the vertex to be added to the loop.  Only when using SUGeometryInputRef object would you use an index higher than 0.
   */
-  LoopInput(std::vector<Edge> loop_edges, size_t vertex_index = 0);
+  //LoopInput(std::vector<Edge> loop_edges, size_t vertex_index = 0);
+  
+  /**
+  * Create LoopInput object from vector of edge properties that can form a loop.
+  * @param loop_edge_properties - vector of InputEdgeProperties from which edge properties will be copied to the new loop input.
+  * @param vertex_index - 0 by default.  This is the first index of the vertex to be added to the loop.  Only when using SUGeometryInputRef object would you use an index higher than 0.
+  */
+  LoopInput(const std::vector<InputEdgeProperties>& loop_edge_properties, size_t vertex_index = 0);
 
 	/** Copy constructor */
 	LoopInput(const LoopInput& other);

@@ -387,7 +387,10 @@ Transformation Transformation::operator*(Transformation transform) {
 * Friend Functions of class Transformation
 */
 Vector3D operator*(const Transformation &lhs, const Vector3D &rhs) {
-	// More info about multiplying vectors here: http://www.euclideanspace.com/maths/geometry/affine/matrix4x4/index.htm
+  if (!rhs) {
+  	throw std::invalid_argument("CW::Transformation::operator*(const Vector3D &lhs, const Transformation &rhs): Vector3D given is null");
+  }
+  // More info about multiplying vectors here: http://www.euclideanspace.com/maths/geometry/affine/matrix4x4/index.htm
   std::array<double, 4> matrix4x1{rhs.x, rhs.y, rhs.z, 0.0}; // Set w value to 0 (unaffected by translation)
   std::array<double, 4> return4x1 = lhs.multiply4x1(matrix4x1);
   return Vector3D(return4x1[0], return4x1[1], return4x1[2]);
@@ -402,6 +405,9 @@ Vector3D operator*(const Vector3D &lhs, const Transformation &rhs) {
 * Friend Functions of class Transformation
 */
 Point3D operator*(const Transformation &lhs, const Point3D &rhs) {
+  if (!rhs) {
+  	throw std::invalid_argument("CW::Transformation::operator*(const Point3D &lhs, const Transformation &rhs): Point3D given is null");
+  }
 	// More info about multiplying vectors here: http://www.euclideanspace.com/maths/geometry/affine/matrix4x4/index.htm
   std::array<double, 4> matrix4x1{rhs.x, rhs.y, rhs.z, 1.0}; // Set w value to 1 (affected by translation)
   std::array<double, 4> return4x1 = lhs.multiply4x1(matrix4x1);
@@ -421,6 +427,9 @@ Point3D operator*(const Point3D &lhs, const Transformation &rhs) {
 * Friend Functions of class Transformation
 */
 Plane3D operator*(const Plane3D &lhs, const Transformation &rhs) {
+  if (!lhs) {
+  	throw std::invalid_argument("CW::Transformation::operator*(const Plane3D &lhs, const Transformation &rhs): Plane3D given is null");
+  }
 	Vector3D plane_normal = lhs.normal();
   Point3D plane_point = plane_normal * -lhs.d;
   std::array<double, 4> trans_plane_point = rhs.multiply4x1({plane_point.x, plane_point.y, plane_point.z, 1.0});
@@ -436,6 +445,9 @@ Plane3D operator*(const Transformation &lhs, const Plane3D &rhs) {
 * Friend Functions of class Transformation
 */
 Face operator*(const Face &lhs, const Transformation &rhs) {
+  if (!lhs) {
+  	throw std::invalid_argument("CW::Transformation::operator*(const Face &lhs, const Transformation &rhs): Face given is null");
+  }
 	// We transform all the vertices then create loops
   std::vector<Vertex> outer_vertices = lhs.outer_loop().vertices();
   std::vector<Point3D> trans_outer_points;
@@ -488,6 +500,9 @@ bool Transformation::operator==(const Transformation transform) const {
 * Publc Static Methods
 */
 Transformation Transformation::transformation_rotate_about_line(const double angle, const Line3D line){
+  if (!line) {
+  	throw std::invalid_argument("CW::Transformation::transformation_rotate_about_line(): Line3D given is null");
+  }
   // Solution derived from this article: http://inside.mines.edu/fs_home/gmurray/ArbitraryAxisRotation/
   SUTransformation transform;
   double u = line.direction.x;

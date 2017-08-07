@@ -128,6 +128,9 @@ bool Material::operator!() const {
 }
 
 Material Material::copy() const {
+  if(!(*this)) {
+  	throw std::logic_error("CW::Material::copy(): Material is null");
+  }
 	Material new_material(create_material());
   new_material.name(this->name());
   new_material.opacity(this->opacity());
@@ -153,7 +156,9 @@ Color Material::color() const {
 
 
 void Material::color(const Color& color) {
-	assert(!!(*this));
+  if(!(*this)) {
+  	throw std::logic_error("CW::Material::color(): Material is null");
+  }
   SUColor set_color = color.ref();
   SU_RESULT res = SUMaterialSetColor(m_material, &set_color);
   assert(res != SU_ERROR_INVALID_INPUT);
@@ -176,8 +181,8 @@ String Material::name() const {
 }
 
 void Material::name(const String& string) {
-	if (!(*this)) {
-  	return;
+  if(!(*this)) {
+  	throw std::logic_error("CW::Material::name(): Material is null");
   }
   const char *cstr = string.std_string().c_str();
   SU_RESULT res = SUMaterialSetName(m_material, cstr);
@@ -187,6 +192,9 @@ void Material::name(const String& string) {
 
 
 double Material::opacity() const {
+  if(!(*this)) {
+  	throw std::logic_error("CW::Material::opacity(): Material is null");
+  }
   double alpha;
   SU_RESULT res = SUMaterialGetOpacity(m_material, &alpha);
   if (res == SU_ERROR_NONE) {
@@ -197,6 +205,9 @@ double Material::opacity() const {
   
 
 void Material::opacity(const double alpha) {
+  if(!(*this)) {
+  	throw std::logic_error("CW::Material::opacity(): Material is null");
+  }
 	double input_alpha = 1.0;
   if (alpha > 1.0) {
   	input_alpha = 1.0;
@@ -210,6 +221,9 @@ void Material::opacity(const double alpha) {
   
 
 Texture Material::texture() const {
+  if(!(*this)) {
+  	throw std::logic_error("CW::Material::TEXTURE(): Material is null");
+  }
 	SUTextureRef get_texture = SU_INVALID;
 	SU_RESULT res = SUMaterialGetTexture(m_material, &get_texture);
   if (res != SU_ERROR_NONE) {
@@ -220,14 +234,18 @@ Texture Material::texture() const {
 
 
 void Material::texture(const Texture& texture) {
-	assert(!!(*this));
+  if(!(*this)) {
+  	throw std::logic_error("CW::Material::texture(): Material is null");
+  }
   SUTextureRef texture_ref = texture.ref();
 	SU_RESULT res = SUMaterialSetTexture(m_material, texture_ref);
 }
   
   
 SUMaterialType Material::type() const {
-	assert(!!(*this));
+  if(!(*this)) {
+  	throw std::logic_error("CW::Material::type(): Material is null");
+  }
   SUMaterialType mat_type;
 	SU_RESULT res = SUMaterialGetType(m_material, &mat_type);
 	assert(res == SU_ERROR_NONE);
@@ -236,14 +254,18 @@ SUMaterialType Material::type() const {
 
 
 void Material::type(const SUMaterialType& material_type) {
-	assert(!!(*this));
+  if(!(*this)) {
+  	throw std::logic_error("CW::Material::type(): Material is null");
+  }
 	SU_RESULT res = SUMaterialSetType(m_material, material_type);
 	assert(res == SU_ERROR_NONE);
 }
 
 
 bool Material::use_alpha() const {
-	assert(!!(*this));
+  if(!(*this)) {
+  	throw std::logic_error("CW::Material::use_alpha(): Material is null");
+  }
   bool flag;
   SU_RESULT res = SUMaterialGetUseOpacity(m_material, &flag);
 	assert(res == SU_ERROR_NONE);
@@ -252,6 +274,9 @@ bool Material::use_alpha() const {
 
 
 void Material::use_alpha(bool flag) {
+  if(!(*this)) {
+  	throw std::logic_error("CW::Material::use_alpha(): Material is null");
+  }
 	assert(!!(*this));
   SU_RESULT res = SUMaterialSetUseOpacity(m_material, flag);
 	assert(res == SU_ERROR_NONE);

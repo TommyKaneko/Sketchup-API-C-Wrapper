@@ -122,6 +122,7 @@ class Entities {
   
   /**
   * Transforms given entities by the transformation object
+	* @since SketchUp 2017, API 5.0
   * @param elems - vector array of Entity objects
   * @param transform - the transformation to apply to the elements.
   * @return true if the operation was successful.  false, if transform failed.
@@ -129,7 +130,7 @@ class Entities {
   bool transform_entities(std::vector<Entity>& elems, const Transformation& transform);
 
   /**
-  * Transforms given entities each by their transformation object
+  * Transforms given entities each by their transformation objects.
   * @param elems - vector array of Entity objects
   * @param transforms - the vector array of transformations to apply to the elements.  The number of Transformation objects must match the number of elements given.
   * @return true if the operation was successful.  false, if transform failed.

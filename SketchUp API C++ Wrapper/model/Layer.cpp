@@ -118,15 +118,14 @@ bool Layer::operator!() const {
   if (res == SU_ERROR_NULL_POINTER_OUTPUT) {
   	return true;
   }
-  // Also if it is valid and name is empty.
-  /*if (name() == String()) {
-  	return true;
-  }*/
   return false;
 }
 
 
 String Layer::name() const {
+  if(!(*this)) {
+  	throw std::logic_error("CW::Layer::name(): Layer is null");
+  }
 	String string;
 	SU_RESULT res = SULayerGetName(m_layer, string);
   assert(res == SU_ERROR_NONE);
@@ -135,12 +134,18 @@ String Layer::name() const {
 
 
 void Layer::name(const String& string) {
+  if(!(*this)) {
+  	throw std::logic_error("CW::Layer::name(): Layer is null");
+  }
   SU_RESULT res = SULayerSetName(m_layer, string.std_string().c_str());
 	assert(res == SU_ERROR_NONE);
 }
 
 
 void Layer::name(const std::string& string) {
+  if(!(*this)) {
+  	throw std::logic_error("CW::Layer::name(): Layer is null");
+  }
 	SU_RESULT res = SULayerSetName(m_layer, string.c_str());
 	assert(res == SU_ERROR_NONE);
 }

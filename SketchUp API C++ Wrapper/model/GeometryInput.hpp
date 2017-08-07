@@ -116,7 +116,12 @@ class GeometryInput {
   * Returns Raw SUGeometryInputRef that is stored.
   */
   SUGeometryInputRef ref() const;
- 	
+
+	/**
+  * Returns true if the objet is valid, false otherwise.
+  */
+  bool operator!() const;
+	
   /**
   * Returns the number of faces have been input into this GeometryInput object.
   */

@@ -157,7 +157,8 @@ String::operator std::string() const {
 
 size_t String::size() const {
   size_t out_length = 0;
-  SUStringGetUTF8Length(m_string, &out_length);
+  SU_RESULT res = SUStringGetUTF8Length(m_string, &out_length);
+  assert(res == SU_ERROR_NONE);
   return out_length;
 }
   

@@ -88,6 +88,9 @@ void Entity::attached(bool attach) {
 
 
 std::vector<AttributeDictionary>	Entity::attribute_dictionaries() const {
+	if (!(*this)) {
+  	throw std::logic_error("CW::Entity::attribute_dictionaries(): Entity is null");
+  }
   size_t num_dicts = 0;
   SU_RESULT res = SUEntityGetNumAttributeDictionaries(m_entity, &num_dicts);
   assert(res == SU_ERROR_NONE);
@@ -102,6 +105,9 @@ std::vector<AttributeDictionary>	Entity::attribute_dictionaries() const {
 }
 
 AttributeDictionary Entity::attribute_dictionary(const std::string& name) const {
+	if (!(*this)) {
+  	throw std::logic_error("CW::Entity::attribute_dictionary(): Entity is null");
+  }
   char const *c_name = name.c_str();
   SUAttributeDictionaryRef dict_ref = SU_INVALID;
   SU_RESULT res = SUEntityGetAttributeDictionary(m_entity, &c_name[0], &dict_ref);
@@ -113,6 +119,9 @@ AttributeDictionary Entity::attribute_dictionary(const std::string& name) const 
 }
 
 bool Entity::copy_attributes_from(const Entity& entity) {
+	if (!(*this) || !entity) {
+  	throw std::logic_error("CW::Entity::copy_attributes_from(): Entity is null");
+  }
   std::vector<AttributeDictionary> atts_from = entity.attribute_dictionaries();
   for (size_t i=0; i < atts_from.size(); i++) {
     std::vector<std::string> from_keys = atts_from[i].get_keys();
@@ -133,27 +142,42 @@ bool valid();
 */
 
 int32_t Entity::entityID() const{
+	if (!(*this)) {
+  	throw std::logic_error("CW::Entity::entityID(): Entity is null");
+  }
   int32_t entity_id = SU_INVALID;
   SUEntityGetID(m_entity, &entity_id);
   return entity_id;
 }
 
 TypedValue Entity::get_attribute(const std::string& dict_name, const std::string& key) const {
+	if (!(*this)) {
+  	throw std::logic_error("CW::Entity::get_attribute(): Entity is null");
+  }
   TypedValue default_value;
   return get_attribute(dict_name, key, default_value);
 }
 
 TypedValue Entity::get_attribute(const std::string& dict_name, const std::string& key, const TypedValue& default_value) const {
+	if (!(*this)) {
+  	throw std::logic_error("CW::Entity::get_attribute(): Entity is null");
+  }
   AttributeDictionary dict = attribute_dictionary(dict_name);
   return get_attribute(dict, key, default_value);
 }
 
 TypedValue Entity::get_attribute(const AttributeDictionary& dict, const std::string& key) const {
+	if (!(*this)) {
+  	throw std::logic_error("CW::Entity::get_attribute(): Entity is null");
+  }
   TypedValue default_value;
   return get_attribute(dict, key, default_value);
 }
 
 TypedValue Entity::get_attribute(const AttributeDictionary& dict, const std::string& key, const TypedValue& default_value) const {
+	if (!(*this)) {
+  	throw std::logic_error("CW::Entity::get_attribute(): Entity is null");
+  }
   return dict.get_attribute(key, default_value);
 }
 
@@ -164,15 +188,25 @@ parent()
 
 
 bool Entity::set_attribute(const std::string& dict_name, const std::string& key, const TypedValue& value) {
+	if (!(*this)) {
+  	throw std::logic_error("CW::Entity::set_attribute(): Entity is null");
+  }
   AttributeDictionary dict = attribute_dictionary(dict_name);
   return set_attribute(dict, key, value);
 }
+
 bool Entity::set_attribute(AttributeDictionary& dict, const std::string& key, const TypedValue& value) {
+	if (!(*this)) {
+  	throw std::logic_error("CW::Entity::set_attribute(): Entity is null");
+  }
   return dict.set_attribute(key, value);
 }
 
 
 enum SURefType Entity::entity_type() const{
+	if (!(*this)) {
+  	throw std::logic_error("CW::Entity::entity_type(): Entity is null");
+  }
   return SUEntityGetType(m_entity);
 }
 

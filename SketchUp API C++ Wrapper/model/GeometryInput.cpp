@@ -80,6 +80,7 @@ GeometryInput::~GeometryInput() {
   }
 }
 
+
 GeometryInput::GeometryInput(const GeometryInput& other):
 	m_geometry_input(create_geometry_input())
 {
@@ -90,6 +91,7 @@ GeometryInput::GeometryInput(const GeometryInput& other):
   	add_edge(other.m_edges[i].second);
   }
 }
+  
   
 GeometryInput& GeometryInput::operator=(const GeometryInput& other) {
 	if (SUIsValid(m_geometry_input)) {
@@ -113,12 +115,23 @@ SUGeometryInputRef GeometryInput::ref() const {
 }
 
 
+bool GeometryInput::operator!() const {
+	return SUIsInvalid(m_geometry_input);
+}
+
+
 size_t GeometryInput::num_faces() const {
-	return m_num_faces;
+  if(!(*this)) {
+  	throw std::logic_error("CW::GeometryInput::num_faces(): GeometryInput is null");
+  }
+  return m_num_faces;
 }
 
 
 std::vector<std::pair<size_t, Face>> GeometryInput::faces() const {
+  if(!(*this)) {
+  	throw std::logic_error("CW::GeometryInput::faces(): GeometryInput is null");
+  }
 	return m_faces;
 }
 
@@ -139,7 +152,12 @@ std::vector<size_t> GeometryInput::add_vertices(std::vector<Point3D> vertices) {
 */
 
 size_t GeometryInput::add_face(const Face &face) {
-  assert(!!face);
+  if(!(*this)) {
+  	throw std::logic_error("CW::GeometryInput::add_face(): GeometryInput is null");
+  }
+  if(!face) {
+  	throw std::invalid_argument("CW::GeometryInput::add_face(): Face argument is null");
+  }
   SULoopInputRef loop_input = SU_INVALID;
 	SU_RESULT res =  SULoopInputCreate(&loop_input);
   assert(res == SU_ERROR_NONE);
@@ -225,6 +243,9 @@ size_t GeometryInput::add_face(const Face &face) {
 
 
 size_t GeometryInput::add_faces(const std::vector<Face>& faces) {
+  if(!(*this)) {
+  	throw std::logic_error("CW::GeometryInput::add_faces(): GeometryInput is null");
+  }
   size_t index = m_num_faces;
   for (size_t i=0; i < faces.size(); ++i) {
   	index = add_face(faces[i]);
@@ -234,7 +255,9 @@ size_t GeometryInput::add_faces(const std::vector<Face>& faces) {
 
 
 size_t GeometryInput::add_edge(const Edge &edge) {
-  assert(!!edge);
+  if(!edge) {
+  	throw std::invalid_argument("CW::GeometryInput::add_edge(): Edge argument is null");
+  }
   if (SU_API_VERSION_MAJOR < 5) {
     // Edges can only be added since SU2017
     return 0;
@@ -277,6 +300,9 @@ size_t GeometryInput::add_edge(const Edge &edge) {
 
 
 size_t GeometryInput::add_edges(const std::vector<Edge>& edges) {
+  if(!(*this)) {
+  	throw std::logic_error("CW::GeometryInput::add_edges(): GeometryInput is null");
+  }
 	size_t index = m_num_edges;
   for (size_t i=0; i < edges.size(); ++i) {
   	index = add_edge(edges[i]);
@@ -286,6 +312,9 @@ size_t GeometryInput::add_edges(const std::vector<Edge>& edges) {
 
 
 bool GeometryInput::empty() const {
+  if(!(*this)) {
+  	throw std::logic_error("CW::GeometryInput::empty(): GeometryInput is null");
+  }
 	if (m_faces.size() == 0 && m_edges.size() == 0) {
   	return true;
   }

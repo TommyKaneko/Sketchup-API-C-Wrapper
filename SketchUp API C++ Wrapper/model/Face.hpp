@@ -231,13 +231,14 @@ class Face :public DrawingElement {
   * @param vector of Point3d objects used to position the material.
   * @param bool true to position the texture on the front of the Face or false to position it on the back of the Face.
   */
-  bool position_material(const Material& material, const std::vector<Point3D>& pt_array, bool o_front);
+  /** NOT POSSIBLE WITH C API - @see class MaterialInput **/
+  // bool position_material(const Material& material, const std::vector<Point3D>& pt_array, bool o_front);
 
 	/*
   * Reverses the face's orientation, meaning the front becomes the back.
-  * @return the reversed Face object if successful, nullptr if unsuccessful
+  * @return the reversed Face object
   */
-	Face* reverse();
+	Face& reverse();
   
   /*
   * Sets the texture projection direction.
@@ -245,19 +246,15 @@ class Face :public DrawingElement {
   * @param bool true for front side, false for back side.
   * @return true on success
   */
-  bool set_texture_projection(const Vector3D& vector, bool frontside);
-  bool set_texture_projection(bool remove, bool frontside);
+  /** NOT POSSIBLE WITH C API - @see class MaterialInput **/
+  //bool set_texture_projection(const Vector3D& vector, bool frontside);
+  //bool set_texture_projection(bool remove, bool frontside);
   
 	/*
   * Gets an array of all of the vertices that bound the face.
   * @return std::vector array of Vertex objects.
   */
   std::vector<Vertex> vertices() const;
-	
-  /**
-  * Returns the result of the SUFaceCreate operation.
-  */
-  // SU_RESULT get_result() const;
   
 };
 
