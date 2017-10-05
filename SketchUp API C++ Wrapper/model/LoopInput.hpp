@@ -36,7 +36,7 @@ class Edge;
 class Curve;
 class Material;
 class Layer;
-class Vertex
+class Vertex;
 
 /**
 * Struct holds information for an edge that was added to a vertex.

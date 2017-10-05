@@ -150,8 +150,9 @@ class Vector3D {
   * Arithmetic operator overloads
   */
   Vector3D operator+(const Vector3D &vector) const;
-  Vector3D operator+(const Point3D &point) const;
   Vector3D operator+(const SUVector3D &vector) const {return *this + Vector3D(vector);}
+  friend Point3D operator+(const Vector3D &lhs, const Point3D& rhs);
+
   Vector3D operator-() const;
   Vector3D operator-(const Vector3D &vector) const;
   Vector3D operator-(const SUVector3D &vector) const {return *this - Vector3D(vector);}
@@ -206,7 +207,7 @@ class Vector3D {
   /**
   * Returns whether the vector is colinear.
   */
-  Colinearity colinear(Vector3D& vector_b) const;
+  Colinearity colinear(const Vector3D& vector_b) const;
 	
   /**
   * Returns a vector rotated about another vector, which is used as the axis.
@@ -214,6 +215,11 @@ class Vector3D {
   * @param vector which will be used as the axis through which it will be rotated.
   */
 	Vector3D rotate_about(double angle, const Vector3D& axis) const;
+  
+  /**
+  * Returns a valid vector that has zero length.
+  */
+  static Vector3D zero_vector();
 };
 
 /**
@@ -305,7 +311,7 @@ class Point3D {
   Point3D operator+(const Point3D &point) const;
   Point3D operator+(const Vector3D &vector) const;
   Point3D operator+(const SUPoint3D &point) const;
-  Point3D operator-(const Point3D &point) const;
+  Vector3D operator-(const Point3D &point) const;
   Point3D operator-(const Vector3D &vector) const;
   Point3D operator-(const SUPoint3D &point) const;
   Point3D operator*(const double &scalar) const;
@@ -516,6 +522,7 @@ class Line3D {
   public:
   Line3D();
   Line3D(const Point3D point, const Vector3D direction);
+  Line3D(const Vector3D direction, const Point3D point);
 
   /**
   * Invaid, or NULL Line3D objects can be simulated with this constructor.
@@ -578,6 +585,11 @@ class Line3D {
   */
   bool parallel(const Line3D &line) const;
   bool parallel(const Vector3D &vector) const;
+  
+  /**
+  * Compares two lines if they represent the same line.
+  */
+  friend bool operator==(const Line3D& lhs, const Line3D& rhs);
   
 };
 

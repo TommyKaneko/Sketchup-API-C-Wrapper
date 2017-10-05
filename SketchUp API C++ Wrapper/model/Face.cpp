@@ -185,10 +185,13 @@ Material Face::back_material() const {
 	if (!(*this)) {
   	throw std::logic_error("CW::Face::back_material(): Face is null");
   }
-	Material material{};
-	SU_RESULT res = SUFaceGetBackMaterial(m_face, material);
+	SUMaterialRef material = SU_INVALID;
+	SU_RESULT res = SUFaceGetBackMaterial(m_face, &material);
+  if (res == SU_ERROR_NO_DATA) {
+  	return Material();
+  }
   assert(res == SU_ERROR_NONE);
-	return material;
+	return Material(material);
 }
 
 
@@ -196,7 +199,7 @@ Material Face::back_material(const Material& material) {
 	if (!(*this)) {
   	throw std::logic_error("CW::Face::back_material(): Face is null");
   }
-  SU_RESULT res = SUFaceSetBackMaterial(m_face, material);
+  SU_RESULT res = SUFaceSetBackMaterial(m_face, material.ref());
   assert(res == SU_ERROR_NONE);
   return material;
 }

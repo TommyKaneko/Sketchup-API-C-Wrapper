@@ -185,6 +185,10 @@ Vector3D Vector3D::operator+(const Vector3D &vector) const {
   return Vector3D(m_vector.x + vector.x, m_vector.y + vector.y, m_vector.z + vector.z);
 }
 
+Point3D operator+(const Vector3D &lhs, const Point3D& rhs) {
+	return rhs + lhs;
+}
+
 Vector3D Vector3D::operator-() const {
 	return Vector3D(-x, -y, -z);
 }
@@ -259,18 +263,18 @@ Vector3D Vector3D::cross(const Vector3D& vector2) const {
 	              x * vector2.y - y * vector2.x};
 }
 
-Vector3D::Colinearity Vector3D::colinear(Vector3D& vector_b) const {
+Vector3D::Colinearity Vector3D::colinear(const Vector3D& vector_b) const {
 	if (this->length() < EPSILON || vector_b.length() < EPSILON) {
   	return Vector3D::Colinearity::UNDEFINED;
   }
   Vector3D combined = (*this) + vector_b;
   double combined_length = combined.length();
   double added_length = (*this).length() + vector_b.length();
-	if (added_length == combined_length) {
+	if (std::fabs(added_length - combined_length) < EPSILON) {
   	return Vector3D::Colinearity::COLINEAR_PRO;
   }
   double subtracted_length = (*this).length() - vector_b.length();
-	if (subtracted_length == combined_length) {
+	if (std::fabs(subtracted_length - combined_length) < EPSILON) {
   	return Vector3D::Colinearity::COLINEAR_ANTI;
   }
   return Vector3D::Colinearity::NO;
@@ -287,6 +291,10 @@ Vector3D Vector3D::rotate_about(double angle, const Vector3D& axis) const {
 	double x2 = sin(angle) / w.length();
   Vector3D a_component_b_orth_rot = a_component_b_orth.length() * ((x1 * a_component_b_orth) + (x2 * w));
   return a_component_b_orth_rot + a_component_b_dir;
+}
+
+Vector3D Vector3D::zero_vector() {
+	return Vector3D(0.0, 0.0, 0.0);
 }
 
 
@@ -364,8 +372,8 @@ Point3D Point3D::operator+(const Vector3D &vector) const {
 }
 Point3D Point3D::operator+(const SUPoint3D &point) const { return (*this) + Point3D(point);}
 
-Point3D Point3D::operator-(const Point3D &point) const {
-  return Point3D(m_point.x - point.x, m_point.y - point.y, m_point.z - point.z);
+Vector3D Point3D::operator-(const Point3D &point) const {
+  return Vector3D(m_point.x - point.x, m_point.y - point.y, m_point.z - point.z);
 }
 Point3D Point3D::operator-(const Vector3D &vector) const { return (*this) - static_cast<Point3D>(vector);}
 Point3D Point3D::operator-(const SUPoint3D &point) const  { return (*this) - Point3D(point);}
@@ -498,14 +506,18 @@ Point3D Point3D::intersection_between_lines(const Point3D& point_a, const Vector
 
 Point3D Point3D::ray_line_intersection(const Point3D& point_a, const Vector3D& vector_a, const Point3D& point_b, const Vector3D& ray_b, bool return_colinear) {
   // Solution to finding intersection between two line segments derived from this answer: http://stackoverflow.com/questions/563198/how-do-you-detect-where-two-line-segments-intersect
-  if (ray_b.length() < EPSILON || vector_a.length() < EPSILON) {
+  Vector3D zero_vector(0.0,0.0,0.0);
+  if (ray_b == zero_vector || vector_a == zero_vector) {
   	throw std::invalid_argument("CW::Point3D::ray_line_intersection() - given ray/line have zero length");
   }
   Vector3D a_to_b = point_b - point_a;
+  // Check if the start of the lines touch
+  if (a_to_b == zero_vector) {
+  	return point_a;
+  }
   Vector3D b_to_a = -a_to_b;
   Vector3D vec_a_cross_b_z_comp =  vector_a.unit().cross(ray_b.unit()); // Use unit vectors for easier comparisons with zero vector
   Vector3D a_to_b_cross_vec_a_z_comp = a_to_b.unit().cross(vector_a.unit()); // Use unit vectors for easier comparisons with zero vector
-  Vector3D zero_vector(0.0,0.0,0.0);
 	// Check for collinearity
   if (vec_a_cross_b_z_comp == zero_vector) {
     if (a_to_b_cross_vec_a_z_comp == zero_vector) {
@@ -800,7 +812,8 @@ Plane3D::operator SUPlane3D() const { return m_plane; }
 
 
 Plane3D Plane3D::plane_from_loop(const std::vector<Point3D>& loop_points) {
-	if(loop_points.size() < 3) {
+	/*
+  if(loop_points.size() < 3) {
   	// This is an invalid plane
     return Plane3D();
   }
@@ -828,6 +841,26 @@ Plane3D Plane3D::plane_from_loop(const std::vector<Point3D>& loop_points) {
     }
   }
   return temp_plane;
+  */
+  // Solution for finding the planes here: http://www.euclideanspace.com/maths/algebra/vectors/applications/normals/
+  // We will use two adjacent edges of the the loop to create a plane from.  The vertex that is furthest from the centre of the loop is where we will start
+	
+  // Or this solution: https://www.khronos.org/opengl/wiki/Calculating_a_Surface_Normal
+  Vector3D normal(0.0, 0.0, 0.0);
+  for (size_t i=0; i < loop_points.size(); i++) {
+  	Point3D next;
+  	Point3D current = loop_points[i];
+    if (i == loop_points.size() - 1) {
+    	next = loop_points[0];
+    }
+    else {
+    	next = loop_points[i+1];
+    }
+    normal.x += (current.y - next.y) * (current.z + next.z);
+    normal.y += (current.z - next.z) * (current.x + next.x);
+    normal.z += (current.x - next.x) * (current.y + next.y);
+  }
+  return Plane3D (loop_points[0], normal.unit());
 }
 
 
@@ -878,12 +911,19 @@ Line3D::Line3D():
 	Line3D(false)
 {}
 
+
 Line3D::Line3D(const Point3D point, const Vector3D direction):
 	m_point(point),
   m_direction(direction.unit()),
   point(m_point),
   direction(m_direction)
 {}
+
+
+Line3D::Line3D(const Vector3D direction, const Point3D point):
+	Line3D(point, direction)
+{}
+
 
 Line3D::Line3D(bool valid):
 	m_point(Point3D(valid)),
@@ -901,7 +941,6 @@ Line3D::Line3D(const Line3D& other):
   direction(m_direction),
   null(other.null)
 {}
-
 
 
 Line3D& Line3D::operator=(const Line3D &line) {
@@ -1061,9 +1100,15 @@ bool Line3D::on_line_segment(const Point3D& point_a, const Point3D& point_b, con
 	if (!point_a || !test_point || !point_b) {
   	throw std::invalid_argument("CW::Line3D::on_line_segment(): given point is null");
   }
+	if (point_a == point_b) {
+  	throw std::invalid_argument("CW::Line3D::on_line_segment(): given points are equal");
+  }
   // From: https://stackoverflow.com/questions/328107/how-can-you-determine-a-point-is-between-two-other-points-on-a-line-segment
   Vector3D a_to_b = point_b - point_a;
   Vector3D a_to_c = test_point - point_a;
+  if (a_to_c == Vector3D::zero_vector()) {
+  	return true;
+  }
   Vector3D crossproduct = a_to_b.unit().cross(a_to_c.unit());
   if (fabs(crossproduct.length()) > EPSILON) {
   	// Not aligned
@@ -1121,6 +1166,20 @@ bool Line3D::parallel(const Vector3D &vector) const {
   return false;
 }
 
+
+bool operator==(const Line3D& lhs, const Line3D& rhs) {
+	if (lhs.parallel(rhs)) {
+  	// lines are parallel - check if they overlap
+    if (lhs.m_point == rhs.m_point) {
+    	return true;
+    }
+    Vector3D l_to_r = rhs.m_point - lhs.m_point;
+    if (l_to_r.colinear(lhs.m_direction) != Vector3D::Colinearity::NO) {
+    	return true;
+    }
+  }
+  return false;
+}
 
 
 } /* namespace CW */

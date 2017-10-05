@@ -75,7 +75,9 @@ LoopInput::LoopInput(std::vector<Edge> loop_edges,  size_t vertex_index):
 }
 */
 
-LoopInput::LoopInput(const std::vector<InputEdgeProperties>& loop_edge_properties, size_t vertex_index) {
+LoopInput::LoopInput(const std::vector<InputEdgeProperties>& loop_edge_properties, size_t vertex_index):
+	LoopInput()
+{
 	for (size_t i=0; i < loop_edge_properties.size(); ++i) {
   	add_vertex_index(vertex_index);
     if (SU_API_VERSION_MAJOR >= 5) {

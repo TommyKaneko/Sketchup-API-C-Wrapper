@@ -228,7 +228,7 @@ bool operator==(const Entity& lhs, const Entity& rhs) {
     return false;
   }
   
-  return &lhs.m_entity == &rhs.m_entity;
+  return lhs.m_entity.ptr == rhs.m_entity.ptr;
 }
 
 bool operator!=(const Entity& lhs, const Entity& rhs) {

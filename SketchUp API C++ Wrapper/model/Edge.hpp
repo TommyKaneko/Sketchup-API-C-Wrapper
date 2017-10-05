@@ -25,7 +25,7 @@
 
 #include <SketchUpAPI/model/edge.h>
 
-#include "Geometry.hpp"
+#include "SketchUpAPI-C-Wrapper/Geometry.hpp"
 #include "DrawingElement.hpp"
 
 namespace CW {
