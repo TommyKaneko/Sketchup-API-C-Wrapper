@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		A2169DBF1EBB51B4007FD8AA /* Initialize.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A2169DBD1EBB51B4007FD8AA /* Initialize.cpp */; };
 		A2169DC01EBB51B4007FD8AA /* Initialize.hpp in Headers */ = {isa = PBXBuildFile; fileRef = A2169DBE1EBB51B4007FD8AA /* Initialize.hpp */; };
+		A230D0A91F30E1E400E64FDB /* SketchUpAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A230D0A71F30E1D500E64FDB /* SketchUpAPI.framework */; };
+		A230D0AC1F30E23E00E64FDB /* ImageRep.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A230D0AA1F30E23E00E64FDB /* ImageRep.cpp */; };
+		A230D0AD1F30E23E00E64FDB /* ImageRep.hpp in Headers */ = {isa = PBXBuildFile; fileRef = A230D0AB1F30E23E00E64FDB /* ImageRep.hpp */; };
 		A293406A1EC914C600A5A9A5 /* Classifications.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A29340661EC914C600A5A9A5 /* Classifications.cpp */; };
 		A293406B1EC914C600A5A9A5 /* Classifications.hpp in Headers */ = {isa = PBXBuildFile; fileRef = A29340671EC914C600A5A9A5 /* Classifications.hpp */; };
 		A293406C1EC914C600A5A9A5 /* OptionsManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A29340681EC914C600A5A9A5 /* OptionsManager.cpp */; };
@@ -39,12 +42,16 @@
 		A2BB13991DDF16DE005714E1 /* Vertex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A29CB27A1DCFF8FD004462C6 /* Vertex.cpp */; };
 		A2BB139A1DDF16DE005714E1 /* String.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A29CB27C1DCFF8FD004462C6 /* String.cpp */; };
 		A2BB139B1DDF16DE005714E1 /* Transformation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A29CB27E1DCFF8FD004462C6 /* Transformation.cpp */; };
-		A2BB13A41DDF186A005714E1 /* SketchUpAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2BB13A31DDF186A005714E1 /* SketchUpAPI.framework */; };
+		A2D08B5F1F30B1CB001FF9FB /* Texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A2D08B5D1F30B1CB001FF9FB /* Texture.cpp */; };
+		A2D08B601F30B1CB001FF9FB /* Texture.hpp in Headers */ = {isa = PBXBuildFile; fileRef = A2D08B5E1F30B1CB001FF9FB /* Texture.hpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		A2169DBD1EBB51B4007FD8AA /* Initialize.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Initialize.cpp; sourceTree = "<group>"; };
 		A2169DBE1EBB51B4007FD8AA /* Initialize.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Initialize.hpp; sourceTree = "<group>"; };
+		A230D0A71F30E1D500E64FDB /* SketchUpAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SketchUpAPI.framework; sourceTree = "<group>"; };
+		A230D0AA1F30E23E00E64FDB /* ImageRep.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ImageRep.cpp; sourceTree = "<group>"; };
+		A230D0AB1F30E23E00E64FDB /* ImageRep.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ImageRep.hpp; sourceTree = "<group>"; };
 		A29340661EC914C600A5A9A5 /* Classifications.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Classifications.cpp; sourceTree = "<group>"; };
 		A29340671EC914C600A5A9A5 /* Classifications.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Classifications.hpp; sourceTree = "<group>"; };
 		A29340681EC914C600A5A9A5 /* OptionsManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OptionsManager.cpp; sourceTree = "<group>"; };
@@ -102,8 +109,9 @@
 		A29CB27E1DCFF8FD004462C6 /* Transformation.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Transformation.cpp; sourceTree = "<group>"; };
 		A29CB27F1DCFF8FD004462C6 /* Transformation.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Transformation.hpp; sourceTree = "<group>"; };
 		A29CB2801DCFF90A004462C6 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		A2BB137E1DDF1681005714E1 /* libSketchup-C-API-Wrapper.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = "libSketchup-C-API-Wrapper.dylib"; sourceTree = BUILT_PRODUCTS_DIR; };
-		A2BB13A31DDF186A005714E1 /* SketchUpAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SketchUpAPI.framework; sourceTree = "<group>"; };
+		A2BB137E1DDF1681005714E1 /* libSketchUp API C++ WrapperC-API-Wrapper.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = "libSketchUp API C++ WrapperC-API-Wrapper.dylib"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A2D08B5D1F30B1CB001FF9FB /* Texture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Texture.cpp; sourceTree = "<group>"; };
+		A2D08B5E1F30B1CB001FF9FB /* Texture.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Texture.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,7 +119,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A2BB13A41DDF186A005714E1 /* SketchUpAPI.framework in Frameworks */,
+				A230D0A91F30E1E400E64FDB /* SketchUpAPI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -121,14 +129,14 @@
 		A26449251DCFEA71007F7CF4 = {
 			isa = PBXGroup;
 			children = (
-				A2BB13A31DDF186A005714E1 /* SketchUpAPI.framework */,
 				A29CB2801DCFF90A004462C6 /* README.md */,
-				A26449301DCFEA71007F7CF4 /* src */,
-				A2BB137E1DDF1681005714E1 /* libSketchup-C-API-Wrapper.dylib */,
+				A230D0A71F30E1D500E64FDB /* SketchUpAPI.framework */,
+				A26449301DCFEA71007F7CF4 /* SUAPI-CppWrapper */,
+				A2BB137E1DDF1681005714E1 /* libSketchUp API C++ WrapperC-API-Wrapper.dylib */,
 			);
 			sourceTree = "<group>";
 		};
-		A26449301DCFEA71007F7CF4 /* src */ = {
+		A26449301DCFEA71007F7CF4 /* SUAPI-CppWrapper */ = {
 			isa = PBXGroup;
 			children = (
 				A29CB24B1DCFF8FD004462C6 /* Color.cpp */,
@@ -143,9 +151,8 @@
 				A2169DBD1EBB51B4007FD8AA /* Initialize.cpp */,
 				A2169DBE1EBB51B4007FD8AA /* Initialize.hpp */,
 			);
-			name = src;
-			path = "SketchUp API C++ Wrapper";
-			sourceTree = "<group>";
+			path = "SUAPI-CppWrapper";
+			sourceTree = SOURCE_ROOT;
 		};
 		A29CB24F1DCFF8FD004462C6 /* model */ = {
 			isa = PBXGroup;
@@ -178,6 +185,8 @@
 				A29CB2651DCFF8FD004462C6 /* GeometryInput.hpp */,
 				A29CB2661DCFF8FD004462C6 /* Group.cpp */,
 				A29CB2671DCFF8FD004462C6 /* Group.hpp */,
+				A230D0AA1F30E23E00E64FDB /* ImageRep.cpp */,
+				A230D0AB1F30E23E00E64FDB /* ImageRep.hpp */,
 				A29CB2681DCFF8FD004462C6 /* Layer.cpp */,
 				A29CB2691DCFF8FD004462C6 /* Layer.hpp */,
 				A29CB26A1DCFF8FD004462C6 /* Loop.cpp */,
@@ -190,6 +199,8 @@
 				A29CB2711DCFF8FD004462C6 /* MaterialInput.hpp */,
 				A29CB2721DCFF8FD004462C6 /* Model.cpp */,
 				A29CB2731DCFF8FD004462C6 /* Model.hpp */,
+				A2D08B5D1F30B1CB001FF9FB /* Texture.cpp */,
+				A2D08B5E1F30B1CB001FF9FB /* Texture.hpp */,
 				A29CB2741DCFF8FD004462C6 /* TextureWriter.cpp */,
 				A29CB2751DCFF8FD004462C6 /* TextureWriter.hpp */,
 				A29CB2761DCFF8FD004462C6 /* TypedValue.cpp */,
@@ -211,6 +222,8 @@
 			files = (
 				A293406B1EC914C600A5A9A5 /* Classifications.hpp in Headers */,
 				A293406D1EC914C600A5A9A5 /* OptionsManager.hpp in Headers */,
+				A2D08B601F30B1CB001FF9FB /* Texture.hpp in Headers */,
+				A230D0AD1F30E23E00E64FDB /* ImageRep.hpp in Headers */,
 				A2169DC01EBB51B4007FD8AA /* Initialize.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -218,9 +231,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		A2BB137D1DDF1681005714E1 /* Sketchup-C-API-Wrapper */ = {
+		A2BB137D1DDF1681005714E1 /* SketchUp API C++ WrapperC-API-Wrapper */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A2BB13811DDF1681005714E1 /* Build configuration list for PBXNativeTarget "Sketchup-C-API-Wrapper" */;
+			buildConfigurationList = A2BB13811DDF1681005714E1 /* Build configuration list for PBXNativeTarget "SketchUp API C++ WrapperC-API-Wrapper" */;
 			buildPhases = (
 				A2BB137A1DDF1681005714E1 /* Sources */,
 				A2BB137B1DDF1681005714E1 /* Frameworks */,
@@ -230,9 +243,9 @@
 			);
 			dependencies = (
 			);
-			name = "Sketchup-C-API-Wrapper";
+			name = "SketchUp API C++ WrapperC-API-Wrapper";
 			productName = "Sketchup-C-API-Wrapper";
-			productReference = A2BB137E1DDF1681005714E1 /* libSketchup-C-API-Wrapper.dylib */;
+			productReference = A2BB137E1DDF1681005714E1 /* libSketchUp API C++ WrapperC-API-Wrapper.dylib */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
 /* End PBXNativeTarget section */
@@ -249,7 +262,7 @@
 					};
 				};
 			};
-			buildConfigurationList = A26449291DCFEA71007F7CF4 /* Build configuration list for PBXProject "SketchUp API C++ Wrapper" */;
+			buildConfigurationList = A26449291DCFEA71007F7CF4 /* Build configuration list for PBXProject "SUAPI-CppWrapper" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -261,7 +274,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A2BB137D1DDF1681005714E1 /* Sketchup-C-API-Wrapper */,
+				A2BB137D1DDF1681005714E1 /* SketchUp API C++ WrapperC-API-Wrapper */,
 			);
 		};
 /* End PBXProject section */
@@ -281,11 +294,13 @@
 				A2BB13891DDF16DE005714E1 /* DrawingElement.cpp in Sources */,
 				A2BB138A1DDF16DE005714E1 /* Edge.cpp in Sources */,
 				A2BB138B1DDF16DE005714E1 /* Entities.cpp in Sources */,
+				A230D0AC1F30E23E00E64FDB /* ImageRep.cpp in Sources */,
 				A2BB138C1DDF16DE005714E1 /* Entity.cpp in Sources */,
 				A293406A1EC914C600A5A9A5 /* Classifications.cpp in Sources */,
 				A2BB138D1DDF16DE005714E1 /* Face.cpp in Sources */,
 				A293406C1EC914C600A5A9A5 /* OptionsManager.cpp in Sources */,
 				A2BB138E1DDF16DE005714E1 /* GeometryInput.cpp in Sources */,
+				A2D08B5F1F30B1CB001FF9FB /* Texture.cpp in Sources */,
 				A2BB138F1DDF16DE005714E1 /* Group.cpp in Sources */,
 				A2BB13901DDF16DE005714E1 /* Layer.cpp in Sources */,
 				A2BB13911DDF16DE005714E1 /* Loop.cpp in Sources */,
@@ -346,6 +361,8 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
+				USER_HEADER_SEARCH_PATHS = "$SRCROOT/**";
+				USE_HEADERMAP = NO;
 			};
 			name = Debug;
 		};
@@ -382,6 +399,8 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
+				USER_HEADER_SEARCH_PATHS = "$SRCROOT/**";
+				USE_HEADERMAP = NO;
 			};
 			name = Release;
 		};
@@ -416,7 +435,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A26449291DCFEA71007F7CF4 /* Build configuration list for PBXProject "SketchUp API C++ Wrapper" */ = {
+		A26449291DCFEA71007F7CF4 /* Build configuration list for PBXProject "SUAPI-CppWrapper" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A26449331DCFEA71007F7CF4 /* Debug */,
@@ -425,7 +444,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A2BB13811DDF1681005714E1 /* Build configuration list for PBXNativeTarget "Sketchup-C-API-Wrapper" */ = {
+		A2BB13811DDF1681005714E1 /* Build configuration list for PBXNativeTarget "SketchUp API C++ WrapperC-API-Wrapper" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A2BB137F1DDF1681005714E1 /* Debug */,
