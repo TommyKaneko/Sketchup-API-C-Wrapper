@@ -19,9 +19,9 @@ SUEntitiesGetFaces(entities, faceCount, &faces[0], &faceCount);
 ```
 With the C++ Wrapper, to achieve the above, you just need to write this:
 ```
-#include <CWrapper/model/Model.hpp>
-#include <CWrapper/model/Face.hpp>
-std::vector<CW::Face> faces = CW::Model(model).get_entities().get_faces();
+#include <SUAPI-CppWrapper/model/Model.hpp>
+#include <SUAPI-CppWrapper/model/Face.hpp>
+std::vector<CW::Face> faces = CW::Model(model).entities().faces();
 ```
 Added to this benefit, the wrapper classes have helper functions to help with geometric manipulations, much in the style of the SketchUp Ruby API
 
