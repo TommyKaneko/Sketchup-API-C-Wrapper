@@ -292,7 +292,7 @@ class Point3D {
   /**
   * Copy assignment operator
   */
-  Point3D &operator=(const Point3D &vector);
+  Point3D &operator=(const Point3D &point);
 
   /*
   * Cast to SUPoint3D struct
