@@ -1,7 +1,7 @@
 //
 //  Texture.hpp
 //
-//  Sketchup C++ Wrapper for C API
+// Sketchup C++ Wrapper for C API
 //  Copyright (C) 2016  Hidetomo (Tom) Kaneko
 //
 //  This program is free software: you can redistribute it and/or modify
