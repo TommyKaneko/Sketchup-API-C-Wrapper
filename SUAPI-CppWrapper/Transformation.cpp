@@ -26,7 +26,11 @@
 //
 
 #include <cassert>
+#ifdef WIN32
+#include <ctgmath>
+#else
 #include <tgmath.h>
+#endif // WIN32
 
 #include "SUAPI-CppWrapper/Transformation.hpp"
 
