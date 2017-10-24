@@ -26,7 +26,11 @@
 //
 
 #include <cassert>
+#ifdef WIN32
+#include <ctgmath>
+#else
 #include <tgmath.h>
+#endif // WIN32
 
 #include "SUAPI-CppWrapper/Transformation.hpp"
 
@@ -362,6 +366,7 @@ Transformation& Transformation::normalize() {
 Point3D Transformation::origin() const {
 	// TODO
   assert(false);
+  return Point3D(); // Temporary return value, to allow compiling on Windows
 }
   
 

@@ -41,9 +41,9 @@ class Curve :public Entity {
 	private:
   SUCurveRef m_curve;
   SUCurveType m_curve_type;
-  SU_RESULT m_create_result;
+  SUResult m_create_result;
   
-  static SUCurveRef create_curve(std::vector<Edge>& edges, SU_RESULT &result);
+  static SUCurveRef create_curve(std::vector<Edge>& edges, SUResult &result);
   
   public:
   /**
@@ -72,7 +72,7 @@ class Curve :public Entity {
   SUCurveType get_type();
 	
   /*
-  * Returns the SU_RESULT object form when the Curve was created.
+  * Returns the SUResult object form when the Curve was created.
   * @return	* SU_ERROR_NONE on success
             * SU_ERROR_NULL_POINTER_INPUT if edges is NULL
             * SU_ERROR_OUT_OF_RANGE if len is 0
@@ -80,7 +80,7 @@ class Curve :public Entity {
             * SU_ERROR_OVERWRITE_VALID if curve already references a valid object
             * SU_ERROR_GENERIC if edge array contains an invalid edge, if the edges in the array are not connected, if any of the edges are associated with a face object, or the edges describe a loop
   */
-	SU_RESULT get_result() const;
+	SUResult get_result() const;
   
   /*
   * Returns whether the class is a valid object.

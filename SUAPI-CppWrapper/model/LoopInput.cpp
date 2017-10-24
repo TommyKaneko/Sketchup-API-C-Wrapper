@@ -114,7 +114,7 @@ LoopInput::LoopInput(const LoopInput& other):
 
 LoopInput::~LoopInput() {
 	if (!m_attached && SUIsValid(m_loop_input)) {
-  	SU_RESULT res = SULoopInputRelease(&m_loop_input);
+  	SUResult res = SULoopInputRelease(&m_loop_input);
     assert(res == SU_ERROR_NONE);
   }
 }
@@ -132,6 +132,7 @@ LoopInput& LoopInput::operator=(const LoopInput& other) {
   SULoopInputRef other_loop_input = other.ref();
   while (SULoopInputEdgeSetHidden(other_loop_input, size_t edge_index, bool hidden))
 	*/
+  return LoopInput(); // Temporary return value, to allow compiling on Windows
 }
 
 
@@ -163,7 +164,7 @@ LoopInput& LoopInput::add_vertex_index(const size_t index) {
   if(!(*this)) {
   	throw std::logic_error("CW::LoopInput::add_vertex_index(): LoopInput is null");
   }
-	SU_RESULT res = SULoopInputAddVertexIndex(m_loop_input, index);
+	SUResult res = SULoopInputAddVertexIndex(m_loop_input, index);
 	assert(res == SU_ERROR_NONE);
   m_edge_num++;
 	return (*this);
@@ -174,7 +175,7 @@ LoopInput& LoopInput::set_edge_hidden(const size_t edge_index, const bool hidden
   if(!(*this)) {
   	throw std::logic_error("CW::LoopInput::set_edge_hidden(): LoopInput is null");
   }
-	SU_RESULT res = SULoopInputEdgeSetHidden(m_loop_input, edge_index, hidden);
+	SUResult res = SULoopInputEdgeSetHidden(m_loop_input, edge_index, hidden);
   if(res == SU_ERROR_OUT_OF_RANGE) {
   	throw std::invalid_argument("CW::LoopInput::set_edge_hidden(): edge_index is larger than the number of vertices in the LoopInput");
   }
@@ -186,7 +187,7 @@ LoopInput& LoopInput::set_edge_soft(const size_t edge_index, const bool soft) {
   if(!(*this)) {
   	throw std::logic_error("CW::LoopInput::set_edge_soft(): LoopInput is null");
   }
-	SU_RESULT res = SULoopInputEdgeSetSoft(m_loop_input, edge_index, soft);
+	SUResult res = SULoopInputEdgeSetSoft(m_loop_input, edge_index, soft);
   if(res == SU_ERROR_OUT_OF_RANGE) {
   	throw std::invalid_argument("CW::LoopInput::set_edge_soft(): edge_index is larger than the number of vertices in the LoopInput");
   }
@@ -198,7 +199,7 @@ LoopInput& LoopInput::set_edge_smooth(const size_t edge_index, const bool smooth
   if(!(*this)) {
   	throw std::logic_error("CW::LoopInput::set_edge_smooth(): LoopInput is null");
   }
-	SU_RESULT res = SULoopInputEdgeSetSoft(m_loop_input, edge_index, smooth);
+	SUResult res = SULoopInputEdgeSetSoft(m_loop_input, edge_index, smooth);
   if(res == SU_ERROR_OUT_OF_RANGE) {
   	throw std::invalid_argument("CW::LoopInput::set_edge_smooth(): edge_index is larger than the number of vertices in the LoopInput");
   }
@@ -210,7 +211,7 @@ LoopInput& LoopInput::set_edge_material(const size_t edge_index, const Material&
   if(!(*this)) {
   	throw std::logic_error("CW::LoopInput::set_edge_material(): LoopInput is null");
   }
-	SU_RESULT res = SULoopInputEdgeSetMaterial(m_loop_input, edge_index, material.ref());
+	SUResult res = SULoopInputEdgeSetMaterial(m_loop_input, edge_index, material.ref());
   if(res == SU_ERROR_OUT_OF_RANGE) {
   	throw std::invalid_argument("CW::LoopInput::set_edge_material(): edge_index is larger than the number of vertices in the LoopInput");
   }
@@ -221,7 +222,7 @@ LoopInput& LoopInput::set_edge_layer(const size_t edge_index, const Layer& layer
   if(!(*this)) {
   	throw std::logic_error("CW::LoopInput::set_edge_layer(): LoopInput is null");
   }
-	SU_RESULT res = SULoopInputEdgeSetLayer(m_loop_input, edge_index, layer.ref());
+	SUResult res = SULoopInputEdgeSetLayer(m_loop_input, edge_index, layer.ref());
   if(res == SU_ERROR_OUT_OF_RANGE) {
   	throw std::invalid_argument("CW::LoopInput::set_edge_layer(): edge_index is larger than the number of vertices in the LoopInput");
   }

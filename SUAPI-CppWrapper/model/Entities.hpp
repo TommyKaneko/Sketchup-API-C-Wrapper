@@ -69,7 +69,7 @@ class Entities {
   /**
   * Fills an Entities object with geometry in GeometryInput object.
   */
-	SU_RESULT fill(GeometryInput &geom_input);
+	SUResult fill(GeometryInput &geom_input);
 
   std::vector<Face> faces() const;
   std::vector<Edge> edges(bool stray_only = true) const;

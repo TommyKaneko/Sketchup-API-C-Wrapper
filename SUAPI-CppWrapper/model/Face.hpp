@@ -61,7 +61,7 @@ class Edge;
 class Face :public DrawingElement {
 	private:
   SUFaceRef m_face;
-	//SU_RESULT m_create_result = SU_ERROR_NONE;
+	//SUResult m_create_result = SU_ERROR_NONE;
   
   /**
   * Creates a SUFaceRef object from an array of points that represent the outer loop.
@@ -86,8 +86,8 @@ class Face :public DrawingElement {
   */
   static SUFaceRef copy_reference(const Face& face);
   
-  //static SUFaceRef create_face(std::vector<Point3D> outer_loop, std::vector<std::vector<Point3D>> inner_loops, SU_RESULT &create_result);
-  //static SUFaceRef check_face(SUFaceRef face, SU_RESULT &create_result);
+  //static SUFaceRef create_face(std::vector<Point3D> outer_loop, std::vector<std::vector<Point3D>> inner_loops, SUResult &create_result);
+  //static SUFaceRef check_face(SUFaceRef face, SUResult &create_result);
   
   public:
   /**

@@ -46,7 +46,7 @@ ImageRep::ImageRep(const ImageRep& other):
 
 ImageRep::~ImageRep() {
 	if (SUIsValid(m_image_rep) && !m_attached) {
-  	SU_RESULT res = SUImageRepRelease(&m_image_rep);
+  	SUResult res = SUImageRepRelease(&m_image_rep);
     assert(res == SU_ERROR_NONE);
   }
 }
@@ -54,7 +54,7 @@ ImageRep::~ImageRep() {
 
 ImageRep& ImageRep::operator=(const ImageRep& other) {
   if (!m_attached && SUIsValid(m_image_rep)) {
-    SU_RESULT res = SUImageRepRelease(&m_image_rep);
+    SUResult res = SUImageRepRelease(&m_image_rep);
     assert(res == SU_ERROR_NONE);
   }
   m_image_rep = copy_reference(other);
@@ -88,7 +88,7 @@ ImageRep ImageRep::copy() const {
   	throw std::logic_error("CW::ImageRep::copy(): ImageRep is null");
   }
 	SUImageRepRef copy_image = SU_INVALID;
-	SU_RESULT res = SUImageRepCopy(m_image_rep, copy_image);
+	SUResult res = SUImageRepCopy(m_image_rep, copy_image);
   assert(res == SU_ERROR_NONE);
   return ImageRep(copy_image, false);
 }
@@ -98,7 +98,7 @@ void ImageRep::set_data(size_t width, size_t height, size_t bits_per_pixel, size
   if(!(*this)) {
   	throw std::logic_error("CW::ImageRep::set_data(): ImageRep is null");
   }
-  SU_RESULT res = SUImageRepSetData(m_image_rep, width, height, bits_per_pixel, row_padding, &pixel_data[0]);
+  SUResult res = SUImageRepSetData(m_image_rep, width, height, bits_per_pixel, row_padding, &pixel_data[0]);
 	if (res == SU_ERROR_OUT_OF_RANGE) {
   	if (width == 0 || height == 0) {
     	throw std::invalid_argument("CW::ImageRep::set_data(): given width or height is 0 - it must be greater than 0");
@@ -115,7 +115,7 @@ void ImageRep::load_file(const std::string file_path) {
   if(!(*this)) {
   	throw std::logic_error("CW::ImageRep::load_file(): ImageRep is null");
   }
-	SU_RESULT res = SUImageRepLoadFile(m_image_rep, file_path.c_str());
+	SUResult res = SUImageRepLoadFile(m_image_rep, file_path.c_str());
   if (res == SU_ERROR_SERIALIZATION) {
   	throw std::invalid_argument("CW::ImageRep::load_file(): Loading file failed. Probably invalid file path given.");
   }
@@ -123,11 +123,11 @@ void ImageRep::load_file(const std::string file_path) {
 }
 
 
-SU_RESULT ImageRep::save_to_file(const std::string file_path) const {
+SUResult ImageRep::save_to_file(const std::string file_path) const {
   if(!(*this)) {
   	throw std::logic_error("CW::ImageRep::save_to_file(): ImageRep is null");
   }
-  SU_RESULT res = SUImageRepSaveToFile(m_image_rep, file_path.c_str());
+  SUResult res = SUImageRepSaveToFile(m_image_rep, file_path.c_str());
   if (res == SU_ERROR_SERIALIZATION) {
   	throw std::invalid_argument("CW::ImageRep::save_to_file(): Saving file failed. Probably invalid file path given.");
   }
@@ -145,7 +145,7 @@ size_t ImageRep::width() const {
   }
 	size_t width;
   size_t height;
-	SU_RESULT res = SUImageRepGetPixelDimensions(m_image_rep, &width, &height);
+	SUResult res = SUImageRepGetPixelDimensions(m_image_rep, &width, &height);
   assert(res == SU_ERROR_NONE);
   return width;
 }
@@ -157,7 +157,7 @@ size_t ImageRep::height() const {
   }
 	size_t width;
   size_t height;
-	SU_RESULT res = SUImageRepGetPixelDimensions(m_image_rep, &width, &height);
+	SUResult res = SUImageRepGetPixelDimensions(m_image_rep, &width, &height);
   assert(res == SU_ERROR_NONE);
   return height;
 }
@@ -168,7 +168,7 @@ size_t ImageRep::row_padding() const {
   	throw std::logic_error("CW::ImageRep::row_padding(): ImageRep is null");
   }
 	size_t padding;
-  SU_RESULT res =  SUImageRepGetRowPadding(m_image_rep, &padding);
+  SUResult res =  SUImageRepGetRowPadding(m_image_rep, &padding);
   assert(res == SU_ERROR_NONE);
   return padding;
 }
@@ -178,7 +178,7 @@ void ImageRep::resize(size_t width, size_t height) {
   if(!(*this)) {
   	throw std::logic_error("CW::ImageRep::resize(): ImageRep is null");
   }
-  SU_RESULT res = SUImageRepResize(m_image_rep, width, height);
+  SUResult res = SUImageRepResize(m_image_rep, width, height);
 	if (res == SU_ERROR_OUT_OF_RANGE) {
     throw std::invalid_argument("CW::ImageRep::resize(): width and height must be greater than 0.");
   }
@@ -190,7 +190,7 @@ void ImageRep::convert_to_32bits() {
   if(!(*this)) {
   	throw std::logic_error("CW::ImageRep::convert_to_32bits(): ImageRep is null");
   }
-	SU_RESULT res = SUImageRepConvertTo32BitsPerPixel(m_image_rep);
+	SUResult res = SUImageRepConvertTo32BitsPerPixel(m_image_rep);
   if (res == SU_ERROR_NO_DATA) {
   	throw std::logic_error("CW::ImageRep::convert_to_32bits(): Image contains no data.");
   }
@@ -204,7 +204,7 @@ size_t ImageRep::data_size() const {
   }
 	size_t data_size;
 	size_t bits_per_pixel;
-  SU_RESULT res = SUImageRepGetDataSize(m_image_rep, &data_size, &bits_per_pixel);
+  SUResult res = SUImageRepGetDataSize(m_image_rep, &data_size, &bits_per_pixel);
   assert(res == SU_ERROR_NONE);
   return data_size;
 }
@@ -216,7 +216,7 @@ size_t ImageRep::bits_per_pixel() const {
   }
 	size_t data_size;
 	size_t bits_per_pixel;
-  SU_RESULT res = SUImageRepGetDataSize(m_image_rep, &data_size, &bits_per_pixel);
+  SUResult res = SUImageRepGetDataSize(m_image_rep, &data_size, &bits_per_pixel);
   assert(res == SU_ERROR_NONE);
   return bits_per_pixel;
 }
@@ -229,7 +229,7 @@ std::vector<SUByte> ImageRep::pixel_data() const {
 	std::vector<SUByte> pixel_data;
   size_t data_size = this->data_size();
   pixel_data.reserve(this->data_size());
-  SU_RESULT res = SUImageRepGetData(m_image_rep, data_size, &pixel_data[0]);
+  SUResult res = SUImageRepGetData(m_image_rep, data_size, &pixel_data[0]);
   assert(res == SU_ERROR_NONE);
   return pixel_data;
 }

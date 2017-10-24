@@ -37,7 +37,7 @@ namespace CW {
 ****************************/
 SULayerRef Layer::create_layer() {
   SULayerRef layer = SU_INVALID;
-  SU_RESULT res = SULayerCreate(&layer);
+  SUResult res = SULayerCreate(&layer);
   assert(res == SU_ERROR_NONE);
   return layer;
 }
@@ -78,7 +78,7 @@ Layer::Layer(const Layer& other):
 
 Layer::~Layer() {
   if (!m_attached && SUIsValid(m_layer)) {
-    SU_RESULT res = SULayerRelease(&m_layer);
+    SUResult res = SULayerRelease(&m_layer);
     assert(res == SU_ERROR_NONE);
   }
 }
@@ -89,7 +89,7 @@ Layer::~Layer() {
 ********************/
 Layer& Layer::operator=(const Layer& other) {
   if (!m_attached && SUIsValid(m_layer)) {
-    SU_RESULT res = SULayerRelease(&m_layer);
+    SUResult res = SULayerRelease(&m_layer);
     assert(res == SU_ERROR_NONE);
   }
   m_layer = copy_reference(other);
@@ -121,7 +121,7 @@ bool Layer::operator!() const {
   	return true;
   }
   String name;
-  SU_RESULT res = SULayerGetName(m_layer, name);
+  SUResult res = SULayerGetName(m_layer, name);
   if (res == SU_ERROR_NULL_POINTER_OUTPUT) {
   	return true;
   }
@@ -134,7 +134,7 @@ String Layer::name() const {
   	throw std::logic_error("CW::Layer::name(): Layer is null");
   }
 	String string;
-	SU_RESULT res = SULayerGetName(m_layer, string);
+	SUResult res = SULayerGetName(m_layer, string);
   assert(res == SU_ERROR_NONE);
   return string;
 }
@@ -144,7 +144,7 @@ void Layer::name(const String& string) {
   if(!(*this)) {
   	throw std::logic_error("CW::Layer::name(): Layer is null");
   }
-  SU_RESULT res = SULayerSetName(m_layer, string.std_string().c_str());
+  SUResult res = SULayerSetName(m_layer, string.std_string().c_str());
 	assert(res == SU_ERROR_NONE);
 }
 
@@ -153,7 +153,7 @@ void Layer::name(const std::string& string) {
   if(!(*this)) {
   	throw std::logic_error("CW::Layer::name(): Layer is null");
   }
-	SU_RESULT res = SULayerSetName(m_layer, string.c_str());
+	SUResult res = SULayerSetName(m_layer, string.c_str());
 	assert(res == SU_ERROR_NONE);
 }
 

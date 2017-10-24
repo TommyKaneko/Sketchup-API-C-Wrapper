@@ -74,7 +74,7 @@ String::String(const String& other):
 String& String::operator=(String& other) {
 	// Release old string and create new
 	if (SUIsValid(m_string)) {
-  	SU_RESULT res = SUStringRelease(&m_string);
+  	SUResult res = SUStringRelease(&m_string);
     assert(res == SU_ERROR_NONE);
   }
   m_string = SU_INVALID;
@@ -99,7 +99,7 @@ bool operator==(const String &lhs, const String &rhs) {
 
 SUStringRef String::create_string_ref() {
   SUStringRef string_ref = SU_INVALID;
-	SU_RESULT res = SUStringCreate(&string_ref);
+	SUResult res = SUStringCreate(&string_ref);
   assert(res == SU_ERROR_NONE);
   return string_ref;
 }
@@ -134,7 +134,7 @@ SUStringRef String::create_string_ref(const unichar string_input[]) {
 
 String::~String() {
 	if (SUIsValid(m_string)) {
-  	SU_RESULT res = SUStringRelease(&m_string);
+  	SUResult res = SUStringRelease(&m_string);
     assert(res == SU_ERROR_NONE);
   }
 }
@@ -144,13 +144,15 @@ SUStringRef String::ref() const {
 }
 
 std::string String::std_string() const {
-	size_t out_length = 0;
-  SU_RESULT res = SUStringGetUTF8Length(m_string, &out_length);
+  size_t out_length = 0;
+  SUResult res = SUStringGetUTF8Length(m_string, &out_length);
   assert(res == SU_ERROR_NONE);
-  char char_array[out_length];
+  char* char_array = new char[out_length];
   res = SUStringGetUTF8(m_string, out_length+1, &char_array[0], &out_length);
   assert(res == SU_ERROR_NONE);
-  return std::string(char_array);
+  std::string str(char_array);
+  delete char_array;
+  return str;
 }
 
 String::operator std::string() const {
@@ -164,7 +166,7 @@ String::operator std::string() const {
 
 size_t String::size() const {
   size_t out_length = 0;
-  SU_RESULT res = SUStringGetUTF8Length(m_string, &out_length);
+  SUResult res = SUStringGetUTF8Length(m_string, &out_length);
   assert(res == SU_ERROR_NONE);
   return out_length;
 }

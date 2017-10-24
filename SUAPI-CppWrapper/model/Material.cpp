@@ -40,7 +40,7 @@ namespace CW {
 
 SUMaterialRef Material::create_material() {
 	SUMaterialRef material = SU_INVALID;
-  SU_RESULT res = SUMaterialCreate(&material);
+  SUResult res = SUMaterialCreate(&material);
   assert(res == SU_ERROR_NONE);
   return material;
 }
@@ -81,7 +81,7 @@ Material::Material(const Material& other):
 
 Material& Material::operator=(const Material& other) {
   if (!m_attached && SUIsValid(m_material)) {
-    SU_RESULT res = SUMaterialRelease(&m_material);
+    SUResult res = SUMaterialRelease(&m_material);
     assert(res == SU_ERROR_NONE);
   }
   if (!other) {
@@ -107,7 +107,7 @@ Material& Material::operator=(const Material& other) {
 
 Material::~Material() {
 	if (!m_attached && SUIsValid(m_material)) {
-		SU_RESULT res = SUMaterialRelease(&m_material);
+		SUResult res = SUMaterialRelease(&m_material);
 		assert(res == SU_ERROR_NONE);
   }
 }
@@ -154,7 +154,7 @@ Color Material::color() const {
   	return Color();
   }
 	SUColor new_color = SU_INVALID;
-	SU_RESULT res =	SUMaterialGetColor(m_material, &new_color);
+	SUResult res =	SUMaterialGetColor(m_material, &new_color);
   if (res == SU_ERROR_NONE) {
 		return Color(new_color);
   }
@@ -167,7 +167,7 @@ void Material::color(const Color& color) {
   	throw std::logic_error("CW::Material::color(): Material is null");
   }
   SUColor set_color = color.ref();
-  SU_RESULT res = SUMaterialSetColor(m_material, &set_color);
+  SUResult res = SUMaterialSetColor(m_material, &set_color);
   assert(res != SU_ERROR_INVALID_INPUT);
 }
 
@@ -177,7 +177,7 @@ String Material::name() const {
   	return String();
   }
   SUStringRef name;
-  SU_RESULT res = SUMaterialGetName(m_material, &name);
+  SUResult res = SUMaterialGetName(m_material, &name);
 	//assert(res != SU_ERROR_INVALID_OUTPUT);
   if (res == SU_ERROR_NONE) {
   	return String(name);
@@ -192,7 +192,7 @@ void Material::name(const String& string) {
   	throw std::logic_error("CW::Material::name(): Material is null");
   }
   const char *cstr = string.std_string().c_str();
-  SU_RESULT res = SUMaterialSetName(m_material, cstr);
+  SUResult res = SUMaterialSetName(m_material, cstr);
   assert(res == SU_ERROR_NONE);
   return;
 }
@@ -203,7 +203,7 @@ double Material::opacity() const {
   	throw std::logic_error("CW::Material::opacity(): Material is null");
   }
   double alpha;
-  SU_RESULT res = SUMaterialGetOpacity(m_material, &alpha);
+  SUResult res = SUMaterialGetOpacity(m_material, &alpha);
   if (res == SU_ERROR_NONE) {
   	return alpha;
   }
@@ -222,7 +222,7 @@ void Material::opacity(const double alpha) {
   else if (alpha < 0.0) {
   	input_alpha = 0.0;
   }
-  SU_RESULT res = SUMaterialSetOpacity(m_material, input_alpha);
+  SUResult res = SUMaterialSetOpacity(m_material, input_alpha);
   assert(res != SU_ERROR_OUT_OF_RANGE);
 }
   
@@ -232,7 +232,7 @@ Texture Material::texture() const {
   	throw std::logic_error("CW::Material::TEXTURE(): Material is null");
   }
 	SUTextureRef get_texture = SU_INVALID;
-	SU_RESULT res = SUMaterialGetTexture(m_material, &get_texture);
+	SUResult res = SUMaterialGetTexture(m_material, &get_texture);
   if (res != SU_ERROR_NONE) {
   	return Texture();
   }
@@ -245,7 +245,7 @@ void Material::texture(const Texture& texture) {
   	throw std::logic_error("CW::Material::texture(): Material is null");
   }
   SUTextureRef texture_ref = texture.ref();
-	SU_RESULT res = SUMaterialSetTexture(m_material, texture_ref);
+	SUResult res = SUMaterialSetTexture(m_material, texture_ref);
 }
   
   
@@ -254,7 +254,7 @@ SUMaterialType Material::type() const {
   	throw std::logic_error("CW::Material::type(): Material is null");
   }
   SUMaterialType mat_type;
-	SU_RESULT res = SUMaterialGetType(m_material, &mat_type);
+	SUResult res = SUMaterialGetType(m_material, &mat_type);
 	assert(res == SU_ERROR_NONE);
   return mat_type;
 }
@@ -264,7 +264,7 @@ void Material::type(const SUMaterialType& material_type) {
   if(!(*this)) {
   	throw std::logic_error("CW::Material::type(): Material is null");
   }
-	SU_RESULT res = SUMaterialSetType(m_material, material_type);
+	SUResult res = SUMaterialSetType(m_material, material_type);
 	assert(res == SU_ERROR_NONE);
 }
 
@@ -274,7 +274,7 @@ bool Material::use_alpha() const {
   	throw std::logic_error("CW::Material::use_alpha(): Material is null");
   }
   bool flag;
-  SU_RESULT res = SUMaterialGetUseOpacity(m_material, &flag);
+  SUResult res = SUMaterialGetUseOpacity(m_material, &flag);
 	assert(res == SU_ERROR_NONE);
 	return flag;
 }
@@ -285,7 +285,7 @@ void Material::use_alpha(bool flag) {
   	throw std::logic_error("CW::Material::use_alpha(): Material is null");
   }
 	assert(!!(*this));
-  SU_RESULT res = SUMaterialSetUseOpacity(m_material, flag);
+  SUResult res = SUMaterialSetUseOpacity(m_material, flag);
 	assert(res == SU_ERROR_NONE);
 }
 

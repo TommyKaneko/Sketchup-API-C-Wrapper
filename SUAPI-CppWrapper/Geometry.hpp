@@ -25,6 +25,12 @@
 // SOFTWARE.
 //
 
+// Remove Visual Studio min and max macros
+#ifdef WIN32
+  #undef min
+  #undef max
+#endif
+
 #ifndef Geometry_h
 #define Geometry_h
 

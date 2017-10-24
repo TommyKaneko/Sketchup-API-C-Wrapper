@@ -99,15 +99,16 @@ std::vector<AttributeDictionary>	Entity::attribute_dictionaries() const {
   	throw std::logic_error("CW::Entity::attribute_dictionaries(): Entity is null");
   }
   size_t num_dicts = 0;
-  SU_RESULT res = SUEntityGetNumAttributeDictionaries(m_entity, &num_dicts);
+  SUResult res = SUEntityGetNumAttributeDictionaries(m_entity, &num_dicts);
   assert(res == SU_ERROR_NONE);
-  SUAttributeDictionaryRef dicts_ref[num_dicts];
+  SUAttributeDictionaryRef* dicts_ref = new SUAttributeDictionaryRef[num_dicts];
   res = SUEntityGetAttributeDictionaries(m_entity, num_dicts, &dicts_ref[0], &num_dicts);
   assert(res == SU_ERROR_NONE);
   std::vector<AttributeDictionary> dicts(num_dicts);
   for (size_t i=0; i < num_dicts; i++) {
     dicts[i] = AttributeDictionary(dicts_ref[i]);
   }
+  delete dicts_ref;
   return dicts;
 }
 
@@ -117,7 +118,7 @@ AttributeDictionary Entity::attribute_dictionary(const std::string& name) const 
   }
   char const *c_name = name.c_str();
   SUAttributeDictionaryRef dict_ref = SU_INVALID;
-  SU_RESULT res = SUEntityGetAttributeDictionary(m_entity, &c_name[0], &dict_ref);
+  SUResult res = SUEntityGetAttributeDictionary(m_entity, &c_name[0], &dict_ref);
   if (res == SU_ERROR_NONE) {
   	return AttributeDictionary(dict_ref);
   }

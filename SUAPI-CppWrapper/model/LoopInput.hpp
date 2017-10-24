@@ -161,7 +161,7 @@ class LoopInput {
   * Adds the loop to the given 
   */
   // TODO: det
-  //SU_RESULT add_to_geometry_input(GeometryInput &geom_input);
+  //SUResult add_to_geometry_input(GeometryInput &geom_input);
   
   /*
   * Adds a series of vertices that represent the loop.

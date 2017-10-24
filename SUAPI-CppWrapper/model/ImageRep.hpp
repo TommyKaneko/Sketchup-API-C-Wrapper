@@ -96,7 +96,7 @@ class ImageRep  {
 	/**
   * Saves the image to a file location.
   */
-  SU_RESULT save_to_file(const std::string file_path) const;
+  SUResult save_to_file(const std::string file_path) const;
 	
   /**
   * Returns the width of the image in pixels.

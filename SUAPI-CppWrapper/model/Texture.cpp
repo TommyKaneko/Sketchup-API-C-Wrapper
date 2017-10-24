@@ -30,14 +30,14 @@ namespace CW {
 SUTextureRef Texture::create_texture(ImageRep& image_rep) {
 	SUImageRepRef image = image_rep.ref();
   SUTextureRef texture = SU_INVALID;
-	SU_RESULT res = SUTextureCreateFromImageRep(&texture, image);
+	SUResult res = SUTextureCreateFromImageRep(&texture, image);
   assert(res == SU_ERROR_NONE);
 	return texture;
 }
 
 SUTextureRef Texture::create_texture(const std::string file_path, double s_scale, double t_scale) {
 	SUTextureRef texture = SU_INVALID;
-  SU_RESULT res = SUTextureCreateFromFile(&texture, file_path.c_str(), s_scale,t_scale);
+  SUResult res = SUTextureCreateFromFile(&texture, file_path.c_str(), s_scale,t_scale);
   if (res != SU_ERROR_NONE) {
   	return SU_INVALID;
   }
@@ -116,7 +116,7 @@ size_t Texture::width() const {
   size_t height;
   double s_scale;
   double t_scale;
-	SU_RESULT res = SUTextureGetDimensions(m_texture, &width, &height, &s_scale, &t_scale);
+	SUResult res = SUTextureGetDimensions(m_texture, &width, &height, &s_scale, &t_scale);
   assert(res == SU_ERROR_NONE);
   return width;
 }
@@ -130,7 +130,7 @@ size_t Texture::height() const {
   size_t height;
   double s_scale;
   double t_scale;
-	SU_RESULT res = SUTextureGetDimensions(m_texture, &width, &height, &s_scale, &t_scale);
+	SUResult res = SUTextureGetDimensions(m_texture, &width, &height, &s_scale, &t_scale);
   assert(res == SU_ERROR_NONE);
   return height;
 }
@@ -144,7 +144,7 @@ double Texture::s_scale() const {
   size_t height;
   double s_scale;
   double t_scale;
-	SU_RESULT res = SUTextureGetDimensions(m_texture, &width, &height, &s_scale, &t_scale);
+	SUResult res = SUTextureGetDimensions(m_texture, &width, &height, &s_scale, &t_scale);
   assert(res == SU_ERROR_NONE);
   return s_scale;
 }
@@ -158,7 +158,7 @@ double Texture::t_scale() const {
   size_t height;
   double s_scale;
   double t_scale;
-	SU_RESULT res = SUTextureGetDimensions(m_texture, &width, &height, &s_scale, &t_scale);
+	SUResult res = SUTextureGetDimensions(m_texture, &width, &height, &s_scale, &t_scale);
   assert(res == SU_ERROR_NONE);
   return t_scale;
 }

@@ -52,7 +52,7 @@ Entities entities; // This is the entities object that we wish to add the geomet
 std::vector<SUPoint3D> outer_loop{SUPoint3D(0.0,0.0,0.0), SUPoint3D(1.0,0.0,0.0), SUPoint3D(0.0,1.0,0.0)};
 std::vector<std::vector<SUPoint3D>> inner_loops{{SUPoint3D(0.1,0.1,0.0), SUPoint3D(0.1,0.2,0.0), SUPoint3D(0.2,0.3,0.0)}};
 GIFace* face = geom_input.add_face(outer_loop, inner_loops); // GeometryInput handles the interface with Sketchup C API when creating geometry.
-SU_RESULT result = entities.fill(geom_input); // the geometry must be output into a SUEntitiesRef object.
+SUResult result = entities.fill(geom_input); // the geometry must be output into a SUEntitiesRef object.
 
 */
 class GeometryInput {
@@ -84,7 +84,7 @@ class GeometryInput {
   * Adds a constructed LoopInput object into the GeometryInput object.
   * @see add_face() for the details on how this is used.
   */
-	//SU_RESULT add_loop(LoopInput &loop);
+	//SUResult add_loop(LoopInput &loop);
 
   //std::vector<SUPoint3D> m_vertices;
   /**

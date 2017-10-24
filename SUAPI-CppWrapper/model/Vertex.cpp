@@ -81,7 +81,7 @@ Point3D Vertex::position() const {
   	throw std::logic_error("CW::Vertex::position(): Vertex is null");
   }
   SUPoint3D point;
-  SU_RESULT res = SUVertexGetPosition(m_vertex, &point);
+  SUResult res = SUVertexGetPosition(m_vertex, &point);
   assert(res == SU_ERROR_NONE);
   return Point3D(point);
 }
