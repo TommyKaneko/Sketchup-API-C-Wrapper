@@ -144,13 +144,15 @@ SUStringRef String::ref() const {
 }
 
 std::string String::std_string() const {
-	size_t out_length = 0;
+  size_t out_length = 0;
   SUResult res = SUStringGetUTF8Length(m_string, &out_length);
   assert(res == SU_ERROR_NONE);
-  char char_array[out_length];
+  char* char_array = new char[out_length];
   res = SUStringGetUTF8(m_string, out_length+1, &char_array[0], &out_length);
   assert(res == SU_ERROR_NONE);
-  return std::string(char_array);
+  std::string str(char_array);
+  delete char_array;
+  return str;
 }
 
 String::operator std::string() const {

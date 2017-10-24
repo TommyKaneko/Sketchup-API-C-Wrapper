@@ -415,7 +415,7 @@ std::vector<TypedValue> TypedValue::typed_value_array() const {
   size_t count = 0;
   SUResult res = SUTypedValueGetNumArrayItems(m_typed_value, &count);
   assert(res == SU_ERROR_NONE);
-  SUTypedValueRef values[count];
+  SUTypedValueRef* values = new SUTypedValueRef[count];
   res = SUTypedValueGetArrayItems(m_typed_value, count, &values[0], &count);
   assert(res == SU_ERROR_NONE);
   std::vector<TypedValue> typed_vals;
@@ -423,6 +423,7 @@ std::vector<TypedValue> TypedValue::typed_value_array() const {
   for (size_t i=0; i < count; ++i) {
   	typed_vals.push_back(TypedValue(values[i]));
   }
+  delete values;
   return typed_vals;
 }
 

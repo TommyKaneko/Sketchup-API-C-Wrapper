@@ -63,7 +63,7 @@ std::vector<Edge> Curve::get_edges() const{
 	size_t num_edges = 0;
   SUResult res = SUCurveGetNumEdges(m_curve, &num_edges);
   assert(res == SU_ERROR_NONE);
-  SUEdgeRef ref_edges[num_edges];
+  SUEdgeRef* ref_edges = new SUEdgeRef[num_edges];
   res = SUCurveGetEdges(m_curve, num_edges, &ref_edges[0], &num_edges);
   assert(res == SU_ERROR_NONE);
   std::vector<Edge> edges;
@@ -71,6 +71,7 @@ std::vector<Edge> Curve::get_edges() const{
   for (size_t i=0; i < num_edges; ++i) {
     edges.push_back(Edge(ref_edges[i]));
   }
+  delete ref_edges;
   return edges;
 }
 

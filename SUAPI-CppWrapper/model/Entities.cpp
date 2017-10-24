@@ -60,7 +60,7 @@ std::vector<Face> Entities::faces() const {
 	size_t count = 0;
 	SUResult res = SUEntitiesGetNumFaces(m_entities, &count);
   assert(res == SU_ERROR_NONE);
-  SUFaceRef face_refs[count];
+  SUFaceRef* face_refs = new SUFaceRef[count];
 	res = SUEntitiesGetFaces(m_entities, count, &face_refs[0], &count);
   assert(res == SU_ERROR_NONE);
   std::vector<Face> faces;
@@ -68,6 +68,7 @@ std::vector<Face> Entities::faces() const {
   for (size_t i=0; i < count; ++i) {
   	faces.push_back(Face(face_refs[i]));
   }
+  delete face_refs;
   return faces;
 }
 
@@ -79,7 +80,7 @@ std::vector<Edge> Entities::edges(bool stray_only) const {
 	size_t count = 0;
 	SUResult res = SUEntitiesGetNumEdges(m_entities, stray_only, &count);
   assert(res == SU_ERROR_NONE);
-  SUEdgeRef edge_refs[count];
+  SUEdgeRef* edge_refs = new SUEdgeRef[count];
 	res = SUEntitiesGetEdges(m_entities, stray_only, count, &edge_refs[0], &count);
   assert(res == SU_ERROR_NONE);
   std::vector<Edge> edges;
@@ -87,6 +88,7 @@ std::vector<Edge> Entities::edges(bool stray_only) const {
   for (size_t i=0; i < count; ++i) {
   	edges.push_back(Edge(edge_refs[i]));
   }
+  delete edge_refs;
   return edges;
 }
 
@@ -98,7 +100,7 @@ std::vector<ComponentInstance> Entities::instances() const {
 	size_t count = 0;
 	SUResult res = SUEntitiesGetNumInstances(m_entities, &count);
   assert(res == SU_ERROR_NONE);
-  SUComponentInstanceRef instance_refs[count];
+  SUComponentInstanceRef* instance_refs = new SUComponentInstanceRef[count];
 	res = SUEntitiesGetInstances(m_entities, count, &instance_refs[0], &count);
   assert(res == SU_ERROR_NONE);
   std::vector<ComponentInstance> instances;
@@ -106,6 +108,7 @@ std::vector<ComponentInstance> Entities::instances() const {
   for (size_t i=0; i < count; ++i) {
   	instances.push_back(ComponentInstance(instance_refs[i]));
   }
+  delete instance_refs;
   return instances;
 }
 

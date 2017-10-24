@@ -198,8 +198,8 @@ std::vector<Face> Edge::faces() const {
   	throw std::logic_error("CW::Edge::faces(): Edge is null");
   }
 	size_t count = 0;
-  SUFaceRef faces[count];
 	SUResult res = SUEdgeGetNumFaces(m_edge, &count);
+  SUFaceRef* faces = new SUFaceRef[count];
   assert(res == SU_ERROR_NONE);
 	if (count == 0) {
   	return std::vector<Face>();
@@ -211,6 +211,7 @@ std::vector<Face> Edge::faces() const {
   for (size_t i=0; i < count; ++i) {
   	return_faces.push_back(Face(faces[i]));
   }
+  delete faces;
   return return_faces;
 }
 

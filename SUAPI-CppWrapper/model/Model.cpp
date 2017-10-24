@@ -155,7 +155,7 @@ std::vector<AttributeDictionary>	Model::attribute_dictionaries() const {
 	size_t count = 0;
   SUResult res = SUModelGetNumAttributeDictionaries(m_model, &count);
   assert(res == SU_ERROR_NONE);
-  SUAttributeDictionaryRef dicts[count];
+  SUAttributeDictionaryRef* dicts = new SUAttributeDictionaryRef[count];
   res = SUModelGetAttributeDictionaries(m_model, count, &dicts[0], &count);
   assert(res == SU_ERROR_NONE);
 	std::vector<AttributeDictionary> dictionaries;
@@ -163,6 +163,7 @@ std::vector<AttributeDictionary>	Model::attribute_dictionaries() const {
   for (size_t i=0; i < count; ++i) {
   	dictionaries.push_back(AttributeDictionary(dicts[i]));
   }
+  delete dicts;
   return dictionaries;
 }
 
@@ -218,7 +219,7 @@ std::vector<ComponentDefinition> Model::definitions() const {
 	size_t count = 0;
 	SUResult res = SUModelGetNumComponentDefinitions(m_model, &count);
   assert(res == SU_ERROR_NONE);
-  SUComponentDefinitionRef defs[count];
+  SUComponentDefinitionRef* defs = new SUComponentDefinitionRef[count];
 	res = SUModelGetComponentDefinitions(m_model, count, &defs[0], &count);
   assert(res == SU_ERROR_NONE);
   std::vector<ComponentDefinition> definitions;
@@ -226,6 +227,7 @@ std::vector<ComponentDefinition> Model::definitions() const {
   for (size_t i=0; i < count; ++i) {
   	definitions.push_back(ComponentDefinition(defs[i]));
   }
+  delete defs;
   return definitions;
 }
 
@@ -237,7 +239,7 @@ std::vector<ComponentDefinition> Model::group_definitions() const {
 	size_t count = 0;
 	SUResult res = SUModelGetNumGroupDefinitions(m_model, &count);
   assert(res == SU_ERROR_NONE);
-  SUComponentDefinitionRef defs[count];
+  SUComponentDefinitionRef* defs = new SUComponentDefinitionRef[count];
 	res = SUModelGetGroupDefinitions(m_model, count, &defs[0], &count);
   assert(res == SU_ERROR_NONE);
   std::vector<ComponentDefinition> definitions;
@@ -245,6 +247,7 @@ std::vector<ComponentDefinition> Model::group_definitions() const {
   for (size_t i=0; i < count; ++i) {
   	definitions.push_back(ComponentDefinition(defs[i]));
   }
+  delete defs;
   return definitions;
 }
 
@@ -309,7 +312,7 @@ std::vector<Layer> Model::layers() const {
 	size_t count = 0;
 	SUResult res = SUModelGetNumLayers(m_model, &count);
   assert(res == SU_ERROR_NONE);
-  SULayerRef layer_refs[count];
+  SULayerRef* layer_refs = new SULayerRef[count];
   res = SUModelGetLayers(m_model, count, &layer_refs[0], &count);
   assert(res == SU_ERROR_NONE);
   std::vector<Layer> layers;
@@ -317,6 +320,7 @@ std::vector<Layer> Model::layers() const {
   for (size_t i=0; i < count; ++i) {
   	layers.push_back(Layer(layer_refs[i]));
   }
+  delete layer_refs;
   return layers;
 }
 
@@ -334,7 +338,7 @@ std::vector<Material> Model::materials() const {
 	size_t count = 0;
 	SUResult res = SUModelGetNumMaterials(m_model, &count);
   assert(res == SU_ERROR_NONE);
-  SUMaterialRef mats[count];
+  SUMaterialRef* mats = new SUMaterialRef[count];
 	res = SUModelGetMaterials(m_model, count, &mats[0], &count);
   assert(res == SU_ERROR_NONE);
   std::vector<Material> materials;
@@ -342,6 +346,7 @@ std::vector<Material> Model::materials() const {
   for (size_t i=0; i < count; ++i) {
   	materials.push_back(Material(mats[i]));
   }
+  delete mats;
   return materials;
 }
 
