@@ -141,14 +141,14 @@ class Texture :public Entity {
   
   /**
   * Writes a texture object as an image to disk.
-  * @return SU_RESULT object with the following possible values:
+  * @return SUResult object with the following possible values:
   *			- SU_ERROR_NONE on success
 	*			- SU_ERROR_INVALID_INPUT if texture is not a valid object
 	*			- SU_ERROR_NULL_POINTER_INPUT if file_path is NULL
 	*			- SU_ERROR_SERIALIZATION if image file could not be written to disk
 	*
   */
-  SU_RESULT save(const std::string& file_path);
+  SUResult save(const std::string& file_path);
 
 };
 

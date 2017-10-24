@@ -43,7 +43,7 @@ namespace CW {
 ***************************/
 SUGroupRef Group::create_group() {
 	SUGroupRef group_ref = SU_INVALID;
-  SU_RESULT res = SUGroupCreate(&group_ref);
+  SUResult res = SUGroupCreate(&group_ref);
   assert(res == SU_ERROR_NONE);
   return group_ref;
 }
@@ -107,7 +107,7 @@ ComponentDefinition Group::definition() const {
   	throw std::logic_error("CW::Group::definition(): Group is null");
   }
   SUComponentDefinitionRef def_ref = SU_INVALID;
-	SU_RESULT res = SUGroupGetDefinition(m_group, &def_ref);
+	SUResult res = SUGroupGetDefinition(m_group, &def_ref);
   assert(res == SU_ERROR_NONE);
   return ComponentDefinition(def_ref);
 }
@@ -129,7 +129,7 @@ String Group::name() const {
   }
 	String string;
   SUStringRef * const string_ref = string;
-	SU_RESULT res = SUGroupGetName(m_group, string_ref);
+	SUResult res = SUGroupGetName(m_group, string_ref);
   assert(res == SU_ERROR_NONE);
   return string;
 }
@@ -140,7 +140,7 @@ void Group::name(const String& string) {
   	throw std::logic_error("CW::Group::name(): Group is null");
   }
 	std::string name_string = string.std_string();
-	SU_RESULT res = SUGroupSetName(m_group, name_string.c_str());
+	SUResult res = SUGroupSetName(m_group, name_string.c_str());
   assert(res == SU_ERROR_NONE);
 }
 
@@ -159,7 +159,7 @@ void Group::transformation(const Transformation& transform) {
   	throw std::logic_error("CW::Group::transformation(): Group is null");
   }
 	SUTransformation transform_ref = transform.ref();
-  SU_RESULT res = SUGroupSetTransform(m_group, &transform_ref);
+  SUResult res = SUGroupSetTransform(m_group, &transform_ref);
   assert(res == SU_ERROR_NONE);
 }
 

@@ -137,14 +137,14 @@ bool TypedValue::empty() const {
 */
 SUTypedValueRef TypedValue::create_typed_value() {
   SUTypedValueRef typed_value = SU_INVALID;
-  SU_RESULT res = SUTypedValueCreate(&typed_value);
+  SUResult res = SUTypedValueCreate(&typed_value);
 	assert(res == SU_ERROR_NONE);
   return typed_value;
 }
 
 TypedValue::~TypedValue() {
   if (SUIsValid(m_typed_value)) {
-	  SU_RESULT res = SUTypedValueRelease(&m_typed_value);
+	  SUResult res = SUTypedValueRelease(&m_typed_value);
     assert(res == SU_ERROR_NONE);
   }
 }
@@ -155,7 +155,7 @@ SUTypedValueType TypedValue::get_type() const {
   	return SUTypedValueType::SUTypedValueType_Empty;
   }
   SUTypedValueType type;
-  SU_RESULT res = SUTypedValueGetType(m_typed_value, &type);
+  SUResult res = SUTypedValueGetType(m_typed_value, &type);
   assert(res == SU_ERROR_NONE);
   return type;
 }
@@ -166,7 +166,7 @@ char TypedValue::byte_value() const {
   	return 0;
   }
   char byte_val;
-  SU_RESULT res = SUTypedValueGetByte(m_typed_value, &byte_val);
+  SUResult res = SUTypedValueGetByte(m_typed_value, &byte_val);
   assert(res == SU_ERROR_NONE);
   return byte_val;
 }
@@ -176,7 +176,7 @@ TypedValue& TypedValue::byte_value(const char byte_val) {
   if (!(*this)) {
   	m_typed_value = create_typed_value();
   }
-  SU_RESULT res = SUTypedValueSetByte(m_typed_value, byte_val);
+  SUResult res = SUTypedValueSetByte(m_typed_value, byte_val);
   assert(res == SU_ERROR_NONE);
   return *this;
 }
@@ -192,7 +192,7 @@ int16_t TypedValue::int16_value() const {
   	return 0;
   }
   int16_t int16_val;
-	SU_RESULT res = SUTypedValueGetInt16(m_typed_value, &int16_val);
+	SUResult res = SUTypedValueGetInt16(m_typed_value, &int16_val);
   assert(res == SU_ERROR_NONE);
   return int16_val;
 }
@@ -201,7 +201,7 @@ TypedValue& TypedValue::int16_value(const int16_t int16_val) {
   if (!(*this)) {
   	m_typed_value = create_typed_value();
   }
-  SU_RESULT res = SUTypedValueSetInt16(m_typed_value, int16_val);
+  SUResult res = SUTypedValueSetInt16(m_typed_value, int16_val);
   assert(res == SU_ERROR_NONE);
   return *this;
 }
@@ -215,7 +215,7 @@ int32_t TypedValue::int32_value() const {
   	return 0;
   }
   int32_t int32_val;
-	SU_RESULT res = SUTypedValueGetInt32(m_typed_value, &int32_val);
+	SUResult res = SUTypedValueGetInt32(m_typed_value, &int32_val);
   assert(res == SU_ERROR_NONE);
   return int32_val;
 }
@@ -224,7 +224,7 @@ TypedValue& TypedValue::int32_value(const int32_t int32_val) {
   if (!(*this)) {
   	m_typed_value = create_typed_value();
   }
-  SU_RESULT res = SUTypedValueSetInt32(m_typed_value, int32_val);
+  SUResult res = SUTypedValueSetInt32(m_typed_value, int32_val);
   assert(res == SU_ERROR_NONE);
   return *this;
 }
@@ -239,7 +239,7 @@ float TypedValue::float_value() const{
   	return 0;
   }
   float float_val;
-	SU_RESULT res = SUTypedValueGetFloat(m_typed_value, &float_val);
+	SUResult res = SUTypedValueGetFloat(m_typed_value, &float_val);
   assert(res == SU_ERROR_NONE);
   return float_val;
 }
@@ -248,7 +248,7 @@ TypedValue& TypedValue::float_value(const float float_val) {
   if (!(*this)) {
   	m_typed_value = create_typed_value();
   }
-  SU_RESULT res = SUTypedValueSetFloat(m_typed_value, float_val);
+  SUResult res = SUTypedValueSetFloat(m_typed_value, float_val);
   assert(res == SU_ERROR_NONE);
   return *this;
 }
@@ -262,7 +262,7 @@ double TypedValue::double_value() const {
   	return 0;
   }
   double double_val;
-	SU_RESULT res = SUTypedValueGetDouble(m_typed_value, &double_val);
+	SUResult res = SUTypedValueGetDouble(m_typed_value, &double_val);
   assert(res == SU_ERROR_NONE);
   return double_val;
 }
@@ -271,7 +271,7 @@ TypedValue& TypedValue::double_value(const double double_val) {
   if (!(*this)) {
   	m_typed_value = create_typed_value();
   }
-  SU_RESULT res = SUTypedValueSetDouble(m_typed_value, double_val);
+  SUResult res = SUTypedValueSetDouble(m_typed_value, double_val);
   assert(res == SU_ERROR_NONE);
   return *this;
 }
@@ -285,7 +285,7 @@ bool TypedValue::bool_value() const {
   	return 0;
   }
 	bool bool_val;
-	SU_RESULT res = SUTypedValueGetBool(m_typed_value, &bool_val);
+	SUResult res = SUTypedValueGetBool(m_typed_value, &bool_val);
   assert(res == SU_ERROR_NONE);
   return bool_val;
 }
@@ -294,7 +294,7 @@ TypedValue& TypedValue::bool_value(const bool bool_val) {
   if (!(*this)) {
   	m_typed_value = create_typed_value();
   }
-  SU_RESULT res = SUTypedValueSetBool(m_typed_value, bool_val);
+  SUResult res = SUTypedValueSetBool(m_typed_value, bool_val);
   assert(res == SU_ERROR_NONE);
   return *this;
 }
@@ -309,7 +309,7 @@ Color TypedValue::color_value() const {
   	return Color();
   }
   SUColor color_val;
-	SU_RESULT res = SUTypedValueGetColor(m_typed_value, &color_val);
+	SUResult res = SUTypedValueGetColor(m_typed_value, &color_val);
   assert(res == SU_ERROR_NONE);
   return Color(color_val);
 }
@@ -319,7 +319,7 @@ TypedValue& TypedValue::color_value(const Color &color_val) {
   	m_typed_value = create_typed_value();
   }
   SUColor color = color_val.ref();
-  SU_RESULT res = SUTypedValueSetColor(m_typed_value, &color);
+  SUResult res = SUTypedValueSetColor(m_typed_value, &color);
   assert(res == SU_ERROR_NONE);
   return *this;
 }
@@ -333,7 +333,7 @@ int64_t TypedValue::time_value() const {
   	return 0;
   }
   int64_t time_val;
-	SU_RESULT res = SUTypedValueGetTime(m_typed_value, &time_val);
+	SUResult res = SUTypedValueGetTime(m_typed_value, &time_val);
   assert(res == SU_ERROR_NONE);
   return time_val;
 }
@@ -342,7 +342,7 @@ TypedValue& TypedValue::time_value(const int64_t time_val) {
   if (!(*this)) {
   	m_typed_value = create_typed_value();
   }
-  SU_RESULT res = SUTypedValueSetTime(m_typed_value, time_val);
+  SUResult res = SUTypedValueSetTime(m_typed_value, time_val);
   assert(res == SU_ERROR_NONE);
   return *this;
 }
@@ -357,7 +357,7 @@ String TypedValue::string_value() const {
   }
   String string;
   SUStringRef &string_ref = string;
-	SU_RESULT res = SUTypedValueGetString(m_typed_value, &string_ref);
+	SUResult res = SUTypedValueGetString(m_typed_value, &string_ref);
   assert(res == SU_ERROR_NONE);
   return string;
 }
@@ -367,7 +367,7 @@ TypedValue& TypedValue::string_value(const String &string_val) {
   	m_typed_value = create_typed_value();
   }
   std::string std_string = string_val;
-  SU_RESULT res = SUTypedValueSetString(m_typed_value, std_string.c_str());
+  SUResult res = SUTypedValueSetString(m_typed_value, std_string.c_str());
   assert(res == SU_ERROR_NONE);
   return *this;
 }
@@ -389,7 +389,7 @@ Vector3D TypedValue::vector_value() const {
   	return Vector3D();
   }
   double vector3d_value[3];
-	SU_RESULT res = SUTypedValueGetVector3d(m_typed_value, &vector3d_value[0]);
+	SUResult res = SUTypedValueGetVector3d(m_typed_value, &vector3d_value[0]);
   assert(res == SU_ERROR_NONE);
   return Vector3D(vector3d_value[0], vector3d_value[1], vector3d_value[2]);
 }
@@ -399,7 +399,7 @@ TypedValue& TypedValue::vector_value(const Vector3D &vector_val) {
   	m_typed_value = create_typed_value();
   }
   double vector3d_value[3] = {vector_val.x, vector_val.y, vector_val.z};
-	SU_RESULT res = SUTypedValueSetVector3d(m_typed_value, &vector3d_value[0]);
+	SUResult res = SUTypedValueSetVector3d(m_typed_value, &vector3d_value[0]);
   assert(res == SU_ERROR_NONE);
   return *this;
 }
@@ -413,7 +413,7 @@ std::vector<TypedValue> TypedValue::typed_value_array() const {
   	return std::vector<TypedValue>();
   }
   size_t count = 0;
-  SU_RESULT res = SUTypedValueGetNumArrayItems(m_typed_value, &count);
+  SUResult res = SUTypedValueGetNumArrayItems(m_typed_value, &count);
   assert(res == SU_ERROR_NONE);
   SUTypedValueRef values[count];
   res = SUTypedValueGetArrayItems(m_typed_value, count, &values[0], &count);
@@ -430,7 +430,7 @@ TypedValue& TypedValue::typed_value_array(std::vector<TypedValue> &typed_val_arr
   if (!(*this)) {
   	m_typed_value = create_typed_value();
   }
-  SU_RESULT res = SUTypedValueSetArrayItems(m_typed_value, typed_val_array.size(), typed_val_array[0]);
+  SUResult res = SUTypedValueSetArrayItems(m_typed_value, typed_val_array.size(), typed_val_array[0]);
   assert(res == SU_ERROR_NONE);
   return *this;
 }

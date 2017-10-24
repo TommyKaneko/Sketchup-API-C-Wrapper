@@ -61,7 +61,7 @@ TypedValue AttributeDictionary::get_attribute(const std::string &key, const Type
 	TypedValue value_out;
   SUTypedValueRef *val = value_out;
   const char* key_char = key.c_str();
-  SU_RESULT res = SUAttributeDictionaryGetValue(m_dict, &key_char[0], val);
+  SUResult res = SUAttributeDictionaryGetValue(m_dict, &key_char[0], val);
   if (res == SU_ERROR_NO_DATA) {
   	return default_value;
   }
@@ -78,7 +78,7 @@ bool AttributeDictionary::set_attribute(const std::string &key, const TypedValue
   }
   SUTypedValueRef val = value.ref();
   const char* key_char = key.c_str();
-  SU_RESULT res = SUAttributeDictionarySetValue(m_dict, &key_char[0], val);
+  SUResult res = SUAttributeDictionarySetValue(m_dict, &key_char[0], val);
   if (res == SU_ERROR_NONE) {
   	return true;
   }
@@ -92,7 +92,7 @@ std::vector<std::string> AttributeDictionary::get_keys() const {
   	throw std::logic_error("CW::AttributeDictionary::get_keys(): AttributeDictionary is null");
   }
 	size_t num_keys = 0;
-  SU_RESULT res = SUAttributeDictionaryGetNumKeys(m_dict, &num_keys);
+  SUResult res = SUAttributeDictionaryGetNumKeys(m_dict, &num_keys);
   assert(res == SU_ERROR_NONE);
   SUStringRef keys_ref[num_keys];
   for (size_t i=0; i < num_keys; i++) {
@@ -114,7 +114,7 @@ TypedValue AttributeDictionary::get_value(const std::string &key) const {
 std::string AttributeDictionary::get_name() const {
 	String string;
   SUStringRef *string_ref = string;
-	SU_RESULT res = SUAttributeDictionaryGetName(m_dict, string_ref);
+	SUResult res = SUAttributeDictionaryGetName(m_dict, string_ref);
   assert(res == SU_ERROR_NONE);
   return string;
 }

@@ -45,7 +45,7 @@ namespace CW {
 
 SUModelRef Model::create_model() {
   SUModelRef model = SU_INVALID;
-  SU_RESULT res = SUModelCreate(&model);
+  SUResult res = SUModelCreate(&model);
   assert(res == SU_ERROR_NONE);
   return model;
 }
@@ -113,7 +113,7 @@ Layer Model::active_layer() const {
   	throw std::logic_error("CW::Model::active_layer(): Model is null");
   }
 	SULayerRef layer = SU_INVALID;
-  SU_RESULT res = SUModelGetDefaultLayer(m_model, &layer);
+  SUResult res = SUModelGetDefaultLayer(m_model, &layer);
   assert(res == SU_ERROR_NONE);
   return Layer(layer);
 }
@@ -140,7 +140,7 @@ bool Model::add_definitions(std::vector<ComponentDefinition>& definitions) {
   if(!(*this)) {
   	throw std::logic_error("CW::Model::add_definitions(): Model is null");
   }
-  SU_RESULT res = SUModelAddComponentDefinitions(m_model, definitions.size(), definitions[0]);
+  SUResult res = SUModelAddComponentDefinitions(m_model, definitions.size(), definitions[0]);
   if (res == SU_ERROR_NONE) {
   	return true;
   }
@@ -153,7 +153,7 @@ std::vector<AttributeDictionary>	Model::attribute_dictionaries() const {
   	throw std::logic_error("CW::Model::attribute_dictionaries(): Model is null");
   }
 	size_t count = 0;
-  SU_RESULT res = SUModelGetNumAttributeDictionaries(m_model, &count);
+  SUResult res = SUModelGetNumAttributeDictionaries(m_model, &count);
   assert(res == SU_ERROR_NONE);
   SUAttributeDictionaryRef dicts[count];
   res = SUModelGetAttributeDictionaries(m_model, count, &dicts[0], &count);
@@ -172,7 +172,7 @@ AttributeDictionary Model::attribute_dictionary(const std::string& dict_name) co
   	throw std::logic_error("CW::Model::attribute_dictionary(): Model is null");
   }
 	SUAttributeDictionaryRef dict = SU_INVALID;
-  SU_RESULT res = SUModelGetAttributeDictionary(m_model, dict_name.c_str(), &dict);
+  SUResult res = SUModelGetAttributeDictionary(m_model, dict_name.c_str(), &dict);
   assert(res == SU_ERROR_NONE);
 	return AttributeDictionary(dict);
 }
@@ -184,7 +184,7 @@ Axes Model::axes() const {
   	throw std::logic_error("CW::Model::axes(): Model is null");
   }
 	SUAxesRef axes = SU_INVALID;
-	SU_RESULT res = SUModelGetAxes(m_model, &axes);
+	SUResult res = SUModelGetAxes(m_model, &axes);
   assert(res == SU_ERROR_NONE);
   return Axes(axes);
 }
@@ -198,7 +198,7 @@ Classifications Model::classifications() const {
   	throw std::logic_error("CW::Model::classifications(): Model is null");
   }
 	SUClassificationsRef classifications = SU_INVALID;
-	SU_RESULT res = SUModelGetClassifications(m_model, &classifications);
+	SUResult res = SUModelGetClassifications(m_model, &classifications);
   assert(res == SU_ERROR_NONE);
 	return Classifications(classifications);
 }
@@ -216,7 +216,7 @@ std::vector<ComponentDefinition> Model::definitions() const {
   	throw std::logic_error("CW::Model::definitions(): Model is null");
   }
 	size_t count = 0;
-	SU_RESULT res = SUModelGetNumComponentDefinitions(m_model, &count);
+	SUResult res = SUModelGetNumComponentDefinitions(m_model, &count);
   assert(res == SU_ERROR_NONE);
   SUComponentDefinitionRef defs[count];
 	res = SUModelGetComponentDefinitions(m_model, count, &defs[0], &count);
@@ -235,7 +235,7 @@ std::vector<ComponentDefinition> Model::group_definitions() const {
   	throw std::logic_error("CW::Model::group_definitions(): Model is null");
   }
 	size_t count = 0;
-	SU_RESULT res = SUModelGetNumGroupDefinitions(m_model, &count);
+	SUResult res = SUModelGetNumGroupDefinitions(m_model, &count);
   assert(res == SU_ERROR_NONE);
   SUComponentDefinitionRef defs[count];
 	res = SUModelGetGroupDefinitions(m_model, count, &defs[0], &count);
@@ -254,7 +254,7 @@ Entities Model::entities() const {
   	throw std::logic_error("CW::Model::entities(): Model is null");
   }
 	SUEntitiesRef entities = SU_INVALID;
-	SU_RESULT res = SUModelGetEntities(m_model, &entities);
+	SUResult res = SUModelGetEntities(m_model, &entities);
   assert(res == SU_ERROR_NONE);
 	return Entities(entities);
 }
@@ -266,7 +266,7 @@ Entities Model::entities() const {
 /*
 bool Model::georeferenced() const {
 	SULocationRef loc = SU_INVALID;
-	SU_RESULT res = SUModelGetLocation(m_model, &loc);
+	SUResult res = SUModelGetLocation(m_model, &loc);
   assert(res == SU_ERROR_NONE);
   Location location(loc);
   if (loc) {
@@ -307,7 +307,7 @@ std::vector<Layer> Model::layers() const {
   	throw std::logic_error("CW::Model::layers(): Model is null");
   }
 	size_t count = 0;
-	SU_RESULT res = SUModelGetNumLayers(m_model, &count);
+	SUResult res = SUModelGetNumLayers(m_model, &count);
   assert(res == SU_ERROR_NONE);
   SULayerRef layer_refs[count];
   res = SUModelGetLayers(m_model, count, &layer_refs[0], &count);
@@ -332,7 +332,7 @@ std::vector<Material> Model::materials() const {
   	throw std::logic_error("CW::Model::materials(): Model is null");
   }
 	size_t count = 0;
-	SU_RESULT res = SUModelGetNumMaterials(m_model, &count);
+	SUResult res = SUModelGetNumMaterials(m_model, &count);
   assert(res == SU_ERROR_NONE);
   SUMaterialRef mats[count];
 	res = SUModelGetMaterials(m_model, count, &mats[0], &count);
@@ -361,7 +361,7 @@ bool Model::name(const String& name_string) {
   	throw std::logic_error("CW::Model::name(): Model is null");
   }
   std::string std_string = name_string;
-	SU_RESULT res = SUModelSetName(m_model, std_string.c_str());
+	SUResult res = SUModelSetName(m_model, std_string.c_str());
   if (res == SU_ERROR_NONE) {
   	return true;
   }
@@ -395,12 +395,12 @@ size_t Model::num_faces() const {
 //Entity raytest(Point3D point, Vector3D vector);
 
 
-SU_RESULT Model::save(const std::string& file_path) {
+SUResult Model::save(const std::string& file_path) {
   if (!(*this)) {
   	throw std::logic_error("CW::Model::save(): Model is null");
   }
   const char * c_string = file_path.c_str();
-  SU_RESULT res = SUModelSaveToFile(m_model, c_string);
+  SUResult res = SUModelSaveToFile(m_model, c_string);
   return res;
 }
 
@@ -409,7 +409,7 @@ bool Model::save_with_version(const std::string& file_path, SUModelVersion versi
   if (!(*this)) {
   	throw std::logic_error("CW::Model::save_with_version(): Model is null");
   }
-  SU_RESULT res = SUModelSaveToFileWithVersion(m_model, file_path.c_str(), version);
+  SUResult res = SUModelSaveToFileWithVersion(m_model, file_path.c_str(), version);
   if (res == SU_ERROR_NONE) {
     return true;
   }
@@ -468,7 +468,7 @@ ModelStatistics::ModelStatistics(SUModelStatistics model_statistics):
 ModelStatistics::ModelStatistics(const Model& model):
   m_model_statistics(SUModelStatistics{})
 {
-  SU_RESULT res = SUModelGetStatistics(model, &m_model_statistics);
+  SUResult res = SUModelGetStatistics(model, &m_model_statistics);
   assert(res == SU_ERROR_NONE);
 }
   

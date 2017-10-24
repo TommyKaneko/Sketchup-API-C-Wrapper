@@ -78,7 +78,7 @@ std::vector<Edge> Loop::edges() const {
   	throw std::logic_error("CW::Loop::edges(): Loop is null");
   }
   size_t count = 0;
-  SU_RESULT res = SULoopGetNumVertices(m_loop, &count);
+  SUResult res = SULoopGetNumVertices(m_loop, &count);
   assert(res == SU_ERROR_NONE);
   SUEdgeRef edge_array[count];
   res = SULoopGetEdges(m_loop, count, &edge_array[0], &count);
@@ -97,7 +97,7 @@ std::vector<Vertex> Loop::vertices() const {
   	throw std::logic_error("CW::Loop::vertices(): Loop is null");
   }
   size_t count = 0;
-  SU_RESULT res = SULoopGetNumVertices(m_loop, &count);
+  SUResult res = SULoopGetNumVertices(m_loop, &count);
   assert(res == SU_ERROR_NONE);
   SUVertexRef verts_array[count];
   res = SULoopGetVertices(m_loop, count, &verts_array[0], &count);
@@ -141,7 +141,7 @@ size_t Loop::size() const {
   	throw std::logic_error("CW::Loop::size(): Loop is null");
   }
   size_t count = 0;
-  SU_RESULT res = SULoopGetNumVertices(m_loop, &count);
+  SUResult res = SULoopGetNumVertices(m_loop, &count);
   assert(res == SU_ERROR_NONE);
 	return count;
 }

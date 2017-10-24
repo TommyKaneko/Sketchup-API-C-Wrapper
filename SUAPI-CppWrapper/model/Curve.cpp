@@ -46,7 +46,7 @@ Curve::Curve(SUCurveRef curve,  SUCurveType curve_type):
 Curve::~Curve(){
 }
 
-SUCurveRef Curve::create_curve(std::vector<Edge>& edges, SU_RESULT &result) {
+SUCurveRef Curve::create_curve(std::vector<Edge>& edges, SUResult &result) {
 	SUCurveRef curve_ref = SU_INVALID;
   result = SUCurveCreateWithEdges(&curve_ref, edges[0], edges.size());
   return curve_ref;
@@ -61,7 +61,7 @@ std::vector<Edge> Curve::get_edges() const{
   	throw std::logic_error("CW::Curve::get_edges(): Curve is null");
   }
 	size_t num_edges = 0;
-  SU_RESULT res = SUCurveGetNumEdges(m_curve, &num_edges);
+  SUResult res = SUCurveGetNumEdges(m_curve, &num_edges);
   assert(res == SU_ERROR_NONE);
   SUEdgeRef ref_edges[num_edges];
   res = SUCurveGetEdges(m_curve, num_edges, &ref_edges[0], &num_edges);
@@ -84,7 +84,7 @@ SUCurveType Curve::get_type() {
 }
  
 
-SU_RESULT Curve::get_result() const {
+SUResult Curve::get_result() const {
 	return m_create_result;
 }
 

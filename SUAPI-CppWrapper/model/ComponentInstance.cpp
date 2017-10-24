@@ -72,7 +72,7 @@ ComponentInstance::ComponentInstance(const ComponentInstance& other, SUComponent
 
 ComponentInstance::~ComponentInstance() {
 	if (!m_attached && SUIsValid(m_instance)) {
-  	SU_RESULT res = SUComponentInstanceRelease(&m_instance);
+  	SUResult res = SUComponentInstanceRelease(&m_instance);
 		assert(res == SU_ERROR_NONE);
   }
 }
@@ -83,7 +83,7 @@ ComponentInstance::~ComponentInstance() {
 /** Copy assignment operator */
 ComponentInstance& ComponentInstance::operator=(const ComponentInstance& other) {
   if (!m_attached && SUIsValid(m_instance)) {
-    SU_RESULT res = SUComponentInstanceRelease(&m_instance);
+    SUResult res = SUComponentInstanceRelease(&m_instance);
     assert(res == SU_ERROR_NONE);
   }
   m_instance = copy_reference(other);
@@ -110,7 +110,7 @@ Transformation ComponentInstance::transformation() const {
   	throw std::logic_error("CW::ComponentInstance::transformation(): ComponentInstance is null");
   }
   SUTransformation transform;
-  SU_RESULT res = SUComponentInstanceGetTransform(m_instance, &transform);
+  SUResult res = SUComponentInstanceGetTransform(m_instance, &transform);
   assert(res == SU_ERROR_NONE);
   return Transformation(transform);
 }
@@ -121,7 +121,7 @@ void ComponentInstance::transformation(const Transformation& transform) {
   	throw std::logic_error("CW::ComponentInstance::transformation(): ComponentInstance is null");
   }
 	SUTransformation su_transform = transform.ref();
-  SU_RESULT res = SUComponentInstanceSetTransform(m_instance, &su_transform);
+  SUResult res = SUComponentInstanceSetTransform(m_instance, &su_transform);
   assert(res == SU_ERROR_NONE);
 }
 
@@ -131,7 +131,7 @@ ComponentDefinition ComponentInstance::definition() const{
   	throw std::logic_error("CW::ComponentInstance::definition(): ComponentInstance is null");
   }
   SUComponentDefinitionRef component = SU_INVALID;
-  SU_RESULT res = SUComponentInstanceGetDefinition(m_instance, &component);
+  SUResult res = SUComponentInstanceGetDefinition(m_instance, &component);
   assert(res == SU_ERROR_NONE);
   return ComponentDefinition(component);
 }
@@ -143,7 +143,7 @@ String ComponentInstance::name() const {
   }
   String string;
   SUStringRef * const string_ref = string;
-	SU_RESULT res = SUComponentInstanceGetName(m_instance, string_ref);
+	SUResult res = SUComponentInstanceGetName(m_instance, string_ref);
   assert(res == SU_ERROR_NONE);
   return string;
 }
@@ -154,7 +154,7 @@ void ComponentInstance::name(const String& string) {
   	throw std::logic_error("CW::ComponentInstance::name(): ComponentInstance is null");
   }
 	std::string name_string = string.std_string();
-	SU_RESULT res = SUComponentInstanceSetName(m_instance, name_string.c_str());
+	SUResult res = SUComponentInstanceSetName(m_instance, name_string.c_str());
   assert(res == SU_ERROR_NONE);
 }
 

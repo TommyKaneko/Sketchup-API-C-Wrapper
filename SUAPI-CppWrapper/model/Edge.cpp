@@ -47,7 +47,7 @@ SUEdgeRef Edge::create_edge(const Point3D& start, const Point3D& end) {
 	SUEdgeRef edge = SU_INVALID;
   SUPoint3D start_ref = start;
   SUPoint3D end_ref = end;
-  SU_RESULT res = SUEdgeCreate(&edge, &start_ref, &end_ref);
+  SUResult res = SUEdgeCreate(&edge, &start_ref, &end_ref);
   assert(res == SU_ERROR_NONE);
   return edge;
 }
@@ -106,7 +106,7 @@ Edge::Edge(const Edge& other):
 
 Edge::~Edge() {
 	if (!m_attached && SUIsValid(m_edge)) {
-  	SU_RESULT res = SUEdgeRelease(&m_edge);
+  	SUResult res = SUEdgeRelease(&m_edge);
     assert(res == SU_ERROR_NONE);
   }
 }
@@ -116,7 +116,7 @@ Edge::~Edge() {
 *******************/
 Edge& Edge::operator=(const Edge& other) {
   if (!m_attached && SUIsValid(m_edge)) {
-    SU_RESULT res = SUEdgeRelease(&m_edge);
+    SUResult res = SUEdgeRelease(&m_edge);
     assert(res == SU_ERROR_NONE);
   }
   m_edge = copy_reference(other);
@@ -175,7 +175,7 @@ bool Edge::color(const Color& input_color) {
   	throw std::logic_error("CW::Edge::color(): Edge is null");
   }
 	SUColor color = input_color.ref();
-	SU_RESULT result = SUEdgeSetColor(m_edge, &color);
+	SUResult result = SUEdgeSetColor(m_edge, &color);
   if (result == SU_ERROR_NONE) {
   	return true;
   }
@@ -198,8 +198,8 @@ std::vector<Face> Edge::faces() const {
   	throw std::logic_error("CW::Edge::faces(): Edge is null");
   }
 	size_t count = 0;
-	SU_RESULT res = SUEdgeGetNumFaces(m_edge, &count);
   SUFaceRef faces[count];
+	SUResult res = SUEdgeGetNumFaces(m_edge, &count);
   assert(res == SU_ERROR_NONE);
 	if (count == 0) {
   	return std::vector<Face>();
@@ -236,7 +236,7 @@ bool Edge::smooth(bool smooth) {
   if (!(*this)) {
   	throw std::logic_error("CW::Edge::smooth(): Edge is null");
   }
-	SU_RESULT result = SUEdgeSetSmooth(m_edge, smooth);
+	SUResult result = SUEdgeSetSmooth(m_edge, smooth);
   if (result == SU_ERROR_NONE) {
   	return true;
   }
@@ -258,7 +258,7 @@ bool Edge::soft(bool soft) {
   if (!(*this)) {
   	throw std::logic_error("CW::Edge::soft(): Edge is null");
   }
-	SU_RESULT result = SUEdgeSetSoft(m_edge, soft);
+	SUResult result = SUEdgeSetSoft(m_edge, soft);
   if (result == SU_ERROR_NONE) {
   	return true;
   }

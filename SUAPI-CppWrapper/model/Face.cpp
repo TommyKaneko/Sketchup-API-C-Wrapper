@@ -59,7 +59,7 @@ SUFaceRef Face::create_face(std::vector<Point3D>& outer_points, LoopInput& loop_
   for (size_t i=0; i < outer_points.size(); i++) {
     su_points[i] = SUPoint3D(outer_points[i]);
   }
-  SU_RESULT res = SUFaceCreate(&face, &su_points[0], &loop_input_ref);
+  SUResult res = SUFaceCreate(&face, &su_points[0], &loop_input_ref);
   if (res != SU_ERROR_NONE) {
   	// The points cannot be made into a face: either the points do not lie in a plane, or is somehow problematic.
     return SU_INVALID;
@@ -129,7 +129,7 @@ Face::Face(const Face& other):
 
 Face::~Face() {
 	if (!m_attached && SUIsValid(m_face)) {
-  	SU_RESULT res = SUFaceRelease(&m_face);
+  	SUResult res = SUFaceRelease(&m_face);
 		assert(res == SU_ERROR_NONE);
   }
 }
@@ -140,7 +140,7 @@ Face::~Face() {
 /** Copy assignment operator */
 Face& Face::operator=(const Face& other) {
   if (!m_attached && SUIsValid(m_face)) {
-    SU_RESULT res = SUFaceRelease(&m_face);
+    SUResult res = SUFaceRelease(&m_face);
     assert(res == SU_ERROR_NONE);
   }
   m_face = copy_reference(other);
@@ -167,7 +167,7 @@ double Face::area() const {
   	throw std::logic_error("CW::Face::area(): Face is null");
   }
 	double area;
-	SU_RESULT res = SUFaceGetArea(m_face, &area);
+	SUResult res = SUFaceGetArea(m_face, &area);
   assert(res == SU_ERROR_NONE);
   return area;
 }
@@ -180,7 +180,7 @@ void Face::add_inner_loop(std::vector<Point3D>& points, LoopInput &loop_input) {
 	if (points.size() != loop_input.m_edge_num) {
   	throw std::invalid_argument("CW::Face::add_inner_loop(): Unequal number of vertices between given Point3D vector and LoopInput object");
   }
-  SU_RESULT res = SUFaceAddInnerLoop(m_face, points[0], loop_input);
+  SUResult res = SUFaceAddInnerLoop(m_face, points[0], loop_input);
 	if (res == SU_ERROR_INVALID_INPUT) {
   	throw std::invalid_argument("CW::Face::add_inner_loop(): Arguments are invalid");
   }
@@ -193,7 +193,7 @@ Material Face::back_material() const {
   	throw std::logic_error("CW::Face::back_material(): Face is null");
   }
 	SUMaterialRef material = SU_INVALID;
-	SU_RESULT res = SUFaceGetBackMaterial(m_face, &material);
+	SUResult res = SUFaceGetBackMaterial(m_face, &material);
   if (res == SU_ERROR_NO_DATA) {
   	return Material();
   }
@@ -206,7 +206,7 @@ Material Face::back_material(const Material& material) {
 	if (!(*this)) {
   	throw std::logic_error("CW::Face::back_material(): Face is null");
   }
-  SU_RESULT res = SUFaceSetBackMaterial(m_face, material.ref());
+  SUResult res = SUFaceSetBackMaterial(m_face, material.ref());
   assert(res == SU_ERROR_NONE);
   return material;
 }
@@ -350,7 +350,7 @@ Loop Face::outer_loop() const {
   	throw std::logic_error("CW::Face::outer_loop(): Face is null");
   }
   SULoopRef lp = SU_INVALID;
-  SU_RESULT res = SUFaceGetOuterLoop(m_face, &lp);
+  SUResult res = SUFaceGetOuterLoop(m_face, &lp);
   assert(res == SU_ERROR_NONE);
   return Loop(lp);
 }
@@ -374,7 +374,7 @@ Face& Face::reverse() {
 	if (!(*this)) {
   	throw std::logic_error("CW::Face::reverse(): Face is null");
   }
-	SU_RESULT res = SUFaceReverse(m_face);
+	SUResult res = SUFaceReverse(m_face);
   assert(res == SU_ERROR_NONE);
   return *this;
 }
@@ -401,7 +401,7 @@ std::vector<Vertex> Face::vertices() const {
 	size_t num_vertices = 0;
 	SUFaceGetNumVertices(m_face, &num_vertices);
   SUVertexRef vertices[num_vertices];
-  SU_RESULT res = SUFaceGetVertices(m_face, num_vertices, &vertices[0], &num_vertices);
+  SUResult res = SUFaceGetVertices(m_face, num_vertices, &vertices[0], &num_vertices);
   assert(res == SU_ERROR_NONE);
   std::vector<Vertex> verts;
   verts.reserve(num_vertices);

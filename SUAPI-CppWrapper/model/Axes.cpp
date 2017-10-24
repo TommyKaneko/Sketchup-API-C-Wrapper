@@ -36,14 +36,14 @@ namespace CW {
 ***************************/
 SUAxesRef Axes::create_axes() {
 	SUAxesRef axes = SU_INVALID;
-  SU_RESULT res = SUAxesCreate(&axes);
+  SUResult res = SUAxesCreate(&axes);
   assert(res == SU_ERROR_NONE);
   return axes;
 }
 
 SUAxesRef Axes::create_custom_axes(const SUPoint3D& origin, const SUVector3D& xaxis, const SUVector3D& yaxis, const SUVector3D& zaxis) {
 	SUAxesRef axes = SU_INVALID;
-	SU_RESULT res = SUAxesCreateCustom(&axes, &origin, &xaxis, &yaxis, &zaxis);
+	SUResult res = SUAxesCreateCustom(&axes, &origin, &xaxis, &yaxis, &zaxis);
   if(res != SU_ERROR_NONE) {
   	// There is a problem with this axis, so return an invalid one
     if (SUIsValid(axes)) {
@@ -93,7 +93,7 @@ Axes::Axes(const Axes& other):
 
 Axes::~Axes() {
 	if (!m_attached && SUIsValid(m_axes)) {
-		SU_RESULT res = SUAxesRelease(&m_axes);
+		SUResult res = SUAxesRelease(&m_axes);
     assert(res == SU_ERROR_NONE);
 	}
 }
@@ -106,7 +106,7 @@ Axes::~Axes() {
 /** Copy assignment operator */
 Axes& Axes::operator=(const Axes& other) {
   if (m_attached && SUIsValid(m_axes)) {
-    SU_RESULT res = SUAxesRelease(&m_axes);
+    SUResult res = SUAxesRelease(&m_axes);
     assert(res == SU_ERROR_NONE);
   }
   m_axes = copy_reference(other);
@@ -129,7 +129,7 @@ Vector3D Axes::x_axis() const {
   	throw std::logic_error("CW::Axes::x_axis(): Axes is null");
   }
   SUVector3D axis;
-  SU_RESULT res = SUAxesGetXAxis(m_axes, &axis);
+  SUResult res = SUAxesGetXAxis(m_axes, &axis);
   assert(res == SU_ERROR_NONE);
   return Vector3D(axis);
 }
@@ -139,7 +139,7 @@ Vector3D Axes::y_axis() const {
   	throw std::logic_error("CW::Axes::x_axis(): Axes is null");
   }
   SUVector3D axis;
-  SU_RESULT res = SUAxesGetYAxis(m_axes, &axis);
+  SUResult res = SUAxesGetYAxis(m_axes, &axis);
   assert(res == SU_ERROR_NONE);
   return Vector3D(axis);
 }
@@ -149,7 +149,7 @@ Vector3D Axes::z_axis() const {
   	throw std::logic_error("CW::Axes::x_axis(): Axes is null");
   }
   SUVector3D axis;
-  SU_RESULT res = SUAxesGetZAxis(m_axes, &axis);
+  SUResult res = SUAxesGetZAxis(m_axes, &axis);
   assert(res == SU_ERROR_NONE);
   return Vector3D(axis);
 }
@@ -160,7 +160,7 @@ Point3D Axes::origin() const {
   	throw std::logic_error("CW::Axes::x_axis(): Axes is null");
   }
   SUPoint3D origin;
-  SU_RESULT res = SUAxesGetOrigin(m_axes, &origin);
+  SUResult res = SUAxesGetOrigin(m_axes, &origin);
   assert(res == SU_ERROR_NONE);
   return Point3D(origin);
 }
@@ -171,7 +171,7 @@ Transformation Axes::transformation() const {
   	throw std::logic_error("CW::Axes::x_axis(): Axes is null");
   }
   SUTransformation transform;
-  SU_RESULT res = SUAxesGetTransform(m_axes, &transform);
+  SUResult res = SUAxesGetTransform(m_axes, &transform);
   assert(res == SU_ERROR_NONE);
   return Transformation(transform);
 }

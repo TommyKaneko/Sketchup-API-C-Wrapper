@@ -53,7 +53,7 @@ class Model {
   SUModelRef m_model;
   bool m_release_on_destroy;
   
-  SU_RESULT m_result = SU_ERROR_NONE; // the result on creation of model
+  SUResult m_result = SU_ERROR_NONE; // the result on creation of model
   
   static SUModelRef create_model();
   
@@ -246,9 +246,9 @@ class Model {
   /*
   * Saves the model in the file path given.
   * @param file_path string path to the file
-  * @return SU_RESULT - SU_ERROR_NONE on success. @see SUModelSaveFileToFile for possible return values
+  * @return SUResult - SU_ERROR_NONE on success. @see SUModelSaveFileToFile for possible return values
   */
-  SU_RESULT save(const std::string& file_path);
+  SUResult save(const std::string& file_path);
 
   /*
   * Saves the model in the file path given, in the given SU version.

@@ -134,13 +134,13 @@ class Edge :public DrawingElement {
   std::vector<Face> faces() const;
   
   /*
-  * Gets the SU_RESULT of the create edge operation.
+  * Gets the SUResult of the create edge operation.
   * @return * SU_ERROR_NONE on success
             * SU_ERROR_NULL_POINTER_INPUT if start or end is NULL
             * SU_ERROR_NULL_POINTER_OUTPUT if edge is NULL
             * SU_ERROR_GENERIC if start and end specify the same position.
   */
-  // SU_RESULT get_result() const;
+  // SUResult get_result() const;
 
   /*
   * Determine if the Edge is smooth.

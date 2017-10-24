@@ -78,7 +78,7 @@ BoundingBox3D DrawingElement::bounds() {
   	throw std::logic_error("CW::DrawingElement::bounds(): DrawingElement is null");
   }
 	SUBoundingBox3D box = SU_INVALID;
-	SU_RESULT res = SUDrawingElementGetBoundingBox(m_drawing_element, &box);
+	SUResult res = SUDrawingElementGetBoundingBox(m_drawing_element, &box);
   assert(res == SU_ERROR_NONE);
   return BoundingBox3D(box);
 }
@@ -111,7 +111,7 @@ bool DrawingElement::casts_shadows() const {
   	throw std::logic_error("CW::DrawingElement::casts_shadows(): DrawingElement is null");
   }
 	bool cast_shadows_flag;
-	SU_RESULT res = SUDrawingElementGetCastsShadows(m_drawing_element, &cast_shadows_flag);
+	SUResult res = SUDrawingElementGetCastsShadows(m_drawing_element, &cast_shadows_flag);
   assert(res == SU_ERROR_NONE);
   return cast_shadows_flag;
 }
@@ -121,7 +121,7 @@ bool DrawingElement::casts_shadows(bool casts_shadows) {
   if (SUIsInvalid(m_drawing_element)) {
   	throw std::logic_error("CW::DrawingElement::casts_shadows(): DrawingElement is null");
   }
-	SU_RESULT res = SUDrawingElementSetCastsShadows(m_drawing_element, casts_shadows);
+	SUResult res = SUDrawingElementSetCastsShadows(m_drawing_element, casts_shadows);
   if (res == SU_ERROR_NONE) {
   	return true;
   }
@@ -143,7 +143,7 @@ bool DrawingElement::hidden(bool hidden) {
   if (SUIsInvalid(m_drawing_element)) {
   	throw std::logic_error("CW::DrawingElement::hidden(): DrawingElement is null");
   }
-	SU_RESULT res = SUDrawingElementSetHidden(m_drawing_element, hidden);
+	SUResult res = SUDrawingElementSetHidden(m_drawing_element, hidden);
   if (res == SU_ERROR_NONE) {
   	return true;
   }
@@ -156,7 +156,7 @@ Layer DrawingElement::layer() const {
   	throw std::logic_error("CW::DrawingElement::layer(): DrawingElement is null");
   }
 	SULayerRef layer_ref = SU_INVALID;
-	SU_RESULT res = SUDrawingElementGetLayer(m_drawing_element, &layer_ref);
+	SUResult res = SUDrawingElementGetLayer(m_drawing_element, &layer_ref);
   if (res == SU_ERROR_NULL_POINTER_OUTPUT || res == SU_ERROR_NO_DATA) {
   	return Layer();
   }
@@ -169,7 +169,7 @@ bool DrawingElement::layer(Layer& layer){
   if (SUIsInvalid(m_drawing_element)) {
   	throw std::logic_error("CW::DrawingElement::layer(): DrawingElement is null");
   }
-	SU_RESULT res = SUDrawingElementSetLayer(m_drawing_element, layer);
+	SUResult res = SUDrawingElementSetLayer(m_drawing_element, layer);
   if (res == SU_ERROR_NONE) {
   	layer.attached(true);
     return true;
@@ -183,7 +183,7 @@ Material DrawingElement::material() const {
   	throw std::logic_error("CW::DrawingElement::material(): DrawingElement is null");
   }
 	SUMaterialRef material_ref = SU_INVALID;
-	SU_RESULT res = SUDrawingElementGetMaterial(m_drawing_element, &material_ref);
+	SUResult res = SUDrawingElementGetMaterial(m_drawing_element, &material_ref);
   if (res == SU_ERROR_NO_DATA || res == SU_ERROR_NULL_POINTER_OUTPUT) {
   	return Material();
   }
@@ -196,7 +196,7 @@ bool DrawingElement::material(const Material& material) {
   if (SUIsInvalid(m_drawing_element)) {
   	throw std::logic_error("CW::DrawingElement::material(): DrawingElement is null");
   }
-	SU_RESULT res = SUDrawingElementSetMaterial(m_drawing_element, material);
+	SUResult res = SUDrawingElementSetMaterial(m_drawing_element, material);
   if (res == SU_ERROR_NONE) {
   	return true;
   }
@@ -209,7 +209,7 @@ bool DrawingElement::receive_shadows() const {
   	throw std::logic_error("CW::DrawingElement::receive_shadows(): DrawingElement is null");
   }
 	bool receives_shadows_flag;
-	SU_RESULT res = SUDrawingElementGetReceivesShadows(m_drawing_element, &receives_shadows_flag);
+	SUResult res = SUDrawingElementGetReceivesShadows(m_drawing_element, &receives_shadows_flag);
 	assert (res == SU_ERROR_NONE);
 	return receives_shadows_flag;
 }
@@ -219,7 +219,7 @@ bool DrawingElement::receive_shadows(bool receives_shadows_flag) {
   if (SUIsInvalid(m_drawing_element)) {
   	throw std::logic_error("CW::DrawingElement::receive_shadows(): DrawingElement is null");
   }
-	SU_RESULT res = SUDrawingElementSetReceivesShadows(m_drawing_element, receives_shadows_flag);
+	SUResult res = SUDrawingElementSetReceivesShadows(m_drawing_element, receives_shadows_flag);
   if (res == SU_ERROR_NONE) {
   	return true;
   }

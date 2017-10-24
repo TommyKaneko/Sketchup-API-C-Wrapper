@@ -50,13 +50,13 @@ namespace CW {
 ****************************/
 SUGeometryInputRef GeometryInput::create_geometry_input() {
 	SUGeometryInputRef geom_input = SU_INVALID;
-	SU_RESULT res = SUGeometryInputCreate(&geom_input);
+	SUResult res = SUGeometryInputCreate(&geom_input);
   assert(res == SU_ERROR_NONE);
   return geom_input;
 }
 
 /*
-SU_RESULT GeometryInput::add_loop(LoopInput &loop) {
+SUResult GeometryInput::add_loop(LoopInput &loop) {
   std::vector<Point3D> vertices = loop.get_vertices();
   
   std::vector<size_t> indices = add_vertices(vertices);
@@ -82,7 +82,7 @@ GeometryInput::GeometryInput():
 
 GeometryInput::~GeometryInput() {
 	if (SUIsValid(m_geometry_input)) {
-  	SU_RESULT res = SUGeometryInputRelease(&m_geometry_input);
+  	SUResult res = SUGeometryInputRelease(&m_geometry_input);
   	assert(res == SU_ERROR_NONE);
   }
 }
@@ -102,7 +102,7 @@ GeometryInput::GeometryInput(const GeometryInput& other):
   
 GeometryInput& GeometryInput::operator=(const GeometryInput& other) {
 	if (SUIsValid(m_geometry_input)) {
-  	SU_RESULT res = SUGeometryInputRelease(&m_geometry_input);
+  	SUResult res = SUGeometryInputRelease(&m_geometry_input);
   	assert(res == SU_ERROR_NONE);
   }
   m_geometry_input = create_geometry_input();
@@ -166,7 +166,7 @@ size_t GeometryInput::add_face(const Face &face) {
   	throw std::invalid_argument("CW::GeometryInput::add_face(): Face argument is null");
   }
   SULoopInputRef loop_input = SU_INVALID;
-	SU_RESULT res =  SULoopInputCreate(&loop_input);
+	SUResult res =  SULoopInputCreate(&loop_input);
   assert(res == SU_ERROR_NONE);
   // Add outer loop
 	std::vector<Vertex> outer_vertices = face.outer_loop().vertices();
@@ -271,7 +271,7 @@ size_t GeometryInput::add_edge(const Edge &edge) {
   }
   size_t start_vertex_index = m_vertex_index;
   SUPoint3D start_point = edge.start().position();
-  SU_RESULT res = SUGeometryInputAddVertex(m_geometry_input, &start_point);
+  SUResult res = SUGeometryInputAddVertex(m_geometry_input, &start_point);
   m_vertex_index++;
   assert(res == SU_ERROR_NONE);
   size_t end_vertex_index = m_vertex_index;
