@@ -362,6 +362,7 @@ Transformation& Transformation::normalize() {
 Point3D Transformation::origin() const {
 	// TODO
   assert(false);
+  return Point3D(); // Temporary return value, to allow compiling on Windows
 }
   
 
