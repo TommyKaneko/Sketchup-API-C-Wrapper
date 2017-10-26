@@ -25,6 +25,10 @@ std::vector<CW::Face> faces = CW::Model(model).entities().faces();
 ```
 Added to this benefit, the wrapper classes have helper functions to help with geometric manipulations, much in the style of the SketchUp Ruby API
 
+======================
+## Reference
+The project is documented in Doxygen, accessible here:
+https://tommykaneko.github.io/Sketchup-API-C-Wrapper/
 
 ======================
 ## Project Objectives
