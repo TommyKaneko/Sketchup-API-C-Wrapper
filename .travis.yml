@@ -23,8 +23,8 @@ addons:
       - doxygen-gui
       - graphviz
 
-# Generate and deploy documentation
-after_success:
+# Build your code e.g. by calling make
+script:
   - cd $TRAVIS_BUILD_DIR
   - chmod +x generateDocumentationAndDeploy.sh
   - ./generateDocumentationAndDeploy.sh
