@@ -18,9 +18,10 @@ addons:
 
 # Build your code e.g. by calling make
 script:
-  - mkdir -p docs
-  - cd docs
-  - doxygen collab.dox
+   - make
+#  - mkdir -p docs
+#  - cd docs
+#  - doxygen collab.dox
 
 # Deploy using travis builtin GitHub Pages support
 deploy:
