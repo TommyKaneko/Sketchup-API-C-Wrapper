@@ -18,7 +18,7 @@ addons:
 
 # Build your code e.g. by calling make
 script:
-  - doxygen DOXYGEN
+  - doxygen DOXYFILE
 
 # Deploy using travis builtin GitHub Pages support
 deploy:
