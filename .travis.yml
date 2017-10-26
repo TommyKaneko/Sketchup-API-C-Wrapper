@@ -25,8 +25,7 @@ addons:
 
 # Build your code e.g. by calling make
 script:
-  - cd docs
-  - doxygen collab.dox
+  - make
 
 # Generate and deploy documentation
 after_success:
