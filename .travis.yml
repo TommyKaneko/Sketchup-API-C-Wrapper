@@ -6,13 +6,6 @@ branches:
   only:
     - master
 
-# Environment variables
-env:
-  global:
-    - GH_REPO_NAME: Sketchup-API-C-Wrapper
-    - DOXYFILE: $TRAVIS_BUILD_DIR/DOXYFILE
-    - GH_REPO_REF: github.com/TommyKaneko/Sketchup-API-C-Wrapper.git
-
 # Install dependencies
 addons:
   apt:
@@ -25,10 +18,13 @@ addons:
 
 # Build your code e.g. by calling make
 script:
+  - doxygen DOXYGEN
 
-# Generate and deploy documentation
-after_success:
-  - cd $TRAVIS_BUILD_DIR
-  - chmod +x generateDocumentationAndDeploy.sh
-  - ./generateDocumentationAndDeploy.sh
-
+# Deploy using travis builtin GitHub Pages support
+deploy:
+  provider: pages
+  skip_cleanup: true
+  local_dir: $TRAVIS_BUILD_DIR/docs/html
+  github_token: $GITHUB_API_KEY
+  on:
+    branch: master
