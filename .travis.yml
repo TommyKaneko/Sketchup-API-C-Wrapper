@@ -3,8 +3,8 @@ sudo: false
 
 # Blacklist
 branches:
-  except:
-    - gh-pages
+  only:
+    - master
 
 # Environment variables
 env:
@@ -25,7 +25,8 @@ addons:
 
 # Build your code e.g. by calling make
 script:
-  - make
+  - cd docs
+  - doxygen collab.dox
 
 # Generate and deploy documentation
 after_success:
