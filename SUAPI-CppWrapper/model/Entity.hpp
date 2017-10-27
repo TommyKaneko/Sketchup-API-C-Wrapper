@@ -41,78 +41,93 @@ class AttributeDictionary;
 class TypedValue;
 
 /*
-* Entity object wrapper
+* @brief Entity object wrapper.
+* @descr This is the base class for all SketchUp entities. Entities are basically anything that can be contained in a model, including Drawingelements such as Edges, SectionPlanes, Groups, etc. and entities that relate to those Drawingelements, such as Loops, Layers, etc.
+*
+* Keep in mind that the methods below are available on all subclasses. For example, an Edge's parent class is Drawingelement, and a Drawingelement's parent class is Entity. Therefore an Edge has all of the methods defined in Drawingelement and Entity.
 */
 class Entity {
   protected:
+  /**
+  * @brief The C SUEntityRef that this class wraps.
+  */
   SUEntityRef m_entity;
   
   /**
-  * Indicates whether the Entity has been attached to a model.
+  * @brief Indicates whether the Entity has been attached to a model.
   */
   bool m_attached;
 
   public:
   /**
-  * Constructor representing a null objject.
+  * @brief Constructor representing a null objject.
   */
 	Entity();
   
   /**
-  * Creates a new Entity object.
+  * @brief Creates a new Entity object.
+  * @param entity - SUEntityRef from SU C API
+  * @param attached - (optional) flag indicating whether the entity is attached to a model.  Defaults to true.
   */
   Entity(SUEntityRef entity, bool attached = true);
   
   /**
-  * Copy constructor with an optional parameter for the entity reference.  SUEntityRef objects cannot be created from this class, so the Ref object must be passed to this constructor from a derived class object.
+  * @brief Copy constructor with an optional parameter for the entity reference.
+  * @descr SUEntityRef objects cannot be created from this class, so the Ref object must be passed to this constructor from a derived class object.
   * @param other - Entity object from which properties will be copied.
-  * @param entity_ref - SUEntityRef object to assign to the copied object.
+  * @param entity_ref - (optional) SUEntityRef object to assign to the copied object.
   */
   Entity(const Entity& other, SUEntityRef entity_ref = SU_INVALID);
-  
+	
+  /**
+  * @brief Destructor
+  * @descr The C++ wrapper deals with releasing objects, so user does not have to keep track of memory allocations.
+  */
   ~Entity();
   
-  /** Copy assignment operator */
+  /** @brief Copy assignment operator */
   Entity& operator=(const Entity& other);
 
   /*
-  * The class object can be converted to a SUEntityRef without loss of data.
+  * @brief Returns a copy of the wrapped SUEntityRef. USE WITH CAUTION.
+  * @descr Note that the Entity object still manages the lifetime of the reference, so the SUEntityRef could become invalid.
   */
   operator SUEntityRef() const;
-  operator SUEntityRef*();
-  
-  /**
-  * Returns true if this entity is not valid.
+	
+  /*
+  * @brief Returns a pointer to the wrapped SUEntityRef. USE WITH CAUTION.
+  * @descr Note that the Entity object still manages the lifetime of the reference, so the SUEntityRef could become invalid.
   */
-  bool operator!() const;
+  operator SUEntityRef*();
 
   /**
-  * Function lets the object know that it has been attached to a model.  This is important as it will let the object know that it does not need to "release" the object.
-  * @param optional true to let the object know that it has been attached to the model.  False to let the object know that it has not been attached.
+  * @brief Method lets the object know that it has been attached to a model.  This is important as it will let the object know that it does not need to "release" the object.
+  * @param attach - (optional) true to let the object know that it has been attached to a model.  False to let the object know that it has not been attached.
   */
   void attached(bool attach =  true);
   
-  /*
-  * The attribute_dictionaries method is used to retrieve the AttributeDictionaries collection attached to the entity.
+  /**
+  * @brief Returns the AttributeDictionaries collection attached to the entity.
   * @return vector of AttributeDictionary objects associated with the entity. If no AttributeDictionary objects are associated with the entity, an empty vector will be returned.
   */
-  std::vector<AttributeDictionary>	attribute_dictionaries() const;
+  std::vector<AttributeDictionary> attribute_dictionaries() const;
   
-  /*
-  * Retrieves an attribute dictionary object with a given name that is attached to an Entity.
-  *
+  /**
+  * @brief Returns an attribute dictionary object with a given name that is attached to an Entity.
+  * @param name - string representing the name of the AttributeDictionary
+  * @return AttributeDictionary object with the given name.
   */
   AttributeDictionary attribute_dictionary(const std::string& name) const;
   
-  /*
-  * Copies attributes from another Entity object to this one.
-  * @param entity object to get the attributes from.
+  /**
+  * @brief Copies attributes from another Entity object to this one.
+  * @param entity - object to get the attributes from.
   * @param bool true to delete existing attributes, false to retain and overwrite the values. // TODO: as the C API does not currentlty allow you to delete attributes, this flag can have no effect.
   * @return true for success, false for failure.
   */
   bool copy_attributes_from(const Entity& entity /*, bool clear_existing = false*/);
   
-  /*
+  /**
   * The delete_attribute method is used to delete an attribute from an entity.
   * @param AttributeDictionary& object in which to find the key.
   * @param std::string with the name of the key of the attribute.
@@ -122,51 +137,66 @@ class Entity {
   void delete_attribute(AttributeDictionary &dict, std::string key);
   */
   
-  /*
-  * Determines if your entity is still valid (not deleted by another script, for example.)
+  /**
+  * @brief Checks if the entity is valid.
+  * @desc Note that this function does not check if the entity has been deleted. @see operator!().
   */
-  /*
-  * TODO: as deleting an entity is not currently possible with the C API, this function cannot be used.
-  bool valid();
+  bool is_valid() const;
+
+  /**
+  * @brief Returns true if this entity is not valid. Alias of !is_valid().
   */
-  
-  /*
-  * Retrieve a unique ID assigned to an entity.
-  * @return int32_t key for the Entity object
+  bool operator!() const;
+
+	/**
+  * @brief Retrieve a unique ID assigned to an entity.
+  * @return int32_t key for the Entity object.
   */
   int32_t entityID() const;
   
-  
-  /*
-  * Retrieves the value of an attribute in the entity's attribute dictionary.
-  * @param dict_name string name of the attribute dictionary, or AttributeDictionary object.
-  * @param std::string attribute key.
-  * @param default_value (optional) default TypedValue to return if no attribute is found
+  /**
+  * @brief Retrieves the value of an attribute in the entity's attribute dictionary.
+  * @param dict_name - string name of the attribute dictionary.
+  * @param key - the attribute key.
+  * @param default_value - (optional) default TypedValue to return if no attribute is found. Defaults to an empty TypedValue
   * @return value TypedValue of the attribute.  If no attribute found, the default value passed is returned.
   */
-  TypedValue get_attribute(const std::string& dict_name, const std::string& key) const;
-  TypedValue get_attribute(const std::string& dict_name, const std::string& key, const TypedValue& default_value) const;
+  TypedValue get_attribute(const std::string& dict_name, const std::string& key, const TypedValue& default_value = TypedValue()) const;
   
-  TypedValue get_attribute(const AttributeDictionary &dict, const std::string& key) const;
-  TypedValue get_attribute(const AttributeDictionary &dict, const std::string& key, const TypedValue& default_value) const;
+  /**
+  * @brief Retrieves the value of an attribute in the entity's attribute dictionary.
+  * @param dict - AttributeDictionary object to search.
+  * @param key - the attribute key.
+  * @param default_value - (optional) default TypedValue to return if no attribute is found. Defaults to an empty TypedValue
+  * @return value TypedValue of the attribute.  If no attribute found, the default value passed is returned.
+  */
+  TypedValue get_attribute(const AttributeDictionary &dict, const std::string& key, const TypedValue& default_value = TypedValue()) const;
   
-  /*
+  /**
   // TODO: C API does not currently allow traversing upwards
   parent()
   */
   
-  /*
-  * Sets the value of an attribute in the given AttributeDictionary object.
-  * @param AttributeDictionary object or string name of AttributeDictionary object that the attribute is in.
-  * @param std::string attribute key.
-  * @param std::string value to set
+  /**
+  * @brief Sets the value of an attribute in the given AttributeDictionary object.
+  * @param dict_name - string name of AttributeDictionary object that the attribute is in.
+  * @param key - std::string attribute key.
+  * @param value - TypedValue to set.
   * @return true on success, false on failure
   */
   bool set_attribute(const std::string& dict_name, const std::string& key, const TypedValue& value);
+
+	/**
+  * @brief Sets the value of an attribute in the given AttributeDictionary object.
+  * @param dict - AttributeDictionary object that the attribute is in.
+  * @param key - std::string attribute key.
+  * @param value - TypedValue to set.
+  * @return true on success, false on failure
+  */
   bool set_attribute(AttributeDictionary& dict, const std::string& key, const TypedValue& value);
   
-  /*
-  * Returns the type of the entity. See enum SURefType.
+  /**
+  * @brief Returns the type of the entity. See enum SURefType.
   */
   enum SURefType entity_type() const;
   
@@ -176,9 +206,13 @@ class Entity {
   //bool operator==(const Entity& entity) const;
   
   /**
-  * Comparison operator for two entity objects
+  * @brief Equality operator for two entity objects
   */
   friend bool operator==(const Entity& lhs, const Entity& rhs);
+
+  /**
+  * @brief Non-equality operator for two entity objects
+  */
   friend bool operator!=(const Entity& lhs, const Entity& rhs);
   
 };

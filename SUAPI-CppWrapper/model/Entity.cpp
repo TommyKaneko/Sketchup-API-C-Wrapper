@@ -83,12 +83,6 @@ Entity::operator SUEntityRef*() {
 }
 
 
-bool Entity::operator!() const {
-	return SUIsInvalid(m_entity);
-}
-
-
-
 void Entity::attached(bool attach) {
 	m_attached = attach;
 }
@@ -145,9 +139,15 @@ bool Entity::copy_attributes_from(const Entity& entity) {
 void delete_attribute(AttributeDictionary &dict, std::string key);
 */
 
-/* TODO: as deleting an entity is not currently possible with the C API, this function cannot be used.
-bool valid();
-*/
+bool Entity::is_valid() const {
+	return !!(*this);
+}
+
+
+bool Entity::operator!() const {
+	return SUIsInvalid(m_entity);
+}
+
 
 int32_t Entity::entityID() const{
 	if (!(*this)) {
@@ -158,13 +158,6 @@ int32_t Entity::entityID() const{
   return entity_id;
 }
 
-TypedValue Entity::get_attribute(const std::string& dict_name, const std::string& key) const {
-	if (!(*this)) {
-  	throw std::logic_error("CW::Entity::get_attribute(): Entity is null");
-  }
-  TypedValue default_value;
-  return get_attribute(dict_name, key, default_value);
-}
 
 TypedValue Entity::get_attribute(const std::string& dict_name, const std::string& key, const TypedValue& default_value) const {
 	if (!(*this)) {
@@ -174,13 +167,6 @@ TypedValue Entity::get_attribute(const std::string& dict_name, const std::string
   return get_attribute(dict, key, default_value);
 }
 
-TypedValue Entity::get_attribute(const AttributeDictionary& dict, const std::string& key) const {
-	if (!(*this)) {
-  	throw std::logic_error("CW::Entity::get_attribute(): Entity is null");
-  }
-  TypedValue default_value;
-  return get_attribute(dict, key, default_value);
-}
 
 TypedValue Entity::get_attribute(const AttributeDictionary& dict, const std::string& key, const TypedValue& default_value) const {
 	if (!(*this)) {
