@@ -81,13 +81,23 @@
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a53d07669ec73b8aba57784b7b0eb4d08"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_w_1_1_entity.html#a53d07669ec73b8aba57784b7b0eb4d08">Entity</a> ()</td></tr>
+<tr class="memitem:a53d07669ec73b8aba57784b7b0eb4d08"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a53d07669ec73b8aba57784b7b0eb4d08"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_w_1_1_entity.html#a53d07669ec73b8aba57784b7b0eb4d08">Entity</a> ()</td></tr>
+<tr class="memdesc:a53d07669ec73b8aba57784b7b0eb4d08"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor representing a null objject. <br/></td></tr>
 <tr class="separator:a53d07669ec73b8aba57784b7b0eb4d08"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a20e7493de8d68dee3f6465478435eb3a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_w_1_1_entity.html#a20e7493de8d68dee3f6465478435eb3a">Entity</a> (SUEntityRef entity, bool <a class="el" href="class_c_w_1_1_entity.html#a4401ee82d78834f362b5aeb6ba23b57d">attached</a>=true)</td></tr>
+<tr class="memdesc:a20e7493de8d68dee3f6465478435eb3a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new <a class="el" href="class_c_w_1_1_entity.html">Entity</a> object.  <a href="#a20e7493de8d68dee3f6465478435eb3a">More...</a><br/></td></tr>
 <tr class="separator:a20e7493de8d68dee3f6465478435eb3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2acf0ed23480bd7f5be2b257b61ad4c1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_w_1_1_entity.html#a2acf0ed23480bd7f5be2b257b61ad4c1">Entity</a> (const <a class="el" href="class_c_w_1_1_entity.html">Entity</a> &amp;other, SUEntityRef entity_ref=SU_INVALID)</td></tr>
+<tr class="memdesc:a2acf0ed23480bd7f5be2b257b61ad4c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy constructor with an optional parameter for the entity reference.  SUEntityRef objects cannot be created from this class, so the Ref object must be passed to this constructor from a derived class object.  <a href="#a2acf0ed23480bd7f5be2b257b61ad4c1">More...</a><br/></td></tr>
 <tr class="separator:a2acf0ed23480bd7f5be2b257b61ad4c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6f5a22fc1333aa9315512ab63dfac554"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_c_w_1_1_entity.html">Entity</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_w_1_1_entity.html#a6f5a22fc1333aa9315512ab63dfac554">operator=</a> (const <a class="el" href="class_c_w_1_1_entity.html">Entity</a> &amp;other)</td></tr>
+<tr class="memitem:a9a8f76aa5e1f2edf5c280740333242b1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9a8f76aa5e1f2edf5c280740333242b1"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_w_1_1_entity.html#a9a8f76aa5e1f2edf5c280740333242b1">~Entity</a> ()</td></tr>
+<tr class="memdesc:a9a8f76aa5e1f2edf5c280740333242b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor  The C++ wrapper deals with releasing objects, so user does not have to keep track of memory allocations. <br/></td></tr>
+<tr class="separator:a9a8f76aa5e1f2edf5c280740333242b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f5a22fc1333aa9315512ab63dfac554"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6f5a22fc1333aa9315512ab63dfac554"></a>
+<a class="el" href="class_c_w_1_1_entity.html">Entity</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_w_1_1_entity.html#a6f5a22fc1333aa9315512ab63dfac554">operator=</a> (const <a class="el" href="class_c_w_1_1_entity.html">Entity</a> &amp;other)</td></tr>
+<tr class="memdesc:a6f5a22fc1333aa9315512ab63dfac554"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy assignment operator. <br/></td></tr>
 <tr class="separator:a6f5a22fc1333aa9315512ab63dfac554"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0cd00b5dbddef44a168030f87c9bf347"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0cd00b5dbddef44a168030f87c9bf347"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>operator SUEntityRef</b> () const </td></tr>
@@ -95,82 +105,70 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ac84c3bafb47e86ff897f6f00e4eaffe7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac84c3bafb47e86ff897f6f00e4eaffe7"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>operator SUEntityRef *</b> ()</td></tr>
 <tr class="separator:ac84c3bafb47e86ff897f6f00e4eaffe7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae3bbd0048d17e74cf12bf47c823c3b4a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_w_1_1_entity.html#ae3bbd0048d17e74cf12bf47c823c3b4a">operator!</a> () const </td></tr>
-<tr class="separator:ae3bbd0048d17e74cf12bf47c823c3b4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4401ee82d78834f362b5aeb6ba23b57d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_w_1_1_entity.html#a4401ee82d78834f362b5aeb6ba23b57d">attached</a> (bool attach=true)</td></tr>
+<tr class="memdesc:a4401ee82d78834f362b5aeb6ba23b57d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Method lets the object know that it has been attached to a model. This is important as it will let the object know that it does not need to "release" the object.  <a href="#a4401ee82d78834f362b5aeb6ba23b57d">More...</a><br/></td></tr>
 <tr class="separator:a4401ee82d78834f362b5aeb6ba23b57d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aae2d0d2d1496e1d8f4a5a320a63af2fd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aae2d0d2d1496e1d8f4a5a320a63af2fd"></a>
-std::vector&lt; <a class="el" href="class_c_w_1_1_attribute_dictionary.html">AttributeDictionary</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>attribute_dictionaries</b> () const </td></tr>
+<tr class="memitem:aae2d0d2d1496e1d8f4a5a320a63af2fd"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="class_c_w_1_1_attribute_dictionary.html">AttributeDictionary</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_w_1_1_entity.html#aae2d0d2d1496e1d8f4a5a320a63af2fd">attribute_dictionaries</a> () const </td></tr>
+<tr class="memdesc:aae2d0d2d1496e1d8f4a5a320a63af2fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the AttributeDictionaries collection attached to the entity.  <a href="#aae2d0d2d1496e1d8f4a5a320a63af2fd">More...</a><br/></td></tr>
 <tr class="separator:aae2d0d2d1496e1d8f4a5a320a63af2fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad1586c988ff45851dfbfa85db89ac64e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad1586c988ff45851dfbfa85db89ac64e"></a>
-<a class="el" href="class_c_w_1_1_attribute_dictionary.html">AttributeDictionary</a>&#160;</td><td class="memItemRight" valign="bottom"><b>attribute_dictionary</b> (const std::string &amp;name) const </td></tr>
+<tr class="memitem:ad1586c988ff45851dfbfa85db89ac64e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_c_w_1_1_attribute_dictionary.html">AttributeDictionary</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_w_1_1_entity.html#ad1586c988ff45851dfbfa85db89ac64e">attribute_dictionary</a> (const std::string &amp;name) const </td></tr>
+<tr class="memdesc:ad1586c988ff45851dfbfa85db89ac64e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns an attribute dictionary object with a given name that is attached to an <a class="el" href="class_c_w_1_1_entity.html">Entity</a>.  <a href="#ad1586c988ff45851dfbfa85db89ac64e">More...</a><br/></td></tr>
 <tr class="separator:ad1586c988ff45851dfbfa85db89ac64e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a994f71e4dad4fc104ac483b326a039a9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a994f71e4dad4fc104ac483b326a039a9"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>copy_attributes_from</b> (const <a class="el" href="class_c_w_1_1_entity.html">Entity</a> &amp;entity)</td></tr>
+<tr class="memitem:a994f71e4dad4fc104ac483b326a039a9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_w_1_1_entity.html#a994f71e4dad4fc104ac483b326a039a9">copy_attributes_from</a> (const <a class="el" href="class_c_w_1_1_entity.html">Entity</a> &amp;entity)</td></tr>
+<tr class="memdesc:a994f71e4dad4fc104ac483b326a039a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copies attributes from another <a class="el" href="class_c_w_1_1_entity.html">Entity</a> object to this one.  <a href="#a994f71e4dad4fc104ac483b326a039a9">More...</a><br/></td></tr>
 <tr class="separator:a994f71e4dad4fc104ac483b326a039a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a703254af441bfe67b1c4c31411a8553e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a703254af441bfe67b1c4c31411a8553e"></a>
-int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>entityID</b> () const </td></tr>
+<tr class="memitem:a13f1b805f744ce67dfdbdb19640a2fea"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_w_1_1_entity.html#a13f1b805f744ce67dfdbdb19640a2fea">is_valid</a> () const </td></tr>
+<tr class="memdesc:a13f1b805f744ce67dfdbdb19640a2fea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the entity is valid.  Note that this function does not check if the entity has been deleted.  <a href="#a13f1b805f744ce67dfdbdb19640a2fea">More...</a><br/></td></tr>
+<tr class="separator:a13f1b805f744ce67dfdbdb19640a2fea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae3bbd0048d17e74cf12bf47c823c3b4a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae3bbd0048d17e74cf12bf47c823c3b4a"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_w_1_1_entity.html#ae3bbd0048d17e74cf12bf47c823c3b4a">operator!</a> () const </td></tr>
+<tr class="memdesc:ae3bbd0048d17e74cf12bf47c823c3b4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if this entity is not valid. Alias of !is_valid(). <br/></td></tr>
+<tr class="separator:ae3bbd0048d17e74cf12bf47c823c3b4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a703254af441bfe67b1c4c31411a8553e"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_w_1_1_entity.html#a703254af441bfe67b1c4c31411a8553e">entityID</a> () const </td></tr>
+<tr class="memdesc:a703254af441bfe67b1c4c31411a8553e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve a unique ID assigned to an entity.  <a href="#a703254af441bfe67b1c4c31411a8553e">More...</a><br/></td></tr>
 <tr class="separator:a703254af441bfe67b1c4c31411a8553e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa2a4dbbc9547693270a89615bc9b6154"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa2a4dbbc9547693270a89615bc9b6154"></a>
-<a class="el" href="class_c_w_1_1_typed_value.html">TypedValue</a>&#160;</td><td class="memItemRight" valign="bottom"><b>get_attribute</b> (const std::string &amp;dict_name, const std::string &amp;key) const </td></tr>
-<tr class="separator:aa2a4dbbc9547693270a89615bc9b6154"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7f993b35f0b24163b325ae68303e01c3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7f993b35f0b24163b325ae68303e01c3"></a>
-<a class="el" href="class_c_w_1_1_typed_value.html">TypedValue</a>&#160;</td><td class="memItemRight" valign="bottom"><b>get_attribute</b> (const std::string &amp;dict_name, const std::string &amp;key, const <a class="el" href="class_c_w_1_1_typed_value.html">TypedValue</a> &amp;default_value) const </td></tr>
-<tr class="separator:a7f993b35f0b24163b325ae68303e01c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a46c6d0741bbb874b07628d8dbaea422a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a46c6d0741bbb874b07628d8dbaea422a"></a>
-<a class="el" href="class_c_w_1_1_typed_value.html">TypedValue</a>&#160;</td><td class="memItemRight" valign="bottom"><b>get_attribute</b> (const <a class="el" href="class_c_w_1_1_attribute_dictionary.html">AttributeDictionary</a> &amp;dict, const std::string &amp;key) const </td></tr>
-<tr class="separator:a46c6d0741bbb874b07628d8dbaea422a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5a07bcbdbd939a0305afbc135a44e998"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5a07bcbdbd939a0305afbc135a44e998"></a>
-<a class="el" href="class_c_w_1_1_typed_value.html">TypedValue</a>&#160;</td><td class="memItemRight" valign="bottom"><b>get_attribute</b> (const <a class="el" href="class_c_w_1_1_attribute_dictionary.html">AttributeDictionary</a> &amp;dict, const std::string &amp;key, const <a class="el" href="class_c_w_1_1_typed_value.html">TypedValue</a> &amp;default_value) const </td></tr>
-<tr class="separator:a5a07bcbdbd939a0305afbc135a44e998"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae7d5d938adaefbfda02cf6827d810883"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae7d5d938adaefbfda02cf6827d810883"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>set_attribute</b> (const std::string &amp;dict_name, const std::string &amp;key, const <a class="el" href="class_c_w_1_1_typed_value.html">TypedValue</a> &amp;value)</td></tr>
+<tr class="memitem:aa500987d6231c8a6f6e32e1f2f2b750b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_c_w_1_1_typed_value.html">TypedValue</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_w_1_1_entity.html#aa500987d6231c8a6f6e32e1f2f2b750b">get_attribute</a> (const std::string &amp;dict_name, const std::string &amp;key, const <a class="el" href="class_c_w_1_1_typed_value.html">TypedValue</a> &amp;default_value=<a class="el" href="class_c_w_1_1_typed_value.html">TypedValue</a>()) const </td></tr>
+<tr class="memdesc:aa500987d6231c8a6f6e32e1f2f2b750b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the value of an attribute in the entity's attribute dictionary.  <a href="#aa500987d6231c8a6f6e32e1f2f2b750b">More...</a><br/></td></tr>
+<tr class="separator:aa500987d6231c8a6f6e32e1f2f2b750b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81610bf4253ac19b7aba9f4b23bc4b12"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_c_w_1_1_typed_value.html">TypedValue</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_w_1_1_entity.html#a81610bf4253ac19b7aba9f4b23bc4b12">get_attribute</a> (const <a class="el" href="class_c_w_1_1_attribute_dictionary.html">AttributeDictionary</a> &amp;dict, const std::string &amp;key, const <a class="el" href="class_c_w_1_1_typed_value.html">TypedValue</a> &amp;default_value=<a class="el" href="class_c_w_1_1_typed_value.html">TypedValue</a>()) const </td></tr>
+<tr class="memdesc:a81610bf4253ac19b7aba9f4b23bc4b12"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the value of an attribute in the entity's attribute dictionary.  <a href="#a81610bf4253ac19b7aba9f4b23bc4b12">More...</a><br/></td></tr>
+<tr class="separator:a81610bf4253ac19b7aba9f4b23bc4b12"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae7d5d938adaefbfda02cf6827d810883"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_w_1_1_entity.html#ae7d5d938adaefbfda02cf6827d810883">set_attribute</a> (const std::string &amp;dict_name, const std::string &amp;key, const <a class="el" href="class_c_w_1_1_typed_value.html">TypedValue</a> &amp;value)</td></tr>
+<tr class="memdesc:ae7d5d938adaefbfda02cf6827d810883"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the value of an attribute in the given <a class="el" href="class_c_w_1_1_attribute_dictionary.html">AttributeDictionary</a> object.  <a href="#ae7d5d938adaefbfda02cf6827d810883">More...</a><br/></td></tr>
 <tr class="separator:ae7d5d938adaefbfda02cf6827d810883"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af32119690b01d89d6760fa5f0cf0f89d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af32119690b01d89d6760fa5f0cf0f89d"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>set_attribute</b> (<a class="el" href="class_c_w_1_1_attribute_dictionary.html">AttributeDictionary</a> &amp;dict, const std::string &amp;key, const <a class="el" href="class_c_w_1_1_typed_value.html">TypedValue</a> &amp;value)</td></tr>
+<tr class="memitem:af32119690b01d89d6760fa5f0cf0f89d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_w_1_1_entity.html#af32119690b01d89d6760fa5f0cf0f89d">set_attribute</a> (<a class="el" href="class_c_w_1_1_attribute_dictionary.html">AttributeDictionary</a> &amp;dict, const std::string &amp;key, const <a class="el" href="class_c_w_1_1_typed_value.html">TypedValue</a> &amp;value)</td></tr>
+<tr class="memdesc:af32119690b01d89d6760fa5f0cf0f89d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the value of an attribute in the given <a class="el" href="class_c_w_1_1_attribute_dictionary.html">AttributeDictionary</a> object.  <a href="#af32119690b01d89d6760fa5f0cf0f89d">More...</a><br/></td></tr>
 <tr class="separator:af32119690b01d89d6760fa5f0cf0f89d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2be7d9a49679a12cc615883622ecdef8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2be7d9a49679a12cc615883622ecdef8"></a>
-enum SURefType&#160;</td><td class="memItemRight" valign="bottom"><b>entity_type</b> () const </td></tr>
+enum SURefType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_w_1_1_entity.html#a2be7d9a49679a12cc615883622ecdef8">entity_type</a> () const </td></tr>
+<tr class="memdesc:a2be7d9a49679a12cc615883622ecdef8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the type of the entity. See enum SURefType. <br/></td></tr>
 <tr class="separator:a2be7d9a49679a12cc615883622ecdef8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
 <tr class="memitem:ad1d5c635add16702f770b6e14c186e9c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad1d5c635add16702f770b6e14c186e9c"></a>
-SUEntityRef&#160;</td><td class="memItemRight" valign="bottom"><b>m_entity</b></td></tr>
+SUEntityRef&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_w_1_1_entity.html#ad1d5c635add16702f770b6e14c186e9c">m_entity</a></td></tr>
+<tr class="memdesc:ad1d5c635add16702f770b6e14c186e9c"><td class="mdescLeft">&#160;</td><td class="mdescRight">The C SUEntityRef that this class wraps. <br/></td></tr>
 <tr class="separator:ad1d5c635add16702f770b6e14c186e9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aea6450abce4d5aebad0061e213c840b1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_w_1_1_entity.html#aea6450abce4d5aebad0061e213c840b1">m_attached</a></td></tr>
+<tr class="memitem:aea6450abce4d5aebad0061e213c840b1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aea6450abce4d5aebad0061e213c840b1"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_w_1_1_entity.html#aea6450abce4d5aebad0061e213c840b1">m_attached</a></td></tr>
+<tr class="memdesc:aea6450abce4d5aebad0061e213c840b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicates whether the <a class="el" href="class_c_w_1_1_entity.html">Entity</a> has been attached to a model. <br/></td></tr>
 <tr class="separator:aea6450abce4d5aebad0061e213c840b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
 Friends</h2></td></tr>
 <tr class="memitem:a09b4109382eaff44b55a31742b099c3d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_w_1_1_entity.html#a09b4109382eaff44b55a31742b099c3d">operator==</a> (const <a class="el" href="class_c_w_1_1_entity.html">Entity</a> &amp;lhs, const <a class="el" href="class_c_w_1_1_entity.html">Entity</a> &amp;rhs)</td></tr>
+<tr class="memdesc:a09b4109382eaff44b55a31742b099c3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Equality operator for two entity objects.  <a href="#a09b4109382eaff44b55a31742b099c3d">More...</a><br/></td></tr>
 <tr class="separator:a09b4109382eaff44b55a31742b099c3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a729566306068a0231308c3f60d93f21a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a729566306068a0231308c3f60d93f21a"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator!=</b> (const <a class="el" href="class_c_w_1_1_entity.html">Entity</a> &amp;lhs, const <a class="el" href="class_c_w_1_1_entity.html">Entity</a> &amp;rhs)</td></tr>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_w_1_1_entity.html#a729566306068a0231308c3f60d93f21a">operator!=</a> (const <a class="el" href="class_c_w_1_1_entity.html">Entity</a> &amp;lhs, const <a class="el" href="class_c_w_1_1_entity.html">Entity</a> &amp;rhs)</td></tr>
+<tr class="memdesc:a729566306068a0231308c3f60d93f21a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Non-equality operator for two entity objects. <br/></td></tr>
 <tr class="separator:a729566306068a0231308c3f60d93f21a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p>Definition at line <a class="el" href="_entity_8hpp_source.html#l00046">46</a> of file <a class="el" href="_entity_8hpp_source.html">Entity.hpp</a>.</p>
+<p>Definition at line <a class="el" href="_entity_8hpp_source.html#l00049">49</a> of file <a class="el" href="_entity_8hpp_source.html">Entity.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a53d07669ec73b8aba57784b7b0eb4d08"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">CW::Entity::Entity </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Constructor representing a null objject. </p>
-
-<p>Definition at line <a class="el" href="_entity_8cpp_source.html#l00039">39</a> of file <a class="el" href="_entity_8cpp_source.html">Entity.cpp</a>.</p>
-
-</div>
-</div>
 <a class="anchor" id="a20e7493de8d68dee3f6465478435eb3a"></a>
 <div class="memitem">
 <div class="memproto">
@@ -194,7 +192,13 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator!=</b> (const
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Creates a new <a class="el" href="class_c_w_1_1_entity.html">Entity</a> object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">entity</td><td>- SUEntityRef from SU C API </td></tr>
+    <tr><td class="paramname">attached</td><td>- (optional) flag indicating whether the entity is attached to a model. Defaults to true. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p>Definition at line <a class="el" href="_entity_8cpp_source.html#l00045">45</a> of file <a class="el" href="_entity_8cpp_source.html">Entity.cpp</a>.</p>
 
@@ -223,11 +227,10 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator!=</b> (const
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Copy constructor with an optional parameter for the entity reference. SUEntityRef objects cannot be created from this class, so the Ref object must be passed to this constructor from a derived class object. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">other</td><td>- <a class="el" href="class_c_w_1_1_entity.html">Entity</a> object from which properties will be copied. </td></tr>
-    <tr><td class="paramname">entity_ref</td><td>- SUEntityRef object to assign to the copied object. </td></tr>
+    <tr><td class="paramname">entity_ref</td><td>- (optional) SUEntityRef object to assign to the copied object. </td></tr>
   </table>
   </dd>
 </dl>
@@ -250,52 +253,300 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator!=</b> (const
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Function lets the object know that it has been attached to a model. This is important as it will let the object know that it does not need to "release" the object. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">optional</td><td>true to let the object know that it has been attached to the model. False to let the object know that it has not been attached. </td></tr>
+    <tr><td class="paramname">attach</td><td>- (optional) true to let the object know that it has been attached to a model. False to let the object know that it has not been attached. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_entity_8cpp_source.html#l00092">92</a> of file <a class="el" href="_entity_8cpp_source.html">Entity.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_entity_8cpp_source.html#l00086">86</a> of file <a class="el" href="_entity_8cpp_source.html">Entity.cpp</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="ae3bbd0048d17e74cf12bf47c823c3b4a"></a>
+<a class="anchor" id="aae2d0d2d1496e1d8f4a5a320a63af2fd"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool CW::Entity::operator! </td>
+          <td class="memname">std::vector&lt; <a class="el" href="class_c_w_1_1_attribute_dictionary.html">AttributeDictionary</a> &gt; CW::Entity::attribute_dictionaries </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Returns true if this entity is not valid. </p>
+<dl class="section return"><dt>Returns</dt><dd>vector of <a class="el" href="class_c_w_1_1_attribute_dictionary.html">AttributeDictionary</a> objects associated with the entity. If no <a class="el" href="class_c_w_1_1_attribute_dictionary.html">AttributeDictionary</a> objects are associated with the entity, an empty vector will be returned. </dd></dl>
 
-<p>Definition at line <a class="el" href="_entity_8cpp_source.html#l00086">86</a> of file <a class="el" href="_entity_8cpp_source.html">Entity.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_entity_8cpp_source.html#l00091">91</a> of file <a class="el" href="_entity_8cpp_source.html">Entity.cpp</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a6f5a22fc1333aa9315512ab63dfac554"></a>
+<a class="anchor" id="ad1586c988ff45851dfbfa85db89ac64e"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_c_w_1_1_entity.html">Entity</a> &amp; CW::Entity::operator= </td>
+          <td class="memname"><a class="el" href="class_c_w_1_1_attribute_dictionary.html">AttributeDictionary</a> CW::Entity::attribute_dictionary </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>- string representing the name of the <a class="el" href="class_c_w_1_1_attribute_dictionary.html">AttributeDictionary</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="class_c_w_1_1_attribute_dictionary.html">AttributeDictionary</a> object with the given name. </dd></dl>
+
+<p>Definition at line <a class="el" href="_entity_8cpp_source.html#l00109">109</a> of file <a class="el" href="_entity_8cpp_source.html">Entity.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a994f71e4dad4fc104ac483b326a039a9"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CW::Entity::copy_attributes_from </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="class_c_w_1_1_entity.html">Entity</a> &amp;&#160;</td>
-          <td class="paramname"><em>other</em></td><td>)</td>
+          <td class="paramname"><em>entity</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Copy assignment operator </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">entity</td><td>- object to get the attributes from. </td></tr>
+    <tr><td class="paramname">bool</td><td>true to delete existing attributes, false to retain and overwrite the values. // TODO: as the C API does not currentlty allow you to delete attributes, this flag can have no effect. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true for success, false for failure. </dd></dl>
 
-<p>Definition at line <a class="el" href="_entity_8cpp_source.html#l00064">64</a> of file <a class="el" href="_entity_8cpp_source.html">Entity.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_entity_8cpp_source.html#l00123">123</a> of file <a class="el" href="_entity_8cpp_source.html">Entity.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a703254af441bfe67b1c4c31411a8553e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t CW::Entity::entityID </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>int32_t key for the <a class="el" href="class_c_w_1_1_entity.html">Entity</a> object. </dd></dl>
+
+<p>Definition at line <a class="el" href="_entity_8cpp_source.html#l00152">152</a> of file <a class="el" href="_entity_8cpp_source.html">Entity.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aa500987d6231c8a6f6e32e1f2f2b750b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_c_w_1_1_typed_value.html">TypedValue</a> CW::Entity::get_attribute </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>dict_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="class_c_w_1_1_typed_value.html">TypedValue</a> &amp;&#160;</td>
+          <td class="paramname"><em>default_value</em> = <code><a class="el" href="class_c_w_1_1_typed_value.html">TypedValue</a>()</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dict_name</td><td>- string name of the attribute dictionary. </td></tr>
+    <tr><td class="paramname">key</td><td>- the attribute key. </td></tr>
+    <tr><td class="paramname">default_value</td><td>- (optional) default <a class="el" href="class_c_w_1_1_typed_value.html">TypedValue</a> to return if no attribute is found. Defaults to an empty <a class="el" href="class_c_w_1_1_typed_value.html">TypedValue</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>value <a class="el" href="class_c_w_1_1_typed_value.html">TypedValue</a> of the attribute. If no attribute found, the default value passed is returned. </dd></dl>
+
+<p>Definition at line <a class="el" href="_entity_8cpp_source.html#l00162">162</a> of file <a class="el" href="_entity_8cpp_source.html">Entity.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a81610bf4253ac19b7aba9f4b23bc4b12"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_c_w_1_1_typed_value.html">TypedValue</a> CW::Entity::get_attribute </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_c_w_1_1_attribute_dictionary.html">AttributeDictionary</a> &amp;&#160;</td>
+          <td class="paramname"><em>dict</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="class_c_w_1_1_typed_value.html">TypedValue</a> &amp;&#160;</td>
+          <td class="paramname"><em>default_value</em> = <code><a class="el" href="class_c_w_1_1_typed_value.html">TypedValue</a>()</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dict</td><td>- <a class="el" href="class_c_w_1_1_attribute_dictionary.html">AttributeDictionary</a> object to search. </td></tr>
+    <tr><td class="paramname">key</td><td>- the attribute key. </td></tr>
+    <tr><td class="paramname">default_value</td><td>- (optional) default <a class="el" href="class_c_w_1_1_typed_value.html">TypedValue</a> to return if no attribute is found. Defaults to an empty <a class="el" href="class_c_w_1_1_typed_value.html">TypedValue</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>value <a class="el" href="class_c_w_1_1_typed_value.html">TypedValue</a> of the attribute. If no attribute found, the default value passed is returned. </dd></dl>
+
+<p>Definition at line <a class="el" href="_entity_8cpp_source.html#l00171">171</a> of file <a class="el" href="_entity_8cpp_source.html">Entity.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a13f1b805f744ce67dfdbdb19640a2fea"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CW::Entity::is_valid </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The delete_attribute method is used to delete an attribute from an entity. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">AttributeDictionary&amp;</td><td>object in which to find the key. </td></tr>
+    <tr><td class="paramname">std::string</td><td>with the name of the key of the attribute. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="class_c_w_1_1_entity.html#ae3bbd0048d17e74cf12bf47c823c3b4a" title="Returns true if this entity is not valid. Alias of !is_valid(). ">operator!()</a>. </dd></dl>
+
+<p>Definition at line <a class="el" href="_entity_8cpp_source.html#l00142">142</a> of file <a class="el" href="_entity_8cpp_source.html">Entity.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ae7d5d938adaefbfda02cf6827d810883"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CW::Entity::set_attribute </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>dict_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="class_c_w_1_1_typed_value.html">TypedValue</a> &amp;&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>TODO: C API does not currently allow traversing upwards parent() </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dict_name</td><td>- string name of <a class="el" href="class_c_w_1_1_attribute_dictionary.html">AttributeDictionary</a> object that the attribute is in. </td></tr>
+    <tr><td class="paramname">key</td><td>- std::string attribute key. </td></tr>
+    <tr><td class="paramname">value</td><td>- <a class="el" href="class_c_w_1_1_typed_value.html">TypedValue</a> to set. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true on success, false on failure </dd></dl>
+
+<p>Definition at line <a class="el" href="_entity_8cpp_source.html#l00184">184</a> of file <a class="el" href="_entity_8cpp_source.html">Entity.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="af32119690b01d89d6760fa5f0cf0f89d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CW::Entity::set_attribute </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_c_w_1_1_attribute_dictionary.html">AttributeDictionary</a> &amp;&#160;</td>
+          <td class="paramname"><em>dict</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="class_c_w_1_1_typed_value.html">TypedValue</a> &amp;&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dict</td><td>- <a class="el" href="class_c_w_1_1_attribute_dictionary.html">AttributeDictionary</a> object that the attribute is in. </td></tr>
+    <tr><td class="paramname">key</td><td>- std::string attribute key. </td></tr>
+    <tr><td class="paramname">value</td><td>- <a class="el" href="class_c_w_1_1_typed_value.html">TypedValue</a> to set. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true on success, false on failure </dd></dl>
+
+<p>Definition at line <a class="el" href="_entity_8cpp_source.html#l00192">192</a> of file <a class="el" href="_entity_8cpp_source.html">Entity.cpp</a>.</p>
 
 </div>
 </div>
@@ -331,33 +582,9 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator!=</b> (const
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Returns whether these objects are the same. Comparison operator for two entity objects </p>
+<p>Returns whether these objects are the same. </p>
 
-<p>Definition at line <a class="el" href="_entity_8cpp_source.html#l00231">231</a> of file <a class="el" href="_entity_8cpp_source.html">Entity.cpp</a>.</p>
-
-</div>
-</div>
-<h2 class="groupheader">Field Documentation</h2>
-<a class="anchor" id="aea6450abce4d5aebad0061e213c840b1"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool CW::Entity::m_attached</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Indicates whether the <a class="el" href="class_c_w_1_1_entity.html">Entity</a> has been attached to a model. </p>
-
-<p>Definition at line <a class="el" href="_entity_8hpp_source.html#l00053">53</a> of file <a class="el" href="_entity_8hpp_source.html">Entity.hpp</a>.</p>
+<p>Definition at line <a class="el" href="_entity_8cpp_source.html#l00217">217</a> of file <a class="el" href="_entity_8cpp_source.html">Entity.cpp</a>.</p>
 
 </div>
 </div>
@@ -368,7 +595,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator!=</b> (const
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Oct 26 2017 12:43:31 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Oct 27 2017 11:54:30 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

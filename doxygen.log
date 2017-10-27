@@ -136,7 +136,7 @@ Preprocessing /home/travis/build/TommyKaneko/Sketchup-API-C-Wr/home/travis/build
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/ImageRep.hpp:46: warning: Compound CW::ImageRep is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/Geometry.hpp:252: warning: Compound CW::Point3D is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Face.hpp:61: warning: Compound CW::Face is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:46: warning: Compound CW::Entity is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:49: warning: Compound CW::Entity is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/UVHelper.hpp:40: warning: Compound CW::UVHelper is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entities.hpp:55: warning: Compound CW::Entities is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Model.hpp:299: warning: Compound CW::ModelStatistics is not documented.
@@ -229,7 +229,9 @@ Generating code for file /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/S
 Generating code for file /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/Color.hpp...
 Generating code for file /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/Geometry.cpp...
 Generating code for file /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/Geometry.hpp...
-Generating code for file /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/Initialize.cpp...
+Generating code for file /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapp/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:84: warning: Found unknown command `\descr'
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:142: warning: Found unknown command `\desc'
+er/SUAPI-CppWrapper/Initialize.cpp...
 Generating code for file /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/Initialize.hpp...
 Generating code for file /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/AttributeDictionary.cpp...
 Generating code for file /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/AttributeDictionary.hpp...
@@ -365,21 +367,12 @@ Gener/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/README.md:20: warning
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:138: warning: Member material(const Material &material) (function) of class CW::DrawingElement is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:144: warning: Member receive_shadows() const  (function) of class CW::DrawingElement is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:151: warning: Member receive_shadows(bool receive_shadows) (function) of class CW::DrawingElement is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:81: warning: Member operator SUEntityRef() const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:82: warning: Member operator SUEntityRef *() (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:99: warning: Member attribute_dictionaries() const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:105: warning: Member attribute_dictionary(const std::string &name) const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:113: warning: Member copy_attributes_from(const Entity &entity) (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:137: warning: Member entityID() const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:147: warning: Member get_attribute(const std::string &dict_name, const std::string &key) const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:148: warning: Member get_attribute(const std::string &dict_name, const std::string &key, const TypedValue &default_value) const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:150: warning: Member get_attribute(const AttributeDictionary &dict, const std::string &key) const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:151: warning: Member get_attribute(const AttributeDictionary &dict, const std::string &key, const TypedValue &default_value) const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:165: warning: Member set_attribute(const std::string &dict_name, const std::string &key, const TypedValue &value) (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:166: warning: Member set_attribute(AttributeDictionary &dict, const std::string &key, const TypedValue &value) (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:166: warning: Member entity_type() const  (function) of class CW::Entity is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:76: warning: Found unknown command `\descr'
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:84: warning: Found unknown command `\descr'
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:95: warning: Member operator SUEntityRef() const  (function) of class CW::Entity is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:101: warning: Member operator SUEntityRef *() (function) of class CW::Entity is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:142: warning: Found unknown command `\desc'
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:49: warning: Member m_drawing_element (variable) of class CW::DrawingElement is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:48: warning: Member m_entity (variable) of class CW::Entity is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Axes.hpp:73: warning: argument 'x_axes' of command @param is not found in the argument list of CW::Axes::Axes(Point3D origin, Vector3D x_axis, Vector3D y_axis, Vector3D z_axis)
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Axes.hpp:73: warning: argument 'y_axes' of command @param is not found in the argument list of CW::Axes::Axes(Point3D origin, Vector3D x_axis, Vector3D y_axis, Vector3D z_axis)
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Axes.hpp:73: warning: argument 'z_axes' of command @param is not found in the argument list of CW::Axes::Axes(Point3D origin, Vector3D x_axis, Vector3D y_axis, Vector3D z_axis)
@@ -401,21 +394,12 @@ Gener/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/README.md:20: warning
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:138: warning: Member material(const Material &material) (function) of class CW::DrawingElement is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:144: warning: Member receive_shadows() const  (function) of class CW::DrawingElement is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:151: warning: Member receive_shadows(bool receive_shadows) (function) of class CW::DrawingElement is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:81: warning: Member operator SUEntityRef() const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:82: warning: Member operator SUEntityRef *() (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:99: warning: Member attribute_dictionaries() const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:105: warning: Member attribute_dictionary(const std::string &name) const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:113: warning: Member copy_attributes_from(const Entity &entity) (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:137: warning: Member entityID() const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:147: warning: Member get_attribute(const std::string &dict_name, const std::string &key) const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:148: warning: Member get_attribute(const std::string &dict_name, const std::string &key, const TypedValue &default_value) const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:150: warning: Member get_attribute(const AttributeDictionary &dict, const std::string &key) const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:151: warning: Member get_attribute(const AttributeDictionary &dict, const std::string &key, const TypedValue &default_value) const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:165: warning: Member set_attribute(const std::string &dict_name, const std::string &key, const TypedValue &value) (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:166: warning: Member set_attribute(AttributeDictionary &dict, const std::string &key, const TypedValue &value) (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:166: warning: Member entity_type() const  (function) of class CW::Entity is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:76: warning: Found unknown command `\descr'
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:84: warning: Found unknown command `\descr'
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:95: warning: Member operator SUEntityRef() const  (function) of class CW::Entity is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:101: warning: Member operator SUEntityRef *() (function) of class CW::Entity is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:142: warning: Found unknown command `\desc'
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:49: warning: Member m_drawing_element (variable) of class CW::DrawingElement is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:48: warning: Member m_entity (variable) of class CW::Entity is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/ComponentDefinition.hpp:149: warning: Member Behavior(SUComponentBehavior behavior) (function) of class CW::Behavior is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/ComponentDefinition.hpp:153: warning: Member ref() const  (function) of class CW::Behavior is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/ComponentDefinition.hpp:151: warning: Member snap (variable) of class CW::Behavior is not documented.
@@ -436,39 +420,21 @@ Gener/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/README.md:20: warning
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:138: warning: Member material(const Material &material) (function) of class CW::DrawingElement is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:144: warning: Member receive_shadows() const  (function) of class CW::DrawingElement is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:151: warning: Member receive_shadows(bool receive_shadows) (function) of class CW::DrawingElement is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:81: warning: Member operator SUEntityRef() const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:82: warning: Member operator SUEntityRef *() (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:99: warning: Member attribute_dictionaries() const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:105: warning: Member attribute_dictionary(const std::string &name) const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:113: warning: Member copy_attributes_from(const Entity &entity) (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:137: warning: Member entityID() const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:147: warning: Member get_attribute(const std::string &dict_name, const std::string &key) const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:148: warning: Member get_attribute(const std::string &dict_name, const std::string &key, const TypedValue &default_value) const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:150: warning: Member get_attribute(const AttributeDictionary &dict, const std::string &key) const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:151: warning: Member get_attribute(const AttributeDictionary &dict, const std::string &key, const TypedValue &default_value) const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:165: warning: Member set_attribute(const std::string &dict_name, const std::string &key, const TypedValue &value) (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:166: warning: Member set_attribute(AttributeDictionary &dict, const std::string &key, const TypedValue &value) (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:166: warning: Member entity_type() const  (function) of class CW::Entity is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:76: warning: Found unknown command `\descr'
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:84: warning: Found unknown command `\descr'
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:95: warning: Member operator SUEntityRef() const  (function) of class CW::Entity is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:101: warning: Member operator SUEntityRef *() (function) of class CW::Entity is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:142: warning: Found unknown command `\desc'
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/ComponentInstance.hpp:43: warning: Member m_instance (variable) of class CW::ComponentInstance is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:49: warning: Member m_drawing_element (variable) of class CW::DrawingElement is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:48: warning: Member m_entity (variable) of class CW::Entity is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Curve.hpp:55: warning: Member Curve(SUCurveRef curve, SUCurveType curve_type) (function) of class CW::Curve is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Curve.hpp:83: warning: Member get_result() const  (function) of class CW::Curve is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Curve.hpp:88: warning: Member operator bool() const  (function) of class CW::Curve is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:81: warning: Member operator SUEntityRef() const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:82: warning: Member operator SUEntityRef *() (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:99: warning: Member attribute_dictionaries() const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:105: warning: Member attribute_dictionary(const std::string &name) const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:113: warning: Member copy_attributes_from(const Entity &entity) (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:137: warning: Member entityID() const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:147: warning: Member get_attribute(const std::string &dict_name, const std::string &key) const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:148: warning: Member get_attribute(const std::string &dict_name, const std::string &key, const TypedValue &default_value) const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:150: warning: Member get_attribute(const AttributeDictionary &dict, const std::string &key) const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:151: warning: Member get_attribute(const AttributeDictionary &dict, const std::string &key, const TypedValue &default_value) const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:165: warning: Member set_attribute(const std::string &dict_name, const std::string &key, const TypedValue &value) (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:166: warning: Member set_attribute(AttributeDictionary &dict, const std::string &key, const TypedValue &value) (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:166: warning: Member entity_type() const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:48: warning: Member m_entity (variable) of class CW::Entity is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:76: warning: Found unknown command `\descr'
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:84: warning: Found unknown command `\descr'
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:95: warning: Member operator SUEntityRef() const  (function) of class CW::Entity is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:101: warning: Member operator SUEntityRef *() (function) of class CW::Entity is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:142: warning: Found unknown command `\desc'
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:76: warning: Member operator SUDrawingElementRef *() (function) of class CW::DrawingElement is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:94: warning: Member casts_shadows() const  (function) of class CW::DrawingElement is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:101: warning: Member casts_shadows(bool casts_shadows) (function) of class CW::DrawingElement is not documented.
@@ -480,21 +446,12 @@ Gener/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/README.md:20: warning
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:138: warning: Member material(const Material &material) (function) of class CW::DrawingElement is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:144: warning: Member receive_shadows() const  (function) of class CW::DrawingElement is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:151: warning: Member receive_shadows(bool receive_shadows) (function) of class CW::DrawingElement is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:81: warning: Member operator SUEntityRef() const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:82: warning: Member operator SUEntityRef *() (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:99: warning: Member attribute_dictionaries() const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:105: warning: Member attribute_dictionary(const std::string &name) const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:113: warning: Member copy_attributes_from(const Entity &entity) (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:137: warning: Member entityID() const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:147: warning: Member get_attribute(const std::string &dict_name, const std::string &key) const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:148: warning: Member get_attribute(const std::string &dict_name, const std::string &key, const TypedValue &default_value) const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:150: warning: Member get_attribute(const AttributeDictionary &dict, const std::string &key) const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:151: warning: Member get_attribute(const AttributeDictionary &dict, const std::string &key, const TypedValue &default_value) const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:165: warning: Member set_attribute(const std::string &dict_name, const std::string &key, const TypedValue &value) (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:166: warning: Member set_attribute(AttributeDictionary &dict, const std::string &key, const TypedValue &value) (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:166: warning: Member entity_type() const  (function) of class CW::Entity is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:76: warning: Found unknown command `\descr'
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:84: warning: Found unknown command `\descr'
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:95: warning: Member operator SUEntityRef() const  (function) of class CW::Entity is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:101: warning: Member operator SUEntityRef *() (function) of class CW::Entity is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:142: warning: Found unknown command `\desc'
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:49: warning: Member m_drawing_element (variable) of class CW::DrawingElement is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:48: warning: Member m_entity (variable) of class CW::Entity is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Edge.hpp:66: warning: Member Edge(const std::vector< Point3D > &points) (function) of class CW::Edge is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Edge.hpp:73: warning: Member Edge(const Point3D &start, const Point3D &end) (function) of class CW::Edge is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Edge.hpp:85: warning: Member Edge(SUEdgeRef edge, bool attached=true) (function) of class CW::Edge is not documented.
@@ -522,21 +479,12 @@ Gener/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/README.md:20: warning
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:138: warning: Member material(const Material &material) (function) of class CW::DrawingElement is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:144: warning: Member receive_shadows() const  (function) of class CW::DrawingElement is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:151: warning: Member receive_shadows(bool receive_shadows) (function) of class CW::DrawingElement is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:81: warning: Member operator SUEntityRef() const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:82: warning: Member operator SUEntityRef *() (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:99: warning: Member attribute_dictionaries() const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:105: warning: Member attribute_dictionary(const std::string &name) const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:113: warning: Member copy_attributes_from(const Entity &entity) (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:137: warning: Member entityID() const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:147: warning: Member get_attribute(const std::string &dict_name, const std::string &key) const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:148: warning: Member get_attribute(const std::string &dict_name, const std::string &key, const TypedValue &default_value) const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:150: warning: Member get_attribute(const AttributeDictionary &dict, const std::string &key) const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:151: warning: Member get_attribute(const AttributeDictionary &dict, const std::string &key, const TypedValue &default_value) const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:165: warning: Member set_attribute(const std::string &dict_name, const std::string &key, const TypedValue &value) (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:166: warning: Member set_attribute(AttributeDictionary &dict, const std::string &key, const TypedValue &value) (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:166: warning: Member entity_type() const  (function) of class CW::Entity is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:76: warning: Found unknown command `\descr'
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:84: warning: Found unknown command `\descr'
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:95: warning: Member operator SUEntityRef() const  (function) of class CW::Entity is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:101: warning: Member operator SUEntityRef *() (function) of class CW::Entity is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:142: warning: Found unknown command `\desc'
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:49: warning: Member m_drawing_element (variable) of class CW::DrawingElement is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:48: warning: Member m_entity (variable) of class CW::Entity is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entities.hpp:61: warning: Member Entities(SUEntitiesRef entities) (function) of class CW::Entities is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entities.hpp:74: warning: Member faces() const  (function) of class CW::Entities is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entities.hpp:75: warning: Member edges(bool stray_only=true) const  (function) of class CW::Entities is not documented.
@@ -551,24 +499,15 @@ Gener/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/README.md:20: warning
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entities.hpp:126: warning: Member add_group(const ComponentDefinition &definition, const Transformation &transformation) (function) of class CW::Entities is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entities.hpp:127: warning: Member add_group() (function) of class CW::Entities is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entities.hpp:150: warning: Member operator SUEntitiesRef() (function) of class CW::Entities is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:81: warning: Member operator SUEntityRef() const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:82: warning: Member operator SUEntityRef *() (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:99: warning: Member attribute_dictionaries() const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:105: warning: Member attribute_dictionary(const std::string &name) const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:113: warning: Member copy_attributes_from(const Entity &entity) (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:137: warning: Member entityID() const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:147: warning: Member get_attribute(const std::string &dict_name, const std::string &key) const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:148: warning: Member get_attribute(const std::string &dict_name, const std::string &key, const TypedValue &default_value) const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:150: warning: Member get_attribute(const AttributeDictionary &dict, const std::string &key) const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:151: warning: Member get_attribute(const AttributeDictionary &dict, const std::string &key, const TypedValue &default_value) const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:165: warning: Member set_attribute(const std::string &dict_name, const std::string &key, const TypedValue &value) (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:166: warning: Member set_attribute(AttributeDictionary &dict, const std::string &key, const TypedValue &value) (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:166: warning: Member entity_type() const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:48: warning: Member m_entity (variable) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:182: warning: Member operator!=(const Entity &lhs, const Entity &rhs) (friend) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:90: warning: argument 'optional' of command @param is not found in the argument list of CW::Entity::attached(bool attach=true)
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:90: warning: The following parameters of CW::Entity::attached(bool attach=true) are not documented:
-  parameter 'attach'
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:76: warning: Found unknown command `\descr'
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:84: warning: Found unknown command `\descr'
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:95: warning: Member operator SUEntityRef() const  (function) of class CW::Entity is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:101: warning: Member operator SUEntityRef *() (function) of class CW::Entity is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:142: warning: Found unknown command `\desc'
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:123: warning: argument 'bool' of command @param is not found in the argument list of CW::Entity::copy_attributes_from(const Entity &entity)
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:140: warning: argument 'AttributeDictionary' of command @param is not found in the argument list of CW::Entity::is_valid() const
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:140: warning: argument 'std' of command @param is not found in the argument list of CW::Entity::is_valid() const
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:140: warning: argument 'string' of command @param is not found in the argument list of CW::Entity::is_valid() const
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Face.hpp:101: warning: Member Face(std::vector< Point3D > &outer_loop) (function) of class CW::Face is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Face.hpp:102: warning: Member Face(std::vector< Point3D > &outer_loop, LoopInput &loop_input) (function) of class CW::Face is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Face.hpp:110: warning: Member Face(SUFaceRef face, bool attached=true) (function) of class CW::Face is not documented.
@@ -597,21 +536,12 @@ Gener/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/README.md:20: warning
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:138: warning: Member material(const Material &material) (function) of class CW::DrawingElement is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:144: warning: Member receive_shadows() const  (function) of class CW::DrawingElement is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:151: warning: Member receive_shadows(bool receive_shadows) (function) of class CW::DrawingElement is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:81: warning: Member operator SUEntityRef() const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:82: warning: Member operator SUEntityRef *() (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:99: warning: Member attribute_dictionaries() const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:105: warning: Member attribute_dictionary(const std::string &name) const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:113: warning: Member copy_attributes_from(const Entity &entity) (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:137: warning: Member entityID() const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:147: warning: Member get_attribute(const std::string &dict_name, const std::string &key) const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:148: warning: Member get_attribute(const std::string &dict_name, const std::string &key, const TypedValue &default_value) const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:150: warning: Member get_attribute(const AttributeDictionary &dict, const std::string &key) const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:151: warning: Member get_attribute(const AttributeDictionary &dict, const std::string &key, const TypedValue &default_value) const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:165: warning: Member set_attribute(const std::string &dict_name, const std::string &key, const TypedValue &value) (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:166: warning: Member set_attribute(AttributeDictionary &dict, const std::string &key, const TypedValue &value) (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:166: warning: Member entity_type() const  (function) of class CW::Entity is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:76: warning: Found unknown command `\descr'
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:84: warning: Found unknown command `\descr'
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:95: warning: Member operator SUEntityRef() const  (function) of class CW::Entity is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:101: warning: Member operator SUEntityRef *() (function) of class CW::Entity is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:142: warning: Found unknown command `\desc'
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:49: warning: Member m_drawing_element (variable) of class CW::DrawingElement is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:48: warning: Member m_entity (variable) of class CW::Entity is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/GeometryInput.hpp:155: warning: Member add_faces(const std::vector< Face > &faces) (function) of class CW::GeometryInput is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/GeometryInput.hpp:168: warning: Member add_edges(const std::vector< Edge > &edges) (function) of class CW::GeometryInput is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/GeometryInput.cpp:146: warning: argument 'vertex' of command @param is not found in the argument list of CW::GeometryInput::add_face(const Face &face)
@@ -632,42 +562,24 @@ Gener/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/README.md:20: warning
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:138: warning: Member material(const Material &material) (function) of class CW::DrawingElement is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:144: warning: Member receive_shadows() const  (function) of class CW::DrawingElement is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:151: warning: Member receive_shadows(bool receive_shadows) (function) of class CW::DrawingElement is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:81: warning: Member operator SUEntityRef() const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:82: warning: Member operator SUEntityRef *() (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:99: warning: Member attribute_dictionaries() const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:105: warning: Member attribute_dictionary(const std::string &name) const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:113: warning: Member copy_attributes_from(const Entity &entity) (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:137: warning: Member entityID() const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:147: warning: Member get_attribute(const std::string &dict_name, const std::string &key) const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:148: warning: Member get_attribute(const std::string &dict_name, const std::string &key, const TypedValue &default_value) const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:150: warning: Member get_attribute(const AttributeDictionary &dict, const std::string &key) const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:151: warning: Member get_attribute(const AttributeDictionary &dict, const std::string &key, const TypedValue &default_value) const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:165: warning: Member set_attribute(const std::string &dict_name, const std::string &key, const TypedValue &value) (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:166: warning: Member set_attribute(AttributeDictionary &dict, const std::string &key, const TypedValue &value) (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:166: warning: Member entity_type() const  (function) of class CW::Entity is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:76: warning: Found unknown command `\descr'
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:84: warning: Found unknown command `\descr'
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:95: warning: Member operator SUEntityRef() const  (function) of class CW::Entity is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:101: warning: Member operator SUEntityRef *() (function) of class CW::Entity is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:142: warning: Found unknown command `\desc'
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/ComponentInstance.hpp:43: warning: Member m_instance (variable) of class CW::ComponentInstance is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:49: warning: Member m_drawing_element (variable) of class CW::DrawingElement is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:48: warning: Member m_entity (variable) of class CW::Entity is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/ImageRep.hpp:76: warning: Member ref() const  (function) of class CW::ImageRep is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/ImageRep.hpp:77: warning: Member operator SUImageRepRef() const  (function) of class CW::ImageRep is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/ImageRep.hpp:78: warning: Member operator SUImageRepRef *() (function) of class CW::ImageRep is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Layer.hpp:71: warning: Member operator SULayerRef() const  (function) of class CW::Layer is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Layer.hpp:72: warning: Member operator SULayerRef *() (function) of class CW::Layer is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Layer.hpp:89: warning: Member name(const std::string &string) (function) of class CW::Layer is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:81: warning: Member operator SUEntityRef() const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:82: warning: Member operator SUEntityRef *() (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:99: warning: Member attribute_dictionaries() const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:105: warning: Member attribute_dictionary(const std::string &name) const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:113: warning: Member copy_attributes_from(const Entity &entity) (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:137: warning: Member entityID() const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:147: warning: Member get_attribute(const std::string &dict_name, const std::string &key) const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:148: warning: Member get_attribute(const std::string &dict_name, const std::string &key, const TypedValue &default_value) const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:150: warning: Member get_attribute(const AttributeDictionary &dict, const std::string &key) const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:151: warning: Member get_attribute(const AttributeDictionary &dict, const std::string &key, const TypedValue &default_value) const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:165: warning: Member set_attribute(const std::string &dict_name, const std::string &key, const TypedValue &value) (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:166: warning: Member set_attribute(AttributeDictionary &dict, const std::string &key, const TypedValue &value) (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:166: warning: Member entity_type() const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:48: warning: Member m_entity (variable) of class CW::Entity is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:76: warning: Found unknown command `\descr'
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:84: warning: Found unknown command `\descr'
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:95: warning: Member operator SUEntityRef() const  (function) of class CW::Entity is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:101: warning: Member operator SUEntityRef *() (function) of class CW::Entity is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:142: warning: Found unknown command `\desc'
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Loop.hpp:72: warning: Member Loop(SULoopRef loop) (function) of class CW::Loop is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Loop.hpp:87: warning: Member loop_input() const  (function) of class CW::Loop is not documented.
 ating code for file /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/LoopInput.hpp...
@@ -741,20 +653,11 @@ Generating docs for com/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUA
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Material.hpp:72: warning: Member ref() const  (function) of class CW::Material is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Material.hpp:74: warning: Member operator SUMaterialRef() const  (function) of class CW::Material is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Material.hpp:75: warning: Member operator SUMaterialRef *() (function) of class CW::Material is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:81: warning: Member operator SUEntityRef() const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:82: warning: Member operator SUEntityRef *() (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:99: warning: Member attribute_dictionaries() const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:105: warning: Member attribute_dictionary(const std::string &name) const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:113: warning: Member copy_attributes_from(const Entity &entity) (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:137: warning: Member entityID() const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:147: warning: Member get_attribute(const std::string &dict_name, const std::string &key) const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:148: warning: Member get_attribute(const std::string &dict_name, const std::string &key, const TypedValue &default_value) const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:150: warning: Member get_attribute(const AttributeDictionary &dict, const std::string &key) const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:151: warning: Member get_attribute(const AttributeDictionary &dict, const std::string &key, const TypedValue &default_value) const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:165: warning: Member set_attribute(const std::string &dict_name, const std::string &key, const TypedValue &value) (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:166: warning: Member set_attribute(AttributeDictionary &dict, const std::string &key, const TypedValue &value) (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:166: warning: Member entity_type() const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:48: warning: Member m_entity (variable) of class CW::Entity is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:76: warning: Found unknown command `\descr'
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:84: warning: Found unknown command `\descr'
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:95: warning: Member operator SUEntityRef() const  (function) of class CW::Entity is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:101: warning: Member operator SUEntityRef *() (function) of class CW::Entity is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:142: warning: Found unknown command `\desc'
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/MaterialInput.hpp:51: warning: Member MaterialInput(Material material) (function) of class CW::MaterialInput is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/MaterialInput.hpp:52: warning: Member MaterialInput(SUMaterialInput material_input) (function) of class CW::MaterialInput is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/MaterialInput.hpp:54: warning: Member ref() (function) of class CW::MaterialInput is not documented.
@@ -789,20 +692,11 @@ Generating docs for com/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUA
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Texture.hpp:96: warning: Member ref() const  (function) of class CW::Texture is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Texture.hpp:97: warning: Member operator SUTextureRef() const  (function) of class CW::Texture is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Texture.hpp:98: warning: Member operator SUTextureRef *() (function) of class CW::Texture is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:81: warning: Member operator SUEntityRef() const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:82: warning: Member operator SUEntityRef *() (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:99: warning: Member attribute_dictionaries() const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:105: warning: Member attribute_dictionary(const std::string &name) const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:113: warning: Member copy_attributes_from(const Entity &entity) (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:137: warning: Member entityID() const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:147: warning: Member get_attribute(const std::string &dict_name, const std::string &key) const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:148: warning: Member get_attribute(const std::string &dict_name, const std::string &key, const TypedValue &default_value) const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:150: warning: Member get_attribute(const AttributeDictionary &dict, const std::string &key) const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:151: warning: Member get_attribute(const AttributeDictionary &dict, const std::string &key, const TypedValue &default_value) const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:165: warning: Member set_attribute(const std::string &dict_name, const std::string &key, const TypedValue &value) (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:166: warning: Member set_attribute(AttributeDictionary &dict, const std::string &key, const TypedValue &value) (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:166: warning: Member entity_type() const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:48: warning: Member m_entity (variable) of class CW::Entity is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:76: warning: Found unknown command `\descr'
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:84: warning: Found unknown command `\descr'
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:95: warning: Member operator SUEntityRef() const  (function) of class CW::Entity is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:101: warning: Member operator SUEntityRef *() (function) of class CW::Entity is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:142: warning: Found unknown command `\desc'
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/TextureWriter.hpp:46: warning: Member TextureWriter(SUTextureWriterRef texture_writer) (function) of class CW::TextureWriter is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/TextureWriter.hpp:48: warning: Member operator SUTextureWriterRef() const  (function) of class CW::TextureWriter is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/TextureWriter.hpp:49: warning: Member operator SUTextureWriterRef *() const  (function) of class CW::TextureWriter is not documented.
@@ -844,20 +738,11 @@ Generating docs for com/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUA
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Vertex.hpp:72: warning: Member operator SUVertexRef() const  (function) of class CW::Vertex is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Vertex.hpp:73: warning: Member operator SUVertexRef *() (function) of class CW::Vertex is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Vertex.hpp:79: warning: Member operator Point3D() const  (function) of class CW::Vertex is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:81: warning: Member operator SUEntityRef() const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:82: warning: Member operator SUEntityRef *() (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:99: warning: Member attribute_dictionaries() const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:105: warning: Member attribute_dictionary(const std::string &name) const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:113: warning: Member copy_attributes_from(const Entity &entity) (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:137: warning: Member entityID() const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:147: warning: Member get_attribute(const std::string &dict_name, const std::string &key) const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:148: warning: Member get_attribute(const std::string &dict_name, const std::string &key, const TypedValue &default_value) const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:150: warning: Member get_attribute(const AttributeDictionary &dict, const std::string &key) const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:151: warning: Member get_attribute(const AttributeDictionary &dict, const std::string &key, const TypedValue &default_value) const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:165: warning: Member set_attribute(const std::string &dict_name, const std::string &key, const TypedValue &value) (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:166: warning: Member set_attribute(AttributeDictionary &dict, const std::string &key, const TypedValue &value) (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:166: warning: Member entity_type() const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:48: warning: Member m_entity (variable) of class CW::Entity is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:76: warning: Found unknown command `\descr'
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:84: warning: Found unknown command `\descr'
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:95: warning: Member operator SUEntityRef() const  (function) of class CW::Entity is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:101: warning: Member operator SUEntityRef *() (function) of class CW::Entity is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:142: warning: Found unknown command `\desc'
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/String.hpp:61: warning: Member String(SUStringRef string_ref) (function) of class CW::String is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/String.hpp:62: warning: Member String(const std::string &string_input, StringEncoding enc=StringEncoding::UTF8) (function) of class CW::String is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/String.hpp:63: warning: Member String(const char string_input[]) (function) of class CW::String is not documented.
@@ -914,5 +799,5 @@ Generating file index...
 Generating file member index...
 Generating example index...
 finalizing index lists...
-lookup cache used 1665/65536 hits=16343 misses=1775
+lookup cache used 1659/65536 hits=16185 misses=1769
 finished...

@@ -536,7 +536,7 @@
 <div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160;  <span class="keywordflow">if</span> (!!lhs.material()) {</div>
 <div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160;        trans_face.material(lhs.material());</div>
 <div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160;  }</div>
-<div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160;  trans_face.copy_attributes_from(lhs);</div>
+<div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160;  trans_face.<a class="code" href="class_c_w_1_1_entity.html#a994f71e4dad4fc104ac483b326a039a9">copy_attributes_from</a>(lhs);</div>
 <div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160;  <span class="keywordflow">return</span> trans_face;</div>
 <div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160;}</div>
 <div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;  </div>
@@ -619,6 +619,7 @@
 <div class="ttc" id="class_c_w_1_1_face_html_ab31a1f1cef5ca30439cf72590a1f04a2"><div class="ttname"><a href="class_c_w_1_1_face.html#ab31a1f1cef5ca30439cf72590a1f04a2">CW::Face::add_inner_loop</a></div><div class="ttdeci">void add_inner_loop(std::vector&lt; Point3D &gt; &amp;points, LoopInput &amp;loop_input)</div><div class="ttdef"><b>Definition:</b> <a href="_face_8cpp_source.html#l00177">Face.cpp:177</a></div></div>
 <div class="ttc" id="class_c_w_1_1_plane3_d_html"><div class="ttname"><a href="class_c_w_1_1_plane3_d.html">CW::Plane3D</a></div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8hpp_source.html#l00370">Geometry.hpp:370</a></div></div>
 <div class="ttc" id="class_c_w_1_1_face_html_a9ece8e40cb9c4a96a3150997964b0c34"><div class="ttname"><a href="class_c_w_1_1_face.html#a9ece8e40cb9c4a96a3150997964b0c34">CW::Face::inner_loops</a></div><div class="ttdeci">std::vector&lt; Loop &gt; inner_loops() const </div><div class="ttdef"><b>Definition:</b> <a href="_face_8cpp_source.html#l00305">Face.cpp:305</a></div></div>
+<div class="ttc" id="class_c_w_1_1_entity_html_a994f71e4dad4fc104ac483b326a039a9"><div class="ttname"><a href="class_c_w_1_1_entity.html#a994f71e4dad4fc104ac483b326a039a9">CW::Entity::copy_attributes_from</a></div><div class="ttdeci">bool copy_attributes_from(const Entity &amp;entity)</div><div class="ttdoc">Copies attributes from another Entity object to this one. </div><div class="ttdef"><b>Definition:</b> <a href="_entity_8cpp_source.html#l00123">Entity.cpp:123</a></div></div>
 <div class="ttc" id="class_c_w_1_1_line3_d_html"><div class="ttname"><a href="class_c_w_1_1_line3_d.html">CW::Line3D</a></div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8hpp_source.html#l00528">Geometry.hpp:528</a></div></div>
 <div class="ttc" id="class_c_w_1_1_transformation_html_a9777b21a46c9a24b7336aacdeea58601"><div class="ttname"><a href="class_c_w_1_1_transformation.html#a9777b21a46c9a24b7336aacdeea58601">CW::Transformation::inverse</a></div><div class="ttdeci">Transformation inverse() const </div><div class="ttdef"><b>Definition:</b> <a href="_transformation_8cpp_source.html#l00210">Transformation.cpp:210</a></div></div>
 <div class="ttc" id="class_c_w_1_1_vector3_d_html"><div class="ttname"><a href="class_c_w_1_1_vector3_d.html">CW::Vector3D</a></div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8hpp_source.html#l00107">Geometry.hpp:107</a></div></div>
@@ -635,7 +636,7 @@
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Oct 26 2017 12:43:31 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Oct 27 2017 11:54:30 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
