@@ -192,15 +192,15 @@ SUResult Entities::fill(GeometryInput &geom_input) {
   if (geom_input.empty()) {
   	return SU_ERROR_NONE;
   }
-  
+
   // For the indexes of the GeometryInputRef to make sense after we fill the Entities object with its contents, we need to know how many of each entitity currently exists in the Entities object
   size_t num_faces_before = 0;
   SUResult res = SUEntitiesGetNumFaces(m_entities, &num_faces_before);
   assert(res == SU_ERROR_NONE);
-  
+
   SUResult fill_res = SUEntitiesFill(m_entities, geom_input.m_geometry_input, true);
   assert(fill_res == SU_ERROR_NONE);
-  
+
   // Now add other data that SUEntitiesFill cannot add to the entities.
   // Apply properties to Faces
   // TODO: there is an assumption that the faces added to an Entities object is added in sequence, according to the index number.  So that (num_faces_before + face_index_of_geom_input) correspond to the Face number in the Entities object. This needs to be tested.
@@ -212,7 +212,7 @@ SUResult Entities::fill(GeometryInput &geom_input) {
   // If all of the faces in the geom_input were not added, it will not be possible to find the added face by looking at its index.
   // TODO: it is clear that if two overlapping faces are put into GeometryInput object, when output into the Entities object, the result could be three or more faces.  The following code will not recognise this. This shortcoming needs to be overcome.
   if ((num_faces_after-num_faces_before) == geom_input.num_faces()) {
-  	
+
     SUFaceRef faces_after[num_faces_after];
     res = SUEntitiesGetFaces(m_entities, num_faces_after, &faces_after[0], &num_faces_after);
     assert(res == SU_ERROR_NONE);
@@ -224,7 +224,7 @@ SUResult Entities::fill(GeometryInput &geom_input) {
       // Set attributes for the edges that bound the face.
       std::vector<Loop> loops = faces_to_add[i].second.loops();
       std::vector<Loop> new_loops = new_face.loops();
-      
+
       for (size_t j=0; j < loops.size(); ++j) {
         std::vector<Edge> old_edges = loops[j].edges();
         std::vector<Edge> new_edges = new_loops[j].edges();
@@ -256,6 +256,11 @@ std::vector<Face> Entities::add_faces(std::vector<Face>& faces) {
   }
   SUResult res = SUEntitiesAddFaces(m_entities, faces.size(), faces[0]);
 	assert(res == SU_ERROR_NONE);
+
+  // Transfer ownership of each face
+  for (auto& face : faces)
+    face.attached(true);
+
   return faces;
 }
 
@@ -265,6 +270,11 @@ std::vector<Edge> Entities::add_edges(std::vector<Edge>& edges) {
   }
   SUResult res = SUEntitiesAddEdges(m_entities, edges.size(), edges[0]);
   assert(res == SU_ERROR_NONE);
+
+  // Transfer ownership of each edge
+  for (auto& edge : edges)
+      edge.attached(true);
+
   return edges;
 }
 
@@ -293,7 +303,7 @@ void Entities::add_instance(ComponentInstance& instance) {
   instance.attached(true);
 }
 
-  
+
 ComponentInstance Entities::add_instance(const ComponentDefinition& definition, const Transformation& transformation, const String& name){
 	if (!SUIsValid(m_entities)) {
   	throw std::logic_error("CW::Entities::add_instance(): Entities is null");
@@ -355,10 +365,10 @@ Group Entities::add_group(const ComponentDefinition& definition, const Transform
   for (size_t i=0; i < def_instances.size(); ++i) {
   	group_entities.add_instance(def_instances[i].definition(), def_instances[i].transformation());
   }
-  
+
   // TODO: add other entities to the group (construction lines, curves, etc)
   return new_group;
-  
+
   // TODO: the way groups are implemented are a problem.  Come back to this.
   //SUResult res = SUComponentDefinitionCreateGroup(definition.ref(), &group);
 	//assert(res == SU_ERROR_NONE);
