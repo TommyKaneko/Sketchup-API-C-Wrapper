@@ -42,7 +42,8 @@ class TypedValue;
 
 /*
 * @brief Entity object wrapper.
-* @descr This is the base class for all SketchUp entities. Entities are basically anything that can be contained in a model, including Drawingelements such as Edges, SectionPlanes, Groups, etc. and entities that relate to those Drawingelements, such as Loops, Layers, etc.
+*
+* This is the base class for all SketchUp entities. Entities are basically anything that can be contained in a model, including Drawingelements such as Edges, SectionPlanes, Groups, etc. and entities that relate to those Drawingelements, such as Loops, Layers, etc.
 *
 * Keep in mind that the methods below are available on all subclasses. For example, an Edge's parent class is Drawingelement, and a Drawingelement's parent class is Entity. Therefore an Edge has all of the methods defined in Drawingelement and Entity.
 */
@@ -73,7 +74,8 @@ class Entity {
   
   /**
   * @brief Copy constructor with an optional parameter for the entity reference.
-  * @descr SUEntityRef objects cannot be created from this class, so the Ref object must be passed to this constructor from a derived class object.
+  *
+  * SUEntityRef objects cannot be created from this class, so the Ref object must be passed to this constructor from a derived class object.
   * @param other - Entity object from which properties will be copied.
   * @param entity_ref - (optional) SUEntityRef object to assign to the copied object.
   */
@@ -81,7 +83,8 @@ class Entity {
 	
   /**
   * @brief Destructor
-  * @descr The C++ wrapper deals with releasing objects, so user does not have to keep track of memory allocations.
+	*
+  * The C++ wrapper deals with releasing objects, so user does not have to keep track of memory allocations.
   */
   ~Entity();
   
@@ -90,13 +93,15 @@ class Entity {
 
   /*
   * @brief Returns a copy of the wrapped SUEntityRef. USE WITH CAUTION.
-  * @descr Note that the Entity object still manages the lifetime of the reference, so the SUEntityRef could become invalid.
+	*
+  * Note that the Entity object still manages the lifetime of the reference, so the SUEntityRef could become invalid.
   */
   operator SUEntityRef() const;
 	
   /*
   * @brief Returns a pointer to the wrapped SUEntityRef. USE WITH CAUTION.
-  * @descr Note that the Entity object still manages the lifetime of the reference, so the SUEntityRef could become invalid.
+	*
+  * Note that the Entity object still manages the lifetime of the reference, so the SUEntityRef could become invalid.
   */
   operator SUEntityRef*();
 
@@ -139,7 +144,8 @@ class Entity {
   
   /**
   * @brief Checks if the entity is valid.
-  * @desc Note that this function does not check if the entity has been deleted. @see operator!().
+	*
+  * Note that this function does not check if the entity has been deleted. @see operator!().
   */
   bool is_valid() const;
 
