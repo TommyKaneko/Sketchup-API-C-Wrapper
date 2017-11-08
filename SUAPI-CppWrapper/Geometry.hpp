@@ -433,7 +433,7 @@ class Plane3D {
   * Returns point where a line intersects this plane.
   */
   Point3D intersection(const Line3D &line) const;
-
+	
   /**
   * Returns point where a ray drawn from the given point intersects this plane. Note that this is different from a line, which effectively draws a ray in both directions of the point.
   * @param start_point - the point from which the ray will be drawn from.
@@ -577,8 +577,21 @@ class Line3D {
   * @return pair of Point3D objects representing the point (first) on this line, and the point (second) on the other line. If the lines are parallel, the point3D objects returned will be invalid.
   */
   std::pair<Point3D, Point3D> closest_points(const Line3D &line) const;
+
+  /**
+  * Return the closest point on the line to the point.
+  * @param point - the point for which to find the shortest point on the line
+  * @return Point3D representing the point on this line, where it is closest to the target point.
+  */
+  Point3D closest_point(const Point3D& point) const;
   
-  
+  /**
+  * Return the closest distance between the line and the given point.
+  * @param point - the point for which to find the shortest distance to the line
+  * @return double distance between the point and line.
+  */
+  double distance(const Point3D& point) const;
+
   /**
   * Check if point is on line.
   */

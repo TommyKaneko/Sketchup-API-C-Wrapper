@@ -1018,10 +1018,11 @@ std::pair<Point3D, Point3D> Line3D::closest_points(const Line3D &other_line) con
 	if (!(*this)) {
   	throw std::logic_error("CW::Line3D::closest_points(): this line is null");
   }
+	
 	// @see http://paulbourke.net/geometry/pointlineplane/
 	double d1343,d4321,d1321,d4343,d2121;
   double numer,denom;
-	// p13 is a vector betwee two points on different lines
+	// p13 is a vector between two points on different lines
   Vector3D p13 = this->point - other_line.point;
   Vector3D p43 = other_line.direction;
   if (std::abs(p43.x) < EPSILON && std::abs(p43.y) < EPSILON && std::abs(p43.z) < EPSILON) {
@@ -1041,6 +1042,7 @@ std::pair<Point3D, Point3D> Line3D::closest_points(const Line3D &other_line) con
 	
   denom = d2121 * d4343 - d4321 * d4321;
   if (std::abs(denom) < EPSILON) {
+  	// Lines are parallel
     return std::pair<Point3D,Point3D> (Point3D(false), Point3D(false));
   }
   numer = d1343 * d4321 - d1321 * d4343;
@@ -1050,6 +1052,27 @@ std::pair<Point3D, Point3D> Line3D::closest_points(const Line3D &other_line) con
 	Point3D pa = this->point + (this->direction * mua);
 	Point3D pb = other_line.point + (other_line.direction * mub);
   return std::pair<Point3D,Point3D> (pa, pb);
+}
+
+
+Point3D Line3D::closest_point(const Point3D& point) const {
+	if (!point) {
+  	throw std::invalid_argument("CW::Line3D::closest_point(): given point is null");
+  }
+	if (!(*this)) {
+  	throw std::logic_error("CW::Line3D::closest_point(): this line is null");
+  }
+	// @see http://paulbourke.net/geometry/pointlineplane/
+	// [P3 - P1 - u(P2 - P1)] dot (P2 - P1) = 0 - where U is the factor
+	Vector3D start_to_point = point - m_point;
+	double factor = start_to_point.dot(m_direction);
+	return m_point + (factor * m_direction);
+}
+
+
+double Line3D::distance(const Point3D& point) const {
+	Point3D closest_point = this->closest_point(point);
+	return Vector3D(point - closest_point).length();
 }
 
 
