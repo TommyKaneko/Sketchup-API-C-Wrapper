@@ -34,11 +34,12 @@
 
 #include <SketchUpAPI/model/entity.h>
 
+#include "SUAPI-CppWrapper/model/TypedValue.hpp"
+
 namespace CW {
 
 // Forward Declarations
 class AttributeDictionary;
-class TypedValue;
 
 /*
 * @brief Entity object wrapper.
@@ -53,7 +54,7 @@ class Entity {
   * @brief The C SUEntityRef that this class wraps.
   */
   SUEntityRef m_entity;
-  
+
   /**
   * @brief Indicates whether the Entity has been attached to a model.
   */
@@ -64,14 +65,14 @@ class Entity {
   * @brief Constructor representing a null objject.
   */
 	Entity();
-  
+
   /**
   * @brief Creates a new Entity object.
   * @param entity - SUEntityRef from SU C API
   * @param attached - (optional) flag indicating whether the entity is attached to a model.  Defaults to true.
   */
   Entity(SUEntityRef entity, bool attached = true);
-  
+
   /**
   * @brief Copy constructor with an optional parameter for the entity reference.
   *
@@ -80,14 +81,14 @@ class Entity {
   * @param entity_ref - (optional) SUEntityRef object to assign to the copied object.
   */
   Entity(const Entity& other, SUEntityRef entity_ref = SU_INVALID);
-	
+
   /**
   * @brief Destructor
 	*
   * The C++ wrapper deals with releasing objects, so user does not have to keep track of memory allocations.
   */
   ~Entity();
-  
+
   /** @brief Copy assignment operator */
   Entity& operator=(const Entity& other);
 
@@ -97,7 +98,7 @@ class Entity {
   * Note that the Entity object still manages the lifetime of the reference, so the SUEntityRef could become invalid.
   */
   operator SUEntityRef() const;
-	
+
   /*
   * @brief Returns a pointer to the wrapped SUEntityRef. USE WITH CAUTION.
 	*
@@ -110,20 +111,20 @@ class Entity {
   * @param attach - (optional) true to let the object know that it has been attached to a model.  False to let the object know that it has not been attached.
   */
   void attached(bool attach =  true);
-  
+
   /**
   * @brief Returns the AttributeDictionaries collection attached to the entity.
   * @return vector of AttributeDictionary objects associated with the entity. If no AttributeDictionary objects are associated with the entity, an empty vector will be returned.
   */
   std::vector<AttributeDictionary> attribute_dictionaries() const;
-  
+
   /**
   * @brief Returns an attribute dictionary object with a given name that is attached to an Entity.
   * @param name - string representing the name of the AttributeDictionary
   * @return AttributeDictionary object with the given name.
   */
   AttributeDictionary attribute_dictionary(const std::string& name) const;
-  
+
   /**
   * @brief Copies attributes from another Entity object to this one.
   * @param entity - object to get the attributes from.
@@ -131,7 +132,7 @@ class Entity {
   * @return true for success, false for failure.
   */
   bool copy_attributes_from(const Entity& entity /*, bool clear_existing = false*/);
-  
+
   /**
   * The delete_attribute method is used to delete an attribute from an entity.
   * @param AttributeDictionary& object in which to find the key.
@@ -141,7 +142,7 @@ class Entity {
   * TODO: deleting attributes is not possible with the current C API.  It could be used, however, to store a list of deleted attributes, so if this object is copied, the deleted attributes are not copied over to the new object.
   void delete_attribute(AttributeDictionary &dict, std::string key);
   */
-  
+
   /**
   * @brief Checks if the entity is valid.
 	*
@@ -159,7 +160,7 @@ class Entity {
   * @return int32_t key for the Entity object.
   */
   int32_t entityID() const;
-  
+
   /**
   * @brief Retrieves the value of an attribute in the entity's attribute dictionary.
   * @param dict_name - string name of the attribute dictionary.
@@ -168,7 +169,7 @@ class Entity {
   * @return value TypedValue of the attribute.  If no attribute found, the default value passed is returned.
   */
   TypedValue get_attribute(const std::string& dict_name, const std::string& key, const TypedValue& default_value = TypedValue()) const;
-  
+
   /**
   * @brief Retrieves the value of an attribute in the entity's attribute dictionary.
   * @param dict - AttributeDictionary object to search.
@@ -177,12 +178,12 @@ class Entity {
   * @return value TypedValue of the attribute.  If no attribute found, the default value passed is returned.
   */
   TypedValue get_attribute(const AttributeDictionary &dict, const std::string& key, const TypedValue& default_value = TypedValue()) const;
-  
+
   /**
   // TODO: C API does not currently allow traversing upwards
   parent()
   */
-  
+
   /**
   * @brief Sets the value of an attribute in the given AttributeDictionary object.
   * @param dict_name - string name of AttributeDictionary object that the attribute is in.
@@ -200,17 +201,17 @@ class Entity {
   * @return true on success, false on failure
   */
   bool set_attribute(AttributeDictionary& dict, const std::string& key, const TypedValue& value);
-  
+
   /**
   * @brief Returns the type of the entity. See enum SURefType.
   */
   enum SURefType entity_type() const;
-  
+
   /**
   * Returns whether these objects are the same.
   */
   //bool operator==(const Entity& entity) const;
-  
+
   /**
   * @brief Equality operator for two entity objects
   */
@@ -220,7 +221,7 @@ class Entity {
   * @brief Non-equality operator for two entity objects
   */
   friend bool operator!=(const Entity& lhs, const Entity& rhs);
-  
+
 };
 
 } /* namespace CW */
