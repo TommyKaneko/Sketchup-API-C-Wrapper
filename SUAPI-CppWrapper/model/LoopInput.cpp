@@ -132,7 +132,7 @@ LoopInput& LoopInput::operator=(const LoopInput& other) {
   SULoopInputRef other_loop_input = other.ref();
   while (SULoopInputEdgeSetHidden(other_loop_input, size_t edge_index, bool hidden))
 	*/
-  return LoopInput(); // Temporary return value, to allow compiling on Windows
+  return *this; // Temporary return value, to allow compiling on Windows
 }
 
 
