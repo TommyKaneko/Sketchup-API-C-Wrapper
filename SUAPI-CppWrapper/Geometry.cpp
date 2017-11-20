@@ -760,6 +760,16 @@ Point3D Plane3D::intersection(const Point3D& start_point, const Vector3D& direct
 }
 
 
+Point3D Plane3D::intersection_between(const Point3D& point_a, const Point3D& point_b) const {
+	Line3D temp_line(point_a, Vector3D(point_b-point_a));
+	Point3D intersection = this->intersection(temp_line);
+	if (Line3D::on_line_segment(point_a, point_b, intersection)) {
+		return intersection;
+	}
+	return Point3D(false);
+}
+
+
 Vector3D Plane3D::normal() const {
 	return Vector3D{a,b,c};
 }

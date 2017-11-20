@@ -95,6 +95,9 @@ std::vector<AttributeDictionary>	Entity::attribute_dictionaries() const {
   size_t num_dicts = 0;
   SUResult res = SUEntityGetNumAttributeDictionaries(m_entity, &num_dicts);
   assert(res == SU_ERROR_NONE);
+	if (num_dicts == 0) {
+		return std::vector<AttributeDictionary>{};
+	}
   SUAttributeDictionaryRef* dicts_ref = new SUAttributeDictionaryRef[num_dicts];
   res = SUEntityGetAttributeDictionaries(m_entity, num_dicts, &dicts_ref[0], &num_dicts);
   assert(res == SU_ERROR_NONE);
@@ -102,7 +105,7 @@ std::vector<AttributeDictionary>	Entity::attribute_dictionaries() const {
   for (size_t i=0; i < num_dicts; i++) {
     dicts[i] = AttributeDictionary(dicts_ref[i]);
   }
-  delete dicts_ref;
+  delete[] dicts_ref;
   return dicts;
 }
 
