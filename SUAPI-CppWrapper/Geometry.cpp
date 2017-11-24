@@ -829,6 +829,9 @@ Plane3D::operator SUPlane3D() const { return m_plane; }
 
 
 Plane3D Plane3D::plane_from_loop(const std::vector<Point3D>& loop_points) {
+	if (loop_points.size() < 3) {
+  	throw std::invalid_argument("CW::Plane3D::plane_from_loop(): not enough points given for a valid loop");
+  }
 	/*
   if(loop_points.size() < 3) {
   	// This is an invalid plane
