@@ -881,404 +881,407 @@
 <div class="line"><a name="l00829"></a><span class="lineno">  829</span>&#160;</div>
 <div class="line"><a name="l00830"></a><span class="lineno">  830</span>&#160;</div>
 <div class="line"><a name="l00831"></a><span class="lineno"><a class="line" href="class_c_w_1_1_plane3_d.html#a9a625d2e826d474f25a80dd9d61ae88c">  831</a></span>&#160;<a class="code" href="class_c_w_1_1_plane3_d.html">Plane3D</a> <a class="code" href="class_c_w_1_1_plane3_d.html#a9a625d2e826d474f25a80dd9d61ae88c">Plane3D::plane_from_loop</a>(<span class="keyword">const</span> std::vector&lt;Point3D&gt;&amp; loop_points) {</div>
-<div class="line"><a name="l00832"></a><span class="lineno">  832</span>&#160;        <span class="comment">/*</span></div>
-<div class="line"><a name="l00833"></a><span class="lineno">  833</span>&#160;<span class="comment">  if(loop_points.size() &lt; 3) {</span></div>
-<div class="line"><a name="l00834"></a><span class="lineno">  834</span>&#160;<span class="comment">        // This is an invalid plane</span></div>
-<div class="line"><a name="l00835"></a><span class="lineno">  835</span>&#160;<span class="comment">    return Plane3D();</span></div>
-<div class="line"><a name="l00836"></a><span class="lineno">  836</span>&#160;<span class="comment">  }</span></div>
-<div class="line"><a name="l00837"></a><span class="lineno">  837</span>&#160;<span class="comment">  // Find 3 points which we can use to create this plane.</span></div>
-<div class="line"><a name="l00838"></a><span class="lineno">  838</span>&#160;<span class="comment">  Point3D point_a = loop_points[0];</span></div>
-<div class="line"><a name="l00839"></a><span class="lineno">  839</span>&#160;<span class="comment">  Point3D point_b = loop_points[1];</span></div>
-<div class="line"><a name="l00840"></a><span class="lineno">  840</span>&#160;<span class="comment">  Line3D ab_line(point_a, Vector3D(point_b - point_a).unit());</span></div>
-<div class="line"><a name="l00841"></a><span class="lineno">  841</span>&#160;<span class="comment">  Point3D point_c; // We first need to find a point that is not colinear with the other two points.</span></div>
-<div class="line"><a name="l00842"></a><span class="lineno">  842</span>&#160;<span class="comment">  for (size_t i=2; i &lt; loop_points.size(); i++) {</span></div>
-<div class="line"><a name="l00843"></a><span class="lineno">  843</span>&#160;<span class="comment">        if (!ab_line.on_line(loop_points[i])) {</span></div>
-<div class="line"><a name="l00844"></a><span class="lineno">  844</span>&#160;<span class="comment">        point_c = loop_points[i];</span></div>
-<div class="line"><a name="l00845"></a><span class="lineno">  845</span>&#160;<span class="comment">      break;</span></div>
-<div class="line"><a name="l00846"></a><span class="lineno">  846</span>&#160;<span class="comment">    }</span></div>
-<div class="line"><a name="l00847"></a><span class="lineno">  847</span>&#160;<span class="comment">  }</span></div>
-<div class="line"><a name="l00848"></a><span class="lineno">  848</span>&#160;<span class="comment">  if (!point_c) {</span></div>
-<div class="line"><a name="l00849"></a><span class="lineno">  849</span>&#160;<span class="comment">    return Plane3D();</span></div>
+<div class="line"><a name="l00832"></a><span class="lineno">  832</span>&#160;        <span class="keywordflow">if</span> (loop_points.size() &lt; 3) {</div>
+<div class="line"><a name="l00833"></a><span class="lineno">  833</span>&#160;        <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;CW::Plane3D::plane_from_loop(): not enough points given for a valid loop&quot;</span>);</div>
+<div class="line"><a name="l00834"></a><span class="lineno">  834</span>&#160;  }</div>
+<div class="line"><a name="l00835"></a><span class="lineno">  835</span>&#160;        <span class="comment">/*</span></div>
+<div class="line"><a name="l00836"></a><span class="lineno">  836</span>&#160;<span class="comment">  if(loop_points.size() &lt; 3) {</span></div>
+<div class="line"><a name="l00837"></a><span class="lineno">  837</span>&#160;<span class="comment">        // This is an invalid plane</span></div>
+<div class="line"><a name="l00838"></a><span class="lineno">  838</span>&#160;<span class="comment">    return Plane3D();</span></div>
+<div class="line"><a name="l00839"></a><span class="lineno">  839</span>&#160;<span class="comment">  }</span></div>
+<div class="line"><a name="l00840"></a><span class="lineno">  840</span>&#160;<span class="comment">  // Find 3 points which we can use to create this plane.</span></div>
+<div class="line"><a name="l00841"></a><span class="lineno">  841</span>&#160;<span class="comment">  Point3D point_a = loop_points[0];</span></div>
+<div class="line"><a name="l00842"></a><span class="lineno">  842</span>&#160;<span class="comment">  Point3D point_b = loop_points[1];</span></div>
+<div class="line"><a name="l00843"></a><span class="lineno">  843</span>&#160;<span class="comment">  Line3D ab_line(point_a, Vector3D(point_b - point_a).unit());</span></div>
+<div class="line"><a name="l00844"></a><span class="lineno">  844</span>&#160;<span class="comment">  Point3D point_c; // We first need to find a point that is not colinear with the other two points.</span></div>
+<div class="line"><a name="l00845"></a><span class="lineno">  845</span>&#160;<span class="comment">  for (size_t i=2; i &lt; loop_points.size(); i++) {</span></div>
+<div class="line"><a name="l00846"></a><span class="lineno">  846</span>&#160;<span class="comment">        if (!ab_line.on_line(loop_points[i])) {</span></div>
+<div class="line"><a name="l00847"></a><span class="lineno">  847</span>&#160;<span class="comment">        point_c = loop_points[i];</span></div>
+<div class="line"><a name="l00848"></a><span class="lineno">  848</span>&#160;<span class="comment">      break;</span></div>
+<div class="line"><a name="l00849"></a><span class="lineno">  849</span>&#160;<span class="comment">    }</span></div>
 <div class="line"><a name="l00850"></a><span class="lineno">  850</span>&#160;<span class="comment">  }</span></div>
-<div class="line"><a name="l00851"></a><span class="lineno">  851</span>&#160;<span class="comment">  // Create a plane from the 3 points;</span></div>
-<div class="line"><a name="l00852"></a><span class="lineno">  852</span>&#160;<span class="comment">  Vector3D normal = Vector3D(point_b-point_a).cross(Vector3D(point_c-point_b));</span></div>
-<div class="line"><a name="l00853"></a><span class="lineno">  853</span>&#160;<span class="comment">  Plane3D temp_plane(point_a, normal);</span></div>
-<div class="line"><a name="l00854"></a><span class="lineno">  854</span>&#160;<span class="comment">  // Check that all points given are on the plane.</span></div>
-<div class="line"><a name="l00855"></a><span class="lineno">  855</span>&#160;<span class="comment">  for (size_t i=2; i &lt; loop_points.size(); i++) {</span></div>
-<div class="line"><a name="l00856"></a><span class="lineno">  856</span>&#160;<span class="comment">        if (!temp_plane.on_plane(loop_points[i])) {</span></div>
-<div class="line"><a name="l00857"></a><span class="lineno">  857</span>&#160;<span class="comment">        return Plane3D();</span></div>
-<div class="line"><a name="l00858"></a><span class="lineno">  858</span>&#160;<span class="comment">    }</span></div>
-<div class="line"><a name="l00859"></a><span class="lineno">  859</span>&#160;<span class="comment">  }</span></div>
-<div class="line"><a name="l00860"></a><span class="lineno">  860</span>&#160;<span class="comment">  return temp_plane;</span></div>
-<div class="line"><a name="l00861"></a><span class="lineno">  861</span>&#160;<span class="comment">  */</span></div>
-<div class="line"><a name="l00862"></a><span class="lineno">  862</span>&#160;  <span class="comment">// Solution for finding the planes here: http://www.euclideanspace.com/maths/algebra/vectors/applications/normals/</span></div>
-<div class="line"><a name="l00863"></a><span class="lineno">  863</span>&#160;  <span class="comment">// We will use two adjacent edges of the the loop to create a plane from.  The vertex that is furthest from the centre of the loop is where we will start</span></div>
-<div class="line"><a name="l00864"></a><span class="lineno">  864</span>&#160;        </div>
-<div class="line"><a name="l00865"></a><span class="lineno">  865</span>&#160;  <span class="comment">// Or this solution: https://www.khronos.org/opengl/wiki/Calculating_a_Surface_Normal</span></div>
-<div class="line"><a name="l00866"></a><span class="lineno">  866</span>&#160;  <a class="code" href="class_c_w_1_1_vector3_d.html">Vector3D</a> <a class="code" href="class_c_w_1_1_plane3_d.html#ac5e2844b1ab8728117f35cb8a630cc11">normal</a>(0.0, 0.0, 0.0);</div>
-<div class="line"><a name="l00867"></a><span class="lineno">  867</span>&#160;  <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i=0; i &lt; loop_points.size(); i++) {</div>
-<div class="line"><a name="l00868"></a><span class="lineno">  868</span>&#160;        <a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a> next;</div>
-<div class="line"><a name="l00869"></a><span class="lineno">  869</span>&#160;        <a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a> current = loop_points[i];</div>
-<div class="line"><a name="l00870"></a><span class="lineno">  870</span>&#160;    <span class="keywordflow">if</span> (i == loop_points.size() - 1) {</div>
-<div class="line"><a name="l00871"></a><span class="lineno">  871</span>&#160;        next = loop_points[0];</div>
-<div class="line"><a name="l00872"></a><span class="lineno">  872</span>&#160;    }</div>
-<div class="line"><a name="l00873"></a><span class="lineno">  873</span>&#160;    <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00874"></a><span class="lineno">  874</span>&#160;        next = loop_points[i+1];</div>
+<div class="line"><a name="l00851"></a><span class="lineno">  851</span>&#160;<span class="comment">  if (!point_c) {</span></div>
+<div class="line"><a name="l00852"></a><span class="lineno">  852</span>&#160;<span class="comment">    return Plane3D();</span></div>
+<div class="line"><a name="l00853"></a><span class="lineno">  853</span>&#160;<span class="comment">  }</span></div>
+<div class="line"><a name="l00854"></a><span class="lineno">  854</span>&#160;<span class="comment">  // Create a plane from the 3 points;</span></div>
+<div class="line"><a name="l00855"></a><span class="lineno">  855</span>&#160;<span class="comment">  Vector3D normal = Vector3D(point_b-point_a).cross(Vector3D(point_c-point_b));</span></div>
+<div class="line"><a name="l00856"></a><span class="lineno">  856</span>&#160;<span class="comment">  Plane3D temp_plane(point_a, normal);</span></div>
+<div class="line"><a name="l00857"></a><span class="lineno">  857</span>&#160;<span class="comment">  // Check that all points given are on the plane.</span></div>
+<div class="line"><a name="l00858"></a><span class="lineno">  858</span>&#160;<span class="comment">  for (size_t i=2; i &lt; loop_points.size(); i++) {</span></div>
+<div class="line"><a name="l00859"></a><span class="lineno">  859</span>&#160;<span class="comment">        if (!temp_plane.on_plane(loop_points[i])) {</span></div>
+<div class="line"><a name="l00860"></a><span class="lineno">  860</span>&#160;<span class="comment">        return Plane3D();</span></div>
+<div class="line"><a name="l00861"></a><span class="lineno">  861</span>&#160;<span class="comment">    }</span></div>
+<div class="line"><a name="l00862"></a><span class="lineno">  862</span>&#160;<span class="comment">  }</span></div>
+<div class="line"><a name="l00863"></a><span class="lineno">  863</span>&#160;<span class="comment">  return temp_plane;</span></div>
+<div class="line"><a name="l00864"></a><span class="lineno">  864</span>&#160;<span class="comment">  */</span></div>
+<div class="line"><a name="l00865"></a><span class="lineno">  865</span>&#160;  <span class="comment">// Solution for finding the planes here: http://www.euclideanspace.com/maths/algebra/vectors/applications/normals/</span></div>
+<div class="line"><a name="l00866"></a><span class="lineno">  866</span>&#160;  <span class="comment">// We will use two adjacent edges of the the loop to create a plane from.  The vertex that is furthest from the centre of the loop is where we will start</span></div>
+<div class="line"><a name="l00867"></a><span class="lineno">  867</span>&#160;        </div>
+<div class="line"><a name="l00868"></a><span class="lineno">  868</span>&#160;  <span class="comment">// Or this solution: https://www.khronos.org/opengl/wiki/Calculating_a_Surface_Normal</span></div>
+<div class="line"><a name="l00869"></a><span class="lineno">  869</span>&#160;  <a class="code" href="class_c_w_1_1_vector3_d.html">Vector3D</a> <a class="code" href="class_c_w_1_1_plane3_d.html#ac5e2844b1ab8728117f35cb8a630cc11">normal</a>(0.0, 0.0, 0.0);</div>
+<div class="line"><a name="l00870"></a><span class="lineno">  870</span>&#160;  <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i=0; i &lt; loop_points.size(); i++) {</div>
+<div class="line"><a name="l00871"></a><span class="lineno">  871</span>&#160;        <a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a> next;</div>
+<div class="line"><a name="l00872"></a><span class="lineno">  872</span>&#160;        <a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a> current = loop_points[i];</div>
+<div class="line"><a name="l00873"></a><span class="lineno">  873</span>&#160;    <span class="keywordflow">if</span> (i == loop_points.size() - 1) {</div>
+<div class="line"><a name="l00874"></a><span class="lineno">  874</span>&#160;        next = loop_points[0];</div>
 <div class="line"><a name="l00875"></a><span class="lineno">  875</span>&#160;    }</div>
-<div class="line"><a name="l00876"></a><span class="lineno">  876</span>&#160;    normal.x += (current.y - next.y) * (current.z + next.z);</div>
-<div class="line"><a name="l00877"></a><span class="lineno">  877</span>&#160;    normal.y += (current.z - next.z) * (current.x + next.x);</div>
-<div class="line"><a name="l00878"></a><span class="lineno">  878</span>&#160;    normal.z += (current.x - next.x) * (current.y + next.y);</div>
-<div class="line"><a name="l00879"></a><span class="lineno">  879</span>&#160;  }</div>
-<div class="line"><a name="l00880"></a><span class="lineno">  880</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="class_c_w_1_1_plane3_d.html">Plane3D</a> (loop_points[0], normal.unit());</div>
-<div class="line"><a name="l00881"></a><span class="lineno">  881</span>&#160;}</div>
-<div class="line"><a name="l00882"></a><span class="lineno">  882</span>&#160;</div>
-<div class="line"><a name="l00883"></a><span class="lineno">  883</span>&#160;</div>
-<div class="line"><a name="l00884"></a><span class="lineno">  884</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00885"></a><span class="lineno">  885</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00886"></a><span class="lineno">  886</span>&#160;<span class="comment">* BoundingBox3D</span></div>
-<div class="line"><a name="l00887"></a><span class="lineno">  887</span>&#160;<span class="comment">*/</span></div>
-<div class="line"><a name="l00888"></a><span class="lineno">  888</span>&#160;</div>
-<div class="line"><a name="l00889"></a><span class="lineno"><a class="line" href="class_c_w_1_1_bounding_box3_d.html#ac649050691320ed41a1a9c7ec14d213b">  889</a></span>&#160;<a class="code" href="class_c_w_1_1_bounding_box3_d.html#ac649050691320ed41a1a9c7ec14d213b">BoundingBox3D::BoundingBox3D</a>():</div>
-<div class="line"><a name="l00890"></a><span class="lineno">  890</span>&#160;        <a class="code" href="class_c_w_1_1_bounding_box3_d.html">BoundingBox3D</a>(SUBoundingBox3D{<a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a>(), <a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a>()})</div>
-<div class="line"><a name="l00891"></a><span class="lineno">  891</span>&#160;{}</div>
-<div class="line"><a name="l00892"></a><span class="lineno">  892</span>&#160;</div>
-<div class="line"><a name="l00893"></a><span class="lineno"><a class="line" href="class_c_w_1_1_bounding_box3_d.html#a93d44cb707d6cd3b31b77a3287296f4d">  893</a></span>&#160;<a class="code" href="class_c_w_1_1_bounding_box3_d.html#ac649050691320ed41a1a9c7ec14d213b">BoundingBox3D::BoundingBox3D</a>(<span class="keywordtype">bool</span> valid):</div>
-<div class="line"><a name="l00894"></a><span class="lineno">  894</span>&#160;        null(!valid),</div>
-<div class="line"><a name="l00895"></a><span class="lineno">  895</span>&#160;        m_bounding_box(SUBoundingBox3D{<a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a>(), <a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a>()})</div>
-<div class="line"><a name="l00896"></a><span class="lineno">  896</span>&#160;{}</div>
-<div class="line"><a name="l00897"></a><span class="lineno">  897</span>&#160;</div>
-<div class="line"><a name="l00898"></a><span class="lineno">  898</span>&#160;<a class="code" href="class_c_w_1_1_bounding_box3_d.html#ac649050691320ed41a1a9c7ec14d213b">BoundingBox3D::BoundingBox3D</a>(SUBoundingBox3D bounding_box):</div>
-<div class="line"><a name="l00899"></a><span class="lineno">  899</span>&#160;        m_bounding_box(bounding_box)</div>
-<div class="line"><a name="l00900"></a><span class="lineno">  900</span>&#160;{}</div>
-<div class="line"><a name="l00901"></a><span class="lineno">  901</span>&#160;</div>
-<div class="line"><a name="l00902"></a><span class="lineno"><a class="line" href="class_c_w_1_1_bounding_box3_d.html#a76f8ecb30fa28b96863f2f590d605918">  902</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="class_c_w_1_1_bounding_box3_d.html#a76f8ecb30fa28b96863f2f590d605918">BoundingBox3D::operator!</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00903"></a><span class="lineno">  903</span>&#160;        <span class="keywordflow">if</span> (null) {</div>
-<div class="line"><a name="l00904"></a><span class="lineno">  904</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00905"></a><span class="lineno">  905</span>&#160;  }</div>
-<div class="line"><a name="l00906"></a><span class="lineno">  906</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00907"></a><span class="lineno">  907</span>&#160;}</div>
-<div class="line"><a name="l00908"></a><span class="lineno">  908</span>&#160;</div>
-<div class="line"><a name="l00909"></a><span class="lineno"><a class="line" href="class_c_w_1_1_bounding_box3_d.html#a48c5377e8adb7014c681c76e2a762f31">  909</a></span>&#160;BoundingBox3D::operator SUBoundingBox3D()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00910"></a><span class="lineno">  910</span>&#160;        <span class="keywordflow">return</span> m_bounding_box;</div>
-<div class="line"><a name="l00911"></a><span class="lineno">  911</span>&#160;}</div>
-<div class="line"><a name="l00912"></a><span class="lineno">  912</span>&#160;</div>
-<div class="line"><a name="l00913"></a><span class="lineno">  913</span>&#160;</div>
-<div class="line"><a name="l00914"></a><span class="lineno"><a class="line" href="class_c_w_1_1_bounding_box3_d.html#a86af4c2d594bc681e59dfce38b3246c8">  914</a></span>&#160;<a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a> <a class="code" href="class_c_w_1_1_bounding_box3_d.html#a86af4c2d594bc681e59dfce38b3246c8">BoundingBox3D::min</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00915"></a><span class="lineno">  915</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a>(m_bounding_box.min_point);</div>
-<div class="line"><a name="l00916"></a><span class="lineno">  916</span>&#160;}</div>
-<div class="line"><a name="l00917"></a><span class="lineno">  917</span>&#160;</div>
-<div class="line"><a name="l00918"></a><span class="lineno"><a class="line" href="class_c_w_1_1_bounding_box3_d.html#a10cd64c3f6588eefae14bd5c91984046">  918</a></span>&#160;<a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a> <a class="code" href="class_c_w_1_1_bounding_box3_d.html#a10cd64c3f6588eefae14bd5c91984046">BoundingBox3D::max</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00919"></a><span class="lineno">  919</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a>(m_bounding_box.max_point);</div>
-<div class="line"><a name="l00920"></a><span class="lineno">  920</span>&#160;}</div>
-<div class="line"><a name="l00921"></a><span class="lineno">  921</span>&#160;</div>
-<div class="line"><a name="l00922"></a><span class="lineno">  922</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00923"></a><span class="lineno">  923</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00924"></a><span class="lineno">  924</span>&#160;<span class="comment">* Line3D</span></div>
-<div class="line"><a name="l00925"></a><span class="lineno">  925</span>&#160;<span class="comment">*/</span></div>
-<div class="line"><a name="l00926"></a><span class="lineno">  926</span>&#160;</div>
-<div class="line"><a name="l00927"></a><span class="lineno"><a class="line" href="class_c_w_1_1_line3_d.html#a85285a1f5994b6ff7daae8f2a41869d6">  927</a></span>&#160;<a class="code" href="class_c_w_1_1_line3_d.html#a85285a1f5994b6ff7daae8f2a41869d6">Line3D::Line3D</a>():</div>
-<div class="line"><a name="l00928"></a><span class="lineno">  928</span>&#160;        <a class="code" href="class_c_w_1_1_line3_d.html">Line3D</a>(false)</div>
-<div class="line"><a name="l00929"></a><span class="lineno">  929</span>&#160;{}</div>
-<div class="line"><a name="l00930"></a><span class="lineno">  930</span>&#160;</div>
-<div class="line"><a name="l00931"></a><span class="lineno">  931</span>&#160;</div>
-<div class="line"><a name="l00932"></a><span class="lineno">  932</span>&#160;<a class="code" href="class_c_w_1_1_line3_d.html#a85285a1f5994b6ff7daae8f2a41869d6">Line3D::Line3D</a>(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a> point, <span class="keyword">const</span> <a class="code" href="class_c_w_1_1_vector3_d.html">Vector3D</a> direction):</div>
-<div class="line"><a name="l00933"></a><span class="lineno">  933</span>&#160;        m_point(point),</div>
-<div class="line"><a name="l00934"></a><span class="lineno">  934</span>&#160;  m_direction(direction.unit()),</div>
-<div class="line"><a name="l00935"></a><span class="lineno">  935</span>&#160;  point(m_point),</div>
-<div class="line"><a name="l00936"></a><span class="lineno">  936</span>&#160;  direction(m_direction)</div>
-<div class="line"><a name="l00937"></a><span class="lineno">  937</span>&#160;{}</div>
-<div class="line"><a name="l00938"></a><span class="lineno">  938</span>&#160;</div>
-<div class="line"><a name="l00939"></a><span class="lineno">  939</span>&#160;</div>
-<div class="line"><a name="l00940"></a><span class="lineno">  940</span>&#160;<a class="code" href="class_c_w_1_1_line3_d.html#a85285a1f5994b6ff7daae8f2a41869d6">Line3D::Line3D</a>(<span class="keyword">const</span> Vector3D direction, <span class="keyword">const</span> Point3D point):</div>
-<div class="line"><a name="l00941"></a><span class="lineno">  941</span>&#160;        Line3D(point, direction)</div>
-<div class="line"><a name="l00942"></a><span class="lineno">  942</span>&#160;{}</div>
-<div class="line"><a name="l00943"></a><span class="lineno">  943</span>&#160;</div>
-<div class="line"><a name="l00944"></a><span class="lineno">  944</span>&#160;</div>
-<div class="line"><a name="l00945"></a><span class="lineno"><a class="line" href="class_c_w_1_1_line3_d.html#a913620d7fb411fd18bd719d9463ec406">  945</a></span>&#160;<a class="code" href="class_c_w_1_1_line3_d.html#a85285a1f5994b6ff7daae8f2a41869d6">Line3D::Line3D</a>(<span class="keywordtype">bool</span> valid):</div>
-<div class="line"><a name="l00946"></a><span class="lineno">  946</span>&#160;        m_point(<a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a>(valid)),</div>
-<div class="line"><a name="l00947"></a><span class="lineno">  947</span>&#160;  m_direction(<a class="code" href="class_c_w_1_1_vector3_d.html">Vector3D</a>(valid)),</div>
-<div class="line"><a name="l00948"></a><span class="lineno">  948</span>&#160;  point(m_point),</div>
-<div class="line"><a name="l00949"></a><span class="lineno">  949</span>&#160;  direction(m_direction),</div>
-<div class="line"><a name="l00950"></a><span class="lineno">  950</span>&#160;  null(!valid)</div>
-<div class="line"><a name="l00951"></a><span class="lineno">  951</span>&#160;{}</div>
-<div class="line"><a name="l00952"></a><span class="lineno">  952</span>&#160;</div>
-<div class="line"><a name="l00953"></a><span class="lineno">  953</span>&#160;</div>
-<div class="line"><a name="l00954"></a><span class="lineno"><a class="line" href="class_c_w_1_1_line3_d.html#a10600200d2b6e4151a54ec46f02a5bae">  954</a></span>&#160;<a class="code" href="class_c_w_1_1_line3_d.html#a85285a1f5994b6ff7daae8f2a41869d6">Line3D::Line3D</a>(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_line3_d.html">Line3D</a>&amp; other):</div>
-<div class="line"><a name="l00955"></a><span class="lineno">  955</span>&#160;        m_point(other.m_point),</div>
-<div class="line"><a name="l00956"></a><span class="lineno">  956</span>&#160;  m_direction(other.m_direction),</div>
-<div class="line"><a name="l00957"></a><span class="lineno">  957</span>&#160;  point(m_point),</div>
-<div class="line"><a name="l00958"></a><span class="lineno">  958</span>&#160;  direction(m_direction),</div>
-<div class="line"><a name="l00959"></a><span class="lineno">  959</span>&#160;  null(other.null)</div>
-<div class="line"><a name="l00960"></a><span class="lineno">  960</span>&#160;{}</div>
-<div class="line"><a name="l00961"></a><span class="lineno">  961</span>&#160;</div>
-<div class="line"><a name="l00962"></a><span class="lineno">  962</span>&#160;</div>
-<div class="line"><a name="l00963"></a><span class="lineno">  963</span>&#160;<a class="code" href="class_c_w_1_1_line3_d.html">Line3D</a>&amp; Line3D::operator=(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_line3_d.html">Line3D</a> &amp;line) {</div>
-<div class="line"><a name="l00964"></a><span class="lineno">  964</span>&#160;  <span class="keywordflow">if</span> (<span class="keyword">this</span> == &amp;line)</div>
-<div class="line"><a name="l00965"></a><span class="lineno">  965</span>&#160;    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><a name="l00966"></a><span class="lineno">  966</span>&#160;  </div>
-<div class="line"><a name="l00967"></a><span class="lineno">  967</span>&#160;        point = line.point;</div>
-<div class="line"><a name="l00968"></a><span class="lineno">  968</span>&#160;  direction = line.direction;</div>
-<div class="line"><a name="l00969"></a><span class="lineno">  969</span>&#160;  null = line.null;</div>
-<div class="line"><a name="l00970"></a><span class="lineno">  970</span>&#160;  <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><a name="l00971"></a><span class="lineno">  971</span>&#160;}</div>
-<div class="line"><a name="l00972"></a><span class="lineno">  972</span>&#160;</div>
-<div class="line"><a name="l00973"></a><span class="lineno">  973</span>&#160;</div>
-<div class="line"><a name="l00974"></a><span class="lineno"><a class="line" href="class_c_w_1_1_line3_d.html#a2ab82c012bdef5f6ad7dc0d59f4f87f1">  974</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="class_c_w_1_1_line3_d.html#a2ab82c012bdef5f6ad7dc0d59f4f87f1">Line3D::operator!</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00975"></a><span class="lineno">  975</span>&#160;        <span class="keywordflow">if</span> (null) {</div>
-<div class="line"><a name="l00976"></a><span class="lineno">  976</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00977"></a><span class="lineno">  977</span>&#160;  }</div>
-<div class="line"><a name="l00978"></a><span class="lineno">  978</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00979"></a><span class="lineno">  979</span>&#160;}</div>
-<div class="line"><a name="l00980"></a><span class="lineno">  980</span>&#160;</div>
-<div class="line"><a name="l00981"></a><span class="lineno">  981</span>&#160;</div>
-<div class="line"><a name="l00982"></a><span class="lineno">  982</span>&#160;<a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a> Line3D::intersection(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_line3_d.html">Line3D</a> &amp;other_line)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00983"></a><span class="lineno">  983</span>&#160;        <span class="keywordflow">if</span> (!other_line) {</div>
-<div class="line"><a name="l00984"></a><span class="lineno">  984</span>&#160;        <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;CW::Line3D::intersection(): given line is null&quot;</span>);</div>
-<div class="line"><a name="l00985"></a><span class="lineno">  985</span>&#160;  }</div>
-<div class="line"><a name="l00986"></a><span class="lineno">  986</span>&#160;        <span class="keywordflow">if</span> (!(*<span class="keyword">this</span>)) {</div>
-<div class="line"><a name="l00987"></a><span class="lineno">  987</span>&#160;        <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::Line3D::intersection(): this line is null&quot;</span>);</div>
+<div class="line"><a name="l00876"></a><span class="lineno">  876</span>&#160;    <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00877"></a><span class="lineno">  877</span>&#160;        next = loop_points[i+1];</div>
+<div class="line"><a name="l00878"></a><span class="lineno">  878</span>&#160;    }</div>
+<div class="line"><a name="l00879"></a><span class="lineno">  879</span>&#160;    normal.x += (current.y - next.y) * (current.z + next.z);</div>
+<div class="line"><a name="l00880"></a><span class="lineno">  880</span>&#160;    normal.y += (current.z - next.z) * (current.x + next.x);</div>
+<div class="line"><a name="l00881"></a><span class="lineno">  881</span>&#160;    normal.z += (current.x - next.x) * (current.y + next.y);</div>
+<div class="line"><a name="l00882"></a><span class="lineno">  882</span>&#160;  }</div>
+<div class="line"><a name="l00883"></a><span class="lineno">  883</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="class_c_w_1_1_plane3_d.html">Plane3D</a> (loop_points[0], normal.unit());</div>
+<div class="line"><a name="l00884"></a><span class="lineno">  884</span>&#160;}</div>
+<div class="line"><a name="l00885"></a><span class="lineno">  885</span>&#160;</div>
+<div class="line"><a name="l00886"></a><span class="lineno">  886</span>&#160;</div>
+<div class="line"><a name="l00887"></a><span class="lineno">  887</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00888"></a><span class="lineno">  888</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00889"></a><span class="lineno">  889</span>&#160;<span class="comment">* BoundingBox3D</span></div>
+<div class="line"><a name="l00890"></a><span class="lineno">  890</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00891"></a><span class="lineno">  891</span>&#160;</div>
+<div class="line"><a name="l00892"></a><span class="lineno"><a class="line" href="class_c_w_1_1_bounding_box3_d.html#ac649050691320ed41a1a9c7ec14d213b">  892</a></span>&#160;<a class="code" href="class_c_w_1_1_bounding_box3_d.html#ac649050691320ed41a1a9c7ec14d213b">BoundingBox3D::BoundingBox3D</a>():</div>
+<div class="line"><a name="l00893"></a><span class="lineno">  893</span>&#160;        <a class="code" href="class_c_w_1_1_bounding_box3_d.html">BoundingBox3D</a>(SUBoundingBox3D{<a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a>(), <a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a>()})</div>
+<div class="line"><a name="l00894"></a><span class="lineno">  894</span>&#160;{}</div>
+<div class="line"><a name="l00895"></a><span class="lineno">  895</span>&#160;</div>
+<div class="line"><a name="l00896"></a><span class="lineno"><a class="line" href="class_c_w_1_1_bounding_box3_d.html#a93d44cb707d6cd3b31b77a3287296f4d">  896</a></span>&#160;<a class="code" href="class_c_w_1_1_bounding_box3_d.html#ac649050691320ed41a1a9c7ec14d213b">BoundingBox3D::BoundingBox3D</a>(<span class="keywordtype">bool</span> valid):</div>
+<div class="line"><a name="l00897"></a><span class="lineno">  897</span>&#160;        null(!valid),</div>
+<div class="line"><a name="l00898"></a><span class="lineno">  898</span>&#160;        m_bounding_box(SUBoundingBox3D{<a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a>(), <a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a>()})</div>
+<div class="line"><a name="l00899"></a><span class="lineno">  899</span>&#160;{}</div>
+<div class="line"><a name="l00900"></a><span class="lineno">  900</span>&#160;</div>
+<div class="line"><a name="l00901"></a><span class="lineno">  901</span>&#160;<a class="code" href="class_c_w_1_1_bounding_box3_d.html#ac649050691320ed41a1a9c7ec14d213b">BoundingBox3D::BoundingBox3D</a>(SUBoundingBox3D bounding_box):</div>
+<div class="line"><a name="l00902"></a><span class="lineno">  902</span>&#160;        m_bounding_box(bounding_box)</div>
+<div class="line"><a name="l00903"></a><span class="lineno">  903</span>&#160;{}</div>
+<div class="line"><a name="l00904"></a><span class="lineno">  904</span>&#160;</div>
+<div class="line"><a name="l00905"></a><span class="lineno"><a class="line" href="class_c_w_1_1_bounding_box3_d.html#a76f8ecb30fa28b96863f2f590d605918">  905</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="class_c_w_1_1_bounding_box3_d.html#a76f8ecb30fa28b96863f2f590d605918">BoundingBox3D::operator!</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00906"></a><span class="lineno">  906</span>&#160;        <span class="keywordflow">if</span> (null) {</div>
+<div class="line"><a name="l00907"></a><span class="lineno">  907</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00908"></a><span class="lineno">  908</span>&#160;  }</div>
+<div class="line"><a name="l00909"></a><span class="lineno">  909</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00910"></a><span class="lineno">  910</span>&#160;}</div>
+<div class="line"><a name="l00911"></a><span class="lineno">  911</span>&#160;</div>
+<div class="line"><a name="l00912"></a><span class="lineno"><a class="line" href="class_c_w_1_1_bounding_box3_d.html#a48c5377e8adb7014c681c76e2a762f31">  912</a></span>&#160;BoundingBox3D::operator SUBoundingBox3D()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00913"></a><span class="lineno">  913</span>&#160;        <span class="keywordflow">return</span> m_bounding_box;</div>
+<div class="line"><a name="l00914"></a><span class="lineno">  914</span>&#160;}</div>
+<div class="line"><a name="l00915"></a><span class="lineno">  915</span>&#160;</div>
+<div class="line"><a name="l00916"></a><span class="lineno">  916</span>&#160;</div>
+<div class="line"><a name="l00917"></a><span class="lineno"><a class="line" href="class_c_w_1_1_bounding_box3_d.html#a86af4c2d594bc681e59dfce38b3246c8">  917</a></span>&#160;<a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a> <a class="code" href="class_c_w_1_1_bounding_box3_d.html#a86af4c2d594bc681e59dfce38b3246c8">BoundingBox3D::min</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00918"></a><span class="lineno">  918</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a>(m_bounding_box.min_point);</div>
+<div class="line"><a name="l00919"></a><span class="lineno">  919</span>&#160;}</div>
+<div class="line"><a name="l00920"></a><span class="lineno">  920</span>&#160;</div>
+<div class="line"><a name="l00921"></a><span class="lineno"><a class="line" href="class_c_w_1_1_bounding_box3_d.html#a10cd64c3f6588eefae14bd5c91984046">  921</a></span>&#160;<a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a> <a class="code" href="class_c_w_1_1_bounding_box3_d.html#a10cd64c3f6588eefae14bd5c91984046">BoundingBox3D::max</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00922"></a><span class="lineno">  922</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a>(m_bounding_box.max_point);</div>
+<div class="line"><a name="l00923"></a><span class="lineno">  923</span>&#160;}</div>
+<div class="line"><a name="l00924"></a><span class="lineno">  924</span>&#160;</div>
+<div class="line"><a name="l00925"></a><span class="lineno">  925</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00926"></a><span class="lineno">  926</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00927"></a><span class="lineno">  927</span>&#160;<span class="comment">* Line3D</span></div>
+<div class="line"><a name="l00928"></a><span class="lineno">  928</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00929"></a><span class="lineno">  929</span>&#160;</div>
+<div class="line"><a name="l00930"></a><span class="lineno"><a class="line" href="class_c_w_1_1_line3_d.html#a85285a1f5994b6ff7daae8f2a41869d6">  930</a></span>&#160;<a class="code" href="class_c_w_1_1_line3_d.html#a85285a1f5994b6ff7daae8f2a41869d6">Line3D::Line3D</a>():</div>
+<div class="line"><a name="l00931"></a><span class="lineno">  931</span>&#160;        <a class="code" href="class_c_w_1_1_line3_d.html">Line3D</a>(false)</div>
+<div class="line"><a name="l00932"></a><span class="lineno">  932</span>&#160;{}</div>
+<div class="line"><a name="l00933"></a><span class="lineno">  933</span>&#160;</div>
+<div class="line"><a name="l00934"></a><span class="lineno">  934</span>&#160;</div>
+<div class="line"><a name="l00935"></a><span class="lineno">  935</span>&#160;<a class="code" href="class_c_w_1_1_line3_d.html#a85285a1f5994b6ff7daae8f2a41869d6">Line3D::Line3D</a>(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a> point, <span class="keyword">const</span> <a class="code" href="class_c_w_1_1_vector3_d.html">Vector3D</a> direction):</div>
+<div class="line"><a name="l00936"></a><span class="lineno">  936</span>&#160;        m_point(point),</div>
+<div class="line"><a name="l00937"></a><span class="lineno">  937</span>&#160;  m_direction(direction.unit()),</div>
+<div class="line"><a name="l00938"></a><span class="lineno">  938</span>&#160;  point(m_point),</div>
+<div class="line"><a name="l00939"></a><span class="lineno">  939</span>&#160;  direction(m_direction)</div>
+<div class="line"><a name="l00940"></a><span class="lineno">  940</span>&#160;{}</div>
+<div class="line"><a name="l00941"></a><span class="lineno">  941</span>&#160;</div>
+<div class="line"><a name="l00942"></a><span class="lineno">  942</span>&#160;</div>
+<div class="line"><a name="l00943"></a><span class="lineno">  943</span>&#160;<a class="code" href="class_c_w_1_1_line3_d.html#a85285a1f5994b6ff7daae8f2a41869d6">Line3D::Line3D</a>(<span class="keyword">const</span> Vector3D direction, <span class="keyword">const</span> Point3D point):</div>
+<div class="line"><a name="l00944"></a><span class="lineno">  944</span>&#160;        Line3D(point, direction)</div>
+<div class="line"><a name="l00945"></a><span class="lineno">  945</span>&#160;{}</div>
+<div class="line"><a name="l00946"></a><span class="lineno">  946</span>&#160;</div>
+<div class="line"><a name="l00947"></a><span class="lineno">  947</span>&#160;</div>
+<div class="line"><a name="l00948"></a><span class="lineno"><a class="line" href="class_c_w_1_1_line3_d.html#a913620d7fb411fd18bd719d9463ec406">  948</a></span>&#160;<a class="code" href="class_c_w_1_1_line3_d.html#a85285a1f5994b6ff7daae8f2a41869d6">Line3D::Line3D</a>(<span class="keywordtype">bool</span> valid):</div>
+<div class="line"><a name="l00949"></a><span class="lineno">  949</span>&#160;        m_point(<a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a>(valid)),</div>
+<div class="line"><a name="l00950"></a><span class="lineno">  950</span>&#160;  m_direction(<a class="code" href="class_c_w_1_1_vector3_d.html">Vector3D</a>(valid)),</div>
+<div class="line"><a name="l00951"></a><span class="lineno">  951</span>&#160;  point(m_point),</div>
+<div class="line"><a name="l00952"></a><span class="lineno">  952</span>&#160;  direction(m_direction),</div>
+<div class="line"><a name="l00953"></a><span class="lineno">  953</span>&#160;  null(!valid)</div>
+<div class="line"><a name="l00954"></a><span class="lineno">  954</span>&#160;{}</div>
+<div class="line"><a name="l00955"></a><span class="lineno">  955</span>&#160;</div>
+<div class="line"><a name="l00956"></a><span class="lineno">  956</span>&#160;</div>
+<div class="line"><a name="l00957"></a><span class="lineno"><a class="line" href="class_c_w_1_1_line3_d.html#a10600200d2b6e4151a54ec46f02a5bae">  957</a></span>&#160;<a class="code" href="class_c_w_1_1_line3_d.html#a85285a1f5994b6ff7daae8f2a41869d6">Line3D::Line3D</a>(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_line3_d.html">Line3D</a>&amp; other):</div>
+<div class="line"><a name="l00958"></a><span class="lineno">  958</span>&#160;        m_point(other.m_point),</div>
+<div class="line"><a name="l00959"></a><span class="lineno">  959</span>&#160;  m_direction(other.m_direction),</div>
+<div class="line"><a name="l00960"></a><span class="lineno">  960</span>&#160;  point(m_point),</div>
+<div class="line"><a name="l00961"></a><span class="lineno">  961</span>&#160;  direction(m_direction),</div>
+<div class="line"><a name="l00962"></a><span class="lineno">  962</span>&#160;  null(other.null)</div>
+<div class="line"><a name="l00963"></a><span class="lineno">  963</span>&#160;{}</div>
+<div class="line"><a name="l00964"></a><span class="lineno">  964</span>&#160;</div>
+<div class="line"><a name="l00965"></a><span class="lineno">  965</span>&#160;</div>
+<div class="line"><a name="l00966"></a><span class="lineno">  966</span>&#160;<a class="code" href="class_c_w_1_1_line3_d.html">Line3D</a>&amp; Line3D::operator=(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_line3_d.html">Line3D</a> &amp;line) {</div>
+<div class="line"><a name="l00967"></a><span class="lineno">  967</span>&#160;  <span class="keywordflow">if</span> (<span class="keyword">this</span> == &amp;line)</div>
+<div class="line"><a name="l00968"></a><span class="lineno">  968</span>&#160;    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00969"></a><span class="lineno">  969</span>&#160;  </div>
+<div class="line"><a name="l00970"></a><span class="lineno">  970</span>&#160;        point = line.point;</div>
+<div class="line"><a name="l00971"></a><span class="lineno">  971</span>&#160;  direction = line.direction;</div>
+<div class="line"><a name="l00972"></a><span class="lineno">  972</span>&#160;  null = line.null;</div>
+<div class="line"><a name="l00973"></a><span class="lineno">  973</span>&#160;  <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00974"></a><span class="lineno">  974</span>&#160;}</div>
+<div class="line"><a name="l00975"></a><span class="lineno">  975</span>&#160;</div>
+<div class="line"><a name="l00976"></a><span class="lineno">  976</span>&#160;</div>
+<div class="line"><a name="l00977"></a><span class="lineno"><a class="line" href="class_c_w_1_1_line3_d.html#a2ab82c012bdef5f6ad7dc0d59f4f87f1">  977</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="class_c_w_1_1_line3_d.html#a2ab82c012bdef5f6ad7dc0d59f4f87f1">Line3D::operator!</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00978"></a><span class="lineno">  978</span>&#160;        <span class="keywordflow">if</span> (null) {</div>
+<div class="line"><a name="l00979"></a><span class="lineno">  979</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00980"></a><span class="lineno">  980</span>&#160;  }</div>
+<div class="line"><a name="l00981"></a><span class="lineno">  981</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00982"></a><span class="lineno">  982</span>&#160;}</div>
+<div class="line"><a name="l00983"></a><span class="lineno">  983</span>&#160;</div>
+<div class="line"><a name="l00984"></a><span class="lineno">  984</span>&#160;</div>
+<div class="line"><a name="l00985"></a><span class="lineno">  985</span>&#160;<a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a> Line3D::intersection(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_line3_d.html">Line3D</a> &amp;other_line)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00986"></a><span class="lineno">  986</span>&#160;        <span class="keywordflow">if</span> (!other_line) {</div>
+<div class="line"><a name="l00987"></a><span class="lineno">  987</span>&#160;        <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;CW::Line3D::intersection(): given line is null&quot;</span>);</div>
 <div class="line"><a name="l00988"></a><span class="lineno">  988</span>&#160;  }</div>
-<div class="line"><a name="l00989"></a><span class="lineno">  989</span>&#160;  <span class="comment">// @see http://paulbourke.net/geometry/pointlineplane/</span></div>
-<div class="line"><a name="l00990"></a><span class="lineno">  990</span>&#160;        std::pair&lt;Point3D, Point3D&gt; close_points = this-&gt;<a class="code" href="class_c_w_1_1_line3_d.html#af0024bf3c6783eab48c0f40e7dee1334">closest_points</a>(other_line);</div>
-<div class="line"><a name="l00991"></a><span class="lineno">  991</span>&#160;  <span class="keywordflow">if</span> (!close_points.first) {</div>
-<div class="line"><a name="l00992"></a><span class="lineno">  992</span>&#160;        <span class="keywordflow">return</span> close_points.first;</div>
-<div class="line"><a name="l00993"></a><span class="lineno">  993</span>&#160;  }</div>
-<div class="line"><a name="l00994"></a><span class="lineno">  994</span>&#160;  Vector3D vector_between = close_points.first - close_points.second;</div>
-<div class="line"><a name="l00995"></a><span class="lineno">  995</span>&#160;  <span class="keywordtype">double</span> <a class="code" href="class_c_w_1_1_line3_d.html#a3f1ba7a20375f60bb07a4c740084e87d">distance</a> = vector_between.length();</div>
-<div class="line"><a name="l00996"></a><span class="lineno">  996</span>&#160;  <span class="keywordflow">if</span> (distance &gt; EPSILON) {</div>
-<div class="line"><a name="l00997"></a><span class="lineno">  997</span>&#160;        <span class="comment">// The lines do not intersect</span></div>
-<div class="line"><a name="l00998"></a><span class="lineno">  998</span>&#160;        <span class="keywordflow">return</span> Point3D(<span class="keyword">false</span>);</div>
-<div class="line"><a name="l00999"></a><span class="lineno">  999</span>&#160;  }</div>
-<div class="line"><a name="l01000"></a><span class="lineno"> 1000</span>&#160;  <span class="keywordflow">return</span> close_points.first;</div>
-<div class="line"><a name="l01001"></a><span class="lineno"> 1001</span>&#160;}</div>
-<div class="line"><a name="l01002"></a><span class="lineno"> 1002</span>&#160;</div>
-<div class="line"><a name="l01003"></a><span class="lineno"> 1003</span>&#160;</div>
-<div class="line"><a name="l01004"></a><span class="lineno"> 1004</span>&#160;Point3D Line3D::intersection(<span class="keyword">const</span> Plane3D &amp;plane)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l01005"></a><span class="lineno"> 1005</span>&#160;        <span class="keywordflow">if</span> (!plane) {</div>
-<div class="line"><a name="l01006"></a><span class="lineno"> 1006</span>&#160;        <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;CW::Line3D::intersection(): given plane is null&quot;</span>);</div>
-<div class="line"><a name="l01007"></a><span class="lineno"> 1007</span>&#160;  }</div>
-<div class="line"><a name="l01008"></a><span class="lineno"> 1008</span>&#160;        <span class="keywordflow">if</span> (!(*<span class="keyword">this</span>)) {</div>
-<div class="line"><a name="l01009"></a><span class="lineno"> 1009</span>&#160;        <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::Line3D::intersection(): this line is null&quot;</span>);</div>
+<div class="line"><a name="l00989"></a><span class="lineno">  989</span>&#160;        <span class="keywordflow">if</span> (!(*<span class="keyword">this</span>)) {</div>
+<div class="line"><a name="l00990"></a><span class="lineno">  990</span>&#160;        <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::Line3D::intersection(): this line is null&quot;</span>);</div>
+<div class="line"><a name="l00991"></a><span class="lineno">  991</span>&#160;  }</div>
+<div class="line"><a name="l00992"></a><span class="lineno">  992</span>&#160;  <span class="comment">// @see http://paulbourke.net/geometry/pointlineplane/</span></div>
+<div class="line"><a name="l00993"></a><span class="lineno">  993</span>&#160;        std::pair&lt;Point3D, Point3D&gt; close_points = this-&gt;<a class="code" href="class_c_w_1_1_line3_d.html#af0024bf3c6783eab48c0f40e7dee1334">closest_points</a>(other_line);</div>
+<div class="line"><a name="l00994"></a><span class="lineno">  994</span>&#160;  <span class="keywordflow">if</span> (!close_points.first) {</div>
+<div class="line"><a name="l00995"></a><span class="lineno">  995</span>&#160;        <span class="keywordflow">return</span> close_points.first;</div>
+<div class="line"><a name="l00996"></a><span class="lineno">  996</span>&#160;  }</div>
+<div class="line"><a name="l00997"></a><span class="lineno">  997</span>&#160;  Vector3D vector_between = close_points.first - close_points.second;</div>
+<div class="line"><a name="l00998"></a><span class="lineno">  998</span>&#160;  <span class="keywordtype">double</span> <a class="code" href="class_c_w_1_1_line3_d.html#a3f1ba7a20375f60bb07a4c740084e87d">distance</a> = vector_between.length();</div>
+<div class="line"><a name="l00999"></a><span class="lineno">  999</span>&#160;  <span class="keywordflow">if</span> (distance &gt; EPSILON) {</div>
+<div class="line"><a name="l01000"></a><span class="lineno"> 1000</span>&#160;        <span class="comment">// The lines do not intersect</span></div>
+<div class="line"><a name="l01001"></a><span class="lineno"> 1001</span>&#160;        <span class="keywordflow">return</span> Point3D(<span class="keyword">false</span>);</div>
+<div class="line"><a name="l01002"></a><span class="lineno"> 1002</span>&#160;  }</div>
+<div class="line"><a name="l01003"></a><span class="lineno"> 1003</span>&#160;  <span class="keywordflow">return</span> close_points.first;</div>
+<div class="line"><a name="l01004"></a><span class="lineno"> 1004</span>&#160;}</div>
+<div class="line"><a name="l01005"></a><span class="lineno"> 1005</span>&#160;</div>
+<div class="line"><a name="l01006"></a><span class="lineno"> 1006</span>&#160;</div>
+<div class="line"><a name="l01007"></a><span class="lineno"> 1007</span>&#160;Point3D Line3D::intersection(<span class="keyword">const</span> Plane3D &amp;plane)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l01008"></a><span class="lineno"> 1008</span>&#160;        <span class="keywordflow">if</span> (!plane) {</div>
+<div class="line"><a name="l01009"></a><span class="lineno"> 1009</span>&#160;        <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;CW::Line3D::intersection(): given plane is null&quot;</span>);</div>
 <div class="line"><a name="l01010"></a><span class="lineno"> 1010</span>&#160;  }</div>
-<div class="line"><a name="l01011"></a><span class="lineno"> 1011</span>&#160;  <span class="comment">// @see http://paulbourke.net/geometry/pointlineplane/</span></div>
-<div class="line"><a name="l01012"></a><span class="lineno"> 1012</span>&#160;        <span class="keywordtype">double</span> numerator = (plane.a * this-&gt;point.x) + (plane.b * this-&gt;point.y) + (plane.c * this-&gt;point.z) + plane.d;</div>
-<div class="line"><a name="l01013"></a><span class="lineno"> 1013</span>&#160;  <span class="keywordtype">double</span> denominator = -(plane.a * this-&gt;direction.x) - (plane.b * this-&gt;direction.y) - (plane.c * this-&gt;direction.z);</div>
-<div class="line"><a name="l01014"></a><span class="lineno"> 1014</span>&#160;  <span class="keywordflow">if</span> (std::abs(denominator) &lt; EPSILON) {</div>
-<div class="line"><a name="l01015"></a><span class="lineno"> 1015</span>&#160;        <span class="comment">// The line is parallel to or on the plane</span></div>
-<div class="line"><a name="l01016"></a><span class="lineno"> 1016</span>&#160;    <span class="keywordflow">return</span> Point3D(<span class="keyword">false</span>);</div>
-<div class="line"><a name="l01017"></a><span class="lineno"> 1017</span>&#160;  }</div>
-<div class="line"><a name="l01018"></a><span class="lineno"> 1018</span>&#160;  <span class="keywordtype">double</span> u = numerator / denominator;</div>
-<div class="line"><a name="l01019"></a><span class="lineno"> 1019</span>&#160;  Point3D point_of_intersection = this-&gt;point + (u * this-&gt;direction);</div>
-<div class="line"><a name="l01020"></a><span class="lineno"> 1020</span>&#160;        <span class="keywordflow">return</span> point_of_intersection;</div>
-<div class="line"><a name="l01021"></a><span class="lineno"> 1021</span>&#160;}</div>
-<div class="line"><a name="l01022"></a><span class="lineno"> 1022</span>&#160;</div>
-<div class="line"><a name="l01023"></a><span class="lineno"> 1023</span>&#160;</div>
-<div class="line"><a name="l01024"></a><span class="lineno"><a class="line" href="class_c_w_1_1_line3_d.html#af0024bf3c6783eab48c0f40e7dee1334"> 1024</a></span>&#160;std::pair&lt;Point3D, Point3D&gt; <a class="code" href="class_c_w_1_1_line3_d.html#af0024bf3c6783eab48c0f40e7dee1334">Line3D::closest_points</a>(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_line3_d.html">Line3D</a> &amp;other_line)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l01025"></a><span class="lineno"> 1025</span>&#160;        <span class="keywordflow">if</span> (!other_line) {</div>
-<div class="line"><a name="l01026"></a><span class="lineno"> 1026</span>&#160;        <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;CW::Line3D::closest_points(): given line is null&quot;</span>);</div>
-<div class="line"><a name="l01027"></a><span class="lineno"> 1027</span>&#160;  }</div>
-<div class="line"><a name="l01028"></a><span class="lineno"> 1028</span>&#160;        <span class="keywordflow">if</span> (!(*<span class="keyword">this</span>)) {</div>
-<div class="line"><a name="l01029"></a><span class="lineno"> 1029</span>&#160;        <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::Line3D::closest_points(): this line is null&quot;</span>);</div>
+<div class="line"><a name="l01011"></a><span class="lineno"> 1011</span>&#160;        <span class="keywordflow">if</span> (!(*<span class="keyword">this</span>)) {</div>
+<div class="line"><a name="l01012"></a><span class="lineno"> 1012</span>&#160;        <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::Line3D::intersection(): this line is null&quot;</span>);</div>
+<div class="line"><a name="l01013"></a><span class="lineno"> 1013</span>&#160;  }</div>
+<div class="line"><a name="l01014"></a><span class="lineno"> 1014</span>&#160;  <span class="comment">// @see http://paulbourke.net/geometry/pointlineplane/</span></div>
+<div class="line"><a name="l01015"></a><span class="lineno"> 1015</span>&#160;        <span class="keywordtype">double</span> numerator = (plane.a * this-&gt;point.x) + (plane.b * this-&gt;point.y) + (plane.c * this-&gt;point.z) + plane.d;</div>
+<div class="line"><a name="l01016"></a><span class="lineno"> 1016</span>&#160;  <span class="keywordtype">double</span> denominator = -(plane.a * this-&gt;direction.x) - (plane.b * this-&gt;direction.y) - (plane.c * this-&gt;direction.z);</div>
+<div class="line"><a name="l01017"></a><span class="lineno"> 1017</span>&#160;  <span class="keywordflow">if</span> (std::abs(denominator) &lt; EPSILON) {</div>
+<div class="line"><a name="l01018"></a><span class="lineno"> 1018</span>&#160;        <span class="comment">// The line is parallel to or on the plane</span></div>
+<div class="line"><a name="l01019"></a><span class="lineno"> 1019</span>&#160;    <span class="keywordflow">return</span> Point3D(<span class="keyword">false</span>);</div>
+<div class="line"><a name="l01020"></a><span class="lineno"> 1020</span>&#160;  }</div>
+<div class="line"><a name="l01021"></a><span class="lineno"> 1021</span>&#160;  <span class="keywordtype">double</span> u = numerator / denominator;</div>
+<div class="line"><a name="l01022"></a><span class="lineno"> 1022</span>&#160;  Point3D point_of_intersection = this-&gt;point + (u * this-&gt;direction);</div>
+<div class="line"><a name="l01023"></a><span class="lineno"> 1023</span>&#160;        <span class="keywordflow">return</span> point_of_intersection;</div>
+<div class="line"><a name="l01024"></a><span class="lineno"> 1024</span>&#160;}</div>
+<div class="line"><a name="l01025"></a><span class="lineno"> 1025</span>&#160;</div>
+<div class="line"><a name="l01026"></a><span class="lineno"> 1026</span>&#160;</div>
+<div class="line"><a name="l01027"></a><span class="lineno"><a class="line" href="class_c_w_1_1_line3_d.html#af0024bf3c6783eab48c0f40e7dee1334"> 1027</a></span>&#160;std::pair&lt;Point3D, Point3D&gt; <a class="code" href="class_c_w_1_1_line3_d.html#af0024bf3c6783eab48c0f40e7dee1334">Line3D::closest_points</a>(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_line3_d.html">Line3D</a> &amp;other_line)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l01028"></a><span class="lineno"> 1028</span>&#160;        <span class="keywordflow">if</span> (!other_line) {</div>
+<div class="line"><a name="l01029"></a><span class="lineno"> 1029</span>&#160;        <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;CW::Line3D::closest_points(): given line is null&quot;</span>);</div>
 <div class="line"><a name="l01030"></a><span class="lineno"> 1030</span>&#160;  }</div>
-<div class="line"><a name="l01031"></a><span class="lineno"> 1031</span>&#160;        </div>
-<div class="line"><a name="l01032"></a><span class="lineno"> 1032</span>&#160;        <span class="comment">// @see http://paulbourke.net/geometry/pointlineplane/</span></div>
-<div class="line"><a name="l01033"></a><span class="lineno"> 1033</span>&#160;        <span class="keywordtype">double</span> d1343,d4321,d1321,d4343,d2121;</div>
-<div class="line"><a name="l01034"></a><span class="lineno"> 1034</span>&#160;  <span class="keywordtype">double</span> numer,denom;</div>
-<div class="line"><a name="l01035"></a><span class="lineno"> 1035</span>&#160;        <span class="comment">// p13 is a vector between two points on different lines</span></div>
-<div class="line"><a name="l01036"></a><span class="lineno"> 1036</span>&#160;  <a class="code" href="class_c_w_1_1_vector3_d.html">Vector3D</a> p13 = this-&gt;point - other_line.point;</div>
-<div class="line"><a name="l01037"></a><span class="lineno"> 1037</span>&#160;  <a class="code" href="class_c_w_1_1_vector3_d.html">Vector3D</a> p43 = other_line.direction;</div>
-<div class="line"><a name="l01038"></a><span class="lineno"> 1038</span>&#160;  <span class="keywordflow">if</span> (std::abs(p43.x) &lt; EPSILON &amp;&amp; std::abs(p43.y) &lt; EPSILON &amp;&amp; std::abs(p43.z) &lt; EPSILON) {</div>
-<div class="line"><a name="l01039"></a><span class="lineno"> 1039</span>&#160;        <span class="comment">// The two lines are along each other</span></div>
-<div class="line"><a name="l01040"></a><span class="lineno"> 1040</span>&#160;    <span class="keywordflow">return</span> std::pair&lt;Point3D,Point3D&gt; (<a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a>(<span class="keyword">false</span>), <a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a>(<span class="keyword">false</span>));</div>
-<div class="line"><a name="l01041"></a><span class="lineno"> 1041</span>&#160;  }</div>
-<div class="line"><a name="l01042"></a><span class="lineno"> 1042</span>&#160;  <a class="code" href="class_c_w_1_1_vector3_d.html">Vector3D</a> p21 = this-&gt;direction;</div>
-<div class="line"><a name="l01043"></a><span class="lineno"> 1043</span>&#160;  <span class="comment">//if (std::abs(p21.x) &lt; EPSILON/2 &amp;&amp; std::abs(p21.y) &lt; EPSILON/2 &amp;&amp; std::abs(p21.z) &lt; EPSILON/2) {</span></div>
-<div class="line"><a name="l01044"></a><span class="lineno"> 1044</span>&#160;        <span class="comment">// The vector is zero - should not happen</span></div>
-<div class="line"><a name="l01045"></a><span class="lineno"> 1045</span>&#160;  <span class="comment">//  return std::pair&lt;Point3D,Point3D&gt; (Point3D(false), Point3D(false));</span></div>
-<div class="line"><a name="l01046"></a><span class="lineno"> 1046</span>&#160;  <span class="comment">//}</span></div>
-<div class="line"><a name="l01047"></a><span class="lineno"> 1047</span>&#160;  d1343 = p13.x * p43.x + p13.y * p43.y + p13.z * p43.z;</div>
-<div class="line"><a name="l01048"></a><span class="lineno"> 1048</span>&#160;  d4321 = p43.x * p21.x + p43.y * p21.y + p43.z * p21.z;</div>
-<div class="line"><a name="l01049"></a><span class="lineno"> 1049</span>&#160;  d1321 = p13.x * p21.x + p13.y * p21.y + p13.z * p21.z;</div>
-<div class="line"><a name="l01050"></a><span class="lineno"> 1050</span>&#160;  d4343 = p43.x * p43.x + p43.y * p43.y + p43.z * p43.z;</div>
-<div class="line"><a name="l01051"></a><span class="lineno"> 1051</span>&#160;  d2121 = p21.x * p21.x + p21.y * p21.y + p21.z * p21.z;</div>
-<div class="line"><a name="l01052"></a><span class="lineno"> 1052</span>&#160;        </div>
-<div class="line"><a name="l01053"></a><span class="lineno"> 1053</span>&#160;  denom = d2121 * d4343 - d4321 * d4321;</div>
-<div class="line"><a name="l01054"></a><span class="lineno"> 1054</span>&#160;  <span class="keywordflow">if</span> (std::abs(denom) &lt; EPSILON) {</div>
-<div class="line"><a name="l01055"></a><span class="lineno"> 1055</span>&#160;        <span class="comment">// Lines are parallel</span></div>
-<div class="line"><a name="l01056"></a><span class="lineno"> 1056</span>&#160;    <span class="keywordflow">return</span> std::pair&lt;Point3D,Point3D&gt; (<a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a>(<span class="keyword">false</span>), <a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a>(<span class="keyword">false</span>));</div>
-<div class="line"><a name="l01057"></a><span class="lineno"> 1057</span>&#160;  }</div>
-<div class="line"><a name="l01058"></a><span class="lineno"> 1058</span>&#160;  numer = d1343 * d4321 - d1321 * d4343;</div>
-<div class="line"><a name="l01059"></a><span class="lineno"> 1059</span>&#160;</div>
-<div class="line"><a name="l01060"></a><span class="lineno"> 1060</span>&#160;  <span class="keywordtype">double</span> mua = numer / denom;</div>
-<div class="line"><a name="l01061"></a><span class="lineno"> 1061</span>&#160;  <span class="keywordtype">double</span> mub = (d1343 + d4321 * mua) / d4343;</div>
-<div class="line"><a name="l01062"></a><span class="lineno"> 1062</span>&#160;        <a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a> pa = this-&gt;point + (this-&gt;direction * mua);</div>
-<div class="line"><a name="l01063"></a><span class="lineno"> 1063</span>&#160;        <a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a> pb = other_line.point + (other_line.direction * mub);</div>
-<div class="line"><a name="l01064"></a><span class="lineno"> 1064</span>&#160;  <span class="keywordflow">return</span> std::pair&lt;Point3D,Point3D&gt; (pa, pb);</div>
-<div class="line"><a name="l01065"></a><span class="lineno"> 1065</span>&#160;}</div>
-<div class="line"><a name="l01066"></a><span class="lineno"> 1066</span>&#160;</div>
-<div class="line"><a name="l01067"></a><span class="lineno"> 1067</span>&#160;</div>
-<div class="line"><a name="l01068"></a><span class="lineno"><a class="line" href="class_c_w_1_1_line3_d.html#a33ba5155b2c75c1de8e18bd813e1b17a"> 1068</a></span>&#160;<a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a> <a class="code" href="class_c_w_1_1_line3_d.html#a33ba5155b2c75c1de8e18bd813e1b17a">Line3D::closest_point</a>(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a>&amp; point)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l01069"></a><span class="lineno"> 1069</span>&#160;        <span class="keywordflow">if</span> (!point) {</div>
-<div class="line"><a name="l01070"></a><span class="lineno"> 1070</span>&#160;        <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;CW::Line3D::closest_point(): given point is null&quot;</span>);</div>
-<div class="line"><a name="l01071"></a><span class="lineno"> 1071</span>&#160;  }</div>
-<div class="line"><a name="l01072"></a><span class="lineno"> 1072</span>&#160;        <span class="keywordflow">if</span> (!(*<span class="keyword">this</span>)) {</div>
-<div class="line"><a name="l01073"></a><span class="lineno"> 1073</span>&#160;        <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::Line3D::closest_point(): this line is null&quot;</span>);</div>
+<div class="line"><a name="l01031"></a><span class="lineno"> 1031</span>&#160;        <span class="keywordflow">if</span> (!(*<span class="keyword">this</span>)) {</div>
+<div class="line"><a name="l01032"></a><span class="lineno"> 1032</span>&#160;        <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::Line3D::closest_points(): this line is null&quot;</span>);</div>
+<div class="line"><a name="l01033"></a><span class="lineno"> 1033</span>&#160;  }</div>
+<div class="line"><a name="l01034"></a><span class="lineno"> 1034</span>&#160;        </div>
+<div class="line"><a name="l01035"></a><span class="lineno"> 1035</span>&#160;        <span class="comment">// @see http://paulbourke.net/geometry/pointlineplane/</span></div>
+<div class="line"><a name="l01036"></a><span class="lineno"> 1036</span>&#160;        <span class="keywordtype">double</span> d1343,d4321,d1321,d4343,d2121;</div>
+<div class="line"><a name="l01037"></a><span class="lineno"> 1037</span>&#160;  <span class="keywordtype">double</span> numer,denom;</div>
+<div class="line"><a name="l01038"></a><span class="lineno"> 1038</span>&#160;        <span class="comment">// p13 is a vector between two points on different lines</span></div>
+<div class="line"><a name="l01039"></a><span class="lineno"> 1039</span>&#160;  <a class="code" href="class_c_w_1_1_vector3_d.html">Vector3D</a> p13 = this-&gt;point - other_line.point;</div>
+<div class="line"><a name="l01040"></a><span class="lineno"> 1040</span>&#160;  <a class="code" href="class_c_w_1_1_vector3_d.html">Vector3D</a> p43 = other_line.direction;</div>
+<div class="line"><a name="l01041"></a><span class="lineno"> 1041</span>&#160;  <span class="keywordflow">if</span> (std::abs(p43.x) &lt; EPSILON &amp;&amp; std::abs(p43.y) &lt; EPSILON &amp;&amp; std::abs(p43.z) &lt; EPSILON) {</div>
+<div class="line"><a name="l01042"></a><span class="lineno"> 1042</span>&#160;        <span class="comment">// The two lines are along each other</span></div>
+<div class="line"><a name="l01043"></a><span class="lineno"> 1043</span>&#160;    <span class="keywordflow">return</span> std::pair&lt;Point3D,Point3D&gt; (<a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a>(<span class="keyword">false</span>), <a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a>(<span class="keyword">false</span>));</div>
+<div class="line"><a name="l01044"></a><span class="lineno"> 1044</span>&#160;  }</div>
+<div class="line"><a name="l01045"></a><span class="lineno"> 1045</span>&#160;  <a class="code" href="class_c_w_1_1_vector3_d.html">Vector3D</a> p21 = this-&gt;direction;</div>
+<div class="line"><a name="l01046"></a><span class="lineno"> 1046</span>&#160;  <span class="comment">//if (std::abs(p21.x) &lt; EPSILON/2 &amp;&amp; std::abs(p21.y) &lt; EPSILON/2 &amp;&amp; std::abs(p21.z) &lt; EPSILON/2) {</span></div>
+<div class="line"><a name="l01047"></a><span class="lineno"> 1047</span>&#160;        <span class="comment">// The vector is zero - should not happen</span></div>
+<div class="line"><a name="l01048"></a><span class="lineno"> 1048</span>&#160;  <span class="comment">//  return std::pair&lt;Point3D,Point3D&gt; (Point3D(false), Point3D(false));</span></div>
+<div class="line"><a name="l01049"></a><span class="lineno"> 1049</span>&#160;  <span class="comment">//}</span></div>
+<div class="line"><a name="l01050"></a><span class="lineno"> 1050</span>&#160;  d1343 = p13.x * p43.x + p13.y * p43.y + p13.z * p43.z;</div>
+<div class="line"><a name="l01051"></a><span class="lineno"> 1051</span>&#160;  d4321 = p43.x * p21.x + p43.y * p21.y + p43.z * p21.z;</div>
+<div class="line"><a name="l01052"></a><span class="lineno"> 1052</span>&#160;  d1321 = p13.x * p21.x + p13.y * p21.y + p13.z * p21.z;</div>
+<div class="line"><a name="l01053"></a><span class="lineno"> 1053</span>&#160;  d4343 = p43.x * p43.x + p43.y * p43.y + p43.z * p43.z;</div>
+<div class="line"><a name="l01054"></a><span class="lineno"> 1054</span>&#160;  d2121 = p21.x * p21.x + p21.y * p21.y + p21.z * p21.z;</div>
+<div class="line"><a name="l01055"></a><span class="lineno"> 1055</span>&#160;        </div>
+<div class="line"><a name="l01056"></a><span class="lineno"> 1056</span>&#160;  denom = d2121 * d4343 - d4321 * d4321;</div>
+<div class="line"><a name="l01057"></a><span class="lineno"> 1057</span>&#160;  <span class="keywordflow">if</span> (std::abs(denom) &lt; EPSILON) {</div>
+<div class="line"><a name="l01058"></a><span class="lineno"> 1058</span>&#160;        <span class="comment">// Lines are parallel</span></div>
+<div class="line"><a name="l01059"></a><span class="lineno"> 1059</span>&#160;    <span class="keywordflow">return</span> std::pair&lt;Point3D,Point3D&gt; (<a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a>(<span class="keyword">false</span>), <a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a>(<span class="keyword">false</span>));</div>
+<div class="line"><a name="l01060"></a><span class="lineno"> 1060</span>&#160;  }</div>
+<div class="line"><a name="l01061"></a><span class="lineno"> 1061</span>&#160;  numer = d1343 * d4321 - d1321 * d4343;</div>
+<div class="line"><a name="l01062"></a><span class="lineno"> 1062</span>&#160;</div>
+<div class="line"><a name="l01063"></a><span class="lineno"> 1063</span>&#160;  <span class="keywordtype">double</span> mua = numer / denom;</div>
+<div class="line"><a name="l01064"></a><span class="lineno"> 1064</span>&#160;  <span class="keywordtype">double</span> mub = (d1343 + d4321 * mua) / d4343;</div>
+<div class="line"><a name="l01065"></a><span class="lineno"> 1065</span>&#160;        <a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a> pa = this-&gt;point + (this-&gt;direction * mua);</div>
+<div class="line"><a name="l01066"></a><span class="lineno"> 1066</span>&#160;        <a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a> pb = other_line.point + (other_line.direction * mub);</div>
+<div class="line"><a name="l01067"></a><span class="lineno"> 1067</span>&#160;  <span class="keywordflow">return</span> std::pair&lt;Point3D,Point3D&gt; (pa, pb);</div>
+<div class="line"><a name="l01068"></a><span class="lineno"> 1068</span>&#160;}</div>
+<div class="line"><a name="l01069"></a><span class="lineno"> 1069</span>&#160;</div>
+<div class="line"><a name="l01070"></a><span class="lineno"> 1070</span>&#160;</div>
+<div class="line"><a name="l01071"></a><span class="lineno"><a class="line" href="class_c_w_1_1_line3_d.html#a33ba5155b2c75c1de8e18bd813e1b17a"> 1071</a></span>&#160;<a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a> <a class="code" href="class_c_w_1_1_line3_d.html#a33ba5155b2c75c1de8e18bd813e1b17a">Line3D::closest_point</a>(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a>&amp; point)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l01072"></a><span class="lineno"> 1072</span>&#160;        <span class="keywordflow">if</span> (!point) {</div>
+<div class="line"><a name="l01073"></a><span class="lineno"> 1073</span>&#160;        <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;CW::Line3D::closest_point(): given point is null&quot;</span>);</div>
 <div class="line"><a name="l01074"></a><span class="lineno"> 1074</span>&#160;  }</div>
-<div class="line"><a name="l01075"></a><span class="lineno"> 1075</span>&#160;        <span class="comment">// @see http://paulbourke.net/geometry/pointlineplane/</span></div>
-<div class="line"><a name="l01076"></a><span class="lineno"> 1076</span>&#160;        <span class="comment">// [P3 - P1 - u(P2 - P1)] dot (P2 - P1) = 0 - where U is the factor</span></div>
-<div class="line"><a name="l01077"></a><span class="lineno"> 1077</span>&#160;        <a class="code" href="class_c_w_1_1_vector3_d.html">Vector3D</a> start_to_point = point - m_point;</div>
-<div class="line"><a name="l01078"></a><span class="lineno"> 1078</span>&#160;        <span class="keywordtype">double</span> factor = start_to_point.<a class="code" href="class_c_w_1_1_vector3_d.html#ad7e24a0135d6ab734819a6be8e49e5ad">dot</a>(m_direction);</div>
-<div class="line"><a name="l01079"></a><span class="lineno"> 1079</span>&#160;        <span class="keywordflow">return</span> m_point + (factor * m_direction);</div>
-<div class="line"><a name="l01080"></a><span class="lineno"> 1080</span>&#160;}</div>
-<div class="line"><a name="l01081"></a><span class="lineno"> 1081</span>&#160;</div>
-<div class="line"><a name="l01082"></a><span class="lineno"> 1082</span>&#160;</div>
-<div class="line"><a name="l01083"></a><span class="lineno"><a class="line" href="class_c_w_1_1_line3_d.html#a3f1ba7a20375f60bb07a4c740084e87d"> 1083</a></span>&#160;<span class="keywordtype">double</span> <a class="code" href="class_c_w_1_1_line3_d.html#a3f1ba7a20375f60bb07a4c740084e87d">Line3D::distance</a>(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a>&amp; point)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l01084"></a><span class="lineno"> 1084</span>&#160;        <a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a> <a class="code" href="class_c_w_1_1_line3_d.html#a33ba5155b2c75c1de8e18bd813e1b17a">closest_point</a> = this-&gt;<a class="code" href="class_c_w_1_1_line3_d.html#a33ba5155b2c75c1de8e18bd813e1b17a">closest_point</a>(point);</div>
-<div class="line"><a name="l01085"></a><span class="lineno"> 1085</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="class_c_w_1_1_vector3_d.html">Vector3D</a>(point - closest_point).length();</div>
-<div class="line"><a name="l01086"></a><span class="lineno"> 1086</span>&#160;}</div>
-<div class="line"><a name="l01087"></a><span class="lineno"> 1087</span>&#160;</div>
-<div class="line"><a name="l01088"></a><span class="lineno"> 1088</span>&#160;</div>
-<div class="line"><a name="l01089"></a><span class="lineno"><a class="line" href="class_c_w_1_1_line3_d.html#a75d5e68f09a97ca21b1b9b8e8173096b"> 1089</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="class_c_w_1_1_line3_d.html#a75d5e68f09a97ca21b1b9b8e8173096b">Line3D::on_line</a>(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a>&amp; test_point)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l01090"></a><span class="lineno"> 1090</span>&#160;        <span class="keywordflow">if</span> (!test_point) {</div>
-<div class="line"><a name="l01091"></a><span class="lineno"> 1091</span>&#160;        <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;CW::Line3D::on_line(): given point is null&quot;</span>);</div>
-<div class="line"><a name="l01092"></a><span class="lineno"> 1092</span>&#160;  }</div>
-<div class="line"><a name="l01093"></a><span class="lineno"> 1093</span>&#160;        <span class="keywordflow">if</span> (!(*<span class="keyword">this</span>)) {</div>
-<div class="line"><a name="l01094"></a><span class="lineno"> 1094</span>&#160;        <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::Line3D::on_line(): this line is null&quot;</span>);</div>
+<div class="line"><a name="l01075"></a><span class="lineno"> 1075</span>&#160;        <span class="keywordflow">if</span> (!(*<span class="keyword">this</span>)) {</div>
+<div class="line"><a name="l01076"></a><span class="lineno"> 1076</span>&#160;        <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::Line3D::closest_point(): this line is null&quot;</span>);</div>
+<div class="line"><a name="l01077"></a><span class="lineno"> 1077</span>&#160;  }</div>
+<div class="line"><a name="l01078"></a><span class="lineno"> 1078</span>&#160;        <span class="comment">// @see http://paulbourke.net/geometry/pointlineplane/</span></div>
+<div class="line"><a name="l01079"></a><span class="lineno"> 1079</span>&#160;        <span class="comment">// [P3 - P1 - u(P2 - P1)] dot (P2 - P1) = 0 - where U is the factor</span></div>
+<div class="line"><a name="l01080"></a><span class="lineno"> 1080</span>&#160;        <a class="code" href="class_c_w_1_1_vector3_d.html">Vector3D</a> start_to_point = point - m_point;</div>
+<div class="line"><a name="l01081"></a><span class="lineno"> 1081</span>&#160;        <span class="keywordtype">double</span> factor = start_to_point.<a class="code" href="class_c_w_1_1_vector3_d.html#ad7e24a0135d6ab734819a6be8e49e5ad">dot</a>(m_direction);</div>
+<div class="line"><a name="l01082"></a><span class="lineno"> 1082</span>&#160;        <span class="keywordflow">return</span> m_point + (factor * m_direction);</div>
+<div class="line"><a name="l01083"></a><span class="lineno"> 1083</span>&#160;}</div>
+<div class="line"><a name="l01084"></a><span class="lineno"> 1084</span>&#160;</div>
+<div class="line"><a name="l01085"></a><span class="lineno"> 1085</span>&#160;</div>
+<div class="line"><a name="l01086"></a><span class="lineno"><a class="line" href="class_c_w_1_1_line3_d.html#a3f1ba7a20375f60bb07a4c740084e87d"> 1086</a></span>&#160;<span class="keywordtype">double</span> <a class="code" href="class_c_w_1_1_line3_d.html#a3f1ba7a20375f60bb07a4c740084e87d">Line3D::distance</a>(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a>&amp; point)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l01087"></a><span class="lineno"> 1087</span>&#160;        <a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a> <a class="code" href="class_c_w_1_1_line3_d.html#a33ba5155b2c75c1de8e18bd813e1b17a">closest_point</a> = this-&gt;<a class="code" href="class_c_w_1_1_line3_d.html#a33ba5155b2c75c1de8e18bd813e1b17a">closest_point</a>(point);</div>
+<div class="line"><a name="l01088"></a><span class="lineno"> 1088</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="class_c_w_1_1_vector3_d.html">Vector3D</a>(point - closest_point).length();</div>
+<div class="line"><a name="l01089"></a><span class="lineno"> 1089</span>&#160;}</div>
+<div class="line"><a name="l01090"></a><span class="lineno"> 1090</span>&#160;</div>
+<div class="line"><a name="l01091"></a><span class="lineno"> 1091</span>&#160;</div>
+<div class="line"><a name="l01092"></a><span class="lineno"><a class="line" href="class_c_w_1_1_line3_d.html#a75d5e68f09a97ca21b1b9b8e8173096b"> 1092</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="class_c_w_1_1_line3_d.html#a75d5e68f09a97ca21b1b9b8e8173096b">Line3D::on_line</a>(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a>&amp; test_point)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l01093"></a><span class="lineno"> 1093</span>&#160;        <span class="keywordflow">if</span> (!test_point) {</div>
+<div class="line"><a name="l01094"></a><span class="lineno"> 1094</span>&#160;        <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;CW::Line3D::on_line(): given point is null&quot;</span>);</div>
 <div class="line"><a name="l01095"></a><span class="lineno"> 1095</span>&#160;  }</div>
-<div class="line"><a name="l01096"></a><span class="lineno"> 1096</span>&#160;  <span class="keywordtype">double</span> factor;</div>
-<div class="line"><a name="l01097"></a><span class="lineno"> 1097</span>&#160;  <span class="keyword">enum class</span> OnLineFactorCoords {</div>
-<div class="line"><a name="l01098"></a><span class="lineno"> 1098</span>&#160;        X,</div>
-<div class="line"><a name="l01099"></a><span class="lineno"> 1099</span>&#160;    Y,</div>
-<div class="line"><a name="l01100"></a><span class="lineno"> 1100</span>&#160;    Z</div>
-<div class="line"><a name="l01101"></a><span class="lineno"> 1101</span>&#160;  };</div>
-<div class="line"><a name="l01102"></a><span class="lineno"> 1102</span>&#160;  OnLineFactorCoords factor_val; <span class="comment">// This is to save extra calculations.</span></div>
-<div class="line"><a name="l01103"></a><span class="lineno"> 1103</span>&#160;  <span class="comment">// To get the most accurate factor, use one of the larger values among x, y OR z to calculate the factor.  The smallest possible value for all three x, y, z to have (given that direction is a unit vector) is 1 / sqrt(3) = 0.577</span></div>
-<div class="line"><a name="l01104"></a><span class="lineno"> 1104</span>&#160;  <span class="keywordflow">if</span> (this-&gt;direction.x &gt; 0.56) {</div>
-<div class="line"><a name="l01105"></a><span class="lineno"> 1105</span>&#160;                <span class="comment">// Get the factor with which to multiply the x value, and see if it is the same for y and z values too.</span></div>
-<div class="line"><a name="l01106"></a><span class="lineno"> 1106</span>&#160;    factor = (test_point.x - this-&gt;point.x) / this-&gt;direction.x;</div>
-<div class="line"><a name="l01107"></a><span class="lineno"> 1107</span>&#160;    factor_val = OnLineFactorCoords::X;</div>
-<div class="line"><a name="l01108"></a><span class="lineno"> 1108</span>&#160;  }</div>
-<div class="line"><a name="l01109"></a><span class="lineno"> 1109</span>&#160;  <span class="keywordflow">else</span> <span class="keywordflow">if</span> (this-&gt;direction.y &gt; 0.56) {</div>
-<div class="line"><a name="l01110"></a><span class="lineno"> 1110</span>&#160;    factor = (test_point.y - this-&gt;point.y) / this-&gt;direction.y;</div>
-<div class="line"><a name="l01111"></a><span class="lineno"> 1111</span>&#160;    factor_val = OnLineFactorCoords::Y;</div>
-<div class="line"><a name="l01112"></a><span class="lineno"> 1112</span>&#160;        }</div>
-<div class="line"><a name="l01113"></a><span class="lineno"> 1113</span>&#160;  <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l01114"></a><span class="lineno"> 1114</span>&#160;    factor = (test_point.z - this-&gt;point.z) / this-&gt;direction.z;</div>
-<div class="line"><a name="l01115"></a><span class="lineno"> 1115</span>&#160;    factor_val = OnLineFactorCoords::Z;</div>
-<div class="line"><a name="l01116"></a><span class="lineno"> 1116</span>&#160;  }</div>
-<div class="line"><a name="l01117"></a><span class="lineno"> 1117</span>&#160;  <span class="keywordflow">if</span> (factor_val != OnLineFactorCoords::X) {</div>
-<div class="line"><a name="l01118"></a><span class="lineno"> 1118</span>&#160;    <span class="keywordtype">double</span> x_test = this-&gt;point.x + (this-&gt;direction.x * factor);</div>
-<div class="line"><a name="l01119"></a><span class="lineno"> 1119</span>&#160;    <span class="keywordflow">if</span> (std::abs(x_test - test_point.x) &gt; EPSILON) {</div>
-<div class="line"><a name="l01120"></a><span class="lineno"> 1120</span>&#160;      <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l01121"></a><span class="lineno"> 1121</span>&#160;    }</div>
-<div class="line"><a name="l01122"></a><span class="lineno"> 1122</span>&#160;  }</div>
-<div class="line"><a name="l01123"></a><span class="lineno"> 1123</span>&#160;  <span class="keywordflow">if</span> (factor_val != OnLineFactorCoords::Y) {</div>
-<div class="line"><a name="l01124"></a><span class="lineno"> 1124</span>&#160;  <span class="keywordtype">double</span> y_test = this-&gt;point.y + (this-&gt;direction.y * factor);</div>
-<div class="line"><a name="l01125"></a><span class="lineno"> 1125</span>&#160;        <span class="keywordflow">if</span> (std::abs(y_test - test_point.y) &gt; EPSILON) {</div>
-<div class="line"><a name="l01126"></a><span class="lineno"> 1126</span>&#160;         <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l01127"></a><span class="lineno"> 1127</span>&#160;        }</div>
-<div class="line"><a name="l01128"></a><span class="lineno"> 1128</span>&#160;  }</div>
-<div class="line"><a name="l01129"></a><span class="lineno"> 1129</span>&#160;  <span class="keywordflow">if</span> (factor_val != OnLineFactorCoords::Z) {</div>
-<div class="line"><a name="l01130"></a><span class="lineno"> 1130</span>&#160;    <span class="keywordtype">double</span> z_test = this-&gt;point.z + (this-&gt;direction.z * factor);</div>
-<div class="line"><a name="l01131"></a><span class="lineno"> 1131</span>&#160;    <span class="keywordflow">if</span> (std::abs(z_test - test_point.z) &gt; EPSILON) {</div>
-<div class="line"><a name="l01132"></a><span class="lineno"> 1132</span>&#160;      <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l01133"></a><span class="lineno"> 1133</span>&#160;    }</div>
-<div class="line"><a name="l01134"></a><span class="lineno"> 1134</span>&#160;  }</div>
-<div class="line"><a name="l01135"></a><span class="lineno"> 1135</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l01136"></a><span class="lineno"> 1136</span>&#160;}</div>
-<div class="line"><a name="l01137"></a><span class="lineno"> 1137</span>&#160;</div>
-<div class="line"><a name="l01138"></a><span class="lineno"> 1138</span>&#160;</div>
-<div class="line"><a name="l01139"></a><span class="lineno"><a class="line" href="class_c_w_1_1_line3_d.html#a5ad79cc396a93fa1beb590ad74d6b999"> 1139</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="class_c_w_1_1_line3_d.html#a5ad79cc396a93fa1beb590ad74d6b999">Line3D::on_line_segment</a>(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a>&amp; point_a, <span class="keyword">const</span> <a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a>&amp; point_b, <span class="keyword">const</span> <a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a>&amp; test_point) {</div>
-<div class="line"><a name="l01140"></a><span class="lineno"> 1140</span>&#160;        <span class="keywordflow">if</span> (!point_a || !test_point || !point_b) {</div>
-<div class="line"><a name="l01141"></a><span class="lineno"> 1141</span>&#160;        <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;CW::Line3D::on_line_segment(): given point is null&quot;</span>);</div>
-<div class="line"><a name="l01142"></a><span class="lineno"> 1142</span>&#160;  }</div>
-<div class="line"><a name="l01143"></a><span class="lineno"> 1143</span>&#160;        <span class="keywordflow">if</span> (point_a == point_b) {</div>
-<div class="line"><a name="l01144"></a><span class="lineno"> 1144</span>&#160;        <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;CW::Line3D::on_line_segment(): given points are equal&quot;</span>);</div>
+<div class="line"><a name="l01096"></a><span class="lineno"> 1096</span>&#160;        <span class="keywordflow">if</span> (!(*<span class="keyword">this</span>)) {</div>
+<div class="line"><a name="l01097"></a><span class="lineno"> 1097</span>&#160;        <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::Line3D::on_line(): this line is null&quot;</span>);</div>
+<div class="line"><a name="l01098"></a><span class="lineno"> 1098</span>&#160;  }</div>
+<div class="line"><a name="l01099"></a><span class="lineno"> 1099</span>&#160;  <span class="keywordtype">double</span> factor;</div>
+<div class="line"><a name="l01100"></a><span class="lineno"> 1100</span>&#160;  <span class="keyword">enum class</span> OnLineFactorCoords {</div>
+<div class="line"><a name="l01101"></a><span class="lineno"> 1101</span>&#160;        X,</div>
+<div class="line"><a name="l01102"></a><span class="lineno"> 1102</span>&#160;    Y,</div>
+<div class="line"><a name="l01103"></a><span class="lineno"> 1103</span>&#160;    Z</div>
+<div class="line"><a name="l01104"></a><span class="lineno"> 1104</span>&#160;  };</div>
+<div class="line"><a name="l01105"></a><span class="lineno"> 1105</span>&#160;  OnLineFactorCoords factor_val; <span class="comment">// This is to save extra calculations.</span></div>
+<div class="line"><a name="l01106"></a><span class="lineno"> 1106</span>&#160;  <span class="comment">// To get the most accurate factor, use one of the larger values among x, y OR z to calculate the factor.  The smallest possible value for all three x, y, z to have (given that direction is a unit vector) is 1 / sqrt(3) = 0.577</span></div>
+<div class="line"><a name="l01107"></a><span class="lineno"> 1107</span>&#160;  <span class="keywordflow">if</span> (this-&gt;direction.x &gt; 0.56) {</div>
+<div class="line"><a name="l01108"></a><span class="lineno"> 1108</span>&#160;                <span class="comment">// Get the factor with which to multiply the x value, and see if it is the same for y and z values too.</span></div>
+<div class="line"><a name="l01109"></a><span class="lineno"> 1109</span>&#160;    factor = (test_point.x - this-&gt;point.x) / this-&gt;direction.x;</div>
+<div class="line"><a name="l01110"></a><span class="lineno"> 1110</span>&#160;    factor_val = OnLineFactorCoords::X;</div>
+<div class="line"><a name="l01111"></a><span class="lineno"> 1111</span>&#160;  }</div>
+<div class="line"><a name="l01112"></a><span class="lineno"> 1112</span>&#160;  <span class="keywordflow">else</span> <span class="keywordflow">if</span> (this-&gt;direction.y &gt; 0.56) {</div>
+<div class="line"><a name="l01113"></a><span class="lineno"> 1113</span>&#160;    factor = (test_point.y - this-&gt;point.y) / this-&gt;direction.y;</div>
+<div class="line"><a name="l01114"></a><span class="lineno"> 1114</span>&#160;    factor_val = OnLineFactorCoords::Y;</div>
+<div class="line"><a name="l01115"></a><span class="lineno"> 1115</span>&#160;        }</div>
+<div class="line"><a name="l01116"></a><span class="lineno"> 1116</span>&#160;  <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l01117"></a><span class="lineno"> 1117</span>&#160;    factor = (test_point.z - this-&gt;point.z) / this-&gt;direction.z;</div>
+<div class="line"><a name="l01118"></a><span class="lineno"> 1118</span>&#160;    factor_val = OnLineFactorCoords::Z;</div>
+<div class="line"><a name="l01119"></a><span class="lineno"> 1119</span>&#160;  }</div>
+<div class="line"><a name="l01120"></a><span class="lineno"> 1120</span>&#160;  <span class="keywordflow">if</span> (factor_val != OnLineFactorCoords::X) {</div>
+<div class="line"><a name="l01121"></a><span class="lineno"> 1121</span>&#160;    <span class="keywordtype">double</span> x_test = this-&gt;point.x + (this-&gt;direction.x * factor);</div>
+<div class="line"><a name="l01122"></a><span class="lineno"> 1122</span>&#160;    <span class="keywordflow">if</span> (std::abs(x_test - test_point.x) &gt; EPSILON) {</div>
+<div class="line"><a name="l01123"></a><span class="lineno"> 1123</span>&#160;      <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l01124"></a><span class="lineno"> 1124</span>&#160;    }</div>
+<div class="line"><a name="l01125"></a><span class="lineno"> 1125</span>&#160;  }</div>
+<div class="line"><a name="l01126"></a><span class="lineno"> 1126</span>&#160;  <span class="keywordflow">if</span> (factor_val != OnLineFactorCoords::Y) {</div>
+<div class="line"><a name="l01127"></a><span class="lineno"> 1127</span>&#160;  <span class="keywordtype">double</span> y_test = this-&gt;point.y + (this-&gt;direction.y * factor);</div>
+<div class="line"><a name="l01128"></a><span class="lineno"> 1128</span>&#160;        <span class="keywordflow">if</span> (std::abs(y_test - test_point.y) &gt; EPSILON) {</div>
+<div class="line"><a name="l01129"></a><span class="lineno"> 1129</span>&#160;         <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l01130"></a><span class="lineno"> 1130</span>&#160;        }</div>
+<div class="line"><a name="l01131"></a><span class="lineno"> 1131</span>&#160;  }</div>
+<div class="line"><a name="l01132"></a><span class="lineno"> 1132</span>&#160;  <span class="keywordflow">if</span> (factor_val != OnLineFactorCoords::Z) {</div>
+<div class="line"><a name="l01133"></a><span class="lineno"> 1133</span>&#160;    <span class="keywordtype">double</span> z_test = this-&gt;point.z + (this-&gt;direction.z * factor);</div>
+<div class="line"><a name="l01134"></a><span class="lineno"> 1134</span>&#160;    <span class="keywordflow">if</span> (std::abs(z_test - test_point.z) &gt; EPSILON) {</div>
+<div class="line"><a name="l01135"></a><span class="lineno"> 1135</span>&#160;      <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l01136"></a><span class="lineno"> 1136</span>&#160;    }</div>
+<div class="line"><a name="l01137"></a><span class="lineno"> 1137</span>&#160;  }</div>
+<div class="line"><a name="l01138"></a><span class="lineno"> 1138</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l01139"></a><span class="lineno"> 1139</span>&#160;}</div>
+<div class="line"><a name="l01140"></a><span class="lineno"> 1140</span>&#160;</div>
+<div class="line"><a name="l01141"></a><span class="lineno"> 1141</span>&#160;</div>
+<div class="line"><a name="l01142"></a><span class="lineno"><a class="line" href="class_c_w_1_1_line3_d.html#a5ad79cc396a93fa1beb590ad74d6b999"> 1142</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="class_c_w_1_1_line3_d.html#a5ad79cc396a93fa1beb590ad74d6b999">Line3D::on_line_segment</a>(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a>&amp; point_a, <span class="keyword">const</span> <a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a>&amp; point_b, <span class="keyword">const</span> <a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a>&amp; test_point) {</div>
+<div class="line"><a name="l01143"></a><span class="lineno"> 1143</span>&#160;        <span class="keywordflow">if</span> (!point_a || !test_point || !point_b) {</div>
+<div class="line"><a name="l01144"></a><span class="lineno"> 1144</span>&#160;        <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;CW::Line3D::on_line_segment(): given point is null&quot;</span>);</div>
 <div class="line"><a name="l01145"></a><span class="lineno"> 1145</span>&#160;  }</div>
-<div class="line"><a name="l01146"></a><span class="lineno"> 1146</span>&#160;  <span class="comment">// From: https://stackoverflow.com/questions/328107/how-can-you-determine-a-point-is-between-two-other-points-on-a-line-segment</span></div>
-<div class="line"><a name="l01147"></a><span class="lineno"> 1147</span>&#160;  <a class="code" href="class_c_w_1_1_vector3_d.html">Vector3D</a> a_to_b = point_b - point_a;</div>
-<div class="line"><a name="l01148"></a><span class="lineno"> 1148</span>&#160;  <a class="code" href="class_c_w_1_1_vector3_d.html">Vector3D</a> a_to_c = test_point - point_a;</div>
-<div class="line"><a name="l01149"></a><span class="lineno"> 1149</span>&#160;  <span class="keywordflow">if</span> (a_to_c == <a class="code" href="class_c_w_1_1_vector3_d.html#ac4017f8eb72033ce3b5d978b2e493ac2">Vector3D::zero_vector</a>()) {</div>
-<div class="line"><a name="l01150"></a><span class="lineno"> 1150</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l01151"></a><span class="lineno"> 1151</span>&#160;  }</div>
-<div class="line"><a name="l01152"></a><span class="lineno"> 1152</span>&#160;  <a class="code" href="class_c_w_1_1_vector3_d.html">Vector3D</a> crossproduct = a_to_b.unit().<a class="code" href="class_c_w_1_1_vector3_d.html#a605fc20adf72d08fc432b9c499b8ff2c">cross</a>(a_to_c.unit());</div>
-<div class="line"><a name="l01153"></a><span class="lineno"> 1153</span>&#160;  <span class="keywordflow">if</span> (fabs(crossproduct.length()) &gt; EPSILON) {</div>
-<div class="line"><a name="l01154"></a><span class="lineno"> 1154</span>&#160;        <span class="comment">// Not aligned</span></div>
-<div class="line"><a name="l01155"></a><span class="lineno"> 1155</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l01156"></a><span class="lineno"> 1156</span>&#160;  }</div>
-<div class="line"><a name="l01157"></a><span class="lineno"> 1157</span>&#160;        <span class="comment">// Check that the distance matches.</span></div>
-<div class="line"><a name="l01158"></a><span class="lineno"> 1158</span>&#160;  <span class="keywordtype">double</span> dotproduct = a_to_b.<a class="code" href="class_c_w_1_1_vector3_d.html#ad7e24a0135d6ab734819a6be8e49e5ad">dot</a>(a_to_c);</div>
-<div class="line"><a name="l01159"></a><span class="lineno"> 1159</span>&#160;  <span class="keywordflow">if</span> (dotproduct &lt; EPSILON) {</div>
-<div class="line"><a name="l01160"></a><span class="lineno"> 1160</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l01161"></a><span class="lineno"> 1161</span>&#160;  }</div>
-<div class="line"><a name="l01162"></a><span class="lineno"> 1162</span>&#160;</div>
-<div class="line"><a name="l01163"></a><span class="lineno"> 1163</span>&#160;  <span class="keywordtype">double</span> squaredlengthba = pow(a_to_b.length()+EPSILON, 2);</div>
-<div class="line"><a name="l01164"></a><span class="lineno"> 1164</span>&#160;  <span class="keywordflow">if</span> (dotproduct &gt; squaredlengthba) {</div>
-<div class="line"><a name="l01165"></a><span class="lineno"> 1165</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l01166"></a><span class="lineno"> 1166</span>&#160;  }</div>
-<div class="line"><a name="l01167"></a><span class="lineno"> 1167</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l01168"></a><span class="lineno"> 1168</span>&#160;}</div>
-<div class="line"><a name="l01169"></a><span class="lineno"> 1169</span>&#160;</div>
-<div class="line"><a name="l01170"></a><span class="lineno"> 1170</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l01171"></a><span class="lineno"> 1171</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l01172"></a><span class="lineno"> 1172</span>&#160;<span class="comment">* Returns true if the Line or vector given is parallel to this line.</span></div>
-<div class="line"><a name="l01173"></a><span class="lineno"> 1173</span>&#160;<span class="comment">*/</span></div>
-<div class="line"><a name="l01174"></a><span class="lineno"><a class="line" href="class_c_w_1_1_line3_d.html#a4b2d765bf419a46068e3d3680f1f981c"> 1174</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="class_c_w_1_1_line3_d.html#a4b2d765bf419a46068e3d3680f1f981c">Line3D::parallel</a>(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_line3_d.html">Line3D</a> &amp;line)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l01175"></a><span class="lineno"> 1175</span>&#160;        <span class="keywordflow">if</span> (!line) {</div>
-<div class="line"><a name="l01176"></a><span class="lineno"> 1176</span>&#160;        <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;CW::Line3D::parallel(): given line is null&quot;</span>);</div>
-<div class="line"><a name="l01177"></a><span class="lineno"> 1177</span>&#160;  }</div>
-<div class="line"><a name="l01178"></a><span class="lineno"> 1178</span>&#160;        <span class="keywordflow">if</span> (!(*<span class="keyword">this</span>)) {</div>
-<div class="line"><a name="l01179"></a><span class="lineno"> 1179</span>&#160;        <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::Line3D::parallel(): this line is null&quot;</span>);</div>
+<div class="line"><a name="l01146"></a><span class="lineno"> 1146</span>&#160;        <span class="keywordflow">if</span> (point_a == point_b) {</div>
+<div class="line"><a name="l01147"></a><span class="lineno"> 1147</span>&#160;        <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;CW::Line3D::on_line_segment(): given points are equal&quot;</span>);</div>
+<div class="line"><a name="l01148"></a><span class="lineno"> 1148</span>&#160;  }</div>
+<div class="line"><a name="l01149"></a><span class="lineno"> 1149</span>&#160;  <span class="comment">// From: https://stackoverflow.com/questions/328107/how-can-you-determine-a-point-is-between-two-other-points-on-a-line-segment</span></div>
+<div class="line"><a name="l01150"></a><span class="lineno"> 1150</span>&#160;  <a class="code" href="class_c_w_1_1_vector3_d.html">Vector3D</a> a_to_b = point_b - point_a;</div>
+<div class="line"><a name="l01151"></a><span class="lineno"> 1151</span>&#160;  <a class="code" href="class_c_w_1_1_vector3_d.html">Vector3D</a> a_to_c = test_point - point_a;</div>
+<div class="line"><a name="l01152"></a><span class="lineno"> 1152</span>&#160;  <span class="keywordflow">if</span> (a_to_c == <a class="code" href="class_c_w_1_1_vector3_d.html#ac4017f8eb72033ce3b5d978b2e493ac2">Vector3D::zero_vector</a>()) {</div>
+<div class="line"><a name="l01153"></a><span class="lineno"> 1153</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l01154"></a><span class="lineno"> 1154</span>&#160;  }</div>
+<div class="line"><a name="l01155"></a><span class="lineno"> 1155</span>&#160;  <a class="code" href="class_c_w_1_1_vector3_d.html">Vector3D</a> crossproduct = a_to_b.unit().<a class="code" href="class_c_w_1_1_vector3_d.html#a605fc20adf72d08fc432b9c499b8ff2c">cross</a>(a_to_c.unit());</div>
+<div class="line"><a name="l01156"></a><span class="lineno"> 1156</span>&#160;  <span class="keywordflow">if</span> (fabs(crossproduct.length()) &gt; EPSILON) {</div>
+<div class="line"><a name="l01157"></a><span class="lineno"> 1157</span>&#160;        <span class="comment">// Not aligned</span></div>
+<div class="line"><a name="l01158"></a><span class="lineno"> 1158</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l01159"></a><span class="lineno"> 1159</span>&#160;  }</div>
+<div class="line"><a name="l01160"></a><span class="lineno"> 1160</span>&#160;        <span class="comment">// Check that the distance matches.</span></div>
+<div class="line"><a name="l01161"></a><span class="lineno"> 1161</span>&#160;  <span class="keywordtype">double</span> dotproduct = a_to_b.<a class="code" href="class_c_w_1_1_vector3_d.html#ad7e24a0135d6ab734819a6be8e49e5ad">dot</a>(a_to_c);</div>
+<div class="line"><a name="l01162"></a><span class="lineno"> 1162</span>&#160;  <span class="keywordflow">if</span> (dotproduct &lt; EPSILON) {</div>
+<div class="line"><a name="l01163"></a><span class="lineno"> 1163</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l01164"></a><span class="lineno"> 1164</span>&#160;  }</div>
+<div class="line"><a name="l01165"></a><span class="lineno"> 1165</span>&#160;</div>
+<div class="line"><a name="l01166"></a><span class="lineno"> 1166</span>&#160;  <span class="keywordtype">double</span> squaredlengthba = pow(a_to_b.length()+EPSILON, 2);</div>
+<div class="line"><a name="l01167"></a><span class="lineno"> 1167</span>&#160;  <span class="keywordflow">if</span> (dotproduct &gt; squaredlengthba) {</div>
+<div class="line"><a name="l01168"></a><span class="lineno"> 1168</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l01169"></a><span class="lineno"> 1169</span>&#160;  }</div>
+<div class="line"><a name="l01170"></a><span class="lineno"> 1170</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l01171"></a><span class="lineno"> 1171</span>&#160;}</div>
+<div class="line"><a name="l01172"></a><span class="lineno"> 1172</span>&#160;</div>
+<div class="line"><a name="l01173"></a><span class="lineno"> 1173</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l01174"></a><span class="lineno"> 1174</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l01175"></a><span class="lineno"> 1175</span>&#160;<span class="comment">* Returns true if the Line or vector given is parallel to this line.</span></div>
+<div class="line"><a name="l01176"></a><span class="lineno"> 1176</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l01177"></a><span class="lineno"><a class="line" href="class_c_w_1_1_line3_d.html#a4b2d765bf419a46068e3d3680f1f981c"> 1177</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="class_c_w_1_1_line3_d.html#a4b2d765bf419a46068e3d3680f1f981c">Line3D::parallel</a>(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_line3_d.html">Line3D</a> &amp;line)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l01178"></a><span class="lineno"> 1178</span>&#160;        <span class="keywordflow">if</span> (!line) {</div>
+<div class="line"><a name="l01179"></a><span class="lineno"> 1179</span>&#160;        <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;CW::Line3D::parallel(): given line is null&quot;</span>);</div>
 <div class="line"><a name="l01180"></a><span class="lineno"> 1180</span>&#160;  }</div>
-<div class="line"><a name="l01181"></a><span class="lineno"> 1181</span>&#160;  <span class="keywordflow">if</span> (line.direction == direction) {</div>
-<div class="line"><a name="l01182"></a><span class="lineno"> 1182</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l01181"></a><span class="lineno"> 1181</span>&#160;        <span class="keywordflow">if</span> (!(*<span class="keyword">this</span>)) {</div>
+<div class="line"><a name="l01182"></a><span class="lineno"> 1182</span>&#160;        <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::Line3D::parallel(): this line is null&quot;</span>);</div>
 <div class="line"><a name="l01183"></a><span class="lineno"> 1183</span>&#160;  }</div>
-<div class="line"><a name="l01184"></a><span class="lineno"> 1184</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (line.direction == (direction * -1)) {</div>
+<div class="line"><a name="l01184"></a><span class="lineno"> 1184</span>&#160;  <span class="keywordflow">if</span> (line.direction == direction) {</div>
 <div class="line"><a name="l01185"></a><span class="lineno"> 1185</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><a name="l01186"></a><span class="lineno"> 1186</span>&#160;  }</div>
-<div class="line"><a name="l01187"></a><span class="lineno"> 1187</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l01188"></a><span class="lineno"> 1188</span>&#160;}</div>
-<div class="line"><a name="l01189"></a><span class="lineno"> 1189</span>&#160;</div>
-<div class="line"><a name="l01190"></a><span class="lineno"> 1190</span>&#160;</div>
-<div class="line"><a name="l01191"></a><span class="lineno"> 1191</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="class_c_w_1_1_line3_d.html#a4b2d765bf419a46068e3d3680f1f981c">Line3D::parallel</a>(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_vector3_d.html">Vector3D</a> &amp;vector)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l01192"></a><span class="lineno"> 1192</span>&#160;        <span class="keywordflow">if</span> (!vector) {</div>
-<div class="line"><a name="l01193"></a><span class="lineno"> 1193</span>&#160;        <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;CW::Line3D::parallel(): given vector is null&quot;</span>);</div>
-<div class="line"><a name="l01194"></a><span class="lineno"> 1194</span>&#160;  }</div>
-<div class="line"><a name="l01195"></a><span class="lineno"> 1195</span>&#160;        <span class="keywordflow">if</span> (vector.length() &lt; EPSILON) {</div>
-<div class="line"><a name="l01196"></a><span class="lineno"> 1196</span>&#160;        <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;CW::Line3D::parallel(): given vector has zero length&quot;</span>);</div>
+<div class="line"><a name="l01187"></a><span class="lineno"> 1187</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (line.direction == (direction * -1)) {</div>
+<div class="line"><a name="l01188"></a><span class="lineno"> 1188</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l01189"></a><span class="lineno"> 1189</span>&#160;  }</div>
+<div class="line"><a name="l01190"></a><span class="lineno"> 1190</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l01191"></a><span class="lineno"> 1191</span>&#160;}</div>
+<div class="line"><a name="l01192"></a><span class="lineno"> 1192</span>&#160;</div>
+<div class="line"><a name="l01193"></a><span class="lineno"> 1193</span>&#160;</div>
+<div class="line"><a name="l01194"></a><span class="lineno"> 1194</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="class_c_w_1_1_line3_d.html#a4b2d765bf419a46068e3d3680f1f981c">Line3D::parallel</a>(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_vector3_d.html">Vector3D</a> &amp;vector)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l01195"></a><span class="lineno"> 1195</span>&#160;        <span class="keywordflow">if</span> (!vector) {</div>
+<div class="line"><a name="l01196"></a><span class="lineno"> 1196</span>&#160;        <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;CW::Line3D::parallel(): given vector is null&quot;</span>);</div>
 <div class="line"><a name="l01197"></a><span class="lineno"> 1197</span>&#160;  }</div>
-<div class="line"><a name="l01198"></a><span class="lineno"> 1198</span>&#160;  <span class="keywordflow">if</span> (!(*<span class="keyword">this</span>)) {</div>
-<div class="line"><a name="l01199"></a><span class="lineno"> 1199</span>&#160;        <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::Line3D::parallel(): this line is null&quot;</span>);</div>
+<div class="line"><a name="l01198"></a><span class="lineno"> 1198</span>&#160;        <span class="keywordflow">if</span> (vector.length() &lt; EPSILON) {</div>
+<div class="line"><a name="l01199"></a><span class="lineno"> 1199</span>&#160;        <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;CW::Line3D::parallel(): given vector has zero length&quot;</span>);</div>
 <div class="line"><a name="l01200"></a><span class="lineno"> 1200</span>&#160;  }</div>
-<div class="line"><a name="l01201"></a><span class="lineno"> 1201</span>&#160;  Vector3D difference = this-&gt;direction.unit() - vector.unit();</div>
-<div class="line"><a name="l01202"></a><span class="lineno"> 1202</span>&#160;  <span class="keywordtype">double</span> length = difference.length();</div>
-<div class="line"><a name="l01203"></a><span class="lineno"> 1203</span>&#160;  <span class="keywordflow">if</span> (length &lt; EPSILON || (length - 2.0) &lt; EPSILON) {</div>
-<div class="line"><a name="l01204"></a><span class="lineno"> 1204</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l01205"></a><span class="lineno"> 1205</span>&#160;  }</div>
-<div class="line"><a name="l01206"></a><span class="lineno"> 1206</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l01207"></a><span class="lineno"> 1207</span>&#160;}</div>
-<div class="line"><a name="l01208"></a><span class="lineno"> 1208</span>&#160;</div>
-<div class="line"><a name="l01209"></a><span class="lineno"> 1209</span>&#160;</div>
-<div class="line"><a name="l01210"></a><span class="lineno"><a class="line" href="class_c_w_1_1_line3_d.html#a8d2422477b2f52bc563cad7c8ffe2844"> 1210</a></span>&#160;<span class="keywordtype">bool</span> operator==(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_line3_d.html">Line3D</a>&amp; lhs, <span class="keyword">const</span> <a class="code" href="class_c_w_1_1_line3_d.html">Line3D</a>&amp; rhs) {</div>
-<div class="line"><a name="l01211"></a><span class="lineno"> 1211</span>&#160;        <span class="keywordflow">if</span> (lhs.<a class="code" href="class_c_w_1_1_line3_d.html#a4b2d765bf419a46068e3d3680f1f981c">parallel</a>(rhs)) {</div>
-<div class="line"><a name="l01212"></a><span class="lineno"> 1212</span>&#160;        <span class="comment">// lines are parallel - check if they overlap</span></div>
-<div class="line"><a name="l01213"></a><span class="lineno"> 1213</span>&#160;    <span class="keywordflow">if</span> (lhs.m_point == rhs.m_point) {</div>
-<div class="line"><a name="l01214"></a><span class="lineno"> 1214</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l01215"></a><span class="lineno"> 1215</span>&#160;    }</div>
-<div class="line"><a name="l01216"></a><span class="lineno"> 1216</span>&#160;    <a class="code" href="class_c_w_1_1_vector3_d.html">Vector3D</a> l_to_r = rhs.m_point - lhs.m_point;</div>
-<div class="line"><a name="l01217"></a><span class="lineno"> 1217</span>&#160;    <span class="keywordflow">if</span> (l_to_r.<a class="code" href="class_c_w_1_1_vector3_d.html#aea300595a56825cdc8df79f5a2d8f238">colinear</a>(lhs.m_direction) != Vector3D::Colinearity::NO) {</div>
-<div class="line"><a name="l01218"></a><span class="lineno"> 1218</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l01219"></a><span class="lineno"> 1219</span>&#160;    }</div>
-<div class="line"><a name="l01220"></a><span class="lineno"> 1220</span>&#160;  }</div>
-<div class="line"><a name="l01221"></a><span class="lineno"> 1221</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l01222"></a><span class="lineno"> 1222</span>&#160;}</div>
-<div class="line"><a name="l01223"></a><span class="lineno"> 1223</span>&#160;</div>
-<div class="line"><a name="l01224"></a><span class="lineno"> 1224</span>&#160;</div>
-<div class="line"><a name="l01225"></a><span class="lineno"> 1225</span>&#160;} <span class="comment">/* namespace CW */</span></div>
+<div class="line"><a name="l01201"></a><span class="lineno"> 1201</span>&#160;  <span class="keywordflow">if</span> (!(*<span class="keyword">this</span>)) {</div>
+<div class="line"><a name="l01202"></a><span class="lineno"> 1202</span>&#160;        <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::Line3D::parallel(): this line is null&quot;</span>);</div>
+<div class="line"><a name="l01203"></a><span class="lineno"> 1203</span>&#160;  }</div>
+<div class="line"><a name="l01204"></a><span class="lineno"> 1204</span>&#160;  Vector3D difference = this-&gt;direction.unit() - vector.unit();</div>
+<div class="line"><a name="l01205"></a><span class="lineno"> 1205</span>&#160;  <span class="keywordtype">double</span> length = difference.length();</div>
+<div class="line"><a name="l01206"></a><span class="lineno"> 1206</span>&#160;  <span class="keywordflow">if</span> (length &lt; EPSILON || (length - 2.0) &lt; EPSILON) {</div>
+<div class="line"><a name="l01207"></a><span class="lineno"> 1207</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l01208"></a><span class="lineno"> 1208</span>&#160;  }</div>
+<div class="line"><a name="l01209"></a><span class="lineno"> 1209</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l01210"></a><span class="lineno"> 1210</span>&#160;}</div>
+<div class="line"><a name="l01211"></a><span class="lineno"> 1211</span>&#160;</div>
+<div class="line"><a name="l01212"></a><span class="lineno"> 1212</span>&#160;</div>
+<div class="line"><a name="l01213"></a><span class="lineno"><a class="line" href="class_c_w_1_1_line3_d.html#a8d2422477b2f52bc563cad7c8ffe2844"> 1213</a></span>&#160;<span class="keywordtype">bool</span> operator==(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_line3_d.html">Line3D</a>&amp; lhs, <span class="keyword">const</span> <a class="code" href="class_c_w_1_1_line3_d.html">Line3D</a>&amp; rhs) {</div>
+<div class="line"><a name="l01214"></a><span class="lineno"> 1214</span>&#160;        <span class="keywordflow">if</span> (lhs.<a class="code" href="class_c_w_1_1_line3_d.html#a4b2d765bf419a46068e3d3680f1f981c">parallel</a>(rhs)) {</div>
+<div class="line"><a name="l01215"></a><span class="lineno"> 1215</span>&#160;        <span class="comment">// lines are parallel - check if they overlap</span></div>
+<div class="line"><a name="l01216"></a><span class="lineno"> 1216</span>&#160;    <span class="keywordflow">if</span> (lhs.m_point == rhs.m_point) {</div>
+<div class="line"><a name="l01217"></a><span class="lineno"> 1217</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l01218"></a><span class="lineno"> 1218</span>&#160;    }</div>
+<div class="line"><a name="l01219"></a><span class="lineno"> 1219</span>&#160;    <a class="code" href="class_c_w_1_1_vector3_d.html">Vector3D</a> l_to_r = rhs.m_point - lhs.m_point;</div>
+<div class="line"><a name="l01220"></a><span class="lineno"> 1220</span>&#160;    <span class="keywordflow">if</span> (l_to_r.<a class="code" href="class_c_w_1_1_vector3_d.html#aea300595a56825cdc8df79f5a2d8f238">colinear</a>(lhs.m_direction) != Vector3D::Colinearity::NO) {</div>
+<div class="line"><a name="l01221"></a><span class="lineno"> 1221</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l01222"></a><span class="lineno"> 1222</span>&#160;    }</div>
+<div class="line"><a name="l01223"></a><span class="lineno"> 1223</span>&#160;  }</div>
+<div class="line"><a name="l01224"></a><span class="lineno"> 1224</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l01225"></a><span class="lineno"> 1225</span>&#160;}</div>
+<div class="line"><a name="l01226"></a><span class="lineno"> 1226</span>&#160;</div>
+<div class="line"><a name="l01227"></a><span class="lineno"> 1227</span>&#160;</div>
+<div class="line"><a name="l01228"></a><span class="lineno"> 1228</span>&#160;} <span class="comment">/* namespace CW */</span></div>
 <div class="ttc" id="class_c_w_1_1_plane3_d_html_a12ef01875157bd8badfd500dbd0ffa32"><div class="ttname"><a href="class_c_w_1_1_plane3_d.html#a12ef01875157bd8badfd500dbd0ffa32">CW::Plane3D::intersection</a></div><div class="ttdeci">Line3D intersection(const Plane3D &amp;plane2) const </div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8cpp_source.html#l00721">Geometry.cpp:721</a></div></div>
 <div class="ttc" id="class_c_w_1_1_plane3_d_html_ac5e2844b1ab8728117f35cb8a630cc11"><div class="ttname"><a href="class_c_w_1_1_plane3_d.html#ac5e2844b1ab8728117f35cb8a630cc11">CW::Plane3D::normal</a></div><div class="ttdeci">Vector3D normal() const </div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8cpp_source.html#l00773">Geometry.cpp:773</a></div></div>
 <div class="ttc" id="class_c_w_1_1_radians_html_a763f2d5a91bbee7b7cc377ad0ce0e298"><div class="ttname"><a href="class_c_w_1_1_radians.html#a763f2d5a91bbee7b7cc377ad0ce0e298">CW::Radians::operator+</a></div><div class="ttdeci">Radians operator+(const double value) const </div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8cpp_source.html#l00080">Geometry.cpp:80</a></div></div>
-<div class="ttc" id="class_c_w_1_1_line3_d_html_a3f1ba7a20375f60bb07a4c740084e87d"><div class="ttname"><a href="class_c_w_1_1_line3_d.html#a3f1ba7a20375f60bb07a4c740084e87d">CW::Line3D::distance</a></div><div class="ttdeci">double distance(const Point3D &amp;point) const </div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8cpp_source.html#l01083">Geometry.cpp:1083</a></div></div>
+<div class="ttc" id="class_c_w_1_1_line3_d_html_a3f1ba7a20375f60bb07a4c740084e87d"><div class="ttname"><a href="class_c_w_1_1_line3_d.html#a3f1ba7a20375f60bb07a4c740084e87d">CW::Line3D::distance</a></div><div class="ttdeci">double distance(const Point3D &amp;point) const </div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8cpp_source.html#l01086">Geometry.cpp:1086</a></div></div>
 <div class="ttc" id="class_c_w_1_1_point3_d_html"><div class="ttname"><a href="class_c_w_1_1_point3_d.html">CW::Point3D</a></div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8hpp_source.html#l00252">Geometry.hpp:252</a></div></div>
 <div class="ttc" id="class_c_w_1_1_point3_d_html_a1cc97acda6534a0d07a5d067746258d1"><div class="ttname"><a href="class_c_w_1_1_point3_d.html#a1cc97acda6534a0d07a5d067746258d1">CW::Point3D::intersection_between_lines</a></div><div class="ttdeci">static Point3D intersection_between_lines(const Point3D &amp;point_a, const Vector3D &amp;vector_a, const Point3D &amp;point_b, const Vector3D &amp;vector_b, bool return_colinear=false)</div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8cpp_source.html#l00434">Geometry.cpp:434</a></div></div>
 <div class="ttc" id="class_c_w_1_1_edge_html"><div class="ttname"><a href="class_c_w_1_1_edge.html">CW::Edge</a></div><div class="ttdef"><b>Definition:</b> <a href="_edge_8hpp_source.html#l00048">Edge.hpp:48</a></div></div>
@@ -1290,28 +1293,28 @@
 <div class="ttc" id="class_c_w_1_1_plane3_d_html_a8db74e9d51b2107aaedc692f4eda1ad2"><div class="ttname"><a href="class_c_w_1_1_plane3_d.html#a8db74e9d51b2107aaedc692f4eda1ad2">CW::Plane3D::coplanar</a></div><div class="ttdeci">bool coplanar(const Plane3D &amp;test_plane) const </div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8cpp_source.html#l00711">Geometry.cpp:711</a></div></div>
 <div class="ttc" id="class_c_w_1_1_plane3_d_html_aae75b4df36f59ad60fc09d9e0fbe1f68"><div class="ttname"><a href="class_c_w_1_1_plane3_d.html#aae75b4df36f59ad60fc09d9e0fbe1f68">CW::Plane3D::offset</a></div><div class="ttdeci">Plane3D offset(double offset_by) const </div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8cpp_source.html#l00790">Geometry.cpp:790</a></div></div>
 <div class="ttc" id="class_c_w_1_1_plane3_d_html"><div class="ttname"><a href="class_c_w_1_1_plane3_d.html">CW::Plane3D</a></div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8hpp_source.html#l00370">Geometry.hpp:370</a></div></div>
-<div class="ttc" id="class_c_w_1_1_line3_d_html_a5ad79cc396a93fa1beb590ad74d6b999"><div class="ttname"><a href="class_c_w_1_1_line3_d.html#a5ad79cc396a93fa1beb590ad74d6b999">CW::Line3D::on_line_segment</a></div><div class="ttdeci">static bool on_line_segment(const Point3D &amp;point_a, const Point3D &amp;point_b, const Point3D &amp;test_point)</div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8cpp_source.html#l01139">Geometry.cpp:1139</a></div></div>
-<div class="ttc" id="class_c_w_1_1_line3_d_html_a4b2d765bf419a46068e3d3680f1f981c"><div class="ttname"><a href="class_c_w_1_1_line3_d.html#a4b2d765bf419a46068e3d3680f1f981c">CW::Line3D::parallel</a></div><div class="ttdeci">bool parallel(const Line3D &amp;line) const </div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8cpp_source.html#l01174">Geometry.cpp:1174</a></div></div>
+<div class="ttc" id="class_c_w_1_1_line3_d_html_a5ad79cc396a93fa1beb590ad74d6b999"><div class="ttname"><a href="class_c_w_1_1_line3_d.html#a5ad79cc396a93fa1beb590ad74d6b999">CW::Line3D::on_line_segment</a></div><div class="ttdeci">static bool on_line_segment(const Point3D &amp;point_a, const Point3D &amp;point_b, const Point3D &amp;test_point)</div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8cpp_source.html#l01142">Geometry.cpp:1142</a></div></div>
+<div class="ttc" id="class_c_w_1_1_line3_d_html_a4b2d765bf419a46068e3d3680f1f981c"><div class="ttname"><a href="class_c_w_1_1_line3_d.html#a4b2d765bf419a46068e3d3680f1f981c">CW::Line3D::parallel</a></div><div class="ttdeci">bool parallel(const Line3D &amp;line) const </div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8cpp_source.html#l01177">Geometry.cpp:1177</a></div></div>
 <div class="ttc" id="class_c_w_1_1_vector3_d_html_a5d0b301fb5625a44bb98e237353153df"><div class="ttname"><a href="class_c_w_1_1_vector3_d.html#a5d0b301fb5625a44bb98e237353153df">CW::Vector3D::operator!</a></div><div class="ttdeci">bool operator!() const </div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8cpp_source.html#l00238">Geometry.cpp:238</a></div></div>
-<div class="ttc" id="class_c_w_1_1_bounding_box3_d_html_a76f8ecb30fa28b96863f2f590d605918"><div class="ttname"><a href="class_c_w_1_1_bounding_box3_d.html#a76f8ecb30fa28b96863f2f590d605918">CW::BoundingBox3D::operator!</a></div><div class="ttdeci">bool operator!() const </div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8cpp_source.html#l00902">Geometry.cpp:902</a></div></div>
+<div class="ttc" id="class_c_w_1_1_bounding_box3_d_html_a76f8ecb30fa28b96863f2f590d605918"><div class="ttname"><a href="class_c_w_1_1_bounding_box3_d.html#a76f8ecb30fa28b96863f2f590d605918">CW::BoundingBox3D::operator!</a></div><div class="ttdeci">bool operator!() const </div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8cpp_source.html#l00905">Geometry.cpp:905</a></div></div>
 <div class="ttc" id="class_c_w_1_1_line3_d_html"><div class="ttname"><a href="class_c_w_1_1_line3_d.html">CW::Line3D</a></div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8hpp_source.html#l00528">Geometry.hpp:528</a></div></div>
 <div class="ttc" id="class_c_w_1_1_point3_d_html_a6d2ab75c5b765f2c4795c27baf534f8b"><div class="ttname"><a href="class_c_w_1_1_point3_d.html#a6d2ab75c5b765f2c4795c27baf534f8b">CW::Point3D::operator=</a></div><div class="ttdeci">Point3D &amp; operator=(const Point3D &amp;point)</div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8cpp_source.html#l00351">Geometry.cpp:351</a></div></div>
 <div class="ttc" id="class_c_w_1_1_point3_d_html_aa7dea96e39bd98cd81909e392ce4d0d7"><div class="ttname"><a href="class_c_w_1_1_point3_d.html#aa7dea96e39bd98cd81909e392ce4d0d7">CW::Point3D::operator+</a></div><div class="ttdeci">Point3D operator+(const Point3D &amp;point) const </div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8cpp_source.html#l00374">Geometry.cpp:374</a></div></div>
-<div class="ttc" id="class_c_w_1_1_bounding_box3_d_html_a86af4c2d594bc681e59dfce38b3246c8"><div class="ttname"><a href="class_c_w_1_1_bounding_box3_d.html#a86af4c2d594bc681e59dfce38b3246c8">CW::BoundingBox3D::min</a></div><div class="ttdeci">Point3D min() const </div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8cpp_source.html#l00914">Geometry.cpp:914</a></div></div>
+<div class="ttc" id="class_c_w_1_1_bounding_box3_d_html_a86af4c2d594bc681e59dfce38b3246c8"><div class="ttname"><a href="class_c_w_1_1_bounding_box3_d.html#a86af4c2d594bc681e59dfce38b3246c8">CW::BoundingBox3D::min</a></div><div class="ttdeci">Point3D min() const </div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8cpp_source.html#l00917">Geometry.cpp:917</a></div></div>
 <div class="ttc" id="class_c_w_1_1_vector3_d_html"><div class="ttname"><a href="class_c_w_1_1_vector3_d.html">CW::Vector3D</a></div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8hpp_source.html#l00107">Geometry.hpp:107</a></div></div>
 <div class="ttc" id="class_c_w_1_1_point3_d_html_a386505f14bd9c8834ad13256b8d59e7c"><div class="ttname"><a href="class_c_w_1_1_point3_d.html#a386505f14bd9c8834ad13256b8d59e7c">CW::Point3D::Point3D</a></div><div class="ttdeci">Point3D()</div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8cpp_source.html#l00311">Geometry.cpp:311</a></div></div>
-<div class="ttc" id="class_c_w_1_1_line3_d_html_a2ab82c012bdef5f6ad7dc0d59f4f87f1"><div class="ttname"><a href="class_c_w_1_1_line3_d.html#a2ab82c012bdef5f6ad7dc0d59f4f87f1">CW::Line3D::operator!</a></div><div class="ttdeci">bool operator!() const </div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8cpp_source.html#l00974">Geometry.cpp:974</a></div></div>
+<div class="ttc" id="class_c_w_1_1_line3_d_html_a2ab82c012bdef5f6ad7dc0d59f4f87f1"><div class="ttname"><a href="class_c_w_1_1_line3_d.html#a2ab82c012bdef5f6ad7dc0d59f4f87f1">CW::Line3D::operator!</a></div><div class="ttdeci">bool operator!() const </div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8cpp_source.html#l00977">Geometry.cpp:977</a></div></div>
 <div class="ttc" id="class_c_w_1_1_plane3_d_html_ab7b72c795b2830582d95605aca533a1b"><div class="ttname"><a href="class_c_w_1_1_plane3_d.html#ab7b72c795b2830582d95605aca533a1b">CW::Plane3D::parallel</a></div><div class="ttdeci">bool parallel(const Plane3D &amp;plane2) const </div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8cpp_source.html#l00795">Geometry.cpp:795</a></div></div>
-<div class="ttc" id="class_c_w_1_1_line3_d_html_a33ba5155b2c75c1de8e18bd813e1b17a"><div class="ttname"><a href="class_c_w_1_1_line3_d.html#a33ba5155b2c75c1de8e18bd813e1b17a">CW::Line3D::closest_point</a></div><div class="ttdeci">Point3D closest_point(const Point3D &amp;point) const </div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8cpp_source.html#l01068">Geometry.cpp:1068</a></div></div>
-<div class="ttc" id="class_c_w_1_1_line3_d_html_a75d5e68f09a97ca21b1b9b8e8173096b"><div class="ttname"><a href="class_c_w_1_1_line3_d.html#a75d5e68f09a97ca21b1b9b8e8173096b">CW::Line3D::on_line</a></div><div class="ttdeci">bool on_line(const Point3D &amp;point) const </div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8cpp_source.html#l01089">Geometry.cpp:1089</a></div></div>
-<div class="ttc" id="class_c_w_1_1_line3_d_html_a85285a1f5994b6ff7daae8f2a41869d6"><div class="ttname"><a href="class_c_w_1_1_line3_d.html#a85285a1f5994b6ff7daae8f2a41869d6">CW::Line3D::Line3D</a></div><div class="ttdeci">Line3D()</div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8cpp_source.html#l00927">Geometry.cpp:927</a></div></div>
+<div class="ttc" id="class_c_w_1_1_line3_d_html_a33ba5155b2c75c1de8e18bd813e1b17a"><div class="ttname"><a href="class_c_w_1_1_line3_d.html#a33ba5155b2c75c1de8e18bd813e1b17a">CW::Line3D::closest_point</a></div><div class="ttdeci">Point3D closest_point(const Point3D &amp;point) const </div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8cpp_source.html#l01071">Geometry.cpp:1071</a></div></div>
+<div class="ttc" id="class_c_w_1_1_line3_d_html_a75d5e68f09a97ca21b1b9b8e8173096b"><div class="ttname"><a href="class_c_w_1_1_line3_d.html#a75d5e68f09a97ca21b1b9b8e8173096b">CW::Line3D::on_line</a></div><div class="ttdeci">bool on_line(const Point3D &amp;point) const </div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8cpp_source.html#l01092">Geometry.cpp:1092</a></div></div>
+<div class="ttc" id="class_c_w_1_1_line3_d_html_a85285a1f5994b6ff7daae8f2a41869d6"><div class="ttname"><a href="class_c_w_1_1_line3_d.html#a85285a1f5994b6ff7daae8f2a41869d6">CW::Line3D::Line3D</a></div><div class="ttdeci">Line3D()</div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8cpp_source.html#l00930">Geometry.cpp:930</a></div></div>
 <div class="ttc" id="class_c_w_1_1_vector3_d_html_aea300595a56825cdc8df79f5a2d8f238"><div class="ttname"><a href="class_c_w_1_1_vector3_d.html#aea300595a56825cdc8df79f5a2d8f238">CW::Vector3D::colinear</a></div><div class="ttdeci">Colinearity colinear(const Vector3D &amp;vector_b) const </div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8cpp_source.html#l00273">Geometry.cpp:273</a></div></div>
 <div class="ttc" id="class_c_w_1_1_vector3_d_html_ac4017f8eb72033ce3b5d978b2e493ac2"><div class="ttname"><a href="class_c_w_1_1_vector3_d.html#ac4017f8eb72033ce3b5d978b2e493ac2">CW::Vector3D::zero_vector</a></div><div class="ttdeci">static Vector3D zero_vector()</div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8cpp_source.html#l00303">Geometry.cpp:303</a></div></div>
-<div class="ttc" id="class_c_w_1_1_bounding_box3_d_html_ac649050691320ed41a1a9c7ec14d213b"><div class="ttname"><a href="class_c_w_1_1_bounding_box3_d.html#ac649050691320ed41a1a9c7ec14d213b">CW::BoundingBox3D::BoundingBox3D</a></div><div class="ttdeci">BoundingBox3D()</div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8cpp_source.html#l00889">Geometry.cpp:889</a></div></div>
+<div class="ttc" id="class_c_w_1_1_bounding_box3_d_html_ac649050691320ed41a1a9c7ec14d213b"><div class="ttname"><a href="class_c_w_1_1_bounding_box3_d.html#ac649050691320ed41a1a9c7ec14d213b">CW::BoundingBox3D::BoundingBox3D</a></div><div class="ttdeci">BoundingBox3D()</div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8cpp_source.html#l00892">Geometry.cpp:892</a></div></div>
 <div class="ttc" id="class_c_w_1_1_plane3_d_html_a418d955dd7448e629c8794cfc63a50c9"><div class="ttname"><a href="class_c_w_1_1_plane3_d.html#a418d955dd7448e629c8794cfc63a50c9">CW::Plane3D::on_plane</a></div><div class="ttdeci">bool on_plane(const Point3D &amp;point) const </div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8cpp_source.html#l00781">Geometry.cpp:781</a></div></div>
 <div class="ttc" id="class_c_w_1_1_vector3_d_html_a605fc20adf72d08fc432b9c499b8ff2c"><div class="ttname"><a href="class_c_w_1_1_vector3_d.html#a605fc20adf72d08fc432b9c499b8ff2c">CW::Vector3D::cross</a></div><div class="ttdeci">Vector3D cross(const Vector3D &amp;vector2) const </div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8cpp_source.html#l00267">Geometry.cpp:267</a></div></div>
 <div class="ttc" id="class_c_w_1_1_radians_html"><div class="ttname"><a href="class_c_w_1_1_radians.html">CW::Radians</a></div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8hpp_source.html#l00054">Geometry.hpp:54</a></div></div>
-<div class="ttc" id="class_c_w_1_1_bounding_box3_d_html_a10cd64c3f6588eefae14bd5c91984046"><div class="ttname"><a href="class_c_w_1_1_bounding_box3_d.html#a10cd64c3f6588eefae14bd5c91984046">CW::BoundingBox3D::max</a></div><div class="ttdeci">Point3D max() const </div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8cpp_source.html#l00918">Geometry.cpp:918</a></div></div>
+<div class="ttc" id="class_c_w_1_1_bounding_box3_d_html_a10cd64c3f6588eefae14bd5c91984046"><div class="ttname"><a href="class_c_w_1_1_bounding_box3_d.html#a10cd64c3f6588eefae14bd5c91984046">CW::BoundingBox3D::max</a></div><div class="ttdeci">Point3D max() const </div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8cpp_source.html#l00921">Geometry.cpp:921</a></div></div>
 <div class="ttc" id="class_c_w_1_1_point3_d_html_a41fe5552d5c28b83ea4e31d53cafa2d8"><div class="ttname"><a href="class_c_w_1_1_point3_d.html#a41fe5552d5c28b83ea4e31d53cafa2d8">CW::Point3D::operator!</a></div><div class="ttdeci">bool operator!() const </div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8cpp_source.html#l00402">Geometry.cpp:402</a></div></div>
 <div class="ttc" id="class_c_w_1_1_plane3_d_html_a907f689ad78540a04b24e67a8ecef3fa"><div class="ttname"><a href="class_c_w_1_1_plane3_d.html#a907f689ad78540a04b24e67a8ecef3fa">CW::Plane3D::distance</a></div><div class="ttdeci">double distance(const Point3D &amp;point) const </div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8cpp_source.html#l00777">Geometry.cpp:777</a></div></div>
 <div class="ttc" id="class_c_w_1_1_bounding_box3_d_html"><div class="ttname"><a href="class_c_w_1_1_bounding_box3_d.html">CW::BoundingBox3D</a></div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8hpp_source.html#l00490">Geometry.hpp:490</a></div></div>
@@ -1320,11 +1323,11 @@
 <div class="ttc" id="class_c_w_1_1_vector3_d_html_a70387b2383b832e50002089877fceced"><div class="ttname"><a href="class_c_w_1_1_vector3_d.html#a70387b2383b832e50002089877fceced">CW::Vector3D::operator=</a></div><div class="ttdeci">Vector3D &amp; operator=(const Vector3D &amp;vector)</div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8cpp_source.html#l00166">Geometry.cpp:166</a></div></div>
 <div class="ttc" id="class_c_w_1_1_plane3_d_html_a9a625d2e826d474f25a80dd9d61ae88c"><div class="ttname"><a href="class_c_w_1_1_plane3_d.html#a9a625d2e826d474f25a80dd9d61ae88c">CW::Plane3D::plane_from_loop</a></div><div class="ttdeci">static Plane3D plane_from_loop(const std::vector&lt; Point3D &gt; &amp;loop_points)</div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8cpp_source.html#l00831">Geometry.cpp:831</a></div></div>
 <div class="ttc" id="class_c_w_1_1_plane3_d_html_a1a624f6be3a9d12490b79df7098e72b6"><div class="ttname"><a href="class_c_w_1_1_plane3_d.html#a1a624f6be3a9d12490b79df7098e72b6">CW::Plane3D::operator!</a></div><div class="ttdeci">bool operator!() const </div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8cpp_source.html#l00679">Geometry.cpp:679</a></div></div>
-<div class="ttc" id="class_c_w_1_1_line3_d_html_af0024bf3c6783eab48c0f40e7dee1334"><div class="ttname"><a href="class_c_w_1_1_line3_d.html#af0024bf3c6783eab48c0f40e7dee1334">CW::Line3D::closest_points</a></div><div class="ttdeci">std::pair&lt; Point3D, Point3D &gt; closest_points(const Line3D &amp;line) const </div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8cpp_source.html#l01024">Geometry.cpp:1024</a></div></div>
+<div class="ttc" id="class_c_w_1_1_line3_d_html_af0024bf3c6783eab48c0f40e7dee1334"><div class="ttname"><a href="class_c_w_1_1_line3_d.html#af0024bf3c6783eab48c0f40e7dee1334">CW::Line3D::closest_points</a></div><div class="ttdeci">std::pair&lt; Point3D, Point3D &gt; closest_points(const Line3D &amp;line) const </div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8cpp_source.html#l01027">Geometry.cpp:1027</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Nov 20 2017 13:36:35 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Nov 24 2017 15:22:25 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
