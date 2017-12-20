@@ -513,12 +513,21 @@ class BoundingBox3D {
   * Returns the point where x,y and z are at their minimum
   */
   Point3D min() const;
-  
+	
+  /**
+  * Set the minimum point
+  */
+	void min_point(const Point3D& point);
+	
   /**
   * Returns the point where x,y and z are at their maximum
   */
   Point3D max() const;
-
+	
+  /**
+  * Set the maximum point
+  */
+	void max_point(const Point3D& point);
 };
 
 

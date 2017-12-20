@@ -913,13 +913,20 @@ BoundingBox3D::operator SUBoundingBox3D() const {
 	return m_bounding_box;
 }
 
-
 Point3D BoundingBox3D::min() const {
 	return Point3D(m_bounding_box.min_point);
 }
 
+void BoundingBox3D::min_point(const Point3D& point) {
+	m_bounding_box.min_point = point;
+}
+
 Point3D BoundingBox3D::max() const {
 	return Point3D(m_bounding_box.max_point);
+}
+	
+void BoundingBox3D::max_point(const Point3D& point) {
+	m_bounding_box.max_point = point;
 }
 
 
