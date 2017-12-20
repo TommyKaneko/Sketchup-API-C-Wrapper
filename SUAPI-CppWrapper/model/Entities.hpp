@@ -48,6 +48,7 @@ class ComponentDefinition;
 class GeometryInput;
 class Transformation;
 class String;
+class BoundingBox3D;
 
 /*
 * Entities wrapper
@@ -75,7 +76,12 @@ class Entities {
   std::vector<Edge> edges(bool stray_only = true) const;
   std::vector<ComponentInstance> instances() const;
   std::vector<Group> groups() const;
-  
+	
+  /**
+  * Return the BoundingBox of the Entities object.
+  */
+  BoundingBox3D bounding_box() const;
+	
   /**
   * Returns the number of entities that exist in the entities object.
   */

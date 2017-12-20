@@ -144,6 +144,17 @@ std::vector<Group> Entities::groups() const {
 }
 
 
+BoundingBox3D Entities::bounding_box() const {
+	if (!SUIsValid(m_entities)) {
+  	throw std::logic_error("CW::Entities::groups(): Entities is null");
+  }
+	SUBoundingBox3D box = SU_INVALID;
+	SUResult res = SUEntitiesGetBoundingBox(m_entities, &box);
+  assert(res == SU_ERROR_NONE);
+	return BoundingBox3D(box);
+}
+
+
 size_t Entities::size() const {
 	if (!SUIsValid(m_entities)) {
   	throw std::logic_error("CW::Entities::size(): Entities is null");
