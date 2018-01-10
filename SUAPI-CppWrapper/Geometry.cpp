@@ -99,7 +99,6 @@ Radians Radians::operator/(const double divider) const {
   return m_val * divider;
 }
 
-
 bool Radians::operator==(const Radians& rhs) const {
   return (fabs(static_cast<double>(*this) - static_cast<double>(rhs))) < EPSILON;
 }
@@ -107,7 +106,15 @@ bool Radians::operator==(const Radians& rhs) const {
 bool Radians::operator==(const double rhs) const {
   return (fabs(m_val - rhs)) < EPSILON;
 }
-  
+
+double Radians::difference(const Radians& other) const {
+	double diff = std::abs(m_val - other.m_val);
+	if (diff > PI) {
+		return (2*PI)-diff;
+	}
+	return diff;
+}
+
 // Comparator TODO
 bool Radians::closest(const Radians& value) {
   return Radians(m_val - value);
@@ -116,6 +123,9 @@ bool Radians::closest(const Radians& value) {
 /********
 * Vector3D
 *********/
+
+constexpr double Vector3D::EPSILON;
+
 Vector3D::Vector3D():
 	Vector3D(false)
 {}

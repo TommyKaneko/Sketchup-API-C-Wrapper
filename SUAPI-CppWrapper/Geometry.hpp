@@ -89,6 +89,11 @@ public:
   
   bool operator==(const Radians& rhs) const;
   bool operator==(const double rhs) const;
+	
+	/**
+	* Gives the difference between the two radians values as a positive double value.
+	*/
+  double difference(const Radians& other) const;
   
   // TODO: below does not look right
  	bool closest(const Radians& value);
