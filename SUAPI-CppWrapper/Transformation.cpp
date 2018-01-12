@@ -540,7 +540,7 @@ Transformation Transformation::transformation_rotate_about_line(const double ang
 
   transform.values[0] = u2 + (cos_angle * (v2 + w2));
   transform.values[1] = (u * v * (1 - cos_angle)) + (w * sin_angle);
-  transform.values[2] = (u * w * (1 - cos_angle)) + (v * sin_angle);
+  transform.values[2] = (u * w * (1 - cos_angle)) - (v * sin_angle);
   transform.values[3] = 0;
   
   transform.values[4] = (u * v * (1 - cos_angle)) - (w * sin_angle);

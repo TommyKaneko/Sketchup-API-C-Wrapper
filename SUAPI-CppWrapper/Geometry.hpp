@@ -303,7 +303,7 @@ class Point3D {
   Point3D(const Point3D& other);
 
 	/**
-  * Allows conversion from Vecgtor3D
+  * Allows conversion from Vector3D
   */
   explicit Point3D( const Vector3D& vector);
   
