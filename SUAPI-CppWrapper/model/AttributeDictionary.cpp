@@ -97,6 +97,7 @@ std::vector<std::string> AttributeDictionary::get_keys() const {
   SUStringRef* keys_ref = new SUStringRef[num_keys];
   for (size_t i=0; i < num_keys; i++) {
   	keys_ref[i] = SU_INVALID;
+    SUStringCreate(&keys_ref[i]);
   }
   SUAttributeDictionaryGetKeys(m_dict, num_keys, &keys_ref[0], &num_keys);
   std::vector<std::string> keys;
@@ -104,7 +105,7 @@ std::vector<std::string> AttributeDictionary::get_keys() const {
   for (size_t i=0; i < num_keys; i++) {
   	keys.push_back(String(keys_ref[i]));
   }
-  delete keys_ref;
+  delete[] keys_ref;
   return keys;
 }
 
