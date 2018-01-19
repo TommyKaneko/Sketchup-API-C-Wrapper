@@ -42,7 +42,7 @@
   </div>
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_fdb96db7800bcda861cc965e3bc145d5.html">SUAPI-CppWrapper</a></li><li class="navelem"><a class="el" href="dir_d18f6ee5a09a3d0ed3d1f344584c848e.html">model</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_5a36426493171642b1c6fd058fd2e6d3.html">SUAPI-CppWrapper</a></li><li class="navelem"><a class="el" href="dir_c359596257b5f4ccdc4ac591473f48ed.html">model</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -87,18 +87,18 @@
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">/***************************</span></div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment">** Private Static Methods **</span></div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment">****************************/</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;SULayerRef Layer::create_layer() {</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  SULayerRef layer = SU_INVALID;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<a class="code" href="struct_s_u_layer_ref.html">SULayerRef</a> Layer::create_layer() {</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  <a class="code" href="struct_s_u_layer_ref.html">SULayerRef</a> layer = SU_INVALID;</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  SUResult res = SULayerCreate(&amp;layer);</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  assert(res == SU_ERROR_NONE);</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  <span class="keywordflow">return</span> layer;</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;}</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;SULayerRef Layer::copy_reference(<span class="keyword">const</span> Layer&amp; other) {</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<a class="code" href="struct_s_u_layer_ref.html">SULayerRef</a> Layer::copy_reference(<span class="keyword">const</span> Layer&amp; other) {</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="keywordflow">if</span> (other.m_attached || SUIsInvalid(other.m_layer)) {</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="keywordflow">return</span> other.m_layer;</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  }</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        SULayerRef new_layer = create_layer();</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <a class="code" href="struct_s_u_layer_ref.html">SULayerRef</a> new_layer = create_layer();</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  <span class="keywordflow">return</span> new_layer;</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;}</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
@@ -111,7 +111,7 @@
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;{}</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
-<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="class_c_w_1_1_layer.html#a297c8e4b3d2f9307c7f4bfeb9a4fe37a">   62</a></span>&#160;<a class="code" href="class_c_w_1_1_layer.html#a54aa3a2e9b68b9f7e6e8b234e17bbbe8">Layer::Layer</a>(SULayerRef layer_ref, <span class="keywordtype">bool</span> attached):</div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="class_c_w_1_1_layer.html#a297c8e4b3d2f9307c7f4bfeb9a4fe37a">   62</a></span>&#160;<a class="code" href="class_c_w_1_1_layer.html#a54aa3a2e9b68b9f7e6e8b234e17bbbe8">Layer::Layer</a>(<a class="code" href="struct_s_u_layer_ref.html">SULayerRef</a> layer_ref, <span class="keywordtype">bool</span> attached):</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  <a class="code" href="class_c_w_1_1_entity.html">Entity</a>(SULayerToEntity(layer_ref), attached),</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  m_layer(layer_ref)</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;{}</div>
@@ -155,15 +155,15 @@
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;}</div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;</div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;</div>
-<div class="line"><a name="l00106"></a><span class="lineno"><a class="line" href="class_c_w_1_1_layer.html#ae9b5899807c5484869f5daf08dda8c67">  106</a></span>&#160;SULayerRef <a class="code" href="class_c_w_1_1_layer.html#ae9b5899807c5484869f5daf08dda8c67">Layer::ref</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00106"></a><span class="lineno"><a class="line" href="class_c_w_1_1_layer.html#ae9b5899807c5484869f5daf08dda8c67">  106</a></span>&#160;<a class="code" href="struct_s_u_layer_ref.html">SULayerRef</a> <a class="code" href="class_c_w_1_1_layer.html#ae9b5899807c5484869f5daf08dda8c67">Layer::ref</a>()<span class="keyword"> const </span>{</div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;  <span class="keywordflow">return</span> m_layer;</div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;}</div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;Layer::operator SULayerRef()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;Layer::operator <a class="code" href="struct_s_u_layer_ref.html">SULayerRef</a>()<span class="keyword"> const </span>{</div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;  <span class="keywordflow">return</span> ref();</div>
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;}</div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;Layer::operator SULayerRef*() {</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;Layer::operator <a class="code" href="struct_s_u_layer_ref.html">SULayerRef</a>*() {</div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;  <span class="keywordflow">return</span> &amp;m_layer;</div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;}</div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;</div>
@@ -221,12 +221,13 @@
 <div class="ttc" id="class_c_w_1_1_entity_html"><div class="ttname"><a href="class_c_w_1_1_entity.html">CW::Entity</a></div><div class="ttdef"><b>Definition:</b> <a href="_entity_8hpp_source.html#l00051">Entity.hpp:51</a></div></div>
 <div class="ttc" id="class_c_w_1_1_layer_html_ae9b5899807c5484869f5daf08dda8c67"><div class="ttname"><a href="class_c_w_1_1_layer.html#ae9b5899807c5484869f5daf08dda8c67">CW::Layer::ref</a></div><div class="ttdeci">SULayerRef ref() const </div><div class="ttdef"><b>Definition:</b> <a href="_layer_8cpp_source.html#l00106">Layer.cpp:106</a></div></div>
 <div class="ttc" id="class_c_w_1_1_layer_html_abf4663654bd901707526736987ca7472"><div class="ttname"><a href="class_c_w_1_1_layer.html#abf4663654bd901707526736987ca7472">CW::Layer::operator=</a></div><div class="ttdeci">Layer &amp; operator=(const Layer &amp;other)</div><div class="ttdef"><b>Definition:</b> <a href="_layer_8cpp_source.html#l00090">Layer.cpp:90</a></div></div>
+<div class="ttc" id="struct_s_u_layer_ref_html"><div class="ttname"><a href="struct_s_u_layer_ref.html">SULayerRef</a></div><div class="ttdoc">References a layer object. </div></div>
 <div class="ttc" id="class_c_w_1_1_string_html"><div class="ttname"><a href="class_c_w_1_1_string.html">CW::String</a></div><div class="ttdef"><b>Definition:</b> <a href="_string_8hpp_source.html#l00045">String.hpp:45</a></div></div>
 <div class="ttc" id="class_c_w_1_1_entity_html_a6f5a22fc1333aa9315512ab63dfac554"><div class="ttname"><a href="class_c_w_1_1_entity.html#a6f5a22fc1333aa9315512ab63dfac554">CW::Entity::operator=</a></div><div class="ttdeci">Entity &amp; operator=(const Entity &amp;other)</div><div class="ttdoc">Copy assignment operator. </div><div class="ttdef"><b>Definition:</b> <a href="_entity_8cpp_source.html#l00064">Entity.cpp:64</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Nov 24 2017 15:22:25 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Jan 19 2018 16:42:01 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

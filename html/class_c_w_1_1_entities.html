@@ -58,7 +58,7 @@
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a1d67e93253ac179691d14d94564a8a9b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1d67e93253ac179691d14d94564a8a9b"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Entities</b> (SUEntitiesRef entities)</td></tr>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Entities</b> (<a class="el" href="struct_s_u_entities_ref.html">SUEntitiesRef</a> entities)</td></tr>
 <tr class="separator:a1d67e93253ac179691d14d94564a8a9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afbd36e6ecd573b7d66a506351e0e7de0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_w_1_1_entities.html#afbd36e6ecd573b7d66a506351e0e7de0">Entities</a> ()</td></tr>
 <tr class="separator:afbd36e6ecd573b7d66a506351e0e7de0"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -76,6 +76,8 @@ std::vector&lt; <a class="el" href="class_c_w_1_1_component_instance.html">Compo
 <tr class="memitem:ae262d59b9e2c860403e3784d7137a3b2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae262d59b9e2c860403e3784d7137a3b2"></a>
 std::vector&lt; <a class="el" href="class_c_w_1_1_group.html">Group</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>groups</b> () const </td></tr>
 <tr class="separator:ae262d59b9e2c860403e3784d7137a3b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a50d17b48fa3ef247883ccc343c3476e9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_c_w_1_1_bounding_box3_d.html">BoundingBox3D</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_w_1_1_entities.html#a50d17b48fa3ef247883ccc343c3476e9">bounding_box</a> () const </td></tr>
+<tr class="separator:a50d17b48fa3ef247883ccc343c3476e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a64d6d1424e889b8432cb02aa9b78cd4c"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_w_1_1_entities.html#a64d6d1424e889b8432cb02aa9b78cd4c">size</a> () const </td></tr>
 <tr class="separator:a64d6d1424e889b8432cb02aa9b78cd4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a89858f051bf2c05d2c8718c2de281c93"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_w_1_1_entities.html#a89858f051bf2c05d2c8718c2de281c93">add</a> (const <a class="el" href="class_c_w_1_1_entities.html">Entities</a> &amp;other)</td></tr>
@@ -114,7 +116,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>add_instance</b> (<a 
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p>Definition at line <a class="el" href="_entities_8hpp_source.html#l00055">55</a> of file <a class="el" href="_entities_8hpp_source.html">Entities.hpp</a>.</p>
+<p>Definition at line <a class="el" href="_entities_8hpp_source.html#l00056">56</a> of file <a class="el" href="_entities_8hpp_source.html">Entities.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="afbd36e6ecd573b7d66a506351e0e7de0"></a>
 <div class="memitem">
@@ -150,7 +152,25 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>add_instance</b> (<a 
 </div><div class="memdoc">
 <p>Adds the contents of an entities object into this one. </p>
 
-<p>Definition at line <a class="el" href="_entities_8cpp_source.html#l00172">172</a> of file <a class="el" href="_entities_8cpp_source.html">Entities.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_entities_8cpp_source.html#l00183">183</a> of file <a class="el" href="_entities_8cpp_source.html">Entities.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a50d17b48fa3ef247883ccc343c3476e9"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_c_w_1_1_bounding_box3_d.html">BoundingBox3D</a> CW::Entities::bounding_box </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Return the BoundingBox of the <a class="el" href="class_c_w_1_1_entities.html">Entities</a> object. </p>
+
+<p>Definition at line <a class="el" href="_entities_8cpp_source.html#l00147">147</a> of file <a class="el" href="_entities_8cpp_source.html">Entities.cpp</a>.</p>
 
 </div>
 </div>
@@ -169,7 +189,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>add_instance</b> (<a 
 </div><div class="memdoc">
 <p>Fills an <a class="el" href="class_c_w_1_1_entities.html">Entities</a> object with geometry in <a class="el" href="class_c_w_1_1_geometry_input.html">GeometryInput</a> object. </p>
 
-<p>Definition at line <a class="el" href="_entities_8cpp_source.html#l00196">196</a> of file <a class="el" href="_entities_8cpp_source.html">Entities.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_entities_8cpp_source.html#l00207">207</a> of file <a class="el" href="_entities_8cpp_source.html">Entities.cpp</a>.</p>
 
 </div>
 </div>
@@ -187,7 +207,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>add_instance</b> (<a 
 </div><div class="memdoc">
 <p>Returns the number of entities that exist in the entities object. </p>
 
-<p>Definition at line <a class="el" href="_entities_8cpp_source.html#l00147">147</a> of file <a class="el" href="_entities_8cpp_source.html">Entities.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_entities_8cpp_source.html#l00158">158</a> of file <a class="el" href="_entities_8cpp_source.html">Entities.cpp</a>.</p>
 
 </div>
 </div>
@@ -225,7 +245,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>add_instance</b> (<a 
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if the operation was successful. false, if transform failed. </dd></dl>
 
-<p>Definition at line <a class="el" href="_entities_8cpp_source.html#l00400">400</a> of file <a class="el" href="_entities_8cpp_source.html">Entities.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_entities_8cpp_source.html#l00411">411</a> of file <a class="el" href="_entities_8cpp_source.html">Entities.cpp</a>.</p>
 
 </div>
 </div>
@@ -262,7 +282,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>add_instance</b> (<a 
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if the operation was successful. false, if transform failed. </dd></dl>
 
-<p>Definition at line <a class="el" href="_entities_8cpp_source.html#l00417">417</a> of file <a class="el" href="_entities_8cpp_source.html">Entities.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_entities_8cpp_source.html#l00428">428</a> of file <a class="el" href="_entities_8cpp_source.html">Entities.cpp</a>.</p>
 
 </div>
 </div>
@@ -273,7 +293,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>add_instance</b> (<a 
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Nov 24 2017 15:22:25 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Jan 19 2018 16:42:01 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

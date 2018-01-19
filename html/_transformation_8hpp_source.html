@@ -42,7 +42,7 @@
   </div>
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_fdb96db7800bcda861cc965e3bc145d5.html">SUAPI-CppWrapper</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_5a36426493171642b1c6fd058fd2e6d3.html">SUAPI-CppWrapper</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -94,7 +94,7 @@
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
 <div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="class_c_w_1_1_transformation.html">   43</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_c_w_1_1_transformation.html">Transformation</a> {</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  SUTransformation m_transformation;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  <a class="code" href="struct_s_u_transformation.html">SUTransformation</a> m_transformation;</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  constexpr <span class="keyword">static</span> <span class="keywordtype">double</span> EPSILON = 0.001; <span class="comment">// Sketchup Tolerance is 1/1000&quot;</span></div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  <span class="comment"></span></div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment">  /**</span></div>
@@ -123,7 +123,7 @@
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="comment">  /**</span></div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="comment">  *</span></div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="comment">  */</span></div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  <a class="code" href="class_c_w_1_1_transformation.html#a7f5f4edba7a8cf56773d17a7c59a8f04">Transformation</a>(SUTransformation transformation);</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  <a class="code" href="class_c_w_1_1_transformation.html#a7f5f4edba7a8cf56773d17a7c59a8f04">Transformation</a>(<a class="code" href="struct_s_u_transformation.html">SUTransformation</a> transformation);</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  <a class="code" href="class_c_w_1_1_transformation.html#a7f5f4edba7a8cf56773d17a7c59a8f04">Transformation</a>(<a class="code" href="class_c_w_1_1_axes.html">Axes</a> axes, <a class="code" href="class_c_w_1_1_vector3_d.html">Vector3D</a> <a class="code" href="class_c_w_1_1_transformation.html#ad4d444e445ebede03dfc3ee6ea9a590e">translation</a>, <span class="keywordtype">double</span> scalar);</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  <a class="code" href="class_c_w_1_1_transformation.html#a7f5f4edba7a8cf56773d17a7c59a8f04">Transformation</a>(<a class="code" href="class_c_w_1_1_vector3_d.html">Vector3D</a> <a class="code" href="class_c_w_1_1_transformation.html#a752a7959bf4deb2a1d544dd37e4b788e">x_axis</a>, <a class="code" href="class_c_w_1_1_vector3_d.html">Vector3D</a> y_axis, <a class="code" href="class_c_w_1_1_vector3_d.html">Vector3D</a> z_axis, <a class="code" href="class_c_w_1_1_vector3_d.html">Vector3D</a> translation, <span class="keywordtype">double</span> scalar);  </div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  <span class="keyword">explicit</span> <a class="code" href="class_c_w_1_1_transformation.html#a7f5f4edba7a8cf56773d17a7c59a8f04">Transformation</a>(<span class="keywordtype">double</span> scalar);</div>
@@ -140,9 +140,9 @@
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  <span class="comment">/*</span></div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="comment">  * Cast to SUTransformation struct</span></div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="comment">  */</span></div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  SUTransformation ref() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;  <span class="keyword">operator</span> SUTransformation() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  <span class="keyword">operator</span> SUTransformation*();</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  <a class="code" href="struct_s_u_transformation.html">SUTransformation</a> ref() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;  <span class="keyword">operator</span> <a class="code" href="struct_s_u_transformation.html">SUTransformation</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  <span class="keyword">operator</span> <a class="code" href="struct_s_u_transformation.html">SUTransformation</a>*();</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  <span class="comment"></span></div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="comment">  /**</span></div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="comment">  * Return the inverse Transformation object (see inverse Transformation matrices)</span></div>
@@ -231,13 +231,13 @@
 <div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;} <span class="comment">/* namespace CW */</span></div>
 <div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* Transformation_hpp */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="class_c_w_1_1_axes_html"><div class="ttname"><a href="class_c_w_1_1_axes.html">CW::Axes</a></div><div class="ttdef"><b>Definition:</b> <a href="_axes_8hpp_source.html#l00046">Axes.hpp:46</a></div></div>
-<div class="ttc" id="class_c_w_1_1_point3_d_html"><div class="ttname"><a href="class_c_w_1_1_point3_d.html">CW::Point3D</a></div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8hpp_source.html#l00252">Geometry.hpp:252</a></div></div>
+<div class="ttc" id="class_c_w_1_1_point3_d_html"><div class="ttname"><a href="class_c_w_1_1_point3_d.html">CW::Point3D</a></div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8hpp_source.html#l00257">Geometry.hpp:257</a></div></div>
 <div class="ttc" id="class_c_w_1_1_transformation_html_a752a7959bf4deb2a1d544dd37e4b788e"><div class="ttname"><a href="class_c_w_1_1_transformation.html#a752a7959bf4deb2a1d544dd37e4b788e">CW::Transformation::x_axis</a></div><div class="ttdeci">Vector3D x_axis() const </div></div>
 <div class="ttc" id="class_c_w_1_1_transformation_html_a87065670ab91cf0a043a2cafdab2812c"><div class="ttname"><a href="class_c_w_1_1_transformation.html#a87065670ab91cf0a043a2cafdab2812c">CW::Transformation::origin</a></div><div class="ttdeci">Point3D origin() const </div><div class="ttdef"><b>Definition:</b> <a href="_transformation_8cpp_source.html#l00366">Transformation.cpp:366</a></div></div>
-<div class="ttc" id="class_c_w_1_1_plane3_d_html"><div class="ttname"><a href="class_c_w_1_1_plane3_d.html">CW::Plane3D</a></div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8hpp_source.html#l00370">Geometry.hpp:370</a></div></div>
-<div class="ttc" id="class_c_w_1_1_line3_d_html"><div class="ttname"><a href="class_c_w_1_1_line3_d.html">CW::Line3D</a></div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8hpp_source.html#l00528">Geometry.hpp:528</a></div></div>
+<div class="ttc" id="class_c_w_1_1_plane3_d_html"><div class="ttname"><a href="class_c_w_1_1_plane3_d.html">CW::Plane3D</a></div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8hpp_source.html#l00375">Geometry.hpp:375</a></div></div>
+<div class="ttc" id="class_c_w_1_1_line3_d_html"><div class="ttname"><a href="class_c_w_1_1_line3_d.html">CW::Line3D</a></div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8hpp_source.html#l00542">Geometry.hpp:542</a></div></div>
 <div class="ttc" id="class_c_w_1_1_transformation_html_a9777b21a46c9a24b7336aacdeea58601"><div class="ttname"><a href="class_c_w_1_1_transformation.html#a9777b21a46c9a24b7336aacdeea58601">CW::Transformation::inverse</a></div><div class="ttdeci">Transformation inverse() const </div><div class="ttdef"><b>Definition:</b> <a href="_transformation_8cpp_source.html#l00210">Transformation.cpp:210</a></div></div>
-<div class="ttc" id="class_c_w_1_1_vector3_d_html"><div class="ttname"><a href="class_c_w_1_1_vector3_d.html">CW::Vector3D</a></div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8hpp_source.html#l00107">Geometry.hpp:107</a></div></div>
+<div class="ttc" id="class_c_w_1_1_vector3_d_html"><div class="ttname"><a href="class_c_w_1_1_vector3_d.html">CW::Vector3D</a></div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8hpp_source.html#l00112">Geometry.hpp:112</a></div></div>
 <div class="ttc" id="class_c_w_1_1_transformation_html_a61e0e699e0d59d15d4414e3ac38f4694"><div class="ttname"><a href="class_c_w_1_1_transformation.html#a61e0e699e0d59d15d4414e3ac38f4694">CW::Transformation::operator*</a></div><div class="ttdeci">Transformation operator*(Transformation transform)</div><div class="ttdef"><b>Definition:</b> <a href="_transformation_8cpp_source.html#l00381">Transformation.cpp:381</a></div></div>
 <div class="ttc" id="class_c_w_1_1_transformation_html_ad4d444e445ebede03dfc3ee6ea9a590e"><div class="ttname"><a href="class_c_w_1_1_transformation.html#ad4d444e445ebede03dfc3ee6ea9a590e">CW::Transformation::translation</a></div><div class="ttdeci">Vector3D translation() const </div><div class="ttdef"><b>Definition:</b> <a href="_transformation_8cpp_source.html#l00373">Transformation.cpp:373</a></div></div>
 <div class="ttc" id="class_c_w_1_1_transformation_html_a7f5f4edba7a8cf56773d17a7c59a8f04"><div class="ttname"><a href="class_c_w_1_1_transformation.html#a7f5f4edba7a8cf56773d17a7c59a8f04">CW::Transformation::Transformation</a></div><div class="ttdeci">Transformation()</div><div class="ttdef"><b>Definition:</b> <a href="_transformation_8cpp_source.html#l00046">Transformation.cpp:46</a></div></div>
@@ -245,11 +245,12 @@
 <div class="ttc" id="class_c_w_1_1_transformation_html_ae31f01adbda17015e68e13b81682b9ba"><div class="ttname"><a href="class_c_w_1_1_transformation.html#ae31f01adbda17015e68e13b81682b9ba">CW::Transformation::equal</a></div><div class="ttdeci">bool equal(const Transformation transform, const double epsilon=EPSILON) const </div><div class="ttdef"><b>Definition:</b> <a href="_transformation_8cpp_source.html#l00492">Transformation.cpp:492</a></div></div>
 <div class="ttc" id="class_c_w_1_1_transformation_html"><div class="ttname"><a href="class_c_w_1_1_transformation.html">CW::Transformation</a></div><div class="ttdef"><b>Definition:</b> <a href="_transformation_8hpp_source.html#l00043">Transformation.hpp:43</a></div></div>
 <div class="ttc" id="class_c_w_1_1_face_html"><div class="ttname"><a href="class_c_w_1_1_face.html">CW::Face</a></div><div class="ttdef"><b>Definition:</b> <a href="_face_8hpp_source.html#l00061">Face.hpp:61</a></div></div>
+<div class="ttc" id="struct_s_u_transformation_html"><div class="ttname"><a href="struct_s_u_transformation.html">SUTransformation</a></div><div class="ttdoc">Represents a 3D (4x4) geometric transformation matrix. </div><div class="ttdef"><b>Definition:</b> <a href="2016_2_sketch_up_a_p_i_8framework_2_headers_2transformation_8h_source.html#l00032">transformation.h:32</a></div></div>
 <div class="ttc" id="class_c_w_1_1_transformation_html_a71f3a94dbe8d768783fe15e615ddaf33"><div class="ttname"><a href="class_c_w_1_1_transformation.html#a71f3a94dbe8d768783fe15e615ddaf33">CW::Transformation::normalize</a></div><div class="ttdeci">Transformation &amp; normalize()</div><div class="ttdef"><b>Definition:</b> <a href="_transformation_8cpp_source.html#l00348">Transformation.cpp:348</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Nov 24 2017 15:22:25 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Jan 19 2018 16:42:01 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

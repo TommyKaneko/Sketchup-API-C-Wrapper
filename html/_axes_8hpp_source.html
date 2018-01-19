@@ -42,7 +42,7 @@
   </div>
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_fdb96db7800bcda861cc965e3bc145d5.html">SUAPI-CppWrapper</a></li><li class="navelem"><a class="el" href="dir_d18f6ee5a09a3d0ed3d1f344584c848e.html">model</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_5a36426493171642b1c6fd058fd2e6d3.html">SUAPI-CppWrapper</a></li><li class="navelem"><a class="el" href="dir_c359596257b5f4ccdc4ac591473f48ed.html">model</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -97,16 +97,16 @@
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment">*/</span></div>
 <div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="class_c_w_1_1_axes.html">   46</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_c_w_1_1_axes.html">Axes</a> :<span class="keyword">public</span> <a class="code" href="class_c_w_1_1_drawing_element.html">DrawingElement</a> {</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  SUAxesRef m_axes;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  <a class="code" href="struct_s_u_axes_ref.html">SUAxesRef</a> m_axes;</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  <span class="comment"></span></div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment">  /** Returns an empty SUAxesRef object using SUAxesCreate(). **/</span></div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  <span class="keyword">static</span> SUAxesRef create_axes();</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  <span class="keyword">static</span> <a class="code" href="struct_s_u_axes_ref.html">SUAxesRef</a> create_axes();</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment"></span></div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment">  /** Returns a custom SUAxesRef object using SUAxesCreateCustom(). **/</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  <span class="keyword">static</span> SUAxesRef create_custom_axes(<span class="keyword">const</span> SUPoint3D&amp; <a class="code" href="class_c_w_1_1_axes.html#af1fee3c2bc800574f7bddb7075a2d3b0">origin</a>, <span class="keyword">const</span> SUVector3D&amp; xaxis, <span class="keyword">const</span> SUVector3D&amp; yaxis, <span class="keyword">const</span> SUVector3D&amp; zaxis);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  <span class="keyword">static</span> <a class="code" href="struct_s_u_axes_ref.html">SUAxesRef</a> create_custom_axes(<span class="keyword">const</span> <a class="code" href="struct_s_u_point3_d.html">SUPoint3D</a>&amp; <a class="code" href="class_c_w_1_1_axes.html#af1fee3c2bc800574f7bddb7075a2d3b0">origin</a>, <span class="keyword">const</span> <a class="code" href="struct_s_u_vector3_d.html">SUVector3D</a>&amp; xaxis, <span class="keyword">const</span> <a class="code" href="struct_s_u_vector3_d.html">SUVector3D</a>&amp; yaxis, <span class="keyword">const</span> <a class="code" href="struct_s_u_vector3_d.html">SUVector3D</a>&amp; zaxis);</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment"></span></div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment">  /** Returns a copied SUAxesRef object from the given Axes object **/</span></div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  <span class="keyword">static</span> SUAxesRef copy_reference(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_axes.html">Axes</a>&amp; other);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  <span class="keyword">static</span> <a class="code" href="struct_s_u_axes_ref.html">SUAxesRef</a> copy_reference(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_axes.html">Axes</a>&amp; other);</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  </div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  <span class="keyword">public</span>:<span class="comment"></span></div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="comment">        /**</span></div>
@@ -119,7 +119,7 @@
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="comment">  * @param axes - existing SUAxesRef object to wrap.</span></div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="comment">  * @param attached - true if the SUAxesRef has been attached to the model.  Required for object release purposes.</span></div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="comment">  */</span></div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  <a class="code" href="class_c_w_1_1_axes.html#a1a014bf74dfc8bc16b62390112014862">Axes</a>(SUAxesRef axes, <span class="keywordtype">bool</span> <a class="code" href="class_c_w_1_1_entity.html#a4401ee82d78834f362b5aeb6ba23b57d">attached</a> = <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  <a class="code" href="class_c_w_1_1_axes.html#a1a014bf74dfc8bc16b62390112014862">Axes</a>(<a class="code" href="struct_s_u_axes_ref.html">SUAxesRef</a> axes, <span class="keywordtype">bool</span> <a class="code" href="class_c_w_1_1_entity.html#a4401ee82d78834f362b5aeb6ba23b57d">attached</a> = <span class="keyword">true</span>);</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <span class="comment"></span></div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="comment">  /**</span></div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="comment">  * Constructs Axes object from the given origin, x, y and z axes.  The vectors passed to the constructor must be orthogonal, otherwise, a null object will be created.</span></div>
@@ -166,21 +166,24 @@
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* Axes_hpp */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="class_c_w_1_1_axes_html"><div class="ttname"><a href="class_c_w_1_1_axes.html">CW::Axes</a></div><div class="ttdef"><b>Definition:</b> <a href="_axes_8hpp_source.html#l00046">Axes.hpp:46</a></div></div>
 <div class="ttc" id="class_c_w_1_1_axes_html_ae46f13401d2784a8d43077524a6df654"><div class="ttname"><a href="class_c_w_1_1_axes.html#ae46f13401d2784a8d43077524a6df654">CW::Axes::~Axes</a></div><div class="ttdeci">~Axes()</div><div class="ttdef"><b>Definition:</b> <a href="_axes_8cpp_source.html#l00094">Axes.cpp:94</a></div></div>
-<div class="ttc" id="class_c_w_1_1_point3_d_html"><div class="ttname"><a href="class_c_w_1_1_point3_d.html">CW::Point3D</a></div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8hpp_source.html#l00252">Geometry.hpp:252</a></div></div>
+<div class="ttc" id="class_c_w_1_1_point3_d_html"><div class="ttname"><a href="class_c_w_1_1_point3_d.html">CW::Point3D</a></div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8hpp_source.html#l00257">Geometry.hpp:257</a></div></div>
 <div class="ttc" id="class_c_w_1_1_axes_html_aca8b38b9e46777f9068f10c596876e9a"><div class="ttname"><a href="class_c_w_1_1_axes.html#aca8b38b9e46777f9068f10c596876e9a">CW::Axes::operator=</a></div><div class="ttdeci">Axes &amp; operator=(const Axes &amp;other)</div><div class="ttdef"><b>Definition:</b> <a href="_axes_8cpp_source.html#l00107">Axes.cpp:107</a></div></div>
 <div class="ttc" id="class_c_w_1_1_drawing_element_html"><div class="ttname"><a href="class_c_w_1_1_drawing_element.html">CW::DrawingElement</a></div><div class="ttdef"><b>Definition:</b> <a href="_drawing_element_8hpp_source.html#l00047">DrawingElement.hpp:47</a></div></div>
 <div class="ttc" id="class_c_w_1_1_axes_html_af1fee3c2bc800574f7bddb7075a2d3b0"><div class="ttname"><a href="class_c_w_1_1_axes.html#af1fee3c2bc800574f7bddb7075a2d3b0">CW::Axes::origin</a></div><div class="ttdeci">Point3D origin() const </div><div class="ttdef"><b>Definition:</b> <a href="_axes_8cpp_source.html#l00158">Axes.cpp:158</a></div></div>
 <div class="ttc" id="class_c_w_1_1_axes_html_abd841e88a4137cacf4c6b813a04b38b1"><div class="ttname"><a href="class_c_w_1_1_axes.html#abd841e88a4137cacf4c6b813a04b38b1">CW::Axes::transformation</a></div><div class="ttdeci">Transformation transformation() const </div><div class="ttdef"><b>Definition:</b> <a href="_axes_8cpp_source.html#l00169">Axes.cpp:169</a></div></div>
-<div class="ttc" id="class_c_w_1_1_vector3_d_html"><div class="ttname"><a href="class_c_w_1_1_vector3_d.html">CW::Vector3D</a></div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8hpp_source.html#l00107">Geometry.hpp:107</a></div></div>
+<div class="ttc" id="struct_s_u_point3_d_html"><div class="ttname"><a href="struct_s_u_point3_d.html">SUPoint3D</a></div><div class="ttdoc">Represents a point in 3-dimensional space. </div><div class="ttdef"><b>Definition:</b> <a href="2016_2_sketch_up_a_p_i_8framework_2_headers_2geometry_8h_source.html#l00031">geometry.h:31</a></div></div>
+<div class="ttc" id="class_c_w_1_1_vector3_d_html"><div class="ttname"><a href="class_c_w_1_1_vector3_d.html">CW::Vector3D</a></div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8hpp_source.html#l00112">Geometry.hpp:112</a></div></div>
 <div class="ttc" id="class_c_w_1_1_axes_html_a1a014bf74dfc8bc16b62390112014862"><div class="ttname"><a href="class_c_w_1_1_axes.html#a1a014bf74dfc8bc16b62390112014862">CW::Axes::Axes</a></div><div class="ttdeci">Axes()</div><div class="ttdef"><b>Definition:</b> <a href="_axes_8cpp_source.html#l00070">Axes.cpp:70</a></div></div>
+<div class="ttc" id="struct_s_u_vector3_d_html"><div class="ttname"><a href="struct_s_u_vector3_d.html">SUVector3D</a></div><div class="ttdoc">Represents a vector in 3-dimensional space. </div><div class="ttdef"><b>Definition:</b> <a href="2016_2_sketch_up_a_p_i_8framework_2_headers_2geometry_8h_source.html#l00041">geometry.h:41</a></div></div>
 <div class="ttc" id="class_c_w_1_1_axes_html_a17b23828958b3b0cdc6e24d562286b6e"><div class="ttname"><a href="class_c_w_1_1_axes.html#a17b23828958b3b0cdc6e24d562286b6e">CW::Axes::x_axis</a></div><div class="ttdeci">Vector3D x_axis() const </div><div class="ttdef"><b>Definition:</b> <a href="_axes_8cpp_source.html#l00127">Axes.cpp:127</a></div></div>
+<div class="ttc" id="struct_s_u_axes_ref_html"><div class="ttname"><a href="struct_s_u_axes_ref.html">SUAxesRef</a></div><div class="ttdoc">An axes entity reference. </div></div>
 <div class="ttc" id="class_c_w_1_1_transformation_html"><div class="ttname"><a href="class_c_w_1_1_transformation.html">CW::Transformation</a></div><div class="ttdef"><b>Definition:</b> <a href="_transformation_8hpp_source.html#l00043">Transformation.hpp:43</a></div></div>
 <div class="ttc" id="class_c_w_1_1_entity_html_a4401ee82d78834f362b5aeb6ba23b57d"><div class="ttname"><a href="class_c_w_1_1_entity.html#a4401ee82d78834f362b5aeb6ba23b57d">CW::Entity::attached</a></div><div class="ttdeci">void attached(bool attach=true)</div><div class="ttdoc">Method lets the object know that it has been attached to a model. This is important as it will let th...</div><div class="ttdef"><b>Definition:</b> <a href="_entity_8cpp_source.html#l00086">Entity.cpp:86</a></div></div>
 <div class="ttc" id="class_c_w_1_1_axes_html_a73212b0a3fa85a9bdb604ec26d563a9b"><div class="ttname"><a href="class_c_w_1_1_axes.html#a73212b0a3fa85a9bdb604ec26d563a9b">CW::Axes::operator!</a></div><div class="ttdeci">bool operator!() const </div><div class="ttdef"><b>Definition:</b> <a href="_axes_8cpp_source.html#l00119">Axes.cpp:119</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Nov 24 2017 15:22:25 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Jan 19 2018 16:42:00 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

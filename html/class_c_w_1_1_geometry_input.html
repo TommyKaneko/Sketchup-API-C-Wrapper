@@ -68,7 +68,7 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a7de214f129fef6724e9dde41c40f7ed2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a62b14bb9643e89e44528e4f3d89ae691"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_c_w_1_1_geometry_input.html">GeometryInput</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_w_1_1_geometry_input.html#a62b14bb9643e89e44528e4f3d89ae691">operator=</a> (const <a class="el" href="class_c_w_1_1_geometry_input.html">GeometryInput</a> &amp;other)</td></tr>
 <tr class="separator:a62b14bb9643e89e44528e4f3d89ae691"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2dd814f1fe4f2ca6b72d4d213ceee670"><td class="memItemLeft" align="right" valign="top">SUGeometryInputRef&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_w_1_1_geometry_input.html#a2dd814f1fe4f2ca6b72d4d213ceee670">ref</a> () const </td></tr>
+<tr class="memitem:a2dd814f1fe4f2ca6b72d4d213ceee670"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_s_u_geometry_input_ref.html">SUGeometryInputRef</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_w_1_1_geometry_input.html#a2dd814f1fe4f2ca6b72d4d213ceee670">ref</a> () const </td></tr>
 <tr class="separator:a2dd814f1fe4f2ca6b72d4d213ceee670"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aca07102a66453b4c8cac51f70f5539d9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_w_1_1_geometry_input.html#aca07102a66453b4c8cac51f70f5539d9">operator!</a> () const </td></tr>
 <tr class="separator:aca07102a66453b4c8cac51f70f5539d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -97,7 +97,7 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>Entities</b></td></t
 <tr class="separator:a9f4a2777d894886c3229c3ac1201c691"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Geometry Input class is an abstraction of Sketchup C API's SUGeometryInputRef object. It allows a much easier way for programmers to build Sketchup geometry within this class, before exporting it into a built SUGeometryInputRef object. See below for an example of <a class="el" href="class_c_w_1_1_geometry_input.html">GeometryInput</a> operates: <a class="el" href="class_c_w_1_1_geometry_input.html">GeometryInput</a> geom_input; <a class="el" href="class_c_w_1_1_entities.html">Entities</a> entities; // This is the entities object that we wish to add the geometry to. std::vector&lt;SUPoint3D&gt; outer_loop{SUPoint3D(0.0,0.0,0.0), SUPoint3D(1.0,0.0,0.0), SUPoint3D(0.0,1.0,0.0)}; std::vector&lt;std::vector&lt;SUPoint3D&gt;&gt; inner_loops{{SUPoint3D(0.1,0.1,0.0), SUPoint3D(0.1,0.2,0.0), SUPoint3D(0.2,0.3,0.0)}}; GIFace* face = geom_input.add_face(outer_loop, inner_loops); // <a class="el" href="class_c_w_1_1_geometry_input.html">GeometryInput</a> handles the interface with Sketchup C API when creating geometry. SUResult result = entities.fill(geom_input); // the geometry must be output into a SUEntitiesRef object. </p>
+<div class="textblock"><p>Geometry Input class is an abstraction of Sketchup C API's <a class="el" href="struct_s_u_geometry_input_ref.html" title="References a geometry input object. It is used as an input to /ref SUEntitiesFill. ">SUGeometryInputRef</a> object. It allows a much easier way for programmers to build Sketchup geometry within this class, before exporting it into a built <a class="el" href="struct_s_u_geometry_input_ref.html" title="References a geometry input object. It is used as an input to /ref SUEntitiesFill. ">SUGeometryInputRef</a> object. See below for an example of <a class="el" href="class_c_w_1_1_geometry_input.html">GeometryInput</a> operates: <a class="el" href="class_c_w_1_1_geometry_input.html">GeometryInput</a> geom_input; <a class="el" href="class_c_w_1_1_entities.html">Entities</a> entities; // This is the entities object that we wish to add the geometry to. std::vector&lt;SUPoint3D&gt; outer_loop{<a class="el" href="struct_s_u_point3_d.html" title="Represents a point in 3-dimensional space. ">SUPoint3D</a>(0.0,0.0,0.0), <a class="el" href="struct_s_u_point3_d.html" title="Represents a point in 3-dimensional space. ">SUPoint3D</a>(1.0,0.0,0.0), <a class="el" href="struct_s_u_point3_d.html" title="Represents a point in 3-dimensional space. ">SUPoint3D</a>(0.0,1.0,0.0)}; std::vector&lt;std::vector&lt;SUPoint3D&gt;&gt; inner_loops{{<a class="el" href="struct_s_u_point3_d.html" title="Represents a point in 3-dimensional space. ">SUPoint3D</a>(0.1,0.1,0.0), <a class="el" href="struct_s_u_point3_d.html" title="Represents a point in 3-dimensional space. ">SUPoint3D</a>(0.1,0.2,0.0), <a class="el" href="struct_s_u_point3_d.html" title="Represents a point in 3-dimensional space. ">SUPoint3D</a>(0.2,0.3,0.0)}}; GIFace* face = geom_input.add_face(outer_loop, inner_loops); // <a class="el" href="class_c_w_1_1_geometry_input.html">GeometryInput</a> handles the interface with Sketchup C API when creating geometry. SUResult result = entities.fill(geom_input); // the geometry must be output into a <a class="el" href="struct_s_u_entities_ref.html" title="References a container object for all entities in a model, component definition or a group...">SUEntitiesRef</a> object. </p>
 
 <p>Definition at line <a class="el" href="_geometry_input_8hpp_source.html#l00058">58</a> of file <a class="el" href="_geometry_input_8hpp_source.html">GeometryInput.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
@@ -200,7 +200,7 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>Entities</b></td></t
 <dl class="section return"><dt>Returns</dt><dd>index of the vertex that was added. Adds a face to the Geometry Input object. </dd>
 <dd>
 index to the added face.</dd></dl>
-<p>size_t GeometryInput::add_vertex(Point3D vertex) { SUPoint3D vertex_ref = vertex; SUGeometryInputAddVertex(m_geometry_input, &amp;vertex_ref); return m_vertex_index++; }</p>
+<p>size_t GeometryInput::add_vertex(Point3D vertex) { <a class="el" href="struct_s_u_point3_d.html" title="Represents a point in 3-dimensional space. ">SUPoint3D</a> vertex_ref = vertex; SUGeometryInputAddVertex(m_geometry_input, &amp;vertex_ref); return m_vertex_index++; }</p>
 <p>std::vector&lt;size_t&gt; GeometryInput::add_vertices(std::vector&lt;Point3D&gt; vertices) { std::vector&lt;size_t&gt; indices; for (size_t i = 0; i &lt; vertices.size(); i++) { indices.push_back(add_vertex(vertices[i])); } return indices; } </p>
 
 <p>Definition at line <a class="el" href="_geometry_input_8cpp_source.html#l00161">161</a> of file <a class="el" href="_geometry_input_8cpp_source.html">GeometryInput.cpp</a>.</p>
@@ -303,14 +303,14 @@ index to the added face.</dd></dl>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">SUGeometryInputRef CW::GeometryInput::ref </td>
+          <td class="memname"><a class="el" href="struct_s_u_geometry_input_ref.html">SUGeometryInputRef</a> CW::GeometryInput::ref </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Returns Raw SUGeometryInputRef that is stored. </p>
+<p>Returns Raw <a class="el" href="struct_s_u_geometry_input_ref.html" title="References a geometry input object. It is used as an input to /ref SUEntitiesFill. ">SUGeometryInputRef</a> that is stored. </p>
 
 <p>Definition at line <a class="el" href="_geometry_input_8cpp_source.html#l00120">120</a> of file <a class="el" href="_geometry_input_8cpp_source.html">GeometryInput.cpp</a>.</p>
 
@@ -323,7 +323,7 @@ index to the added face.</dd></dl>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Nov 24 2017 15:22:25 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Jan 19 2018 16:42:01 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

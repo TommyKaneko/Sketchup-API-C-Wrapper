@@ -42,7 +42,7 @@
   </div>
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_fdb96db7800bcda861cc965e3bc145d5.html">SUAPI-CppWrapper</a></li><li class="navelem"><a class="el" href="dir_d18f6ee5a09a3d0ed3d1f344584c848e.html">model</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_5a36426493171642b1c6fd058fd2e6d3.html">SUAPI-CppWrapper</a></li><li class="navelem"><a class="el" href="dir_c359596257b5f4ccdc4ac591473f48ed.html">model</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -102,16 +102,16 @@
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
 <div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="class_c_w_1_1_model.html">   51</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_c_w_1_1_model.html">Model</a> {</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  SUModelRef m_model;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  <a class="code" href="struct_s_u_model_ref.html">SUModelRef</a> m_model;</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  <span class="keywordtype">bool</span> m_release_on_destroy;</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  </div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  SUResult m_result = SU_ERROR_NONE; <span class="comment">// the result on creation of model</span></div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  </div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <span class="keyword">static</span> SUModelRef create_model();</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <span class="keyword">static</span> <a class="code" href="struct_s_u_model_ref.html">SUModelRef</a> create_model();</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  </div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  <span class="keyword">public</span>:</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  <a class="code" href="class_c_w_1_1_model.html">Model</a>();</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  <a class="code" href="class_c_w_1_1_model.html">Model</a>(SUModelRef model_ref, <span class="keywordtype">bool</span> release_on_destroy = <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  <a class="code" href="class_c_w_1_1_model.html">Model</a>(<a class="code" href="struct_s_u_model_ref.html">SUModelRef</a> model_ref, <span class="keywordtype">bool</span> release_on_destroy = <span class="keyword">true</span>);</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  <a class="code" href="class_c_w_1_1_model.html">Model</a>(std::string file_path);</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="comment"></span></div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="comment">  /** Copy Constructor **/</span></div>
@@ -125,13 +125,13 @@
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="comment">  /**</span></div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="comment">  * Returns SUModelRef object for the Model.</span></div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="comment">  */</span></div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  SUModelRef <a class="code" href="class_c_w_1_1_model.html#a586a581447bec7cbad3197400af780fd">ref</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  <a class="code" href="struct_s_u_model_ref.html">SUModelRef</a> <a class="code" href="class_c_w_1_1_model.html#a586a581447bec7cbad3197400af780fd">ref</a>() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  <span class="comment">/*</span></div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="comment">  * The class object can be converted to a SUModelRef without loss of data.</span></div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="comment">  */</span></div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  <span class="keyword">operator</span> SUModelRef() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  <span class="keyword">operator</span> SUModelRef*();</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  <span class="keyword">operator</span> <a class="code" href="struct_s_u_model_ref.html">SUModelRef</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  <span class="keyword">operator</span> <a class="code" href="struct_s_u_model_ref.html">SUModelRef</a>*();</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  </div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  <span class="comment">/*</span></div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="comment">  * Returns true if object is valid.</span></div>
@@ -350,10 +350,10 @@
 <div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;</div>
 <div class="line"><a name="l00299"></a><span class="lineno"><a class="line" href="class_c_w_1_1_model_statistics.html">  299</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_c_w_1_1_model_statistics.html">ModelStatistics</a> {</div>
 <div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;  <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;  SUModelStatistics m_model_statistics;</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;  <a class="code" href="struct_s_u_model_statistics.html">SUModelStatistics</a> m_model_statistics;</div>
 <div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;  </div>
 <div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;  <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;  <a class="code" href="class_c_w_1_1_model_statistics.html">ModelStatistics</a>(SUModelStatistics model_statistics);</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;  <a class="code" href="class_c_w_1_1_model_statistics.html">ModelStatistics</a>(<a class="code" href="struct_s_u_model_statistics.html">SUModelStatistics</a> model_statistics);</div>
 <div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;  <a class="code" href="class_c_w_1_1_model_statistics.html">ModelStatistics</a>(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_model.html">Model</a>&amp; model);</div>
 <div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;  <span class="comment"></span></div>
 <div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;<span class="comment">  /**</span></div>
@@ -368,8 +368,9 @@
 <div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* Model_hpp */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="class_c_w_1_1_axes_html"><div class="ttname"><a href="class_c_w_1_1_axes.html">CW::Axes</a></div><div class="ttdef"><b>Definition:</b> <a href="_axes_8hpp_source.html#l00046">Axes.hpp:46</a></div></div>
 <div class="ttc" id="class_c_w_1_1_classifications_html"><div class="ttname"><a href="class_c_w_1_1_classifications.html">CW::Classifications</a></div><div class="ttdef"><b>Definition:</b> <a href="_classifications_8hpp_source.html#l00041">Classifications.hpp:41</a></div></div>
+<div class="ttc" id="struct_s_u_model_ref_html"><div class="ttname"><a href="struct_s_u_model_ref.html">SUModelRef</a></div><div class="ttdoc">A SketchUp model. </div></div>
 <div class="ttc" id="class_c_w_1_1_layer_html"><div class="ttname"><a href="class_c_w_1_1_layer.html">CW::Layer</a></div><div class="ttdef"><b>Definition:</b> <a href="_layer_8hpp_source.html#l00040">Layer.hpp:40</a></div></div>
-<div class="ttc" id="class_c_w_1_1_entities_html"><div class="ttname"><a href="class_c_w_1_1_entities.html">CW::Entities</a></div><div class="ttdef"><b>Definition:</b> <a href="_entities_8hpp_source.html#l00055">Entities.hpp:55</a></div></div>
+<div class="ttc" id="class_c_w_1_1_entities_html"><div class="ttname"><a href="class_c_w_1_1_entities.html">CW::Entities</a></div><div class="ttdef"><b>Definition:</b> <a href="_entities_8hpp_source.html#l00056">Entities.hpp:56</a></div></div>
 <div class="ttc" id="class_c_w_1_1_typed_value_html"><div class="ttname"><a href="class_c_w_1_1_typed_value.html">CW::TypedValue</a></div><div class="ttdef"><b>Definition:</b> <a href="_typed_value_8hpp_source.html#l00045">TypedValue.hpp:45</a></div></div>
 <div class="ttc" id="class_c_w_1_1_model_html_a9b98a27c3dca7999ce8b5f03ccf89ddb"><div class="ttname"><a href="class_c_w_1_1_model.html#a9b98a27c3dca7999ce8b5f03ccf89ddb">CW::Model::operator=</a></div><div class="ttdeci">Model &amp; operator=(const Model &amp;other)</div></div>
 <div class="ttc" id="class_c_w_1_1_component_definition_html"><div class="ttname"><a href="class_c_w_1_1_component_definition.html">CW::ComponentDefinition</a></div><div class="ttdef"><b>Definition:</b> <a href="_component_definition_8hpp_source.html#l00050">ComponentDefinition.hpp:50</a></div></div>
@@ -381,10 +382,11 @@
 <div class="ttc" id="class_c_w_1_1_model_html_ad10ec689a9beece3934ddbe9980afc46"><div class="ttname"><a href="class_c_w_1_1_model.html#ad10ec689a9beece3934ddbe9980afc46">CW::Model::add_definition</a></div><div class="ttdeci">bool add_definition(ComponentDefinition &amp;definition)</div><div class="ttdef"><b>Definition:</b> <a href="_model_8cpp_source.html#l00130">Model.cpp:130</a></div></div>
 <div class="ttc" id="class_c_w_1_1_model_html_a586a581447bec7cbad3197400af780fd"><div class="ttname"><a href="class_c_w_1_1_model.html#a586a581447bec7cbad3197400af780fd">CW::Model::ref</a></div><div class="ttdeci">SUModelRef ref() const </div><div class="ttdef"><b>Definition:</b> <a href="_model_8cpp_source.html#l00083">Model.cpp:83</a></div></div>
 <div class="ttc" id="class_c_w_1_1_model_statistics_html"><div class="ttname"><a href="class_c_w_1_1_model_statistics.html">CW::ModelStatistics</a></div><div class="ttdef"><b>Definition:</b> <a href="_model_8hpp_source.html#l00299">Model.hpp:299</a></div></div>
+<div class="ttc" id="struct_s_u_model_statistics_html"><div class="ttname"><a href="struct_s_u_model_statistics.html">SUModelStatistics</a></div><div class="ttdoc">Contains an array of entity counts that can be indexed per entity type. </div><div class="ttdef"><b>Definition:</b> <a href="2016_2_sketch_up_a_p_i_8framework_2_headers_2model_2model_8h_source.html#l00025">model.h:25</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Nov 24 2017 15:22:25 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Jan 19 2018 16:42:01 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

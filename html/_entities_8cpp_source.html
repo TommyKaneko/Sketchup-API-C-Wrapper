@@ -42,7 +42,7 @@
   </div>
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_fdb96db7800bcda861cc965e3bc145d5.html">SUAPI-CppWrapper</a></li><li class="navelem"><a class="el" href="dir_d18f6ee5a09a3d0ed3d1f344584c848e.html">model</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_5a36426493171642b1c6fd058fd2e6d3.html">SUAPI-CppWrapper</a></li><li class="navelem"><a class="el" href="dir_c359596257b5f4ccdc4ac591473f48ed.html">model</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -94,7 +94,7 @@
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keyword">namespace </span>CW {</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<a class="code" href="class_c_w_1_1_entities.html#afbd36e6ecd573b7d66a506351e0e7de0">Entities::Entities</a>(SUEntitiesRef entities<span class="comment">/*, Model* model*/</span>):</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<a class="code" href="class_c_w_1_1_entities.html#afbd36e6ecd573b7d66a506351e0e7de0">Entities::Entities</a>(<a class="code" href="struct_s_u_entities_ref.html">SUEntitiesRef</a> entities<span class="comment">/*, Model* model*/</span>):</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        m_entities(entities)<span class="comment">/*,</span></div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment">  m_model(model)*/</span></div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;{}</div>
@@ -115,7 +115,7 @@
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="keywordflow">if</span> (count == 0) {</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                <span class="keywordflow">return</span> std::vector&lt;Face&gt;(0);</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        }</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  SUFaceRef* face_refs = <span class="keyword">new</span> SUFaceRef[count];</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  <a class="code" href="struct_s_u_face_ref.html">SUFaceRef</a>* face_refs = <span class="keyword">new</span> <a class="code" href="struct_s_u_face_ref.html">SUFaceRef</a>[count];</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        res = SUEntitiesGetFaces(m_entities, count, &amp;face_refs[0], &amp;count);</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  assert(res == SU_ERROR_NONE);</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  std::vector&lt;Face&gt; faces;</div>
@@ -138,7 +138,7 @@
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        <span class="keywordflow">if</span> (count == 0) {</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                <span class="keywordflow">return</span> std::vector&lt;Edge&gt;(0);</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        }</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  SUEdgeRef* edge_refs = <span class="keyword">new</span> SUEdgeRef[count];</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  <a class="code" href="struct_s_u_edge_ref.html">SUEdgeRef</a>* edge_refs = <span class="keyword">new</span> <a class="code" href="struct_s_u_edge_ref.html">SUEdgeRef</a>[count];</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        res = SUEntitiesGetEdges(m_entities, stray_only, count, &amp;edge_refs[0], &amp;count);</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  assert(res == SU_ERROR_NONE);</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;  std::vector&lt;Edge&gt; edges;</div>
@@ -161,7 +161,7 @@
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        <span class="keywordflow">if</span> (count == 0) {</div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;                <span class="keywordflow">return</span> std::vector&lt;ComponentInstance&gt;{};</div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        }</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;  SUComponentInstanceRef* instance_refs = <span class="keyword">new</span> SUComponentInstanceRef[count];</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;  <a class="code" href="struct_s_u_component_instance_ref.html">SUComponentInstanceRef</a>* instance_refs = <span class="keyword">new</span> <a class="code" href="struct_s_u_component_instance_ref.html">SUComponentInstanceRef</a>[count];</div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        res = SUEntitiesGetInstances(m_entities, count, &amp;instance_refs[0], &amp;count);</div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;  assert(res == SU_ERROR_NONE);</div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;  std::vector&lt;ComponentInstance&gt; instances;</div>
@@ -196,319 +196,339 @@
 <div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;}</div>
 <div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;</div>
 <div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;</div>
-<div class="line"><a name="l00147"></a><span class="lineno"><a class="line" href="class_c_w_1_1_entities.html#a64d6d1424e889b8432cb02aa9b78cd4c">  147</a></span>&#160;<span class="keywordtype">size_t</span> <a class="code" href="class_c_w_1_1_entities.html#a64d6d1424e889b8432cb02aa9b78cd4c">Entities::size</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00147"></a><span class="lineno"><a class="line" href="class_c_w_1_1_entities.html#a50d17b48fa3ef247883ccc343c3476e9">  147</a></span>&#160;<a class="code" href="class_c_w_1_1_bounding_box3_d.html">BoundingBox3D</a> <a class="code" href="class_c_w_1_1_entities.html#a50d17b48fa3ef247883ccc343c3476e9">Entities::bounding_box</a>()<span class="keyword"> const </span>{</div>
 <div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        <span class="keywordflow">if</span> (!SUIsValid(m_entities)) {</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::Entities::size(): Entities is null&quot;</span>);</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::Entities::groups(): Entities is null&quot;</span>);</div>
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;  }</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;        <span class="keywordtype">size_t</span> total_count = 0;</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;  <span class="keywordtype">size_t</span> count = 0;</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        SUResult res = SUEntitiesGetNumFaces(m_entities, &amp;count);</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;  assert(res == SU_ERROR_NONE);</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;  total_count += count;</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;  count = 0;</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        res = SUEntitiesGetNumEdges(m_entities, <span class="keyword">true</span>, &amp;count);</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;  assert(res == SU_ERROR_NONE);</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;  total_count += count;</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;  count = 0;</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        res = SUEntitiesGetNumInstances(m_entities, &amp;count);</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;  assert(res == SU_ERROR_NONE);</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;  total_count += count;</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;  count = 0;</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        res = SUEntitiesGetNumGroups(m_entities, &amp;count);</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;  assert(res == SU_ERROR_NONE);</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;  total_count += count;</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;        <span class="keywordflow">return</span> total_count;</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;}</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;</div>
-<div class="line"><a name="l00172"></a><span class="lineno"><a class="line" href="class_c_w_1_1_entities.html#a89858f051bf2c05d2c8718c2de281c93">  172</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_c_w_1_1_entities.html#a89858f051bf2c05d2c8718c2de281c93">Entities::add</a>(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_entities.html">Entities</a>&amp; other) {</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;        <span class="keywordflow">if</span> (!SUIsValid(m_entities) || !SUIsValid(other.m_entities)) {</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;        <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::Entities::add(): Entities is null&quot;</span>);</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;  }</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;        <a class="code" href="class_c_w_1_1_geometry_input.html">GeometryInput</a> geom_input;</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;  geom_input.add_faces(other.faces());</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;  geom_input.add_edges(other.edges());</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;        this-&gt;<a class="code" href="class_c_w_1_1_entities.html#a3056c75534a8b8b3937bea0c9aecf1ae">fill</a>(geom_input);</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;  std::vector&lt;ComponentInstance&gt; instances = other.instances();</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;  <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i=0; i &lt; instances.size(); ++i) {</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;        this-&gt;add_instance(instances[i].definition(), instances[i].transformation(), instances[i].name());</div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;  }</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;  std::vector&lt;Group&gt; other_groups = other.groups();</div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;  <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i=0; i &lt; other_groups.size(); ++i) {</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;        <a class="code" href="class_c_w_1_1_group.html">Group</a> new_group = this-&gt;add_group();</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    new_group.<a class="code" href="class_c_w_1_1_group.html#ababebc7b67c24692859d9347af7911b1">entities</a>().<a class="code" href="class_c_w_1_1_entities.html#a89858f051bf2c05d2c8718c2de281c93">add</a>(other_groups[i].entities());</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    new_group.<a class="code" href="class_c_w_1_1_group.html#a2e9a51c697dd675116a0391a0474d05b">transformation</a>(other_groups[i].transformation());</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;    new_group.<a class="code" href="class_c_w_1_1_group.html#a35199d1c2f1e457e55d40f9635f9b602">name</a>(other_groups[i].name());</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;  }</div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;  <span class="comment">// TODO: other geometry types need to be added.</span></div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;}</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;</div>
-<div class="line"><a name="l00196"></a><span class="lineno"><a class="line" href="class_c_w_1_1_entities.html#a3056c75534a8b8b3937bea0c9aecf1ae">  196</a></span>&#160;SUResult <a class="code" href="class_c_w_1_1_entities.html#a3056c75534a8b8b3937bea0c9aecf1ae">Entities::fill</a>(<a class="code" href="class_c_w_1_1_geometry_input.html">GeometryInput</a> &amp;geom_input) {</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;        <span class="keywordflow">if</span> (!SUIsValid(m_entities)) {</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;        <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::Entities::fill(): Entities is null&quot;</span>);</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;  }</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;        <span class="comment">// Check geom_input is not empty.</span></div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;  <span class="keywordflow">if</span> (geom_input.<a class="code" href="class_c_w_1_1_geometry_input.html#ae9ac5f77af6c1a501afb5e15b33ffbd5">empty</a>()) {</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;        <span class="keywordflow">return</span> SU_ERROR_NONE;</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;  }</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;        <a class="code" href="struct_s_u_bounding_box3_d.html">SUBoundingBox3D</a> box = SU_INVALID;</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        SUResult res = SUEntitiesGetBoundingBox(m_entities, &amp;box);</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;  assert(res == SU_ERROR_NONE);</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="class_c_w_1_1_bounding_box3_d.html">BoundingBox3D</a>(box);</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;}</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;</div>
+<div class="line"><a name="l00158"></a><span class="lineno"><a class="line" href="class_c_w_1_1_entities.html#a64d6d1424e889b8432cb02aa9b78cd4c">  158</a></span>&#160;<span class="keywordtype">size_t</span> <a class="code" href="class_c_w_1_1_entities.html#a64d6d1424e889b8432cb02aa9b78cd4c">Entities::size</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        <span class="keywordflow">if</span> (!SUIsValid(m_entities)) {</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;        <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::Entities::size(): Entities is null&quot;</span>);</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;  }</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;        <span class="keywordtype">size_t</span> total_count = 0;</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;  <span class="keywordtype">size_t</span> count = 0;</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;        SUResult res = SUEntitiesGetNumFaces(m_entities, &amp;count);</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;  assert(res == SU_ERROR_NONE);</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;  total_count += count;</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;  count = 0;</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;        res = SUEntitiesGetNumEdges(m_entities, <span class="keyword">true</span>, &amp;count);</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;  assert(res == SU_ERROR_NONE);</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;  total_count += count;</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;  count = 0;</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;        res = SUEntitiesGetNumInstances(m_entities, &amp;count);</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;  assert(res == SU_ERROR_NONE);</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;  total_count += count;</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;  count = 0;</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;        res = SUEntitiesGetNumGroups(m_entities, &amp;count);</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;  assert(res == SU_ERROR_NONE);</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;  total_count += count;</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;        <span class="keywordflow">return</span> total_count;</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;}</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;</div>
+<div class="line"><a name="l00183"></a><span class="lineno"><a class="line" href="class_c_w_1_1_entities.html#a89858f051bf2c05d2c8718c2de281c93">  183</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_c_w_1_1_entities.html#a89858f051bf2c05d2c8718c2de281c93">Entities::add</a>(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_entities.html">Entities</a>&amp; other) {</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;        <span class="keywordflow">if</span> (!SUIsValid(m_entities) || !SUIsValid(other.m_entities)) {</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;        <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::Entities::add(): Entities is null&quot;</span>);</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;  }</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;        <a class="code" href="class_c_w_1_1_geometry_input.html">GeometryInput</a> geom_input;</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;  geom_input.add_faces(other.faces());</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;  geom_input.add_edges(other.edges());</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;        this-&gt;<a class="code" href="class_c_w_1_1_entities.html#a3056c75534a8b8b3937bea0c9aecf1ae">fill</a>(geom_input);</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;  std::vector&lt;ComponentInstance&gt; instances = other.instances();</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;  <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i=0; i &lt; instances.size(); ++i) {</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;        this-&gt;add_instance(instances[i].definition(), instances[i].transformation(), instances[i].name());</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;  }</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;  std::vector&lt;Group&gt; other_groups = other.groups();</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;  <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i=0; i &lt; other_groups.size(); ++i) {</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;        <a class="code" href="class_c_w_1_1_group.html">Group</a> new_group = this-&gt;add_group();</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    new_group.<a class="code" href="class_c_w_1_1_group.html#ababebc7b67c24692859d9347af7911b1">entities</a>().<a class="code" href="class_c_w_1_1_entities.html#a89858f051bf2c05d2c8718c2de281c93">add</a>(other_groups[i].entities());</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    new_group.<a class="code" href="class_c_w_1_1_group.html#a2e9a51c697dd675116a0391a0474d05b">transformation</a>(other_groups[i].transformation());</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    new_group.<a class="code" href="class_c_w_1_1_group.html#a35199d1c2f1e457e55d40f9635f9b602">name</a>(other_groups[i].name());</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;  }</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;  <span class="comment">// TODO: other geometry types need to be added.</span></div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;}</div>
 <div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;  <span class="comment">// For the indexes of the GeometryInputRef to make sense after we fill the Entities object with its contents, we need to know how many of each entitity currently exists in the Entities object</span></div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;  <span class="keywordtype">size_t</span> num_faces_before = 0;</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;  SUResult res = SUEntitiesGetNumFaces(m_entities, &amp;num_faces_before);</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;  assert(res == SU_ERROR_NONE);</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;  SUResult fill_res = SUEntitiesFill(m_entities, geom_input.m_geometry_input, <span class="keyword">true</span>);</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;  assert(fill_res == SU_ERROR_NONE);</div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;  <span class="comment">// Now add other data that SUEntitiesFill cannot add to the entities.</span></div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;  <span class="comment">// Apply properties to Faces</span></div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;  <span class="comment">// TODO: there is an assumption that the faces added to an Entities object is added in sequence, according to the index number.  So that (num_faces_before + face_index_of_geom_input) correspond to the Face number in the Entities object. This needs to be tested.</span></div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;  <span class="keywordtype">size_t</span> num_faces_after = 0;</div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;  res = SUEntitiesGetNumFaces(m_entities, &amp;num_faces_after);</div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;  assert(res == SU_ERROR_NONE);</div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;  <span class="comment">/*</span></div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;<span class="comment">  std::vector&lt;std::pair&lt;size_t, Face&gt;&gt; faces_to_add = geom_input.faces();</span></div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;<span class="comment">  // If all of the faces in the geom_input were not added, it will not be possible to find the added face by looking at its index.</span></div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;<span class="comment">  // TODO: it is clear that if two overlapping faces are put into GeometryInput object, when output into the Entities object, the result could be three or more faces.  The following code will not recognise this. This shortcoming needs to be overcome.</span></div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;<span class="comment">  if ((num_faces_after-num_faces_before) == geom_input.num_faces()) {</span></div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;<span class="comment">    SUFaceRef faces_after[num_faces_after];</span></div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;<span class="comment">    res = SUEntitiesGetFaces(m_entities, num_faces_after, &amp;faces_after[0], &amp;num_faces_after);</span></div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;<span class="comment">    assert(res == SU_ERROR_NONE);</span></div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;<span class="comment">    for (size_t i=0; i &lt; faces_to_add.size(); ++i) {</span></div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;<span class="comment">      size_t new_face_index = faces_to_add[i].first;</span></div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;<span class="comment">      Face new_face(faces_after[(num_faces_before+new_face_index-1)]);</span></div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;<span class="comment">      new_face.copy_properties_from(faces_to_add[i].second);</span></div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;<span class="comment">      new_face.copy_attributes_from(faces_to_add[i].second);</span></div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;<span class="comment">      // Set attributes for the edges that bound the face.</span></div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;<span class="comment">      std::vector&lt;Loop&gt; loops = faces_to_add[i].second.loops();</span></div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;<span class="comment">      std::vector&lt;Loop&gt; new_loops = new_face.loops();</span></div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;<span class="comment">      for (size_t j=0; j &lt; loops.size(); ++j) {</span></div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;<span class="comment">        std::vector&lt;Edge&gt; old_edges = loops[j].edges();</span></div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;<span class="comment">        std::vector&lt;Edge&gt; new_edges = new_loops[j].edges();</span></div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;<span class="comment">        // If there are more new edges, then it means that some edges have been split during a merging operation.  The trick to find these is to see if the end location of the new and old edges match.</span></div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;<span class="comment">        size_t new_edge_index = 0;</span></div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;<span class="comment">        size_t old_edge_index = 0;</span></div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;<span class="comment">        while( old_edge_index &lt; old_edges.size()) {</span></div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;<span class="comment">          do {</span></div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;<span class="comment">            new_edges[new_edge_index].copy_properties_from(old_edges[old_edge_index]);</span></div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;<span class="comment">            // TODO: to save on a little performance, only a few of the DrawingElement properties need to be copied, as hidden and soft properties are already set from GeometryInput object.</span></div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;<span class="comment">            new_edges[new_edge_index].copy_attributes_from(old_edges[old_edge_index]);</span></div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;<span class="comment">            ++new_edge_index;</span></div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;<span class="comment">          }</span></div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;<span class="comment">          while ((old_edges.size() &lt; new_edges.size()) &amp;&amp;</span></div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;<span class="comment">                 (new_edge_index &lt; new_edges.size()) &amp;&amp;</span></div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;<span class="comment">                 (new_edges[new_edge_index-1].end().position() != old_edges[old_edge_index+1].end().position()));</span></div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;<span class="comment">          ++old_edge_index;</span></div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;<span class="comment">        }</span></div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;<span class="comment">      }</span></div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;<span class="comment">    }</span></div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;<span class="comment">  }</span></div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;<span class="comment">  */</span></div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;  <span class="keywordflow">return</span> fill_res;</div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;}</div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;</div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;std::vector&lt;Face&gt; Entities::add_faces(std::vector&lt;Face&gt;&amp; faces) {</div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;        <span class="keywordflow">if</span> (!SUIsValid(m_entities)) {</div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;        <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::Entities::add_faces(): Entities is null&quot;</span>);</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;  }</div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;  SUResult res = SUEntitiesAddFaces(m_entities, faces.size(), faces[0]);</div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;        assert(res == SU_ERROR_NONE);</div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;</div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;  <span class="comment">// Transfer ownership of each face</span></div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; face : faces)</div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;    face.attached(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;</div>
+<div class="line"><a name="l00207"></a><span class="lineno"><a class="line" href="class_c_w_1_1_entities.html#a3056c75534a8b8b3937bea0c9aecf1ae">  207</a></span>&#160;SUResult <a class="code" href="class_c_w_1_1_entities.html#a3056c75534a8b8b3937bea0c9aecf1ae">Entities::fill</a>(<a class="code" href="class_c_w_1_1_geometry_input.html">GeometryInput</a> &amp;geom_input) {</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;        <span class="keywordflow">if</span> (!SUIsValid(m_entities)) {</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;        <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::Entities::fill(): Entities is null&quot;</span>);</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;  }</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;        <span class="comment">// Check geom_input is not empty.</span></div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;  <span class="keywordflow">if</span> (geom_input.<a class="code" href="class_c_w_1_1_geometry_input.html#ae9ac5f77af6c1a501afb5e15b33ffbd5">empty</a>()) {</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;        <span class="keywordflow">return</span> SU_ERROR_NONE;</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;  }</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;  <span class="comment">// For the indexes of the GeometryInputRef to make sense after we fill the Entities object with its contents, we need to know how many of each entitity currently exists in the Entities object</span></div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;  <span class="keywordtype">size_t</span> num_faces_before = 0;</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;  SUResult res = SUEntitiesGetNumFaces(m_entities, &amp;num_faces_before);</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;  assert(res == SU_ERROR_NONE);</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;  SUResult fill_res = SUEntitiesFill(m_entities, geom_input.m_geometry_input, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;  assert(fill_res == SU_ERROR_NONE);</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;  <span class="comment">// Now add other data that SUEntitiesFill cannot add to the entities.</span></div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;  <span class="comment">// Apply properties to Faces</span></div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;  <span class="comment">// TODO: there is an assumption that the faces added to an Entities object is added in sequence, according to the index number.  So that (num_faces_before + face_index_of_geom_input) correspond to the Face number in the Entities object. This needs to be tested.</span></div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;  <span class="keywordtype">size_t</span> num_faces_after = 0;</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;  res = SUEntitiesGetNumFaces(m_entities, &amp;num_faces_after);</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;  assert(res == SU_ERROR_NONE);</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;  <span class="comment">/*</span></div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;<span class="comment">  std::vector&lt;std::pair&lt;size_t, Face&gt;&gt; faces_to_add = geom_input.faces();</span></div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;<span class="comment">  // If all of the faces in the geom_input were not added, it will not be possible to find the added face by looking at its index.</span></div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;<span class="comment">  // TODO: it is clear that if two overlapping faces are put into GeometryInput object, when output into the Entities object, the result could be three or more faces.  The following code will not recognise this. This shortcoming needs to be overcome.</span></div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;<span class="comment">  if ((num_faces_after-num_faces_before) == geom_input.num_faces()) {</span></div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;<span class="comment">    SUFaceRef faces_after[num_faces_after];</span></div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;<span class="comment">    res = SUEntitiesGetFaces(m_entities, num_faces_after, &amp;faces_after[0], &amp;num_faces_after);</span></div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;<span class="comment">    assert(res == SU_ERROR_NONE);</span></div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;<span class="comment">    for (size_t i=0; i &lt; faces_to_add.size(); ++i) {</span></div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;<span class="comment">      size_t new_face_index = faces_to_add[i].first;</span></div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;<span class="comment">      Face new_face(faces_after[(num_faces_before+new_face_index-1)]);</span></div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;<span class="comment">      new_face.copy_properties_from(faces_to_add[i].second);</span></div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;<span class="comment">      new_face.copy_attributes_from(faces_to_add[i].second);</span></div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;<span class="comment">      // Set attributes for the edges that bound the face.</span></div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;<span class="comment">      std::vector&lt;Loop&gt; loops = faces_to_add[i].second.loops();</span></div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;<span class="comment">      std::vector&lt;Loop&gt; new_loops = new_face.loops();</span></div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;<span class="comment">      for (size_t j=0; j &lt; loops.size(); ++j) {</span></div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;<span class="comment">        std::vector&lt;Edge&gt; old_edges = loops[j].edges();</span></div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;<span class="comment">        std::vector&lt;Edge&gt; new_edges = new_loops[j].edges();</span></div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;<span class="comment">        // If there are more new edges, then it means that some edges have been split during a merging operation.  The trick to find these is to see if the end location of the new and old edges match.</span></div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;<span class="comment">        size_t new_edge_index = 0;</span></div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;<span class="comment">        size_t old_edge_index = 0;</span></div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;<span class="comment">        while( old_edge_index &lt; old_edges.size()) {</span></div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;<span class="comment">          do {</span></div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;<span class="comment">            new_edges[new_edge_index].copy_properties_from(old_edges[old_edge_index]);</span></div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;<span class="comment">            // TODO: to save on a little performance, only a few of the DrawingElement properties need to be copied, as hidden and soft properties are already set from GeometryInput object.</span></div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;<span class="comment">            new_edges[new_edge_index].copy_attributes_from(old_edges[old_edge_index]);</span></div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;<span class="comment">            ++new_edge_index;</span></div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;<span class="comment">          }</span></div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;<span class="comment">          while ((old_edges.size() &lt; new_edges.size()) &amp;&amp;</span></div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;<span class="comment">                 (new_edge_index &lt; new_edges.size()) &amp;&amp;</span></div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;<span class="comment">                 (new_edges[new_edge_index-1].end().position() != old_edges[old_edge_index+1].end().position()));</span></div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;<span class="comment">          ++old_edge_index;</span></div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;<span class="comment">        }</span></div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;<span class="comment">      }</span></div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;<span class="comment">    }</span></div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;<span class="comment">  }</span></div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;<span class="comment">  */</span></div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;  <span class="keywordflow">return</span> fill_res;</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;}</div>
 <div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;</div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;  <span class="keywordflow">return</span> faces;</div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;}</div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;</div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;std::vector&lt;Edge&gt; Entities::add_edges(std::vector&lt;Edge&gt;&amp; edges) {</div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;        <span class="keywordflow">if</span> (!SUIsValid(m_entities)) {</div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;        <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::Entities::add_edges(): Entities is null&quot;</span>);</div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;  }</div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;  SUResult res = SUEntitiesAddEdges(m_entities, edges.size(), edges[0]);</div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;  assert(res == SU_ERROR_NONE);</div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;</div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;  <span class="comment">// Transfer ownership of each edge</span></div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; edge : edges)</div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;      edge.attached(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;std::vector&lt;Face&gt; Entities::add_faces(std::vector&lt;Face&gt;&amp; faces) {</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;        <span class="keywordflow">if</span> (!SUIsValid(m_entities)) {</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;        <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::Entities::add_faces(): Entities is null&quot;</span>);</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;  }</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;  SUResult res = SUEntitiesAddFaces(m_entities, faces.size(), faces[0]);</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;        assert(res == SU_ERROR_NONE);</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;  <span class="comment">// Transfer ownership of each face</span></div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; face : faces)</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;    face.attached(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;  <span class="keywordflow">return</span> faces;</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;}</div>
 <div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;</div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;  <span class="keywordflow">return</span> edges;</div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;}</div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;</div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;</div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;Edge Entities::add_edge(Edge&amp; edge) {</div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;        <span class="keywordflow">if</span> (!SUIsValid(m_entities)) {</div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;        <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::Entities::add_edge(): Entities is null&quot;</span>);</div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;  }</div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;        SUEdgeRef edge_ref = edge.ref();</div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;  SUResult res = SUEntitiesAddEdges(m_entities, 1, &amp;edge_ref);</div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;  assert(res == SU_ERROR_NONE);</div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;  edge.attached(<span class="keyword">true</span>);</div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;  <span class="keywordflow">return</span> edge;</div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;}</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;std::vector&lt;Edge&gt; Entities::add_edges(std::vector&lt;Edge&gt;&amp; edges) {</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;        <span class="keywordflow">if</span> (!SUIsValid(m_entities)) {</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;        <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::Entities::add_edges(): Entities is null&quot;</span>);</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;  }</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;  SUResult res = SUEntitiesAddEdges(m_entities, edges.size(), edges[0]);</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;  assert(res == SU_ERROR_NONE);</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;  <span class="comment">// Transfer ownership of each edge</span></div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; edge : edges)</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;      edge.attached(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;  <span class="keywordflow">return</span> edges;</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;}</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;</div>
 <div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;</div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;</div>
-<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;<span class="keywordtype">void</span> Entities::add_instance(ComponentInstance&amp; instance) {</div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;        <span class="keywordflow">if</span> (!SUIsValid(m_entities)) {</div>
-<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;        <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::Entities::add_instance(): Entities is null&quot;</span>);</div>
-<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;  }</div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;        <span class="keywordflow">if</span> (!instance) {</div>
-<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;        <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;CW::Entities::add_instance(): ComponentInstance argument is invalid&quot;</span>);</div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;  }</div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;  SUResult res = SUEntitiesAddInstance(m_entities, instance, <span class="keyword">nullptr</span>);</div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;        assert(res == SU_ERROR_NONE);</div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;  instance.attached(<span class="keyword">true</span>);</div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;}</div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;</div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;</div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;ComponentInstance Entities::add_instance(<span class="keyword">const</span> ComponentDefinition&amp; definition, <span class="keyword">const</span> Transformation&amp; transformation, <span class="keyword">const</span> String&amp; name){</div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;        <span class="keywordflow">if</span> (!SUIsValid(m_entities)) {</div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;        <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::Entities::add_instance(): Entities is null&quot;</span>);</div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;  }</div>
-<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;        <span class="keywordflow">if</span> (!definition) {</div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;        <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;CW::Entities::add_instance(): ComponentDefinition argument is invalid&quot;</span>);</div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;  }</div>
-<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;  SUComponentInstanceRef instance = SU_INVALID;</div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;  SUResult res = SUComponentDefinitionCreateInstance(definition.ref(), &amp;instance);</div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;        assert(res == SU_ERROR_NONE);</div>
-<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;  SUTransformation transform = transformation.ref();</div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;  res = SUComponentInstanceSetTransform(instance, &amp;transform);</div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;  assert(res == SU_ERROR_NONE);</div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;  <span class="keywordflow">if</span> (name.empty()) {</div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;    res = SUEntitiesAddInstance(m_entities, instance, NULL);</div>
-<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;  }</div>
-<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;  <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;    SUStringRef name_ref = name.ref();</div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;    res = SUEntitiesAddInstance(m_entities, instance, &amp;name_ref);</div>
-<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;  }</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;Edge Entities::add_edge(Edge&amp; edge) {</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;        <span class="keywordflow">if</span> (!SUIsValid(m_entities)) {</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;        <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::Entities::add_edge(): Entities is null&quot;</span>);</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;  }</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;        <a class="code" href="struct_s_u_edge_ref.html">SUEdgeRef</a> edge_ref = edge.ref();</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;  SUResult res = SUEntitiesAddEdges(m_entities, 1, &amp;edge_ref);</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;  assert(res == SU_ERROR_NONE);</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;  edge.attached(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;  <span class="keywordflow">return</span> edge;</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;}</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;<span class="keywordtype">void</span> Entities::add_instance(ComponentInstance&amp; instance) {</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;        <span class="keywordflow">if</span> (!SUIsValid(m_entities)) {</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;        <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::Entities::add_instance(): Entities is null&quot;</span>);</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;  }</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;        <span class="keywordflow">if</span> (!instance) {</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;        <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;CW::Entities::add_instance(): ComponentInstance argument is invalid&quot;</span>);</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;  }</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;  SUResult res = SUEntitiesAddInstance(m_entities, instance, <span class="keyword">nullptr</span>);</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;        assert(res == SU_ERROR_NONE);</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;  instance.attached(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;}</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;ComponentInstance Entities::add_instance(<span class="keyword">const</span> ComponentDefinition&amp; definition, <span class="keyword">const</span> Transformation&amp; transformation, <span class="keyword">const</span> String&amp; name){</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;        <span class="keywordflow">if</span> (!SUIsValid(m_entities)) {</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;        <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::Entities::add_instance(): Entities is null&quot;</span>);</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;  }</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;        <span class="keywordflow">if</span> (!definition) {</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;        <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;CW::Entities::add_instance(): ComponentDefinition argument is invalid&quot;</span>);</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;  }</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;  <a class="code" href="struct_s_u_component_instance_ref.html">SUComponentInstanceRef</a> instance = SU_INVALID;</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;  SUResult res = SUComponentDefinitionCreateInstance(definition.ref(), &amp;instance);</div>
 <div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;        assert(res == SU_ERROR_NONE);</div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;  <span class="keywordflow">return</span> ComponentInstance(instance, <span class="keyword">true</span>);</div>
-<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;}</div>
-<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;</div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;</div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;<span class="comment">// TODO: add_group needs to be refined</span></div>
-<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;</div>
-<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;Group Entities::add_group(<span class="keyword">const</span> ComponentDefinition&amp; definition, <span class="keyword">const</span> Transformation&amp; transformation) {</div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;        <span class="keywordflow">if</span> (!SUIsValid(m_entities)) {</div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;        <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::Entities::add_group(): Entities is null&quot;</span>);</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;  <a class="code" href="struct_s_u_transformation.html">SUTransformation</a> transform = transformation.ref();</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;  res = SUComponentInstanceSetTransform(instance, &amp;transform);</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;  assert(res == SU_ERROR_NONE);</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;  <span class="keywordflow">if</span> (name.empty()) {</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;    res = SUEntitiesAddInstance(m_entities, instance, NULL);</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;  }</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;  <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;    <a class="code" href="struct_s_u_string_ref.html">SUStringRef</a> name_ref = name.ref();</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;    res = SUEntitiesAddInstance(m_entities, instance, &amp;name_ref);</div>
 <div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;  }</div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;        <span class="keywordflow">if</span> (!definition) {</div>
-<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;        <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;CW::Entities::add_group(): ComponentDefinition argument is invalid&quot;</span>);</div>
-<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;  }</div>
-<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;        <span class="keywordflow">if</span> (!definition.is_group()) {</div>
-<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;        <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;CW::Entities::add_group(): ComponentDefinition given is not a group&quot;</span>);</div>
-<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;  }</div>
-<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;  <span class="comment">// Groups cannot be created with a component definition and transformation objects.  Instead, the geometry must be copied in to a new Entities object in the group.</span></div>
-<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;  Group new_group = this-&gt;add_group();</div>
-<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;  <a class="code" href="class_c_w_1_1_entities.html#afbd36e6ecd573b7d66a506351e0e7de0">Entities</a> group_entities = new_group.entities();</div>
-<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;  <a class="code" href="class_c_w_1_1_entities.html#afbd36e6ecd573b7d66a506351e0e7de0">Entities</a> def_entities = definition.entities();</div>
-<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;  <span class="comment">// Add geometry one by one to Geometry input.</span></div>
-<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;  GeometryInput geom_input;</div>
-<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;  std::vector&lt;Face&gt; def_faces = def_entities.faces();</div>
-<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;  <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i=0; i &lt; def_faces.size(); ++i) {</div>
-<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;        geom_input.add_face(def_faces[i]);</div>
-<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;  }</div>
-<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;  std::vector&lt;Edge&gt; def_edges = def_entities.edges(<span class="keyword">true</span>);</div>
-<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;  <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i=0; i &lt; def_edges.size(); ++i) {</div>
-<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;        group_entities.add_edge(def_edges[i]);</div>
-<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;  }</div>
-<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;  group_entities.fill(geom_input);</div>
-<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;  <span class="comment">// Also add instances and groups</span></div>
-<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;  std::vector&lt;Group&gt; def_groups = def_entities.groups();</div>
-<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;  <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i=0; i &lt; def_groups.size(); ++i) {</div>
-<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;        group_entities.add_group(def_groups[i].definition() , def_groups[i].transformation());</div>
-<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;  }</div>
-<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;  std::vector&lt;ComponentInstance&gt; def_instances = def_entities.instances();</div>
-<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;  <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i=0; i &lt; def_instances.size(); ++i) {</div>
-<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;        group_entities.add_instance(def_instances[i].definition(), def_instances[i].transformation());</div>
-<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;  }</div>
-<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;</div>
-<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;  <span class="comment">// TODO: add other entities to the group (construction lines, curves, etc)</span></div>
-<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;  <span class="keywordflow">return</span> new_group;</div>
-<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;</div>
-<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;  <span class="comment">// TODO: the way groups are implemented are a problem.  Come back to this.</span></div>
-<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;  <span class="comment">//SUResult res = SUComponentDefinitionCreateGroup(definition.ref(), &amp;group);</span></div>
-<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;        <span class="comment">//assert(res == SU_ERROR_NONE);</span></div>
-<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;  <span class="comment">//SUTransformation transform = transformation.ref();</span></div>
-<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;  <span class="comment">//res = SUComponentInstanceSetTransform(instance, &amp;transform);</span></div>
-<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;}</div>
-<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;</div>
-<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;Group Entities::add_group() {</div>
-<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;        <span class="keywordflow">if</span> (!SUIsValid(m_entities)) {</div>
-<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;        <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::Entities::add_group(): Entities is null&quot;</span>);</div>
-<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;  }</div>
-<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;  Group new_group;</div>
-<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;  <span class="comment">// Add group to the entities object before populating it.</span></div>
-<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;  SUResult res = SUEntitiesAddGroup(m_entities, new_group.ref());</div>
-<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;        assert(res == SU_ERROR_NONE);</div>
-<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;  <span class="keywordflow">return</span> new_group;</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;        assert(res == SU_ERROR_NONE);</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;  <span class="keywordflow">return</span> ComponentInstance(instance, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;}</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;<span class="comment">// TODO: add_group needs to be refined</span></div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;Group Entities::add_group(<span class="keyword">const</span> ComponentDefinition&amp; definition, <span class="keyword">const</span> Transformation&amp; transformation) {</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;        <span class="keywordflow">if</span> (!SUIsValid(m_entities)) {</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;        <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::Entities::add_group(): Entities is null&quot;</span>);</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;  }</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;        <span class="keywordflow">if</span> (!definition) {</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;        <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;CW::Entities::add_group(): ComponentDefinition argument is invalid&quot;</span>);</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;  }</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;        <span class="keywordflow">if</span> (!definition.is_group()) {</div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;        <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;CW::Entities::add_group(): ComponentDefinition given is not a group&quot;</span>);</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;  }</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;  <span class="comment">// Groups cannot be created with a component definition and transformation objects.  Instead, the geometry must be copied in to a new Entities object in the group.</span></div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;  Group new_group = this-&gt;add_group();</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;  <a class="code" href="class_c_w_1_1_entities.html#afbd36e6ecd573b7d66a506351e0e7de0">Entities</a> group_entities = new_group.entities();</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;  <a class="code" href="class_c_w_1_1_entities.html#afbd36e6ecd573b7d66a506351e0e7de0">Entities</a> def_entities = definition.entities();</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;  <span class="comment">// Add geometry one by one to Geometry input.</span></div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;  GeometryInput geom_input;</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;  std::vector&lt;Face&gt; def_faces = def_entities.faces();</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;  <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i=0; i &lt; def_faces.size(); ++i) {</div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;        geom_input.add_face(def_faces[i]);</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;  }</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;  std::vector&lt;Edge&gt; def_edges = def_entities.edges(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;  <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i=0; i &lt; def_edges.size(); ++i) {</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;        group_entities.add_edge(def_edges[i]);</div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;  }</div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;  group_entities.fill(geom_input);</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;  <span class="comment">// Also add instances and groups</span></div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;  std::vector&lt;Group&gt; def_groups = def_entities.groups();</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;  <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i=0; i &lt; def_groups.size(); ++i) {</div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;        group_entities.add_group(def_groups[i].definition() , def_groups[i].transformation());</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;  }</div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;  std::vector&lt;ComponentInstance&gt; def_instances = def_entities.instances();</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;  <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i=0; i &lt; def_instances.size(); ++i) {</div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;        group_entities.add_instance(def_instances[i].definition(), def_instances[i].transformation());</div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;  }</div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;</div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;  <span class="comment">// TODO: add other entities to the group (construction lines, curves, etc)</span></div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;  <span class="keywordflow">return</span> new_group;</div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;</div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;  <span class="comment">// TODO: the way groups are implemented are a problem.  Come back to this.</span></div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;  <span class="comment">//SUResult res = SUComponentDefinitionCreateGroup(definition.ref(), &amp;group);</span></div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;        <span class="comment">//assert(res == SU_ERROR_NONE);</span></div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;  <span class="comment">//SUTransformation transform = transformation.ref();</span></div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;  <span class="comment">//res = SUComponentInstanceSetTransform(instance, &amp;transform);</span></div>
 <div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;}</div>
 <div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;</div>
-<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;</div>
-<div class="line"><a name="l00400"></a><span class="lineno"><a class="line" href="class_c_w_1_1_entities.html#ab34fd9822bee1ef8765c4ff6e5994255">  400</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="class_c_w_1_1_entities.html#ab34fd9822bee1ef8765c4ff6e5994255">Entities::transform_entities</a>(std::vector&lt;Entity&gt;&amp; elems, <span class="keyword">const</span> <a class="code" href="class_c_w_1_1_transformation.html">Transformation</a>&amp; transform) {</div>
-<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;        <span class="keywordflow">if</span> (!SUIsValid(m_entities)) {</div>
-<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;        <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::Entities::transform_entities(): Entities is null&quot;</span>);</div>
-<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;  }</div>
-<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;  SUTransformation trans_ref = transform.ref();</div>
-<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;        SUResult res = SUEntitiesTransform(m_entities, elems.size(), elems[0], &amp;trans_ref);</div>
-<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;  assert(res == SU_ERROR_NONE || res == SU_ERROR_GENERIC);</div>
-<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;        <span class="keywordflow">if</span> (res == SU_ERROR_UNSUPPORTED) {</div>
-<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;        <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;CW::Entities::transform_entities(): One of the elements given in the Entity vector is not contained by this Entities object.&quot;</span>);</div>
-<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;  }</div>
-<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;  <span class="keywordflow">else</span> <span class="keywordflow">if</span> (SU_ERROR_GENERIC) {</div>
-<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;  }</div>
-<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;}</div>
-<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;</div>
-<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;</div>
-<div class="line"><a name="l00417"></a><span class="lineno"><a class="line" href="class_c_w_1_1_entities.html#a23eb23d7c8b5f8f1ca6ad3124d09b755">  417</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="class_c_w_1_1_entities.html#ab34fd9822bee1ef8765c4ff6e5994255">Entities::transform_entities</a>(std::vector&lt;Entity&gt;&amp; elems, std::vector&lt;Transformation&gt;&amp; transforms) {</div>
-<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;        <span class="keywordflow">if</span> (!SUIsValid(m_entities)) {</div>
-<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;        <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::Entities::transform_entities(): Entities is null&quot;</span>);</div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;Group Entities::add_group() {</div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;        <span class="keywordflow">if</span> (!SUIsValid(m_entities)) {</div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;        <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::Entities::add_group(): Entities is null&quot;</span>);</div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;  }</div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;  Group new_group;</div>
+<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;  <span class="comment">// Add group to the entities object before populating it.</span></div>
+<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;  SUResult res = SUEntitiesAddGroup(m_entities, new_group.ref());</div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;        assert(res == SU_ERROR_NONE);</div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;  <span class="keywordflow">return</span> new_group;</div>
+<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;}</div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;</div>
+<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;</div>
+<div class="line"><a name="l00411"></a><span class="lineno"><a class="line" href="class_c_w_1_1_entities.html#ab34fd9822bee1ef8765c4ff6e5994255">  411</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="class_c_w_1_1_entities.html#ab34fd9822bee1ef8765c4ff6e5994255">Entities::transform_entities</a>(std::vector&lt;Entity&gt;&amp; elems, <span class="keyword">const</span> <a class="code" href="class_c_w_1_1_transformation.html">Transformation</a>&amp; transform) {</div>
+<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;        <span class="keywordflow">if</span> (!SUIsValid(m_entities)) {</div>
+<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;        <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::Entities::transform_entities(): Entities is null&quot;</span>);</div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;  }</div>
+<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;  <a class="code" href="struct_s_u_transformation.html">SUTransformation</a> trans_ref = transform.ref();</div>
+<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;        SUResult res = SUEntitiesTransform(m_entities, elems.size(), elems[0], &amp;trans_ref);</div>
+<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;  assert(res == SU_ERROR_NONE || res == SU_ERROR_GENERIC);</div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;        <span class="keywordflow">if</span> (res == SU_ERROR_UNSUPPORTED) {</div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;        <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;CW::Entities::transform_entities(): One of the elements given in the Entity vector is not contained by this Entities object.&quot;</span>);</div>
 <div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;  }</div>
-<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;        <span class="keywordflow">if</span> (elems.size() != transforms.size()) {</div>
-<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;        <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;CW::Entities::transform_entities(): different number of elements to transformation objects given - the same number must be given.&quot;</span>);</div>
+<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;  <span class="keywordflow">else</span> <span class="keywordflow">if</span> (SU_ERROR_GENERIC) {</div>
+<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;  }</div>
-<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;  assert(elems.size() == transforms.size());</div>
-<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;  SUResult res = SUEntitiesTransformMultiple(m_entities, elems.size(), elems[0], transforms[0]);</div>
-<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;        <span class="keywordflow">if</span> (res == SU_ERROR_UNSUPPORTED) {</div>
-<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;        <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;CW::Entities::transform_entities(): One of the elements given in the Entity vector is not contained by this Entities object.&quot;</span>);</div>
-<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;  }</div>
-<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;  <span class="keywordflow">else</span> <span class="keywordflow">if</span> (SU_ERROR_GENERIC) {</div>
-<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;}</div>
+<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;</div>
+<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;</div>
+<div class="line"><a name="l00428"></a><span class="lineno"><a class="line" href="class_c_w_1_1_entities.html#a23eb23d7c8b5f8f1ca6ad3124d09b755">  428</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="class_c_w_1_1_entities.html#ab34fd9822bee1ef8765c4ff6e5994255">Entities::transform_entities</a>(std::vector&lt;Entity&gt;&amp; elems, std::vector&lt;Transformation&gt;&amp; transforms) {</div>
+<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;        <span class="keywordflow">if</span> (!SUIsValid(m_entities)) {</div>
+<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;        <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::Entities::transform_entities(): Entities is null&quot;</span>);</div>
 <div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;  }</div>
-<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;}</div>
-<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;</div>
-<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;</div>
-<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;</div>
-<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;</div>
-<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;Entities::operator SUEntitiesRef() {</div>
-<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;        <span class="keywordflow">return</span> m_entities;</div>
-<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;}</div>
-<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;</div>
-<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;} <span class="comment">/* namespace CW */</span></div>
-<div class="ttc" id="class_c_w_1_1_entities_html_ab34fd9822bee1ef8765c4ff6e5994255"><div class="ttname"><a href="class_c_w_1_1_entities.html#ab34fd9822bee1ef8765c4ff6e5994255">CW::Entities::transform_entities</a></div><div class="ttdeci">bool transform_entities(std::vector&lt; Entity &gt; &amp;elems, const Transformation &amp;transform)</div><div class="ttdef"><b>Definition:</b> <a href="_entities_8cpp_source.html#l00400">Entities.cpp:400</a></div></div>
-<div class="ttc" id="class_c_w_1_1_entities_html"><div class="ttname"><a href="class_c_w_1_1_entities.html">CW::Entities</a></div><div class="ttdef"><b>Definition:</b> <a href="_entities_8hpp_source.html#l00055">Entities.hpp:55</a></div></div>
-<div class="ttc" id="class_c_w_1_1_entities_html_a64d6d1424e889b8432cb02aa9b78cd4c"><div class="ttname"><a href="class_c_w_1_1_entities.html#a64d6d1424e889b8432cb02aa9b78cd4c">CW::Entities::size</a></div><div class="ttdeci">size_t size() const </div><div class="ttdef"><b>Definition:</b> <a href="_entities_8cpp_source.html#l00147">Entities.cpp:147</a></div></div>
+<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;        <span class="keywordflow">if</span> (elems.size() != transforms.size()) {</div>
+<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;        <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;CW::Entities::transform_entities(): different number of elements to transformation objects given - the same number must be given.&quot;</span>);</div>
+<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;  }</div>
+<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;  assert(elems.size() == transforms.size());</div>
+<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;  SUResult res = SUEntitiesTransformMultiple(m_entities, elems.size(), elems[0], transforms[0]);</div>
+<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;        <span class="keywordflow">if</span> (res == SU_ERROR_UNSUPPORTED) {</div>
+<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;        <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;CW::Entities::transform_entities(): One of the elements given in the Entity vector is not contained by this Entities object.&quot;</span>);</div>
+<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;  }</div>
+<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;  <span class="keywordflow">else</span> <span class="keywordflow">if</span> (SU_ERROR_GENERIC) {</div>
+<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;  }</div>
+<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;}</div>
+<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;</div>
+<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;</div>
+<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;</div>
+<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;</div>
+<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;Entities::operator <a class="code" href="struct_s_u_entities_ref.html">SUEntitiesRef</a>() {</div>
+<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;        <span class="keywordflow">return</span> m_entities;</div>
+<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;}</div>
+<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;</div>
+<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;} <span class="comment">/* namespace CW */</span></div>
+<div class="ttc" id="struct_s_u_entities_ref_html"><div class="ttname"><a href="struct_s_u_entities_ref.html">SUEntitiesRef</a></div><div class="ttdoc">References a container object for all entities in a model, component definition or a group...</div></div>
+<div class="ttc" id="class_c_w_1_1_entities_html_ab34fd9822bee1ef8765c4ff6e5994255"><div class="ttname"><a href="class_c_w_1_1_entities.html#ab34fd9822bee1ef8765c4ff6e5994255">CW::Entities::transform_entities</a></div><div class="ttdeci">bool transform_entities(std::vector&lt; Entity &gt; &amp;elems, const Transformation &amp;transform)</div><div class="ttdef"><b>Definition:</b> <a href="_entities_8cpp_source.html#l00411">Entities.cpp:411</a></div></div>
+<div class="ttc" id="struct_s_u_string_ref_html"><div class="ttname"><a href="struct_s_u_string_ref.html">SUStringRef</a></div><div class="ttdoc">Stores a Unicode string for use as output string parameters in the API. </div></div>
+<div class="ttc" id="struct_s_u_component_instance_ref_html"><div class="ttname"><a href="struct_s_u_component_instance_ref.html">SUComponentInstanceRef</a></div><div class="ttdoc">References a component instance, i.e. an instance of a component definition. </div></div>
+<div class="ttc" id="class_c_w_1_1_entities_html"><div class="ttname"><a href="class_c_w_1_1_entities.html">CW::Entities</a></div><div class="ttdef"><b>Definition:</b> <a href="_entities_8hpp_source.html#l00056">Entities.hpp:56</a></div></div>
+<div class="ttc" id="class_c_w_1_1_entities_html_a64d6d1424e889b8432cb02aa9b78cd4c"><div class="ttname"><a href="class_c_w_1_1_entities.html#a64d6d1424e889b8432cb02aa9b78cd4c">CW::Entities::size</a></div><div class="ttdeci">size_t size() const </div><div class="ttdef"><b>Definition:</b> <a href="_entities_8cpp_source.html#l00158">Entities.cpp:158</a></div></div>
 <div class="ttc" id="class_c_w_1_1_geometry_input_html"><div class="ttname"><a href="class_c_w_1_1_geometry_input.html">CW::GeometryInput</a></div><div class="ttdef"><b>Definition:</b> <a href="_geometry_input_8hpp_source.html#l00058">GeometryInput.hpp:58</a></div></div>
+<div class="ttc" id="struct_s_u_bounding_box3_d_html"><div class="ttname"><a href="struct_s_u_bounding_box3_d.html">SUBoundingBox3D</a></div><div class="ttdoc">Represents a 3D axis-aligned bounding box represented by the extreme diagonal corner points with mini...</div><div class="ttdef"><b>Definition:</b> <a href="2016_2_sketch_up_a_p_i_8framework_2_headers_2geometry_8h_source.html#l00065">geometry.h:65</a></div></div>
 <div class="ttc" id="class_c_w_1_1_group_html"><div class="ttname"><a href="class_c_w_1_1_group.html">CW::Group</a></div><div class="ttdef"><b>Definition:</b> <a href="_group_8hpp_source.html#l00045">Group.hpp:45</a></div></div>
-<div class="ttc" id="class_c_w_1_1_entities_html_a3056c75534a8b8b3937bea0c9aecf1ae"><div class="ttname"><a href="class_c_w_1_1_entities.html#a3056c75534a8b8b3937bea0c9aecf1ae">CW::Entities::fill</a></div><div class="ttdeci">SUResult fill(GeometryInput &amp;geom_input)</div><div class="ttdef"><b>Definition:</b> <a href="_entities_8cpp_source.html#l00196">Entities.cpp:196</a></div></div>
+<div class="ttc" id="class_c_w_1_1_entities_html_a3056c75534a8b8b3937bea0c9aecf1ae"><div class="ttname"><a href="class_c_w_1_1_entities.html#a3056c75534a8b8b3937bea0c9aecf1ae">CW::Entities::fill</a></div><div class="ttdeci">SUResult fill(GeometryInput &amp;geom_input)</div><div class="ttdef"><b>Definition:</b> <a href="_entities_8cpp_source.html#l00207">Entities.cpp:207</a></div></div>
 <div class="ttc" id="class_c_w_1_1_group_html_a2e9a51c697dd675116a0391a0474d05b"><div class="ttname"><a href="class_c_w_1_1_group.html#a2e9a51c697dd675116a0391a0474d05b">CW::Group::transformation</a></div><div class="ttdeci">Transformation transformation() const </div><div class="ttdef"><b>Definition:</b> <a href="_group_8cpp_source.html#l00147">Group.cpp:147</a></div></div>
 <div class="ttc" id="class_c_w_1_1_group_html_a35199d1c2f1e457e55d40f9635f9b602"><div class="ttname"><a href="class_c_w_1_1_group.html#a35199d1c2f1e457e55d40f9635f9b602">CW::Group::name</a></div><div class="ttdeci">String name() const </div><div class="ttdef"><b>Definition:</b> <a href="_group_8cpp_source.html#l00126">Group.cpp:126</a></div></div>
 <div class="ttc" id="class_c_w_1_1_entities_html_afbd36e6ecd573b7d66a506351e0e7de0"><div class="ttname"><a href="class_c_w_1_1_entities.html#afbd36e6ecd573b7d66a506351e0e7de0">CW::Entities::Entities</a></div><div class="ttdeci">Entities()</div><div class="ttdef"><b>Definition:</b> <a href="_entities_8cpp_source.html#l00050">Entities.cpp:50</a></div></div>
 <div class="ttc" id="class_c_w_1_1_geometry_input_html_ae9ac5f77af6c1a501afb5e15b33ffbd5"><div class="ttname"><a href="class_c_w_1_1_geometry_input.html#ae9ac5f77af6c1a501afb5e15b33ffbd5">CW::GeometryInput::empty</a></div><div class="ttdeci">bool empty() const </div><div class="ttdef"><b>Definition:</b> <a href="_geometry_input_8cpp_source.html#l00321">GeometryInput.cpp:321</a></div></div>
-<div class="ttc" id="class_c_w_1_1_entities_html_a89858f051bf2c05d2c8718c2de281c93"><div class="ttname"><a href="class_c_w_1_1_entities.html#a89858f051bf2c05d2c8718c2de281c93">CW::Entities::add</a></div><div class="ttdeci">void add(const Entities &amp;other)</div><div class="ttdef"><b>Definition:</b> <a href="_entities_8cpp_source.html#l00172">Entities.cpp:172</a></div></div>
+<div class="ttc" id="struct_s_u_face_ref_html"><div class="ttname"><a href="struct_s_u_face_ref.html">SUFaceRef</a></div><div class="ttdoc">References a face. </div></div>
+<div class="ttc" id="class_c_w_1_1_entities_html_a50d17b48fa3ef247883ccc343c3476e9"><div class="ttname"><a href="class_c_w_1_1_entities.html#a50d17b48fa3ef247883ccc343c3476e9">CW::Entities::bounding_box</a></div><div class="ttdeci">BoundingBox3D bounding_box() const </div><div class="ttdef"><b>Definition:</b> <a href="_entities_8cpp_source.html#l00147">Entities.cpp:147</a></div></div>
+<div class="ttc" id="class_c_w_1_1_entities_html_a89858f051bf2c05d2c8718c2de281c93"><div class="ttname"><a href="class_c_w_1_1_entities.html#a89858f051bf2c05d2c8718c2de281c93">CW::Entities::add</a></div><div class="ttdeci">void add(const Entities &amp;other)</div><div class="ttdef"><b>Definition:</b> <a href="_entities_8cpp_source.html#l00183">Entities.cpp:183</a></div></div>
+<div class="ttc" id="class_c_w_1_1_bounding_box3_d_html"><div class="ttname"><a href="class_c_w_1_1_bounding_box3_d.html">CW::BoundingBox3D</a></div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8hpp_source.html#l00495">Geometry.hpp:495</a></div></div>
 <div class="ttc" id="class_c_w_1_1_transformation_html"><div class="ttname"><a href="class_c_w_1_1_transformation.html">CW::Transformation</a></div><div class="ttdef"><b>Definition:</b> <a href="_transformation_8hpp_source.html#l00043">Transformation.hpp:43</a></div></div>
+<div class="ttc" id="struct_s_u_edge_ref_html"><div class="ttname"><a href="struct_s_u_edge_ref.html">SUEdgeRef</a></div><div class="ttdoc">References an edge. </div></div>
+<div class="ttc" id="struct_s_u_transformation_html"><div class="ttname"><a href="struct_s_u_transformation.html">SUTransformation</a></div><div class="ttdoc">Represents a 3D (4x4) geometric transformation matrix. </div><div class="ttdef"><b>Definition:</b> <a href="2016_2_sketch_up_a_p_i_8framework_2_headers_2transformation_8h_source.html#l00032">transformation.h:32</a></div></div>
 <div class="ttc" id="class_c_w_1_1_group_html_ababebc7b67c24692859d9347af7911b1"><div class="ttname"><a href="class_c_w_1_1_group.html#ababebc7b67c24692859d9347af7911b1">CW::Group::entities</a></div><div class="ttdeci">Entities entities() const </div><div class="ttdef"><b>Definition:</b> <a href="_group_8cpp_source.html#l00116">Group.cpp:116</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Nov 24 2017 15:22:25 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Jan 19 2018 16:42:00 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

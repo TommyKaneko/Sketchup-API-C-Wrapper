@@ -42,7 +42,7 @@
   </div>
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_fdb96db7800bcda861cc965e3bc145d5.html">SUAPI-CppWrapper</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_5a36426493171642b1c6fd058fd2e6d3.html">SUAPI-CppWrapper</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -96,21 +96,21 @@
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
 <div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="class_c_w_1_1_string.html">   45</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_c_w_1_1_string.html">String</a> {</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  SUStringRef m_string;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  <a class="code" href="struct_s_u_string_ref.html">SUStringRef</a> m_string;</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        StringEncoding m_encoding;</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  </div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  <span class="comment">// Disallow copying for simplicity</span></div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  <span class="comment">//String(const String&amp; copy);</span></div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  <span class="comment">//String&amp; operator= (const String&amp; copy);</span></div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  </div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  <span class="keyword">static</span> SUStringRef create_string_ref();</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  <span class="keyword">static</span> SUStringRef create_string_ref(<span class="keyword">const</span> std::string string_input, StringEncoding enc = StringEncoding::UTF8);</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  <span class="keyword">static</span> SUStringRef create_string_ref(<span class="keyword">const</span> <span class="keywordtype">char</span> string_input[]);</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  <span class="keyword">static</span> SUStringRef create_string_ref(<span class="keyword">const</span> unichar string_input[]);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  <span class="keyword">static</span> <a class="code" href="struct_s_u_string_ref.html">SUStringRef</a> create_string_ref();</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  <span class="keyword">static</span> <a class="code" href="struct_s_u_string_ref.html">SUStringRef</a> create_string_ref(<span class="keyword">const</span> std::string string_input, StringEncoding enc = StringEncoding::UTF8);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  <span class="keyword">static</span> <a class="code" href="struct_s_u_string_ref.html">SUStringRef</a> create_string_ref(<span class="keyword">const</span> <span class="keywordtype">char</span> string_input[]);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  <span class="keyword">static</span> <a class="code" href="struct_s_u_string_ref.html">SUStringRef</a> create_string_ref(<span class="keyword">const</span> unichar string_input[]);</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  </div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  <span class="keyword">public</span>:</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  <a class="code" href="class_c_w_1_1_string.html">String</a>();</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  <a class="code" href="class_c_w_1_1_string.html">String</a>(SUStringRef string_ref);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  <a class="code" href="class_c_w_1_1_string.html">String</a>(<a class="code" href="struct_s_u_string_ref.html">SUStringRef</a> string_ref);</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  <a class="code" href="class_c_w_1_1_string.html">String</a>(<span class="keyword">const</span> std::string &amp;string_input, StringEncoding enc = StringEncoding::UTF8);</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  <a class="code" href="class_c_w_1_1_string.html">String</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> string_input[]);</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  <a class="code" href="class_c_w_1_1_string.html">String</a>(<span class="keyword">const</span> unichar string_input[]);</div>
@@ -124,9 +124,9 @@
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  </div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  ~<a class="code" href="class_c_w_1_1_string.html">String</a>();</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  </div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  <span class="keyword">operator</span> SUStringRef&amp;() {<span class="keywordflow">return</span> m_string;}</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  <span class="keyword">operator</span> SUStringRef*() {<span class="keywordflow">return</span> &amp;m_string;}</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  <span class="keyword">operator</span> SUStringRef()<span class="keyword"> const </span>{<span class="keywordflow">return</span> m_string;}</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  <span class="keyword">operator</span> <a class="code" href="struct_s_u_string_ref.html">SUStringRef</a>&amp;() {<span class="keywordflow">return</span> m_string;}</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  <span class="keyword">operator</span> <a class="code" href="struct_s_u_string_ref.html">SUStringRef</a>*() {<span class="keywordflow">return</span> &amp;m_string;}</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  <span class="keyword">operator</span> <a class="code" href="struct_s_u_string_ref.html">SUStringRef</a>()<span class="keyword"> const </span>{<span class="keywordflow">return</span> m_string;}</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  <span class="comment"></span></div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="comment">  /**</span></div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="comment">  * Compares two strings for equality.</span></div>
@@ -144,7 +144,7 @@
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;  <span class="comment">/*</span></div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="comment">  * Return the SUStringRef object.</span></div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="comment">  */</span></div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  SUStringRef ref() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  <a class="code" href="struct_s_u_string_ref.html">SUStringRef</a> ref() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        </div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  <span class="comment">/*</span></div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="comment">  * Return the length of the string, in bytes. Including the null terminator at the end.</span></div>
@@ -164,12 +164,13 @@
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* String_hpp */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="class_c_w_1_1_string_html_aec17bbdc4d65fc91468b0c6147832b77"><div class="ttname"><a href="class_c_w_1_1_string.html#aec17bbdc4d65fc91468b0c6147832b77">CW::String::operator=</a></div><div class="ttdeci">String &amp; operator=(String &amp;other)</div><div class="ttdef"><b>Definition:</b> <a href="_string_8cpp_source.html#l00074">String.cpp:74</a></div></div>
 <div class="ttc" id="class_c_w_1_1_string_html_a57204d6cb68b449d9db9eae4883571c1"><div class="ttname"><a href="class_c_w_1_1_string.html#a57204d6cb68b449d9db9eae4883571c1">CW::String::operator==</a></div><div class="ttdeci">friend bool operator==(const String &amp;lhs, const String &amp;rhs)</div><div class="ttdef"><b>Definition:</b> <a href="_string_8cpp_source.html#l00086">String.cpp:86</a></div></div>
+<div class="ttc" id="struct_s_u_string_ref_html"><div class="ttname"><a href="struct_s_u_string_ref.html">SUStringRef</a></div><div class="ttdoc">Stores a Unicode string for use as output string parameters in the API. </div></div>
 <div class="ttc" id="class_c_w_1_1_string_html_a7612c32bbd313de2218d6e839daee497"><div class="ttname"><a href="class_c_w_1_1_string.html#a7612c32bbd313de2218d6e839daee497">CW::String::empty</a></div><div class="ttdeci">bool empty() const </div><div class="ttdef"><b>Definition:</b> <a href="_string_8cpp_source.html#l00175">String.cpp:175</a></div></div>
 <div class="ttc" id="class_c_w_1_1_string_html"><div class="ttname"><a href="class_c_w_1_1_string.html">CW::String</a></div><div class="ttdef"><b>Definition:</b> <a href="_string_8hpp_source.html#l00045">String.hpp:45</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Nov 24 2017 15:22:25 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Jan 19 2018 16:42:01 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

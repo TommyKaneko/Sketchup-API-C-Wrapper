@@ -42,7 +42,7 @@
   </div>
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_fdb96db7800bcda861cc965e3bc145d5.html">SUAPI-CppWrapper</a></li><li class="navelem"><a class="el" href="dir_d18f6ee5a09a3d0ed3d1f344584c848e.html">model</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_5a36426493171642b1c6fd058fd2e6d3.html">SUAPI-CppWrapper</a></li><li class="navelem"><a class="el" href="dir_c359596257b5f4ccdc4ac591473f48ed.html">model</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -99,11 +99,11 @@
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment">*/</span></div>
 <div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="class_c_w_1_1_edge.html">   48</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_c_w_1_1_edge.html">Edge</a> :<span class="keyword">public</span> <a class="code" href="class_c_w_1_1_drawing_element.html">DrawingElement</a> {</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  SUEdgeRef m_edge;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  <a class="code" href="struct_s_u_edge_ref.html">SUEdgeRef</a> m_edge;</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  </div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  <span class="keyword">static</span> SUEdgeRef create_edge(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a>&amp; start, <span class="keyword">const</span> <a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a>&amp; end);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  <span class="keyword">static</span> <a class="code" href="struct_s_u_edge_ref.html">SUEdgeRef</a> create_edge(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a>&amp; start, <span class="keyword">const</span> <a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a>&amp; end);</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  <span class="keyword">static</span> SUEdgeRef copy_reference(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_edge.html">Edge</a>&amp; other);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  <span class="keyword">static</span> <a class="code" href="struct_s_u_edge_ref.html">SUEdgeRef</a> copy_reference(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_edge.html">Edge</a>&amp; other);</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  </div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  <span class="keyword">public</span>:<span class="comment"></span></div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="comment">  /**</span></div>
@@ -134,7 +134,7 @@
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="comment">  * @param SUEdgeRef pointer to the edge.</span></div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="comment">  * @param bool true if the edge should be released when this class object is destroyed.  False, if the release of the face object is handled elsewhere (use with caution).</span></div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="comment">  */</span></div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  <a class="code" href="class_c_w_1_1_edge.html#a4ddbdc953ea2520e2f1713ff3b550a0a">Edge</a>(SUEdgeRef edge, <span class="keywordtype">bool</span> <a class="code" href="class_c_w_1_1_entity.html#a4401ee82d78834f362b5aeb6ba23b57d">attached</a> = <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  <a class="code" href="class_c_w_1_1_edge.html#a4ddbdc953ea2520e2f1713ff3b550a0a">Edge</a>(<a class="code" href="struct_s_u_edge_ref.html">SUEdgeRef</a> edge, <span class="keywordtype">bool</span> <a class="code" href="class_c_w_1_1_entity.html#a4401ee82d78834f362b5aeb6ba23b57d">attached</a> = <span class="keyword">true</span>);</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        <span class="comment"></span></div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="comment">  /** Copy Constructor */</span></div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  <a class="code" href="class_c_w_1_1_edge.html#a4ddbdc953ea2520e2f1713ff3b550a0a">Edge</a>(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_edge.html">Edge</a>&amp; other);</div>
@@ -147,13 +147,13 @@
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="comment">  /**</span></div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="comment">  * Returns SUEdgeRef object for the Edge.</span></div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="comment">  */</span></div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;  SUEdgeRef <a class="code" href="class_c_w_1_1_edge.html#a90acea49bbe40aaba049023c7485e498">ref</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;  <a class="code" href="struct_s_u_edge_ref.html">SUEdgeRef</a> <a class="code" href="class_c_w_1_1_edge.html#a90acea49bbe40aaba049023c7485e498">ref</a>() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;  <span class="comment">/*</span></div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="comment">  * The class object can be converted to a SUEdgeRef without loss of data.</span></div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="comment">  */</span></div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;  <span class="keyword">operator</span> SUEdgeRef() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;  <span class="keyword">operator</span> SUEdgeRef*();</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;  <span class="keyword">operator</span> <a class="code" href="struct_s_u_edge_ref.html">SUEdgeRef</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;  <span class="keyword">operator</span> <a class="code" href="struct_s_u_edge_ref.html">SUEdgeRef</a>*();</div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;  </div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;  <span class="comment">/*</span></div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="comment">  * Returns whether the class is a valid object.</span></div>
@@ -233,20 +233,21 @@
 <div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;</div>
 <div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;} <span class="comment">/* namespace CW */</span></div>
 <div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* Edge_hpp */</span><span class="preprocessor"></span></div>
-<div class="ttc" id="class_c_w_1_1_point3_d_html"><div class="ttname"><a href="class_c_w_1_1_point3_d.html">CW::Point3D</a></div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8hpp_source.html#l00252">Geometry.hpp:252</a></div></div>
+<div class="ttc" id="class_c_w_1_1_point3_d_html"><div class="ttname"><a href="class_c_w_1_1_point3_d.html">CW::Point3D</a></div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8hpp_source.html#l00257">Geometry.hpp:257</a></div></div>
 <div class="ttc" id="class_c_w_1_1_edge_html"><div class="ttname"><a href="class_c_w_1_1_edge.html">CW::Edge</a></div><div class="ttdef"><b>Definition:</b> <a href="_edge_8hpp_source.html#l00048">Edge.hpp:48</a></div></div>
 <div class="ttc" id="class_c_w_1_1_edge_html_a7c9014f262a783ce03e55a922e18a14b"><div class="ttname"><a href="class_c_w_1_1_edge.html#a7c9014f262a783ce03e55a922e18a14b">CW::Edge::operator!</a></div><div class="ttdeci">bool operator!() const </div><div class="ttdef"><b>Definition:</b> <a href="_edge_8cpp_source.html#l00155">Edge.cpp:155</a></div></div>
 <div class="ttc" id="class_c_w_1_1_drawing_element_html"><div class="ttname"><a href="class_c_w_1_1_drawing_element.html">CW::DrawingElement</a></div><div class="ttdef"><b>Definition:</b> <a href="_drawing_element_8hpp_source.html#l00047">DrawingElement.hpp:47</a></div></div>
 <div class="ttc" id="class_c_w_1_1_edge_html_a4ddbdc953ea2520e2f1713ff3b550a0a"><div class="ttname"><a href="class_c_w_1_1_edge.html#a4ddbdc953ea2520e2f1713ff3b550a0a">CW::Edge::Edge</a></div><div class="ttdeci">Edge()</div><div class="ttdef"><b>Definition:</b> <a href="_edge_8cpp_source.html#l00067">Edge.cpp:67</a></div></div>
-<div class="ttc" id="class_c_w_1_1_vector3_d_html"><div class="ttname"><a href="class_c_w_1_1_vector3_d.html">CW::Vector3D</a></div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8hpp_source.html#l00107">Geometry.hpp:107</a></div></div>
+<div class="ttc" id="class_c_w_1_1_vector3_d_html"><div class="ttname"><a href="class_c_w_1_1_vector3_d.html">CW::Vector3D</a></div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8hpp_source.html#l00112">Geometry.hpp:112</a></div></div>
 <div class="ttc" id="class_c_w_1_1_edge_html_a90acea49bbe40aaba049023c7485e498"><div class="ttname"><a href="class_c_w_1_1_edge.html#a90acea49bbe40aaba049023c7485e498">CW::Edge::ref</a></div><div class="ttdeci">SUEdgeRef ref() const </div><div class="ttdef"><b>Definition:</b> <a href="_edge_8cpp_source.html#l00134">Edge.cpp:134</a></div></div>
 <div class="ttc" id="class_c_w_1_1_color_html"><div class="ttname"><a href="class_c_w_1_1_color.html">CW::Color</a></div><div class="ttdef"><b>Definition:</b> <a href="_color_8hpp_source.html#l00039">Color.hpp:39</a></div></div>
 <div class="ttc" id="class_c_w_1_1_vertex_html"><div class="ttname"><a href="class_c_w_1_1_vertex.html">CW::Vertex</a></div><div class="ttdef"><b>Definition:</b> <a href="_vertex_8hpp_source.html#l00042">Vertex.hpp:42</a></div></div>
+<div class="ttc" id="struct_s_u_edge_ref_html"><div class="ttname"><a href="struct_s_u_edge_ref.html">SUEdgeRef</a></div><div class="ttdoc">References an edge. </div></div>
 <div class="ttc" id="class_c_w_1_1_entity_html_a4401ee82d78834f362b5aeb6ba23b57d"><div class="ttname"><a href="class_c_w_1_1_entity.html#a4401ee82d78834f362b5aeb6ba23b57d">CW::Entity::attached</a></div><div class="ttdeci">void attached(bool attach=true)</div><div class="ttdoc">Method lets the object know that it has been attached to a model. This is important as it will let th...</div><div class="ttdef"><b>Definition:</b> <a href="_entity_8cpp_source.html#l00086">Entity.cpp:86</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Nov 24 2017 15:22:25 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Jan 19 2018 16:42:00 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

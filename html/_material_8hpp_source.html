@@ -42,7 +42,7 @@
   </div>
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_fdb96db7800bcda861cc965e3bc145d5.html">SUAPI-CppWrapper</a></li><li class="navelem"><a class="el" href="dir_d18f6ee5a09a3d0ed3d1f344584c848e.html">model</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_5a36426493171642b1c6fd058fd2e6d3.html">SUAPI-CppWrapper</a></li><li class="navelem"><a class="el" href="dir_c359596257b5f4ccdc4ac591473f48ed.html">model</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -94,20 +94,20 @@
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
 <div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="class_c_w_1_1_material.html">   43</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_c_w_1_1_material.html">Material</a> :<span class="keyword">public</span> <a class="code" href="class_c_w_1_1_entity.html">Entity</a> {</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  SUMaterialRef m_material;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  <a class="code" href="struct_s_u_material_ref.html">SUMaterialRef</a> m_material;</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  </div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  <span class="keyword">static</span> SUMaterialRef create_material();</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  <span class="keyword">static</span> <a class="code" href="struct_s_u_material_ref.html">SUMaterialRef</a> create_material();</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment"></span></div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment">  /**</span></div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment">  * Creates a SUMaterialRef derived from an existing Material object.</span></div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment">  * @param mat - Material object to derive the new SUMaterialRef object from</span></div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment">  * @return if the Material object is already attached to a model, its SUMaterialRef object will be returned. If the Material object has not been attached to a model, a new SUMaterialRef object will be created. Bear in mind all properties will not be copied in the latter case</span></div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment">  */</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  <span class="keyword">static</span> SUMaterialRef copy_reference(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_material.html">Material</a>&amp; mat);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  <span class="keyword">static</span> <a class="code" href="struct_s_u_material_ref.html">SUMaterialRef</a> copy_reference(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_material.html">Material</a>&amp; mat);</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  </div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  <span class="keyword">public</span>:</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  <a class="code" href="class_c_w_1_1_material.html">Material</a>();</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <a class="code" href="class_c_w_1_1_material.html">Material</a>(SUMaterialRef material_ref, <span class="keywordtype">bool</span> <a class="code" href="class_c_w_1_1_entity.html#a4401ee82d78834f362b5aeb6ba23b57d">attached</a> = <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <a class="code" href="class_c_w_1_1_material.html">Material</a>(<a class="code" href="struct_s_u_material_ref.html">SUMaterialRef</a> material_ref, <span class="keywordtype">bool</span> <a class="code" href="class_c_w_1_1_entity.html#a4401ee82d78834f362b5aeb6ba23b57d">attached</a> = <span class="keyword">true</span>);</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="comment"></span></div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="comment">  /** Copy constructor */</span></div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  <a class="code" href="class_c_w_1_1_material.html">Material</a>(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_material.html">Material</a>&amp; other);</div>
@@ -121,10 +121,10 @@
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  <a class="code" href="class_c_w_1_1_material.html#aebc4db1c686d55f7a44fc070d6e354b1">~Material</a>();</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  </div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  SUMaterialRef ref() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  <a class="code" href="struct_s_u_material_ref.html">SUMaterialRef</a> ref() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  </div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  <span class="keyword">operator</span> SUMaterialRef() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  <span class="keyword">operator</span> SUMaterialRef*();</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  <span class="keyword">operator</span> <a class="code" href="struct_s_u_material_ref.html">SUMaterialRef</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  <span class="keyword">operator</span> <a class="code" href="struct_s_u_material_ref.html">SUMaterialRef</a>*();</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  <span class="comment"></span></div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="comment">  /**</span></div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="comment">  * Returns true if this is an invalid object, or if no material is set.  An entitity with the default material would return false.</span></div>
@@ -215,6 +215,7 @@
 <div class="ttc" id="class_c_w_1_1_entity_html"><div class="ttname"><a href="class_c_w_1_1_entity.html">CW::Entity</a></div><div class="ttdef"><b>Definition:</b> <a href="_entity_8hpp_source.html#l00051">Entity.hpp:51</a></div></div>
 <div class="ttc" id="class_c_w_1_1_material_html_a90ef79578d3f8412087d620d1bdfdf1c"><div class="ttname"><a href="class_c_w_1_1_material.html#a90ef79578d3f8412087d620d1bdfdf1c">CW::Material::opacity</a></div><div class="ttdeci">double opacity() const </div><div class="ttdef"><b>Definition:</b> <a href="_material_8cpp_source.html#l00201">Material.cpp:201</a></div></div>
 <div class="ttc" id="class_c_w_1_1_color_html"><div class="ttname"><a href="class_c_w_1_1_color.html">CW::Color</a></div><div class="ttdef"><b>Definition:</b> <a href="_color_8hpp_source.html#l00039">Color.hpp:39</a></div></div>
+<div class="ttc" id="struct_s_u_material_ref_html"><div class="ttname"><a href="struct_s_u_material_ref.html">SUMaterialRef</a></div><div class="ttdoc">References a material object. </div></div>
 <div class="ttc" id="class_c_w_1_1_material_html_a7ae7bc69086019d7fc25140b0830b6b8"><div class="ttname"><a href="class_c_w_1_1_material.html#a7ae7bc69086019d7fc25140b0830b6b8">CW::Material::color</a></div><div class="ttdeci">Color color() const </div><div class="ttdef"><b>Definition:</b> <a href="_material_8cpp_source.html#l00152">Material.cpp:152</a></div></div>
 <div class="ttc" id="class_c_w_1_1_material_html_a483773179828671924889b257287fc03"><div class="ttname"><a href="class_c_w_1_1_material.html#a483773179828671924889b257287fc03">CW::Material::operator!</a></div><div class="ttdeci">bool operator!() const </div><div class="ttdef"><b>Definition:</b> <a href="_material_8cpp_source.html#l00130">Material.cpp:130</a></div></div>
 <div class="ttc" id="class_c_w_1_1_string_html"><div class="ttname"><a href="class_c_w_1_1_string.html">CW::String</a></div><div class="ttdef"><b>Definition:</b> <a href="_string_8hpp_source.html#l00045">String.hpp:45</a></div></div>
@@ -224,7 +225,7 @@
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Nov 24 2017 15:22:25 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Jan 19 2018 16:42:01 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

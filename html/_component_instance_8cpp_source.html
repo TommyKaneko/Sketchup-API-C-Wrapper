@@ -42,7 +42,7 @@
   </div>
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_fdb96db7800bcda861cc965e3bc145d5.html">SUAPI-CppWrapper</a></li><li class="navelem"><a class="el" href="dir_d18f6ee5a09a3d0ed3d1f344584c848e.html">model</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_5a36426493171642b1c6fd058fd2e6d3.html">SUAPI-CppWrapper</a></li><li class="navelem"><a class="el" href="dir_c359596257b5f4ccdc4ac591473f48ed.html">model</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -89,7 +89,7 @@
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment">* Private static methods **</span></div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment">***************************/</span></div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
-<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="class_c_w_1_1_component_instance.html#aa63ce998fad1ee9a5ff63ffe60fdaf73">   40</a></span>&#160;SUComponentInstanceRef <a class="code" href="class_c_w_1_1_component_instance.html#aa63ce998fad1ee9a5ff63ffe60fdaf73">ComponentInstance::copy_reference</a>(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_component_instance.html">ComponentInstance</a>&amp; other) {</div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="class_c_w_1_1_component_instance.html#aa63ce998fad1ee9a5ff63ffe60fdaf73">   40</a></span>&#160;<a class="code" href="struct_s_u_component_instance_ref.html">SUComponentInstanceRef</a> <a class="code" href="class_c_w_1_1_component_instance.html#aa63ce998fad1ee9a5ff63ffe60fdaf73">ComponentInstance::copy_reference</a>(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_component_instance.html">ComponentInstance</a>&amp; other) {</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keywordflow">if</span> (other.<a class="code" href="class_c_w_1_1_entity.html#aea6450abce4d5aebad0061e213c840b1">m_attached</a>) {</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="keywordflow">return</span> other.m_instance;</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  }</div>
@@ -103,7 +103,7 @@
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment">/*****************************</span></div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment">* Constructors / Destructor **</span></div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment">******************************/</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;ComponentInstance::ComponentInstance(SUComponentInstanceRef instance, <span class="keywordtype">bool</span> attached):</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;ComponentInstance::ComponentInstance(<a class="code" href="struct_s_u_component_instance_ref.html">SUComponentInstanceRef</a> instance, <span class="keywordtype">bool</span> attached):</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  <a class="code" href="class_c_w_1_1_drawing_element.html">DrawingElement</a>(SUComponentInstanceToDrawingElement(instance), attached),</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  m_instance(instance)</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;{</div>
@@ -116,7 +116,7 @@
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;{}</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
-<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="class_c_w_1_1_component_instance.html#aa4e27e556e5d8c97c575fe4116965174">   67</a></span>&#160;ComponentInstance::ComponentInstance(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_component_instance.html">ComponentInstance</a>&amp; other, SUComponentInstanceRef instance_ref):</div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="class_c_w_1_1_component_instance.html#aa4e27e556e5d8c97c575fe4116965174">   67</a></span>&#160;ComponentInstance::ComponentInstance(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_component_instance.html">ComponentInstance</a>&amp; other, <a class="code" href="struct_s_u_component_instance_ref.html">SUComponentInstanceRef</a> instance_ref):</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <a class="code" href="class_c_w_1_1_drawing_element.html">DrawingElement</a>(other, SUComponentInstanceToDrawingElement(instance_ref)),</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  m_instance(instance_ref)</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;{}</div>
@@ -146,14 +146,14 @@
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
-<div class="line"><a name="l00097"></a><span class="lineno"><a class="line" href="class_c_w_1_1_component_instance.html#aca7f08556329aada52a08d8221d012d9">   97</a></span>&#160;SUComponentInstanceRef <a class="code" href="class_c_w_1_1_component_instance.html#aca7f08556329aada52a08d8221d012d9">ComponentInstance::ref</a>() {</div>
+<div class="line"><a name="l00097"></a><span class="lineno"><a class="line" href="class_c_w_1_1_component_instance.html#aca7f08556329aada52a08d8221d012d9">   97</a></span>&#160;<a class="code" href="struct_s_u_component_instance_ref.html">SUComponentInstanceRef</a> <a class="code" href="class_c_w_1_1_component_instance.html#aca7f08556329aada52a08d8221d012d9">ComponentInstance::ref</a>() {</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        <span class="keywordflow">return</span> m_instance;</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;}</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;</div>
-<div class="line"><a name="l00101"></a><span class="lineno"><a class="line" href="class_c_w_1_1_component_instance.html#a007e03e2419477216c11a450ba451da2">  101</a></span>&#160;ComponentInstance::operator SUComponentInstanceRef()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00101"></a><span class="lineno"><a class="line" href="class_c_w_1_1_component_instance.html#a007e03e2419477216c11a450ba451da2">  101</a></span>&#160;ComponentInstance::operator <a class="code" href="struct_s_u_component_instance_ref.html">SUComponentInstanceRef</a>()<span class="keyword"> const </span>{</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        <span class="keywordflow">return</span> m_instance;</div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;}</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;ComponentInstance::operator SUComponentInstanceRef*() {</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;ComponentInstance::operator <a class="code" href="struct_s_u_component_instance_ref.html">SUComponentInstanceRef</a>*() {</div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        <span class="keywordflow">return</span> &amp;m_instance;</div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;}</div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;</div>
@@ -161,7 +161,7 @@
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;  <span class="keywordflow">if</span> (!(*<span class="keyword">this</span>)) {</div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::ComponentInstance::transformation(): ComponentInstance is null&quot;</span>);</div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;  }</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;  SUTransformation transform;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;  <a class="code" href="struct_s_u_transformation.html">SUTransformation</a> transform;</div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;  SUResult res = SUComponentInstanceGetTransform(m_instance, &amp;transform);</div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;  assert(res == SU_ERROR_NONE);</div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="class_c_w_1_1_transformation.html">Transformation</a>(transform);</div>
@@ -172,7 +172,7 @@
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;  <span class="keywordflow">if</span> (!(*<span class="keyword">this</span>)) {</div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::ComponentInstance::transformation(): ComponentInstance is null&quot;</span>);</div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;  }</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        SUTransformation su_transform = transform.ref();</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        <a class="code" href="struct_s_u_transformation.html">SUTransformation</a> su_transform = transform.ref();</div>
 <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;  SUResult res = SUComponentInstanceSetTransform(m_instance, &amp;su_transform);</div>
 <div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;  assert(res == SU_ERROR_NONE);</div>
 <div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;}</div>
@@ -182,7 +182,7 @@
 <div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;  <span class="keywordflow">if</span> (!(*<span class="keyword">this</span>)) {</div>
 <div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::ComponentInstance::definition(): ComponentInstance is null&quot;</span>);</div>
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;  }</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;  SUComponentDefinitionRef component = SU_INVALID;</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;  <a class="code" href="struct_s_u_component_definition_ref.html">SUComponentDefinitionRef</a> component = SU_INVALID;</div>
 <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;  SUResult res = SUComponentInstanceGetDefinition(m_instance, &amp;component);</div>
 <div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;  assert(res == SU_ERROR_NONE);</div>
 <div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="class_c_w_1_1_component_definition.html">ComponentDefinition</a>(component);</div>
@@ -194,7 +194,7 @@
 <div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;        <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::ComponentInstance::name(): ComponentInstance is null&quot;</span>);</div>
 <div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;  }</div>
 <div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;  <a class="code" href="class_c_w_1_1_string.html">String</a> string;</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;  SUStringRef * <span class="keyword">const</span> string_ref = string;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;  <a class="code" href="struct_s_u_string_ref.html">SUStringRef</a> * <span class="keyword">const</span> string_ref = string;</div>
 <div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;        SUResult res = SUComponentInstanceGetName(m_instance, string_ref);</div>
 <div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;  assert(res == SU_ERROR_NONE);</div>
 <div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;  <span class="keywordflow">return</span> string;</div>
@@ -215,7 +215,9 @@
 <div class="ttc" id="class_c_w_1_1_entity_html_aea6450abce4d5aebad0061e213c840b1"><div class="ttname"><a href="class_c_w_1_1_entity.html#aea6450abce4d5aebad0061e213c840b1">CW::Entity::m_attached</a></div><div class="ttdeci">bool m_attached</div><div class="ttdoc">Indicates whether the Entity has been attached to a model. </div><div class="ttdef"><b>Definition:</b> <a href="_entity_8hpp_source.html#l00061">Entity.hpp:61</a></div></div>
 <div class="ttc" id="class_c_w_1_1_component_definition_html_a49595d2e8e5fddb9db3b2e34226a6645"><div class="ttname"><a href="class_c_w_1_1_component_definition.html#a49595d2e8e5fddb9db3b2e34226a6645">CW::ComponentDefinition::create_instance</a></div><div class="ttdeci">ComponentInstance create_instance() const </div><div class="ttdef"><b>Definition:</b> <a href="_component_definition_8cpp_source.html#l00135">ComponentDefinition.cpp:135</a></div></div>
 <div class="ttc" id="class_c_w_1_1_component_instance_html_aca7f08556329aada52a08d8221d012d9"><div class="ttname"><a href="class_c_w_1_1_component_instance.html#aca7f08556329aada52a08d8221d012d9">CW::ComponentInstance::ref</a></div><div class="ttdeci">SUComponentInstanceRef ref()</div><div class="ttdef"><b>Definition:</b> <a href="_component_instance_8cpp_source.html#l00097">ComponentInstance.cpp:97</a></div></div>
+<div class="ttc" id="struct_s_u_string_ref_html"><div class="ttname"><a href="struct_s_u_string_ref.html">SUStringRef</a></div><div class="ttdoc">Stores a Unicode string for use as output string parameters in the API. </div></div>
 <div class="ttc" id="class_c_w_1_1_component_instance_html"><div class="ttname"><a href="class_c_w_1_1_component_instance.html">CW::ComponentInstance</a></div><div class="ttdef"><b>Definition:</b> <a href="_component_instance_8hpp_source.html#l00041">ComponentInstance.hpp:41</a></div></div>
+<div class="ttc" id="struct_s_u_component_instance_ref_html"><div class="ttname"><a href="struct_s_u_component_instance_ref.html">SUComponentInstanceRef</a></div><div class="ttdoc">References a component instance, i.e. an instance of a component definition. </div></div>
 <div class="ttc" id="class_c_w_1_1_drawing_element_html"><div class="ttname"><a href="class_c_w_1_1_drawing_element.html">CW::DrawingElement</a></div><div class="ttdef"><b>Definition:</b> <a href="_drawing_element_8hpp_source.html#l00047">DrawingElement.hpp:47</a></div></div>
 <div class="ttc" id="class_c_w_1_1_component_instance_html_aa63ce998fad1ee9a5ff63ffe60fdaf73"><div class="ttname"><a href="class_c_w_1_1_component_instance.html#aa63ce998fad1ee9a5ff63ffe60fdaf73">CW::ComponentInstance::copy_reference</a></div><div class="ttdeci">SUComponentInstanceRef copy_reference(const ComponentInstance &amp;other)</div><div class="ttdef"><b>Definition:</b> <a href="_component_instance_8cpp_source.html#l00040">ComponentInstance.cpp:40</a></div></div>
 <div class="ttc" id="class_c_w_1_1_component_instance_html_af4fd581c95dab6b68d3ea3af250514ee"><div class="ttname"><a href="class_c_w_1_1_component_instance.html#af4fd581c95dab6b68d3ea3af250514ee">CW::ComponentInstance::transformation</a></div><div class="ttdeci">Transformation transformation() const </div><div class="ttdef"><b>Definition:</b> <a href="_component_instance_8cpp_source.html#l00108">ComponentInstance.cpp:108</a></div></div>
@@ -223,14 +225,16 @@
 <div class="ttc" id="class_c_w_1_1_drawing_element_html_a0d66dcc652715cba98998b2c69ac15e0"><div class="ttname"><a href="class_c_w_1_1_drawing_element.html#a0d66dcc652715cba98998b2c69ac15e0">CW::DrawingElement::operator=</a></div><div class="ttdeci">DrawingElement &amp; operator=(const DrawingElement &amp;other)</div><div class="ttdef"><b>Definition:</b> <a href="_drawing_element_8cpp_source.html#l00057">DrawingElement.cpp:57</a></div></div>
 <div class="ttc" id="class_c_w_1_1_component_instance_html_acb4b356525fd419c0dc7a4932aa0470f"><div class="ttname"><a href="class_c_w_1_1_component_instance.html#acb4b356525fd419c0dc7a4932aa0470f">CW::ComponentInstance::definition</a></div><div class="ttdeci">ComponentDefinition definition() const </div><div class="ttdef"><b>Definition:</b> <a href="_component_instance_8cpp_source.html#l00129">ComponentInstance.cpp:129</a></div></div>
 <div class="ttc" id="class_c_w_1_1_component_definition_html"><div class="ttname"><a href="class_c_w_1_1_component_definition.html">CW::ComponentDefinition</a></div><div class="ttdef"><b>Definition:</b> <a href="_component_definition_8hpp_source.html#l00050">ComponentDefinition.hpp:50</a></div></div>
+<div class="ttc" id="struct_s_u_component_definition_ref_html"><div class="ttname"><a href="struct_s_u_component_definition_ref.html">SUComponentDefinitionRef</a></div><div class="ttdoc">References a component definition. </div></div>
 <div class="ttc" id="class_c_w_1_1_component_instance_html_a9fcf996f19d29d874e0659a27db68d49"><div class="ttname"><a href="class_c_w_1_1_component_instance.html#a9fcf996f19d29d874e0659a27db68d49">CW::ComponentInstance::name</a></div><div class="ttdeci">String name() const </div><div class="ttdef"><b>Definition:</b> <a href="_component_instance_8cpp_source.html#l00140">ComponentInstance.cpp:140</a></div></div>
 <div class="ttc" id="class_c_w_1_1_component_instance_html_aebb100337dd2d359fbf4aaabe4103746"><div class="ttname"><a href="class_c_w_1_1_component_instance.html#aebb100337dd2d359fbf4aaabe4103746">CW::ComponentInstance::operator=</a></div><div class="ttdeci">ComponentInstance &amp; operator=(const ComponentInstance &amp;other)</div><div class="ttdef"><b>Definition:</b> <a href="_component_instance_8cpp_source.html#l00084">ComponentInstance.cpp:84</a></div></div>
 <div class="ttc" id="class_c_w_1_1_string_html"><div class="ttname"><a href="class_c_w_1_1_string.html">CW::String</a></div><div class="ttdef"><b>Definition:</b> <a href="_string_8hpp_source.html#l00045">String.hpp:45</a></div></div>
 <div class="ttc" id="class_c_w_1_1_transformation_html"><div class="ttname"><a href="class_c_w_1_1_transformation.html">CW::Transformation</a></div><div class="ttdef"><b>Definition:</b> <a href="_transformation_8hpp_source.html#l00043">Transformation.hpp:43</a></div></div>
+<div class="ttc" id="struct_s_u_transformation_html"><div class="ttname"><a href="struct_s_u_transformation.html">SUTransformation</a></div><div class="ttdoc">Represents a 3D (4x4) geometric transformation matrix. </div><div class="ttdef"><b>Definition:</b> <a href="2016_2_sketch_up_a_p_i_8framework_2_headers_2transformation_8h_source.html#l00032">transformation.h:32</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Nov 24 2017 15:22:25 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Jan 19 2018 16:42:00 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

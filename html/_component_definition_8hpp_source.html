@@ -42,7 +42,7 @@
   </div>
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_fdb96db7800bcda861cc965e3bc145d5.html">SUAPI-CppWrapper</a></li><li class="navelem"><a class="el" href="dir_d18f6ee5a09a3d0ed3d1f344584c848e.html">model</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_5a36426493171642b1c6fd058fd2e6d3.html">SUAPI-CppWrapper</a></li><li class="navelem"><a class="el" href="dir_c359596257b5f4ccdc4ac591473f48ed.html">model</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -101,14 +101,14 @@
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment">*/</span></div>
 <div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="class_c_w_1_1_component_definition.html">   50</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_c_w_1_1_component_definition.html">ComponentDefinition</a> :<span class="keyword">public</span> <a class="code" href="class_c_w_1_1_drawing_element.html">DrawingElement</a> {</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  SUComponentDefinitionRef m_definition;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  <a class="code" href="struct_s_u_component_definition_ref.html">SUComponentDefinitionRef</a> m_definition;</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  </div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  <span class="keyword">static</span> SUComponentDefinitionRef create_definition();</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  <span class="keyword">static</span> <a class="code" href="struct_s_u_component_definition_ref.html">SUComponentDefinitionRef</a> create_definition();</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="comment"></span></div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment">  /**</span></div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="comment">  * Copies a ComponentDefinition object into a new SUComponentDefinitionRef.  If the other ComponentDefinition object has been attached to a model already, it will return the same SUComponentDefinitionRef object that it points to.</span></div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="comment">  */</span></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  <span class="keyword">static</span> SUComponentDefinitionRef copy_reference(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_component_definition.html">ComponentDefinition</a>&amp; other);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  <span class="keyword">static</span> <a class="code" href="struct_s_u_component_definition_ref.html">SUComponentDefinitionRef</a> copy_reference(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_component_definition.html">ComponentDefinition</a>&amp; other);</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  </div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  <span class="keyword">public</span>:<span class="comment"></span></div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="comment">  /**</span></div>
@@ -119,7 +119,7 @@
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="comment">  /**</span></div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="comment">  * Constructor creates Component Definition from existing SUComponentDefinitionRef.</span></div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="comment">  */</span></div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  <a class="code" href="class_c_w_1_1_component_definition.html#a7d75cecd4812aa1cf40d7eac3ad2833d">ComponentDefinition</a>(SUComponentDefinitionRef definition, <span class="keywordtype">bool</span> <a class="code" href="class_c_w_1_1_entity.html#a4401ee82d78834f362b5aeb6ba23b57d">attached</a> = <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  <a class="code" href="class_c_w_1_1_component_definition.html#a7d75cecd4812aa1cf40d7eac3ad2833d">ComponentDefinition</a>(<a class="code" href="struct_s_u_component_definition_ref.html">SUComponentDefinitionRef</a> definition, <span class="keywordtype">bool</span> <a class="code" href="class_c_w_1_1_entity.html#a4401ee82d78834f362b5aeb6ba23b57d">attached</a> = <span class="keyword">true</span>);</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  <span class="comment"></span></div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="comment">  /**</span></div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="comment">  * Copy constructor.</span></div>
@@ -135,8 +135,8 @@
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  <a class="code" href="class_c_w_1_1_component_definition.html">ComponentDefinition</a>&amp; <a class="code" href="class_c_w_1_1_component_definition.html#abbd9c7b2cdb18199666e02a755293e9f">operator=</a>(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_component_definition.html">ComponentDefinition</a>&amp; other);</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  <span class="comment"></span></div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="comment">  /** Cast to native objects */</span></div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  <span class="keyword">operator</span> SUComponentDefinitionRef() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  <span class="keyword">operator</span> SUComponentDefinitionRef*();</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  <span class="keyword">operator</span> <a class="code" href="struct_s_u_component_definition_ref.html">SUComponentDefinitionRef</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  <span class="keyword">operator</span> <a class="code" href="struct_s_u_component_definition_ref.html">SUComponentDefinitionRef</a>*();</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  <span class="comment"></span></div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="comment">  /**</span></div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="comment">  * Returns the bounding box of this Component Definition</span></div>
@@ -163,7 +163,7 @@
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="comment">  /**</span></div>
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="comment">  * Returns the SUComponentDefinitionRef that this class wraps.</span></div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="comment">  */</span></div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;  SUComponentDefinitionRef <a class="code" href="class_c_w_1_1_component_definition.html#a0ddfd5b0a8fe566147d21bfa651552d1">ref</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;  <a class="code" href="struct_s_u_component_definition_ref.html">SUComponentDefinitionRef</a> <a class="code" href="class_c_w_1_1_component_definition.html#a0ddfd5b0a8fe566147d21bfa651552d1">ref</a>() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="comment"></span></div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="comment">  /**</span></div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="comment">  * Gets the name of the component.</span></div>
@@ -195,14 +195,14 @@
 <div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;  </div>
 <div class="line"><a name="l00144"></a><span class="lineno"><a class="line" href="class_c_w_1_1_behavior.html">  144</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_c_w_1_1_behavior.html">Behavior</a> {</div>
 <div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;  SUComponentBehavior m_behavior;</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;  <a class="code" href="struct_s_u_component_behavior.html">SUComponentBehavior</a> m_behavior;</div>
 <div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;  </div>
 <div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;  <a class="code" href="class_c_w_1_1_behavior.html">Behavior</a>(SUComponentBehavior behavior);</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;  <a class="code" href="class_c_w_1_1_behavior.html">Behavior</a>(<a class="code" href="struct_s_u_component_behavior.html">SUComponentBehavior</a> behavior);</div>
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;  </div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;  SUComponentBehavior::SUSnapToBehavior &amp;snap = m_behavior.component_snap;</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;  <a class="code" href="struct_s_u_component_behavior.html#ada174716798c6a0f23d770956863dc99">SUComponentBehavior::SUSnapToBehavior</a> &amp;snap = m_behavior.component_snap;</div>
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;  SUComponentBehavior ref() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;  <a class="code" href="struct_s_u_component_behavior.html">SUComponentBehavior</a> ref() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;  </div>
 <div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;  <span class="keywordtype">bool</span> &amp;cuts_opening = m_behavior.component_cuts_opening;</div>
 <div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;  </div>
@@ -218,25 +218,28 @@
 <div class="ttc" id="class_c_w_1_1_component_definition_html_a49595d2e8e5fddb9db3b2e34226a6645"><div class="ttname"><a href="class_c_w_1_1_component_definition.html#a49595d2e8e5fddb9db3b2e34226a6645">CW::ComponentDefinition::create_instance</a></div><div class="ttdeci">ComponentInstance create_instance() const </div><div class="ttdef"><b>Definition:</b> <a href="_component_definition_8cpp_source.html#l00135">ComponentDefinition.cpp:135</a></div></div>
 <div class="ttc" id="class_c_w_1_1_component_definition_html_a0ddfd5b0a8fe566147d21bfa651552d1"><div class="ttname"><a href="class_c_w_1_1_component_definition.html#a0ddfd5b0a8fe566147d21bfa651552d1">CW::ComponentDefinition::ref</a></div><div class="ttdeci">SUComponentDefinitionRef ref() const </div><div class="ttdef"><b>Definition:</b> <a href="_component_definition_8cpp_source.html#l00191">ComponentDefinition.cpp:191</a></div></div>
 <div class="ttc" id="class_c_w_1_1_component_instance_html"><div class="ttname"><a href="class_c_w_1_1_component_instance.html">CW::ComponentInstance</a></div><div class="ttdef"><b>Definition:</b> <a href="_component_instance_8hpp_source.html#l00041">ComponentInstance.hpp:41</a></div></div>
-<div class="ttc" id="class_c_w_1_1_entities_html"><div class="ttname"><a href="class_c_w_1_1_entities.html">CW::Entities</a></div><div class="ttdef"><b>Definition:</b> <a href="_entities_8hpp_source.html#l00055">Entities.hpp:55</a></div></div>
+<div class="ttc" id="class_c_w_1_1_entities_html"><div class="ttname"><a href="class_c_w_1_1_entities.html">CW::Entities</a></div><div class="ttdef"><b>Definition:</b> <a href="_entities_8hpp_source.html#l00056">Entities.hpp:56</a></div></div>
 <div class="ttc" id="class_c_w_1_1_drawing_element_html"><div class="ttname"><a href="class_c_w_1_1_drawing_element.html">CW::DrawingElement</a></div><div class="ttdef"><b>Definition:</b> <a href="_drawing_element_8hpp_source.html#l00047">DrawingElement.hpp:47</a></div></div>
 <div class="ttc" id="class_c_w_1_1_behavior_html"><div class="ttname"><a href="class_c_w_1_1_behavior.html">CW::Behavior</a></div><div class="ttdef"><b>Definition:</b> <a href="_component_definition_8hpp_source.html#l00144">ComponentDefinition.hpp:144</a></div></div>
+<div class="ttc" id="struct_s_u_component_behavior_html_ada174716798c6a0f23d770956863dc99"><div class="ttname"><a href="struct_s_u_component_behavior.html#ada174716798c6a0f23d770956863dc99">SUComponentBehavior::SUSnapToBehavior</a></div><div class="ttdeci">SUSnapToBehavior</div><div class="ttdoc">Describes how the component instance is placed when it is first instantiated in the rendering scene...</div><div class="ttdef"><b>Definition:</b> <a href="2016_2_sketch_up_a_p_i_8framework_2_headers_2model_2component__definition_8h_source.html#l00034">component_definition.h:34</a></div></div>
 <div class="ttc" id="class_c_w_1_1_component_definition_html_a991379b2dcd303d6b9a8e54beb4a01f5"><div class="ttname"><a href="class_c_w_1_1_component_definition.html#a991379b2dcd303d6b9a8e54beb4a01f5">CW::ComponentDefinition::~ComponentDefinition</a></div><div class="ttdeci">~ComponentDefinition()</div><div class="ttdef"><b>Definition:</b> <a href="_component_definition_8cpp_source.html#l00086">ComponentDefinition.cpp:86</a></div></div>
+<div class="ttc" id="struct_s_u_component_behavior_html"><div class="ttname"><a href="struct_s_u_component_behavior.html">SUComponentBehavior</a></div><div class="ttdoc">Describes how the component behaves in the SketchUp rendering scene. </div><div class="ttdef"><b>Definition:</b> <a href="2016_2_sketch_up_a_p_i_8framework_2_headers_2model_2component__definition_8h_source.html#l00026">component_definition.h:26</a></div></div>
 <div class="ttc" id="class_c_w_1_1_component_definition_html_a0f7ddefe74f72e118a05dd2d2a369d2a"><div class="ttname"><a href="class_c_w_1_1_component_definition.html#a0f7ddefe74f72e118a05dd2d2a369d2a">CW::ComponentDefinition::bounds</a></div><div class="ttdeci">BoundingBox3D bounds() const </div><div class="ttdef"><b>Definition:</b> <a href="_component_definition_8cpp_source.html#l00120">ComponentDefinition.cpp:120</a></div></div>
 <div class="ttc" id="class_c_w_1_1_component_definition_html_ae09a53b7ade63bf66b37eba9cc9a7756"><div class="ttname"><a href="class_c_w_1_1_component_definition.html#ae09a53b7ade63bf66b37eba9cc9a7756">CW::ComponentDefinition::entities</a></div><div class="ttdeci">Entities entities() const </div><div class="ttdef"><b>Definition:</b> <a href="_component_definition_8cpp_source.html#l00157">ComponentDefinition.cpp:157</a></div></div>
 <div class="ttc" id="class_c_w_1_1_component_definition_html"><div class="ttname"><a href="class_c_w_1_1_component_definition.html">CW::ComponentDefinition</a></div><div class="ttdef"><b>Definition:</b> <a href="_component_definition_8hpp_source.html#l00050">ComponentDefinition.hpp:50</a></div></div>
+<div class="ttc" id="struct_s_u_component_definition_ref_html"><div class="ttname"><a href="struct_s_u_component_definition_ref.html">SUComponentDefinitionRef</a></div><div class="ttdoc">References a component definition. </div></div>
 <div class="ttc" id="class_c_w_1_1_component_definition_html_a3831f46b89aed9415e0268447e01372a"><div class="ttname"><a href="class_c_w_1_1_component_definition.html#a3831f46b89aed9415e0268447e01372a">CW::ComponentDefinition::name</a></div><div class="ttdeci">String name() const </div><div class="ttdef"><b>Definition:</b> <a href="_component_definition_8cpp_source.html#l00168">ComponentDefinition.cpp:168</a></div></div>
 <div class="ttc" id="class_c_w_1_1_component_definition_html_a59ec91b574dbf66ce7a6439b393d0124"><div class="ttname"><a href="class_c_w_1_1_component_definition.html#a59ec91b574dbf66ce7a6439b393d0124">CW::ComponentDefinition::behavior</a></div><div class="ttdeci">Behavior behavior() const </div><div class="ttdef"><b>Definition:</b> <a href="_component_definition_8cpp_source.html#l00212">ComponentDefinition.cpp:212</a></div></div>
 <div class="ttc" id="class_c_w_1_1_component_definition_html_a7d75cecd4812aa1cf40d7eac3ad2833d"><div class="ttname"><a href="class_c_w_1_1_component_definition.html#a7d75cecd4812aa1cf40d7eac3ad2833d">CW::ComponentDefinition::ComponentDefinition</a></div><div class="ttdeci">ComponentDefinition()</div><div class="ttdef"><b>Definition:</b> <a href="_component_definition_8cpp_source.html#l00065">ComponentDefinition.cpp:65</a></div></div>
 <div class="ttc" id="class_c_w_1_1_string_html"><div class="ttname"><a href="class_c_w_1_1_string.html">CW::String</a></div><div class="ttdef"><b>Definition:</b> <a href="_string_8hpp_source.html#l00045">String.hpp:45</a></div></div>
-<div class="ttc" id="class_c_w_1_1_bounding_box3_d_html"><div class="ttname"><a href="class_c_w_1_1_bounding_box3_d.html">CW::BoundingBox3D</a></div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8hpp_source.html#l00490">Geometry.hpp:490</a></div></div>
+<div class="ttc" id="class_c_w_1_1_bounding_box3_d_html"><div class="ttname"><a href="class_c_w_1_1_bounding_box3_d.html">CW::BoundingBox3D</a></div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8hpp_source.html#l00495">Geometry.hpp:495</a></div></div>
 <div class="ttc" id="class_c_w_1_1_component_definition_html_a7f89d741c88b021acc9a3612d61c4aa3"><div class="ttname"><a href="class_c_w_1_1_component_definition.html#a7f89d741c88b021acc9a3612d61c4aa3">CW::ComponentDefinition::is_group</a></div><div class="ttdeci">bool is_group() const </div><div class="ttdef"><b>Definition:</b> <a href="_component_definition_8cpp_source.html#l00196">ComponentDefinition.cpp:196</a></div></div>
 <div class="ttc" id="class_c_w_1_1_component_definition_html_abbd9c7b2cdb18199666e02a755293e9f"><div class="ttname"><a href="class_c_w_1_1_component_definition.html#abbd9c7b2cdb18199666e02a755293e9f">CW::ComponentDefinition::operator=</a></div><div class="ttdeci">ComponentDefinition &amp; operator=(const ComponentDefinition &amp;other)</div><div class="ttdef"><b>Definition:</b> <a href="_component_definition_8cpp_source.html#l00096">ComponentDefinition.cpp:96</a></div></div>
 <div class="ttc" id="class_c_w_1_1_entity_html_a4401ee82d78834f362b5aeb6ba23b57d"><div class="ttname"><a href="class_c_w_1_1_entity.html#a4401ee82d78834f362b5aeb6ba23b57d">CW::Entity::attached</a></div><div class="ttdeci">void attached(bool attach=true)</div><div class="ttdoc">Method lets the object know that it has been attached to a model. This is important as it will let th...</div><div class="ttdef"><b>Definition:</b> <a href="_entity_8cpp_source.html#l00086">Entity.cpp:86</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Nov 24 2017 15:22:25 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Jan 19 2018 16:42:00 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
