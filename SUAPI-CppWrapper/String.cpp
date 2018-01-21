@@ -149,7 +149,7 @@ std::string String::std_string() const {
   assert(res == SU_ERROR_NONE);
   out_length++; // Allow for null termianted string
   char* char_array = new char[out_length];
-  res = SUStringGetUTF8(m_string, out_length+1, &char_array[0], &out_length);
+  res = SUStringGetUTF8(m_string, out_length, &char_array[0], &out_length);
   assert(res == SU_ERROR_NONE);
   std::string str(char_array);
   delete[] char_array;
