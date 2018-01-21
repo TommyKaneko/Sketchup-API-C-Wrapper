@@ -201,7 +201,7 @@
 <div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;  assert(res == SU_ERROR_NONE);</div>
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;  out_length++; <span class="comment">// Allow for null termianted string</span></div>
 <div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;  <span class="keywordtype">char</span>* char_array = <span class="keyword">new</span> <span class="keywordtype">char</span>[out_length];</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;  res = SUStringGetUTF8(m_string, out_length+1, &amp;char_array[0], &amp;out_length);</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;  res = SUStringGetUTF8(m_string, out_length, &amp;char_array[0], &amp;out_length);</div>
 <div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;  assert(res == SU_ERROR_NONE);</div>
 <div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;  std::string str(char_array);</div>
 <div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;  <span class="keyword">delete</span>[] char_array;</div>
@@ -241,7 +241,7 @@
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Jan 19 2018 16:42:17 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Jan 21 2018 19:31:27 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
