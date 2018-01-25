@@ -890,6 +890,9 @@ Plane3D Plane3D::plane_from_loop(const std::vector<Point3D>& loop_points) {
     normal.y += (current.z - next.z) * (current.x + next.x);
     normal.z += (current.x - next.x) * (current.y + next.y);
   }
+  if (normal == Vector3D::zero_vector()) {
+  	return Plane3D(false);
+	}
   return Plane3D (loop_points[0], normal.unit());
 }
 
