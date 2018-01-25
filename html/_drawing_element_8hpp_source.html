@@ -42,7 +42,7 @@
   </div>
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_5a36426493171642b1c6fd058fd2e6d3.html">SUAPI-CppWrapper</a></li><li class="navelem"><a class="el" href="dir_c359596257b5f4ccdc4ac591473f48ed.html">model</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_fdb96db7800bcda861cc965e3bc145d5.html">SUAPI-CppWrapper</a></li><li class="navelem"><a class="el" href="dir_d18f6ee5a09a3d0ed3d1f344584c848e.html">model</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -98,7 +98,7 @@
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment">*/</span></div>
 <div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="class_c_w_1_1_drawing_element.html">   47</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_c_w_1_1_drawing_element.html">DrawingElement</a> :<span class="keyword">public</span> <a class="code" href="class_c_w_1_1_entity.html">Entity</a> {</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  <a class="code" href="struct_s_u_drawing_element_ref.html">SUDrawingElementRef</a> m_drawing_element;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  SUDrawingElementRef m_drawing_element;</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  </div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  <span class="keyword">public</span>:<span class="comment"></span></div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment">        /**</span></div>
@@ -106,14 +106,14 @@
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment">  * @param drawing_element - SUDrawingElementRef object to assign to the object.</span></div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment">  * @param attached - flag indicating if the entity should be treated as attached to another object @see CW::Entity</span></div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment">  */</span></div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  <a class="code" href="class_c_w_1_1_drawing_element.html#aaf0ddf22ee1d60d2cbe01c9a87b48c6a">DrawingElement</a>(<a class="code" href="struct_s_u_drawing_element_ref.html">SUDrawingElementRef</a> drawing_element, <span class="keywordtype">bool</span> <a class="code" href="class_c_w_1_1_entity.html#a4401ee82d78834f362b5aeb6ba23b57d">attached</a> = <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  <a class="code" href="class_c_w_1_1_drawing_element.html#aaf0ddf22ee1d60d2cbe01c9a87b48c6a">DrawingElement</a>(SUDrawingElementRef drawing_element, <span class="keywordtype">bool</span> <a class="code" href="class_c_w_1_1_entity.html#a4401ee82d78834f362b5aeb6ba23b57d">attached</a> = <span class="keyword">true</span>);</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <span class="comment"></span></div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="comment">        /**</span></div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="comment">  * Copy constructor with an optional parameter for the entity reference.  SUDrawingElementRef objects cannot be created from this class, so the Ref object must be passed to this constructor from a derived class object.</span></div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="comment">  * @param other - DrawingElement object from which properties will be copied.</span></div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="comment">  * @param element_ref - SUDrawingElementRef object to assign to the copied object.</span></div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="comment">  */</span></div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  <a class="code" href="class_c_w_1_1_drawing_element.html#aaf0ddf22ee1d60d2cbe01c9a87b48c6a">DrawingElement</a>(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_drawing_element.html">DrawingElement</a>&amp; other, <a class="code" href="struct_s_u_drawing_element_ref.html">SUDrawingElementRef</a> element_ref = SU_INVALID);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  <a class="code" href="class_c_w_1_1_drawing_element.html#aaf0ddf22ee1d60d2cbe01c9a87b48c6a">DrawingElement</a>(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_drawing_element.html">DrawingElement</a>&amp; other, SUDrawingElementRef element_ref = SU_INVALID);</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  <span class="comment"></span></div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="comment">  /**</span></div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="comment">  * Constructor representing a null object.</span></div>
@@ -124,8 +124,8 @@
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  <a class="code" href="class_c_w_1_1_drawing_element.html">DrawingElement</a>&amp; <a class="code" href="class_c_w_1_1_drawing_element.html#a0d66dcc652715cba98998b2c69ac15e0">operator=</a>(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_drawing_element.html">DrawingElement</a>&amp; other);</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  <span class="comment"></span></div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="comment">  /** Cast to native objects */</span></div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  <span class="keyword">operator</span> <a class="code" href="struct_s_u_drawing_element_ref.html">SUDrawingElementRef</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  <span class="keyword">operator</span> <a class="code" href="struct_s_u_drawing_element_ref.html">SUDrawingElementRef</a>*();</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  <span class="keyword">operator</span> SUDrawingElementRef() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  <span class="keyword">operator</span> SUDrawingElementRef*();</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  <span class="comment"></span></div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="comment">  /**</span></div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="comment">  * Returns the bounding box of the drawing element.</span></div>
@@ -214,12 +214,11 @@
 <div class="ttc" id="class_c_w_1_1_entity_html"><div class="ttname"><a href="class_c_w_1_1_entity.html">CW::Entity</a></div><div class="ttdef"><b>Definition:</b> <a href="_entity_8hpp_source.html#l00051">Entity.hpp:51</a></div></div>
 <div class="ttc" id="class_c_w_1_1_bounding_box3_d_html"><div class="ttname"><a href="class_c_w_1_1_bounding_box3_d.html">CW::BoundingBox3D</a></div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8hpp_source.html#l00495">Geometry.hpp:495</a></div></div>
 <div class="ttc" id="class_c_w_1_1_entity_html_a4401ee82d78834f362b5aeb6ba23b57d"><div class="ttname"><a href="class_c_w_1_1_entity.html#a4401ee82d78834f362b5aeb6ba23b57d">CW::Entity::attached</a></div><div class="ttdeci">void attached(bool attach=true)</div><div class="ttdoc">Method lets the object know that it has been attached to a model. This is important as it will let th...</div><div class="ttdef"><b>Definition:</b> <a href="_entity_8cpp_source.html#l00086">Entity.cpp:86</a></div></div>
-<div class="ttc" id="struct_s_u_drawing_element_ref_html"><div class="ttname"><a href="struct_s_u_drawing_element_ref.html">SUDrawingElementRef</a></div><div class="ttdoc">References a drawing element, which is an abstract base type for some API types. </div></div>
 <div class="ttc" id="class_c_w_1_1_drawing_element_html_aaf0ddf22ee1d60d2cbe01c9a87b48c6a"><div class="ttname"><a href="class_c_w_1_1_drawing_element.html#aaf0ddf22ee1d60d2cbe01c9a87b48c6a">CW::DrawingElement::DrawingElement</a></div><div class="ttdeci">DrawingElement()</div><div class="ttdef"><b>Definition:</b> <a href="_drawing_element_8cpp_source.html#l00050">DrawingElement.cpp:50</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jan 25 2018 10:33:21 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Jan 25 2018 11:58:36 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

@@ -42,7 +42,7 @@
   </div>
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_5a36426493171642b1c6fd058fd2e6d3.html">SUAPI-CppWrapper</a></li><li class="navelem"><a class="el" href="dir_c359596257b5f4ccdc4ac591473f48ed.html">model</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_fdb96db7800bcda861cc965e3bc145d5.html">SUAPI-CppWrapper</a></li><li class="navelem"><a class="el" href="dir_d18f6ee5a09a3d0ed3d1f344584c848e.html">model</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -91,10 +91,10 @@
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
 <div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="class_c_w_1_1_layer.html">   40</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_c_w_1_1_layer.html">Layer</a> :<span class="keyword">public</span> <a class="code" href="class_c_w_1_1_entity.html">Entity</a> {</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  <a class="code" href="struct_s_u_layer_ref.html">SULayerRef</a> m_layer;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  SULayerRef m_layer;</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  </div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  <span class="keyword">static</span> <a class="code" href="struct_s_u_layer_ref.html">SULayerRef</a> create_layer();</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  <span class="keyword">static</span> <a class="code" href="struct_s_u_layer_ref.html">SULayerRef</a> copy_reference(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_layer.html">Layer</a>&amp; other);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  <span class="keyword">static</span> SULayerRef create_layer();</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  <span class="keyword">static</span> SULayerRef copy_reference(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_layer.html">Layer</a>&amp; other);</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  </div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  <span class="keyword">public</span>:<span class="comment"></span></div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment">  /**</span></div>
@@ -105,7 +105,7 @@
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment">  /**</span></div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment">  * Constructs a Layer object from a pre existing SULayerRef object.</span></div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment">  */</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  <a class="code" href="class_c_w_1_1_layer.html#a54aa3a2e9b68b9f7e6e8b234e17bbbe8">Layer</a>(<a class="code" href="struct_s_u_layer_ref.html">SULayerRef</a> layer_ref, <span class="keywordtype">bool</span> <a class="code" href="class_c_w_1_1_entity.html#a4401ee82d78834f362b5aeb6ba23b57d">attached</a> = <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  <a class="code" href="class_c_w_1_1_layer.html#a54aa3a2e9b68b9f7e6e8b234e17bbbe8">Layer</a>(SULayerRef layer_ref, <span class="keywordtype">bool</span> <a class="code" href="class_c_w_1_1_entity.html#a4401ee82d78834f362b5aeb6ba23b57d">attached</a> = <span class="keyword">true</span>);</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="comment"></span></div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="comment">  /** Copy Constructor */</span></div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  <a class="code" href="class_c_w_1_1_layer.html#a54aa3a2e9b68b9f7e6e8b234e17bbbe8">Layer</a>(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_layer.html">Layer</a>&amp; other);</div>
@@ -119,9 +119,9 @@
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="comment">  /**</span></div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="comment">  * Returns the SULayerRef object that this class wraps</span></div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="comment">  */</span></div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  <a class="code" href="struct_s_u_layer_ref.html">SULayerRef</a> <a class="code" href="class_c_w_1_1_layer.html#ae9b5899807c5484869f5daf08dda8c67">ref</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  <span class="keyword">operator</span> <a class="code" href="struct_s_u_layer_ref.html">SULayerRef</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  <span class="keyword">operator</span> <a class="code" href="struct_s_u_layer_ref.html">SULayerRef</a>*();</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  SULayerRef <a class="code" href="class_c_w_1_1_layer.html#ae9b5899807c5484869f5daf08dda8c67">ref</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  <span class="keyword">operator</span> SULayerRef() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  <span class="keyword">operator</span> SULayerRef*();</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  <span class="comment"></span></div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="comment">  /**</span></div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="comment">  * Returns whether this is a NULL layer or not.</span></div>
@@ -153,13 +153,12 @@
 <div class="ttc" id="class_c_w_1_1_entity_html"><div class="ttname"><a href="class_c_w_1_1_entity.html">CW::Entity</a></div><div class="ttdef"><b>Definition:</b> <a href="_entity_8hpp_source.html#l00051">Entity.hpp:51</a></div></div>
 <div class="ttc" id="class_c_w_1_1_layer_html_ae9b5899807c5484869f5daf08dda8c67"><div class="ttname"><a href="class_c_w_1_1_layer.html#ae9b5899807c5484869f5daf08dda8c67">CW::Layer::ref</a></div><div class="ttdeci">SULayerRef ref() const </div><div class="ttdef"><b>Definition:</b> <a href="_layer_8cpp_source.html#l00106">Layer.cpp:106</a></div></div>
 <div class="ttc" id="class_c_w_1_1_layer_html_abf4663654bd901707526736987ca7472"><div class="ttname"><a href="class_c_w_1_1_layer.html#abf4663654bd901707526736987ca7472">CW::Layer::operator=</a></div><div class="ttdeci">Layer &amp; operator=(const Layer &amp;other)</div><div class="ttdef"><b>Definition:</b> <a href="_layer_8cpp_source.html#l00090">Layer.cpp:90</a></div></div>
-<div class="ttc" id="struct_s_u_layer_ref_html"><div class="ttname"><a href="struct_s_u_layer_ref.html">SULayerRef</a></div><div class="ttdoc">References a layer object. </div></div>
 <div class="ttc" id="class_c_w_1_1_string_html"><div class="ttname"><a href="class_c_w_1_1_string.html">CW::String</a></div><div class="ttdef"><b>Definition:</b> <a href="_string_8hpp_source.html#l00045">String.hpp:45</a></div></div>
 <div class="ttc" id="class_c_w_1_1_entity_html_a4401ee82d78834f362b5aeb6ba23b57d"><div class="ttname"><a href="class_c_w_1_1_entity.html#a4401ee82d78834f362b5aeb6ba23b57d">CW::Entity::attached</a></div><div class="ttdeci">void attached(bool attach=true)</div><div class="ttdoc">Method lets the object know that it has been attached to a model. This is important as it will let th...</div><div class="ttdef"><b>Definition:</b> <a href="_entity_8cpp_source.html#l00086">Entity.cpp:86</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jan 25 2018 10:33:21 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Jan 25 2018 11:58:36 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

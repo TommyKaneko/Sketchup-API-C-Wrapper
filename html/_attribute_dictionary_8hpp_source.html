@@ -42,7 +42,7 @@
   </div>
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_5a36426493171642b1c6fd058fd2e6d3.html">SUAPI-CppWrapper</a></li><li class="navelem"><a class="el" href="dir_c359596257b5f4ccdc4ac591473f48ed.html">model</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_fdb96db7800bcda861cc965e3bc145d5.html">SUAPI-CppWrapper</a></li><li class="navelem"><a class="el" href="dir_d18f6ee5a09a3d0ed3d1f344584c848e.html">model</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -98,14 +98,14 @@
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment">*/</span></div>
 <div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="class_c_w_1_1_attribute_dictionary.html">   47</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_c_w_1_1_attribute_dictionary.html">AttributeDictionary</a> {</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  <a class="code" href="struct_s_u_attribute_dictionary_ref.html">SUAttributeDictionaryRef</a> m_dict;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  SUAttributeDictionaryRef m_dict;</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  </div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  <span class="keyword">public</span>:<span class="comment"></span></div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment">  /**</span></div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment">  * Constructor from existing SUAttributeDictionaryRef object</span></div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment">  * @param dict - existing SUAttributeDictionaryRef object to wrap with this class.</span></div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment">  */</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  <a class="code" href="class_c_w_1_1_attribute_dictionary.html#a6a81dac1d4ebf68e473c645647d2f53b">AttributeDictionary</a>(<a class="code" href="struct_s_u_attribute_dictionary_ref.html">SUAttributeDictionaryRef</a> dict);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  <a class="code" href="class_c_w_1_1_attribute_dictionary.html#a6a81dac1d4ebf68e473c645647d2f53b">AttributeDictionary</a>(SUAttributeDictionaryRef dict);</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  <span class="comment"></span></div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="comment">        /**</span></div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="comment">  * Constructor representing a null object.</span></div>
@@ -113,8 +113,8 @@
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  <a class="code" href="class_c_w_1_1_attribute_dictionary.html#a6a81dac1d4ebf68e473c645647d2f53b">AttributeDictionary</a>();</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  <span class="comment"></span></div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="comment">  /** Cast to native object **/</span></div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="keyword">operator</span> <a class="code" href="struct_s_u_attribute_dictionary_ref.html">SUAttributeDictionaryRef</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="keyword">operator</span> <a class="code" href="struct_s_u_attribute_dictionary_ref.html">SUAttributeDictionaryRef</a>*();</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="keyword">operator</span> SUAttributeDictionaryRef() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="keyword">operator</span> SUAttributeDictionaryRef*();</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  <span class="comment"></span></div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="comment">  /**</span></div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="comment">  * Returns the value of the attribute with the specified key.</span></div>
@@ -160,7 +160,6 @@
 <div class="ttc" id="class_c_w_1_1_attribute_dictionary_html_a5a48357f5ce9d61e033be2ace3581c96"><div class="ttname"><a href="class_c_w_1_1_attribute_dictionary.html#a5a48357f5ce9d61e033be2ace3581c96">CW::AttributeDictionary::get_name</a></div><div class="ttdeci">std::string get_name() const </div><div class="ttdef"><b>Definition:</b> <a href="_attribute_dictionary_8cpp_source.html#l00116">AttributeDictionary.cpp:116</a></div></div>
 <div class="ttc" id="class_c_w_1_1_typed_value_html"><div class="ttname"><a href="class_c_w_1_1_typed_value.html">CW::TypedValue</a></div><div class="ttdef"><b>Definition:</b> <a href="_typed_value_8hpp_source.html#l00045">TypedValue.hpp:45</a></div></div>
 <div class="ttc" id="class_c_w_1_1_attribute_dictionary_html_a8814b15285e78fc88a14018ee7bdc963"><div class="ttname"><a href="class_c_w_1_1_attribute_dictionary.html#a8814b15285e78fc88a14018ee7bdc963">CW::AttributeDictionary::get_attribute</a></div><div class="ttdeci">TypedValue get_attribute(const std::string &amp;key, const TypedValue &amp;default_value) const </div><div class="ttdef"><b>Definition:</b> <a href="_attribute_dictionary_8cpp_source.html#l00057">AttributeDictionary.cpp:57</a></div></div>
-<div class="ttc" id="struct_s_u_attribute_dictionary_ref_html"><div class="ttname"><a href="struct_s_u_attribute_dictionary_ref.html">SUAttributeDictionaryRef</a></div><div class="ttdoc">A dictionary type with SUStringRef objects as keys and SUTypedValueRef objects as values...</div></div>
 <div class="ttc" id="class_c_w_1_1_attribute_dictionary_html_ad4c403542e7ee8497c6d457751c6562c"><div class="ttname"><a href="class_c_w_1_1_attribute_dictionary.html#ad4c403542e7ee8497c6d457751c6562c">CW::AttributeDictionary::get_value</a></div><div class="ttdeci">TypedValue get_value(const std::string &amp;key) const </div><div class="ttdef"><b>Definition:</b> <a href="_attribute_dictionary_8cpp_source.html#l00112">AttributeDictionary.cpp:112</a></div></div>
 <div class="ttc" id="class_c_w_1_1_attribute_dictionary_html_abd676bec9f4fb94393549c1b1584e182"><div class="ttname"><a href="class_c_w_1_1_attribute_dictionary.html#abd676bec9f4fb94393549c1b1584e182">CW::AttributeDictionary::operator!</a></div><div class="ttdeci">bool operator!() const </div><div class="ttdef"><b>Definition:</b> <a href="_attribute_dictionary_8cpp_source.html#l00124">AttributeDictionary.cpp:124</a></div></div>
 <div class="ttc" id="class_c_w_1_1_attribute_dictionary_html"><div class="ttname"><a href="class_c_w_1_1_attribute_dictionary.html">CW::AttributeDictionary</a></div><div class="ttdef"><b>Definition:</b> <a href="_attribute_dictionary_8hpp_source.html#l00047">AttributeDictionary.hpp:47</a></div></div>
@@ -169,7 +168,7 @@
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jan 25 2018 10:33:21 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Jan 25 2018 11:58:36 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

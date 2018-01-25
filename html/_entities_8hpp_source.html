@@ -42,7 +42,7 @@
   </div>
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_5a36426493171642b1c6fd058fd2e6d3.html">SUAPI-CppWrapper</a></li><li class="navelem"><a class="el" href="dir_c359596257b5f4ccdc4ac591473f48ed.html">model</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_fdb96db7800bcda861cc965e3bc145d5.html">SUAPI-CppWrapper</a></li><li class="navelem"><a class="el" href="dir_d18f6ee5a09a3d0ed3d1f344584c848e.html">model</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -107,11 +107,11 @@
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment">*/</span></div>
 <div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="class_c_w_1_1_entities.html">   56</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_c_w_1_1_entities.html">Entities</a> {</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <a class="code" href="struct_s_u_entities_ref.html">SUEntitiesRef</a> m_entities;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  SUEntitiesRef m_entities;</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  <span class="comment">//Model * const m_model;</span></div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  </div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  <a class="code" href="class_c_w_1_1_entities.html#afbd36e6ecd573b7d66a506351e0e7de0">Entities</a>(<a class="code" href="struct_s_u_entities_ref.html">SUEntitiesRef</a> entities<span class="comment">/*, Model* model*/</span>);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  <a class="code" href="class_c_w_1_1_entities.html#afbd36e6ecd573b7d66a506351e0e7de0">Entities</a>(SUEntitiesRef entities<span class="comment">/*, Model* model*/</span>);</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  </div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  <span class="comment"></span></div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="comment">  /**</span></div>
@@ -205,14 +205,13 @@
 <div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;  <span class="comment">/*</span></div>
 <div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;<span class="comment">  * The class object can be converted to a SUEntitiesRef without loss of data.</span></div>
 <div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;<span class="comment">  */</span></div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;  <span class="keyword">operator</span> <a class="code" href="struct_s_u_entities_ref.html">SUEntitiesRef</a>();</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;  <span class="keyword">operator</span> SUEntitiesRef();</div>
 <div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;</div>
 <div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;};</div>
 <div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;</div>
 <div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;} <span class="comment">/* namespace CW */</span></div>
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* Entities_hpp */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="class_c_w_1_1_edge_html"><div class="ttname"><a href="class_c_w_1_1_edge.html">CW::Edge</a></div><div class="ttdef"><b>Definition:</b> <a href="_edge_8hpp_source.html#l00048">Edge.hpp:48</a></div></div>
-<div class="ttc" id="struct_s_u_entities_ref_html"><div class="ttname"><a href="struct_s_u_entities_ref.html">SUEntitiesRef</a></div><div class="ttdoc">References a container object for all entities in a model, component definition or a group...</div></div>
 <div class="ttc" id="class_c_w_1_1_entities_html_ab34fd9822bee1ef8765c4ff6e5994255"><div class="ttname"><a href="class_c_w_1_1_entities.html#ab34fd9822bee1ef8765c4ff6e5994255">CW::Entities::transform_entities</a></div><div class="ttdeci">bool transform_entities(std::vector&lt; Entity &gt; &amp;elems, const Transformation &amp;transform)</div><div class="ttdef"><b>Definition:</b> <a href="_entities_8cpp_source.html#l00411">Entities.cpp:411</a></div></div>
 <div class="ttc" id="class_c_w_1_1_component_instance_html"><div class="ttname"><a href="class_c_w_1_1_component_instance.html">CW::ComponentInstance</a></div><div class="ttdef"><b>Definition:</b> <a href="_component_instance_8hpp_source.html#l00041">ComponentInstance.hpp:41</a></div></div>
 <div class="ttc" id="class_c_w_1_1_entities_html"><div class="ttname"><a href="class_c_w_1_1_entities.html">CW::Entities</a></div><div class="ttdef"><b>Definition:</b> <a href="_entities_8hpp_source.html#l00056">Entities.hpp:56</a></div></div>
@@ -231,7 +230,7 @@
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jan 25 2018 10:33:21 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Jan 25 2018 11:58:36 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

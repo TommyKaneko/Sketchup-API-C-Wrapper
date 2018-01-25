@@ -42,7 +42,7 @@
   </div>
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_5a36426493171642b1c6fd058fd2e6d3.html">SUAPI-CppWrapper</a></li><li class="navelem"><a class="el" href="dir_c359596257b5f4ccdc4ac591473f48ed.html">model</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_fdb96db7800bcda861cc965e3bc145d5.html">SUAPI-CppWrapper</a></li><li class="navelem"><a class="el" href="dir_d18f6ee5a09a3d0ed3d1f344584c848e.html">model</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -96,13 +96,13 @@
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
 <div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="class_c_w_1_1_typed_value.html">   45</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_c_w_1_1_typed_value.html">TypedValue</a> {</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  <a class="code" href="struct_s_u_typed_value_ref.html">SUTypedValueRef</a> m_typed_value;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  SUTypedValueRef m_typed_value;</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  </div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  <span class="keyword">static</span> <a class="code" href="struct_s_u_typed_value_ref.html">SUTypedValueRef</a> create_typed_value();</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  <span class="keyword">static</span> SUTypedValueRef create_typed_value();</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  </div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  <span class="keyword">public</span>:</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  <a class="code" href="class_c_w_1_1_typed_value.html">TypedValue</a>();</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  <a class="code" href="class_c_w_1_1_typed_value.html">TypedValue</a>(<a class="code" href="struct_s_u_typed_value_ref.html">SUTypedValueRef</a> typed_val);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  <a class="code" href="class_c_w_1_1_typed_value.html">TypedValue</a>(SUTypedValueRef typed_val);</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  <a class="code" href="class_c_w_1_1_typed_value.html">TypedValue</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> chars[]);</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  <span class="comment">//TypedValue(const std::string string);</span></div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  <span class="comment"></span></div>
@@ -114,9 +114,9 @@
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  </div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  ~<a class="code" href="class_c_w_1_1_typed_value.html">TypedValue</a>();</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  </div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  <a class="code" href="struct_s_u_typed_value_ref.html">SUTypedValueRef</a> ref() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  <span class="keyword">operator</span> <a class="code" href="struct_s_u_typed_value_ref.html">SUTypedValueRef</a>();</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  <span class="keyword">operator</span> <a class="code" href="struct_s_u_typed_value_ref.html">SUTypedValueRef</a>*();</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  SUTypedValueRef ref() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  <span class="keyword">operator</span> SUTypedValueRef();</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  <span class="keyword">operator</span> SUTypedValueRef*();</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  <span class="comment"></span></div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="comment">  /**</span></div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="comment">  * Checks whether TypedValue has been initialised.</span></div>
@@ -231,7 +231,6 @@
 <div class="ttc" id="class_c_w_1_1_typed_value_html"><div class="ttname"><a href="class_c_w_1_1_typed_value.html">CW::TypedValue</a></div><div class="ttdef"><b>Definition:</b> <a href="_typed_value_8hpp_source.html#l00045">TypedValue.hpp:45</a></div></div>
 <div class="ttc" id="class_c_w_1_1_typed_value_html_a1d0cd3cad7f771d1fcc41c78dd111c03"><div class="ttname"><a href="class_c_w_1_1_typed_value.html#a1d0cd3cad7f771d1fcc41c78dd111c03">CW::TypedValue::typed_value_array</a></div><div class="ttdeci">std::vector&lt; TypedValue &gt; typed_value_array() const </div><div class="ttdef"><b>Definition:</b> <a href="_typed_value_8cpp_source.html#l00411">TypedValue.cpp:411</a></div></div>
 <div class="ttc" id="class_c_w_1_1_typed_value_html_ae0b7e9f9df91fb15a848dfefe65a377f"><div class="ttname"><a href="class_c_w_1_1_typed_value.html#ae0b7e9f9df91fb15a848dfefe65a377f">CW::TypedValue::color_value</a></div><div class="ttdeci">Color color_value() const </div><div class="ttdef"><b>Definition:</b> <a href="_typed_value_8cpp_source.html#l00307">TypedValue.cpp:307</a></div></div>
-<div class="ttc" id="struct_s_u_typed_value_ref_html"><div class="ttname"><a href="struct_s_u_typed_value_ref.html">SUTypedValueRef</a></div><div class="ttdoc">Variant object used to represent the value of a key-value attribute pair. </div></div>
 <div class="ttc" id="class_c_w_1_1_vector3_d_html"><div class="ttname"><a href="class_c_w_1_1_vector3_d.html">CW::Vector3D</a></div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8hpp_source.html#l00112">Geometry.hpp:112</a></div></div>
 <div class="ttc" id="class_c_w_1_1_typed_value_html_a5c51855e6169eb51d2d27be56e6809f6"><div class="ttname"><a href="class_c_w_1_1_typed_value.html#a5c51855e6169eb51d2d27be56e6809f6">CW::TypedValue::byte_value</a></div><div class="ttdeci">char byte_value() const </div><div class="ttdef"><b>Definition:</b> <a href="_typed_value_8cpp_source.html#l00164">TypedValue.cpp:164</a></div></div>
 <div class="ttc" id="class_c_w_1_1_typed_value_html_a64744d5b712a327862eb402df04e1a87"><div class="ttname"><a href="class_c_w_1_1_typed_value.html#a64744d5b712a327862eb402df04e1a87">CW::TypedValue::operator!</a></div><div class="ttdeci">bool operator!() const </div><div class="ttdef"><b>Definition:</b> <a href="_typed_value_8cpp_source.html#l00118">TypedValue.cpp:118</a></div></div>
@@ -248,7 +247,7 @@
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jan 25 2018 10:33:21 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Jan 25 2018 11:58:36 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
