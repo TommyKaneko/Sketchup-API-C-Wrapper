@@ -100,8 +100,8 @@
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment">/***************************</span></div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment">** Private Static Methods **</span></div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment">****************************/</span></div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;SUGeometryInputRef GeometryInput::create_geometry_input() {</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        SUGeometryInputRef geom_input = SU_INVALID;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<a class="code" href="struct_s_u_geometry_input_ref.html">SUGeometryInputRef</a> GeometryInput::create_geometry_input() {</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <a class="code" href="struct_s_u_geometry_input_ref.html">SUGeometryInputRef</a> geom_input = SU_INVALID;</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        SUResult res = SUGeometryInputCreate(&amp;geom_input);</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  assert(res == SU_ERROR_NONE);</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  <span class="keywordflow">return</span> geom_input;</div>
@@ -169,7 +169,7 @@
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;</div>
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;</div>
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;</div>
-<div class="line"><a name="l00120"></a><span class="lineno"><a class="line" href="class_c_w_1_1_geometry_input.html#a2dd814f1fe4f2ca6b72d4d213ceee670">  120</a></span>&#160;SUGeometryInputRef <a class="code" href="class_c_w_1_1_geometry_input.html#a2dd814f1fe4f2ca6b72d4d213ceee670">GeometryInput::ref</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00120"></a><span class="lineno"><a class="line" href="class_c_w_1_1_geometry_input.html#a2dd814f1fe4f2ca6b72d4d213ceee670">  120</a></span>&#160;<a class="code" href="struct_s_u_geometry_input_ref.html">SUGeometryInputRef</a> <a class="code" href="class_c_w_1_1_geometry_input.html#a2dd814f1fe4f2ca6b72d4d213ceee670">GeometryInput::ref</a>()<span class="keyword"> const </span>{</div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        <span class="keywordflow">return</span> m_geometry_input;</div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;}</div>
 <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;</div>
@@ -217,14 +217,14 @@
 <div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;  <span class="keywordflow">if</span>(!face) {</div>
 <div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;        <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;CW::GeometryInput::add_face(): Face argument is null&quot;</span>);</div>
 <div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;  }</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;  SULoopInputRef loop_input = SU_INVALID;</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;  <a class="code" href="struct_s_u_loop_input_ref.html">SULoopInputRef</a> loop_input = SU_INVALID;</div>
 <div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;        SUResult res =  SULoopInputCreate(&amp;loop_input);</div>
 <div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;  assert(res == SU_ERROR_NONE);</div>
 <div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;  <span class="comment">// Add outer loop</span></div>
 <div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;        std::vector&lt;Vertex&gt; outer_vertices = face.outer_loop().<a class="code" href="class_c_w_1_1_loop.html#a6994648358236c506e0d9fae458f5174">vertices</a>();</div>
 <div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;        std::vector&lt;Edge&gt; outer_edges = face.outer_loop().<a class="code" href="class_c_w_1_1_loop.html#abc9600f8e4d18c2058461d8177ac9bd5">edges</a>();</div>
 <div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;  <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i=0; i &lt; outer_vertices.size(); ++i) {</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;        SUPoint3D point = outer_vertices[i].position();</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;        <a class="code" href="struct_s_u_point3_d.html">SUPoint3D</a> point = outer_vertices[i].position();</div>
 <div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;        res = SUGeometryInputAddVertex(m_geometry_input, &amp;point);</div>
 <div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;        assert(res == SU_ERROR_NONE);</div>
 <div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;    res = SULoopInputAddVertexIndex(loop_input, m_vertex_index);</div>
@@ -249,13 +249,13 @@
 <div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;  <span class="comment">// Add inner loops</span></div>
 <div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;        std::vector&lt;Loop&gt; inner_loops = face.<a class="code" href="class_c_w_1_1_face.html#a9ece8e40cb9c4a96a3150997964b0c34">inner_loops</a>();</div>
 <div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;  <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i=0; i &lt; inner_loops.size(); ++i) {</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;        SULoopInputRef inner_loop_input = SU_INVALID;</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;        <a class="code" href="struct_s_u_loop_input_ref.html">SULoopInputRef</a> inner_loop_input = SU_INVALID;</div>
 <div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    res =  SULoopInputCreate(&amp;loop_input);</div>
 <div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    assert(res == SU_ERROR_NONE);</div>
 <div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    std::vector&lt;Vertex&gt; inner_vertices = inner_loops[i].vertices();</div>
 <div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;                std::vector&lt;Edge&gt; inner_edges = inner_loops[i].edges();</div>
 <div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> j=0; j &lt; inner_vertices.size(); ++j) {</div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;                SUPoint3D point = inner_vertices[j].position();</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;                <a class="code" href="struct_s_u_point3_d.html">SUPoint3D</a> point = inner_vertices[j].position();</div>
 <div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;                res = SUGeometryInputAddVertex(m_geometry_input, &amp;point);</div>
 <div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;      assert(res == SU_ERROR_NONE);</div>
 <div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;      res = SULoopInputAddVertexIndex(inner_loop_input, m_vertex_index);</div>
@@ -322,12 +322,12 @@
 <div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;    <span class="keywordflow">return</span> 0;</div>
 <div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;  }</div>
 <div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;  <span class="keywordtype">size_t</span> start_vertex_index = m_vertex_index;</div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;  SUPoint3D start_point = edge.start().<a class="code" href="class_c_w_1_1_vertex.html#ac518611f45735314c23a513fffc91773">position</a>();</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;  <a class="code" href="struct_s_u_point3_d.html">SUPoint3D</a> start_point = edge.start().<a class="code" href="class_c_w_1_1_vertex.html#ac518611f45735314c23a513fffc91773">position</a>();</div>
 <div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;  SUResult res = SUGeometryInputAddVertex(m_geometry_input, &amp;start_point);</div>
 <div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;  m_vertex_index++;</div>
 <div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;  assert(res == SU_ERROR_NONE);</div>
 <div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;  <span class="keywordtype">size_t</span> end_vertex_index = m_vertex_index;</div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;  SUPoint3D end_point = edge.end().<a class="code" href="class_c_w_1_1_vertex.html#ac518611f45735314c23a513fffc91773">position</a>();</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;  <a class="code" href="struct_s_u_point3_d.html">SUPoint3D</a> end_point = edge.end().<a class="code" href="class_c_w_1_1_vertex.html#ac518611f45735314c23a513fffc91773">position</a>();</div>
 <div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;  res = SUGeometryInputAddVertex(m_geometry_input, &amp;end_point);</div>
 <div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;  m_vertex_index++;</div>
 <div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;  assert(res == SU_ERROR_NONE);</div>
@@ -388,12 +388,15 @@
 <div class="ttc" id="class_c_w_1_1_geometry_input_html"><div class="ttname"><a href="class_c_w_1_1_geometry_input.html">CW::GeometryInput</a></div><div class="ttdef"><b>Definition:</b> <a href="_geometry_input_8hpp_source.html#l00058">GeometryInput.hpp:58</a></div></div>
 <div class="ttc" id="class_c_w_1_1_face_html_a9ece8e40cb9c4a96a3150997964b0c34"><div class="ttname"><a href="class_c_w_1_1_face.html#a9ece8e40cb9c4a96a3150997964b0c34">CW::Face::inner_loops</a></div><div class="ttdeci">std::vector&lt; Loop &gt; inner_loops() const </div><div class="ttdef"><b>Definition:</b> <a href="_face_8cpp_source.html#l00305">Face.cpp:305</a></div></div>
 <div class="ttc" id="class_c_w_1_1_geometry_input_html_af83acb61858d32fc669871756b2ff142"><div class="ttname"><a href="class_c_w_1_1_geometry_input.html#af83acb61858d32fc669871756b2ff142">CW::GeometryInput::GeometryInput</a></div><div class="ttdeci">GeometryInput()</div><div class="ttdef"><b>Definition:</b> <a href="_geometry_input_8cpp_source.html#l00077">GeometryInput.cpp:77</a></div></div>
+<div class="ttc" id="struct_s_u_point3_d_html"><div class="ttname"><a href="struct_s_u_point3_d.html">SUPoint3D</a></div><div class="ttdoc">Represents a point in 3-dimensional space. </div><div class="ttdef"><b>Definition:</b> <a href="2016_2_sketch_up_a_p_i_8framework_2_headers_2geometry_8h_source.html#l00031">geometry.h:31</a></div></div>
+<div class="ttc" id="struct_s_u_geometry_input_ref_html"><div class="ttname"><a href="struct_s_u_geometry_input_ref.html">SUGeometryInputRef</a></div><div class="ttdoc">References a geometry input object. It is used as an input to /ref SUEntitiesFill. </div></div>
 <div class="ttc" id="class_c_w_1_1_geometry_input_html_aca07102a66453b4c8cac51f70f5539d9"><div class="ttname"><a href="class_c_w_1_1_geometry_input.html#aca07102a66453b4c8cac51f70f5539d9">CW::GeometryInput::operator!</a></div><div class="ttdeci">bool operator!() const </div><div class="ttdef"><b>Definition:</b> <a href="_geometry_input_8cpp_source.html#l00125">GeometryInput.cpp:125</a></div></div>
 <div class="ttc" id="class_c_w_1_1_geometry_input_html_a62b14bb9643e89e44528e4f3d89ae691"><div class="ttname"><a href="class_c_w_1_1_geometry_input.html#a62b14bb9643e89e44528e4f3d89ae691">CW::GeometryInput::operator=</a></div><div class="ttdeci">GeometryInput &amp; operator=(const GeometryInput &amp;other)</div><div class="ttdef"><b>Definition:</b> <a href="_geometry_input_8cpp_source.html#l00103">GeometryInput.cpp:103</a></div></div>
 <div class="ttc" id="class_c_w_1_1_geometry_input_html_a7de214f129fef6724e9dde41c40f7ed2"><div class="ttname"><a href="class_c_w_1_1_geometry_input.html#a7de214f129fef6724e9dde41c40f7ed2">CW::GeometryInput::~GeometryInput</a></div><div class="ttdeci">~GeometryInput()</div><div class="ttdef"><b>Definition:</b> <a href="_geometry_input_8cpp_source.html#l00083">GeometryInput.cpp:83</a></div></div>
 <div class="ttc" id="class_c_w_1_1_geometry_input_html_ae9ac5f77af6c1a501afb5e15b33ffbd5"><div class="ttname"><a href="class_c_w_1_1_geometry_input.html#ae9ac5f77af6c1a501afb5e15b33ffbd5">CW::GeometryInput::empty</a></div><div class="ttdeci">bool empty() const </div><div class="ttdef"><b>Definition:</b> <a href="_geometry_input_8cpp_source.html#l00321">GeometryInput.cpp:321</a></div></div>
 <div class="ttc" id="class_c_w_1_1_geometry_input_html_a10e6265816a5c1c3724c5b23209d355a"><div class="ttname"><a href="class_c_w_1_1_geometry_input.html#a10e6265816a5c1c3724c5b23209d355a">CW::GeometryInput::add_edge</a></div><div class="ttdeci">size_t add_edge(const Edge &amp;edge)</div><div class="ttdef"><b>Definition:</b> <a href="_geometry_input_8cpp_source.html#l00264">GeometryInput.cpp:264</a></div></div>
 <div class="ttc" id="class_c_w_1_1_geometry_input_html_a2dd814f1fe4f2ca6b72d4d213ceee670"><div class="ttname"><a href="class_c_w_1_1_geometry_input.html#a2dd814f1fe4f2ca6b72d4d213ceee670">CW::GeometryInput::ref</a></div><div class="ttdeci">SUGeometryInputRef ref() const </div><div class="ttdef"><b>Definition:</b> <a href="_geometry_input_8cpp_source.html#l00120">GeometryInput.cpp:120</a></div></div>
+<div class="ttc" id="struct_s_u_loop_input_ref_html"><div class="ttname"><a href="struct_s_u_loop_input_ref.html">SULoopInputRef</a></div><div class="ttdoc">References a loop input object. </div></div>
 <div class="ttc" id="class_c_w_1_1_geometry_input_html_a7625da4c6567e3d1abe06191e9da5d22"><div class="ttname"><a href="class_c_w_1_1_geometry_input.html#a7625da4c6567e3d1abe06191e9da5d22">CW::GeometryInput::num_faces</a></div><div class="ttdeci">size_t num_faces() const </div><div class="ttdef"><b>Definition:</b> <a href="_geometry_input_8cpp_source.html#l00130">GeometryInput.cpp:130</a></div></div>
 <div class="ttc" id="class_c_w_1_1_face_html"><div class="ttname"><a href="class_c_w_1_1_face.html">CW::Face</a></div><div class="ttdef"><b>Definition:</b> <a href="_face_8hpp_source.html#l00061">Face.hpp:61</a></div></div>
 <div class="ttc" id="class_c_w_1_1_loop_html_a6994648358236c506e0d9fae458f5174"><div class="ttname"><a href="class_c_w_1_1_loop.html#a6994648358236c506e0d9fae458f5174">CW::Loop::vertices</a></div><div class="ttdeci">std::vector&lt; Vertex &gt; vertices() const </div><div class="ttdef"><b>Definition:</b> <a href="_loop_8cpp_source.html#l00096">Loop.cpp:96</a></div></div>
@@ -401,7 +404,7 @@
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jan 25 2018 11:58:36 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Jan 25 2018 12:00:12 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

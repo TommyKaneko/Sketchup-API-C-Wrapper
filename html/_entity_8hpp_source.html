@@ -105,7 +105,7 @@
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment">  /**</span></div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment">  * @brief The C SUEntityRef that this class wraps.</span></div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment">  */</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="class_c_w_1_1_entity.html#ad1d5c635add16702f770b6e14c186e9c">   56</a></span>&#160;  SUEntityRef <a class="code" href="class_c_w_1_1_entity.html#ad1d5c635add16702f770b6e14c186e9c">m_entity</a>;</div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="class_c_w_1_1_entity.html#ad1d5c635add16702f770b6e14c186e9c">   56</a></span>&#160;  <a class="code" href="struct_s_u_entity_ref.html">SUEntityRef</a> <a class="code" href="class_c_w_1_1_entity.html#ad1d5c635add16702f770b6e14c186e9c">m_entity</a>;</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="comment"></span></div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="comment">  /**</span></div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="comment">  * @brief Indicates whether the Entity has been attached to a model.</span></div>
@@ -123,7 +123,7 @@
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="comment">  * @param entity - SUEntityRef from SU C API</span></div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="comment">  * @param attached - (optional) flag indicating whether the entity is attached to a model.  Defaults to true.</span></div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="comment">  */</span></div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  <a class="code" href="class_c_w_1_1_entity.html#a53d07669ec73b8aba57784b7b0eb4d08">Entity</a>(SUEntityRef entity, <span class="keywordtype">bool</span> <a class="code" href="class_c_w_1_1_entity.html#a4401ee82d78834f362b5aeb6ba23b57d">attached</a> = <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  <a class="code" href="class_c_w_1_1_entity.html#a53d07669ec73b8aba57784b7b0eb4d08">Entity</a>(<a class="code" href="struct_s_u_entity_ref.html">SUEntityRef</a> entity, <span class="keywordtype">bool</span> <a class="code" href="class_c_w_1_1_entity.html#a4401ee82d78834f362b5aeb6ba23b57d">attached</a> = <span class="keyword">true</span>);</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="comment"></span></div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="comment">  /**</span></div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="comment">  * @brief Copy constructor with an optional parameter for the entity reference.</span></div>
@@ -132,7 +132,7 @@
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="comment">  * @param other - Entity object from which properties will be copied.</span></div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="comment">  * @param entity_ref - (optional) SUEntityRef object to assign to the copied object.</span></div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="comment">  */</span></div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  <a class="code" href="class_c_w_1_1_entity.html#a53d07669ec73b8aba57784b7b0eb4d08">Entity</a>(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_entity.html">Entity</a>&amp; other, SUEntityRef entity_ref = SU_INVALID);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  <a class="code" href="class_c_w_1_1_entity.html#a53d07669ec73b8aba57784b7b0eb4d08">Entity</a>(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_entity.html">Entity</a>&amp; other, <a class="code" href="struct_s_u_entity_ref.html">SUEntityRef</a> entity_ref = SU_INVALID);</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="comment"></span></div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="comment">  /**</span></div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="comment">  * @brief Destructor</span></div>
@@ -149,14 +149,14 @@
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="comment">        *</span></div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="comment">  * Note that the Entity object still manages the lifetime of the reference, so the SUEntityRef could become invalid.</span></div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="comment">  */</span></div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;  <span class="keyword">operator</span> SUEntityRef() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;  <span class="keyword">operator</span> <a class="code" href="struct_s_u_entity_ref.html">SUEntityRef</a>() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;  <span class="comment">/*</span></div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="comment">  * @brief Returns a pointer to the wrapped SUEntityRef. USE WITH CAUTION.</span></div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="comment">        *</span></div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="comment">  * Note that the Entity object still manages the lifetime of the reference, so the SUEntityRef could become invalid.</span></div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="comment">  */</span></div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;  <span class="keyword">operator</span> SUEntityRef*();</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;  <span class="keyword">operator</span> <a class="code" href="struct_s_u_entity_ref.html">SUEntityRef</a>*();</div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="comment"></span></div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="comment">  /**</span></div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="comment">  * @brief Method lets the object know that it has been attached to a model.  This is important as it will let the object know that it does not need to &quot;release&quot; the object.</span></div>
@@ -284,6 +284,7 @@
 <div class="ttc" id="class_c_w_1_1_entity_html_a53d07669ec73b8aba57784b7b0eb4d08"><div class="ttname"><a href="class_c_w_1_1_entity.html#a53d07669ec73b8aba57784b7b0eb4d08">CW::Entity::Entity</a></div><div class="ttdeci">Entity()</div><div class="ttdoc">Constructor representing a null objject. </div><div class="ttdef"><b>Definition:</b> <a href="_entity_8cpp_source.html#l00039">Entity.cpp:39</a></div></div>
 <div class="ttc" id="class_c_w_1_1_entity_html_a09b4109382eaff44b55a31742b099c3d"><div class="ttname"><a href="class_c_w_1_1_entity.html#a09b4109382eaff44b55a31742b099c3d">CW::Entity::operator==</a></div><div class="ttdeci">friend bool operator==(const Entity &amp;lhs, const Entity &amp;rhs)</div><div class="ttdoc">Equality operator for two entity objects. </div><div class="ttdef"><b>Definition:</b> <a href="_entity_8cpp_source.html#l00220">Entity.cpp:220</a></div></div>
 <div class="ttc" id="class_c_w_1_1_typed_value_html"><div class="ttname"><a href="class_c_w_1_1_typed_value.html">CW::TypedValue</a></div><div class="ttdef"><b>Definition:</b> <a href="_typed_value_8hpp_source.html#l00045">TypedValue.hpp:45</a></div></div>
+<div class="ttc" id="struct_s_u_entity_ref_html"><div class="ttname"><a href="struct_s_u_entity_ref.html">SUEntityRef</a></div><div class="ttdoc">References an entity, which is an abstract base type for most API types. </div></div>
 <div class="ttc" id="class_c_w_1_1_entity_html_a729566306068a0231308c3f60d93f21a"><div class="ttname"><a href="class_c_w_1_1_entity.html#a729566306068a0231308c3f60d93f21a">CW::Entity::operator!=</a></div><div class="ttdeci">friend bool operator!=(const Entity &amp;lhs, const Entity &amp;rhs)</div><div class="ttdoc">Non-equality operator for two entity objects. </div><div class="ttdef"><b>Definition:</b> <a href="_entity_8cpp_source.html#l00231">Entity.cpp:231</a></div></div>
 <div class="ttc" id="class_c_w_1_1_entity_html_a994f71e4dad4fc104ac483b326a039a9"><div class="ttname"><a href="class_c_w_1_1_entity.html#a994f71e4dad4fc104ac483b326a039a9">CW::Entity::copy_attributes_from</a></div><div class="ttdeci">bool copy_attributes_from(const Entity &amp;entity)</div><div class="ttdoc">Copies attributes from another Entity object to this one. </div><div class="ttdef"><b>Definition:</b> <a href="_entity_8cpp_source.html#l00126">Entity.cpp:126</a></div></div>
 <div class="ttc" id="class_c_w_1_1_entity_html_aae2d0d2d1496e1d8f4a5a320a63af2fd"><div class="ttname"><a href="class_c_w_1_1_entity.html#aae2d0d2d1496e1d8f4a5a320a63af2fd">CW::Entity::attribute_dictionaries</a></div><div class="ttdeci">std::vector&lt; AttributeDictionary &gt; attribute_dictionaries() const </div><div class="ttdoc">Returns the AttributeDictionaries collection attached to the entity. </div><div class="ttdef"><b>Definition:</b> <a href="_entity_8cpp_source.html#l00091">Entity.cpp:91</a></div></div>
@@ -302,7 +303,7 @@
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jan 25 2018 11:58:36 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Jan 25 2018 12:00:12 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

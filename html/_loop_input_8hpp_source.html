@@ -113,7 +113,7 @@
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="class_c_w_1_1_geometry_input.html">GeometryInput</a>;</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  </div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  SULoopInputRef m_loop_input;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  <a class="code" href="struct_s_u_loop_input_ref.html">SULoopInputRef</a> m_loop_input;</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  <span class="keywordtype">size_t</span> m_edge_num = 0;</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  <span class="keywordtype">bool</span> m_attached;</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  <span class="comment"></span></div>
@@ -124,7 +124,7 @@
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  <span class="comment">//std::vector&lt;Edge&gt; m_edges;</span></div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  <span class="comment">//std::vector&lt;Curve&gt; m_curves;</span></div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  </div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  <span class="keyword">static</span> SULoopInputRef create_loop_input_ref();</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  <span class="keyword">static</span> <a class="code" href="struct_s_u_loop_input_ref.html">SULoopInputRef</a> create_loop_input_ref();</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  </div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  <span class="keyword">public</span>:<span class="comment"></span></div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="comment">        /**</span></div>
@@ -135,7 +135,7 @@
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="comment">  /**</span></div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="comment">  * Create LoopInput object from preexisting SULoopInputRef object</span></div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="comment">  */</span></div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  <a class="code" href="class_c_w_1_1_loop_input.html#a61d77444c5e9019c17e5896750adf898">LoopInput</a>(SULoopInputRef loop_input, <span class="keywordtype">bool</span> attached = <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  <a class="code" href="class_c_w_1_1_loop_input.html#a61d77444c5e9019c17e5896750adf898">LoopInput</a>(<a class="code" href="struct_s_u_loop_input_ref.html">SULoopInputRef</a> loop_input, <span class="keywordtype">bool</span> attached = <span class="keyword">false</span>);</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  <span class="comment"></span></div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="comment">  /**</span></div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="comment">  * Create LoopInput object from vector of edges that can form a loop.</span></div>
@@ -162,13 +162,13 @@
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;  <span class="comment">/*</span></div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="comment">  * Returns the stored SULoopInputRef object.</span></div>
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="comment">  */</span></div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;  SULoopInputRef ref() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;  <a class="code" href="struct_s_u_loop_input_ref.html">SULoopInputRef</a> ref() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;</div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;  <span class="comment">/*</span></div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="comment">  * The class object can be converted to a SULoopInputRef without loss of data.</span></div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="comment">  */</span></div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;  <span class="keyword">operator</span> SULoopInputRef() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;  <span class="keyword">operator</span> SULoopInputRef*();</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;  <span class="keyword">operator</span> <a class="code" href="struct_s_u_loop_input_ref.html">SULoopInputRef</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;  <span class="keyword">operator</span> <a class="code" href="struct_s_u_loop_input_ref.html">SULoopInputRef</a>*();</div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;  <span class="comment"></span></div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="comment">  /**</span></div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="comment">  * Indicates whether a LoopInput is valid, or empty.</span></div>
@@ -242,12 +242,13 @@
 <div class="ttc" id="class_c_w_1_1_loop_input_html_ad499c1d15420cc6706d34f990159da66"><div class="ttname"><a href="class_c_w_1_1_loop_input.html#ad499c1d15420cc6706d34f990159da66">CW::LoopInput::operator=</a></div><div class="ttdeci">LoopInput &amp; operator=(const LoopInput &amp;other)</div><div class="ttdef"><b>Definition:</b> <a href="_loop_input_8cpp_source.html#l00125">LoopInput.cpp:125</a></div></div>
 <div class="ttc" id="class_c_w_1_1_loop_input_html_a61d77444c5e9019c17e5896750adf898"><div class="ttname"><a href="class_c_w_1_1_loop_input.html#a61d77444c5e9019c17e5896750adf898">CW::LoopInput::LoopInput</a></div><div class="ttdeci">LoopInput()</div><div class="ttdef"><b>Definition:</b> <a href="_loop_input_8cpp_source.html#l00051">LoopInput.cpp:51</a></div></div>
 <div class="ttc" id="class_c_w_1_1_loop_input_html"><div class="ttname"><a href="class_c_w_1_1_loop_input.html">CW::LoopInput</a></div><div class="ttdef"><b>Definition:</b> <a href="_loop_input_8hpp_source.html#l00059">LoopInput.hpp:59</a></div></div>
+<div class="ttc" id="struct_s_u_loop_input_ref_html"><div class="ttname"><a href="struct_s_u_loop_input_ref.html">SULoopInputRef</a></div><div class="ttdoc">References a loop input object. </div></div>
 <div class="ttc" id="class_c_w_1_1_face_html"><div class="ttname"><a href="class_c_w_1_1_face.html">CW::Face</a></div><div class="ttdef"><b>Definition:</b> <a href="_face_8hpp_source.html#l00061">Face.hpp:61</a></div></div>
 <div class="ttc" id="class_c_w_1_1_loop_input_html_a69b984aefb2ff1a25e61661f9d403fdd"><div class="ttname"><a href="class_c_w_1_1_loop_input.html#a69b984aefb2ff1a25e61661f9d403fdd">CW::LoopInput::add_vertex_index</a></div><div class="ttdeci">LoopInput &amp; add_vertex_index(const size_t index)</div><div class="ttdef"><b>Definition:</b> <a href="_loop_input_8cpp_source.html#l00163">LoopInput.cpp:163</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jan 25 2018 11:58:36 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Jan 25 2018 12:00:12 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

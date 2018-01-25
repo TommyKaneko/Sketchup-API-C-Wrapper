@@ -182,7 +182,7 @@
 <div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        Vector3D(false)</div>
 <div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;{}</div>
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;</div>
-<div class="line"><a name="l00133"></a><span class="lineno"><a class="line" href="class_c_w_1_1_vector3_d.html#a0bb77e8a9ab34250c4698c9536f9baeb">  133</a></span>&#160;Vector3D::Vector3D(SUVector3D su_vector):</div>
+<div class="line"><a name="l00133"></a><span class="lineno"><a class="line" href="class_c_w_1_1_vector3_d.html#a0bb77e8a9ab34250c4698c9536f9baeb">  133</a></span>&#160;Vector3D::Vector3D(<a class="code" href="struct_s_u_vector3_d.html">SUVector3D</a> su_vector):</div>
 <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        m_vector(su_vector),</div>
 <div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;  x(m_vector.x),</div>
 <div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;  y(m_vector.y),</div>
@@ -190,7 +190,7 @@
 <div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;{}</div>
 <div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;</div>
 <div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;Vector3D::Vector3D( <span class="keywordtype">double</span> x, <span class="keywordtype">double</span> y, <span class="keywordtype">double</span> z):</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        m_vector(SUVector3D{x,y,z}),</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        m_vector(<a class="code" href="struct_s_u_vector3_d.html">SUVector3D</a>{x,y,z}),</div>
 <div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;  x(m_vector.x),</div>
 <div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;  y(m_vector.y),</div>
 <div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;  z(m_vector.z)</div>
@@ -198,7 +198,7 @@
 <div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;</div>
 <div class="line"><a name="l00147"></a><span class="lineno"><a class="line" href="class_c_w_1_1_vector3_d.html#aaeca25aa6df2da777a26288a7611dd3e">  147</a></span>&#160;Vector3D::Vector3D(<span class="keywordtype">bool</span> valid):</div>
 <div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;  null(!valid),</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        m_vector(SUVector3D{0.0,0.0,0.0}),</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        m_vector(<a class="code" href="struct_s_u_vector3_d.html">SUVector3D</a>{0.0,0.0,0.0}),</div>
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;  x(m_vector.x),</div>
 <div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;  y(m_vector.y),</div>
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;  z(m_vector.z)</div>
@@ -219,7 +219,7 @@
 <div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;</div>
 <div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;</div>
 <div class="line"><a name="l00169"></a><span class="lineno"><a class="line" href="class_c_w_1_1_vector3_d.html#ad862cc3e2635e5e54313a77f52500e67">  169</a></span>&#160;Vector3D::Vector3D(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a>&amp; point):</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;        <a class="code" href="class_c_w_1_1_vector3_d.html">Vector3D</a>(SUVector3D{point.x, point.y, point.z})</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;        <a class="code" href="class_c_w_1_1_vector3_d.html">Vector3D</a>(<a class="code" href="struct_s_u_vector3_d.html">SUVector3D</a>{point.x, point.y, point.z})</div>
 <div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;{</div>
 <div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;        null = !point;</div>
 <div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;}</div>
@@ -236,7 +236,7 @@
 <div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;  <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
 <div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;}</div>
 <div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;<a class="code" href="class_c_w_1_1_vector3_d.html">Vector3D</a>&amp; <a class="code" href="class_c_w_1_1_vector3_d.html#a70387b2383b832e50002089877fceced">Vector3D::operator=</a>(<span class="keyword">const</span> SUVector3D &amp;vector) {</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;<a class="code" href="class_c_w_1_1_vector3_d.html">Vector3D</a>&amp; <a class="code" href="class_c_w_1_1_vector3_d.html#a70387b2383b832e50002089877fceced">Vector3D::operator=</a>(<span class="keyword">const</span> <a class="code" href="struct_s_u_vector3_d.html">SUVector3D</a> &amp;vector) {</div>
 <div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;  x = vector.x;</div>
 <div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;  y = vector.y;</div>
 <div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;  z = vector.z;</div>
@@ -245,7 +245,7 @@
 <div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;}</div>
 <div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;</div>
 <div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;<span class="comment">// Casting</span></div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;Vector3D::operator SUVector3D()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> m_vector; }</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;Vector3D::operator <a class="code" href="struct_s_u_vector3_d.html">SUVector3D</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> m_vector; }</div>
 <div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;</div>
 <div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;Vector3D::operator Point3D()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> Point3D(m_vector); }</div>
 <div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;</div>
@@ -376,25 +376,25 @@
 <div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;</div>
 <div class="line"><a name="l00325"></a><span class="lineno"><a class="line" href="class_c_w_1_1_point3_d.html#ae182e24f3a576b00d507cf18e2e3843f">  325</a></span>&#160;<a class="code" href="class_c_w_1_1_point3_d.html#a386505f14bd9c8834ad13256b8d59e7c">Point3D::Point3D</a>(<span class="keywordtype">bool</span> valid):</div>
 <div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;  null(!valid),</div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;  m_point(SUPoint3D{0.0,0.0,0.0}),</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;  m_point(<a class="code" href="struct_s_u_point3_d.html">SUPoint3D</a>{0.0,0.0,0.0}),</div>
 <div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;  x(m_point.x),</div>
 <div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;  y(m_point.y),</div>
 <div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;  z(m_point.z)</div>
 <div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;{}</div>
 <div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;</div>
-<div class="line"><a name="l00333"></a><span class="lineno"><a class="line" href="class_c_w_1_1_point3_d.html#a8e82d1f72ff3dd02b8e12260d0076afb">  333</a></span>&#160;<a class="code" href="class_c_w_1_1_point3_d.html#a386505f14bd9c8834ad13256b8d59e7c">Point3D::Point3D</a>( SUPoint3D su_point):</div>
+<div class="line"><a name="l00333"></a><span class="lineno"><a class="line" href="class_c_w_1_1_point3_d.html#a8e82d1f72ff3dd02b8e12260d0076afb">  333</a></span>&#160;<a class="code" href="class_c_w_1_1_point3_d.html#a386505f14bd9c8834ad13256b8d59e7c">Point3D::Point3D</a>( <a class="code" href="struct_s_u_point3_d.html">SUPoint3D</a> su_point):</div>
 <div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;        m_point(su_point),</div>
 <div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;  x(m_point.x),</div>
 <div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;  y(m_point.y),</div>
 <div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;  z(m_point.z)</div>
 <div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;{}</div>
 <div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;</div>
-<div class="line"><a name="l00340"></a><span class="lineno"><a class="line" href="class_c_w_1_1_point3_d.html#a5ec2a6d752e90d7cd41ccbff95d896ff">  340</a></span>&#160;<a class="code" href="class_c_w_1_1_point3_d.html#a386505f14bd9c8834ad13256b8d59e7c">Point3D::Point3D</a>( SUVector3D su_vector):</div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;        <a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a>(SUPoint3D{su_vector.x, su_vector.y, su_vector.z})</div>
+<div class="line"><a name="l00340"></a><span class="lineno"><a class="line" href="class_c_w_1_1_point3_d.html#a5ec2a6d752e90d7cd41ccbff95d896ff">  340</a></span>&#160;<a class="code" href="class_c_w_1_1_point3_d.html#a386505f14bd9c8834ad13256b8d59e7c">Point3D::Point3D</a>( <a class="code" href="struct_s_u_vector3_d.html">SUVector3D</a> su_vector):</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;        <a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a>(<a class="code" href="struct_s_u_point3_d.html">SUPoint3D</a>{su_vector.x, su_vector.y, su_vector.z})</div>
 <div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;{}</div>
 <div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;</div>
 <div class="line"><a name="l00344"></a><span class="lineno"><a class="line" href="class_c_w_1_1_point3_d.html#a4284e998e90e67757cfd54b5001abbbb">  344</a></span>&#160;<a class="code" href="class_c_w_1_1_point3_d.html#a386505f14bd9c8834ad13256b8d59e7c">Point3D::Point3D</a>(<span class="keywordtype">double</span> x, <span class="keywordtype">double</span> y, <span class="keywordtype">double</span> z):</div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;        <a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a>(SUPoint3D{x, y, z})</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;        <a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a>(<a class="code" href="struct_s_u_point3_d.html">SUPoint3D</a>{x, y, z})</div>
 <div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;{}</div>
 <div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;</div>
 <div class="line"><a name="l00348"></a><span class="lineno"><a class="line" href="class_c_w_1_1_point3_d.html#a3e8ba6298393b527d25d323ae5cb06d0">  348</a></span>&#160;<a class="code" href="class_c_w_1_1_point3_d.html#a386505f14bd9c8834ad13256b8d59e7c">Point3D::Point3D</a>(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a>&amp; other):</div>
@@ -407,7 +407,7 @@
 <div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;</div>
 <div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;</div>
 <div class="line"><a name="l00357"></a><span class="lineno"><a class="line" href="class_c_w_1_1_point3_d.html#abf25403eb1a5840cb6c887365dc5d354">  357</a></span>&#160;<a class="code" href="class_c_w_1_1_point3_d.html#a386505f14bd9c8834ad13256b8d59e7c">Point3D::Point3D</a>( <span class="keyword">const</span> <a class="code" href="class_c_w_1_1_vector3_d.html">Vector3D</a>&amp; vector):</div>
-<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;        <a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a>(SUPoint3D{vector.x, vector.y, vector.z})</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;        <a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a>(<a class="code" href="struct_s_u_point3_d.html">SUPoint3D</a>{vector.x, vector.y, vector.z})</div>
 <div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;{}</div>
 <div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;</div>
 <div class="line"><a name="l00361"></a><span class="lineno"><a class="line" href="class_c_w_1_1_point3_d.html#a6d2ab75c5b765f2c4795c27baf534f8b">  361</a></span>&#160;<a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a>&amp; <a class="code" href="class_c_w_1_1_point3_d.html#a6d2ab75c5b765f2c4795c27baf534f8b">Point3D::operator=</a>(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a> &amp;point) {</div>
@@ -422,10 +422,10 @@
 <div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;}</div>
 <div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;</div>
 <div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;</div>
-<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;Point3D::operator SUPoint3D()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> SUPoint3D {m_point.x, m_point.y, m_point.z}; }</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;Point3D::operator <a class="code" href="struct_s_u_point3_d.html">SUPoint3D</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code" href="struct_s_u_point3_d.html">SUPoint3D</a> {m_point.x, m_point.y, m_point.z}; }</div>
 <div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;</div>
 <div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;</div>
-<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;Point3D::operator SUPoint3D*() {</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;Point3D::operator <a class="code" href="struct_s_u_point3_d.html">SUPoint3D</a>*() {</div>
 <div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;  <span class="comment">//m_point = SUPoint3D{m_point.x, m_point.y, m_point.z};</span></div>
 <div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;  <span class="keywordflow">return</span> &amp;m_point;</div>
 <div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;}</div>
@@ -439,13 +439,13 @@
 <div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;<a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a> <a class="code" href="class_c_w_1_1_point3_d.html#aa7dea96e39bd98cd81909e392ce4d0d7">Point3D::operator+</a>(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_vector3_d.html">Vector3D</a> &amp;vector)<span class="keyword"> const </span>{</div>
 <div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="class_c_w_1_1_point3_d.html#a386505f14bd9c8834ad13256b8d59e7c">Point3D</a>(m_point.x + vector.x, m_point.y + vector.y, m_point.z + vector.z);</div>
 <div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;}</div>
-<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;Point3D <a class="code" href="class_c_w_1_1_point3_d.html#aa7dea96e39bd98cd81909e392ce4d0d7">Point3D::operator+</a>(<span class="keyword">const</span> SUPoint3D &amp;point)<span class="keyword"> const </span>{ <span class="keywordflow">return</span> (*<span class="keyword">this</span>) + <a class="code" href="class_c_w_1_1_point3_d.html#a386505f14bd9c8834ad13256b8d59e7c">Point3D</a>(point);}</div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;Point3D <a class="code" href="class_c_w_1_1_point3_d.html#aa7dea96e39bd98cd81909e392ce4d0d7">Point3D::operator+</a>(<span class="keyword">const</span> <a class="code" href="struct_s_u_point3_d.html">SUPoint3D</a> &amp;point)<span class="keyword"> const </span>{ <span class="keywordflow">return</span> (*<span class="keyword">this</span>) + <a class="code" href="class_c_w_1_1_point3_d.html#a386505f14bd9c8834ad13256b8d59e7c">Point3D</a>(point);}</div>
 <div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;</div>
 <div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;Vector3D Point3D::operator-(<span class="keyword">const</span> Point3D &amp;point)<span class="keyword"> const </span>{</div>
 <div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;  <span class="keywordflow">return</span> Vector3D(m_point.x - point.x, m_point.y - point.y, m_point.z - point.z);</div>
 <div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;}</div>
 <div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;Point3D Point3D::operator-(<span class="keyword">const</span> Vector3D &amp;vector)<span class="keyword"> const </span>{ <span class="keywordflow">return</span> (*<span class="keyword">this</span>) - <span class="keyword">static_cast&lt;</span><a class="code" href="class_c_w_1_1_point3_d.html#a386505f14bd9c8834ad13256b8d59e7c">Point3D</a><span class="keyword">&gt;</span>(vector);}</div>
-<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;Point3D Point3D::operator-(<span class="keyword">const</span> SUPoint3D &amp;point)<span class="keyword"> const  </span>{ <span class="keywordflow">return</span> (*<span class="keyword">this</span>) - <a class="code" href="class_c_w_1_1_point3_d.html#a386505f14bd9c8834ad13256b8d59e7c">Point3D</a>(point);}</div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;Point3D Point3D::operator-(<span class="keyword">const</span> <a class="code" href="struct_s_u_point3_d.html">SUPoint3D</a> &amp;point)<span class="keyword"> const  </span>{ <span class="keywordflow">return</span> (*<span class="keyword">this</span>) - <a class="code" href="class_c_w_1_1_point3_d.html#a386505f14bd9c8834ad13256b8d59e7c">Point3D</a>(point);}</div>
 <div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;</div>
 <div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;Point3D Point3D::operator*(<span class="keyword">const</span> <span class="keywordtype">double</span> &amp;scalar)<span class="keyword"> const </span>{</div>
 <div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="class_c_w_1_1_point3_d.html#a386505f14bd9c8834ad13256b8d59e7c">Point3D</a>(m_point.x * scalar, m_point.y * scalar, m_point.z * scalar);</div>
@@ -674,10 +674,10 @@
 <div class="line"><a name="l00622"></a><span class="lineno">  622</span>&#160;<span class="comment">* Plane3D</span></div>
 <div class="line"><a name="l00623"></a><span class="lineno">  623</span>&#160;<span class="comment">*********/</span></div>
 <div class="line"><a name="l00624"></a><span class="lineno">  624</span>&#160;Plane3D::Plane3D():</div>
-<div class="line"><a name="l00625"></a><span class="lineno">  625</span>&#160;        <a class="code" href="class_c_w_1_1_plane3_d.html">Plane3D</a>(SUPlane3D{0.0,0.0,0.0,0.0})</div>
+<div class="line"><a name="l00625"></a><span class="lineno">  625</span>&#160;        <a class="code" href="class_c_w_1_1_plane3_d.html">Plane3D</a>(<a class="code" href="struct_s_u_plane3_d.html">SUPlane3D</a>{0.0,0.0,0.0,0.0})</div>
 <div class="line"><a name="l00626"></a><span class="lineno">  626</span>&#160;{}</div>
 <div class="line"><a name="l00627"></a><span class="lineno">  627</span>&#160;</div>
-<div class="line"><a name="l00628"></a><span class="lineno">  628</span>&#160;Plane3D::Plane3D(SUPlane3D plane):</div>
+<div class="line"><a name="l00628"></a><span class="lineno">  628</span>&#160;Plane3D::Plane3D(<a class="code" href="struct_s_u_plane3_d.html">SUPlane3D</a> plane):</div>
 <div class="line"><a name="l00629"></a><span class="lineno">  629</span>&#160;        m_plane(plane),</div>
 <div class="line"><a name="l00630"></a><span class="lineno">  630</span>&#160;  a(m_plane.a),</div>
 <div class="line"><a name="l00631"></a><span class="lineno">  631</span>&#160;  b(m_plane.b),</div>
@@ -688,7 +688,7 @@
 <div class="line"><a name="l00636"></a><span class="lineno">  636</span>&#160;</div>
 <div class="line"><a name="l00637"></a><span class="lineno">  637</span>&#160;</div>
 <div class="line"><a name="l00638"></a><span class="lineno">  638</span>&#160;Plane3D::Plane3D(<span class="keywordtype">double</span> a, <span class="keywordtype">double</span> b, <span class="keywordtype">double</span> c, <span class="keywordtype">double</span> d):</div>
-<div class="line"><a name="l00639"></a><span class="lineno">  639</span>&#160;        Plane3D(SUPlane3D{a,b,c,d})</div>
+<div class="line"><a name="l00639"></a><span class="lineno">  639</span>&#160;        Plane3D(<a class="code" href="struct_s_u_plane3_d.html">SUPlane3D</a>{a,b,c,d})</div>
 <div class="line"><a name="l00640"></a><span class="lineno">  640</span>&#160;{}</div>
 <div class="line"><a name="l00641"></a><span class="lineno">  641</span>&#160;</div>
 <div class="line"><a name="l00642"></a><span class="lineno">  642</span>&#160;</div>
@@ -708,7 +708,7 @@
 <div class="line"><a name="l00656"></a><span class="lineno">  656</span>&#160;</div>
 <div class="line"><a name="l00657"></a><span class="lineno">  657</span>&#160;</div>
 <div class="line"><a name="l00658"></a><span class="lineno"><a class="line" href="class_c_w_1_1_plane3_d.html#a26e542bc5d90c3a2bd429fd8d77ac358">  658</a></span>&#160;Plane3D::Plane3D(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_vector3_d.html">Vector3D</a>&amp; normal, <span class="keyword">const</span> <a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a>&amp; point):</div>
-<div class="line"><a name="l00659"></a><span class="lineno">  659</span>&#160;        <a class="code" href="class_c_w_1_1_plane3_d.html">Plane3D</a>(SUPlane3D{normal.unit().x, normal.unit().y, normal.unit().z, -normal.unit().<a class="code" href="class_c_w_1_1_vector3_d.html#ad7e24a0135d6ab734819a6be8e49e5ad">dot</a>(point)})</div>
+<div class="line"><a name="l00659"></a><span class="lineno">  659</span>&#160;        <a class="code" href="class_c_w_1_1_plane3_d.html">Plane3D</a>(<a class="code" href="struct_s_u_plane3_d.html">SUPlane3D</a>{normal.unit().x, normal.unit().y, normal.unit().z, -normal.unit().<a class="code" href="class_c_w_1_1_vector3_d.html#ad7e24a0135d6ab734819a6be8e49e5ad">dot</a>(point)})</div>
 <div class="line"><a name="l00660"></a><span class="lineno">  660</span>&#160;{</div>
 <div class="line"><a name="l00661"></a><span class="lineno">  661</span>&#160;}</div>
 <div class="line"><a name="l00662"></a><span class="lineno">  662</span>&#160;Plane3D::Plane3D(<span class="keyword">const</span> Point3D&amp; point, <span class="keyword">const</span> Vector3D&amp; normal):</div>
@@ -718,7 +718,7 @@
 <div class="line"><a name="l00666"></a><span class="lineno">  666</span>&#160;</div>
 <div class="line"><a name="l00667"></a><span class="lineno"><a class="line" href="class_c_w_1_1_plane3_d.html#add9d24e443f12bdf860a0a884c4b49f1">  667</a></span>&#160;Plane3D::Plane3D(<span class="keywordtype">bool</span> valid):</div>
 <div class="line"><a name="l00668"></a><span class="lineno">  668</span>&#160;        null(!valid),</div>
-<div class="line"><a name="l00669"></a><span class="lineno">  669</span>&#160;  m_plane(SUPlane3D{1.0,0.0,0.0,0.0}),</div>
+<div class="line"><a name="l00669"></a><span class="lineno">  669</span>&#160;  m_plane(<a class="code" href="struct_s_u_plane3_d.html">SUPlane3D</a>{1.0,0.0,0.0,0.0}),</div>
 <div class="line"><a name="l00670"></a><span class="lineno">  670</span>&#160;  a(m_plane.a),</div>
 <div class="line"><a name="l00671"></a><span class="lineno">  671</span>&#160;  b(m_plane.b),</div>
 <div class="line"><a name="l00672"></a><span class="lineno">  672</span>&#160;  c(m_plane.c),</div>
@@ -887,7 +887,7 @@
 <div class="line"><a name="l00835"></a><span class="lineno">  835</span>&#160;}</div>
 <div class="line"><a name="l00836"></a><span class="lineno">  836</span>&#160;</div>
 <div class="line"><a name="l00837"></a><span class="lineno">  837</span>&#160;</div>
-<div class="line"><a name="l00838"></a><span class="lineno"><a class="line" href="class_c_w_1_1_plane3_d.html#ad803cb90425d2b408b5720184f50bdfe">  838</a></span>&#160;Plane3D::operator SUPlane3D()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> m_plane; }</div>
+<div class="line"><a name="l00838"></a><span class="lineno"><a class="line" href="class_c_w_1_1_plane3_d.html#ad803cb90425d2b408b5720184f50bdfe">  838</a></span>&#160;Plane3D::operator <a class="code" href="struct_s_u_plane3_d.html">SUPlane3D</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> m_plane; }</div>
 <div class="line"><a name="l00839"></a><span class="lineno">  839</span>&#160;</div>
 <div class="line"><a name="l00840"></a><span class="lineno">  840</span>&#160;</div>
 <div class="line"><a name="l00841"></a><span class="lineno"><a class="line" href="class_c_w_1_1_plane3_d.html#a9a625d2e826d474f25a80dd9d61ae88c">  841</a></span>&#160;<a class="code" href="class_c_w_1_1_plane3_d.html">Plane3D</a> <a class="code" href="class_c_w_1_1_plane3_d.html#a9a625d2e826d474f25a80dd9d61ae88c">Plane3D::plane_from_loop</a>(<span class="keyword">const</span> std::vector&lt;Point3D&gt;&amp; loop_points) {</div>
@@ -955,15 +955,15 @@
 <div class="line"><a name="l00903"></a><span class="lineno">  903</span>&#160;<span class="comment">*/</span></div>
 <div class="line"><a name="l00904"></a><span class="lineno">  904</span>&#160;</div>
 <div class="line"><a name="l00905"></a><span class="lineno"><a class="line" href="class_c_w_1_1_bounding_box3_d.html#ac649050691320ed41a1a9c7ec14d213b">  905</a></span>&#160;<a class="code" href="class_c_w_1_1_bounding_box3_d.html#ac649050691320ed41a1a9c7ec14d213b">BoundingBox3D::BoundingBox3D</a>():</div>
-<div class="line"><a name="l00906"></a><span class="lineno">  906</span>&#160;        <a class="code" href="class_c_w_1_1_bounding_box3_d.html">BoundingBox3D</a>(SUBoundingBox3D{<a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a>(), <a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a>()})</div>
+<div class="line"><a name="l00906"></a><span class="lineno">  906</span>&#160;        <a class="code" href="class_c_w_1_1_bounding_box3_d.html">BoundingBox3D</a>(<a class="code" href="struct_s_u_bounding_box3_d.html">SUBoundingBox3D</a>{<a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a>(), <a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a>()})</div>
 <div class="line"><a name="l00907"></a><span class="lineno">  907</span>&#160;{}</div>
 <div class="line"><a name="l00908"></a><span class="lineno">  908</span>&#160;</div>
 <div class="line"><a name="l00909"></a><span class="lineno"><a class="line" href="class_c_w_1_1_bounding_box3_d.html#a93d44cb707d6cd3b31b77a3287296f4d">  909</a></span>&#160;<a class="code" href="class_c_w_1_1_bounding_box3_d.html#ac649050691320ed41a1a9c7ec14d213b">BoundingBox3D::BoundingBox3D</a>(<span class="keywordtype">bool</span> valid):</div>
 <div class="line"><a name="l00910"></a><span class="lineno">  910</span>&#160;        null(!valid),</div>
-<div class="line"><a name="l00911"></a><span class="lineno">  911</span>&#160;        m_bounding_box(SUBoundingBox3D{<a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a>(), <a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a>()})</div>
+<div class="line"><a name="l00911"></a><span class="lineno">  911</span>&#160;        m_bounding_box(<a class="code" href="struct_s_u_bounding_box3_d.html">SUBoundingBox3D</a>{<a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a>(), <a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a>()})</div>
 <div class="line"><a name="l00912"></a><span class="lineno">  912</span>&#160;{}</div>
 <div class="line"><a name="l00913"></a><span class="lineno">  913</span>&#160;</div>
-<div class="line"><a name="l00914"></a><span class="lineno">  914</span>&#160;<a class="code" href="class_c_w_1_1_bounding_box3_d.html#ac649050691320ed41a1a9c7ec14d213b">BoundingBox3D::BoundingBox3D</a>(SUBoundingBox3D bounding_box):</div>
+<div class="line"><a name="l00914"></a><span class="lineno">  914</span>&#160;<a class="code" href="class_c_w_1_1_bounding_box3_d.html#ac649050691320ed41a1a9c7ec14d213b">BoundingBox3D::BoundingBox3D</a>(<a class="code" href="struct_s_u_bounding_box3_d.html">SUBoundingBox3D</a> bounding_box):</div>
 <div class="line"><a name="l00915"></a><span class="lineno">  915</span>&#160;        m_bounding_box(bounding_box)</div>
 <div class="line"><a name="l00916"></a><span class="lineno">  916</span>&#160;{}</div>
 <div class="line"><a name="l00917"></a><span class="lineno">  917</span>&#160;</div>
@@ -974,7 +974,7 @@
 <div class="line"><a name="l00922"></a><span class="lineno">  922</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00923"></a><span class="lineno">  923</span>&#160;}</div>
 <div class="line"><a name="l00924"></a><span class="lineno">  924</span>&#160;</div>
-<div class="line"><a name="l00925"></a><span class="lineno"><a class="line" href="class_c_w_1_1_bounding_box3_d.html#a48c5377e8adb7014c681c76e2a762f31">  925</a></span>&#160;BoundingBox3D::operator SUBoundingBox3D()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00925"></a><span class="lineno"><a class="line" href="class_c_w_1_1_bounding_box3_d.html#a48c5377e8adb7014c681c76e2a762f31">  925</a></span>&#160;BoundingBox3D::operator <a class="code" href="struct_s_u_bounding_box3_d.html">SUBoundingBox3D</a>()<span class="keyword"> const </span>{</div>
 <div class="line"><a name="l00926"></a><span class="lineno">  926</span>&#160;        <span class="keywordflow">return</span> m_bounding_box;</div>
 <div class="line"><a name="l00927"></a><span class="lineno">  927</span>&#160;}</div>
 <div class="line"><a name="l00928"></a><span class="lineno">  928</span>&#160;</div>
@@ -1318,21 +1318,25 @@
 <div class="ttc" id="class_c_w_1_1_line3_d_html_a4b2d765bf419a46068e3d3680f1f981c"><div class="ttname"><a href="class_c_w_1_1_line3_d.html#a4b2d765bf419a46068e3d3680f1f981c">CW::Line3D::parallel</a></div><div class="ttdeci">bool parallel(const Line3D &amp;line) const </div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8cpp_source.html#l01197">Geometry.cpp:1197</a></div></div>
 <div class="ttc" id="class_c_w_1_1_vector3_d_html_a5d0b301fb5625a44bb98e237353153df"><div class="ttname"><a href="class_c_w_1_1_vector3_d.html#a5d0b301fb5625a44bb98e237353153df">CW::Vector3D::operator!</a></div><div class="ttdeci">bool operator!() const </div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8cpp_source.html#l00248">Geometry.cpp:248</a></div></div>
 <div class="ttc" id="class_c_w_1_1_bounding_box3_d_html_a76f8ecb30fa28b96863f2f590d605918"><div class="ttname"><a href="class_c_w_1_1_bounding_box3_d.html#a76f8ecb30fa28b96863f2f590d605918">CW::BoundingBox3D::operator!</a></div><div class="ttdeci">bool operator!() const </div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8cpp_source.html#l00918">Geometry.cpp:918</a></div></div>
+<div class="ttc" id="struct_s_u_bounding_box3_d_html"><div class="ttname"><a href="struct_s_u_bounding_box3_d.html">SUBoundingBox3D</a></div><div class="ttdoc">Represents a 3D axis-aligned bounding box represented by the extreme diagonal corner points with mini...</div><div class="ttdef"><b>Definition:</b> <a href="2016_2_sketch_up_a_p_i_8framework_2_headers_2geometry_8h_source.html#l00065">geometry.h:65</a></div></div>
 <div class="ttc" id="class_c_w_1_1_line3_d_html"><div class="ttname"><a href="class_c_w_1_1_line3_d.html">CW::Line3D</a></div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8hpp_source.html#l00542">Geometry.hpp:542</a></div></div>
 <div class="ttc" id="class_c_w_1_1_point3_d_html_a6d2ab75c5b765f2c4795c27baf534f8b"><div class="ttname"><a href="class_c_w_1_1_point3_d.html#a6d2ab75c5b765f2c4795c27baf534f8b">CW::Point3D::operator=</a></div><div class="ttdeci">Point3D &amp; operator=(const Point3D &amp;point)</div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8cpp_source.html#l00361">Geometry.cpp:361</a></div></div>
 <div class="ttc" id="class_c_w_1_1_point3_d_html_aa7dea96e39bd98cd81909e392ce4d0d7"><div class="ttname"><a href="class_c_w_1_1_point3_d.html#aa7dea96e39bd98cd81909e392ce4d0d7">CW::Point3D::operator+</a></div><div class="ttdeci">Point3D operator+(const Point3D &amp;point) const </div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8cpp_source.html#l00384">Geometry.cpp:384</a></div></div>
 <div class="ttc" id="class_c_w_1_1_bounding_box3_d_html_a86af4c2d594bc681e59dfce38b3246c8"><div class="ttname"><a href="class_c_w_1_1_bounding_box3_d.html#a86af4c2d594bc681e59dfce38b3246c8">CW::BoundingBox3D::min</a></div><div class="ttdeci">Point3D min() const </div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8cpp_source.html#l00929">Geometry.cpp:929</a></div></div>
+<div class="ttc" id="struct_s_u_point3_d_html"><div class="ttname"><a href="struct_s_u_point3_d.html">SUPoint3D</a></div><div class="ttdoc">Represents a point in 3-dimensional space. </div><div class="ttdef"><b>Definition:</b> <a href="2016_2_sketch_up_a_p_i_8framework_2_headers_2geometry_8h_source.html#l00031">geometry.h:31</a></div></div>
 <div class="ttc" id="class_c_w_1_1_vector3_d_html"><div class="ttname"><a href="class_c_w_1_1_vector3_d.html">CW::Vector3D</a></div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8hpp_source.html#l00112">Geometry.hpp:112</a></div></div>
 <div class="ttc" id="class_c_w_1_1_point3_d_html_a386505f14bd9c8834ad13256b8d59e7c"><div class="ttname"><a href="class_c_w_1_1_point3_d.html#a386505f14bd9c8834ad13256b8d59e7c">CW::Point3D::Point3D</a></div><div class="ttdeci">Point3D()</div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8cpp_source.html#l00321">Geometry.cpp:321</a></div></div>
 <div class="ttc" id="class_c_w_1_1_line3_d_html_a2ab82c012bdef5f6ad7dc0d59f4f87f1"><div class="ttname"><a href="class_c_w_1_1_line3_d.html#a2ab82c012bdef5f6ad7dc0d59f4f87f1">CW::Line3D::operator!</a></div><div class="ttdeci">bool operator!() const </div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8cpp_source.html#l00997">Geometry.cpp:997</a></div></div>
 <div class="ttc" id="class_c_w_1_1_bounding_box3_d_html_a0569e0d3f5397cc151c4bfc85318def8"><div class="ttname"><a href="class_c_w_1_1_bounding_box3_d.html#a0569e0d3f5397cc151c4bfc85318def8">CW::BoundingBox3D::max_point</a></div><div class="ttdeci">void max_point(const Point3D &amp;point)</div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8cpp_source.html#l00941">Geometry.cpp:941</a></div></div>
 <div class="ttc" id="class_c_w_1_1_plane3_d_html_ab7b72c795b2830582d95605aca533a1b"><div class="ttname"><a href="class_c_w_1_1_plane3_d.html#ab7b72c795b2830582d95605aca533a1b">CW::Plane3D::parallel</a></div><div class="ttdeci">bool parallel(const Plane3D &amp;plane2) const </div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8cpp_source.html#l00805">Geometry.cpp:805</a></div></div>
 <div class="ttc" id="class_c_w_1_1_line3_d_html_a33ba5155b2c75c1de8e18bd813e1b17a"><div class="ttname"><a href="class_c_w_1_1_line3_d.html#a33ba5155b2c75c1de8e18bd813e1b17a">CW::Line3D::closest_point</a></div><div class="ttdeci">Point3D closest_point(const Point3D &amp;point) const </div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8cpp_source.html#l01091">Geometry.cpp:1091</a></div></div>
+<div class="ttc" id="struct_s_u_vector3_d_html"><div class="ttname"><a href="struct_s_u_vector3_d.html">SUVector3D</a></div><div class="ttdoc">Represents a vector in 3-dimensional space. </div><div class="ttdef"><b>Definition:</b> <a href="2016_2_sketch_up_a_p_i_8framework_2_headers_2geometry_8h_source.html#l00041">geometry.h:41</a></div></div>
 <div class="ttc" id="class_c_w_1_1_line3_d_html_a75d5e68f09a97ca21b1b9b8e8173096b"><div class="ttname"><a href="class_c_w_1_1_line3_d.html#a75d5e68f09a97ca21b1b9b8e8173096b">CW::Line3D::on_line</a></div><div class="ttdeci">bool on_line(const Point3D &amp;point) const </div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8cpp_source.html#l01112">Geometry.cpp:1112</a></div></div>
 <div class="ttc" id="class_c_w_1_1_line3_d_html_a85285a1f5994b6ff7daae8f2a41869d6"><div class="ttname"><a href="class_c_w_1_1_line3_d.html#a85285a1f5994b6ff7daae8f2a41869d6">CW::Line3D::Line3D</a></div><div class="ttdeci">Line3D()</div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8cpp_source.html#l00950">Geometry.cpp:950</a></div></div>
 <div class="ttc" id="class_c_w_1_1_vector3_d_html_aea300595a56825cdc8df79f5a2d8f238"><div class="ttname"><a href="class_c_w_1_1_vector3_d.html#aea300595a56825cdc8df79f5a2d8f238">CW::Vector3D::colinear</a></div><div class="ttdeci">Colinearity colinear(const Vector3D &amp;vector_b) const </div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8cpp_source.html#l00283">Geometry.cpp:283</a></div></div>
 <div class="ttc" id="class_c_w_1_1_vector3_d_html_ac4017f8eb72033ce3b5d978b2e493ac2"><div class="ttname"><a href="class_c_w_1_1_vector3_d.html#ac4017f8eb72033ce3b5d978b2e493ac2">CW::Vector3D::zero_vector</a></div><div class="ttdeci">static Vector3D zero_vector()</div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8cpp_source.html#l00313">Geometry.cpp:313</a></div></div>
 <div class="ttc" id="class_c_w_1_1_bounding_box3_d_html_ac649050691320ed41a1a9c7ec14d213b"><div class="ttname"><a href="class_c_w_1_1_bounding_box3_d.html#ac649050691320ed41a1a9c7ec14d213b">CW::BoundingBox3D::BoundingBox3D</a></div><div class="ttdeci">BoundingBox3D()</div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8cpp_source.html#l00905">Geometry.cpp:905</a></div></div>
+<div class="ttc" id="struct_s_u_plane3_d_html"><div class="ttname"><a href="struct_s_u_plane3_d.html">SUPlane3D</a></div><div class="ttdoc">Represents a 3D plane by the parameters a, b, c, d. For any point on the plane, ax + by + cz + d = 0...</div><div class="ttdef"><b>Definition:</b> <a href="2016_2_sketch_up_a_p_i_8framework_2_headers_2geometry_8h_source.html#l00053">geometry.h:53</a></div></div>
 <div class="ttc" id="class_c_w_1_1_plane3_d_html_a418d955dd7448e629c8794cfc63a50c9"><div class="ttname"><a href="class_c_w_1_1_plane3_d.html#a418d955dd7448e629c8794cfc63a50c9">CW::Plane3D::on_plane</a></div><div class="ttdeci">bool on_plane(const Point3D &amp;point) const </div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8cpp_source.html#l00791">Geometry.cpp:791</a></div></div>
 <div class="ttc" id="class_c_w_1_1_vector3_d_html_a605fc20adf72d08fc432b9c499b8ff2c"><div class="ttname"><a href="class_c_w_1_1_vector3_d.html#a605fc20adf72d08fc432b9c499b8ff2c">CW::Vector3D::cross</a></div><div class="ttdeci">Vector3D cross(const Vector3D &amp;vector2) const </div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8cpp_source.html#l00277">Geometry.cpp:277</a></div></div>
 <div class="ttc" id="class_c_w_1_1_radians_html"><div class="ttname"><a href="class_c_w_1_1_radians.html">CW::Radians</a></div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8hpp_source.html#l00054">Geometry.hpp:54</a></div></div>
@@ -1350,7 +1354,7 @@
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jan 25 2018 11:58:36 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Jan 25 2018 12:00:12 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
