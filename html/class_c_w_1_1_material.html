@@ -86,8 +86,6 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a00d5d8ecc0db33d50629bca1a8e70fc6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a00d5d8ecc0db33d50629bca1a8e70fc6"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>operator SUMaterialRef *</b> ()</td></tr>
 <tr class="separator:a00d5d8ecc0db33d50629bca1a8e70fc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a483773179828671924889b257287fc03"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_w_1_1_material.html#a483773179828671924889b257287fc03">operator!</a> () const </td></tr>
-<tr class="separator:a483773179828671924889b257287fc03"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acb96fcb213e56913a3361dc169e6182b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_c_w_1_1_material.html">Material</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_w_1_1_material.html#acb96fcb213e56913a3361dc169e6182b">copy</a> () const </td></tr>
 <tr class="separator:acb96fcb213e56913a3361dc169e6182b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7ae7bc69086019d7fc25140b0830b6b8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_c_w_1_1_color.html">Color</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_w_1_1_material.html#a7ae7bc69086019d7fc25140b0830b6b8">color</a> () const </td></tr>
@@ -280,7 +278,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Returns a copy of the <a class="el" href="class_c_w_1_1_material.html">Material</a> object, which is not attached to a model. </p>
+<p>Returns true if this is an invalid object, or if no material is set. An entitity with the default material would return false. Returns a copy of the <a class="el" href="class_c_w_1_1_material.html">Material</a> object, which is not attached to a model. </p>
 
 <p>Definition at line <a class="el" href="_material_8cpp_source.html#l00137">137</a> of file <a class="el" href="_material_8cpp_source.html">Material.cpp</a>.</p>
 
@@ -371,24 +369,6 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </dl>
 
 <p>Definition at line <a class="el" href="_material_8cpp_source.html#l00214">214</a> of file <a class="el" href="_material_8cpp_source.html">Material.cpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a483773179828671924889b257287fc03"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool CW::Material::operator! </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Returns true if this is an invalid object, or if no material is set. An entitity with the default material would return false. </p>
-
-<p>Definition at line <a class="el" href="_material_8cpp_source.html#l00130">130</a> of file <a class="el" href="_material_8cpp_source.html">Material.cpp</a>.</p>
 
 </div>
 </div>
@@ -529,7 +509,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jan 25 2018 12:00:13 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Feb 1 2018 22:03:52 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
