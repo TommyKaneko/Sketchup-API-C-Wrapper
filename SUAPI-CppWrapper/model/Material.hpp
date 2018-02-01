@@ -77,7 +77,7 @@ class Material :public Entity {
   /**
   * Returns true if this is an invalid object, or if no material is set.  An entitity with the default material would return false.
   */
-  bool operator !() const;
+  //bool operator !() const;
   
   /**
   * Returns a copy of the Material object, which is not attached to a model.

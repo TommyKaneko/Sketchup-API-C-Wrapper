@@ -351,6 +351,17 @@ std::vector<Material> Model::materials() const {
 }
 
 
+void Model::add_materials(const std::vector<Material>& materials) {
+  SUMaterialRef* mats = new SUMaterialRef[materials.size()];
+  for (size_t i=0; i < materials.size(); i++) {
+  	mats[i] = materials[i].ref();
+	}
+	SU_RESULT res = SUModelAddMaterials(m_model, materials.size(), mats);
+  assert(res == SU_ERROR_NONE);
+  delete mats;
+}
+
+
 String Model::name() const {
   if (!(*this)) {
   	throw std::logic_error("CW::Model::name(): Model is null");

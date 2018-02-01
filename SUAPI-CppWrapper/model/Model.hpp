@@ -207,7 +207,13 @@ class Model {
   * @return materials vector array of Material objects in the model.
   */
   std::vector<Material> materials() const;
-	
+
+  /**
+  * Add materials to the model.
+  * @param materials - vector of material objects which must not be attached to any other model object.
+  */
+  void add_materials(const std::vector<Material>& materials);
+
   /*
   * Returns the name of the model
   * @return name string of the model name.
