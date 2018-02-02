@@ -21,6 +21,7 @@
 #include <cassert>
 
 #include "SUAPI-CppWrapper/model/ImageRep.hpp"
+#include "SUAPI-CppWrapper/String.hpp"
 
 namespace CW {
 /******************************
@@ -105,6 +106,43 @@ Texture::operator SUTextureRef*() {
 
 SUTextureRef Texture::ref() const {
 	return m_texture;
+}
+
+Texture Texture::copy() const {
+	ImageRep image_rep = this->image_rep().copy();
+	return Texture(image_rep);
+}
+
+
+bool Texture::alpha_used() const {
+  if (!(*this)) {
+  	throw std::logic_error("CW::Texture::alpha_used(): Texture is null");
+  }
+  bool alpha_channel_used;
+	SU_RESULT res = SUTextureGetUseAlphaChannel	(m_texture,	&alpha_channel_used);
+  assert(res == SU_ERROR_NONE);
+  return alpha_channel_used;
+}
+
+
+ImageRep Texture::image_rep() const {
+  if (!(*this)) {
+  	throw std::logic_error("CW::Texture::alpha_used(): Texture is null");
+  }
+  SUImageRepRef image_rep = SU_INVALID;
+  SU_RESULT res = SUImageRepCreate(&image_rep);
+  assert(res == SU_ERROR_NONE);
+	res = SUTextureGetImageRep(m_texture, &image_rep);
+  assert(res == SU_ERROR_NONE);
+	return ImageRep(image_rep);
+}
+
+
+String Texture::file_name() const {
+	String name;
+	SUStringRef file_ref = name.ref();
+	SU_RESULT res = SUTextureGetFileName(m_texture, &file_ref);
+	return name;
 }
 
 

@@ -83,6 +83,11 @@ Entity::operator SUEntityRef*() {
 }
 
 
+bool Entity::attached() const {
+	return m_attached;
+}
+
+
 void Entity::attached(bool attach) {
 	m_attached = attach;
 }

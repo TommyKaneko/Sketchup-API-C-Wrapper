@@ -212,7 +212,7 @@ class Model {
   * Add materials to the model.
   * @param materials - vector of material objects which must not be attached to any other model object.
   */
-  void add_materials(const std::vector<Material>& materials);
+  void add_materials(std::vector<Material>& materials);
 
   /*
   * Returns the name of the model

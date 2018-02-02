@@ -338,6 +338,9 @@ std::vector<Material> Model::materials() const {
 	size_t count = 0;
 	SUResult res = SUModelGetNumMaterials(m_model, &count);
   assert(res == SU_ERROR_NONE);
+	if (count == 0) {
+		return std::vector<Material> {};
+	}
   SUMaterialRef* mats = new SUMaterialRef[count];
 	res = SUModelGetMaterials(m_model, count, &mats[0], &count);
   assert(res == SU_ERROR_NONE);
@@ -351,13 +354,16 @@ std::vector<Material> Model::materials() const {
 }
 
 
-void Model::add_materials(const std::vector<Material>& materials) {
+void Model::add_materials(std::vector<Material>& materials) {
   SUMaterialRef* mats = new SUMaterialRef[materials.size()];
   for (size_t i=0; i < materials.size(); i++) {
   	mats[i] = materials[i].ref();
 	}
 	SU_RESULT res = SUModelAddMaterials(m_model, materials.size(), mats);
   assert(res == SU_ERROR_NONE);
+  for (size_t i=0; i < materials.size(); i++) {
+  	materials[i].attached(true);
+	}
   delete mats;
 }
 

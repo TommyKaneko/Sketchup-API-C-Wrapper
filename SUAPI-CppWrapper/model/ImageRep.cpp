@@ -88,7 +88,9 @@ ImageRep ImageRep::copy() const {
   	throw std::logic_error("CW::ImageRep::copy(): ImageRep is null");
   }
 	SUImageRepRef copy_image = SU_INVALID;
-	SUResult res = SUImageRepCopy(m_image_rep, copy_image);
+	SUResult res = SUImageRepCreate(&copy_image);
+  assert(res == SU_ERROR_NONE);
+	res = SUImageRepCopy(copy_image, m_image_rep);
   assert(res == SU_ERROR_NONE);
   return ImageRep(copy_image, false);
 }

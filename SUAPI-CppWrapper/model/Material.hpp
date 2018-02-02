@@ -147,9 +147,25 @@ class Material :public Entity {
   * Sets whether the opacity value is used
   */
   void use_alpha(bool flag);
-  
+	
+  /**
+  * Hash function for use wht unordered_map
+  */
+  friend std::hash<CW::Material>;
 };
 
 } /* namespace CW */
+
+namespace std {
+  template <> struct hash<CW::Material>
+  {
+    size_t operator()(const CW::Material& k) const
+    {
+			static const size_t shift = (size_t)log2(1 + sizeof(CW::Material));
+			return (size_t)(k.m_entity.ptr) >> shift;
+    }
+  };
+
+}
 
 #endif /* Material_hpp */

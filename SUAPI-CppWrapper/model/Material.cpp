@@ -138,7 +138,7 @@ Material Material::copy() const {
   if(!(*this)) {
   	throw std::logic_error("CW::Material::copy(): Material is null");
   }
-	Material new_material(create_material());
+	Material new_material(create_material(), false);
   new_material.name(this->name());
   new_material.opacity(this->opacity());
   new_material.texture(this->texture());
@@ -176,11 +176,13 @@ String Material::name() const {
 	if (!(*this)) {
   	return String();
   }
-  SUStringRef name;
-  SUResult res = SUMaterialGetName(m_material, &name);
+  SUStringRef name_ref = SU_INVALID;
+	SUResult res = SUStringCreate(&name_ref);
+  assert(res == SU_ERROR_NONE);
+  res = SUMaterialGetName(m_material, &name_ref);
 	//assert(res != SU_ERROR_INVALID_OUTPUT);
   if (res == SU_ERROR_NONE) {
-  	return String(name);
+  	return String(name_ref);
   }
   else {
   	return String();
@@ -244,8 +246,16 @@ void Material::texture(const Texture& texture) {
   if(!(*this)) {
   	throw std::logic_error("CW::Material::texture(): Material is null");
   }
+  if (!texture) {
+		// no texture to apply
+  	return;
+	}
+	if (texture.attached()) {
+		return this->texture(texture.copy());
+	}
   SUTextureRef texture_ref = texture.ref();
 	SUResult res = SUMaterialSetTexture(m_material, texture_ref);
+	assert(res == SU_ERROR_NONE);
 }
   
   

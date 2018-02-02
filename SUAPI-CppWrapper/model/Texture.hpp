@@ -96,7 +96,12 @@ class Texture :public Entity {
   SUTextureRef ref() const;
   operator SUTextureRef() const;
   operator SUTextureRef*();
-  
+	
+  /**
+  * Returns a copy of the texture object - note that a Texture object can only be assigned to one Material object.  So this method is useful for copying Textures to new Material objects.
+  * @since SU 2017, API 5.0
+  */
+  Texture copy() const;
   
   /**
   * Returns whether the alpha channel is used by the texture image.

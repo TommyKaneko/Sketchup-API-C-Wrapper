@@ -31,6 +31,7 @@
 #include <stdio.h>
 #include <string>
 #include <vector>
+#include <math.h>
 
 #include <SketchUpAPI/model/entity.h>
 
@@ -105,7 +106,12 @@ class Entity {
   * Note that the Entity object still manages the lifetime of the reference, so the SUEntityRef could become invalid.
   */
   operator SUEntityRef*();
-
+	
+	/**
+	* @brief Returns true if the entity is attached to another object.
+	*/
+	bool attached() const;
+	
   /**
   * @brief Method lets the object know that it has been attached to a model.  This is important as it will let the object know that it does not need to "release" the object.
   * @param attach - (optional) true to let the object know that it has been attached to a model.  False to let the object know that it has not been attached.
