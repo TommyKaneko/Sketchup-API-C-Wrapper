@@ -159,7 +159,7 @@
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="comment">  * @param SUFaceRef* pointer to the face.</span></div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="comment">  * @param bool false if the face should be released when this class object is destroyed.  True, if the destruction of the face object is handled elsewhere (use with caution).</span></div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="comment">  */</span></div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;  <a class="code" href="class_c_w_1_1_face.html#a0e23cafc9d34b527424a4e0df564b320">Face</a>(<a class="code" href="struct_s_u_face_ref.html">SUFaceRef</a> face, <span class="keywordtype">bool</span> <a class="code" href="class_c_w_1_1_entity.html#a4401ee82d78834f362b5aeb6ba23b57d">attached</a> = <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;  <a class="code" href="class_c_w_1_1_face.html#a0e23cafc9d34b527424a4e0df564b320">Face</a>(<a class="code" href="struct_s_u_face_ref.html">SUFaceRef</a> face, <span class="keywordtype">bool</span> <a class="code" href="class_c_w_1_1_entity.html#a64762c829bba997b0b3070d51f7c059d">attached</a> = <span class="keyword">true</span>);</div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="comment"></span></div>
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="comment">        /** Copy constructor */</span></div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;  <a class="code" href="class_c_w_1_1_face.html#a0e23cafc9d34b527424a4e0df564b320">Face</a>(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_face.html">Face</a>&amp; other);</div>
@@ -321,6 +321,7 @@
 <div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* Face_hpp */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="class_c_w_1_1_point3_d_html"><div class="ttname"><a href="class_c_w_1_1_point3_d.html">CW::Point3D</a></div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8hpp_source.html#l00257">Geometry.hpp:257</a></div></div>
 <div class="ttc" id="class_c_w_1_1_material_html"><div class="ttname"><a href="class_c_w_1_1_material.html">CW::Material</a></div><div class="ttdef"><b>Definition:</b> <a href="_material_8hpp_source.html#l00043">Material.hpp:43</a></div></div>
+<div class="ttc" id="class_c_w_1_1_entity_html_a64762c829bba997b0b3070d51f7c059d"><div class="ttname"><a href="class_c_w_1_1_entity.html#a64762c829bba997b0b3070d51f7c059d">CW::Entity::attached</a></div><div class="ttdeci">bool attached() const </div><div class="ttdoc">Returns true if the entity is attached to another object. </div><div class="ttdef"><b>Definition:</b> <a href="_entity_8cpp_source.html#l00086">Entity.cpp:86</a></div></div>
 <div class="ttc" id="class_c_w_1_1_drawing_element_html"><div class="ttname"><a href="class_c_w_1_1_drawing_element.html">CW::DrawingElement</a></div><div class="ttdef"><b>Definition:</b> <a href="_drawing_element_8hpp_source.html#l00047">DrawingElement.hpp:47</a></div></div>
 <div class="ttc" id="class_c_w_1_1_face_html_ab31a1f1cef5ca30439cf72590a1f04a2"><div class="ttname"><a href="class_c_w_1_1_face.html#ab31a1f1cef5ca30439cf72590a1f04a2">CW::Face::add_inner_loop</a></div><div class="ttdeci">void add_inner_loop(std::vector&lt; Point3D &gt; &amp;points, LoopInput &amp;loop_input)</div><div class="ttdef"><b>Definition:</b> <a href="_face_8cpp_source.html#l00177">Face.cpp:177</a></div></div>
 <div class="ttc" id="class_c_w_1_1_plane3_d_html"><div class="ttname"><a href="class_c_w_1_1_plane3_d.html">CW::Plane3D</a></div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8hpp_source.html#l00375">Geometry.hpp:375</a></div></div>
@@ -336,11 +337,10 @@
 <div class="ttc" id="class_c_w_1_1_face_html_afa91c3cee0474d92b346ebc27e2cd2d2"><div class="ttname"><a href="class_c_w_1_1_face.html#afa91c3cee0474d92b346ebc27e2cd2d2">CW::Face::vertices</a></div><div class="ttdeci">std::vector&lt; Vertex &gt; vertices() const </div><div class="ttdef"><b>Definition:</b> <a href="_face_8cpp_source.html#l00399">Face.cpp:399</a></div></div>
 <div class="ttc" id="class_c_w_1_1_face_html_a4126ac3da934f335587716e927f87b18"><div class="ttname"><a href="class_c_w_1_1_face.html#a4126ac3da934f335587716e927f87b18">CW::Face::operator!</a></div><div class="ttdeci">bool operator!() const </div><div class="ttdef"><b>Definition:</b> <a href="_face_8cpp_source.html#l00158">Face.cpp:158</a></div></div>
 <div class="ttc" id="class_c_w_1_1_face_html"><div class="ttname"><a href="class_c_w_1_1_face.html">CW::Face</a></div><div class="ttdef"><b>Definition:</b> <a href="_face_8hpp_source.html#l00061">Face.hpp:61</a></div></div>
-<div class="ttc" id="class_c_w_1_1_entity_html_a4401ee82d78834f362b5aeb6ba23b57d"><div class="ttname"><a href="class_c_w_1_1_entity.html#a4401ee82d78834f362b5aeb6ba23b57d">CW::Entity::attached</a></div><div class="ttdeci">void attached(bool attach=true)</div><div class="ttdoc">Method lets the object know that it has been attached to a model. This is important as it will let th...</div><div class="ttdef"><b>Definition:</b> <a href="_entity_8cpp_source.html#l00086">Entity.cpp:86</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Feb 1 2018 22:15:02 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Feb 2 2018 16:30:39 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
