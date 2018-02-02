@@ -86,7 +86,7 @@
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment">** Private Static Methods *****</span></div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">*******************************/</span></div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<a class="code" href="struct_s_u_vertex_ref.html">SUVertexRef</a> Vertex::copy_reference(<span class="keyword">const</span> Vertex&amp; other) {</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="comment">// As vertices cannot be &quot;copied&quot;, we simply pass the existing reference.</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  <span class="comment">// As vertices cannot be &quot;copied&quot;, we simply pass the existing reference.</span></div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  <span class="keywordflow">return</span> other.m_vertex;</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;}</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
@@ -94,7 +94,7 @@
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment">** Constructors / Destructor **</span></div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment">*******************************/</span></div>
 <div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="class_c_w_1_1_vertex.html#adfff657015d1794b63af1f0422b9d689">   44</a></span>&#160;<a class="code" href="class_c_w_1_1_vertex.html#adfff657015d1794b63af1f0422b9d689">Vertex::Vertex</a>():</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <a class="code" href="class_c_w_1_1_entity.html">Entity</a>(),</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  <a class="code" href="class_c_w_1_1_entity.html">Entity</a>(),</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  m_vertex(SU_INVALID)</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;{}</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
@@ -106,19 +106,19 @@
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
 <div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="class_c_w_1_1_vertex.html#a80120d823e89edb7c1d9ad80c829c9c2">   56</a></span>&#160;<a class="code" href="class_c_w_1_1_vertex.html#adfff657015d1794b63af1f0422b9d689">Vertex::Vertex</a>(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_vertex.html">Vertex</a>&amp; other):</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <a class="code" href="class_c_w_1_1_entity.html">Entity</a>(other, SUVertexToEntity(copy_reference(other))),</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  <a class="code" href="class_c_w_1_1_entity.html">Entity</a>(other, SUVertexToEntity(copy_reference(other))),</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  m_vertex(SUVertexFromEntity(m_entity))</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;{}</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
 <div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="class_c_w_1_1_vertex.html#ae6eb4827278d603edcba598f4b31ffb3">   62</a></span>&#160;<a class="code" href="class_c_w_1_1_vertex.html#ae6eb4827278d603edcba598f4b31ffb3">Vertex::~Vertex</a>() {</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="comment">// Vertices cannot be released, as they are elements that are attached to something else.</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  <span class="comment">// Vertices cannot be released, as they are elements that are attached to something else.</span></div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;}</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
 <div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="class_c_w_1_1_vertex.html#a07a63c87bec0e4112ff02f0d29361683">   67</a></span>&#160;<a class="code" href="class_c_w_1_1_vertex.html">Vertex</a>&amp; <a class="code" href="class_c_w_1_1_vertex.html#a07a63c87bec0e4112ff02f0d29361683">Vertex::operator=</a>(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_vertex.html">Vertex</a>&amp; other) {</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="comment">// Simply assign the other vertex to this object.</span></div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        m_vertex = other.m_vertex;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  <span class="comment">// Simply assign the other vertex to this object.</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  m_vertex = other.m_vertex;</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  <a class="code" href="class_c_w_1_1_entity.html#ad1d5c635add16702f770b6e14c186e9c">m_entity</a> = SUVertexToEntity(m_vertex);</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  <a class="code" href="class_c_w_1_1_entity.html#a6f5a22fc1333aa9315512ab63dfac554">Entity::operator=</a>(other);</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  <span class="keywordflow">return</span> (*<span class="keyword">this</span>);</div>
@@ -130,7 +130,7 @@
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="comment">********************/</span></div>
 <div class="line"><a name="l00079"></a><span class="lineno"><a class="line" href="class_c_w_1_1_vertex.html#ac518611f45735314c23a513fffc91773">   79</a></span>&#160;<a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a> <a class="code" href="class_c_w_1_1_vertex.html#ac518611f45735314c23a513fffc91773">Vertex::position</a>()<span class="keyword"> const </span>{</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  <span class="keywordflow">if</span> (!(*<span class="keyword">this</span>)) {</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::Vertex::position(): Vertex is null&quot;</span>);</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::Vertex::position(): Vertex is null&quot;</span>);</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  }</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  <a class="code" href="struct_s_u_point3_d.html">SUPoint3D</a> point;</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  SUResult res = SUVertexGetPosition(m_vertex, &amp;point);</div>
@@ -148,7 +148,7 @@
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;}</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<a class="code" href="struct_s_u_vertex_ref.html">SUVertexRef</a> Vertex::ref()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        <span class="keywordflow">return</span> m_vertex;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;  <span class="keywordflow">return</span> m_vertex;</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;}</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;</div>
 <div class="line"><a name="l00102"></a><span class="lineno"><a class="line" href="class_c_w_1_1_vertex.html#acd78afecef2a2c3565884147389f9743">  102</a></span>&#160;Vertex::operator <a class="code" href="struct_s_u_point3_d.html">SUPoint3D</a>()<span class="keyword"> const </span>{</div>
@@ -174,7 +174,7 @@
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Feb 2 2018 16:30:40 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Feb 2 2018 16:35:03 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

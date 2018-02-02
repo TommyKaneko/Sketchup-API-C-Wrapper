@@ -96,7 +96,7 @@
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment">* @since SU 2017, API 5.0</span></div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment">*/</span></div>
 <div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="class_c_w_1_1_image_rep.html">   46</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_c_w_1_1_image_rep.html">ImageRep</a>  {</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  <span class="keyword">private</span>:</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  <a class="code" href="struct_s_u_image_rep_ref.html">SUImageRepRef</a> m_image_rep;</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  <span class="keywordtype">bool</span> m_attached;</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  </div>
@@ -104,11 +104,11 @@
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  <span class="keyword">public</span>:<span class="comment"></span></div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment">  /** Constructor for null ImageRep value */</span></div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  <a class="code" href="class_c_w_1_1_image_rep.html#a136a19d802eb31329a525f4ea0b798d3">ImageRep</a>();</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="comment"></span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  <span class="comment"></span></div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment">  /** Construct ImageRep from existing ImageRep object */</span></div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  <a class="code" href="class_c_w_1_1_image_rep.html#a136a19d802eb31329a525f4ea0b798d3">ImageRep</a>(<a class="code" href="struct_s_u_image_rep_ref.html">SUImageRepRef</a> image_rep, <span class="keywordtype">bool</span> attached = <span class="keyword">true</span>);</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <span class="comment"></span></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="comment">        /** Copy constructor */</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="comment">  /** Copy constructor */</span></div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  <a class="code" href="class_c_w_1_1_image_rep.html#a136a19d802eb31329a525f4ea0b798d3">ImageRep</a>(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_image_rep.html">ImageRep</a>&amp; other);</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  <span class="comment"></span></div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="comment">  /** Destructor */</span></div>
@@ -138,18 +138,18 @@
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="comment">  * Sets the image data for the given image. Makes a copy of the data rather than taking ownership.</span></div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="comment">  */</span></div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_c_w_1_1_image_rep.html#aa494a67f575fb09938f6f883870f8589">set_data</a>(<span class="keywordtype">size_t</span> <a class="code" href="class_c_w_1_1_image_rep.html#a996193494c26b784228b27e676405e7e">width</a>, <span class="keywordtype">size_t</span> <a class="code" href="class_c_w_1_1_image_rep.html#a85ff5b4228186d37bad4d3075e472240">height</a>, <span class="keywordtype">size_t</span> <a class="code" href="class_c_w_1_1_image_rep.html#a07c86b829a0901349cfb9cc2e08deef4">bits_per_pixel</a>, <span class="keywordtype">size_t</span> <a class="code" href="class_c_w_1_1_image_rep.html#aff70b87fd3e52ff709b9c244cb2ec0bb">row_padding</a>, std::vector&lt;SUByte&gt; <a class="code" href="class_c_w_1_1_image_rep.html#a528aaa1ce9310dc8d0c7448bef0c8f6e">pixel_data</a>);</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <span class="comment"></span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  <span class="comment"></span></div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="comment">  /**</span></div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="comment">  * Loads an image from a file path.</span></div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="comment">  * @param file_path - string path to the file.</span></div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="comment">  */</span></div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_c_w_1_1_image_rep.html#a58b3f9361d1e859fb17d81ebc91dbada">load_file</a>(<span class="keyword">const</span> std::string file_path);</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="comment">        /**</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="comment">  /**</span></div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="comment">  * Saves the image to a file location.</span></div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="comment">  */</span></div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;  SUResult <a class="code" href="class_c_w_1_1_image_rep.html#ab1370139b2854306f87c6b1a1c4580ae">save_to_file</a>(<span class="keyword">const</span> std::string file_path) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        <span class="comment"></span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;  <span class="comment"></span></div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="comment">  /**</span></div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="comment">  * Returns the width of the image in pixels.</span></div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="comment">  */</span></div>
@@ -159,23 +159,23 @@
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="comment">  * Returns the width of the image in pixels.</span></div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="comment">  */</span></div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;  <span class="keywordtype">size_t</span> <a class="code" href="class_c_w_1_1_image_rep.html#a85ff5b4228186d37bad4d3075e472240">height</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        <span class="comment"></span></div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;  <span class="comment"></span></div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="comment">  /**</span></div>
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="comment">  * Returns the row padding in pixels.</span></div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="comment">  */</span></div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;  <span class="keywordtype">size_t</span> <a class="code" href="class_c_w_1_1_image_rep.html#aff70b87fd3e52ff709b9c244cb2ec0bb">row_padding</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        <span class="comment"></span></div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;  <span class="comment"></span></div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="comment">  /**</span></div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="comment">  * Resizes the width and height of the ImageRep</span></div>
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="comment">  */</span></div>
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_c_w_1_1_image_rep.html#a24d2381a75849b6c8d66e0d65092a6ee">resize</a>(<span class="keywordtype">size_t</span> width, <span class="keywordtype">size_t</span> height);</div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;  <span class="comment"></span></div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="comment">        /**</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="comment">  /**</span></div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="comment">  * Converts the image to 32 bits per pixel.</span></div>
 <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="comment">  */</span></div>
 <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_c_w_1_1_image_rep.html#a926ea798ae9ff48ec40391b26e1c8e38">convert_to_32bits</a>();</div>
 <div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="comment">        /**</span></div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="comment">  /**</span></div>
 <div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="comment">  * Returns the total size and bits-per-pixel value of an image. This function is useful to determine the size of the buffer necessary to be passed into SUImageRepGetData. The returned data can be used along with the returned bits-per-pixel value and the image dimensions to compute RGBA values at individual pixels of the image.</span></div>
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;<span class="comment">  */</span></div>
 <div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;  <span class="keywordtype">size_t</span> <a class="code" href="class_c_w_1_1_image_rep.html#a1f6355e02da5a85b9213401b3e853b94">data_size</a>() <span class="keyword">const</span>;</div>
@@ -216,7 +216,7 @@
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Feb 2 2018 16:30:39 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Feb 2 2018 16:35:03 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

@@ -95,10 +95,10 @@
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;}</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<a class="code" href="struct_s_u_layer_ref.html">SULayerRef</a> Layer::copy_reference(<span class="keyword">const</span> Layer&amp; other) {</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="keywordflow">if</span> (other.m_attached || SUIsInvalid(other.m_layer)) {</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="keywordflow">return</span> other.m_layer;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  <span class="keywordflow">if</span> (other.m_attached || SUIsInvalid(other.m_layer)) {</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordflow">return</span> other.m_layer;</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  }</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <a class="code" href="struct_s_u_layer_ref.html">SULayerRef</a> new_layer = create_layer();</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  <a class="code" href="struct_s_u_layer_ref.html">SULayerRef</a> new_layer = create_layer();</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  <span class="keywordflow">return</span> new_layer;</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;}</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
@@ -118,11 +118,11 @@
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
 <div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="class_c_w_1_1_layer.html#af3afcc071f0b6bb16a4ea4dd36ce67b4">   68</a></span>&#160;<a class="code" href="class_c_w_1_1_layer.html#a54aa3a2e9b68b9f7e6e8b234e17bbbe8">Layer::Layer</a>(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_layer.html">Layer</a>&amp; other):</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <a class="code" href="class_c_w_1_1_entity.html">Entity</a>(SULayerToEntity(copy_reference(other)), other.m_attached),</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  <a class="code" href="class_c_w_1_1_entity.html">Entity</a>(SULayerToEntity(copy_reference(other)), other.m_attached),</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  m_layer(SULayerFromEntity(m_entity))</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;{</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keywordflow">if</span> (!other.<a class="code" href="class_c_w_1_1_entity.html#aea6450abce4d5aebad0061e213c840b1">m_attached</a> &amp;&amp; SUIsValid(other.m_layer)) {</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                this-&gt;<a class="code" href="class_c_w_1_1_layer.html#aeb9da5da6733499b60eee6716a019e34">name</a>(other.<a class="code" href="class_c_w_1_1_layer.html#aeb9da5da6733499b60eee6716a019e34">name</a>());</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  <span class="keywordflow">if</span> (!other.<a class="code" href="class_c_w_1_1_entity.html#aea6450abce4d5aebad0061e213c840b1">m_attached</a> &amp;&amp; SUIsValid(other.m_layer)) {</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    this-&gt;<a class="code" href="class_c_w_1_1_layer.html#aeb9da5da6733499b60eee6716a019e34">name</a>(other.<a class="code" href="class_c_w_1_1_layer.html#aeb9da5da6733499b60eee6716a019e34">name</a>());</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="comment">// TODO: Set layer material</span></div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  }</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;}</div>
@@ -147,8 +147,8 @@
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  m_layer = copy_reference(other);</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  <a class="code" href="class_c_w_1_1_entity.html#ad1d5c635add16702f770b6e14c186e9c">m_entity</a> = SULayerToEntity(m_layer);</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  <a class="code" href="class_c_w_1_1_entity.html#a6f5a22fc1333aa9315512ab63dfac554">Entity::operator=</a>(other);</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        <span class="keywordflow">if</span> (!other.<a class="code" href="class_c_w_1_1_entity.html#aea6450abce4d5aebad0061e213c840b1">m_attached</a> &amp;&amp; SUIsValid(other.m_layer)) {</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                this-&gt;<a class="code" href="class_c_w_1_1_layer.html#aeb9da5da6733499b60eee6716a019e34">name</a>(other.<a class="code" href="class_c_w_1_1_layer.html#aeb9da5da6733499b60eee6716a019e34">name</a>());</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;  <span class="keywordflow">if</span> (!other.<a class="code" href="class_c_w_1_1_entity.html#aea6450abce4d5aebad0061e213c840b1">m_attached</a> &amp;&amp; SUIsValid(other.m_layer)) {</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    this-&gt;<a class="code" href="class_c_w_1_1_layer.html#aeb9da5da6733499b60eee6716a019e34">name</a>(other.<a class="code" href="class_c_w_1_1_layer.html#aeb9da5da6733499b60eee6716a019e34">name</a>());</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="comment">// TODO: Set layer material</span></div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;  }</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;  <span class="keywordflow">return</span> (*<span class="keyword">this</span>);</div>
@@ -169,13 +169,13 @@
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;</div>
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;</div>
 <div class="line"><a name="l00119"></a><span class="lineno"><a class="line" href="class_c_w_1_1_layer.html#ab33c621a4cc4ace44e558a12cff02ea7">  119</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="class_c_w_1_1_layer.html#ab33c621a4cc4ace44e558a12cff02ea7">Layer::operator!</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        <span class="keywordflow">if</span> (SUIsInvalid(m_layer)) {</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;  <span class="keywordflow">if</span> (SUIsInvalid(m_layer)) {</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;  }</div>
 <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;  <a class="code" href="class_c_w_1_1_string.html">String</a> <a class="code" href="class_c_w_1_1_layer.html#aeb9da5da6733499b60eee6716a019e34">name</a>;</div>
 <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;  SUResult res = SULayerGetName(m_layer, name);</div>
 <div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;  <span class="keywordflow">if</span> (res == SU_ERROR_NULL_POINTER_OUTPUT) {</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;  }</div>
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;}</div>
@@ -183,10 +183,10 @@
 <div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;</div>
 <div class="line"><a name="l00132"></a><span class="lineno"><a class="line" href="class_c_w_1_1_layer.html#aeb9da5da6733499b60eee6716a019e34">  132</a></span>&#160;<a class="code" href="class_c_w_1_1_string.html">String</a> <a class="code" href="class_c_w_1_1_layer.html#aeb9da5da6733499b60eee6716a019e34">Layer::name</a>()<span class="keyword"> const </span>{</div>
 <div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;  <span class="keywordflow">if</span>(!(*<span class="keyword">this</span>)) {</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::Layer::name(): Layer is null&quot;</span>);</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::Layer::name(): Layer is null&quot;</span>);</div>
 <div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;  }</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        <a class="code" href="class_c_w_1_1_string.html">String</a> string;</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        SUResult res = SULayerGetName(m_layer, <span class="keywordtype">string</span>);</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;  <a class="code" href="class_c_w_1_1_string.html">String</a> string;</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;  SUResult res = SULayerGetName(m_layer, <span class="keywordtype">string</span>);</div>
 <div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;  assert(res == SU_ERROR_NONE);</div>
 <div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;  <span class="keywordflow">return</span> string;</div>
 <div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;}</div>
@@ -194,19 +194,19 @@
 <div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;</div>
 <div class="line"><a name="l00143"></a><span class="lineno"><a class="line" href="class_c_w_1_1_layer.html#aeffb8ad63025fab0b79d9bc38e32d399">  143</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_c_w_1_1_layer.html#aeb9da5da6733499b60eee6716a019e34">Layer::name</a>(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_string.html">String</a>&amp; <span class="keywordtype">string</span>) {</div>
 <div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;  <span class="keywordflow">if</span>(!(*<span class="keyword">this</span>)) {</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::Layer::name(): Layer is null&quot;</span>);</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::Layer::name(): Layer is null&quot;</span>);</div>
 <div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;  }</div>
 <div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;  SUResult res = SULayerSetName(m_layer, <span class="keywordtype">string</span>.std_string().c_str());</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        assert(res == SU_ERROR_NONE);</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;  assert(res == SU_ERROR_NONE);</div>
 <div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;}</div>
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;</div>
 <div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;</div>
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_c_w_1_1_layer.html#aeb9da5da6733499b60eee6716a019e34">Layer::name</a>(<span class="keyword">const</span> std::string&amp; <span class="keywordtype">string</span>) {</div>
 <div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;  <span class="keywordflow">if</span>(!(*<span class="keyword">this</span>)) {</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;        <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::Layer::name(): Layer is null&quot;</span>);</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::Layer::name(): Layer is null&quot;</span>);</div>
 <div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;  }</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        SUResult res = SULayerSetName(m_layer, <span class="keywordtype">string</span>.c_str());</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        assert(res == SU_ERROR_NONE);</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;  SUResult res = SULayerSetName(m_layer, <span class="keywordtype">string</span>.c_str());</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;  assert(res == SU_ERROR_NONE);</div>
 <div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;}</div>
 <div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;</div>
 <div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;</div>
@@ -227,7 +227,7 @@
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Feb 2 2018 16:30:39 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Feb 2 2018 16:35:03 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

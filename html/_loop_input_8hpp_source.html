@@ -101,7 +101,7 @@
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment">* Struct holds information for an edge that was added to a vertex.</span></div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment">*/</span></div>
 <div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="struct_c_w_1_1_input_edge_properties.html">   51</a></span>&#160;<span class="keyword">struct </span><a class="code" href="struct_c_w_1_1_input_edge_properties.html">InputEdgeProperties</a> {</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <span class="keywordtype">bool</span> hidden = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  <span class="keywordtype">bool</span> hidden = <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  <span class="keywordtype">bool</span> soft = <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  <span class="keywordtype">bool</span> smooth = <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  <a class="code" href="class_c_w_1_1_material.html">Material</a> material = <a class="code" href="class_c_w_1_1_material.html">Material</a>();</div>
@@ -109,8 +109,8 @@
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;};</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
 <div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="class_c_w_1_1_loop_input.html">   59</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_c_w_1_1_loop_input.html">LoopInput</a> {</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="class_c_w_1_1_face.html">Face</a>;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="class_c_w_1_1_geometry_input.html">GeometryInput</a>;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="class_c_w_1_1_face.html">Face</a>;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="class_c_w_1_1_geometry_input.html">GeometryInput</a>;</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  </div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  <span class="keyword">private</span>:</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  <a class="code" href="struct_s_u_loop_input_ref.html">SULoopInputRef</a> m_loop_input;</div>
@@ -127,7 +127,7 @@
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  <span class="keyword">static</span> <a class="code" href="struct_s_u_loop_input_ref.html">SULoopInputRef</a> create_loop_input_ref();</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  </div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  <span class="keyword">public</span>:<span class="comment"></span></div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="comment">        /**</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="comment">  /**</span></div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="comment">  * Create empty LoopInput object</span></div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="comment">  */</span></div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  <a class="code" href="class_c_w_1_1_loop_input.html#a61d77444c5e9019c17e5896750adf898">LoopInput</a>();</div>
@@ -151,8 +151,8 @@
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="comment">  */</span></div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;  <a class="code" href="class_c_w_1_1_loop_input.html#a61d77444c5e9019c17e5896750adf898">LoopInput</a>(<span class="keyword">const</span> std::vector&lt;InputEdgeProperties&gt;&amp; loop_edge_properties, <span class="keywordtype">size_t</span> vertex_index = 0);</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="comment">        /** Copy constructor */</span></div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        <a class="code" href="class_c_w_1_1_loop_input.html#a61d77444c5e9019c17e5896750adf898">LoopInput</a>(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_loop_input.html">LoopInput</a>&amp; other);</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="comment">  /** Copy constructor */</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;  <a class="code" href="class_c_w_1_1_loop_input.html#a61d77444c5e9019c17e5896750adf898">LoopInput</a>(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_loop_input.html">LoopInput</a>&amp; other);</div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;</div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;  ~<a class="code" href="class_c_w_1_1_loop_input.html">LoopInput</a>();</div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;  <span class="comment"></span></div>
@@ -176,7 +176,7 @@
 <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="comment">  */</span></div>
 <div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;  <span class="keyword">operator</span> bool() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;  <span class="comment"></span></div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="comment">        /**</span></div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="comment">  /**</span></div>
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;<span class="comment">  * Adds a vertex index to the loop. LoopInput does not hold the point locations of vertices.  It holds information on the edges that form the loop.</span></div>
 <div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="comment">  * @param index - the vertex index of the loop.  When used with SUCreateFace(), it would be a zero-based index.  When used with SUGeometryInputAddFace(), the vertex index would need to correspond to specific indices of the vertices that have been added to SUGeometryInputRef object.</span></div>
 <div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<span class="comment">  */</span></div>
@@ -248,7 +248,7 @@
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Feb 2 2018 16:30:39 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Feb 2 2018 16:35:03 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

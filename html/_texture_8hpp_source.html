@@ -88,9 +88,9 @@
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment">* Texture wrapper</span></div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment">*/</span></div>
 <div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="class_c_w_1_1_texture.html">   38</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_c_w_1_1_texture.html">Texture</a> :<span class="keyword">public</span> <a class="code" href="class_c_w_1_1_entity.html">Entity</a> {</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  <span class="keyword">private</span>:</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  <a class="code" href="struct_s_u_texture_ref.html">SUTextureRef</a> m_texture;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="comment"></span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  <span class="comment"></span></div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment">  /**</span></div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment">  * Create texture from ImageRep</span></div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment">  */</span></div>
@@ -105,7 +105,7 @@
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  <span class="keyword">public</span>:<span class="comment"></span></div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment">  /** Constructor for null Texture value */</span></div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  <a class="code" href="class_c_w_1_1_texture.html#afc43ae096ba6f73b5554912cee4ed33d">Texture</a>();</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="comment"></span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  <span class="comment"></span></div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="comment">  /** Construct Texture from existing texture object */</span></div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <a class="code" href="class_c_w_1_1_texture.html#afc43ae096ba6f73b5554912cee4ed33d">Texture</a>(<a class="code" href="struct_s_u_texture_ref.html">SUTextureRef</a> texture, <span class="keywordtype">bool</span> <a class="code" href="class_c_w_1_1_entity.html#a64762c829bba997b0b3070d51f7c059d">attached</a> = <span class="keyword">true</span>);</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  <span class="comment"></span></div>
@@ -115,8 +115,8 @@
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="comment">  * @param s_scale - The scale factor for s coordinate value.</span></div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="comment">  * @param t_scale - The scale factor for t coordinate value.</span></div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="comment">  */</span></div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <a class="code" href="class_c_w_1_1_texture.html#afc43ae096ba6f73b5554912cee4ed33d">Texture</a>(<span class="keyword">const</span> std::string file_path, <span class="keywordtype">double</span> <a class="code" href="class_c_w_1_1_texture.html#a3105cad2d9bb2841b7345cc143ec8538">s_scale</a> = 1.0, <span class="keywordtype">double</span> <a class="code" href="class_c_w_1_1_texture.html#ae91aef328e46f953bd70de6d86f6afa4">t_scale</a> = 1.0);</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="comment"></span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  <a class="code" href="class_c_w_1_1_texture.html#afc43ae096ba6f73b5554912cee4ed33d">Texture</a>(<span class="keyword">const</span> std::string file_path, <span class="keywordtype">double</span> <a class="code" href="class_c_w_1_1_texture.html#a3105cad2d9bb2841b7345cc143ec8538">s_scale</a> = 1.0, <span class="keywordtype">double</span> <a class="code" href="class_c_w_1_1_texture.html#ae91aef328e46f953bd70de6d86f6afa4">t_scale</a> = 1.0);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  <span class="comment"></span></div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="comment">  /**</span></div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="comment">  * Creates a new texture object with the specified image data.</span></div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="comment">  * This function is due to be depreciated - use Texture(ImageRep&amp; image) instead from SU 2017, API 5.0 onwards.</span></div>
@@ -126,14 +126,14 @@
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="comment">  * @param pixel_data[] - the source of the pixel data</span></div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="comment">  */</span></div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  <a class="code" href="class_c_w_1_1_texture.html#afc43ae096ba6f73b5554912cee4ed33d">Texture</a> (<span class="keywordtype">size_t</span> <a class="code" href="class_c_w_1_1_texture.html#ac19d89c4bdcae4146b00abc53c3c3b7f">width</a>, <span class="keywordtype">size_t</span> <a class="code" href="class_c_w_1_1_texture.html#ab0ed8ff0fcd3412beb8bff4a674a1eb7">height</a>, <span class="keywordtype">size_t</span> bits_per_pixel, <span class="keyword">const</span> SUByte pixel_data[]);</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="comment"></span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  <span class="comment"></span></div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="comment">  /**</span></div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="comment">  * Creates a new texture object from an image representation object.</span></div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="comment">  * @since Sketchup 2017, API 5.0</span></div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="comment">  */</span></div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <a class="code" href="class_c_w_1_1_texture.html#afc43ae096ba6f73b5554912cee4ed33d">Texture</a>(<a class="code" href="class_c_w_1_1_image_rep.html">ImageRep</a>&amp; image);</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                <span class="comment"></span></div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="comment">        /** Copy constructor */</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  <a class="code" href="class_c_w_1_1_texture.html#afc43ae096ba6f73b5554912cee4ed33d">Texture</a>(<a class="code" href="class_c_w_1_1_image_rep.html">ImageRep</a>&amp; image);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="comment"></span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="comment">  /** Copy constructor */</span></div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  <a class="code" href="class_c_w_1_1_texture.html#afc43ae096ba6f73b5554912cee4ed33d">Texture</a>(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_texture.html">Texture</a>&amp; other);</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  <span class="comment"></span></div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="comment">  /** Destructor */</span></div>
@@ -148,7 +148,7 @@
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  <a class="code" href="struct_s_u_texture_ref.html">SUTextureRef</a> ref() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  <span class="keyword">operator</span> <a class="code" href="struct_s_u_texture_ref.html">SUTextureRef</a>() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;  <span class="keyword">operator</span> <a class="code" href="struct_s_u_texture_ref.html">SUTextureRef</a>*();</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        <span class="comment"></span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;  <span class="comment"></span></div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="comment">  /**</span></div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="comment">  * Returns a copy of the texture object - note that a Texture object can only be assigned to one Material object.  So this method is useful for copying Textures to new Material objects.</span></div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="comment">  * @since SU 2017, API 5.0</span></div>
@@ -176,16 +176,16 @@
 <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="comment">  */</span></div>
 <div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_c_w_1_1_texture.html#a313c0a3f000c92bf1bbcc6429d06b89b">file_name</a>(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_string.html">String</a>&amp; <span class="keywordtype">string</span>) <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;  <span class="comment"></span></div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="comment">        /**</span></div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="comment">  /**</span></div>
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;<span class="comment">  * Returns the width of the texture in pixels.</span></div>
 <div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="comment">  */</span></div>
 <div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;  <span class="keywordtype">size_t</span> <a class="code" href="class_c_w_1_1_texture.html#ac19d89c4bdcae4146b00abc53c3c3b7f">width</a>() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;  <span class="comment"></span></div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;<span class="comment">        /**</span></div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;<span class="comment">  /**</span></div>
 <div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;<span class="comment">  * Returns the height of the texture in pixels.</span></div>
 <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;<span class="comment">  */</span></div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        <span class="keywordtype">size_t</span> <a class="code" href="class_c_w_1_1_texture.html#ab0ed8ff0fcd3412beb8bff4a674a1eb7">height</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        <span class="comment"></span></div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;  <span class="keywordtype">size_t</span> <a class="code" href="class_c_w_1_1_texture.html#ab0ed8ff0fcd3412beb8bff4a674a1eb7">height</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;  <span class="comment"></span></div>
 <div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;<span class="comment">  /**</span></div>
 <div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;<span class="comment">  * Returns the s_scale of the texture. The s_scale and t_scale values are useful when a face doesn&#39;t have a material applied directly, but instead inherit from a parent group or component instance. Then you want use these values to multiply the result of SUMeshHelperGetFrontSTQCoords or SUUVHelperGetFrontUVQ. If the material is applied directly then this would not be needed.</span></div>
 <div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;<span class="comment">  */</span></div>
@@ -199,11 +199,11 @@
 <div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;<span class="comment">  /**</span></div>
 <div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;<span class="comment">  * Writes a texture object as an image to disk.</span></div>
 <div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;<span class="comment">  * @return SUResult object with the following possible values:</span></div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;<span class="comment">  *                     - SU_ERROR_NONE on success</span></div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;<span class="comment">        *                       - SU_ERROR_INVALID_INPUT if texture is not a valid object</span></div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;<span class="comment">        *                       - SU_ERROR_NULL_POINTER_INPUT if file_path is NULL</span></div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;<span class="comment">        *                       - SU_ERROR_SERIALIZATION if image file could not be written to disk</span></div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;<span class="comment">        *</span></div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;<span class="comment">  *      - SU_ERROR_NONE on success</span></div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;<span class="comment">  *      - SU_ERROR_INVALID_INPUT if texture is not a valid object</span></div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;<span class="comment">  *      - SU_ERROR_NULL_POINTER_INPUT if file_path is NULL</span></div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;<span class="comment">  *      - SU_ERROR_SERIALIZATION if image file could not be written to disk</span></div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;<span class="comment">  *</span></div>
 <div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;<span class="comment">  */</span></div>
 <div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;  SUResult <a class="code" href="class_c_w_1_1_texture.html#af6a93fa09968a89739e11a21deecb44f">save</a>(<span class="keyword">const</span> std::string&amp; file_path);</div>
 <div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;</div>
@@ -232,7 +232,7 @@
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Feb 2 2018 16:30:40 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Feb 2 2018 16:35:03 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

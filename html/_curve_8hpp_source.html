@@ -90,7 +90,7 @@
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keyword">namespace </span>CW {</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
 <div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="class_c_w_1_1_curve.html">   40</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_c_w_1_1_curve.html">Curve</a> :<span class="keyword">public</span> <a class="code" href="class_c_w_1_1_entity.html">Entity</a> {</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  <span class="keyword">private</span>:</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  <a class="code" href="struct_s_u_curve_ref.html">SUCurveRef</a> m_curve;</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  SUCurveType m_curve_type;</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  SUResult m_create_result;</div>
@@ -122,17 +122,17 @@
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="comment">  * Returns the type of Curve.</span></div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="comment">  */</span></div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  SUCurveType <a class="code" href="class_c_w_1_1_curve.html#a964c4984c58a5d4326a112ad26393c89">get_type</a>();</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        </div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  </div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  <span class="comment">/*</span></div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="comment">  * Returns the SUResult object form when the Curve was created.</span></div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="comment">  * @return     * SU_ERROR_NONE on success</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="comment">  * @return  * SU_ERROR_NONE on success</span></div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="comment">            * SU_ERROR_NULL_POINTER_INPUT if edges is NULL</span></div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="comment">            * SU_ERROR_OUT_OF_RANGE if len is 0</span></div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="comment">            * SU_ERROR_NULL_POINTER_OUTPUT if curve is NULL</span></div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="comment">            * SU_ERROR_OVERWRITE_VALID if curve already references a valid object</span></div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="comment">            * SU_ERROR_GENERIC if edge array contains an invalid edge, if the edges in the array are not connected, if any of the edges are associated with a face object, or the edges describe a loop</span></div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="comment">  */</span></div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        SUResult get_result() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  SUResult get_result() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  </div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  <span class="comment">/*</span></div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="comment">  * Returns whether the class is a valid object.</span></div>
@@ -142,7 +142,7 @@
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="comment">  * NOT operator.  Checks if the CurveRef is valid.</span></div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="comment">  * @return true if the curve is invalid</span></div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="comment">  */</span></div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="class_c_w_1_1_curve.html#ac343694df68673bfdda39008fb9082c8">operator!</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="class_c_w_1_1_curve.html#ac343694df68673bfdda39008fb9082c8">operator!</a>() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  </div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;};</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
@@ -160,7 +160,7 @@
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Feb 2 2018 16:30:39 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Feb 2 2018 16:35:03 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

@@ -108,7 +108,7 @@
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment"></span></div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="comment">*/</span></div>
 <div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="class_c_w_1_1_geometry_input.html">   58</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_c_w_1_1_geometry_input.html">GeometryInput</a> {</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="class_c_w_1_1_entities.html">Entities</a>;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="class_c_w_1_1_entities.html">Entities</a>;</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  </div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  <span class="keyword">private</span>:</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  <a class="code" href="struct_s_u_geometry_input_ref.html">SUGeometryInputRef</a> m_geometry_input;</div>
@@ -118,7 +118,7 @@
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="comment">  */</span><span class="comment"></span></div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="comment">  /**</span></div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="comment">  * Faces that have been added to the GeometryInput object.  The pairings are with the added face index.  Only faces that require additional properties after the Entities::fill() operation are added here.</span></div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="comment">        */</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="comment">  */</span></div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  std::vector&lt;std::pair&lt;size_t, Face&gt;&gt; m_faces;</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  std::vector&lt;std::pair&lt;size_t, Edge&gt;&gt; m_edges;</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  <span class="comment">//std::vector&lt;std::vector&lt;Edge*&gt;&gt; m_curves; // curves are simply collections of Edges.</span></div>
@@ -126,17 +126,17 @@
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  <span class="keywordtype">size_t</span> m_vertex_index = 0;</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  <span class="keywordtype">size_t</span> m_num_faces = 0;</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  <span class="keywordtype">size_t</span> m_num_edges = 0;<span class="comment"></span></div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="comment">        /**</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="comment">   /**</span></div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="comment">  * Creates and returns new SUGeometryInputRef object, used for initializing m_geometry_input. The SUGeometryInputRef object must be released with SUGeometryInputRelease() before this class is destroyed.</span></div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="comment">  */</span></div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  <span class="keyword">static</span> <a class="code" href="struct_s_u_geometry_input_ref.html">SUGeometryInputRef</a> create_geometry_input();</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        <span class="comment">/*</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  <span class="comment">/*</span></div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="comment">  * Adds a constructed LoopInput object into the GeometryInput object.</span></div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="comment">  * @see add_face() for the details on how this is used.</span></div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="comment">  */</span></div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <span class="comment">//SUResult add_loop(LoopInput &amp;loop);</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  <span class="comment">//SUResult add_loop(LoopInput &amp;loop);</span></div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  <span class="comment">//std::vector&lt;SUPoint3D&gt; m_vertices;</span><span class="comment"></span></div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="comment">  /**</span></div>
@@ -170,17 +170,17 @@
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="comment">  * Copy assignment operator.</span></div>
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="comment">  */</span></div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;  <a class="code" href="class_c_w_1_1_geometry_input.html">GeometryInput</a>&amp; <a class="code" href="class_c_w_1_1_geometry_input.html#a62b14bb9643e89e44528e4f3d89ae691">operator=</a>(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_geometry_input.html">GeometryInput</a>&amp; other);</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        <span class="comment"></span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;   <span class="comment"></span></div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="comment">  /**</span></div>
 <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="comment">  * Returns Raw SUGeometryInputRef that is stored.</span></div>
 <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="comment">  */</span></div>
 <div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;  <a class="code" href="struct_s_u_geometry_input_ref.html">SUGeometryInputRef</a> <a class="code" href="class_c_w_1_1_geometry_input.html#a2dd814f1fe4f2ca6b72d4d213ceee670">ref</a>() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="comment">        /**</span></div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="comment">  /**</span></div>
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;<span class="comment">  * Returns true if the objet is valid, false otherwise.</span></div>
 <div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="comment">  */</span></div>
 <div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="class_c_w_1_1_geometry_input.html#aca07102a66453b4c8cac51f70f5539d9">operator!</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        <span class="comment"></span></div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;  <span class="comment"></span></div>
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;<span class="comment">  /**</span></div>
 <div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;<span class="comment">  * Returns the number of faces have been input into this GeometryInput object.</span></div>
 <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;<span class="comment">  */</span></div>
@@ -197,7 +197,7 @@
 <div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;<span class="comment">  * @return index of the vertex that was added.</span></div>
 <div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;<span class="comment">  */</span></div>
 <div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;  <span class="comment">//size_t add_vertex(Point3D vertex);</span></div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        <span class="comment">//std::vector&lt;size_t&gt; add_vertices(std::vector&lt;Point3D&gt; vertices);</span></div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;  <span class="comment">//std::vector&lt;size_t&gt; add_vertices(std::vector&lt;Point3D&gt; vertices);</span></div>
 <div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;  <span class="comment"></span></div>
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;<span class="comment">  /**</span></div>
 <div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;<span class="comment">  * Adds a face to the Geometry Input object.</span></div>
@@ -256,7 +256,7 @@
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Feb 2 2018 16:30:39 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Feb 2 2018 16:35:03 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
