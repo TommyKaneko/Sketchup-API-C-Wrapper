@@ -34,47 +34,47 @@ namespace CW {
 SUStringRef m_string;
 
 String::String():
-	m_string(create_string_ref()),
+  m_string(create_string_ref()),
   m_encoding(StringEncoding::UTF8)
 {
 }
 
 String::String(SUStringRef string_ref):
-	m_string(string_ref),
+  m_string(string_ref),
   m_encoding(StringEncoding::UTF8)
 {
 }
 
 String::String(const std::string &string_input, StringEncoding enc):
-	m_string(create_string_ref(string_input, enc)),
+  m_string(create_string_ref(string_input, enc)),
   m_encoding(enc)
 {
 }
 
 String::String(const char string_input[]):
-	m_string(create_string_ref(&string_input[0])),
+  m_string(create_string_ref(&string_input[0])),
   m_encoding(StringEncoding::UTF8)
 {
 }
 
 String::String(const unichar string_input[]):
-	m_string(create_string_ref(&string_input[0])),
+  m_string(create_string_ref(&string_input[0])),
   m_encoding(StringEncoding::UTF16)
 {
 }
 
 
 String::String(const String& other):
-	m_string(create_string_ref(other.std_string(), StringEncoding::UTF8))
+  m_string(create_string_ref(other.std_string(), StringEncoding::UTF8))
 {
-	// TODO support UTF16
+  // TODO support UTF16
 }
 
 
 String& String::operator=(String& other) {
-	// Release old string and create new
-	if (SUIsValid(m_string)) {
-  	SUResult res = SUStringRelease(&m_string);
+  // Release old string and create new
+  if (SUIsValid(m_string)) {
+    SUResult res = SUStringRelease(&m_string);
     assert(res == SU_ERROR_NONE);
   }
   m_string = SU_INVALID;
@@ -84,14 +84,14 @@ String& String::operator=(String& other) {
 
 
 bool operator==(const String &lhs, const String &rhs) {
-	// Check validity
+  // Check validity
   // Check type
   if (lhs.m_encoding != rhs.m_encoding) {
-  	return false;
+    return false;
   }
   // Check value
   if (lhs.std_string() == rhs.std_string()) {
-  	return true;
+    return true;
   }
   return false;
 }
@@ -99,14 +99,14 @@ bool operator==(const String &lhs, const String &rhs) {
 
 SUStringRef String::create_string_ref() {
   SUStringRef string_ref = SU_INVALID;
-	SUResult res = SUStringCreate(&string_ref);
+  SUResult res = SUStringCreate(&string_ref);
   assert(res == SU_ERROR_NONE);
   return string_ref;
 }
 
 SUStringRef String::create_string_ref(std::string string_input, StringEncoding enc) {
   SUStringRef string_ref = SU_INVALID;
-	if (enc == StringEncoding::UTF8) {
+  if (enc == StringEncoding::UTF8) {
     
     // TODO: to reduce code, use String::create_string_ref(const char* string_input[]).
     SUStringCreateFromUTF8(&string_ref, &string_input[0]);
@@ -133,14 +133,14 @@ SUStringRef String::create_string_ref(const unichar string_input[]) {
   
 
 String::~String() {
-	if (SUIsValid(m_string)) {
-  	SUResult res = SUStringRelease(&m_string);
+  if (SUIsValid(m_string)) {
+    SUResult res = SUStringRelease(&m_string);
     assert(res == SU_ERROR_NONE);
   }
 }
 
 SUStringRef String::ref() const {
-	return m_string;
+  return m_string;
 }
 
 std::string String::std_string() const {

@@ -37,7 +37,7 @@ namespace CW {
 * Color wrapper
 */
 class Color {
-	private:
+  private:
   SUColor m_color;
   
   public:
@@ -50,7 +50,7 @@ class Color {
   SUColor ref() const;
   
   operator SUColor() const;
-	
+  
   /**
   * Compare equality of the Color object
   */

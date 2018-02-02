@@ -32,13 +32,13 @@ namespace CW {
 
 
 Curve::Curve(std::vector<Edge> edges, SUCurveType curve_type):
-	Curve(create_curve(edges, m_create_result), curve_type)
+  Curve(create_curve(edges, m_create_result), curve_type)
 {
 }
 
 Curve::Curve(SUCurveRef curve,  SUCurveType curve_type):
-	Entity(SUCurveToEntity(curve)),
-	m_curve(curve),
+  Entity(SUCurveToEntity(curve)),
+  m_curve(curve),
   m_curve_type(curve_type)
 {
 }
@@ -47,7 +47,7 @@ Curve::~Curve(){
 }
 
 SUCurveRef Curve::create_curve(std::vector<Edge>& edges, SUResult &result) {
-	SUCurveRef curve_ref = SU_INVALID;
+  SUCurveRef curve_ref = SU_INVALID;
   result = SUCurveCreateWithEdges(&curve_ref, edges[0], edges.size());
   return curve_ref;
 }
@@ -58,9 +58,9 @@ SUCurveRef Curve::ref(){ return m_curve;}
 
 std::vector<Edge> Curve::get_edges() const{
   if (!(*this)) {
-  	throw std::logic_error("CW::Curve::get_edges(): Curve is null");
+    throw std::logic_error("CW::Curve::get_edges(): Curve is null");
   }
-	size_t num_edges = 0;
+  size_t num_edges = 0;
   SUResult res = SUCurveGetNumEdges(m_curve, &num_edges);
   assert(res == SU_ERROR_NONE);
   SUEdgeRef* ref_edges = new SUEdgeRef[num_edges];
@@ -78,28 +78,28 @@ std::vector<Edge> Curve::get_edges() const{
 
 SUCurveType Curve::get_type() {
   if (!(*this)) {
-  	throw std::logic_error("CW::Curve::get_type(): Curve is null");
+    throw std::logic_error("CW::Curve::get_type(): Curve is null");
   }
-	SUCurveGetType(m_curve, &m_curve_type);
+  SUCurveGetType(m_curve, &m_curve_type);
   return m_curve_type;
 }
  
 
 SUResult Curve::get_result() const {
-	return m_create_result;
+  return m_create_result;
 }
 
 
 Curve::operator bool() const {
-	if (m_create_result == SU_ERROR_NONE) {
-  	return true;
+  if (m_create_result == SU_ERROR_NONE) {
+    return true;
   }
   return false;
 }
 
 
 bool Curve::operator!() const {
-	return !bool(this);
+  return !bool(this);
 }
 
 } /* namespace CW */

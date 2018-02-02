@@ -39,13 +39,13 @@ namespace CW {
 * Entity object wrapper
 */
 class Classifications {
-	private:
+  private:
   SUClassificationsRef m_classifications;
   
   public:
   //Classifications();
   Classifications(SUClassificationsRef classifications);
-	
+  
 };
 
 } /* namespace CW */

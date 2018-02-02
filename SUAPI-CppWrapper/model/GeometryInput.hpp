@@ -56,7 +56,7 @@ SUResult result = entities.fill(geom_input); // the geometry must be output into
 
 */
 class GeometryInput {
-	friend class Entities;
+  friend class Entities;
   
   private:
   SUGeometryInputRef m_geometry_input;
@@ -66,7 +66,7 @@ class GeometryInput {
   */
   /**
   * Faces that have been added to the GeometryInput object.  The pairings are with the added face index.  Only faces that require additional properties after the Entities::fill() operation are added here.
-	*/
+  */
   std::vector<std::pair<size_t, Face>> m_faces;
   std::vector<std::pair<size_t, Edge>> m_edges;
   //std::vector<std::vector<Edge*>> m_curves; // curves are simply collections of Edges.
@@ -74,17 +74,17 @@ class GeometryInput {
   size_t m_vertex_index = 0;
   size_t m_num_faces = 0;
   size_t m_num_edges = 0;
- 	/**
+   /**
   * Creates and returns new SUGeometryInputRef object, used for initializing m_geometry_input. The SUGeometryInputRef object must be released with SUGeometryInputRelease() before this class is destroyed.
   */
   static SUGeometryInputRef create_geometry_input();
 
 
-	/*
+  /*
   * Adds a constructed LoopInput object into the GeometryInput object.
   * @see add_face() for the details on how this is used.
   */
-	//SUResult add_loop(LoopInput &loop);
+  //SUResult add_loop(LoopInput &loop);
 
   //std::vector<SUPoint3D> m_vertices;
   /**
@@ -118,17 +118,17 @@ class GeometryInput {
   * Copy assignment operator.
   */
   GeometryInput& operator=(const GeometryInput& other);
- 	
+   
   /**
   * Returns Raw SUGeometryInputRef that is stored.
   */
   SUGeometryInputRef ref() const;
 
-	/**
+  /**
   * Returns true if the objet is valid, false otherwise.
   */
   bool operator!() const;
-	
+  
   /**
   * Returns the number of faces have been input into this GeometryInput object.
   */
@@ -145,7 +145,7 @@ class GeometryInput {
   * @return index of the vertex that was added.
   */
   //size_t add_vertex(Point3D vertex);
-	//std::vector<size_t> add_vertices(std::vector<Point3D> vertices);
+  //std::vector<size_t> add_vertices(std::vector<Point3D> vertices);
   
   /**
   * Adds a face to the Geometry Input object.

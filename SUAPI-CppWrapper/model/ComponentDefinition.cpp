@@ -38,14 +38,14 @@ namespace CW {
 *******************************/
 SUComponentDefinitionRef ComponentDefinition::create_definition() {
   SUComponentDefinitionRef definition = SU_INVALID;
-	SUResult res = SUComponentDefinitionCreate(&definition);
+  SUResult res = SUComponentDefinitionCreate(&definition);
   assert(res == SU_ERROR_NONE);
   return definition;
 }
 
 SUComponentDefinitionRef ComponentDefinition::copy_reference(const ComponentDefinition& other) {
-	if (other.m_attached) {
-  	return other.m_definition;
+  if (other.m_attached) {
+    return other.m_definition;
   }
   // The other definition has not been attached to the model, so copy its properties to a new object
   SUComponentDefinitionRef new_definition = create_definition();
@@ -54,7 +54,7 @@ SUComponentDefinitionRef ComponentDefinition::copy_reference(const ComponentDefi
   SUResult res = SUComponentDefinitionGetEntities(new_definition, &new_entities_ref);
   assert(res == SU_ERROR_NONE);
   Entities new_entities(new_entities_ref);
-	new_entities.add(other.entities());
+  new_entities.add(other.entities());
   return new_definition;
 }
 
@@ -110,23 +110,23 @@ ComponentDefinition& ComponentDefinition::operator=(const ComponentDefinition& o
 
 
 ComponentDefinition::operator SUComponentDefinitionRef() const {
-	return m_definition;
+  return m_definition;
 }
 ComponentDefinition::operator SUComponentDefinitionRef*() {
-	return &m_definition;
+  return &m_definition;
 }
 
 
 BoundingBox3D ComponentDefinition::bounds() const {
   if (!(*this)) {
-  	throw std::logic_error("CW::ComponentDefinition::bounds(): ComponentDefinition is null");
+    throw std::logic_error("CW::ComponentDefinition::bounds(): ComponentDefinition is null");
   }
   // If this definition is empty, then the bounding box returned by SUDrawingElementGetBoundingBox has wild numbers.  So return min 0 and max 0.
   if (entities().size() == 0) {
-  	return BoundingBox3D(false);
+    return BoundingBox3D(false);
   }
   SUBoundingBox3D box = SU_INVALID;
-	SUResult res = SUDrawingElementGetBoundingBox(m_drawing_element, &box);
+  SUResult res = SUDrawingElementGetBoundingBox(m_drawing_element, &box);
   assert(res == SU_ERROR_NONE);
   return BoundingBox3D(box);
 }
@@ -134,9 +134,9 @@ BoundingBox3D ComponentDefinition::bounds() const {
 
 ComponentInstance ComponentDefinition::create_instance() const {
   if (!(*this)) {
-  	throw std::logic_error("CW::ComponentDefinition::create_instance(): ComponentDefinition is null");
+    throw std::logic_error("CW::ComponentDefinition::create_instance(): ComponentDefinition is null");
   }
-	SUComponentInstanceRef instance = SU_INVALID;
+  SUComponentInstanceRef instance = SU_INVALID;
   SUResult res = SUComponentDefinitionCreateInstance(m_definition, &instance);
   assert(res == SU_ERROR_NONE);
   return ComponentInstance(instance, false);
@@ -144,8 +144,8 @@ ComponentInstance ComponentDefinition::create_instance() const {
 
 /*
 Group ComponentDefinition::create_group() const {
-	assert(this->is_group());
-	SUComponentInstanceRef instance = SU_INVALID;
+  assert(this->is_group());
+  SUComponentInstanceRef instance = SU_INVALID;
   SUResult res = SUComponentDefinitionCreateInstance(m_definition, &instance);
   assert(res == SU_ERROR_NONE);
   SUGroupRef group = SUGroupFromComponentInstance(instance);
@@ -156,7 +156,7 @@ Group ComponentDefinition::create_group() const {
 
 Entities ComponentDefinition::entities() const {
   if (!(*this)) {
-  	throw std::logic_error("CW::ComponentDefinition::entities(): ComponentDefinition is null");
+    throw std::logic_error("CW::ComponentDefinition::entities(): ComponentDefinition is null");
   }
   SUEntitiesRef entities = SU_INVALID;
   SUResult res = SUComponentDefinitionGetEntities( m_definition, &entities);
@@ -167,7 +167,7 @@ Entities ComponentDefinition::entities() const {
 
 String ComponentDefinition::name() const {
   if (!(*this)) {
-  	throw std::logic_error("CW::ComponentDefinition::name(): ComponentDefinition is null");
+    throw std::logic_error("CW::ComponentDefinition::name(): ComponentDefinition is null");
   }
   SUStringRef name_string;
   SUResult res = SUComponentDefinitionGetName(m_definition, &name_string);
@@ -178,7 +178,7 @@ String ComponentDefinition::name() const {
 
 bool ComponentDefinition::name(String name) {
   if (!(*this)) {
-  	throw std::logic_error("CW::ComponentDefinition::name(): ComponentDefinition is null");
+    throw std::logic_error("CW::ComponentDefinition::name(): ComponentDefinition is null");
   }
   SUResult res = SUComponentDefinitionSetName(m_definition, std::string(name).c_str());
   if (res == SU_ERROR_NONE) {
@@ -195,7 +195,7 @@ SUComponentDefinitionRef ComponentDefinition::ref() const {
 
 bool ComponentDefinition::is_group() const {
   if (!(*this)) {
-  	throw std::logic_error("CW::ComponentDefinition::is_group(): ComponentDefinition is null");
+    throw std::logic_error("CW::ComponentDefinition::is_group(): ComponentDefinition is null");
   }
   SUComponentType type;
   SUResult res = SUComponentDefinitionGetType(m_definition, &type);
@@ -211,7 +211,7 @@ bool ComponentDefinition::is_group() const {
 
 Behavior ComponentDefinition::behavior() const {
   if (!(*this)) {
-  	throw std::logic_error("CW::ComponentDefinition::behavior(): ComponentDefinition is null");
+    throw std::logic_error("CW::ComponentDefinition::behavior(): ComponentDefinition is null");
   }
   SUComponentBehavior behavior;
   SUResult res = SUComponentDefinitionGetBehavior(m_definition, &behavior);
@@ -221,7 +221,7 @@ Behavior ComponentDefinition::behavior() const {
 
 void ComponentDefinition::behavior(const Behavior& behavior) const {
   if (!(*this)) {
-  	throw std::logic_error("CW::ComponentDefinition::behavior(): ComponentDefinition is null");
+    throw std::logic_error("CW::ComponentDefinition::behavior(): ComponentDefinition is null");
   }
   SUComponentBehavior behavior_ref = behavior.ref();
   SUResult res = SUComponentDefinitionSetBehavior(m_definition, &behavior_ref);
@@ -238,7 +238,7 @@ m_behavior(behavior)
 }
 
 SUComponentBehavior Behavior::ref() const {
-	return m_behavior;
+  return m_behavior;
 }
 
 

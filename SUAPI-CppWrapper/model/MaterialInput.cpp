@@ -35,28 +35,28 @@ namespace CW {
 
 SUMaterialInput MaterialInput::create_material_input(Material material)
 {
-	SUMaterialInput material_input{};
+  SUMaterialInput material_input{};
   material_input.num_uv_coords = 0; // TODO
   //material_input.uv_coords;
   //material_input.vertex_indices;
   material_input.material = material.ref();
-	return material_input;
+  return material_input;
 }
 
 
 MaterialInput::MaterialInput(Material material):
-	MaterialInput(create_material_input(material))
+  MaterialInput(create_material_input(material))
 {}
 
 
 MaterialInput::MaterialInput(SUMaterialInput material_input):
-	m_material_input(material_input)
+  m_material_input(material_input)
 {}
 
 
 SUMaterialInput MaterialInput::ref()
 {
-	return m_material_input;
+  return m_material_input;
 }
 
 

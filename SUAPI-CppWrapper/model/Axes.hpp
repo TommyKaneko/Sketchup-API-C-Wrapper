@@ -57,7 +57,7 @@ class Axes :public DrawingElement {
   static SUAxesRef copy_reference(const Axes& other);
   
   public:
-	/**
+  /**
   * Constructor for null object.
   */
   Axes();
@@ -68,7 +68,7 @@ class Axes :public DrawingElement {
   * @param attached - true if the SUAxesRef has been attached to the model.  Required for object release purposes.
   */
   Axes(SUAxesRef axes, bool attached = true);
-	
+  
   /**
   * Constructs Axes object from the given origin, x, y and z axes.  The vectors passed to the constructor must be orthogonal, otherwise, a null object will be created.
   * @param origin - origin of the Axes.
@@ -86,19 +86,19 @@ class Axes :public DrawingElement {
   
   /** Copy assignment operator override */
   Axes& operator=(const Axes& other);
-	
+  
   /**
   * Operator overload signifies if this a valid object.
   */
   bool operator!() const;
- 	
+   
   /**
   * Return the vectors representing the axes.
   */
   Vector3D x_axis() const;
   Vector3D y_axis() const;
   Vector3D z_axis() const;
-	
+  
   /**
   * Return the origin of the axes as a Point3D object.
   */

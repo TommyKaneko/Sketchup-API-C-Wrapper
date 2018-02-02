@@ -43,33 +43,33 @@ namespace CW {
 
 
 Entities::Entities(SUEntitiesRef entities/*, Model* model*/):
-	m_entities(entities)/*,
+  m_entities(entities)/*,
   m_model(model)*/
 {}
 
 Entities::Entities():
-	m_entities(SU_INVALID)/*,
+  m_entities(SU_INVALID)/*,
   m_model(nullptr)*/
 {}
 
 
 std::vector<Face> Entities::faces() const {
-	if (!SUIsValid(m_entities)) {
-  	throw std::logic_error("CW::Entities::faces(): Entities is null");
+  if (!SUIsValid(m_entities)) {
+    throw std::logic_error("CW::Entities::faces(): Entities is null");
   }
-	size_t count = 0;
-	SUResult res = SUEntitiesGetNumFaces(m_entities, &count);
+  size_t count = 0;
+  SUResult res = SUEntitiesGetNumFaces(m_entities, &count);
   assert(res == SU_ERROR_NONE);
-	if (count == 0) {
-		return std::vector<Face>(0);
-	}
+  if (count == 0) {
+    return std::vector<Face>(0);
+  }
   SUFaceRef* face_refs = new SUFaceRef[count];
-	res = SUEntitiesGetFaces(m_entities, count, &face_refs[0], &count);
+  res = SUEntitiesGetFaces(m_entities, count, &face_refs[0], &count);
   assert(res == SU_ERROR_NONE);
   std::vector<Face> faces;
   faces.reserve(count);
   for (size_t i=0; i < count; ++i) {
-  	faces.push_back(Face(face_refs[i]));
+    faces.push_back(Face(face_refs[i]));
   }
   delete[] face_refs;
   return faces;
@@ -77,22 +77,22 @@ std::vector<Face> Entities::faces() const {
 
 
 std::vector<Edge> Entities::edges(bool stray_only) const {
-	if (!SUIsValid(m_entities)) {
-  	throw std::logic_error("CW::Entities::edges(): Entities is null");
+  if (!SUIsValid(m_entities)) {
+    throw std::logic_error("CW::Entities::edges(): Entities is null");
   }
-	size_t count = 0;
-	SUResult res = SUEntitiesGetNumEdges(m_entities, stray_only, &count);
+  size_t count = 0;
+  SUResult res = SUEntitiesGetNumEdges(m_entities, stray_only, &count);
   assert(res == SU_ERROR_NONE);
-	if (count == 0) {
-		return std::vector<Edge>(0);
-	}
+  if (count == 0) {
+    return std::vector<Edge>(0);
+  }
   SUEdgeRef* edge_refs = new SUEdgeRef[count];
-	res = SUEntitiesGetEdges(m_entities, stray_only, count, &edge_refs[0], &count);
+  res = SUEntitiesGetEdges(m_entities, stray_only, count, &edge_refs[0], &count);
   assert(res == SU_ERROR_NONE);
   std::vector<Edge> edges;
   edges.reserve(count);
   for (size_t i=0; i < count; ++i) {
-  	edges.push_back(Edge(edge_refs[i]));
+    edges.push_back(Edge(edge_refs[i]));
   }
   delete[] edge_refs;
   return edges;
@@ -100,22 +100,22 @@ std::vector<Edge> Entities::edges(bool stray_only) const {
 
 
 std::vector<ComponentInstance> Entities::instances() const {
-	if (!SUIsValid(m_entities)) {
-  	throw std::logic_error("CW::Entities::instances(): Entities is null");
+  if (!SUIsValid(m_entities)) {
+    throw std::logic_error("CW::Entities::instances(): Entities is null");
   }
-	size_t count = 0;
-	SUResult res = SUEntitiesGetNumInstances(m_entities, &count);
+  size_t count = 0;
+  SUResult res = SUEntitiesGetNumInstances(m_entities, &count);
   assert(res == SU_ERROR_NONE);
-	if (count == 0) {
-		return std::vector<ComponentInstance>{};
-	}
+  if (count == 0) {
+    return std::vector<ComponentInstance>{};
+  }
   SUComponentInstanceRef* instance_refs = new SUComponentInstanceRef[count];
-	res = SUEntitiesGetInstances(m_entities, count, &instance_refs[0], &count);
+  res = SUEntitiesGetInstances(m_entities, count, &instance_refs[0], &count);
   assert(res == SU_ERROR_NONE);
   std::vector<ComponentInstance> instances;
   instances.reserve(count);
   for (size_t i=0; i < count; ++i) {
-  	instances.push_back(ComponentInstance(instance_refs[i]));
+    instances.push_back(ComponentInstance(instance_refs[i]));
   }
   delete[] instance_refs;
   return instances;
@@ -123,78 +123,78 @@ std::vector<ComponentInstance> Entities::instances() const {
 
 
 std::vector<Group> Entities::groups() const {
-	if (!SUIsValid(m_entities)) {
-  	throw std::logic_error("CW::Entities::groups(): Entities is null");
+  if (!SUIsValid(m_entities)) {
+    throw std::logic_error("CW::Entities::groups(): Entities is null");
   }
-	size_t count = 0;
-	SUResult res = SUEntitiesGetNumGroups(m_entities, &count);
+  size_t count = 0;
+  SUResult res = SUEntitiesGetNumGroups(m_entities, &count);
   assert(res == SU_ERROR_NONE);
   if (count == 0) {
     return std::vector<Group>(0);
   }
   std::vector<SUGroupRef> group_refs(count);
-	res = SUEntitiesGetGroups(m_entities, count, &group_refs[0], &count);
+  res = SUEntitiesGetGroups(m_entities, count, &group_refs[0], &count);
   assert(res == SU_ERROR_NONE);
   std::vector<Group> groups;
   groups.reserve(count);
   for (size_t i=0; i < group_refs.size(); ++i) {
-  	groups.push_back(Group(group_refs[i], true));
+    groups.push_back(Group(group_refs[i], true));
   }
   return groups;
 }
 
 
 BoundingBox3D Entities::bounding_box() const {
-	if (!SUIsValid(m_entities)) {
-  	throw std::logic_error("CW::Entities::groups(): Entities is null");
+  if (!SUIsValid(m_entities)) {
+    throw std::logic_error("CW::Entities::groups(): Entities is null");
   }
-	SUBoundingBox3D box = SU_INVALID;
-	SUResult res = SUEntitiesGetBoundingBox(m_entities, &box);
+  SUBoundingBox3D box = SU_INVALID;
+  SUResult res = SUEntitiesGetBoundingBox(m_entities, &box);
   assert(res == SU_ERROR_NONE);
-	return BoundingBox3D(box);
+  return BoundingBox3D(box);
 }
 
 
 size_t Entities::size() const {
-	if (!SUIsValid(m_entities)) {
-  	throw std::logic_error("CW::Entities::size(): Entities is null");
+  if (!SUIsValid(m_entities)) {
+    throw std::logic_error("CW::Entities::size(): Entities is null");
   }
-	size_t total_count = 0;
+  size_t total_count = 0;
   size_t count = 0;
-	SUResult res = SUEntitiesGetNumFaces(m_entities, &count);
+  SUResult res = SUEntitiesGetNumFaces(m_entities, &count);
   assert(res == SU_ERROR_NONE);
   total_count += count;
   count = 0;
-	res = SUEntitiesGetNumEdges(m_entities, true, &count);
+  res = SUEntitiesGetNumEdges(m_entities, true, &count);
   assert(res == SU_ERROR_NONE);
   total_count += count;
   count = 0;
-	res = SUEntitiesGetNumInstances(m_entities, &count);
+  res = SUEntitiesGetNumInstances(m_entities, &count);
   assert(res == SU_ERROR_NONE);
   total_count += count;
   count = 0;
-	res = SUEntitiesGetNumGroups(m_entities, &count);
+  res = SUEntitiesGetNumGroups(m_entities, &count);
   assert(res == SU_ERROR_NONE);
   total_count += count;
-	return total_count;
+  return total_count;
 }
 
 
 void Entities::add(const Entities& other) {
-	if (!SUIsValid(m_entities) || !SUIsValid(other.m_entities)) {
-  	throw std::logic_error("CW::Entities::add(): Entities is null");
+  if (!SUIsValid(m_entities) || !SUIsValid(other.m_entities)) {
+    throw std::logic_error("CW::Entities::add(): Entities is null");
   }
-	GeometryInput geom_input;
+  GeometryInput geom_input;
   geom_input.add_faces(other.faces());
   geom_input.add_edges(other.edges());
-	this->fill(geom_input);
+  this->fill(geom_input);
   std::vector<ComponentInstance> instances = other.instances();
   for (size_t i=0; i < instances.size(); ++i) {
-  	this->add_instance(instances[i].definition(), instances[i].transformation(), instances[i].name());
+    this->add_instance(instances[i].definition(), instances[i].transformation(), instances[i].name());
   }
   std::vector<Group> other_groups = other.groups();
   for (size_t i=0; i < other_groups.size(); ++i) {
-  	Group new_group = this->add_group();
+    Group new_group = this->add_group();
     new_group.entities().add(other_groups[i].entities());
     new_group.transformation(other_groups[i].transformation());
     new_group.name(other_groups[i].name());
@@ -205,12 +205,12 @@ void Entities::add(const Entities& other) {
 
 
 SUResult Entities::fill(GeometryInput &geom_input) {
-	if (!SUIsValid(m_entities)) {
-  	throw std::logic_error("CW::Entities::fill(): Entities is null");
+  if (!SUIsValid(m_entities)) {
+    throw std::logic_error("CW::Entities::fill(): Entities is null");
   }
-	// Check geom_input is not empty.
+  // Check geom_input is not empty.
   if (geom_input.empty()) {
-  	return SU_ERROR_NONE;
+    return SU_ERROR_NONE;
   }
 
   // For the indexes of the GeometryInputRef to make sense after we fill the Entities object with its contents, we need to know how many of each entitity currently exists in the Entities object
@@ -271,11 +271,11 @@ SUResult Entities::fill(GeometryInput &geom_input) {
 }
 
 std::vector<Face> Entities::add_faces(std::vector<Face>& faces) {
-	if (!SUIsValid(m_entities)) {
-  	throw std::logic_error("CW::Entities::add_faces(): Entities is null");
+  if (!SUIsValid(m_entities)) {
+    throw std::logic_error("CW::Entities::add_faces(): Entities is null");
   }
   SUResult res = SUEntitiesAddFaces(m_entities, faces.size(), faces[0]);
-	assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE);
 
   // Transfer ownership of each face
   for (auto& face : faces)
@@ -285,8 +285,8 @@ std::vector<Face> Entities::add_faces(std::vector<Face>& faces) {
 }
 
 std::vector<Edge> Entities::add_edges(std::vector<Edge>& edges) {
-	if (!SUIsValid(m_entities)) {
-  	throw std::logic_error("CW::Entities::add_edges(): Entities is null");
+  if (!SUIsValid(m_entities)) {
+    throw std::logic_error("CW::Entities::add_edges(): Entities is null");
   }
   SUResult res = SUEntitiesAddEdges(m_entities, edges.size(), edges[0]);
   assert(res == SU_ERROR_NONE);
@@ -300,10 +300,10 @@ std::vector<Edge> Entities::add_edges(std::vector<Edge>& edges) {
 
 
 Edge Entities::add_edge(Edge& edge) {
-	if (!SUIsValid(m_entities)) {
-  	throw std::logic_error("CW::Entities::add_edge(): Entities is null");
+  if (!SUIsValid(m_entities)) {
+    throw std::logic_error("CW::Entities::add_edge(): Entities is null");
   }
-	SUEdgeRef edge_ref = edge.ref();
+  SUEdgeRef edge_ref = edge.ref();
   SUResult res = SUEntitiesAddEdges(m_entities, 1, &edge_ref);
   assert(res == SU_ERROR_NONE);
   edge.attached(true);
@@ -312,28 +312,28 @@ Edge Entities::add_edge(Edge& edge) {
 
 
 void Entities::add_instance(ComponentInstance& instance) {
-	if (!SUIsValid(m_entities)) {
-  	throw std::logic_error("CW::Entities::add_instance(): Entities is null");
+  if (!SUIsValid(m_entities)) {
+    throw std::logic_error("CW::Entities::add_instance(): Entities is null");
   }
-	if (!instance) {
-  	throw std::invalid_argument("CW::Entities::add_instance(): ComponentInstance argument is invalid");
+  if (!instance) {
+    throw std::invalid_argument("CW::Entities::add_instance(): ComponentInstance argument is invalid");
   }
   SUResult res = SUEntitiesAddInstance(m_entities, instance, nullptr);
-	assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE);
   instance.attached(true);
 }
 
 
 ComponentInstance Entities::add_instance(const ComponentDefinition& definition, const Transformation& transformation, const String& name){
-	if (!SUIsValid(m_entities)) {
-  	throw std::logic_error("CW::Entities::add_instance(): Entities is null");
+  if (!SUIsValid(m_entities)) {
+    throw std::logic_error("CW::Entities::add_instance(): Entities is null");
   }
-	if (!definition) {
-  	throw std::invalid_argument("CW::Entities::add_instance(): ComponentDefinition argument is invalid");
+  if (!definition) {
+    throw std::invalid_argument("CW::Entities::add_instance(): ComponentDefinition argument is invalid");
   }
   SUComponentInstanceRef instance = SU_INVALID;
   SUResult res = SUComponentDefinitionCreateInstance(definition.ref(), &instance);
-	assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE);
   SUTransformation transform = transformation.ref();
   res = SUComponentInstanceSetTransform(instance, &transform);
   assert(res == SU_ERROR_NONE);
@@ -344,7 +344,7 @@ ComponentInstance Entities::add_instance(const ComponentDefinition& definition, 
     SUStringRef name_ref = name.ref();
     res = SUEntitiesAddInstance(m_entities, instance, &name_ref);
   }
-	assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE);
   return ComponentInstance(instance, true);
 }
 
@@ -352,14 +352,14 @@ ComponentInstance Entities::add_instance(const ComponentDefinition& definition, 
 // TODO: add_group needs to be refined
 
 Group Entities::add_group(const ComponentDefinition& definition, const Transformation& transformation) {
-	if (!SUIsValid(m_entities)) {
-  	throw std::logic_error("CW::Entities::add_group(): Entities is null");
+  if (!SUIsValid(m_entities)) {
+    throw std::logic_error("CW::Entities::add_group(): Entities is null");
   }
-	if (!definition) {
-  	throw std::invalid_argument("CW::Entities::add_group(): ComponentDefinition argument is invalid");
+  if (!definition) {
+    throw std::invalid_argument("CW::Entities::add_group(): ComponentDefinition argument is invalid");
   }
-	if (!definition.is_group()) {
-  	throw std::invalid_argument("CW::Entities::add_group(): ComponentDefinition given is not a group");
+  if (!definition.is_group()) {
+    throw std::invalid_argument("CW::Entities::add_group(): ComponentDefinition given is not a group");
   }
   // Groups cannot be created with a component definition and transformation objects.  Instead, the geometry must be copied in to a new Entities object in the group.
   Group new_group = this->add_group();
@@ -369,21 +369,21 @@ Group Entities::add_group(const ComponentDefinition& definition, const Transform
   GeometryInput geom_input;
   std::vector<Face> def_faces = def_entities.faces();
   for (size_t i=0; i < def_faces.size(); ++i) {
-  	geom_input.add_face(def_faces[i]);
+    geom_input.add_face(def_faces[i]);
   }
   std::vector<Edge> def_edges = def_entities.edges(true);
   for (size_t i=0; i < def_edges.size(); ++i) {
-  	group_entities.add_edge(def_edges[i]);
+    group_entities.add_edge(def_edges[i]);
   }
   group_entities.fill(geom_input);
   // Also add instances and groups
   std::vector<Group> def_groups = def_entities.groups();
   for (size_t i=0; i < def_groups.size(); ++i) {
-  	group_entities.add_group(def_groups[i].definition() , def_groups[i].transformation());
+    group_entities.add_group(def_groups[i].definition() , def_groups[i].transformation());
   }
   std::vector<ComponentInstance> def_instances = def_entities.instances();
   for (size_t i=0; i < def_instances.size(); ++i) {
-  	group_entities.add_instance(def_instances[i].definition(), def_instances[i].transformation());
+    group_entities.add_instance(def_instances[i].definition(), def_instances[i].transformation());
   }
 
   // TODO: add other entities to the group (construction lines, curves, etc)
@@ -391,54 +391,54 @@ Group Entities::add_group(const ComponentDefinition& definition, const Transform
 
   // TODO: the way groups are implemented are a problem.  Come back to this.
   //SUResult res = SUComponentDefinitionCreateGroup(definition.ref(), &group);
-	//assert(res == SU_ERROR_NONE);
+  //assert(res == SU_ERROR_NONE);
   //SUTransformation transform = transformation.ref();
   //res = SUComponentInstanceSetTransform(instance, &transform);
 }
 
 Group Entities::add_group() {
-	if (!SUIsValid(m_entities)) {
-  	throw std::logic_error("CW::Entities::add_group(): Entities is null");
+  if (!SUIsValid(m_entities)) {
+    throw std::logic_error("CW::Entities::add_group(): Entities is null");
   }
   Group new_group;
   // Add group to the entities object before populating it.
   SUResult res = SUEntitiesAddGroup(m_entities, new_group.ref());
-	assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE);
   return new_group;
 }
 
 
 bool Entities::transform_entities(std::vector<Entity>& elems, const Transformation& transform) {
-	if (!SUIsValid(m_entities)) {
-  	throw std::logic_error("CW::Entities::transform_entities(): Entities is null");
+  if (!SUIsValid(m_entities)) {
+    throw std::logic_error("CW::Entities::transform_entities(): Entities is null");
   }
   SUTransformation trans_ref = transform.ref();
-	SUResult res = SUEntitiesTransform(m_entities, elems.size(), elems[0], &trans_ref);
+  SUResult res = SUEntitiesTransform(m_entities, elems.size(), elems[0], &trans_ref);
   assert(res == SU_ERROR_NONE || res == SU_ERROR_GENERIC);
-	if (res == SU_ERROR_UNSUPPORTED) {
-  	throw std::invalid_argument("CW::Entities::transform_entities(): One of the elements given in the Entity vector is not contained by this Entities object.");
+  if (res == SU_ERROR_UNSUPPORTED) {
+    throw std::invalid_argument("CW::Entities::transform_entities(): One of the elements given in the Entity vector is not contained by this Entities object.");
   }
   else if (SU_ERROR_GENERIC) {
-  	return false;
+    return false;
   }
   return true;
 }
 
 
 bool Entities::transform_entities(std::vector<Entity>& elems, std::vector<Transformation>& transforms) {
-	if (!SUIsValid(m_entities)) {
-  	throw std::logic_error("CW::Entities::transform_entities(): Entities is null");
+  if (!SUIsValid(m_entities)) {
+    throw std::logic_error("CW::Entities::transform_entities(): Entities is null");
   }
-	if (elems.size() != transforms.size()) {
-  	throw std::invalid_argument("CW::Entities::transform_entities(): different number of elements to transformation objects given - the same number must be given.");
+  if (elems.size() != transforms.size()) {
+    throw std::invalid_argument("CW::Entities::transform_entities(): different number of elements to transformation objects given - the same number must be given.");
   }
   assert(elems.size() == transforms.size());
   SUResult res = SUEntitiesTransformMultiple(m_entities, elems.size(), elems[0], transforms[0]);
-	if (res == SU_ERROR_UNSUPPORTED) {
-  	throw std::invalid_argument("CW::Entities::transform_entities(): One of the elements given in the Entity vector is not contained by this Entities object.");
+  if (res == SU_ERROR_UNSUPPORTED) {
+    throw std::invalid_argument("CW::Entities::transform_entities(): One of the elements given in the Entity vector is not contained by this Entities object.");
   }
   else if (SU_ERROR_GENERIC) {
-  	return false;
+    return false;
   }
   return true;
 }
@@ -447,7 +447,7 @@ bool Entities::transform_entities(std::vector<Entity>& elems, std::vector<Transf
 
 
 Entities::operator SUEntitiesRef() {
-	return m_entities;
+  return m_entities;
 }
 
 } /* namespace CW */

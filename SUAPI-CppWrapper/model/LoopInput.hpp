@@ -49,7 +49,7 @@ class Vertex;
 * Struct holds information for an edge that was added to a vertex.
 */
 struct InputEdgeProperties {
-	bool hidden = false;
+  bool hidden = false;
   bool soft = false;
   bool smooth = false;
   Material material = Material();
@@ -57,8 +57,8 @@ struct InputEdgeProperties {
 };
 
 class LoopInput {
-	friend class Face;
-	friend class GeometryInput;
+  friend class Face;
+  friend class GeometryInput;
   
   private:
   SULoopInputRef m_loop_input;
@@ -75,7 +75,7 @@ class LoopInput {
   static SULoopInputRef create_loop_input_ref();
   
   public:
-	/**
+  /**
   * Create empty LoopInput object
   */
   LoopInput();
@@ -99,8 +99,8 @@ class LoopInput {
   */
   LoopInput(const std::vector<InputEdgeProperties>& loop_edge_properties, size_t vertex_index = 0);
 
-	/** Copy constructor */
-	LoopInput(const LoopInput& other);
+  /** Copy constructor */
+  LoopInput(const LoopInput& other);
 
   ~LoopInput();
   
@@ -124,7 +124,7 @@ class LoopInput {
   */
   operator bool() const;
   
-	/**
+  /**
   * Adds a vertex index to the loop. LoopInput does not hold the point locations of vertices.  It holds information on the edges that form the loop.
   * @param index - the vertex index of the loop.  When used with SUCreateFace(), it would be a zero-based index.  When used with SUGeometryInputAddFace(), the vertex index would need to correspond to specific indices of the vertices that have been added to SUGeometryInputRef object.
   */

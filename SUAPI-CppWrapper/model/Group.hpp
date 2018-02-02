@@ -43,15 +43,15 @@ class ComponentDefinition;
 class String;
 
 class Group :public ComponentInstance {
-	private:
+  private:
   SUGroupRef m_group;
   
   /**
   * Create new SUGroupRef object
   */
   static SUGroupRef create_group();
-	
-	static SUGroupRef copy_reference(const Group& other);
+  
+  static SUGroupRef copy_reference(const Group& other);
 
   public:
   /**
@@ -64,10 +64,10 @@ class Group :public ComponentInstance {
   */
   Group(SUGroupRef group, bool attached = false);
     
-	/** Copy constructor */
+  /** Copy constructor */
   Group(const Group& other);
   
-	/** Destructor */
+  /** Destructor */
   ~Group();
 
   /** Copy assignment operator */

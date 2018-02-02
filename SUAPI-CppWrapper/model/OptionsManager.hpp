@@ -40,7 +40,7 @@ class Model;
 
 
 class OptionsManager {
-	private:
+  private:
   SUOptionsManagerRef m_options_manager;
   
   public:

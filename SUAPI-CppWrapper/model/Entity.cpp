@@ -37,34 +37,34 @@ namespace CW {
 ** Constructors / Destructor **
 *******************************/
 Entity::Entity():
-	m_entity(SU_INVALID),
+  m_entity(SU_INVALID),
   m_attached(false)
 {}
 
 
 Entity::Entity(SUEntityRef entity, bool attached):
-	m_entity(entity),
+  m_entity(entity),
   m_attached(attached)
 {}
 
 
 Entity::Entity(const Entity& other, SUEntityRef entity_ref):
-	m_entity(entity_ref),
-	m_attached(other.m_attached)
+  m_entity(entity_ref),
+  m_attached(other.m_attached)
 {}
 
 
 Entity::~Entity() {
-	// Entity objects cannot release themselves.
+  // Entity objects cannot release themselves.
 }
 
 /*******************
 ** Public Methods **
 ********************/
 Entity& Entity::operator=(const Entity& other) {
-	m_attached = other.m_attached;
+  m_attached = other.m_attached;
   if (SUIsInvalid(other.m_entity)) {
- 		m_entity = other.m_entity;
+     m_entity = other.m_entity;
   }
   else if (!other.m_attached) {
     this->copy_attributes_from(other);
@@ -74,35 +74,35 @@ Entity& Entity::operator=(const Entity& other) {
 
 
 Entity::operator SUEntityRef() const {
-	return m_entity;
+  return m_entity;
 }
 
 
 Entity::operator SUEntityRef*() {
-	return &m_entity;
+  return &m_entity;
 }
 
 
 bool Entity::attached() const {
-	return m_attached;
+  return m_attached;
 }
 
 
 void Entity::attached(bool attach) {
-	m_attached = attach;
+  m_attached = attach;
 }
 
 
-std::vector<AttributeDictionary>	Entity::attribute_dictionaries() const {
-	if (!(*this)) {
-  	throw std::logic_error("CW::Entity::attribute_dictionaries(): Entity is null");
+std::vector<AttributeDictionary>  Entity::attribute_dictionaries() const {
+  if (!(*this)) {
+    throw std::logic_error("CW::Entity::attribute_dictionaries(): Entity is null");
   }
   size_t num_dicts = 0;
   SUResult res = SUEntityGetNumAttributeDictionaries(m_entity, &num_dicts);
   assert(res == SU_ERROR_NONE);
-	if (num_dicts == 0) {
-		return std::vector<AttributeDictionary>{};
-	}
+  if (num_dicts == 0) {
+    return std::vector<AttributeDictionary>{};
+  }
   SUAttributeDictionaryRef* dicts_ref = new SUAttributeDictionaryRef[num_dicts];
   res = SUEntityGetAttributeDictionaries(m_entity, num_dicts, &dicts_ref[0], &num_dicts);
   assert(res == SU_ERROR_NONE);
@@ -115,22 +115,22 @@ std::vector<AttributeDictionary>	Entity::attribute_dictionaries() const {
 }
 
 AttributeDictionary Entity::attribute_dictionary(const std::string& name) const {
-	if (!(*this)) {
-  	throw std::logic_error("CW::Entity::attribute_dictionary(): Entity is null");
+  if (!(*this)) {
+    throw std::logic_error("CW::Entity::attribute_dictionary(): Entity is null");
   }
   char const *c_name = name.c_str();
   SUAttributeDictionaryRef dict_ref = SU_INVALID;
   SUResult res = SUEntityGetAttributeDictionary(m_entity, &c_name[0], &dict_ref);
   if (res == SU_ERROR_NONE) {
-  	return AttributeDictionary(dict_ref);
+    return AttributeDictionary(dict_ref);
   }
   // Otherwise return null object
   return AttributeDictionary();
 }
 
 bool Entity::copy_attributes_from(const Entity& entity) {
-	if (!(*this) || !entity) {
-  	throw std::logic_error("CW::Entity::copy_attributes_from(): Entity is null");
+  if (!(*this) || !entity) {
+    throw std::logic_error("CW::Entity::copy_attributes_from(): Entity is null");
   }
   std::vector<AttributeDictionary> atts_from = entity.attribute_dictionaries();
   for (size_t i=0; i < atts_from.size(); i++) {
@@ -148,18 +148,18 @@ void delete_attribute(AttributeDictionary &dict, std::string key);
 */
 
 bool Entity::is_valid() const {
-	return !!(*this);
+  return !!(*this);
 }
 
 
 bool Entity::operator!() const {
-	return SUIsInvalid(m_entity);
+  return SUIsInvalid(m_entity);
 }
 
 
 int32_t Entity::entityID() const{
-	if (!(*this)) {
-  	throw std::logic_error("CW::Entity::entityID(): Entity is null");
+  if (!(*this)) {
+    throw std::logic_error("CW::Entity::entityID(): Entity is null");
   }
   int32_t entity_id = SU_INVALID;
   SUEntityGetID(m_entity, &entity_id);
@@ -168,8 +168,8 @@ int32_t Entity::entityID() const{
 
 
 TypedValue Entity::get_attribute(const std::string& dict_name, const std::string& key, const TypedValue& default_value) const {
-	if (!(*this)) {
-  	throw std::logic_error("CW::Entity::get_attribute(): Entity is null");
+  if (!(*this)) {
+    throw std::logic_error("CW::Entity::get_attribute(): Entity is null");
   }
   AttributeDictionary dict = attribute_dictionary(dict_name);
   return get_attribute(dict, key, default_value);
@@ -177,8 +177,8 @@ TypedValue Entity::get_attribute(const std::string& dict_name, const std::string
 
 
 TypedValue Entity::get_attribute(const AttributeDictionary& dict, const std::string& key, const TypedValue& default_value) const {
-	if (!(*this)) {
-  	throw std::logic_error("CW::Entity::get_attribute(): Entity is null");
+  if (!(*this)) {
+    throw std::logic_error("CW::Entity::get_attribute(): Entity is null");
   }
   return dict.get_attribute(key, default_value);
 }
@@ -190,24 +190,24 @@ parent()
 
 
 bool Entity::set_attribute(const std::string& dict_name, const std::string& key, const TypedValue& value) {
-	if (!(*this)) {
-  	throw std::logic_error("CW::Entity::set_attribute(): Entity is null");
+  if (!(*this)) {
+    throw std::logic_error("CW::Entity::set_attribute(): Entity is null");
   }
   AttributeDictionary dict = attribute_dictionary(dict_name);
   return set_attribute(dict, key, value);
 }
 
 bool Entity::set_attribute(AttributeDictionary& dict, const std::string& key, const TypedValue& value) {
-	if (!(*this)) {
-  	throw std::logic_error("CW::Entity::set_attribute(): Entity is null");
+  if (!(*this)) {
+    throw std::logic_error("CW::Entity::set_attribute(): Entity is null");
   }
   return dict.set_attribute(key, value);
 }
 
 
 enum SURefType Entity::entity_type() const{
-	if (!(*this)) {
-  	throw std::logic_error("CW::Entity::entity_type(): Entity is null");
+  if (!(*this)) {
+    throw std::logic_error("CW::Entity::entity_type(): Entity is null");
   }
   return SUEntityGetType(m_entity);
 }
@@ -215,7 +215,7 @@ enum SURefType Entity::entity_type() const{
 /*
 bool Entity::operator==(const Entity& entity) const {
   if (m_entity.ptr == entity.m_entity.ptr) {
-  	return true;
+    return true;
   }
   return false;
   //return entityID() == entity.entityID();
@@ -223,9 +223,9 @@ bool Entity::operator==(const Entity& entity) const {
 */
 
 bool operator==(const Entity& lhs, const Entity& rhs) {
-	if (!lhs || !rhs) {
-  	if (!lhs && !rhs) {
-    	return true;
+  if (!lhs || !rhs) {
+    if (!lhs && !rhs) {
+      return true;
     }
     return false;
   }
@@ -234,7 +234,7 @@ bool operator==(const Entity& lhs, const Entity& rhs) {
 }
 
 bool operator!=(const Entity& lhs, const Entity& rhs) {
-	return !(lhs == rhs);
+  return !(lhs == rhs);
 }
 
 } /* namespace CW */

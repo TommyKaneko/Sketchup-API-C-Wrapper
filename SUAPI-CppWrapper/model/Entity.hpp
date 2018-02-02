@@ -65,7 +65,7 @@ class Entity {
   /**
   * @brief Constructor representing a null objject.
   */
-	Entity();
+  Entity();
 
   /**
   * @brief Creates a new Entity object.
@@ -85,7 +85,7 @@ class Entity {
 
   /**
   * @brief Destructor
-	*
+  *
   * The C++ wrapper deals with releasing objects, so user does not have to keep track of memory allocations.
   */
   ~Entity();
@@ -95,23 +95,23 @@ class Entity {
 
   /*
   * @brief Returns a copy of the wrapped SUEntityRef. USE WITH CAUTION.
-	*
+  *
   * Note that the Entity object still manages the lifetime of the reference, so the SUEntityRef could become invalid.
   */
   operator SUEntityRef() const;
 
   /*
   * @brief Returns a pointer to the wrapped SUEntityRef. USE WITH CAUTION.
-	*
+  *
   * Note that the Entity object still manages the lifetime of the reference, so the SUEntityRef could become invalid.
   */
   operator SUEntityRef*();
-	
-	/**
-	* @brief Returns true if the entity is attached to another object.
-	*/
-	bool attached() const;
-	
+  
+  /**
+  * @brief Returns true if the entity is attached to another object.
+  */
+  bool attached() const;
+  
   /**
   * @brief Method lets the object know that it has been attached to a model.  This is important as it will let the object know that it does not need to "release" the object.
   * @param attach - (optional) true to let the object know that it has been attached to a model.  False to let the object know that it has not been attached.
@@ -151,7 +151,7 @@ class Entity {
 
   /**
   * @brief Checks if the entity is valid.
-	*
+  *
   * Note that this function does not check if the entity has been deleted. @see operator!().
   */
   bool is_valid() const;
@@ -161,7 +161,7 @@ class Entity {
   */
   bool operator!() const;
 
-	/**
+  /**
   * @brief Retrieve a unique ID assigned to an entity.
   * @return int32_t key for the Entity object.
   */
@@ -199,7 +199,7 @@ class Entity {
   */
   bool set_attribute(const std::string& dict_name, const std::string& key, const TypedValue& value);
 
-	/**
+  /**
   * @brief Sets the value of an attribute in the given AttributeDictionary object.
   * @param dict - AttributeDictionary object that the attribute is in.
   * @param key - std::string attribute key.

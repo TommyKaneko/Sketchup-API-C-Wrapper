@@ -44,16 +44,16 @@ namespace CW {
 * Private static methods **
 ***************************/
 SUFaceRef Face::create_face(std::vector<Point3D>& outer_points) {
-	LoopInput loop_input;
+  LoopInput loop_input;
   for (size_t i=0; i < outer_points.size(); ++i) {
-  	loop_input.add_vertex_index(i);
+    loop_input.add_vertex_index(i);
   }
   return create_face(outer_points, loop_input);
 }
 
 
 SUFaceRef Face::create_face(std::vector<Point3D>& outer_points, LoopInput& loop_input) {
-	SUFaceRef face = SU_INVALID;
+  SUFaceRef face = SU_INVALID;
   SULoopInputRef loop_input_ref = loop_input.ref();
   SUPoint3D* su_points = new SUPoint3D[outer_points.size()];
   for (size_t i=0; i < outer_points.size(); i++) {
@@ -61,23 +61,23 @@ SUFaceRef Face::create_face(std::vector<Point3D>& outer_points, LoopInput& loop_
   }
   SUResult res = SUFaceCreate(&face, &su_points[0], &loop_input_ref);
   if (res != SU_ERROR_NONE) {
-  	// The points cannot be made into a face: either the points do not lie in a plane, or is somehow problematic.
+    // The points cannot be made into a face: either the points do not lie in a plane, or is somehow problematic.
     return SU_INVALID;
   }
   loop_input.m_attached = true;
   delete su_points;
-	return face;
+  return face;
 }
 
 
 SUFaceRef Face::copy_reference(const Face& other) {
-	if (other.m_attached || !other) {
-  	return other.m_face;
+  if (other.m_attached || !other) {
+    return other.m_face;
   }
   // The other face has not been attached to the model, so copy its properties to a new object
   Loop other_outer_loop = other.outer_loop();
   std::vector<Point3D> other_outer_points = other_outer_loop.points();
-	LoopInput outer_loop_input = other_outer_loop.loop_input();
+  LoopInput outer_loop_input = other_outer_loop.loop_input();
   SUFaceRef new_face = create_face(other_outer_points, outer_loop_input);
   return new_face;
 }
@@ -87,33 +87,33 @@ SUFaceRef Face::copy_reference(const Face& other) {
 * Constructors / Destructor **
 ******************************/
 Face::Face():
-	DrawingElement(SU_INVALID, false),
-	m_face(SU_INVALID)
+  DrawingElement(SU_INVALID, false),
+  m_face(SU_INVALID)
 {}
 
 
 Face::Face(std::vector<Point3D>& outer_loop):
-	Face(create_face(outer_loop), false)
+  Face(create_face(outer_loop), false)
 {}
 
 
 Face::Face(std::vector<Point3D>& outer_loop, LoopInput& loop_input):
-	Face(create_face(outer_loop, loop_input), false)
+  Face(create_face(outer_loop, loop_input), false)
 {}
 
 
 Face::Face(SUFaceRef face, bool attached):
-	DrawingElement(SUFaceToDrawingElement(face), attached),
-	m_face(face)
+  DrawingElement(SUFaceToDrawingElement(face), attached),
+  m_face(face)
 {}
 
 
 /** Copy constructor */
 Face::Face(const Face& other):
-	DrawingElement(other, SUFaceToDrawingElement(copy_reference(other))),
+  DrawingElement(other, SUFaceToDrawingElement(copy_reference(other))),
   m_face(SUFaceFromDrawingElement(m_drawing_element))
 {
-	if (!other.m_attached && SUIsValid(other.m_face)) {
+  if (!other.m_attached && SUIsValid(other.m_face)) {
     // Add the inner loops
     std::vector<Loop> inner_loops = other.inner_loops();
     std::vector<std::vector<Point3D>> inner_loops_points;
@@ -129,9 +129,9 @@ Face::Face(const Face& other):
 
 
 Face::~Face() {
-	if (!m_attached && SUIsValid(m_face)) {
-  	SUResult res = SUFaceRelease(&m_face);
-		assert(res == SU_ERROR_NONE);
+  if (!m_attached && SUIsValid(m_face)) {
+    SUResult res = SUFaceRelease(&m_face);
+    assert(res == SU_ERROR_NONE);
   }
 }
 
@@ -151,61 +151,61 @@ Face& Face::operator=(const Face& other) {
 }
 
   
-SUFaceRef Face::ref() const {	return m_face; }
-Face::operator SUFaceRef() const {	return m_face;}
-Face::operator SUFaceRef*() {	return &m_face;}
+SUFaceRef Face::ref() const {  return m_face; }
+Face::operator SUFaceRef() const {  return m_face;}
+Face::operator SUFaceRef*() {  return &m_face;}
 
 bool Face::operator!() const {
-	if (SUIsInvalid(this->m_face)) {
-  	return true;
+  if (SUIsInvalid(this->m_face)) {
+    return true;
   }
   return false;
 }
 
 
 double Face::area() const {
-	if (!(*this)) {
-  	throw std::logic_error("CW::Face::area(): Face is null");
+  if (!(*this)) {
+    throw std::logic_error("CW::Face::area(): Face is null");
   }
-	double area;
-	SUResult res = SUFaceGetArea(m_face, &area);
+  double area;
+  SUResult res = SUFaceGetArea(m_face, &area);
   assert(res == SU_ERROR_NONE);
   return area;
 }
 
 
 void Face::add_inner_loop(std::vector<Point3D>& points, LoopInput &loop_input) {
-	if (!(*this)) {
-  	throw std::logic_error("CW::Face::add_inner_loop(): Face is null");
+  if (!(*this)) {
+    throw std::logic_error("CW::Face::add_inner_loop(): Face is null");
   }
-	if (points.size() != loop_input.m_edge_num) {
-  	throw std::invalid_argument("CW::Face::add_inner_loop(): Unequal number of vertices between given Point3D vector and LoopInput object");
+  if (points.size() != loop_input.m_edge_num) {
+    throw std::invalid_argument("CW::Face::add_inner_loop(): Unequal number of vertices between given Point3D vector and LoopInput object");
   }
   SUResult res = SUFaceAddInnerLoop(m_face, points[0], loop_input);
-	if (res == SU_ERROR_INVALID_INPUT) {
-  	throw std::invalid_argument("CW::Face::add_inner_loop(): Arguments are invalid");
+  if (res == SU_ERROR_INVALID_INPUT) {
+    throw std::invalid_argument("CW::Face::add_inner_loop(): Arguments are invalid");
   }
   assert(res == SU_ERROR_NONE);
 }
 
 
 Material Face::back_material() const {
-	if (!(*this)) {
-  	throw std::logic_error("CW::Face::back_material(): Face is null");
+  if (!(*this)) {
+    throw std::logic_error("CW::Face::back_material(): Face is null");
   }
-	SUMaterialRef material = SU_INVALID;
-	SUResult res = SUFaceGetBackMaterial(m_face, &material);
+  SUMaterialRef material = SU_INVALID;
+  SUResult res = SUFaceGetBackMaterial(m_face, &material);
   if (res == SU_ERROR_NO_DATA) {
-  	return Material();
+    return Material();
   }
   assert(res == SU_ERROR_NONE);
-	return Material(material);
+  return Material(material);
 }
 
 
 Material Face::back_material(const Material& material) {
-	if (!(*this)) {
-  	throw std::logic_error("CW::Face::back_material(): Face is null");
+  if (!(*this)) {
+    throw std::logic_error("CW::Face::back_material(): Face is null");
   }
   SUResult res = SUFaceSetBackMaterial(m_face, material.ref());
   assert(res == SU_ERROR_NONE);
@@ -224,30 +224,30 @@ Material Face::back_material(const Material& material) {
 * @return FacePointClass enum indicating the status of the point relative to the face.
 */
 FacePointClass Face::classify_point(const Point3D& point) {
-	if (!(*this)) {
-  	throw std::logic_error("CW::Face::classify_point(): Face is null");
+  if (!(*this)) {
+    throw std::logic_error("CW::Face::classify_point(): Face is null");
   }
-	if (!point) {
-  	throw std::invalid_argument("CW::Face::classify_point(): Given Point3D object is null");
+  if (!point) {
+    throw std::invalid_argument("CW::Face::classify_point(): Given Point3D object is null");
   }
-	Loop outer_loop = this->outer_loop();
+  Loop outer_loop = this->outer_loop();
   PointLoopClassify outer_class = outer_loop.classify_point(point);
   switch (outer_class) {
-  	case (PointLoopClassify::PointUnknown):
-    	return FacePointClass::PointUnknown;
+    case (PointLoopClassify::PointUnknown):
+      return FacePointClass::PointUnknown;
     case (PointLoopClassify::PointNotOnPlane):
-    	return FacePointClass::PointNotOnPlane;
+      return FacePointClass::PointNotOnPlane;
     case (PointLoopClassify::PointOnEdge):
-    	return FacePointClass::PointOnEdge;
+      return FacePointClass::PointOnEdge;
     case (PointLoopClassify::PointOnVertex):
-    	return FacePointClass::PointOnVertex;
+      return FacePointClass::PointOnVertex;
     case (PointLoopClassify::PointOutside):
-    	return FacePointClass::PointOutside;
+      return FacePointClass::PointOutside;
     case (PointLoopClassify::PointInside): {
-    	std::vector<Loop> inner_loops = this->inner_loops();
+      std::vector<Loop> inner_loops = this->inner_loops();
       for (size_t i=0; i < inner_loops.size(); i++) {
         PointLoopClassify inner_class = inner_loops[i].classify_point(point);
-				switch (inner_class) {
+        switch (inner_class) {
           case (PointLoopClassify::PointOnEdge):
             return FacePointClass::PointOnEdge;
           case (PointLoopClassify::PointOnVertex):
@@ -255,11 +255,11 @@ FacePointClass Face::classify_point(const Point3D& point) {
           case (PointLoopClassify::PointOutside):
             break;
           case (PointLoopClassify::PointInside):
-          	return FacePointClass::PointOutside;
-          	break;
+            return FacePointClass::PointOutside;
+            break;
           case (PointLoopClassify::PointNotOnPlane):
           case (PointLoopClassify::PointUnknown):
-  					assert(false); // this should not happen
+            assert(false); // this should not happen
         }
       }
       return FacePointClass::PointOutside;
@@ -270,18 +270,18 @@ FacePointClass Face::classify_point(const Point3D& point) {
 
 
 std::vector<Edge> Face::edges() {
-	if (!(*this)) {
-  	throw std::logic_error("CW::Face::edges(): Face is null");
+  if (!(*this)) {
+    throw std::logic_error("CW::Face::edges(): Face is null");
   }
-	std::vector<Edge> total_edges = outer_loop().edges();
+  std::vector<Edge> total_edges = outer_loop().edges();
   std::vector<Loop> all_loops = loops();
   size_t total_edge_num = 0;
   for (size_t i=0; i < all_loops.size(); i++) {
-		total_edge_num += all_loops[i].size();
+    total_edge_num += all_loops[i].size();
   }
   total_edges.reserve(total_edge_num);
   for (size_t i=0; i < all_loops.size(); i++) {
-  	std::vector<Edge> loop_edges = all_loops[i].edges();
+    std::vector<Edge> loop_edges = all_loops[i].edges();
     total_edges.insert(total_edges.end(), loop_edges.begin(), loop_edges.end());
   }
   return total_edges;
@@ -290,7 +290,7 @@ std::vector<Edge> Face::edges() {
 /*
 // TODO
 UVHelper Face::get_UVHelper(bool front, bool back, TextureWriter tex_writer) {
-	//SUUVHelperRef uv_helper = SU_INVALID;
+  //SUUVHelperRef uv_helper = SU_INVALID;
   UVHelper uv_helper{};
   SUFaceGetUVHelper(m_face, front, back, tex_writer, uv_helper);
   return uv_helper;
@@ -303,17 +303,17 @@ UVHelper Face::get_UVHelper(bool front, bool back, TextureWriter tex_writer) {
 
 
 std::vector<Loop> Face::inner_loops() const {
-	if (!(*this)) {
-  	throw std::logic_error("CW::Face::inner_loops(): Face is null");
+  if (!(*this)) {
+    throw std::logic_error("CW::Face::inner_loops(): Face is null");
   }
-	size_t num_loops = 0;
-	SUFaceGetNumInnerLoops(m_face, &num_loops);
+  size_t num_loops = 0;
+  SUFaceGetNumInnerLoops(m_face, &num_loops);
   SULoopRef* inner_loops = new SULoopRef[num_loops];
   SUFaceGetInnerLoops(m_face, num_loops, &inner_loops[0], &num_loops);
   std::vector<Loop> loops;
   loops.reserve(num_loops);
-	for (size_t i=0; i < num_loops; i++) {
-  	loops.push_back(Loop(inner_loops[i]));
+  for (size_t i=0; i < num_loops; i++) {
+    loops.push_back(Loop(inner_loops[i]));
   }
   delete inner_loops;
   return loops;
@@ -321,15 +321,15 @@ std::vector<Loop> Face::inner_loops() const {
 
 
 std::vector<Loop> Face::loops() const {
-	if (!(*this)) {
-  	throw std::logic_error("CW::Face::loops(): Face is null");
+  if (!(*this)) {
+    throw std::logic_error("CW::Face::loops(): Face is null");
   }
-	std::vector<Loop> all_loops;
+  std::vector<Loop> all_loops;
   all_loops.push_back(outer_loop());
   std::vector<Loop> inner_ls = inner_loops();
   all_loops.reserve(all_loops.size() + inner_ls.size());
-	all_loops.insert(all_loops.end(), inner_ls.begin(), inner_ls.end());
-	return all_loops;
+  all_loops.insert(all_loops.end(), inner_ls.begin(), inner_ls.end());
+  return all_loops;
 }
 
 /*
@@ -339,17 +339,17 @@ PolygonMesh mesh();
 
 
 Vector3D Face::normal() const {
-	if (!(*this)) {
-  	throw std::logic_error("CW::Face::normal(): Face is null");
+  if (!(*this)) {
+    throw std::logic_error("CW::Face::normal(): Face is null");
   }
-	Plane3D c_plane = plane();
+  Plane3D c_plane = plane();
   return c_plane.normal();
 }
 
 
 Loop Face::outer_loop() const {
-	if (!(*this)) {
-  	throw std::logic_error("CW::Face::outer_loop(): Face is null");
+  if (!(*this)) {
+    throw std::logic_error("CW::Face::outer_loop(): Face is null");
   }
   SULoopRef lp = SU_INVALID;
   SUResult res = SUFaceGetOuterLoop(m_face, &lp);
@@ -359,11 +359,11 @@ Loop Face::outer_loop() const {
 
 
 Plane3D Face::plane() const {
-	if (!(*this)) {
-  	throw std::logic_error("CW::Face::plane(): Face is null");
+  if (!(*this)) {
+    throw std::logic_error("CW::Face::plane(): Face is null");
   }
-	SUPlane3D plane = SU_INVALID;
-	SUFaceGetPlane(m_face, &plane);
+  SUPlane3D plane = SU_INVALID;
+  SUFaceGetPlane(m_face, &plane);
   return Plane3D(plane);
 }
 
@@ -373,10 +373,10 @@ Plane3D Face::plane() const {
 
 
 Face& Face::reverse() {
-	if (!(*this)) {
-  	throw std::logic_error("CW::Face::reverse(): Face is null");
+  if (!(*this)) {
+    throw std::logic_error("CW::Face::reverse(): Face is null");
   }
-	SUResult res = SUFaceReverse(m_face);
+  SUResult res = SUFaceReverse(m_face);
   assert(res == SU_ERROR_NONE);
   return *this;
 }
@@ -397,18 +397,18 @@ bool Face::set_texture_projection(bool remove, bool frontside) {}
 
 
 std::vector<Vertex> Face::vertices() const {
-	if (!(*this)) {
-  	throw std::logic_error("CW::Face::vertices(): Face is null");
+  if (!(*this)) {
+    throw std::logic_error("CW::Face::vertices(): Face is null");
   }
-	size_t num_vertices = 0;
-	SUFaceGetNumVertices(m_face, &num_vertices);
+  size_t num_vertices = 0;
+  SUFaceGetNumVertices(m_face, &num_vertices);
   SUVertexRef* vertices = new SUVertexRef[num_vertices];
   SUResult res = SUFaceGetVertices(m_face, num_vertices, &vertices[0], &num_vertices);
   assert(res == SU_ERROR_NONE);
   std::vector<Vertex> verts;
   verts.reserve(num_vertices);
   for (size_t i=0; i < num_vertices; i++) {
-  	verts.push_back(Vertex(vertices[i]));
+    verts.push_back(Vertex(vertices[i]));
   }
   delete vertices;
   return verts;

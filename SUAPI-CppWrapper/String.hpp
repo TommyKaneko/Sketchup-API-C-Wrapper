@@ -38,14 +38,14 @@ namespace CW {
 * StringRef wrapper
 */
 enum class StringEncoding {
-	UTF8,
+  UTF8,
   UTF16
 };
 
 class String {
-	private:
+  private:
   SUStringRef m_string;
-	StringEncoding m_encoding;
+  StringEncoding m_encoding;
   
   // Disallow copying for simplicity
   //String(const String& copy);
@@ -87,13 +87,13 @@ class String {
   std::string std_string() const;
   operator std::string() const;
   
-//	char& operator [](size_t i);
+//  char& operator [](size_t i);
 
   /*
   * Return the SUStringRef object.
   */
   SUStringRef ref() const;
-	
+  
   /*
   * Return the length of the string, in bytes. Including the null terminator at the end.
   */

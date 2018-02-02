@@ -49,8 +49,8 @@ namespace CW {
 ** Private Static Methods **
 ****************************/
 SUGeometryInputRef GeometryInput::create_geometry_input() {
-	SUGeometryInputRef geom_input = SU_INVALID;
-	SUResult res = SUGeometryInputCreate(&geom_input);
+  SUGeometryInputRef geom_input = SU_INVALID;
+  SUResult res = SUGeometryInputCreate(&geom_input);
   assert(res == SU_ERROR_NONE);
   return geom_input;
 }
@@ -75,42 +75,42 @@ SUResult GeometryInput::add_loop(LoopInput &loop) {
 ** Constructors / Destructor **
 *******************************/
 GeometryInput::GeometryInput():
-	m_geometry_input(create_geometry_input())
+  m_geometry_input(create_geometry_input())
 {
 }
 
 
 GeometryInput::~GeometryInput() {
-	if (SUIsValid(m_geometry_input)) {
-  	SUResult res = SUGeometryInputRelease(&m_geometry_input);
-  	assert(res == SU_ERROR_NONE);
+  if (SUIsValid(m_geometry_input)) {
+    SUResult res = SUGeometryInputRelease(&m_geometry_input);
+    assert(res == SU_ERROR_NONE);
   }
 }
 
 
 GeometryInput::GeometryInput(const GeometryInput& other):
-	m_geometry_input(create_geometry_input())
+  m_geometry_input(create_geometry_input())
 {
-	for (size_t i=0; i < other.m_faces.size(); ++i) {
-  	add_face(other.m_faces[i].second);
+  for (size_t i=0; i < other.m_faces.size(); ++i) {
+    add_face(other.m_faces[i].second);
   }
-	for (size_t i=0; i < other.m_edges.size(); ++i) {
-  	add_edge(other.m_edges[i].second);
+  for (size_t i=0; i < other.m_edges.size(); ++i) {
+    add_edge(other.m_edges[i].second);
   }
 }
   
   
 GeometryInput& GeometryInput::operator=(const GeometryInput& other) {
-	if (SUIsValid(m_geometry_input)) {
-  	SUResult res = SUGeometryInputRelease(&m_geometry_input);
-  	assert(res == SU_ERROR_NONE);
+  if (SUIsValid(m_geometry_input)) {
+    SUResult res = SUGeometryInputRelease(&m_geometry_input);
+    assert(res == SU_ERROR_NONE);
   }
   m_geometry_input = create_geometry_input();
-	for (size_t i=0; i < other.m_faces.size(); ++i) {
-  	add_face(other.m_faces[i].second);
+  for (size_t i=0; i < other.m_faces.size(); ++i) {
+    add_face(other.m_faces[i].second);
   }
-	for (size_t i=0; i < other.m_edges.size(); ++i) {
-  	add_edge(other.m_edges[i].second);
+  for (size_t i=0; i < other.m_edges.size(); ++i) {
+    add_edge(other.m_edges[i].second);
   }
   return (*this);
 }
@@ -118,18 +118,18 @@ GeometryInput& GeometryInput::operator=(const GeometryInput& other) {
 
 
 SUGeometryInputRef GeometryInput::ref() const {
-	return m_geometry_input;
+  return m_geometry_input;
 }
 
 
 bool GeometryInput::operator!() const {
-	return SUIsInvalid(m_geometry_input);
+  return SUIsInvalid(m_geometry_input);
 }
 
 
 size_t GeometryInput::num_faces() const {
   if(!(*this)) {
-  	throw std::logic_error("CW::GeometryInput::num_faces(): GeometryInput is null");
+    throw std::logic_error("CW::GeometryInput::num_faces(): GeometryInput is null");
   }
   return m_num_faces;
 }
@@ -137,9 +137,9 @@ size_t GeometryInput::num_faces() const {
 
 std::vector<std::pair<size_t, Face>> GeometryInput::faces() const {
   if(!(*this)) {
-  	throw std::logic_error("CW::GeometryInput::faces(): GeometryInput is null");
+    throw std::logic_error("CW::GeometryInput::faces(): GeometryInput is null");
   }
-	return m_faces;
+  return m_faces;
 }
 
 /**
@@ -152,7 +152,7 @@ size_t GeometryInput::add_vertex(Point3D vertex) {
 std::vector<size_t> GeometryInput::add_vertices(std::vector<Point3D> vertices) {
   std::vector<size_t> indices;
   for (size_t i = 0; i < vertices.size(); i++) {
-  	indices.push_back(add_vertex(vertices[i]));
+    indices.push_back(add_vertex(vertices[i]));
   }
   return indices;
 }
@@ -160,34 +160,34 @@ std::vector<size_t> GeometryInput::add_vertices(std::vector<Point3D> vertices) {
 
 size_t GeometryInput::add_face(const Face &face) {
   if(!(*this)) {
-  	throw std::logic_error("CW::GeometryInput::add_face(): GeometryInput is null");
+    throw std::logic_error("CW::GeometryInput::add_face(): GeometryInput is null");
   }
   if(!face) {
-  	throw std::invalid_argument("CW::GeometryInput::add_face(): Face argument is null");
+    throw std::invalid_argument("CW::GeometryInput::add_face(): Face argument is null");
   }
   SULoopInputRef loop_input = SU_INVALID;
-	SUResult res =  SULoopInputCreate(&loop_input);
+  SUResult res =  SULoopInputCreate(&loop_input);
   assert(res == SU_ERROR_NONE);
   // Add outer loop
-	std::vector<Vertex> outer_vertices = face.outer_loop().vertices();
-	std::vector<Edge> outer_edges = face.outer_loop().edges();
+  std::vector<Vertex> outer_vertices = face.outer_loop().vertices();
+  std::vector<Edge> outer_edges = face.outer_loop().edges();
   for (size_t i=0; i < outer_vertices.size(); ++i) {
-  	SUPoint3D point = outer_vertices[i].position();
-  	res = SUGeometryInputAddVertex(m_geometry_input, &point);
-  	assert(res == SU_ERROR_NONE);
+    SUPoint3D point = outer_vertices[i].position();
+    res = SUGeometryInputAddVertex(m_geometry_input, &point);
+    assert(res == SU_ERROR_NONE);
     res = SULoopInputAddVertexIndex(loop_input, m_vertex_index);
-  	assert(res == SU_ERROR_NONE);
+    assert(res == SU_ERROR_NONE);
     if (outer_edges[i].hidden()) {
-    	res = SULoopInputEdgeSetHidden(loop_input, i, true);
-	  	assert(res == SU_ERROR_NONE);
+      res = SULoopInputEdgeSetHidden(loop_input, i, true);
+      assert(res == SU_ERROR_NONE);
     }
     if (outer_edges[i].smooth()) {
-    	res = SULoopInputEdgeSetSmooth(loop_input, i, true);
-	  	assert(res == SU_ERROR_NONE);
+      res = SULoopInputEdgeSetSmooth(loop_input, i, true);
+      assert(res == SU_ERROR_NONE);
     }
     if (outer_edges[i].soft()) {
-    	res = SULoopInputEdgeSetSoft(loop_input, i, true);
-	  	assert(res == SU_ERROR_NONE);
+      res = SULoopInputEdgeSetSoft(loop_input, i, true);
+      assert(res == SU_ERROR_NONE);
     }
     ++m_vertex_index;
   }
@@ -195,31 +195,31 @@ size_t GeometryInput::add_face(const Face &face) {
   res = SUGeometryInputAddFace(m_geometry_input, &loop_input, &added_face_index);
   assert(res == SU_ERROR_NONE);
   // Add inner loops
-	std::vector<Loop> inner_loops = face.inner_loops();
+  std::vector<Loop> inner_loops = face.inner_loops();
   for (size_t i=0; i < inner_loops.size(); ++i) {
-  	SULoopInputRef inner_loop_input = SU_INVALID;
+    SULoopInputRef inner_loop_input = SU_INVALID;
     res =  SULoopInputCreate(&loop_input);
     assert(res == SU_ERROR_NONE);
     std::vector<Vertex> inner_vertices = inner_loops[i].vertices();
-		std::vector<Edge> inner_edges = inner_loops[i].edges();
-  	for (size_t j=0; j < inner_vertices.size(); ++j) {
-	  	SUPoint3D point = inner_vertices[j].position();
-	  	res = SUGeometryInputAddVertex(m_geometry_input, &point);
+    std::vector<Edge> inner_edges = inner_loops[i].edges();
+    for (size_t j=0; j < inner_vertices.size(); ++j) {
+      SUPoint3D point = inner_vertices[j].position();
+      res = SUGeometryInputAddVertex(m_geometry_input, &point);
       assert(res == SU_ERROR_NONE);
       res = SULoopInputAddVertexIndex(inner_loop_input, m_vertex_index);
       assert(res == SU_ERROR_NONE);
       ++m_vertex_index;
       if (inner_edges[j].hidden()) {
         res = SULoopInputEdgeSetHidden(loop_input, j, true);
-		    assert(res == SU_ERROR_NONE);
+        assert(res == SU_ERROR_NONE);
       }
       if (inner_edges[j].smooth()) {
         res = SULoopInputEdgeSetSmooth(loop_input, j, true);
-		    assert(res == SU_ERROR_NONE);
+        assert(res == SU_ERROR_NONE);
       }
       if (inner_edges[j].soft()) {
         res = SULoopInputEdgeSetSoft(loop_input, j, true);
-		    assert(res == SU_ERROR_NONE);
+        assert(res == SU_ERROR_NONE);
       }
     }
     res = SUGeometryInputFaceAddInnerLoop(m_geometry_input, added_face_index, &inner_loop_input);
@@ -237,10 +237,10 @@ size_t GeometryInput::add_face(const Face &face) {
   // Set Materials TODO: not done quite right here, I don't think... uv coords are not set.
   SUMaterialInput material = MaterialInput(face.material()).ref();
   res = SUGeometryInputFaceSetFrontMaterial(m_geometry_input, added_face_index, &material);
-	assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE);
   SUMaterialInput back_material = MaterialInput(face.back_material()).ref();
   res = SUGeometryInputFaceSetBackMaterial(m_geometry_input, added_face_index, &back_material);
-	assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE);
   */
   // There are further properties that need to be added, such as attributes, and these must be added after the entities::fill() operation.
   m_faces.push_back(std::pair<size_t, Face> (added_face_index, face));
@@ -251,11 +251,11 @@ size_t GeometryInput::add_face(const Face &face) {
 
 size_t GeometryInput::add_faces(const std::vector<Face>& faces) {
   if(!(*this)) {
-  	throw std::logic_error("CW::GeometryInput::add_faces(): GeometryInput is null");
+    throw std::logic_error("CW::GeometryInput::add_faces(): GeometryInput is null");
   }
   size_t index = m_num_faces;
   for (size_t i=0; i < faces.size(); ++i) {
-  	index = add_face(faces[i]);
+    index = add_face(faces[i]);
   }
   return index;
 }
@@ -263,7 +263,7 @@ size_t GeometryInput::add_faces(const std::vector<Face>& faces) {
 
 size_t GeometryInput::add_edge(const Edge &edge) {
   if(!edge) {
-  	throw std::invalid_argument("CW::GeometryInput::add_edge(): Edge argument is null");
+    throw std::invalid_argument("CW::GeometryInput::add_edge(): Edge argument is null");
   }
   if (SU_API_VERSION_MAJOR < 5) {
     // Edges can only be added since SU2017
@@ -285,20 +285,20 @@ size_t GeometryInput::add_edge(const Edge &edge) {
   
   // Add other information about the edge
   if (!!edge.material()) {
-  	res = SUGeometryInputEdgeSetMaterial(m_geometry_input, added_edge_index, edge.material().ref());
-	  assert(res == SU_ERROR_NONE);
+    res = SUGeometryInputEdgeSetMaterial(m_geometry_input, added_edge_index, edge.material().ref());
+    assert(res == SU_ERROR_NONE);
   }
   if (edge.hidden()) {
     res = SUGeometryInputEdgeSetHidden(m_geometry_input, added_edge_index, true);
-	  assert(res == SU_ERROR_NONE);
+    assert(res == SU_ERROR_NONE);
   }
   if (edge.smooth()) {
     res = SUGeometryInputEdgeSetSmooth(m_geometry_input, added_edge_index, true);
-	  assert(res == SU_ERROR_NONE);
+    assert(res == SU_ERROR_NONE);
   }
   if (edge.soft()) {
     res = SUGeometryInputEdgeSetSoft(m_geometry_input, added_edge_index, true);
-	  assert(res == SU_ERROR_NONE);
+    assert(res == SU_ERROR_NONE);
   }
   m_edges.push_back(std::pair<size_t, Edge> (added_edge_index, edge));
   ++m_num_edges;
@@ -308,11 +308,11 @@ size_t GeometryInput::add_edge(const Edge &edge) {
 
 size_t GeometryInput::add_edges(const std::vector<Edge>& edges) {
   if(!(*this)) {
-  	throw std::logic_error("CW::GeometryInput::add_edges(): GeometryInput is null");
+    throw std::logic_error("CW::GeometryInput::add_edges(): GeometryInput is null");
   }
-	size_t index = m_num_edges;
+  size_t index = m_num_edges;
   for (size_t i=0; i < edges.size(); ++i) {
-  	index = add_edge(edges[i]);
+    index = add_edge(edges[i]);
   }
   return index;
 }
@@ -320,10 +320,10 @@ size_t GeometryInput::add_edges(const std::vector<Edge>& edges) {
 
 bool GeometryInput::empty() const {
   if(!(*this)) {
-  	throw std::logic_error("CW::GeometryInput::empty(): GeometryInput is null");
+    throw std::logic_error("CW::GeometryInput::empty(): GeometryInput is null");
   }
-	if (m_faces.size() == 0 && m_edges.size() == 0) {
-  	return true;
+  if (m_faces.size() == 0 && m_edges.size() == 0) {
+    return true;
   }
   return false;
 }

@@ -48,11 +48,11 @@ class Model;
 * This class represents a component definition.
 */
 class ComponentDefinition :public DrawingElement {
-	private:
+  private:
   SUComponentDefinitionRef m_definition;
   
   static SUComponentDefinitionRef create_definition();
-	
+  
   /**
   * Copies a ComponentDefinition object into a new SUComponentDefinitionRef.  If the other ComponentDefinition object has been attached to a model already, it will return the same SUComponentDefinitionRef object that it points to.
   */

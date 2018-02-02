@@ -44,7 +44,7 @@
 namespace CW {
 
 Transformation::Transformation():
-	m_transformation(SUTransformation{1.0, 0.0, 0.0, 0.0, // col-1 (column-major order)
+  m_transformation(SUTransformation{1.0, 0.0, 0.0, 0.0, // col-1 (column-major order)
                                     0.0, 1.0, 0.0, 0.0, // col-2
                                     0.0, 0.0, 1.0, 0.0, // col-3
                                     0.0, 0.0, 0.0, 1.0}) // col-4
@@ -52,34 +52,34 @@ Transformation::Transformation():
 
 
 Transformation::Transformation(SUTransformation transformation):
-	m_transformation(transformation)
+  m_transformation(transformation)
 {}
 
 Transformation::Transformation(Axes axes, Vector3D translation, double scalar):
-	m_transformation(axes.transformation() * Transformation(translation) * Transformation(scalar))
+  m_transformation(axes.transformation() * Transformation(translation) * Transformation(scalar))
 {}
 
 Transformation::Transformation(Vector3D x_axis, Vector3D y_axis, Vector3D z_axis, Vector3D translation, double scalar):
-	m_transformation(Transformation())
+  m_transformation(Transformation())
 {
-	// TODO
+  // TODO
 }
 
 Transformation::Transformation(double scalar):
-	m_transformation(SUTransformation{1.0, 0.0, 0.0, 0.0,
+  m_transformation(SUTransformation{1.0, 0.0, 0.0, 0.0,
                                     0.0, 1.0, 0.0, 0.0,
                                     0.0, 0.0, 1.0, 0.0,
                                     0.0, 0.0, 0.0, 1.0/scalar})
 {}
 
 Transformation::Transformation(Vector3D translation):
-	m_transformation(SUTransformation{1.0, 0.0, 0.0, 0.0,
+  m_transformation(SUTransformation{1.0, 0.0, 0.0, 0.0,
                                     0.0, 1.0, 0.0, 0.0,
                                     0.0, 0.0, 1.0, 0.0,
                                     translation.x, translation.y, translation.z, 1.0})
 {}
 Transformation::Transformation(Point3D translation):
-	Transformation(Vector3D(translation))
+  Transformation(Vector3D(translation))
 {}
 
 
@@ -130,7 +130,7 @@ Transformation Transformation::matrix_inverse() const {
   double c1 = i20 * i32 - i30 * i22;
   double c0 = i20 * i31 - i30 * i21;
 
-	double det = s0 * c5 - s1 * c4 + s2 * c3 + s3 * c2 - s4 * c1 + s5 * c0;
+  double det = s0 * c5 - s1 * c4 + s2 * c3 + s3 * c2 - s4 * c1 + s5 * c0;
   assert(det != 0.0);
   double invdet = 1 / det;
   
@@ -160,18 +160,18 @@ Transformation Transformation::matrix_inverse() const {
 
 
 std::array<double, 4> Transformation::multiply4x1(std::array<double, 4> matrix4_1) const {
-	std::array<double, 4> output;
+  std::array<double, 4> output;
   for (size_t i=0; i < 4; ++i) {
-  	// This one is for multiplying 1x4 by 4x4:
+    // This one is for multiplying 1x4 by 4x4:
     //output[i] = matrix4_1[i] * (m_transformation.values[i] +
-    //														m_transformation.values[i+4] +
-    //														m_transformation.values[i+8] +
-    //														m_transformation.values[i+12]);
-  	// This one is for multiplying 4x4 by 4x1:
+    //                            m_transformation.values[i+4] +
+    //                            m_transformation.values[i+8] +
+    //                            m_transformation.values[i+12]);
+    // This one is for multiplying 4x4 by 4x1:
     output[i] = (m_transformation.values[i] * matrix4_1[0]) +
-    						(m_transformation.values[i+4] * matrix4_1[1]) +
-    						(m_transformation.values[i+8] * matrix4_1[2]) +
-    						(m_transformation.values[i+12] * matrix4_1[3]);
+                (m_transformation.values[i+4] * matrix4_1[1]) +
+                (m_transformation.values[i+8] * matrix4_1[2]) +
+                (m_transformation.values[i+12] * matrix4_1[3]);
 
   }
   return output;
@@ -181,21 +181,21 @@ std::array<double, 4> Transformation::multiply4x1(std::array<double, 4> matrix4_
 
 double Transformation::operator[](size_t i) const {
   if (i > 15) {
-  	throw std::out_of_range("CW::Transformation::operator[](): index range is between 0 and 15");
+    throw std::out_of_range("CW::Transformation::operator[](): index range is between 0 and 15");
   }
   return m_transformation.values[i];
 }
 
 double& Transformation::operator[](size_t i) {
   if (i > 15) {
-  	throw std::out_of_range("CW::Transformation::operator[](): index range is between 0 and 15");
+    throw std::out_of_range("CW::Transformation::operator[](): index range is between 0 and 15");
   }
   return m_transformation.values[i];
 }
 
 
 SUTransformation Transformation::ref() const {
-	return m_transformation;
+  return m_transformation;
 }
 
 Transformation::operator SUTransformation() const {
@@ -203,23 +203,23 @@ Transformation::operator SUTransformation() const {
 }
 
 Transformation::operator SUTransformation*() {
-	return &m_transformation;
+  return &m_transformation;
 }
 
 
 Transformation Transformation::inverse() const {
-	if (m_transformation.values[3] != 0.0 ||
-  				m_transformation.values[7] != 0.0 ||
+  if (m_transformation.values[3] != 0.0 ||
+          m_transformation.values[7] != 0.0 ||
           m_transformation.values[11] != 0.0 ||
           m_transformation.values[15] != 1.0) {
-  	return this->matrix_inverse();
+    return this->matrix_inverse();
   }
 
   SUTransformation inverted_t;
   // Method for transformation is illustrated here: http://stackoverflow.com/questions/2624422/efficient-4x4-matrix-inverse-affine-transform
   /*
    M = [ R T ]
-   		 [ 0 W ]
+        [ 0 W ]
   where M is 4x4, R is 3x3, T is 3x1, and the bottom row is (0,0,0,1), then
   inv(M) = [ inv(R)   -inv(R) * T ]
            [   0              1   ]
@@ -259,11 +259,11 @@ Transformation Transformation::inverse() const {
   inverted_t.values[9] = matrix_minors3x3[5] * (-1.0) / determinant; // swapped with 6
   inverted_t.values[10] = matrix_minors3x3[8] / determinant;
   // Second, calculate inverted sub matrix T (the translation part)  (-inv(R) * T)
-  // 				   [ 12 ]
+  //            [ 12 ]
   // -inv(R) * [ 13 ]
-  // 				   [ 14 ]
+  //            [ 14 ]
   // matrix cell = column(val1) * row_val1 + ... +column(val3) * row_val3
-	inverted_t.values[12] = (-inverted_t.values[0]) * m_transformation.values[12] +
+  inverted_t.values[12] = (-inverted_t.values[0]) * m_transformation.values[12] +
                           (-inverted_t.values[4]) * m_transformation.values[13] +
                           (-inverted_t.values[8]) * m_transformation.values[14];
   inverted_t.values[13] = (-inverted_t.values[1]) * m_transformation.values[12] +
@@ -310,7 +310,7 @@ Transformation Transformation::inverse() const {
   double c1 = i20 * i32 - i30 * i22;
   double c0 = i20 * i31 - i30 * i21;
 
-	double det = s0 * i22 - s1 * i21 + s3 * i20;
+  double det = s0 * i22 - s1 * i21 + s3 * i20;
   assert(det != 0.0);
   double invdet = 1 / det;
 
@@ -346,13 +346,13 @@ Transformation Transformation::inverse() const {
 
 
 Transformation& Transformation::normalize() {
-	if (m_transformation.values[15] == 1.0) {
-  	// No normalisation necessary (is already normal)
+  if (m_transformation.values[15] == 1.0) {
+    // No normalisation necessary (is already normal)
     return (*this);
   }
   assert(m_transformation.values[15] != 0.0);
   for (size_t i=0; i < 15; ++i) {
-  	m_transformation.values[i] = m_transformation.values[i] / m_transformation.values[15];
+    m_transformation.values[i] = m_transformation.values[i] / m_transformation.values[15];
   }
   m_transformation.values[15] = 1.0;
   return (*this);
@@ -362,29 +362,29 @@ Transformation& Transformation::normalize() {
 
   /**
   * Retrieves the origin of a rigid transformation.
-	*/
+  */
 Point3D Transformation::origin() const {
-	// TODO
+  // TODO
   assert(false);
   return Point3D(); // Temporary return value, to allow compiling on Windows
 }
   
 
 Vector3D Transformation::translation() const {
-	if (m_transformation.values[15] == 1.0) {
-  	return Vector3D( m_transformation.values[12], m_transformation.values[13], m_transformation.values[14]);
+  if (m_transformation.values[15] == 1.0) {
+    return Vector3D( m_transformation.values[12], m_transformation.values[13], m_transformation.values[14]);
   }
   return Vector3D( m_transformation.values[12] / m_transformation.values[15], m_transformation.values[13] / m_transformation.values[15], m_transformation.values[14] / m_transformation.values[15]);
 }
 
   
 Transformation Transformation::operator*(Transformation transform) {
-	double new_matrix[4][4];
+  double new_matrix[4][4];
   for (size_t col=0; col < 4; ++col) {
-  	for (size_t row=0; row < 4; ++row) {
-  		new_matrix[col][row] = 0.0;
+    for (size_t row=0; row < 4; ++row) {
+      new_matrix[col][row] = 0.0;
       for (size_t i=0; i < 4; ++i) {
-      	new_matrix[col][row] += ((*this)[(i*4)+row] * transform[(col*4)+i]);
+        new_matrix[col][row] += ((*this)[(i*4)+row] * transform[(col*4)+i]);
       }
     }
   }
@@ -400,7 +400,7 @@ Transformation Transformation::operator*(Transformation transform) {
 */
 Vector3D operator*(const Transformation &lhs, const Vector3D &rhs) {
   if (!rhs) {
-  	throw std::invalid_argument("CW::Transformation::operator*(const Vector3D &lhs, const Transformation &rhs): Vector3D given is null");
+    throw std::invalid_argument("CW::Transformation::operator*(const Vector3D &lhs, const Transformation &rhs): Vector3D given is null");
   }
   // More info about multiplying vectors here: http://www.euclideanspace.com/maths/geometry/affine/matrix4x4/index.htm
   std::array<double, 4> matrix4x1{rhs.x, rhs.y, rhs.z, 0.0}; // Set w value to 0 (unaffected by translation)
@@ -409,7 +409,7 @@ Vector3D operator*(const Transformation &lhs, const Vector3D &rhs) {
 }
 
 Vector3D operator*(const Vector3D &lhs, const Transformation &rhs) {
-	// Can't actually multiply a vector by transformation, so return the transforamtion multiplied by the vector
+  // Can't actually multiply a vector by transformation, so return the transforamtion multiplied by the vector
   return rhs * lhs;
 }
 
@@ -418,9 +418,9 @@ Vector3D operator*(const Vector3D &lhs, const Transformation &rhs) {
 */
 Point3D operator*(const Transformation &lhs, const Point3D &rhs) {
   if (!rhs) {
-  	throw std::invalid_argument("CW::Transformation::operator*(const Point3D &lhs, const Transformation &rhs): Point3D given is null");
+    throw std::invalid_argument("CW::Transformation::operator*(const Point3D &lhs, const Transformation &rhs): Point3D given is null");
   }
-	// More info about multiplying vectors here: http://www.euclideanspace.com/maths/geometry/affine/matrix4x4/index.htm
+  // More info about multiplying vectors here: http://www.euclideanspace.com/maths/geometry/affine/matrix4x4/index.htm
   std::array<double, 4> matrix4x1{rhs.x, rhs.y, rhs.z, 1.0}; // Set w value to 1 (affected by translation)
   std::array<double, 4> return4x1 = lhs.multiply4x1(matrix4x1);
   if (return4x1[3] == 1.0) {
@@ -431,8 +431,8 @@ Point3D operator*(const Transformation &lhs, const Point3D &rhs) {
   }
 }
 Point3D operator*(const Point3D &lhs, const Transformation &rhs) {
-	// Can't actually multiply a vector by transformation, so return the transforamtion multiplied by the vector
-	return rhs * lhs;
+  // Can't actually multiply a vector by transformation, so return the transforamtion multiplied by the vector
+  return rhs * lhs;
 }
 
 /**
@@ -440,9 +440,9 @@ Point3D operator*(const Point3D &lhs, const Transformation &rhs) {
 */
 Plane3D operator*(const Plane3D &lhs, const Transformation &rhs) {
   if (!lhs) {
-  	throw std::invalid_argument("CW::Transformation::operator*(const Plane3D &lhs, const Transformation &rhs): Plane3D given is null");
+    throw std::invalid_argument("CW::Transformation::operator*(const Plane3D &lhs, const Transformation &rhs): Plane3D given is null");
   }
-	Vector3D plane_normal = lhs.normal();
+  Vector3D plane_normal = lhs.normal();
   Point3D plane_point = plane_normal * -lhs.d;
   std::array<double, 4> trans_plane_point = rhs.multiply4x1({plane_point.x, plane_point.y, plane_point.z, 1.0});
   std::array<double, 4> trans_plane_normal = rhs.multiply4x1({plane_normal.x, plane_normal.y, plane_normal.z, 0.0});
@@ -450,7 +450,7 @@ Plane3D operator*(const Plane3D &lhs, const Transformation &rhs) {
 }
 
 Plane3D operator*(const Transformation &lhs, const Plane3D &rhs) {
-	return rhs * lhs;
+  return rhs * lhs;
 }
 
 /**
@@ -458,14 +458,14 @@ Plane3D operator*(const Transformation &lhs, const Plane3D &rhs) {
 */
 Face operator*(const Face &lhs, const Transformation &rhs) {
   if (!lhs) {
-  	throw std::invalid_argument("CW::Transformation::operator*(const Face &lhs, const Transformation &rhs): Face given is null");
+    throw std::invalid_argument("CW::Transformation::operator*(const Face &lhs, const Transformation &rhs): Face given is null");
   }
-	// We transform all the vertices then create loops
+  // We transform all the vertices then create loops
   std::vector<Vertex> outer_vertices = lhs.outer_loop().vertices();
   std::vector<Point3D> trans_outer_points;
   trans_outer_points.reserve(outer_vertices.size());
   for (size_t i=0; i < outer_vertices.size(); ++i) {
-  	trans_outer_points.push_back(outer_vertices[i].position() * rhs);
+    trans_outer_points.push_back(outer_vertices[i].position() * rhs);
   }
   LoopInput outer_loop_input = lhs.outer_loop().loop_input();
   Face trans_face(trans_outer_points, outer_loop_input);
@@ -482,7 +482,7 @@ Face operator*(const Face &lhs, const Transformation &rhs) {
     trans_face.add_inner_loop(trans_inner_points, inner_loop_input);
   }
   if (!!lhs.material()) {
-  	trans_face.material(lhs.material());
+    trans_face.material(lhs.material());
   }
   trans_face.copy_attributes_from(lhs);
   return trans_face;
@@ -490,13 +490,13 @@ Face operator*(const Face &lhs, const Transformation &rhs) {
   
 
 bool Transformation::equal(const Transformation transform, const double epsilon) const {
-	for (size_t i=0; i < 16; ++i) {
-  	// Skip bottom row, except last
+  for (size_t i=0; i < 16; ++i) {
+    // Skip bottom row, except last
     if (i == 3 || i == 7 || i == 11) {
     }
     else {
-    	if (!(fabs((*this)[i] - transform[i]) < epsilon)) {
-      	return false;
+      if (!(fabs((*this)[i] - transform[i]) < epsilon)) {
+        return false;
       }
     }
   }
@@ -504,7 +504,7 @@ bool Transformation::equal(const Transformation transform, const double epsilon)
 }
 
 bool Transformation::operator==(const Transformation transform) const {
-	return this->equal(transform);
+  return this->equal(transform);
 }
 
 
@@ -513,7 +513,7 @@ bool Transformation::operator==(const Transformation transform) const {
 */
 Transformation Transformation::transformation_rotate_about_line(const double angle, const Line3D line){
   if (!line) {
-  	throw std::invalid_argument("CW::Transformation::transformation_rotate_about_line(): Line3D given is null");
+    throw std::invalid_argument("CW::Transformation::transformation_rotate_about_line(): Line3D given is null");
   }
   // Solution derived from this article: http://inside.mines.edu/fs_home/gmurray/ArbitraryAxisRotation/
   SUTransformation transform;

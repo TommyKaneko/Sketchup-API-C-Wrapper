@@ -44,7 +44,7 @@ namespace CW {
 * @since SU 2017, API 5.0
 */
 class ImageRep  {
-	private:
+  private:
   SUImageRepRef m_image_rep;
   bool m_attached;
   
@@ -52,11 +52,11 @@ class ImageRep  {
   public:
   /** Constructor for null ImageRep value */
   ImageRep();
-	
+  
   /** Construct ImageRep from existing ImageRep object */
   ImageRep(SUImageRepRef image_rep, bool attached = true);
   
-	/** Copy constructor */
+  /** Copy constructor */
   ImageRep(const ImageRep& other);
   
   /** Destructor */
@@ -86,18 +86,18 @@ class ImageRep  {
   * Sets the image data for the given image. Makes a copy of the data rather than taking ownership.
   */
   void set_data(size_t width, size_t height, size_t bits_per_pixel, size_t row_padding, std::vector<SUByte> pixel_data);
-	
+  
   /**
   * Loads an image from a file path.
   * @param file_path - string path to the file.
   */
   void load_file(const std::string file_path);
 
-	/**
+  /**
   * Saves the image to a file location.
   */
   SUResult save_to_file(const std::string file_path) const;
-	
+  
   /**
   * Returns the width of the image in pixels.
   */
@@ -107,23 +107,23 @@ class ImageRep  {
   * Returns the width of the image in pixels.
   */
   size_t height() const;
-	
+  
   /**
   * Returns the row padding in pixels.
   */
   size_t row_padding() const;
-	
+  
   /**
   * Resizes the width and height of the ImageRep
   */
   void resize(size_t width, size_t height);
   
-	/**
+  /**
   * Converts the image to 32 bits per pixel.
   */
   void convert_to_32bits();
 
-	/**
+  /**
   * Returns the total size and bits-per-pixel value of an image. This function is useful to determine the size of the buffer necessary to be passed into SUImageRepGetData. The returned data can be used along with the returned bits-per-pixel value and the image dimensions to compute RGBA values at individual pixels of the image.
   */
   size_t data_size() const;

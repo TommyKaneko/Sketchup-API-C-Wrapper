@@ -54,7 +54,7 @@ class BoundingBox3D;
 * Entities wrapper
 */
 class Entities {
-	private:
+  private:
   SUEntitiesRef m_entities;
   //Model * const m_model;
   
@@ -70,18 +70,18 @@ class Entities {
   /**
   * Fills an Entities object with geometry in GeometryInput object.
   */
-	SUResult fill(GeometryInput &geom_input);
+  SUResult fill(GeometryInput &geom_input);
 
   std::vector<Face> faces() const;
   std::vector<Edge> edges(bool stray_only = true) const;
   std::vector<ComponentInstance> instances() const;
   std::vector<Group> groups() const;
-	
+  
   /**
   * Return the BoundingBox of the Entities object.
   */
   BoundingBox3D bounding_box() const;
-	
+  
   /**
   * Returns the number of entities that exist in the entities object.
   */
@@ -97,7 +97,7 @@ class Entities {
   *
   * Note that this function does not merge overlapping geometry. See GeometryInput for merging functionality.
   * @param vector of Face objects from CW
-	*/
+  */
   std::vector<Face> add_faces(std::vector<Face>& faces);
   Face add_face(Face& face);
 
@@ -106,21 +106,21 @@ class Entities {
   *
   * Note that this function does not merge overlapping geometry. @see GeometryInput and Entities::fill() for merging functionality.
   * @param vector of Edge objects to add
-	*/
+  */
   std::vector<Edge> add_edges(std::vector<Edge>& edges);
   Edge add_edge(Edge& edge);
 
   /*
   * Creates a ComponentInstance in the Entities object.
   * @param instance ComponentInstance object to add to the Entities object.
-	*/
+  */
   void add_instance(ComponentInstance& instance);
 
   /*
   * Creates a ComponentInstance in the Entities object.
   * @param definition ComponentDefinition object to create an instance of
   * @param transformation transformation of the definition (placement, rotation and scale)
-	*/
+  */
   ComponentInstance add_instance(const ComponentDefinition& definition, const Transformation& transformation, const String& name = "");
 
   /*
@@ -135,7 +135,7 @@ class Entities {
   
   /**
   * Transforms given entities by the transformation object
-	* @since SketchUp 2017, API 5.0
+  * @since SketchUp 2017, API 5.0
   * @param elems - vector array of Entity objects
   * @param transform - the transformation to apply to the elements.
   * @return true if the operation was successful.  false, if transform failed.

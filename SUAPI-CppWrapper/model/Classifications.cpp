@@ -31,6 +31,6 @@ namespace CW {
 Classifications::Classifications(SUClassificationsRef classifications):
   m_classifications(classifications)
 {}
-	
+  
 
 } /* namespace CW */

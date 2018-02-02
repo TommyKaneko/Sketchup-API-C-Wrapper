@@ -39,16 +39,16 @@
 namespace CW {
 
 class ComponentInstance :public DrawingElement {
-	protected:
+  protected:
   SUComponentInstanceRef m_instance;
-	
+  
   /** Creates a copy of the ComponentInstance */
-	SUComponentInstanceRef copy_reference(const ComponentInstance& other);
+  SUComponentInstanceRef copy_reference(const ComponentInstance& other);
 
   public:
   ComponentInstance(SUComponentInstanceRef instance, bool attached = true);
   
-	/** Copy constructor */
+  /** Copy constructor */
   ComponentInstance(const ComponentInstance& other);
   
   /** Copy constructor for derived classes (Group) */

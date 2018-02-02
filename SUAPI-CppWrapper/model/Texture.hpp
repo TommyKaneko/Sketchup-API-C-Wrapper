@@ -36,9 +36,9 @@ class String;
 * Texture wrapper
 */
 class Texture :public Entity {
-	private:
+  private:
   SUTextureRef m_texture;
-	
+  
   /**
   * Create texture from ImageRep
   */
@@ -53,7 +53,7 @@ class Texture :public Entity {
   public:
   /** Constructor for null Texture value */
   Texture();
-	
+  
   /** Construct Texture from existing texture object */
   Texture(SUTextureRef texture, bool attached = true);
   
@@ -63,8 +63,8 @@ class Texture :public Entity {
   * @param s_scale - The scale factor for s coordinate value.
   * @param t_scale - The scale factor for t coordinate value.
   */
-	Texture(const std::string file_path, double s_scale = 1.0, double t_scale = 1.0);
-	
+  Texture(const std::string file_path, double s_scale = 1.0, double t_scale = 1.0);
+  
   /**
   * Creates a new texture object with the specified image data.
   * This function is due to be depreciated - use Texture(ImageRep& image) instead from SU 2017, API 5.0 onwards.
@@ -74,14 +74,14 @@ class Texture :public Entity {
   * @param pixel_data[] - the source of the pixel data
   */
   Texture (size_t width, size_t height, size_t bits_per_pixel, const SUByte pixel_data[]);
-	
+  
   /**
   * Creates a new texture object from an image representation object.
   * @since Sketchup 2017, API 5.0
   */
-	Texture(ImageRep& image);
-		
-	/** Copy constructor */
+  Texture(ImageRep& image);
+    
+  /** Copy constructor */
   Texture(const Texture& other);
   
   /** Destructor */
@@ -96,7 +96,7 @@ class Texture :public Entity {
   SUTextureRef ref() const;
   operator SUTextureRef() const;
   operator SUTextureRef*();
-	
+  
   /**
   * Returns a copy of the texture object - note that a Texture object can only be assigned to one Material object.  So this method is useful for copying Textures to new Material objects.
   * @since SU 2017, API 5.0
@@ -124,16 +124,16 @@ class Texture :public Entity {
   */
   void file_name(const String& string) const;
   
-	/**
+  /**
   * Returns the width of the texture in pixels.
   */
   size_t width() const;
   
-	/**
+  /**
   * Returns the height of the texture in pixels.
   */
-	size_t height() const;
-	
+  size_t height() const;
+  
   /**
   * Returns the s_scale of the texture. The s_scale and t_scale values are useful when a face doesn't have a material applied directly, but instead inherit from a parent group or component instance. Then you want use these values to multiply the result of SUMeshHelperGetFrontSTQCoords or SUUVHelperGetFrontUVQ. If the material is applied directly then this would not be needed.
   */
@@ -147,11 +147,11 @@ class Texture :public Entity {
   /**
   * Writes a texture object as an image to disk.
   * @return SUResult object with the following possible values:
-  *			- SU_ERROR_NONE on success
-	*			- SU_ERROR_INVALID_INPUT if texture is not a valid object
-	*			- SU_ERROR_NULL_POINTER_INPUT if file_path is NULL
-	*			- SU_ERROR_SERIALIZATION if image file could not be written to disk
-	*
+  *      - SU_ERROR_NONE on success
+  *      - SU_ERROR_INVALID_INPUT if texture is not a valid object
+  *      - SU_ERROR_NULL_POINTER_INPUT if file_path is NULL
+  *      - SU_ERROR_SERIALIZATION if image file could not be written to disk
+  *
   */
   SUResult save(const std::string& file_path);
 

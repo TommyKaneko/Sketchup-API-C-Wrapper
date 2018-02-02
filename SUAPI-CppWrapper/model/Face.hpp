@@ -42,12 +42,12 @@
 namespace CW {
 
 enum FacePointClass {
-	PointUnknown, // (indicates an error),
-	PointInside, // (point is on the face, not in a hole),
-	PointOnVertex, // (point touches a vertex),
-	PointOnEdge, // (point is on an edge),
-	PointOutside, // (point outside the face or in a hole),
-	PointNotOnPlane // (point off the face's plane).
+  PointUnknown, // (indicates an error),
+  PointInside, // (point is on the face, not in a hole),
+  PointOnVertex, // (point touches a vertex),
+  PointOnEdge, // (point is on an edge),
+  PointOutside, // (point outside the face or in a hole),
+  PointNotOnPlane // (point off the face's plane).
 };
 
 class Point3D;
@@ -59,9 +59,9 @@ class LoopInput;
 class Edge;
 
 class Face :public DrawingElement {
-	private:
+  private:
   SUFaceRef m_face;
-	//SUResult m_create_result = SU_ERROR_NONE;
+  //SUResult m_create_result = SU_ERROR_NONE;
   
   /**
   * Creates a SUFaceRef object from an array of points that represent the outer loop.
@@ -71,7 +71,7 @@ class Face :public DrawingElement {
   static SUFaceRef create_face(std::vector<Point3D>& outer_points);
   static SUFaceRef create_face(std::vector<Point3D>& outer_points, LoopInput& loop_input);
   
-	/**
+  /**
   * Creates a SUFaceRef object from an array of points that represent the loops.
   * @param outer_loop vector of points for the vertices in the outer loop.
   * @param inner_loops vector of vectors of points.  The first dimension represents the inner loops, and the second represents the points in each loop.
@@ -109,7 +109,7 @@ class Face :public DrawingElement {
   */
   Face(SUFaceRef face, bool attached = true);
 
-	/** Copy constructor */
+  /** Copy constructor */
   Face(const Face& other);
   
   /** Destructor */
@@ -138,14 +138,14 @@ class Face :public DrawingElement {
   * NOT operator.  Checks if the object is valid.
   * @return true if the curve is invalid
   */
-	bool operator!() const;
+  bool operator!() const;
   
-	/*
+  /*
   * Retrieves the area of a face in SU units.
   * @return double area in square inches (SU units).
   */
   double area() const;
-	
+  
   /**
   * Adds an inner loop to the face.
   * @param points - a vector of points representing the vertices of the inner loop.
@@ -176,7 +176,7 @@ class Face :public DrawingElement {
     PointNotOnPlane (point off the face's plane).
   * @param SUPoint3D object.
   * @return FacePointClass enum indicating the status of the point relative to the face.
-	*/
+  */
   FacePointClass classify_point(const Point3D& point);
   
   /*
@@ -224,7 +224,7 @@ class Face :public DrawingElement {
   /*
   * Retrieves the outer loop that bounds the face.
   */
-	Loop outer_loop() const;
+  Loop outer_loop() const;
   
   /*
   * Retreives the plane of this face.
@@ -233,7 +233,7 @@ class Face :public DrawingElement {
   
   /*
   * Positions a material on a face.
-	* The pt_array must contain 2, 4, 6 or 8 points. The points are used in pairs to tell where a point in the texture image is positioned on the Face. The first point in each pair is a 3D point in the model. It should be a point on the Face. The second point in each pair of points is a 2D point that gives the (u,v) coordinates of a point in the image to match up with the 3D point.
+  * The pt_array must contain 2, 4, 6 or 8 points. The points are used in pairs to tell where a point in the texture image is positioned on the Face. The first point in each pair is a 3D point in the model. It should be a point on the Face. The second point in each pair of points is a 2D point that gives the (u,v) coordinates of a point in the image to match up with the 3D point.
   * @param Material object to position.
   * @param vector of Point3d objects used to position the material.
   * @param bool true to position the texture on the front of the Face or false to position it on the back of the Face.
@@ -241,11 +241,11 @@ class Face :public DrawingElement {
   /** NOT POSSIBLE WITH C API - @see class MaterialInput **/
   // bool position_material(const Material& material, const std::vector<Point3D>& pt_array, bool o_front);
 
-	/*
+  /*
   * Reverses the face's orientation, meaning the front becomes the back.
   * @return the reversed Face object
   */
-	Face& reverse();
+  Face& reverse();
   
   /*
   * Sets the texture projection direction.
@@ -257,7 +257,7 @@ class Face :public DrawingElement {
   //bool set_texture_projection(const Vector3D& vector, bool frontside);
   //bool set_texture_projection(bool remove, bool frontside);
   
-	/*
+  /*
   * Gets an array of all of the vertices that bound the face.
   * @return std::vector array of Vertex objects.
   */

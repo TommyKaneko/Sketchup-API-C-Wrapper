@@ -55,14 +55,14 @@ class AttributeDictionary {
   */
   AttributeDictionary(SUAttributeDictionaryRef dict);
   
-	/**
+  /**
   * Constructor representing a null object.
   */
   AttributeDictionary();
   
   /** Cast to native object **/
-	operator SUAttributeDictionaryRef() const;
-	operator SUAttributeDictionaryRef*();
+  operator SUAttributeDictionaryRef() const;
+  operator SUAttributeDictionaryRef*();
   
   /**
   * Returns the value of the attribute with the specified key.
@@ -70,25 +70,25 @@ class AttributeDictionary {
   * @param &default_value - the default value to return if the attribute with the key does not exist.
   */
   TypedValue get_attribute(const std::string &key, const TypedValue &default_value) const;
-	
+  
   /**
   * Alias of AttributeDictionary::get_attribute().
   * @return TypedValue object.  If the attribute does not exist, a null TypedValue object will be returned.
   */
   TypedValue get_value(const std::string &key) const;
 
-	/**
+  /**
   * Sets the specified attribute's value.
   * @param &key - the key of the attribute to set.
   * @param &value - the value to set.
   */
   bool set_attribute(const std::string &key, const TypedValue &value);
 
-	/**
+  /**
   * Returns a vector array of keys in the Attribute Dictionary.
   */
   std::vector<std::string> get_keys() const;
-	
+  
   /**
   * Returns the name of the AttributeDictionary.
   */

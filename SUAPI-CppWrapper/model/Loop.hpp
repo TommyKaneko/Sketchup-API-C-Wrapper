@@ -49,7 +49,7 @@ class Point3D;
 * PointLoopClassify is used to describe where a point sits on a loop object.
 */
 enum class PointLoopClassify {
-	PointOutside,
+  PointOutside,
   PointInside,
   PointOnVertex,
   PointOnEdge,

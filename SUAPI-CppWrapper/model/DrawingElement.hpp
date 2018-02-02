@@ -45,18 +45,18 @@ class Material;
 * Drawing Element wrapper
 */
 class DrawingElement :public Entity {
-	protected:
+  protected:
   SUDrawingElementRef m_drawing_element;
   
   public:
- 	/**
+   /**
   * Most common constructor.
   * @param drawing_element - SUDrawingElementRef object to assign to the object.
   * @param attached - flag indicating if the entity should be treated as attached to another object @see CW::Entity
   */
   DrawingElement(SUDrawingElementRef drawing_element, bool attached = true);
   
- 	/**
+   /**
   * Copy constructor with an optional parameter for the entity reference.  SUDrawingElementRef objects cannot be created from this class, so the Ref object must be passed to this constructor from a derived class object.
   * @param other - DrawingElement object from which properties will be copied.
   * @param element_ref - SUDrawingElementRef object to assign to the copied object.

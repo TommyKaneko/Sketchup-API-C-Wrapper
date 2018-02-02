@@ -38,8 +38,8 @@ namespace CW {
 ***************************/
 
 SUComponentInstanceRef ComponentInstance::copy_reference(const ComponentInstance& other) {
-	if (other.m_attached) {
-  	return other.m_instance;
+  if (other.m_attached) {
+    return other.m_instance;
   }
   // The other face has not been attached to the model, so copy its properties to a new object
   ComponentInstance new_instance = other.definition().create_instance();
@@ -59,21 +59,21 @@ ComponentInstance::ComponentInstance(SUComponentInstanceRef instance, bool attac
 
 
 ComponentInstance::ComponentInstance(const ComponentInstance& other):
-	DrawingElement(other, SUComponentInstanceToDrawingElement(copy_reference(other))),
+  DrawingElement(other, SUComponentInstanceToDrawingElement(copy_reference(other))),
   m_instance(SUComponentInstanceFromDrawingElement(m_drawing_element))
 {}
 
 
 ComponentInstance::ComponentInstance(const ComponentInstance& other, SUComponentInstanceRef instance_ref):
-	DrawingElement(other, SUComponentInstanceToDrawingElement(instance_ref)),
+  DrawingElement(other, SUComponentInstanceToDrawingElement(instance_ref)),
   m_instance(instance_ref)
 {}
 
 
 ComponentInstance::~ComponentInstance() {
-	if (!m_attached && SUIsValid(m_instance)) {
-  	SUResult res = SUComponentInstanceRelease(&m_instance);
-		assert(res == SU_ERROR_NONE);
+  if (!m_attached && SUIsValid(m_instance)) {
+    SUResult res = SUComponentInstanceRelease(&m_instance);
+    assert(res == SU_ERROR_NONE);
   }
 }
 
@@ -95,19 +95,19 @@ ComponentInstance& ComponentInstance::operator=(const ComponentInstance& other) 
 
 
 SUComponentInstanceRef ComponentInstance::ref() {
-	return m_instance;
+  return m_instance;
 }
 
 ComponentInstance::operator SUComponentInstanceRef() const {
-	return m_instance;
+  return m_instance;
 }
 ComponentInstance::operator SUComponentInstanceRef*() {
-	return &m_instance;
+  return &m_instance;
 }
 
 Transformation ComponentInstance::transformation() const {
   if (!(*this)) {
-  	throw std::logic_error("CW::ComponentInstance::transformation(): ComponentInstance is null");
+    throw std::logic_error("CW::ComponentInstance::transformation(): ComponentInstance is null");
   }
   SUTransformation transform;
   SUResult res = SUComponentInstanceGetTransform(m_instance, &transform);
@@ -118,9 +118,9 @@ Transformation ComponentInstance::transformation() const {
 
 void ComponentInstance::transformation(const Transformation& transform) {
   if (!(*this)) {
-  	throw std::logic_error("CW::ComponentInstance::transformation(): ComponentInstance is null");
+    throw std::logic_error("CW::ComponentInstance::transformation(): ComponentInstance is null");
   }
-	SUTransformation su_transform = transform.ref();
+  SUTransformation su_transform = transform.ref();
   SUResult res = SUComponentInstanceSetTransform(m_instance, &su_transform);
   assert(res == SU_ERROR_NONE);
 }
@@ -128,7 +128,7 @@ void ComponentInstance::transformation(const Transformation& transform) {
 
 ComponentDefinition ComponentInstance::definition() const{
   if (!(*this)) {
-  	throw std::logic_error("CW::ComponentInstance::definition(): ComponentInstance is null");
+    throw std::logic_error("CW::ComponentInstance::definition(): ComponentInstance is null");
   }
   SUComponentDefinitionRef component = SU_INVALID;
   SUResult res = SUComponentInstanceGetDefinition(m_instance, &component);
@@ -139,11 +139,11 @@ ComponentDefinition ComponentInstance::definition() const{
 
 String ComponentInstance::name() const {
   if (!(*this)) {
-  	throw std::logic_error("CW::ComponentInstance::name(): ComponentInstance is null");
+    throw std::logic_error("CW::ComponentInstance::name(): ComponentInstance is null");
   }
   String string;
   SUStringRef * const string_ref = string;
-	SUResult res = SUComponentInstanceGetName(m_instance, string_ref);
+  SUResult res = SUComponentInstanceGetName(m_instance, string_ref);
   assert(res == SU_ERROR_NONE);
   return string;
 }
@@ -151,10 +151,10 @@ String ComponentInstance::name() const {
 
 void ComponentInstance::name(const String& string) {
   if (!(*this)) {
-  	throw std::logic_error("CW::ComponentInstance::name(): ComponentInstance is null");
+    throw std::logic_error("CW::ComponentInstance::name(): ComponentInstance is null");
   }
-	std::string name_string = string.std_string();
-	SUResult res = SUComponentInstanceSetName(m_instance, name_string.c_str());
+  std::string name_string = string.std_string();
+  SUResult res = SUComponentInstanceSetName(m_instance, name_string.c_str());
   assert(res == SU_ERROR_NONE);
 }
 

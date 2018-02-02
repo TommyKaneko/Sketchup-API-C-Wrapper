@@ -34,7 +34,7 @@ namespace CW {
 ** Private Static Methods *****
 *******************************/
 SUVertexRef Vertex::copy_reference(const Vertex& other) {
-	// As vertices cannot be "copied", we simply pass the existing reference.
+  // As vertices cannot be "copied", we simply pass the existing reference.
   return other.m_vertex;
 }
 
@@ -42,7 +42,7 @@ SUVertexRef Vertex::copy_reference(const Vertex& other) {
 ** Constructors / Destructor **
 *******************************/
 Vertex::Vertex():
-	Entity(),
+  Entity(),
   m_vertex(SU_INVALID)
 {}
 
@@ -54,19 +54,19 @@ Vertex::Vertex(SUVertexRef vertex):
 
 
 Vertex::Vertex(const Vertex& other):
-	Entity(other, SUVertexToEntity(copy_reference(other))),
+  Entity(other, SUVertexToEntity(copy_reference(other))),
   m_vertex(SUVertexFromEntity(m_entity))
 {}
 
 
 Vertex::~Vertex() {
-	// Vertices cannot be released, as they are elements that are attached to something else.
+  // Vertices cannot be released, as they are elements that are attached to something else.
 }
 
 
 Vertex& Vertex::operator=(const Vertex& other) {
-	// Simply assign the other vertex to this object.
-	m_vertex = other.m_vertex;
+  // Simply assign the other vertex to this object.
+  m_vertex = other.m_vertex;
   m_entity = SUVertexToEntity(m_vertex);
   Entity::operator=(other);
   return (*this);
@@ -78,7 +78,7 @@ Vertex& Vertex::operator=(const Vertex& other) {
 ********************/
 Point3D Vertex::position() const {
   if (!(*this)) {
-  	throw std::logic_error("CW::Vertex::position(): Vertex is null");
+    throw std::logic_error("CW::Vertex::position(): Vertex is null");
   }
   SUPoint3D point;
   SUResult res = SUVertexGetPosition(m_vertex, &point);
@@ -96,7 +96,7 @@ Vertex::operator SUVertexRef*() {
 }
 
 SUVertexRef Vertex::ref() const {
-	return m_vertex;
+  return m_vertex;
 }
 
 Vertex::operator SUPoint3D() const {

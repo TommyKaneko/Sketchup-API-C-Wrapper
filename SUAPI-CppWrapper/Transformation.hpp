@@ -41,7 +41,7 @@ class Axes;
 class Face;
 
 class Transformation {
-	private:
+  private:
   SUTransformation m_transformation;
   constexpr static double EPSILON = 0.001; // Sketchup Tolerance is 1/1000"
   
@@ -50,7 +50,7 @@ class Transformation {
   * @param matrix4_1 array of size 4 to mulitply with this transformation.
   * @return double[4] array representing 4x1 matrix
   */
-	std::array<double, 4> multiply4x1(std::array<double, 4> matrix4_1) const;
+  std::array<double, 4> multiply4x1(std::array<double, 4> matrix4_1) const;
   
   /**
   * Returns the determinant of the matrix.
@@ -111,7 +111,7 @@ class Transformation {
   
   /**
   * Retrieves the origin of a rigid transformation.
-	*/
+  */
   Point3D origin() const;
   
   /**

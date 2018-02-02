@@ -39,12 +39,12 @@ namespace CW {
 ***************************/
 SUEdgeRef Edge::create_edge(const Point3D& start, const Point3D& end) {
   if (!start || !end) {
-  	throw std::invalid_argument("CW::Edge::create_edge(): given Point3D is null");
+    throw std::invalid_argument("CW::Edge::create_edge(): given Point3D is null");
   }
   if (start == end) {
-  	throw std::invalid_argument("CW::Edge::create_edge(): start and end points are equal - cannot create edge of zero length");
+    throw std::invalid_argument("CW::Edge::create_edge(): start and end points are equal - cannot create edge of zero length");
   }
-	SUEdgeRef edge = SU_INVALID;
+  SUEdgeRef edge = SU_INVALID;
   SUPoint3D start_ref = start;
   SUPoint3D end_ref = end;
   SUResult res = SUEdgeCreate(&edge, &start_ref, &end_ref);
@@ -54,10 +54,10 @@ SUEdgeRef Edge::create_edge(const Point3D& start, const Point3D& end) {
 
 
 SUEdgeRef Edge::copy_reference(const Edge& other) {
-	if (other.m_attached) {
-  	return other.m_edge;
+  if (other.m_attached) {
+    return other.m_edge;
   }
-	SUEdgeRef new_edge = create_edge(other.start().position(), other.end().position());
+  SUEdgeRef new_edge = create_edge(other.start().position(), other.end().position());
   return new_edge;
 }
 
@@ -65,38 +65,38 @@ SUEdgeRef Edge::copy_reference(const Edge& other) {
 * Constructors / Destructor **
 ******************************/
 Edge::Edge():
-	DrawingElement(SU_INVALID, true),
+  DrawingElement(SU_INVALID, true),
   m_edge(SU_INVALID)
 {}
 
 
 Edge::Edge(const std::vector<Point3D>& points):
-	Edge(create_edge(points[0], points[1]), false)
+  Edge(create_edge(points[0], points[1]), false)
 {
 }
 
 
 Edge::Edge(const Point3D& start, const Point3D& end):
-	Edge(create_edge(start, end), false)
+  Edge(create_edge(start, end), false)
 {}
 
 
 Edge::Edge(const Vertex& start, const Vertex& end):
-	Edge(start.position(), end.position())
+  Edge(start.position(), end.position())
 {}
 
 
 Edge::Edge(SUEdgeRef edge, bool attached):
   DrawingElement(SUEdgeToDrawingElement(edge), attached),
-	m_edge(edge)
+  m_edge(edge)
 {}
 
 
 Edge::Edge(const Edge& other):
-	DrawingElement(other, SUEdgeToDrawingElement(copy_reference(other))),
+  DrawingElement(other, SUEdgeToDrawingElement(copy_reference(other))),
   m_edge(SUEdgeFromDrawingElement(m_drawing_element))
 {
-	if (!other.m_attached && SUIsValid(other.m_edge)) {
+  if (!other.m_attached && SUIsValid(other.m_edge)) {
     this->color(other.color());
     this->smooth(other.smooth());
     this->soft(other.soft());
@@ -105,8 +105,8 @@ Edge::Edge(const Edge& other):
 
 
 Edge::~Edge() {
-	if (!m_attached && SUIsValid(m_edge)) {
-  	SUResult res = SUEdgeRelease(&m_edge);
+  if (!m_attached && SUIsValid(m_edge)) {
+    SUResult res = SUEdgeRelease(&m_edge);
     assert(res == SU_ERROR_NONE);
   }
 }
@@ -132,29 +132,29 @@ Edge& Edge::operator=(const Edge& other) {
 
 
 SUEdgeRef Edge::ref() const {
-	return m_edge;
+  return m_edge;
 }
 
 Edge::operator SUEdgeRef() const {
-	return m_edge;
+  return m_edge;
 }
 
 Edge::operator SUEdgeRef*() {
-	return &m_edge;
+  return &m_edge;
 }
   
 /*
 Edge::operator bool() const {
-	if (m_create_result == SU_ERROR_NONE) {
-  	return true;
+  if (m_create_result == SU_ERROR_NONE) {
+    return true;
   }
   return false;
 }
 */
 
 bool Edge::operator!() const {
-	if (SUIsInvalid(m_edge)) {
-  	return true;
+  if (SUIsInvalid(m_edge)) {
+    return true;
   }
   return false;
 }
@@ -162,22 +162,22 @@ bool Edge::operator!() const {
 
 Color Edge::color() const {
   if (!(*this)) {
-  	throw std::logic_error("CW::Edge::color(): Edge is null");
+    throw std::logic_error("CW::Edge::color(): Edge is null");
   }
-	SUColor color = SU_INVALID;
-	SUEdgeGetColor(m_edge, &color);
+  SUColor color = SU_INVALID;
+  SUEdgeGetColor(m_edge, &color);
   return Color(color);
 }
 
 
 bool Edge::color(const Color& input_color) {
   if (!(*this)) {
-  	throw std::logic_error("CW::Edge::color(): Edge is null");
+    throw std::logic_error("CW::Edge::color(): Edge is null");
   }
-	SUColor color = input_color.ref();
-	SUResult result = SUEdgeSetColor(m_edge, &color);
+  SUColor color = input_color.ref();
+  SUResult result = SUEdgeSetColor(m_edge, &color);
   if (result == SU_ERROR_NONE) {
-  	return true;
+    return true;
   }
   return false;
 }
@@ -185,9 +185,9 @@ bool Edge::color(const Color& input_color) {
 
 Vertex Edge::end() const {
   if (!(*this)) {
-  	throw std::logic_error("CW::Edge::end(): Edge is null");
+    throw std::logic_error("CW::Edge::end(): Edge is null");
   }
-	SUVertexRef vertex = SU_INVALID;
+  SUVertexRef vertex = SU_INVALID;
   SUEdgeGetEndVertex(m_edge, &vertex);
   return Vertex(vertex);
 }
@@ -195,21 +195,21 @@ Vertex Edge::end() const {
 
 std::vector<Face> Edge::faces() const {
   if (!(*this)) {
-  	throw std::logic_error("CW::Edge::faces(): Edge is null");
+    throw std::logic_error("CW::Edge::faces(): Edge is null");
   }
-	size_t count = 0;
-	SUResult res = SUEdgeGetNumFaces(m_edge, &count);
+  size_t count = 0;
+  SUResult res = SUEdgeGetNumFaces(m_edge, &count);
   SUFaceRef* faces = new SUFaceRef[count];
   assert(res == SU_ERROR_NONE);
-	if (count == 0) {
-  	return std::vector<Face>();
+  if (count == 0) {
+    return std::vector<Face>();
   }
-	res = SUEdgeGetFaces(m_edge, count, &faces[0], &count);
+  res = SUEdgeGetFaces(m_edge, count, &faces[0], &count);
   assert(res == SU_ERROR_NONE);
   std::vector<Face> return_faces;
   return_faces.reserve(count);
   for (size_t i=0; i < count; ++i) {
-  	return_faces.push_back(Face(faces[i]));
+    return_faces.push_back(Face(faces[i]));
   }
   delete faces;
   return return_faces;
@@ -217,29 +217,29 @@ std::vector<Face> Edge::faces() const {
 
 Vector3D Edge::vector() const {
   if (!(*this)) {
-  	throw std::logic_error("CW::Edge::vector(): Edge is null");
+    throw std::logic_error("CW::Edge::vector(): Edge is null");
   }
-	return end().position() - start().position();
+  return end().position() - start().position();
 }
 
 
 bool Edge::smooth() const {
   if (!(*this)) {
-  	throw std::logic_error("CW::Edge::smooth(): Edge is null");
+    throw std::logic_error("CW::Edge::smooth(): Edge is null");
   }
-	bool smooth_flag;
-	SUEdgeGetSmooth(m_edge, &smooth_flag);
-	return smooth_flag;
+  bool smooth_flag;
+  SUEdgeGetSmooth(m_edge, &smooth_flag);
+  return smooth_flag;
 }
 
 
 bool Edge::smooth(bool smooth) {
   if (!(*this)) {
-  	throw std::logic_error("CW::Edge::smooth(): Edge is null");
+    throw std::logic_error("CW::Edge::smooth(): Edge is null");
   }
-	SUResult result = SUEdgeSetSmooth(m_edge, smooth);
+  SUResult result = SUEdgeSetSmooth(m_edge, smooth);
   if (result == SU_ERROR_NONE) {
-  	return true;
+    return true;
   }
   return false;
 }
@@ -247,21 +247,21 @@ bool Edge::smooth(bool smooth) {
 
 bool Edge::soft() const {
   if (!(*this)) {
-  	throw std::logic_error("CW::Edge::soft(): Edge is null");
+    throw std::logic_error("CW::Edge::soft(): Edge is null");
   }
-	bool soft_flag;
-	SUEdgeGetSoft(m_edge, &soft_flag);
-	return soft_flag;
+  bool soft_flag;
+  SUEdgeGetSoft(m_edge, &soft_flag);
+  return soft_flag;
 }
 
 
 bool Edge::soft(bool soft) {
   if (!(*this)) {
-  	throw std::logic_error("CW::Edge::soft(): Edge is null");
+    throw std::logic_error("CW::Edge::soft(): Edge is null");
   }
-	SUResult result = SUEdgeSetSoft(m_edge, soft);
+  SUResult result = SUEdgeSetSoft(m_edge, soft);
   if (result == SU_ERROR_NONE) {
-  	return true;
+    return true;
   }
   return false;
 }
@@ -269,9 +269,9 @@ bool Edge::soft(bool soft) {
 
 Vertex Edge::start() const {
   if (!(*this)) {
-  	throw std::logic_error("CW::Edge::start(): Edge is null");
+    throw std::logic_error("CW::Edge::start(): Edge is null");
   }
-	SUVertexRef vertex = SU_INVALID;
+  SUVertexRef vertex = SU_INVALID;
   SUEdgeGetStartVertex(m_edge, &vertex);
   return Vertex(vertex);
 }

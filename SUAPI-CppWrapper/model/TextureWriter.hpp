@@ -38,7 +38,7 @@ namespace CW {
 * TextureWriter wrapper
 */
 class TextureWriter {
-	private:
+  private:
   SUTextureWriterRef m_texture_writer;
   
   public:

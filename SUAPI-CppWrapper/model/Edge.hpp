@@ -46,7 +46,7 @@ class Color;
 *
 */
 class Edge :public DrawingElement {
-	private:
+  private:
   SUEdgeRef m_edge;
   
   static SUEdgeRef create_edge(const Point3D& start, const Point3D& end);
@@ -71,7 +71,7 @@ class Edge :public DrawingElement {
   * @param end - the end vertex.
   */
   Edge(const Point3D& start, const Point3D& end);
-	
+  
   /**
   * Creates new edge using vertices position.  Note that this will not join the new edge to existing vertices.  Use GeometryInput for welding edges.
   */
@@ -83,7 +83,7 @@ class Edge :public DrawingElement {
   * @param bool true if the edge should be released when this class object is destroyed.  False, if the release of the face object is handled elsewhere (use with caution).
   */
   Edge(SUEdgeRef edge, bool attached = true);
-	
+  
   /** Copy Constructor */
   Edge(const Edge& other);
   
@@ -111,9 +111,9 @@ class Edge :public DrawingElement {
   * NOT operator.  Checks if the SUEdgeRef is valid.
   * @return true if the edge is invalid
   */
-	bool operator!() const;
+  bool operator!() const;
   
-	/*
+  /*
   * Returns the Color object assigned to the Edge
   */
   Color color() const;

@@ -41,7 +41,7 @@ class Color;
 class Texture;
 
 class Material :public Entity {
-	private:
+  private:
   SUMaterialRef m_material;
   
   static SUMaterialRef create_material();
@@ -56,7 +56,7 @@ class Material :public Entity {
   public:
   Material();
   Material(SUMaterialRef material_ref, bool attached = true);
-	
+  
   /** Copy constructor */
   Material(const Material& other);
   
@@ -147,7 +147,7 @@ class Material :public Entity {
   * Sets whether the opacity value is used
   */
   void use_alpha(bool flag);
-	
+  
   /**
   * Hash function for use wht unordered_map
   */
@@ -161,8 +161,8 @@ namespace std {
   {
     size_t operator()(const CW::Material& k) const
     {
-			static const size_t shift = (size_t)log2(1 + sizeof(CW::Material));
-			return (size_t)(k.m_entity.ptr) >> shift;
+      static const size_t shift = (size_t)log2(1 + sizeof(CW::Material));
+      return (size_t)(k.m_entity.ptr) >> shift;
     }
   };
 

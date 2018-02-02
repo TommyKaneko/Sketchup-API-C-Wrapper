@@ -38,9 +38,9 @@ namespace CW {
 class Material;
 
 class MaterialInput {
-	private:
+  private:
   SUMaterialInput m_material_input;
-	
+  
   /**
   * Creates a SUMaterialInput struct, with default values derived from the Material object.
   */

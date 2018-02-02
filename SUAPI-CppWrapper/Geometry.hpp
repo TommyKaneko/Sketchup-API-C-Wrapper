@@ -57,13 +57,13 @@ private:
 
 public:
   double m_val;
-	static constexpr double PI = 3.141592653589793;
+  static constexpr double PI = 3.141592653589793;
   // Estimate the degree of correctness of angles (Sketchup Tolerance is 1/1000", so try to make some sort of guess - suggest discrepancies of 1/1000" over radians rotations over 30m (approx 1000")
   constexpr static double EPSILON = 0.0000000000005; // Sketchup Tolerance is 1/1000"
   
   Radians() {};
   Radians(const double &rhs);
-	
+  
   /**
   * Copy constructor
   */
@@ -80,7 +80,7 @@ public:
   Radians &operator=(const Radians &radians);
   
   /**
-  *	Arithmetic operator overloads.  These work like doubles, but will always give a value between 0 and 2*pi
+  *  Arithmetic operator overloads.  These work like doubles, but will always give a value between 0 and 2*pi
   */
   Radians operator+(const double value) const;
   Radians operator-(const double value) const;
@@ -89,14 +89,14 @@ public:
   
   bool operator==(const Radians& rhs) const;
   bool operator==(const double rhs) const;
-	
-	/**
-	* Gives the difference between the two radians values as a positive double value.
-	*/
+  
+  /**
+  * Gives the difference between the two radians values as a positive double value.
+  */
   double difference(const Radians& other) const;
   
   // TODO: below does not look right
- 	bool closest(const Radians& value);
+   bool closest(const Radians& value);
 };
 
 class Point3D;
@@ -111,7 +111,7 @@ class Point3D;
 */
 class Vector3D {
 
-	protected:
+  protected:
   SUVector3D m_vector;
   bool null = false; // Invalid flag
 
@@ -137,7 +137,7 @@ class Vector3D {
   * Returns the vector between start and end points of an edge.
   */
   Vector3D( const Edge &edge);
-	
+  
   /**
   * Allow conversion from Point3D.
   */
@@ -153,7 +153,7 @@ class Vector3D {
   */
   operator Point3D() const;
   
- 	/*
+   /*
   * Copy constructor
   */
   Vector3D(const Vector3D &vector);
@@ -163,7 +163,7 @@ class Vector3D {
   */
   Vector3D &operator=(const Vector3D &vector);
   Vector3D &operator=(const SUVector3D &vector);
-	
+  
   /**
   * Arithmetic operator overloads
   */
@@ -176,7 +176,7 @@ class Vector3D {
   Vector3D operator-(const SUVector3D &vector) const {return *this - Vector3D(vector);}
   Vector3D operator*(const double &scalar) const;
   Vector3D operator/(const double &scalar) const;
-	
+  
   /**
   * Comparator operator overloads
   */
@@ -184,7 +184,7 @@ class Vector3D {
 
   friend bool operator!=(const Vector3D& lhs, const Vector3D& rhs);
 
-	/**
+  /**
   * Validty check
   */
   bool operator!() const;
@@ -217,7 +217,7 @@ class Vector3D {
   Vector3D cross(const Vector3D& vector2) const;
   
   enum class Colinearity {
-  	UNDEFINED,
+    UNDEFINED,
     COLINEAR_PRO,
     COLINEAR_ANTI,
     NO
@@ -226,13 +226,13 @@ class Vector3D {
   * Returns whether the vector is colinear.
   */
   Colinearity colinear(const Vector3D& vector_b) const;
-	
+  
   /**
   * Returns a vector rotated about another vector, which is used as the axis.
   * @param angle in radians to rotate.
   * @param vector which will be used as the axis through which it will be rotated.
   */
-	Vector3D rotate_about(double angle, const Vector3D& axis) const;
+  Vector3D rotate_about(double angle, const Vector3D& axis) const;
   
   /**
   * Returns a valid vector that has zero length.
@@ -255,12 +255,12 @@ static Vector3D operator*(const double &lhs, const Vector3D &rhs)
 * Point3D inherits from Vector3D, as the concept of a point and a vector is interchangeable in vector mathematics.
 */
 class Point3D {
-	private:
+  private:
   SUPoint3D m_point;
   bool null = false; // Invalid flag
   //constexpr static double EPSILON = 0.001; // Sketchup Tolerance is 1/1000"
 
-	public:
+  public:
   constexpr static double EPSILON = 0.0005; // Sketchup Tolerance is 1/1000"
   double &x;
   double &y;
@@ -276,7 +276,7 @@ class Point3D {
   * @param valid - true for an object with zero values, or false for a null object.
   */
   Point3D(bool valid);
-	
+  
   /**
   * Constructs a Point3D object from a SUPoint3D object.
   * @param su_point - SUPoint3D object to be wrapped in this object.
@@ -302,7 +302,7 @@ class Point3D {
   */
   Point3D(const Point3D& other);
 
-	/**
+  /**
   * Allows conversion from Vector3D
   */
   explicit Point3D( const Vector3D& vector);
@@ -318,7 +318,7 @@ class Point3D {
   operator SUPoint3D() const;
   operator SUPoint3D*();
   
-	/*
+  /*
   * Cast to Vector3D
   */
   operator Vector3D() const;
@@ -346,7 +346,7 @@ class Point3D {
   
   /**
   * Returns intersection between two line segments.  Each line segment is represented by a point and a vector.
-  *	@param return_colinear - if line segments overlap, return the point at which line A first interacts. with line B.  If set to false, a null point will be returned for overlapping lines.
+  *  @param return_colinear - if line segments overlap, return the point at which line A first interacts. with line B.  If set to false, a null point will be returned for overlapping lines.
   * @return if intersection is found the point of intersection is returned.  If no intersection exists, a null Point3D object is returned.
   */
   static Point3D intersection_between_lines(const Point3D& point_a, const Vector3D& vector_a, const Point3D& point_b, const Vector3D& vector_b, bool return_colinear = false);
@@ -373,7 +373,7 @@ class Line3D;
 * Class methods are included to allow easy vector mathematics.
 */
 class Plane3D {
-	private:
+  private:
   SUPlane3D m_plane;
   bool null = false; // Invalid flag
   constexpr static double EPSILON = 0.0005; // Sketchup Tolerance is 1/1000"
@@ -400,7 +400,7 @@ class Plane3D {
   Plane3D(const Vector3D& normal, const Point3D& point);
   Plane3D(const Point3D& point, const Vector3D& normal);
 
- 	// Copy constructor
+   // Copy constructor
   Plane3D(const Plane3D &plane);
   
   // Overload copy assignment operator
@@ -438,7 +438,7 @@ class Plane3D {
   * Returns point where a line intersects this plane.
   */
   Point3D intersection(const Line3D &line) const;
-	
+  
   /**
   * Returns point where a ray drawn from the given point intersects this plane. Note that this is different from a line, which effectively draws a ray in both directions of the point.
   * @param start_point - the point from which the ray will be drawn from.
@@ -455,9 +455,9 @@ class Plane3D {
   */
   Point3D intersection_between(const Point3D& point_a, const Point3D& point_b) const;
   
-	double angle_with(const Plane3D& plane2) const;
-	double angle(const Plane3D& plane2) const { return angle_with(plane2);};
-	
+  double angle_with(const Plane3D& plane2) const;
+  double angle(const Plane3D& plane2) const { return angle_with(plane2);};
+  
   /**
   * Returns the distance of a point from the plane.  It can be negative as the plane has a front and back side.
   */
@@ -476,14 +476,14 @@ class Plane3D {
   /**
   * Checks if the plane is parallel with another.
   */
-	bool parallel(const Plane3D& plane2) const;
+  bool parallel(const Plane3D& plane2) const;
 
   
   /**
   * Returns a Plane with normals reversed.
   */
   Plane3D inverse() const;
-	
+  
   /**
   * Create a plane from a series of points (normally vertexes within a loop).
   *
@@ -493,7 +493,7 @@ class Plane3D {
 };
 
 class BoundingBox3D {
-	private:
+  private:
   SUBoundingBox3D m_bounding_box;
   bool null = false; // Invalid flag
 
@@ -518,21 +518,21 @@ class BoundingBox3D {
   * Returns the point where x,y and z are at their minimum
   */
   Point3D min() const;
-	
+  
   /**
   * Set the minimum point
   */
-	void min_point(const Point3D& point);
-	
+  void min_point(const Point3D& point);
+  
   /**
   * Returns the point where x,y and z are at their maximum
   */
   Point3D max() const;
-	
+  
   /**
   * Set the maximum point
   */
-	void max_point(const Point3D& point);
+  void max_point(const Point3D& point);
 };
 
 
@@ -540,7 +540,7 @@ class BoundingBox3D {
 * A Line3D represents a point and a vector, which carries on into infinity in two directions.  There is no equivalent native object in the Sketchup C API.
 */
 class Line3D {
-	private:
+  private:
   Point3D m_point;
   Vector3D m_direction;
   bool null = false; // Invalid flag
@@ -575,7 +575,7 @@ class Line3D {
   
   Point3D intersection(const Line3D &line) const;
   Point3D intersection(const Plane3D &plane) const;
-	
+  
   /**
   * Returns the intersection between this line and a line segment drawn between two points, given by a point and a vector from that point.
   * @param point - point representing the start of the line segment.

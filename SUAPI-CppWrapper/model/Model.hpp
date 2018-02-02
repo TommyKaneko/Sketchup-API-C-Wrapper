@@ -49,7 +49,7 @@ namespace CW {
   class String;
 
 class Model {
-	private:
+  private:
   SUModelRef m_model;
   bool m_release_on_destroy;
   
@@ -61,7 +61,7 @@ class Model {
   Model();
   Model(SUModelRef model_ref, bool release_on_destroy = true);
   Model(std::string file_path);
-	
+  
   /** Copy Constructor **/
   Model(const Model& other);
   
@@ -90,7 +90,7 @@ class Model {
   * NOT operator.  Checks if the SUModelRef is invalid.
   * @return true if the model is invalid
   */
-	bool operator!() const;
+  bool operator!() const;
   
   /*
   * Returns active, or 'default' Layer object
@@ -119,7 +119,7 @@ class Model {
   * The attribute_dictionaries method is used to retrieve the AttributeDictionaries collection attached to the model.
   * @return vector of AttributeDictionary objects associated with the model. If no AttributeDictionary objects are associated with the entity, an empty vector will be returned.
   */
-  std::vector<AttributeDictionary>	attribute_dictionaries() const;
+  std::vector<AttributeDictionary>  attribute_dictionaries() const;
   
   /*
   * Retrieves an attribute dictionary object with a given name that is attached to an Entity.
@@ -138,7 +138,7 @@ class Model {
   //Behavior behavior(); // TODO: this may not be possible to retrieve
   
   /*
-	* Returns the Classifications object that is tied to the model.
+  * Returns the Classifications object that is tied to the model.
   */
   Classifications classifications() const;
   
@@ -149,13 +149,13 @@ class Model {
   //std::string description();
   //bool description(std::string description_string);
 
-	/*
+  /*
   * Returns the list of ComponentDefinitions in this model
   * @return definitions vector array of definitions.
   */
   std::vector<ComponentDefinition> definitions() const;
 
-	/*
+  /*
   * Returns the list of Group ComponentDefinitions in this model
   * @return definitions vector array of definitions.
   */
@@ -166,7 +166,7 @@ class Model {
   * @return entities Entities object
   */
   Entities entities() const;
-	
+  
   //find_entity_by_id();  // TODO can this be done?
   
   /*
@@ -195,13 +195,13 @@ class Model {
   * @return layers a vector array of Layer objects in the model.
   */
   std::vector<Layer> layers() const;
- 	
+   
   /*
   * Returns the Location object of the model
   * @return location Location object. If no location has been assigned to the model, the Location object returned will be invalid.
   */
- 	// Location location();
- 	
+   // Location location();
+   
   /*
   * Returns the list of materials in the model.
   * @return materials vector array of Material objects in the model.
@@ -218,19 +218,19 @@ class Model {
   * Returns the name of the model
   * @return name string of the model name.
   */
-	String name() const;
+  String name() const;
   
   /*
   * Sets the name of the model.
   * @param name_string string to name the model with.
   */
-	bool name(const String& name_string);
-	
+  bool name(const String& name_string);
+  
   /*
   * The number of faces in the model.  Useful for statistics.
   */
-	size_t num_faces() const;
-	
+  size_t num_faces() const;
+  
   /*
   * Returns a key=>value list of options for the model.
   * @see SUOptionsProviderRef
@@ -238,7 +238,7 @@ class Model {
   // TODO
   //std::vector<std::pair<std::string, std::string>> options() const;
   
-	/*
+  /*
   * Returns the path of the model.
   */
   // TODO - probably delete this, as there is no way to get the path of the model through the API.
@@ -282,20 +282,20 @@ class Model {
   bool set_attribute(const std::string& dict_name, const std::string& key, const TypedValue& value);
   
   // set_datum()
-	
+  
   /*
   * Returns the ShadowInfo object of the model.
   */
   // ShadowInfo shadow_info();
-	
+  
   /*
   * Returns the list of styles in the model.
   * @return styles vector array of Style objects
   */
   // std::vector<Style> styles();
-	
+  
   // tags
-	// tags=
+  // tags=
   
   //std::string title() { return name();}
   //std::string title(std::string name_value) { return name(name_value);}

@@ -45,11 +45,11 @@ Color::operator SUColor() const {
 }
 
 bool operator ==(const Color &lhs, const Color &rhs) {
-	if (lhs.m_color.alpha == rhs.m_color.alpha &&
+  if (lhs.m_color.alpha == rhs.m_color.alpha &&
       lhs.m_color.red == rhs.m_color.red &&
-			lhs.m_color.blue == rhs.m_color.blue &&
-			lhs.m_color.green == rhs.m_color.green)	{
-  	return true;
+      lhs.m_color.blue == rhs.m_color.blue &&
+      lhs.m_color.green == rhs.m_color.green)  {
+    return true;
   }
   return false;
 }

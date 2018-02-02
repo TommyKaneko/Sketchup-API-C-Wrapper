@@ -38,7 +38,7 @@ namespace CW {
 class String;
 
 class Layer :public Entity {
-	private:
+  private:
   SULayerRef m_layer;
   
   static SULayerRef create_layer();
@@ -54,7 +54,7 @@ class Layer :public Entity {
   * Constructs a Layer object from a pre existing SULayerRef object.
   */
   Layer(SULayerRef layer_ref, bool attached = true);
-	
+  
   /** Copy Constructor */
   Layer(const Layer& other);
   
@@ -63,7 +63,7 @@ class Layer :public Entity {
   
   /** Copy assignment operator */
   Layer& operator=(const Layer& other);
-	
+  
   /**
   * Returns the SULayerRef object that this class wraps
   */
@@ -74,7 +74,7 @@ class Layer :public Entity {
   /**
   * Returns whether this is a NULL layer or not.
   */
-	bool operator!() const;
+  bool operator!() const;
   //bool operator!() const;
   
   /**

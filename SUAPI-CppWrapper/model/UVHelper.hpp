@@ -38,7 +38,7 @@ namespace CW {
 * UVHelper wrapper
 */
 class UVHelper {
-	private:
+  private:
   SUUVHelperRef m_uv_helper;
   bool m_attached;
   

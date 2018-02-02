@@ -29,18 +29,18 @@ namespace CW {
 *******************************/
 
 SUTextureRef Texture::create_texture(ImageRep& image_rep) {
-	SUImageRepRef image = image_rep.ref();
+  SUImageRepRef image = image_rep.ref();
   SUTextureRef texture = SU_INVALID;
-	SUResult res = SUTextureCreateFromImageRep(&texture, image);
+  SUResult res = SUTextureCreateFromImageRep(&texture, image);
   assert(res == SU_ERROR_NONE);
-	return texture;
+  return texture;
 }
 
 SUTextureRef Texture::create_texture(const std::string file_path, double s_scale, double t_scale) {
-	SUTextureRef texture = SU_INVALID;
+  SUTextureRef texture = SU_INVALID;
   SUResult res = SUTextureCreateFromFile(&texture, file_path.c_str(), s_scale,t_scale);
   if (res != SU_ERROR_NONE) {
-  	return SU_INVALID;
+    return SU_INVALID;
   }
   return texture;
 }
@@ -54,7 +54,7 @@ SUTextureRef Texture::copy_reference(const Texture& other) {
 ** Constructors / Destructor **
 *******************************/
 Texture::Texture():
-	Entity(),
+  Entity(),
   m_texture(SU_INVALID)
 {}
 
@@ -66,7 +66,7 @@ Texture::Texture(SUTextureRef texture, bool attached):
 
 
 Texture::Texture(const Texture& other):
-	Entity(other, SUTextureToEntity(copy_reference(other))),
+  Entity(other, SUTextureToEntity(copy_reference(other))),
   m_texture(SUTextureFromEntity(m_entity))
 {}
 
@@ -86,8 +86,8 @@ Texture::~Texture() {
 
 
 Texture& Texture::operator=(const Texture& other) {
-	// Simply assign the other vertex to this object.
-	m_texture = other.m_texture;
+  // Simply assign the other vertex to this object.
+  m_texture = other.m_texture;
   m_entity = SUTextureToEntity(m_texture);
   Entity::operator=(other);
   return (*this);
@@ -105,21 +105,21 @@ Texture::operator SUTextureRef*() {
 
 
 SUTextureRef Texture::ref() const {
-	return m_texture;
+  return m_texture;
 }
 
 Texture Texture::copy() const {
-	ImageRep image_rep = this->image_rep().copy();
-	return Texture(image_rep);
+  ImageRep image_rep = this->image_rep().copy();
+  return Texture(image_rep);
 }
 
 
 bool Texture::alpha_used() const {
   if (!(*this)) {
-  	throw std::logic_error("CW::Texture::alpha_used(): Texture is null");
+    throw std::logic_error("CW::Texture::alpha_used(): Texture is null");
   }
   bool alpha_channel_used;
-	SU_RESULT res = SUTextureGetUseAlphaChannel	(m_texture,	&alpha_channel_used);
+  SU_RESULT res = SUTextureGetUseAlphaChannel  (m_texture,  &alpha_channel_used);
   assert(res == SU_ERROR_NONE);
   return alpha_channel_used;
 }
@@ -127,34 +127,34 @@ bool Texture::alpha_used() const {
 
 ImageRep Texture::image_rep() const {
   if (!(*this)) {
-  	throw std::logic_error("CW::Texture::alpha_used(): Texture is null");
+    throw std::logic_error("CW::Texture::alpha_used(): Texture is null");
   }
   SUImageRepRef image_rep = SU_INVALID;
   SU_RESULT res = SUImageRepCreate(&image_rep);
   assert(res == SU_ERROR_NONE);
-	res = SUTextureGetImageRep(m_texture, &image_rep);
+  res = SUTextureGetImageRep(m_texture, &image_rep);
   assert(res == SU_ERROR_NONE);
-	return ImageRep(image_rep);
+  return ImageRep(image_rep);
 }
 
 
 String Texture::file_name() const {
-	String name;
-	SUStringRef file_ref = name.ref();
-	SU_RESULT res = SUTextureGetFileName(m_texture, &file_ref);
-	return name;
+  String name;
+  SUStringRef file_ref = name.ref();
+  SU_RESULT res = SUTextureGetFileName(m_texture, &file_ref);
+  return name;
 }
 
 
 size_t Texture::width() const {
   if (!(*this)) {
-  	throw std::logic_error("CW::Texture::width(): Texture is null");
+    throw std::logic_error("CW::Texture::width(): Texture is null");
   }
   size_t width;
   size_t height;
   double s_scale;
   double t_scale;
-	SUResult res = SUTextureGetDimensions(m_texture, &width, &height, &s_scale, &t_scale);
+  SUResult res = SUTextureGetDimensions(m_texture, &width, &height, &s_scale, &t_scale);
   assert(res == SU_ERROR_NONE);
   return width;
 }
@@ -162,13 +162,13 @@ size_t Texture::width() const {
 
 size_t Texture::height() const {
   if (!(*this)) {
-  	throw std::logic_error("CW::Texture::height(): Texture is null");
+    throw std::logic_error("CW::Texture::height(): Texture is null");
   }
   size_t width;
   size_t height;
   double s_scale;
   double t_scale;
-	SUResult res = SUTextureGetDimensions(m_texture, &width, &height, &s_scale, &t_scale);
+  SUResult res = SUTextureGetDimensions(m_texture, &width, &height, &s_scale, &t_scale);
   assert(res == SU_ERROR_NONE);
   return height;
 }
@@ -176,13 +176,13 @@ size_t Texture::height() const {
 
 double Texture::s_scale() const {
   if (!(*this)) {
-  	throw std::logic_error("CW::Texture::s_scale(): Texture is null");
+    throw std::logic_error("CW::Texture::s_scale(): Texture is null");
   }
   size_t width;
   size_t height;
   double s_scale;
   double t_scale;
-	SUResult res = SUTextureGetDimensions(m_texture, &width, &height, &s_scale, &t_scale);
+  SUResult res = SUTextureGetDimensions(m_texture, &width, &height, &s_scale, &t_scale);
   assert(res == SU_ERROR_NONE);
   return s_scale;
 }
@@ -190,13 +190,13 @@ double Texture::s_scale() const {
 
 double Texture::t_scale() const {
   if (!(*this)) {
-  	throw std::logic_error("CW::Texture::t_scale(): Texture is null");
+    throw std::logic_error("CW::Texture::t_scale(): Texture is null");
   }
   size_t width;
   size_t height;
   double s_scale;
   double t_scale;
-	SUResult res = SUTextureGetDimensions(m_texture, &width, &height, &s_scale, &t_scale);
+  SUResult res = SUTextureGetDimensions(m_texture, &width, &height, &s_scale, &t_scale);
   assert(res == SU_ERROR_NONE);
   return t_scale;
 }

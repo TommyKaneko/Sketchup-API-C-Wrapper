@@ -38,7 +38,7 @@
 namespace CW {
 
 class Curve :public Entity {
-	private:
+  private:
   SUCurveRef m_curve;
   SUCurveType m_curve_type;
   SUResult m_create_result;
@@ -70,17 +70,17 @@ class Curve :public Entity {
   * Returns the type of Curve.
   */
   SUCurveType get_type();
-	
+  
   /*
   * Returns the SUResult object form when the Curve was created.
-  * @return	* SU_ERROR_NONE on success
+  * @return  * SU_ERROR_NONE on success
             * SU_ERROR_NULL_POINTER_INPUT if edges is NULL
             * SU_ERROR_OUT_OF_RANGE if len is 0
             * SU_ERROR_NULL_POINTER_OUTPUT if curve is NULL
             * SU_ERROR_OVERWRITE_VALID if curve already references a valid object
             * SU_ERROR_GENERIC if edge array contains an invalid edge, if the edges in the array are not connected, if any of the edges are associated with a face object, or the edges describe a loop
   */
-	SUResult get_result() const;
+  SUResult get_result() const;
   
   /*
   * Returns whether the class is a valid object.
@@ -90,7 +90,7 @@ class Curve :public Entity {
   * NOT operator.  Checks if the CurveRef is valid.
   * @return true if the curve is invalid
   */
-	bool operator!() const;
+  bool operator!() const;
   
 };
 
