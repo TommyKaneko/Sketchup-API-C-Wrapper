@@ -169,8 +169,10 @@ String ComponentDefinition::name() const {
   if (!(*this)) {
     throw std::logic_error("CW::ComponentDefinition::name(): ComponentDefinition is null");
   }
-  SUStringRef name_string;
-  SUResult res = SUComponentDefinitionGetName(m_definition, &name_string);
+  SUStringRef name_string = SU_INVALID;
+  SUResult res = SUStringCreate(&name_string);
+  assert(res == SU_ERROR_NONE);
+  res = SUComponentDefinitionGetName(m_definition, &name_string);
   assert(res == SU_ERROR_NONE);
   return String(name_string);
 }
