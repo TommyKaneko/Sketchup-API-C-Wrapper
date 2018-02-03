@@ -177,6 +177,7 @@ String Material::name() const {
     return String();
   }
   SUStringRef name_ref = SU_INVALID;
+  SUStringCreate(&name_ref);
   SUResult res = SUStringCreate(&name_ref);
   assert(res == SU_ERROR_NONE);
   res = SUMaterialGetName(m_material, &name_ref);
