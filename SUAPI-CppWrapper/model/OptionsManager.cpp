@@ -28,6 +28,7 @@
 #include "SUAPI-CppWrapper/model/OptionsManager.hpp"
 
 namespace CW {
+
 OptionsManager::OptionsManager()
 {
 }

@@ -34,7 +34,7 @@
 #include <SketchUpAPI/model/options_manager.h>
 #include <SketchUpAPI/model/options_provider.h>
 #include "SUAPI-CppWrapper/String.hpp"
-//#include "SUAPI-CppWrapper/model/TypedValue.hpp"
+#include "SUAPI-CppWrapper/model/TypedValue.hpp"
 
 
 namespace CW {
