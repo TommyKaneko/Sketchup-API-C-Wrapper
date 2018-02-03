@@ -28,7 +28,7 @@ Added to this benefit, the wrapper classes have helper functions to help with ge
 ======================
 ## Reference
 The project is documented in Doxygen, accessible here:
-https://tommykaneko.github.io/Sketchup-API-C-Wrapper/
+https://tommykaneko.github.io/Sketchup-API-C-Wrapper/html
 
 ======================
 ## Project Objectives
