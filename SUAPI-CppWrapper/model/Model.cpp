@@ -38,6 +38,7 @@
 #include "SUAPI-CppWrapper/model/Material.hpp"
 #include "SUAPI-CppWrapper/model/AttributeDictionary.hpp"
 #include "SUAPI-CppWrapper/model/TypedValue.hpp"
+#include "SUAPI-CppWrapper/model/OptionsManager.hpp"
 
 
 namespace CW {
@@ -397,6 +398,14 @@ size_t Model::num_faces() const {
   }
   ModelStatistics model_statistics((*this));
   return model_statistics.num_faces();
+}
+
+OptionsManager Model::options()
+{
+  SUOptionsManagerRef options_manager = SU_INVALID;
+  SUResult res = SUModelGetOptionsManager(m_model, &options_manager);
+  assert(res == SU_ERROR_NONE);
+  return OptionsManager(options_manager);
 }
 
 /*
