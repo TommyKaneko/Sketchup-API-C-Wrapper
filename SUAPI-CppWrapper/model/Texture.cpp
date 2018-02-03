@@ -119,7 +119,7 @@ bool Texture::alpha_used() const {
     throw std::logic_error("CW::Texture::alpha_used(): Texture is null");
   }
   bool alpha_channel_used;
-  SU_RESULT res = SUTextureGetUseAlphaChannel  (m_texture,  &alpha_channel_used);
+  SUResult res = SUTextureGetUseAlphaChannel  (m_texture,  &alpha_channel_used);
   assert(res == SU_ERROR_NONE);
   return alpha_channel_used;
 }
@@ -130,7 +130,7 @@ ImageRep Texture::image_rep() const {
     throw std::logic_error("CW::Texture::alpha_used(): Texture is null");
   }
   SUImageRepRef image_rep = SU_INVALID;
-  SU_RESULT res = SUImageRepCreate(&image_rep);
+  SUResult res = SUImageRepCreate(&image_rep);
   assert(res == SU_ERROR_NONE);
   res = SUTextureGetImageRep(m_texture, &image_rep);
   assert(res == SU_ERROR_NONE);
@@ -141,7 +141,7 @@ ImageRep Texture::image_rep() const {
 String Texture::file_name() const {
   String name;
   SUStringRef file_ref = name.ref();
-  SU_RESULT res = SUTextureGetFileName(m_texture, &file_ref);
+  SUResult res = SUTextureGetFileName(m_texture, &file_ref);
   return name;
 }
 

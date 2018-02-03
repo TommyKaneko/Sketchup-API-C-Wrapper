@@ -359,7 +359,7 @@ void Model::add_materials(std::vector<Material>& materials) {
   for (size_t i=0; i < materials.size(); i++) {
     mats[i] = materials[i].ref();
   }
-  SU_RESULT res = SUModelAddMaterials(m_model, materials.size(), mats);
+  SUResult res = SUModelAddMaterials(m_model, materials.size(), mats);
   assert(res == SU_ERROR_NONE);
   for (size_t i=0; i < materials.size(); i++) {
     materials[i].attached(true);
