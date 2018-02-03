@@ -46,6 +46,7 @@ class OptionsProvider {
   private:
   SUOptionsProviderRef m_options_provider;
   public:
+  OptionsProvider();
   OptionsProvider(SUOptionsProviderRef);
   std::vector<std::string> keys() const;
   TypedValue get_value(std::string key) const;
@@ -57,6 +58,7 @@ class OptionsManager {
   SUOptionsManagerRef m_options_manager;
 
   public:
+  OptionsManager();
   OptionsManager(SUOptionsManagerRef options_manager);
 
   // Returns a list of the names of OptionProviders

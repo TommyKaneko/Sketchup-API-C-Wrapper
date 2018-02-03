@@ -28,7 +28,9 @@
 #include "SUAPI-CppWrapper/model/OptionsManager.hpp"
 
 namespace CW {
-
+OptionsManager::OptionsManager()
+{
+}
 OptionsManager::OptionsManager(SUOptionsManagerRef ref): m_options_manager(ref)
 {}
 
@@ -62,6 +64,10 @@ OptionsProvider OptionsManager::get_provider(const std::string& name)
 //
 // OptionsProvider
 //
+
+OptionsProvider::OptionsProvider()
+{
+}
 
 OptionsProvider::OptionsProvider(SUOptionsProviderRef provider_ref):
   m_options_provider(provider_ref)
