@@ -48,8 +48,10 @@ namespace CW {
   class Material;
   class String;
   class RenderingOptions;
+  class ShadowInfo;
   class OptionsManager;
 
+  
 class Model {
   private:
   SUModelRef m_model;
@@ -305,6 +307,8 @@ class Model {
  
   /// RenderingOptions
   RenderingOptions rendering_options();
+
+  ShadowInfo shadow_info();
 
 }; // class Model
 
