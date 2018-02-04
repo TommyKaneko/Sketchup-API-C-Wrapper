@@ -39,6 +39,7 @@
 #include "SUAPI-CppWrapper/model/AttributeDictionary.hpp"
 #include "SUAPI-CppWrapper/model/TypedValue.hpp"
 #include "SUAPI-CppWrapper/model/OptionsManager.hpp"
+#include "SUAPI-CppWrapper/model/RenderingOptions.hpp"
 
 
 namespace CW {
@@ -473,6 +474,15 @@ bool Model::set_attribute(const std::string& dict_name, const std::string& key, 
   AttributeDictionary dict = attribute_dictionary(dict_name);
   return set_attribute(dict, key, value);
 }
+
+RenderingOptions Model::rendering_options()
+{
+  SURenderingOptionsRef ref = SU_INVALID;
+  SUResult res = SUModelGetRenderingOptions(m_model, &ref);
+  assert(res == SU_ERROR_NONE);
+  return RenderingOptions(ref);
+}
+
 
 // set_datum()
 

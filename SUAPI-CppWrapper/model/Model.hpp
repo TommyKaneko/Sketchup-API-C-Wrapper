@@ -47,6 +47,7 @@ namespace CW {
   class TypedValue;
   class Material;
   class String;
+  class RenderingOptions;
   class OptionsManager;
 
 class Model {
@@ -302,7 +303,10 @@ class Model {
   //std::string title() { return name();}
   //std::string title(std::string name_value) { return name(name_value);}
  
-};
+  /// RenderingOptions
+  RenderingOptions rendering_options();
+
+}; // class Model
 
 class ModelStatistics {
   private:
