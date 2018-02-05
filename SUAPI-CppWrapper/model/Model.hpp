@@ -47,6 +47,7 @@ namespace CW {
   class TypedValue;
   class Material;
   class String;
+  class OptionsManager;
 
 class Model {
   private:
@@ -237,6 +238,7 @@ class Model {
   */
   // TODO
   //std::vector<std::pair<std::string, std::string>> options() const;
+  OptionsManager options();
   
   /*
   * Returns the path of the model.

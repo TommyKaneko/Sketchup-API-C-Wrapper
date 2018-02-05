@@ -32,23 +32,43 @@
 #include <vector>
 
 #include <SketchUpAPI/model/options_manager.h>
+#include <SketchUpAPI/model/options_provider.h>
+#include "SUAPI-CppWrapper/String.hpp"
+#include "SUAPI-CppWrapper/model/TypedValue.hpp"
+
 
 namespace CW {
 
 // Forward Declarations:
-class Model;
+//class Model;
 
+class OptionsProvider {
+  private:
+  SUOptionsProviderRef m_options_provider;
+  public:
+  OptionsProvider();
+  OptionsProvider(SUOptionsProviderRef);
+  std::vector<std::string> keys() const;
+  TypedValue get_value(std::string key) const;
+  bool set_value(std::string key, const TypedValue& tval);
+};
 
 class OptionsManager {
   private:
   SUOptionsManagerRef m_options_manager;
-  
+
   public:
+  OptionsManager();
   OptionsManager(SUOptionsManagerRef options_manager);
+
+  // Returns a list of the names of OptionProviders
+  std::vector<std::string> get_provider_names() const;
+
+  // Return an OptionsProvider by name
+  OptionsProvider get_provider(const std::string&);
+
 };
 
-class OptionsProvider {
-};
 
 } /* namespace CW */
 
