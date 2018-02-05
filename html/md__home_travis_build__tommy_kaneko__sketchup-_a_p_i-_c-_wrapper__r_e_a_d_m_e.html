@@ -47,7 +47,7 @@
 <p>For example, to get an array of faces from an entities object, you could write this: ``` <a class="el" href="struct_s_u_entities_ref.html" title="References a container object for all entities in a model, component definition or a group...">SUEntitiesRef</a> entities = SU_INVALID; SUModelGetEntities(model, &amp;entities); size_t faceCount = 0; SUEntitiesGetNumFaces(entities, &amp;faceCount); std::vector&lt;SUFaceRef&gt; faces[faceCount]; SUEntitiesGetFaces(entities, faceCount, &amp;faces[0], &amp;faceCount); ``` With the C++ Wrapper, to achieve the above, you just need to write this: ``` #include &lt;<a class="el" href="_model_8hpp_source.html">SUAPI-CppWrapper/model/Model.hpp</a>&gt; #include &lt;<a class="el" href="_face_8hpp_source.html">SUAPI-CppWrapper/model/Face.hpp</a>&gt; std::vector&lt;CW::Face&gt; faces = <a class="el" href="class_c_w_1_1_model.html">CW::Model(model)</a>.entities().faces(); ``` Added to this benefit, the wrapper classes have helper functions to help with geometric manipulations, much in the style of the SketchUp Ruby API </p>
 <hr/>
  <h2>Reference</h2>
-<p>The project is documented in Doxygen, accessible here: <a href="https://tommykaneko.github.io/Sketchup-API-C-Wrapper/">https://tommykaneko.github.io/Sketchup-API-C-Wrapper/</a> </p>
+<p>The project is documented in Doxygen, accessible here: <a href="https://tommykaneko.github.io/Sketchup-API-C-Wrapper/html">https://tommykaneko.github.io/Sketchup-API-C-Wrapper/html</a> </p>
 <hr/>
  <h2>Project Objectives</h2>
 <p>The aims of this set of wrapper classes are:</p>
@@ -68,7 +68,7 @@
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Feb 5 2018 14:43:13 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Feb 5 2018 14:48:44 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
