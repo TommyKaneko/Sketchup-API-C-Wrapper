@@ -1400,7 +1400,7 @@ Preprocessing /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWr/
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/OptionsManager.hpp:45: warning: Compound CW::OptionsProvider is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Model.hpp:307: warning: Compound CW::ModelStatistics is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/ComponentDefinition.hpp:144: warning: Compound CW::Behavior is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Texture.hpp:38: warning: Compound CW::Texture is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Texture.hpp:46: warning: Compound CW::Texture is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/TextureWriter.hpp:40: warning: Compound CW::TextureWriter is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/ComponentInstance.hpp:41: warning: Compound CW::ComponentInstance is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/AttributeDictionary.hpp:47: warning: Compound CW::AttributeDictionary is not documented.
@@ -2628,9 +2628,9 @@ Generating docs for compound /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapp
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/OptionsManager.hpp:62: warning: Member OptionsManager(SUOptionsManagerRef options_manager) (function) of class CW::OptionsManager is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/OptionsManager.hpp:65: warning: Member get_provider_names() const  (function) of class CW::OptionsManager is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/OptionsManager.hpp:68: warning: Member get_provider(const std::string &) (function) of class CW::OptionsManager is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Texture.hpp:96: warning: Member ref() const  (function) of class CW::Texture is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Texture.hpp:97: warning: Member operator SUTextureRef() const  (function) of class CW::Texture is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Texture.hpp:98: warning: Member operator SUTextureRef *() (function) of class CW::Texture is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Texture.hpp:104: warning: Member ref() const  (function) of class CW::Texture is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Texture.hpp:105: warning: Member operator SUTextureRef() const  (function) of class CW::Texture is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Texture.hpp:106: warning: Member operator SUTextureRef *() (function) of class CW::Texture is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:101: warning: Member operator SUEntityRef() const  (function) of class CW::Entity is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:108: warning: Member operator SUEntityRef *() (function) of class CW::Entity is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/TextureWriter.hpp:46: warning: Member TextureWriter(SUTextureWriterRef texture_writer) (function) of class CW::TextureWriter is not documented.
