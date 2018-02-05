@@ -153,7 +153,7 @@ class Texture :public Entity {
   *      - SU_ERROR_SERIALIZATION if image file could not be written to disk
   *
   */
-  SUResult save(const std::string& file_path);
+  SUResult save(const std::string& file_path) const;
 
 };
 

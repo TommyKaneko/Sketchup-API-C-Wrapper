@@ -19,6 +19,7 @@
 
 #include "SUAPI-CppWrapper/model/Texture.hpp"
 #include <cassert>
+#include <stdio.h>
 
 #include "SUAPI-CppWrapper/model/ImageRep.hpp"
 #include "SUAPI-CppWrapper/String.hpp"
@@ -75,6 +76,7 @@ Texture::Texture(const std::string file_path, double s_scale, double t_scale):
   Texture(create_texture(file_path, s_scale, t_scale), false)
 {}
 
+
 Texture::Texture(ImageRep& image):
   Texture(create_texture(image), false)
 {}
@@ -109,8 +111,25 @@ SUTextureRef Texture::ref() const {
 }
 
 Texture Texture::copy() const {
+  // First create the file.
+  std::string file_path = "/tmp/tmptexture";
+  SUResult res = this->save(file_path);
+  assert(res == SU_ERROR_NONE);
+  Texture new_texture(file_path, s_scale(), t_scale());
+  // Delete the temporary file
+  const char *file_path_c = file_path.c_str();
+  int ret = std::remove(file_path_c);
+  assert(ret == 0);
+  // Reset the file name
+  new_texture.file_name(this->file_name());
+  return new_texture;
+  // @developers_notes Method below is efficient and simple, but fails to transfer the scale of the texture, due to the lack of SUTextureSetDimensions() function in the C API.  A workaround method is used for now shown above.
+  /*
   ImageRep image_rep = this->image_rep().copy();
-  return Texture(image_rep);
+  Texture new_texture(image_rep);
+  new_texture.file_name(this->file_name());
+  return new_texture;
+  */
 }
 
 
@@ -143,6 +162,13 @@ String Texture::file_name() const {
   SUStringRef file_ref = name.ref();
   SUResult res = SUTextureGetFileName(m_texture, &file_ref);
   return name;
+}
+
+
+void Texture::file_name(const String& string) const {
+  const char* chars = string.std_string().c_str();
+  SUResult res = SUTextureSetFileName(m_texture, chars);
+  assert(res == SU_ERROR_NONE);
 }
 
 
@@ -199,6 +225,13 @@ double Texture::t_scale() const {
   SUResult res = SUTextureGetDimensions(m_texture, &width, &height, &s_scale, &t_scale);
   assert(res == SU_ERROR_NONE);
   return t_scale;
+}
+
+
+SUResult Texture::save(const std::string& file_path) const {
+  const char *cstr = file_path.c_str();
+  SUResult res = SUTextureWriteToFile(m_texture, cstr);
+  return res;
 }
 
 } /* namespace CW */

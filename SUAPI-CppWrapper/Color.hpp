@@ -41,6 +41,11 @@ class Color {
   SUColor m_color;
   
   public:
+  SUByte& red;
+  SUByte& green;
+  SUByte& blue;
+  SUByte& alpha;
+  
   Color();
   Color(SUColor color_input);
   

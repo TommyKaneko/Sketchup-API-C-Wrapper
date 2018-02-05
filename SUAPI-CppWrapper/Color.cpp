@@ -29,11 +29,19 @@ namespace CW {
 
 
 Color::Color():
-  m_color(SUColor{})
+  m_color(SUColor{}),
+  red(m_color.red),
+  green(m_color.green),
+  blue(m_color.blue),
+  alpha(m_color.alpha)
 {}
 
 Color::Color(SUColor color_input):
-  m_color(color_input)
+  m_color(color_input),
+  red(m_color.red),
+  green(m_color.green),
+  blue(m_color.blue),
+  alpha(m_color.alpha)
 {}
 
 SUColor Color::ref() const {

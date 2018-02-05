@@ -73,8 +73,12 @@ Material::Material(const Material& other):
   m_material(SUMaterialFromEntity(m_entity))
 {
   // Copy across properties of the other material
-  if (!other.m_attached) {
-    // TODO: copy across properties from other material
+  if (!other.m_attached && SUIsValid(m_material)) {
+    name(other.name());
+    type(other.type());
+    opacity(other.opacity());
+    color(other.color());
+    texture(other.texture());
   }
 }
 
@@ -93,7 +97,11 @@ Material& Material::operator=(const Material& other) {
     // The other material has not been attached to the model, so copy its properties to a new object
     m_material = create_material();
     m_attached = other.m_attached;
-    // TODO: copy across other material properties
+    name(other.name());
+    type(other.type());
+    opacity(other.opacity());
+    color(other.color());
+    texture(other.texture());
   }
   else {
     // The other material has been attached to the model, so it is safe to transfer the SUMaterialRef object
@@ -140,11 +148,10 @@ Material Material::copy() const {
   }
   Material new_material(create_material(), false);
   new_material.name(this->name());
-  new_material.opacity(this->opacity());
-  new_material.texture(this->texture());
-  new_material.color(this->color());
   new_material.type(this->type());
-  
+  new_material.opacity(this->opacity());
+  new_material.color(this->color());
+  new_material.texture(this->texture());
   return new_material;
 }
 
@@ -178,8 +185,6 @@ String Material::name() const {
   }
   SUStringRef name_ref = SU_INVALID;
   SUResult res = SUStringCreate(&name_ref);
-  assert(res == SU_ERROR_NONE);
-  res = SUStringCreate(&name_ref);
   assert(res == SU_ERROR_NONE);
   res = SUMaterialGetName(m_material, &name_ref);
   //assert(res != SU_ERROR_INVALID_OUTPUT);
