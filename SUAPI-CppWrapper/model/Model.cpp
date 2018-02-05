@@ -358,6 +358,10 @@ void Model::add_materials(std::vector<Material>& materials) {
   SUMaterialRef* mats = new SUMaterialRef[materials.size()];
   for (size_t i=0; i < materials.size(); i++) {
     mats[i] = materials[i].ref();
+    // Check that each material is not attached to another model
+    if (materials[i].attached()) {
+      throw std::invalid_argument("CW::Model::add_materials(): At least one of the Material objects passed is attached to another model.  Use Material::copy() to create a new unattached Material object and try again.");
+    }
   }
   SUResult res = SUModelAddMaterials(m_model, materials.size(), mats);
   assert(res == SU_ERROR_NONE);

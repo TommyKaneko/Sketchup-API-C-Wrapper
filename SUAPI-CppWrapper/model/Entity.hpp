@@ -116,7 +116,7 @@ class Entity {
   * @brief Method lets the object know that it has been attached to a model.  This is important as it will let the object know that it does not need to "release" the object.
   * @param attach - (optional) true to let the object know that it has been attached to a model.  False to let the object know that it has not been attached.
   */
-  void attached(bool attach =  true);
+  void attached(bool attach);
 
   /**
   * @brief Returns the AttributeDictionaries collection attached to the entity.
