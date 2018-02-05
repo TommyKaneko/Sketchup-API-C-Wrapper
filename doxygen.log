@@ -2281,9 +2281,13 @@ Generating docs for compound /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapp
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SketchUpAPI/2016/SketchUpAPI.framework/Headers/geometry.h:42: warning: Member x (variable) of class SUVector3D is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SketchUpAPI/2016/SketchUpAPI.framework/Headers/geometry.h:43: warning: Member y (variable) of class SUVector3D is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SketchUpAPI/2016/SketchUpAPI.framework/Headers/geometry.h:44: warning: Member z (variable) of class SUVector3D is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/Color.hpp:45: warning: Member Color(SUColor color_input) (function) of class CW::Color is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/Color.hpp:50: warning: Member ref() const  (function) of class CW::Color is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/Color.hpp:52: warning: Member operator SUColor() const  (function) of class CW::Color is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/Color.hpp:50: warning: Member Color(SUColor color_input) (function) of class CW::Color is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/Color.hpp:55: warning: Member ref() const  (function) of class CW::Color is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/Color.hpp:57: warning: Member operator SUColor() const  (function) of class CW::Color is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/Color.hpp:44: warning: Member red (variable) of class CW::Color is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/Color.hpp:45: warning: Member green (variable) of class CW::Color is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/Color.hpp:46: warning: Member blue (variable) of class CW::Color is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/Color.hpp:47: warning: Member alpha (variable) of class CW::Color is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/Geometry.hpp:86: warning: Member operator-(const double value) const  (function) of class CW::Radians is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/Geometry.hpp:87: warning: Member operator*(const double multiplier) const  (function) of class CW::Radians is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/Geometry.hpp:88: warning: Member operator/(const double divider) const  (function) of class CW::Radians is not documented.
@@ -2771,5 +2775,5 @@ Generating file index...
 Generating file member index...
 Generating example index...
 finalizing index lists...
-lookup cache used 4255/65536 hits=94253 misses=4502
+lookup cache used 4267/65536 hits=94427 misses=4514
 finished...

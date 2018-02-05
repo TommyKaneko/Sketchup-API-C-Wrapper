@@ -93,33 +93,38 @@
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  <a class="code" href="struct_s_u_color.html">SUColor</a> m_color;</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  </div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  <a class="code" href="class_c_w_1_1_color.html">Color</a>();</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  <a class="code" href="class_c_w_1_1_color.html">Color</a>(<a class="code" href="struct_s_u_color.html">SUColor</a> color_input);</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  </div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  <span class="comment">/*</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment">  * Return the SUColor object.</span></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment">  */</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  <a class="code" href="struct_s_u_color.html">SUColor</a> ref() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  SUByte&amp; red;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  SUByte&amp; green;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  SUByte&amp; blue;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  SUByte&amp; alpha;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  <a class="code" href="class_c_w_1_1_color.html">Color</a>();</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  <a class="code" href="class_c_w_1_1_color.html">Color</a>(<a class="code" href="struct_s_u_color.html">SUColor</a> color_input);</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  </div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  <span class="keyword">operator</span> <a class="code" href="struct_s_u_color.html">SUColor</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  <span class="comment"></span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment">  /**</span></div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment">  * Compare equality of the Color object</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment">  */</span></div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  <span class="keyword">friend</span> <span class="keywordtype">bool</span> <a class="code" href="class_c_w_1_1_color.html#a8cbf40ce97eb2127b5bcd681c6fcdc4d">operator ==</a>(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_color.html">Color</a> &amp;lhs, <span class="keyword">const</span> <a class="code" href="class_c_w_1_1_color.html">Color</a> &amp;rhs);</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  </div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;};</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;} <span class="comment">/* namespace CW */</span></div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* Color_hpp */</span><span class="preprocessor"></span></div>
-<div class="ttc" id="class_c_w_1_1_color_html_a8cbf40ce97eb2127b5bcd681c6fcdc4d"><div class="ttname"><a href="class_c_w_1_1_color.html#a8cbf40ce97eb2127b5bcd681c6fcdc4d">CW::Color::operator==</a></div><div class="ttdeci">friend bool operator==(const Color &amp;lhs, const Color &amp;rhs)</div><div class="ttdef"><b>Definition:</b> <a href="_color_8cpp_source.html#l00047">Color.cpp:47</a></div></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  <span class="comment">/*</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment">  * Return the SUColor object.</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment">  */</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  <a class="code" href="struct_s_u_color.html">SUColor</a> ref() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  <span class="keyword">operator</span> <a class="code" href="struct_s_u_color.html">SUColor</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <span class="comment"></span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="comment">  /**</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="comment">  * Compare equality of the Color object</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="comment">  */</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  <span class="keyword">friend</span> <span class="keywordtype">bool</span> <a class="code" href="class_c_w_1_1_color.html#a8cbf40ce97eb2127b5bcd681c6fcdc4d">operator ==</a>(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_color.html">Color</a> &amp;lhs, <span class="keyword">const</span> <a class="code" href="class_c_w_1_1_color.html">Color</a> &amp;rhs);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;};</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;} <span class="comment">/* namespace CW */</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* Color_hpp */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="class_c_w_1_1_color_html_a8cbf40ce97eb2127b5bcd681c6fcdc4d"><div class="ttname"><a href="class_c_w_1_1_color.html#a8cbf40ce97eb2127b5bcd681c6fcdc4d">CW::Color::operator==</a></div><div class="ttdeci">friend bool operator==(const Color &amp;lhs, const Color &amp;rhs)</div><div class="ttdef"><b>Definition:</b> <a href="_color_8cpp_source.html#l00055">Color.cpp:55</a></div></div>
 <div class="ttc" id="struct_s_u_color_html"><div class="ttname"><a href="struct_s_u_color.html">SUColor</a></div><div class="ttdoc">Stores a RGBA color with 8 bit channels. </div><div class="ttdef"><b>Definition:</b> <a href="2016_2_sketch_up_a_p_i_8framework_2_headers_2color_8h_source.html#l00021">color.h:21</a></div></div>
 <div class="ttc" id="class_c_w_1_1_color_html"><div class="ttname"><a href="class_c_w_1_1_color.html">CW::Color</a></div><div class="ttdef"><b>Definition:</b> <a href="_color_8hpp_source.html#l00039">Color.hpp:39</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Feb 3 2018 21:19:12 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Feb 5 2018 14:07:32 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
