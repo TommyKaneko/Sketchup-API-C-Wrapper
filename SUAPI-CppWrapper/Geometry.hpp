@@ -229,8 +229,8 @@ class Vector3D {
   
   /**
   * Returns a vector rotated about another vector, which is used as the axis.
-  * @param angle in radians to rotate.
-  * @param vector which will be used as the axis through which it will be rotated.
+  * @param angle - in radians to rotate.
+  * @param axis - vector which will be used as the axis through which it will be rotated.
   */
   Vector3D rotate_about(double angle, const Vector3D& axis) const;
   
