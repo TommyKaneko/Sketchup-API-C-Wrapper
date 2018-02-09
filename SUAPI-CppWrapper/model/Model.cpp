@@ -110,6 +110,15 @@ bool Model::operator!() const {
   return !bool(*this);
 }
 
+std::string Model::version_string() const
+{
+  int major = 0, minor = 0, build = 0;
+  SUResult res = SUModelGetVersion(m_model, &major, &minor, &build);
+  assert(res == SU_ERROR_NONE);
+  std::string version = std::to_string(major) + "." + std::to_string(minor) + "." + std::to_string(build);
+  return version;
+}
+
 
 Layer Model::active_layer() const {
   if(!(*this)) {
