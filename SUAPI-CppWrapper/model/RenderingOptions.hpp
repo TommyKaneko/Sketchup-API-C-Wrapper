@@ -16,7 +16,7 @@ class RenderingOptions
 
   // public member functions
 
-  std::vector<std::string> keys() const;
+  std::vector<std::string> get_keys() const;
   TypedValue get_value(const std::string& key) const;
   bool set_value(const std::string& key, const TypedValue& tval);
 

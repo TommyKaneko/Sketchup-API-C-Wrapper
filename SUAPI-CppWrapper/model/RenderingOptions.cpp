@@ -21,7 +21,7 @@ RenderingOptions::~RenderingOptions()
 {
 }
 
-std::vector<std::string> RenderingOptions::keys() const
+std::vector<std::string> RenderingOptions::get_keys() const
 {
   size_t len = 0, count = 0;
   std::vector<std::string> keys;
