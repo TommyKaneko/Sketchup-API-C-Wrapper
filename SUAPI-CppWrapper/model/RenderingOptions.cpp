@@ -21,7 +21,7 @@ RenderingOptions::~RenderingOptions()
 {
 }
 
-std::vector<std::string> RenderingOptions::keys()
+std::vector<std::string> RenderingOptions::keys() const
 {
   size_t len = 0, count = 0;
   std::vector<std::string> keys;
@@ -43,7 +43,7 @@ std::vector<std::string> RenderingOptions::keys()
   return keys;
 }
 
-TypedValue RenderingOptions::get_value(const std::string& key)
+TypedValue RenderingOptions::get_value(const std::string& key) const
 {
   SUResult res = SU_ERROR_NONE;
   SUTypedValueRef tval = SU_INVALID;
