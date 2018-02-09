@@ -291,8 +291,8 @@ class Model {
   /*
   * Returns the ShadowInfo object of the model.
   */
-  // ShadowInfo shadow_info();
-  
+  ShadowInfo shadow_info();
+
   /*
   * Returns the list of styles in the model.
   * @return styles vector array of Style objects
@@ -307,8 +307,6 @@ class Model {
  
   /// RenderingOptions
   RenderingOptions rendering_options();
-
-  ShadowInfo shadow_info();
 
 }; // class Model
 

@@ -23,7 +23,7 @@ ShadowInfo::~ShadowInfo()
 }
 
 
-std::vector<std::string> ShadowInfo::keys()
+std::vector<std::string> ShadowInfo::get_keys()
 {
   size_t len = 0, count = 0;
   std::vector<std::string> keys;
