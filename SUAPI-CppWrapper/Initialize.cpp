@@ -28,7 +28,7 @@
 
 namespace CW {
   
-extern size_t SU_VERSION_MAJOR = 15;
+extern size_t SU_VERSION_MAJOR = 18;
 extern size_t SU_VERSION_MINOR = 0;
 extern size_t SU_VERSION_BUILD = 0;
 
