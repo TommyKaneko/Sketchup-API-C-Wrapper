@@ -32,14 +32,13 @@
 
 #include <SketchUpAPI/model/drawing_element.h>
 
-#include "SUAPI-CppWrapper/Geometry.hpp"
 #include "SUAPI-CppWrapper/model/Entity.hpp"
 namespace CW {
 
 // Forward declarations:
-class Entity;
 class Layer;
 class Material;
+class BoundingBox3D;
 
 /*
 * Drawing Element wrapper

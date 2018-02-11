@@ -35,7 +35,7 @@ namespace CW {
   /**
   * The version numbers of the SketchUp application - it must be set prior to using the C++ wrapper, as later versions of SketchUp have added functions.
   */
-  extern size_t SU_VERSION_MAJOR;
+  extern size_t SU_VERSION_MAJOR = 18;
   extern size_t SU_VERSION_MINOR;
   extern size_t SU_VERSION_BUILD;
 
