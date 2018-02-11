@@ -51,6 +51,7 @@ enum FacePointClass {
 };
 
 class Point3D;
+class Plane3D;
 class Vector3D;
 class Material;
 class Vertex;
