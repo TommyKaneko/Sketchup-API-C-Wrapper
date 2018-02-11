@@ -33,10 +33,11 @@
 #include <string>
 
 #include <SketchUpAPI/model/attribute_dictionary.h>
-#include <SketchUpAPI/model/entity.h>
 
-#include "SUAPI-CppWrapper/String.hpp"
-#include "SUAPI-CppWrapper/model/TypedValue.hpp"
+#include "SUAPI-CppWrapper/model/Entity.hpp"
+
+class TypedValue;
+class String;
 
 namespace CW {
 
@@ -44,22 +45,53 @@ class TypedValue;
 /*
 * Entity object wrapper
 */
-class AttributeDictionary {
+class AttributeDictionary :public Entity {
   private:
   SUAttributeDictionaryRef m_dict;
   
+  /**
+  * Creates a SUAttributeDictionaryRef object using the given name.
+  * @param name - name of the created AttributeDictionary object.
+  * @since SketchUp 2018, API v6.0
+  * @return SUAttributeDictionaryRef object with the given name.
+  */
+  static SUAttributeDictionaryRef create_attribute_dictionary(const std::string& name);
+
+  /**
+  * Creates a SUAttributeDictionaryRef derived from an existing AttributeDictionary object.
+  * @param dict - AttributeDictionary object to derive the new SUAttributeDictionaryRef from
+  * @since SketchUp 2018, API v6.0
+  * @return if the AttributeDictionary object is already attached to a model, its SUAttributeDictionaryRef will be returned. If the AttributeDicitonary object has not been attached to a model, a new SUAttributeDictionaryRef object will be created.  In the latter case, bear in mind that keys and values will not be copied to the new object - this would have to be done manually.
+  */
+  static SUAttributeDictionaryRef copy_reference(const AttributeDictionary& dict);
+
   public:
+  /**
+  * Constructor to create a new object.
+  * @param name - name of the dictionary to create.
+  * @since SketchUp 2018, API v6.0
+  */
+  AttributeDictionary(std::string name);
+  
   /**
   * Constructor from existing SUAttributeDictionaryRef object
   * @param dict - existing SUAttributeDictionaryRef object to wrap with this class.
+  * @param attached - indicates whether the dictionary is attached to an entity or not.
   */
-  AttributeDictionary(SUAttributeDictionaryRef dict);
+  AttributeDictionary(SUAttributeDictionaryRef dict, bool attached = true);
+
+  /** Copy constructor */
+  AttributeDictionary(const AttributeDictionary& other);
   
   /**
-  * Constructor representing a null object.
+  * Destructor
+  * @since SketchUp 2018, API v6.0
   */
-  AttributeDictionary();
-  
+  ~AttributeDictionary();
+
+  /** Copy assignment operator */
+  AttributeDictionary& operator=(const AttributeDictionary& other);
+
   /** Cast to native object **/
   operator SUAttributeDictionaryRef() const;
   operator SUAttributeDictionaryRef*();

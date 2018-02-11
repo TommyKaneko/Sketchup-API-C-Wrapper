@@ -29,25 +29,100 @@
 #include <algorithm>
 
 #include "SUAPI-CppWrapper/model/AttributeDictionary.hpp"
+
 #include "SUAPI-CppWrapper/model/TypedValue.hpp"
+#include "SUAPI-CppWrapper/String.hpp"
 
 namespace CW {
 
+extern size_t SU_VERSION_MAJOR;
 
-AttributeDictionary::AttributeDictionary():
-  m_dict(SU_INVALID)
-{
+/******************
+* Private Static methods
+*******************/
+SUAttributeDictionaryRef AttributeDictionary::create_attribute_dictionary(const std::string& name) {
+  if (SU_VERSION_MAJOR < 18) {
+    throw std::logic_error("AttributeDictionary::create_attribute_dictionary(): Cannot use function prior to SU version 2018");
+  }
+  SUAttributeDictionaryRef dict = SU_INVALID;
+  SUResult res = SUAttributeDictionaryCreate(&dict, name.c_str());
+  assert(res == SU_ERROR_NONE);
+  return dict;
 }
 
-AttributeDictionary::AttributeDictionary(SUAttributeDictionaryRef dict_ref):
+
+SUAttributeDictionaryRef AttributeDictionary::copy_reference(const AttributeDictionary& other) {
+  if (SU_VERSION_MAJOR < 18) {
+    throw std::logic_error("AttributeDictionary::create_attribute_dictionary(): Cannot use function prior to SU version 2018");
+  }
+  if (other.m_attached || !other) {
+    return other.m_dict;
+  }
+  // The other Attributedictionary has not been attached to the model, so copy its properties to a new object
+  SUAttributeDictionaryRef new_dict = create_attribute_dictionary(other.get_name());
+  return new_dict;
+}
+
+
+/*****************************
+* Constructor / Destructors **
+******************************/
+AttributeDictionary::AttributeDictionary(std::string name):
+  Entity(SU_INVALID, false),
+  m_dict(SU_INVALID)
+{}
+
+
+AttributeDictionary::AttributeDictionary(SUAttributeDictionaryRef dict_ref, bool attached):
+  Entity(SUAttributeDictionaryToEntity(dict_ref), attached),
   m_dict(dict_ref)
+{}
+
+
+/** Copy constructor */
+AttributeDictionary::AttributeDictionary(const AttributeDictionary& other):
+  Entity(other, SUAttributeDictionaryToEntity(copy_reference(other))),
+  m_dict(SUAttributeDictionaryFromEntity(m_entity))
 {
+  if (!other.m_attached && SUIsValid(other.m_dict)) {
+    // Create a copy of the keys and values
+    std::vector<std::string> keys = other.get_keys();
+    for (size_t i=0; i < keys.size(); i++) {
+      this->set_attribute(keys[i], other.get_value(keys[i]));
+    }
+  }
+}
+
+
+AttributeDictionary::~AttributeDictionary() {
+  if (SU_VERSION_MAJOR >= 18) {
+    if (!m_attached && SUIsValid(m_dict)) {
+      SUResult res = SUAttributeDictionaryRelease(&m_dict);
+      assert(res == SU_ERROR_NONE);
+    }
+  }
+}
+
+/******************
+* Public Methods **
+*******************/
+/** Copy assignment operator */
+AttributeDictionary& AttributeDictionary::operator=(const AttributeDictionary& other) {
+  if (SU_VERSION_MAJOR >= 18 && !m_attached && SUIsValid(m_dict)) {
+    SUResult res = SUAttributeDictionaryRelease(&m_dict);
+    assert(res == SU_ERROR_NONE);
+  }
+  m_dict = copy_reference(other);
+  m_entity = SUAttributeDictionaryToEntity(m_dict);
+  Entity::operator=(other);
+  return *this;
 }
 
 
 AttributeDictionary::operator SUAttributeDictionaryRef() const {
   return m_dict;
 }
+
 
 AttributeDictionary::operator SUAttributeDictionaryRef*() {
   return &m_dict;
