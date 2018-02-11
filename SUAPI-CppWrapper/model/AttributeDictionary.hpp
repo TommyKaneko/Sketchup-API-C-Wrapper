@@ -67,6 +67,11 @@ class AttributeDictionary :public Entity {
 
   public:
   /**
+  * Constructor for null object.
+  */
+  AttributeDictionary();
+
+  /**
   * Constructor to create a new object.
   * @param name - name of the dictionary to create.
   * @since SketchUp 2018, API v6.0

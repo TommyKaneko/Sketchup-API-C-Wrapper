@@ -67,9 +67,14 @@ SUAttributeDictionaryRef AttributeDictionary::copy_reference(const AttributeDict
 /*****************************
 * Constructor / Destructors **
 ******************************/
-AttributeDictionary::AttributeDictionary(std::string name):
-  Entity(SU_INVALID, false),
+AttributeDictionary::AttributeDictionary():
+  Entity(SU_INVALID),
   m_dict(SU_INVALID)
+{}
+  
+
+AttributeDictionary::AttributeDictionary(std::string name):
+  AttributeDictionary(create_attribute_dictionary(name), false)
 {}
 
 
