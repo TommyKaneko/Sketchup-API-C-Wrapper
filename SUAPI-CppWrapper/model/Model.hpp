@@ -48,8 +48,10 @@ namespace CW {
   class Material;
   class String;
   class RenderingOptions;
+  class ShadowInfo;
   class OptionsManager;
 
+  
 class Model {
   private:
   SUModelRef m_model;
@@ -289,8 +291,8 @@ class Model {
   /*
   * Returns the ShadowInfo object of the model.
   */
-  // ShadowInfo shadow_info();
-  
+  ShadowInfo shadow_info();
+
   /*
   * Returns the list of styles in the model.
   * @return styles vector array of Style objects
