@@ -1447,7 +1447,7 @@ Computing cla/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrap
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/ImageRep.hpp:46: warning: Compound CW::ImageRep is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/RenderingOptions.hpp:11: warning: Compound CW::RenderingOptions is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/Geometry.hpp:257: warning: Compound CW::Point3D is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Face.hpp:61: warning: Compound CW::Face is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Face.hpp:62: warning: Compound CW::Face is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:52: warning: Compound CW::Entity is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/UVHelper.hpp:40: warning: Compound CW::UVHelper is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entities.hpp:56: warning: Compound CW::Entities is not documented.
@@ -1457,7 +1457,7 @@ Computing cla/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrap
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Texture.hpp:46: warning: Compound CW::Texture is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/TextureWriter.hpp:40: warning: Compound CW::TextureWriter is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/ComponentInstance.hpp:41: warning: Compound CW::ComponentInstance is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/AttributeDictionary.hpp:47: warning: Compound CW::AttributeDictionary is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/AttributeDictionary.hpp:48: warning: Compound CW::AttributeDictionary is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/String.hpp:45: warning: Compound CW::String is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/MaterialInput.hpp:40: warning: Compound CW::MaterialInput is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/Transformation.hpp:43: warning: Compound CW::Transformation is not documented.
@@ -1467,7 +1467,7 @@ Computing cla/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrap
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/TypedValue.hpp:45: warning: Compound CW::TypedValue is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Vertex.hpp:42: warning: Compound CW::Vertex is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Material.hpp:161: warning: Compound std::hash< CW::Material > is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:47: warning: Compound CW::DrawingElement is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:46: warning: Compound CW::DrawingElement is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Axes.hpp:46: warning: Compound CW::Axes is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Material.hpp:154: warning: documented symbol `hash< CW::Material >' was not declared or defined.
 ss relations...
@@ -2314,9 +2314,6 @@ Generating docs for c/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/Sketc
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/Geometry.hpp:116: warning: Member null (variable) of class CW::Vector3D is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/Geometry.hpp:172: warning: Member operator+(const Vector3D &lhs, const Point3D &rhs) (friend) of class CW::Vector3D is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/Geometry.hpp:185: warning: Member operator!=(const Vector3D &lhs, const Vector3D &rhs) (friend) of class CW::Vector3D is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/Geometry.hpp:231: warning: argument 'vector' of command @param is not found in the argument list of CW::Vector3D::rotate_about(double angle, const Vector3D &axis) const
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/Geometry.hpp:231: warning: The following parameters of CW::Vector3D::rotate_about(double angle, const Vector3D &axis) const are not documented:
-  parameter 'axis'
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/Geometry.hpp:318: warning: Member operator SUPoint3D() const  (function) of class CW::Point3D is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/Geometry.hpp:319: warning: Member operator SUPoint3D *() (function) of class CW::Point3D is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/Geometry.hpp:324: warning: Member operator Vector3D() const  (function) of class CW::Point3D is not documented.
@@ -2363,23 +2360,25 @@ Generating docs for c/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/Sketc
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/Geometry.hpp:589: warning: argument 'other_line' of command @param is not found in the argument list of CW::Line3D::closest_points(const Line3D &line) const
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/Geometry.hpp:589: warning: The following parameters of CW::Line3D::closest_points(const Line3D &line) const are not documented:
   parameter 'line'
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/AttributeDictionary.hpp:65: warning: Member operator SUAttributeDictionaryRef *() (function) of class CW::AttributeDictionary is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Axes.hpp:99: warning: Member y_axis() const  (function) of class CW::Axes is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Axes.hpp:100: warning: Member z_axis() const  (function) of class CW::Axes is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:76: warning: Member operator SUDrawingElementRef *() (function) of class CW::DrawingElement is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:94: warning: Member casts_shadows() const  (function) of class CW::DrawingElement is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:101: warning: Member casts_shadows(bool casts_shadows) (function) of class CW::DrawingElement is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:107: warning: Member hidden() const  (function) of class CW::DrawingElement is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:114: warning: Member hidden(bool hidden) (function) of class CW::DrawingElement is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:119: warning: Member layer() const  (function) of class CW::DrawingElement is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:125: warning: Member layer(Layer &layer) (function) of class CW::DrawingElement is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:131: warning: Member material() const  (function) of class CW::DrawingElement is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:138: warning: Member material(const Material &material) (function) of class CW::DrawingElement is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:144: warning: Member receive_shadows() const  (function) of class CW::DrawingElement is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:151: warning: Member receive_shadows(bool receive_shadows) (function) of class CW::DrawingElement is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/AttributeDictionary.hpp:102: warning: Member operator SUAttributeDictionaryRef *() (function) of class CW::AttributeDictionary is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:101: warning: Member operator SUEntityRef() const  (function) of class CW::Entity is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:108: warning: Member operator SUEntityRef *() (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:49: warning: Member m_drawing_element (variable) of class CW::DrawingElement is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Axes.hpp:99: warning: Member y_axis() const  (function) of class CW::Axes is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Axes.hpp:100: warning: Member z_axis() const  (function) of class CW::Axes is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:75: warning: Member operator SUDrawingElementRef *() (function) of class CW::DrawingElement is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:93: warning: Member casts_shadows() const  (function) of class CW::DrawingElement is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:100: warning: Member casts_shadows(bool casts_shadows) (function) of class CW::DrawingElement is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:106: warning: Member hidden() const  (function) of class CW::DrawingElement is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:113: warning: Member hidden(bool hidden) (function) of class CW::DrawingElement is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:118: warning: Member layer() const  (function) of class CW::DrawingElement is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:124: warning: Member layer(Layer &layer) (function) of class CW::DrawingElement is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:130: warning: Member material() const  (function) of class CW::DrawingElement is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:137: warning: Member material(const Material &material) (function) of class CW::DrawingElement is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:143: warning: Member receive_shadows() const  (function) of class CW::DrawingElement is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:150: warning: Member receive_shadows(bool receive_shadows) (function) of class CW::DrawingElement is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:101: warning: Member operator SUEntityRef() const  (function) of class CW::Entity is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:108: warning: Member operator SUEntityRef *() (function) of class CW::Entity is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:48: warning: Member m_drawing_element (variable) of class CW::DrawingElement is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Axes.hpp:73: warning: argument 'x_axes' of command @param is not found in the argument list of CW::Axes::Axes(Point3D origin, Vector3D x_axis, Vector3D y_axis, Vector3D z_axis)
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Axes.hpp:73: warning: argument 'y_axes' of command @param is not found in the argument list of CW::Axes::Axes(Point3D origin, Vector3D x_axis, Vector3D y_axis, Vector3D z_axis)
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Axes.hpp:73: warning: argument 'z_axes' of command @param is not found in the argument list of CW::Axes::Axes(Point3D origin, Vector3D x_axis, Vector3D y_axis, Vector3D z_axis)
@@ -2390,20 +2389,20 @@ Generating docs for c/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/Sketc
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Classifications.hpp:47: warning: Member Classifications(SUClassificationsRef classifications) (function) of class CW::Classifications is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/ComponentDefinition.hpp:87: warning: Member operator SUComponentDefinitionRef *() (function) of class CW::ComponentDefinition is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/ComponentDefinition.hpp:135: warning: Member behavior(const Behavior &behavior) const  (function) of class CW::ComponentDefinition is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:76: warning: Member operator SUDrawingElementRef *() (function) of class CW::DrawingElement is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:94: warning: Member casts_shadows() const  (function) of class CW::DrawingElement is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:101: warning: Member casts_shadows(bool casts_shadows) (function) of class CW::DrawingElement is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:107: warning: Member hidden() const  (function) of class CW::DrawingElement is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:114: warning: Member hidden(bool hidden) (function) of class CW::DrawingElement is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:119: warning: Member layer() const  (function) of class CW::DrawingElement is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:125: warning: Member layer(Layer &layer) (function) of class CW::DrawingElement is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:131: warning: Member material() const  (function) of class CW::DrawingElement is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:138: warning: Member material(const Material &material) (function) of class CW::DrawingElement is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:144: warning: Member receive_shadows() const  (function) of class CW::DrawingElement is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:151: warning: Member receive_shadows(bool receive_shadows) (function) of class CW::DrawingElement is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:75: warning: Member operator SUDrawingElementRef *() (function) of class CW::DrawingElement is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:93: warning: Member casts_shadows() const  (function) of class CW::DrawingElement is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:100: warning: Member casts_shadows(bool casts_shadows) (function) of class CW::DrawingElement is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:106: warning: Member hidden() const  (function) of class CW::DrawingElement is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:113: warning: Member hidden(bool hidden) (function) of class CW::DrawingElement is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:118: warning: Member layer() const  (function) of class CW::DrawingElement is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:124: warning: Member layer(Layer &layer) (function) of class CW::DrawingElement is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:130: warning: Member material() const  (function) of class CW::DrawingElement is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:137: warning: Member material(const Material &material) (function) of class CW::DrawingElement is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:143: warning: Member receive_shadows() const  (function) of class CW::DrawingElement is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:150: warning: Member receive_shadows(bool receive_shadows) (function) of class CW::DrawingElement is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:101: warning: Member operator SUEntityRef() const  (function) of class CW::Entity is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:108: warning: Member operator SUEntityRef *() (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:49: warning: Member m_drawing_element (variable) of class CW::DrawingElement is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:48: warning: Member m_drawing_element (variable) of class CW::DrawingElement is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/ComponentDefinition.hpp:149: warning: Member Behavior(SUComponentBehavior behavior) (function) of class CW::Behavior is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/ComponentDefinition.hpp:153: warning: Member ref() const  (function) of class CW::Behavior is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/ComponentDefinition.hpp:151: warning: Member snap (variable) of class CW::Behavior is not documented.
@@ -2413,40 +2412,40 @@ Generating docs for c/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/Sketc
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/ComponentDefinition.hpp:161: warning: Member no_scale_mask (variable) of class CW::Behavior is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/ComponentInstance.hpp:49: warning: Member ComponentInstance(SUComponentInstanceRef instance, bool attached=true) (function) of class CW::ComponentInstance is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/ComponentInstance.hpp:72: warning: Member operator SUComponentInstanceRef *() (function) of class CW::ComponentInstance is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:76: warning: Member operator SUDrawingElementRef *() (function) of class CW::DrawingElement is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:94: warning: Member casts_shadows() const  (function) of class CW::DrawingElement is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:101: warning: Member casts_shadows(bool casts_shadows) (function) of class CW::DrawingElement is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:107: warning: Member hidden() const  (function) of class CW::DrawingElement is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:114: warning: Member hidden(bool hidden) (function) of class CW::DrawingElement is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:119: warning: Member layer() const  (function) of class CW::DrawingElement is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:125: warning: Member layer(Layer &layer) (function) of class CW::DrawingElement is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:131: warning: Member material() const  (function) of class CW::DrawingElement is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:138: warning: Member material(const Material &material) (function) of class CW::DrawingElement is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:144: warning: Member receive_shadows() const  (function) of class CW::DrawingElement is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:151: warning: Member receive_shadows(bool receive_shadows) (function) of class CW::DrawingElement is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:75: warning: Member operator SUDrawingElementRef *() (function) of class CW::DrawingElement is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:93: warning: Member casts_shadows() const  (function) of class CW::DrawingElement is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:100: warning: Member casts_shadows(bool casts_shadows) (function) of class CW::DrawingElement is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:106: warning: Member hidden() const  (function) of class CW::DrawingElement is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:113: warning: Member hidden(bool hidden) (function) of class CW::DrawingElement is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:118: warning: Member layer() const  (function) of class CW::DrawingElement is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:124: warning: Member layer(Layer &layer) (function) of class CW::DrawingElement is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:130: warning: Member material() const  (function) of class CW::DrawingElement is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:137: warning: Member material(const Material &material) (function) of class CW::DrawingElement is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:143: warning: Member receive_shadows() const  (function) of class CW::DrawingElement is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:150: warning: Member receive_shadows(bool receive_shadows) (function) of class CW::DrawingElement is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:101: warning: Member operator SUEntityRef() const  (function) of class CW::Entity is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:108: warning: Member operator SUEntityRef *() (function) of class CW::Entity is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/ComponentInstance.hpp:43: warning: Member m_instance (variable) of class CW::ComponentInstance is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:49: warning: Member m_drawing_element (variable) of class CW::DrawingElement is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:48: warning: Member m_drawing_element (variable) of class CW::DrawingElement is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Curve.hpp:55: warning: Member Curve(SUCurveRef curve, SUCurveType curve_type) (function) of class CW::Curve is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Curve.hpp:83: warning: Member get_result() const  (function) of class CW::Curve is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Curve.hpp:88: warning: Member operator bool() const  (function) of class CW::Curve is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:101: warning: Member operator SUEntityRef() const  (function) of class CW::Entity is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:108: warning: Member operator SUEntityRef *() (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:76: warning: Member operator SUDrawingElementRef *() (function) of class CW::DrawingElement is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:94: warning: Member casts_shadows() const  (function) of class CW::DrawingElement is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:101: warning: Member casts_shadows(bool casts_shadows) (function) of class CW::DrawingElement is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:107: warning: Member hidden() const  (function) of class CW::DrawingElement is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:114: warning: Member hidden(bool hidden) (function) of class CW::DrawingElement is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:119: warning: Member layer() const  (function) of class CW::DrawingElement is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:125: warning: Member layer(Layer &layer) (function) of class CW::DrawingElement is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:131: warning: Member material() const  (function) of class CW::DrawingElement is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:138: warning: Member material(const Material &material) (function) of class CW::DrawingElement is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:144: warning: Member receive_shadows() const  (function) of class CW::DrawingElement is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:151: warning: Member receive_shadows(bool receive_shadows) (function) of class CW::DrawingElement is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:75: warning: Member operator SUDrawingElementRef *() (function) of class CW::DrawingElement is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:93: warning: Member casts_shadows() const  (function) of class CW::DrawingElement is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:100: warning: Member casts_shadows(bool casts_shadows) (function) of class CW::DrawingElement is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:106: warning: Member hidden() const  (function) of class CW::DrawingElement is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:113: warning: Member hidden(bool hidden) (function) of class CW::DrawingElement is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:118: warning: Member layer() const  (function) of class CW::DrawingElement is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:124: warning: Member layer(Layer &layer) (function) of class CW::DrawingElement is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:130: warning: Member material() const  (function) of class CW::DrawingElement is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:137: warning: Member material(const Material &material) (function) of class CW::DrawingElement is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:143: warning: Member receive_shadows() const  (function) of class CW::DrawingElement is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:150: warning: Member receive_shadows(bool receive_shadows) (function) of class CW::DrawingElement is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:101: warning: Member operator SUEntityRef() const  (function) of class CW::Entity is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:108: warning: Member operator SUEntityRef *() (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:49: warning: Member m_drawing_element (variable) of class CW::DrawingElement is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:48: warning: Member m_drawing_element (variable) of class CW::DrawingElement is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Edge.hpp:66: warning: Member Edge(const std::vector< Point3D > &points) (function) of class CW::Edge is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Edge.hpp:73: warning: Member Edge(const Point3D &start, const Point3D &end) (function) of class CW::Edge is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Edge.hpp:85: warning: Member Edge(SUEdgeRef edge, bool attached=true) (function) of class CW::Edge is not documented.
@@ -2463,20 +2462,20 @@ Generating docs for c/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/Sketc
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Edge.hpp:169: warning: Member soft(bool soft) (function) of class CW::Edge is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Edge.hpp:174: warning: Member start() const  (function) of class CW::Edge is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Edge.hpp:179: warning: Member vector() const  (function) of class CW::Edge is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:76: warning: Member operator SUDrawingElementRef *() (function) of class CW::DrawingElement is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:94: warning: Member casts_shadows() const  (function) of class CW::DrawingElement is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:101: warning: Member casts_shadows(bool casts_shadows) (function) of class CW::DrawingElement is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:107: warning: Member hidden() const  (function) of class CW::DrawingElement is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:114: warning: Member hidden(bool hidden) (function) of class CW::DrawingElement is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:119: warning: Member layer() const  (function) of class CW::DrawingElement is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:125: warning: Member layer(Layer &layer) (function) of class CW::DrawingElement is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:131: warning: Member material() const  (function) of class CW::DrawingElement is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:138: warning: Member material(const Material &material) (function) of class CW::DrawingElement is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:144: warning: Member receive_shadows() const  (function) of class CW::DrawingElement is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:151: warning: Member receive_shadows(bool receive_shadows) (function) of class CW::DrawingElement is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:75: warning: Member operator SUDrawingElementRef *() (function) of class CW::DrawingElement is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:93: warning: Member casts_shadows() const  (function) of class CW::DrawingElement is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:100: warning: Member casts_shadows(bool casts_shadows) (function) of class CW::DrawingElement is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:106: warning: Member hidden() const  (function) of class CW::DrawingElement is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:113: warning: Member hidden(bool hidden) (function) of class CW::DrawingElement is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:118: warning: Member layer() const  (function) of class CW::DrawingElement is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:124: warning: Member layer(Layer &layer) (function) of class CW::DrawingElement is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:130: warning: Member material() const  (function) of class CW::DrawingElement is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:137: warning: Member material(const Material &material) (function) of class CW::DrawingElement is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:143: warning: Member receive_shadows() const  (function) of class CW::DrawingElement is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:150: warning: Member receive_shadows(bool receive_shadows) (function) of class CW::DrawingElement is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:101: warning: Member operator SUEntityRef() const  (function) of class CW::Entity is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:108: warning: Member operator SUEntityRef *() (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:49: warning: Member m_drawing_element (variable) of class CW::DrawingElement is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:48: warning: Member m_drawing_element (variable) of class CW::DrawingElement is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entities.hpp:62: warning: Member Entities(SUEntitiesRef entities) (function) of class CW::Entities is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entities.hpp:75: warning: Member faces() const  (function) of class CW::Entities is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entities.hpp:76: warning: Member edges(bool stray_only=true) const  (function) of class CW::Entities is not documented.
@@ -2497,37 +2496,37 @@ Generating docs for c/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/Sketc
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:152: warning: argument 'AttributeDictionary' of command @param is not found in the argument list of CW::Entity::is_valid() const
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:152: warning: argument 'std' of command @param is not found in the argument list of CW::Entity::is_valid() const
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:152: warning: argument 'string' of command @param is not found in the argument list of CW::Entity::is_valid() const
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Face.hpp:101: warning: Member Face(std::vector< Point3D > &outer_loop) (function) of class CW::Face is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Face.hpp:102: warning: Member Face(std::vector< Point3D > &outer_loop, LoopInput &loop_input) (function) of class CW::Face is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Face.hpp:110: warning: Member Face(SUFaceRef face, bool attached=true) (function) of class CW::Face is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Face.hpp:124: warning: Member ref() const  (function) of class CW::Face is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Face.hpp:129: warning: Member operator SUFaceRef() const  (function) of class CW::Face is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Face.hpp:130: warning: Member operator SUFaceRef *() (function) of class CW::Face is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Face.hpp:135: warning: Member operator bool() const  (function) of class CW::Face is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Face.hpp:147: warning: Member area() const  (function) of class CW::Face is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Face.hpp:160: warning: Member back_material() const  (function) of class CW::Face is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Face.hpp:167: warning: Member back_material(const Material &material) (function) of class CW::Face is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Face.hpp:180: warning: Member classify_point(const Point3D &point) (function) of class CW::Face is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Face.hpp:186: warning: Member edges() (function) of class CW::Face is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Face.hpp:202: warning: Member get_texture_projection(const bool frontside) const  (function) of class CW::Face is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Face.hpp:212: warning: Member loops() const  (function) of class CW::Face is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Face.hpp:222: warning: Member normal() const  (function) of class CW::Face is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Face.hpp:227: warning: Member outer_loop() const  (function) of class CW::Face is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Face.hpp:232: warning: Member plane() const  (function) of class CW::Face is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:76: warning: Member operator SUDrawingElementRef *() (function) of class CW::DrawingElement is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:94: warning: Member casts_shadows() const  (function) of class CW::DrawingElement is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:101: warning: Member casts_shadows(bool casts_shadows) (function) of class CW::DrawingElement is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:107: warning: Member hidden() const  (function) of class CW::DrawingElement is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:114: warning: Member hidden(bool hidden) (function) of class CW::DrawingElement is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:119: warning: Member layer() const  (function) of class CW::DrawingElement is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:125: warning: Member layer(Layer &layer) (function) of class CW::DrawingElement is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:131: warning: Member material() const  (function) of class CW::DrawingElement is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:138: warning: Member material(const Material &material) (function) of class CW::DrawingElement is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:144: warning: Member receive_shadows() const  (function) of class CW::DrawingElement is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:151: warning: Member receive_shadows(bool receive_shadows) (function) of class CW::DrawingElement is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Face.hpp:102: warning: Member Face(std::vector< Point3D > &outer_loop) (function) of class CW::Face is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Face.hpp:103: warning: Member Face(std::vector< Point3D > &outer_loop, LoopInput &loop_input) (function) of class CW::Face is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Face.hpp:111: warning: Member Face(SUFaceRef face, bool attached=true) (function) of class CW::Face is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Face.hpp:125: warning: Member ref() const  (function) of class CW::Face is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Face.hpp:130: warning: Member operator SUFaceRef() const  (function) of class CW::Face is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Face.hpp:131: warning: Member operator SUFaceRef *() (function) of class CW::Face is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Face.hpp:136: warning: Member operator bool() const  (function) of class CW::Face is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Face.hpp:148: warning: Member area() const  (function) of class CW::Face is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Face.hpp:161: warning: Member back_material() const  (function) of class CW::Face is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Face.hpp:168: warning: Member back_material(const Material &material) (function) of class CW::Face is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Face.hpp:181: warning: Member classify_point(const Point3D &point) (function) of class CW::Face is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Face.hpp:187: warning: Member edges() (function) of class CW::Face is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Face.hpp:203: warning: Member get_texture_projection(const bool frontside) const  (function) of class CW::Face is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Face.hpp:213: warning: Member loops() const  (function) of class CW::Face is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Face.hpp:223: warning: Member normal() const  (function) of class CW::Face is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Face.hpp:228: warning: Member outer_loop() const  (function) of class CW::Face is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Face.hpp:233: warning: Member plane() const  (function) of class CW::Face is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:75: warning: Member operator SUDrawingElementRef *() (function) of class CW::DrawingElement is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:93: warning: Member casts_shadows() const  (function) of class CW::DrawingElement is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:100: warning: Member casts_shadows(bool casts_shadows) (function) of class CW::DrawingElement is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:106: warning: Member hidden() const  (function) of class CW::DrawingElement is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:113: warning: Member hidden(bool hidden) (function) of class CW::DrawingElement is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:118: warning: Member layer() const  (function) of class CW::DrawingElement is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:124: warning: Member layer(Layer &layer) (function) of class CW::DrawingElement is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:130: warning: Member material() const  (function) of class CW::DrawingElement is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:137: warning: Member material(const Material &material) (function) of class CW::DrawingElement is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:143: warning: Member receive_shadows() const  (function) of class CW::DrawingElement is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:150: warning: Member receive_shadows(bool receive_shadows) (function) of class CW::DrawingElement is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:101: warning: Member operator SUEntityRef() const  (function) of class CW::Entity is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:108: warning: Member operator SUEntityRef *() (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:49: warning: Member m_drawing_element (variable) of class CW::DrawingElement is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:48: warning: Member m_drawing_element (variable) of class CW::DrawingElement is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/GeometryInput.hpp:155: warning: Member add_faces(const std::vector< Face > &faces) (function) of class CW::GeometryInput is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/GeometryInput.hpp:168: warning: Member add_edges(const std::vector< Edge > &edges) (function) of class CW::GeometryInput is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/GeometryInput.cpp:146: warning: argument 'vertex' of command @param is not found in the argument list of CW::GeometryInput::add_face(const Face &face)
@@ -2537,21 +2536,21 @@ Generating docs for c/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/Sketc
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Group.hpp:80: warning: Member operator SUGroupRef *() (function) of class CW::Group is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/ComponentInstance.hpp:49: warning: Member ComponentInstance(SUComponentInstanceRef instance, bool attached=true) (function) of class CW::ComponentInstance is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/ComponentInstance.hpp:72: warning: Member operator SUComponentInstanceRef *() (function) of class CW::ComponentInstance is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:76: warning: Member operator SUDrawingElementRef *() (function) of class CW::DrawingElement is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:94: warning: Member casts_shadows() const  (function) of class CW::DrawingElement is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:101: warning: Member casts_shadows(bool casts_shadows) (function) of class CW::DrawingElement is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:107: warning: Member hidden() const  (function) of class CW::DrawingElement is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:114: warning: Member hidden(bool hidden) (function) of class CW::DrawingElement is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:119: warning: Member layer() const  (function) of class CW::DrawingElement is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:125: warning: Member layer(Layer &layer) (function) of class CW::DrawingElement is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:131: warning: Member material() const  (function) of class CW::DrawingElement is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:138: warning: Member material(const Material &material) (function) of class CW::DrawingElement is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:144: warning: Member receive_shadows() const  (function) of class CW::DrawingElement is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:151: warning: Member receive_shadows(bool receive_shadows) (function) of class CW::DrawingElement is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:75: warning: Member operator SUDrawingElementRef *() (function) of class CW::DrawingElement is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:93: warning: Member casts_shadows() const  (function) of class CW::DrawingElement is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:100: warning: Member casts_shadows(bool casts_shadows) (function) of class CW::DrawingElement is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:106: warning: Member hidden() const  (function) of class CW::DrawingElement is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:113: warning: Member hidden(bool hidden) (function) of class CW::DrawingElement is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:118: warning: Member layer() const  (function) of class CW::DrawingElement is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:124: warning: Member layer(Layer &layer) (function) of class CW::DrawingElement is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:130: warning: Member material() const  (function) of class CW::DrawingElement is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:137: warning: Member material(const Material &material) (function) of class CW::DrawingElement is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:143: warning: Member receive_shadows() const  (function) of class CW::DrawingElement is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:150: warning: Member receive_shadows(bool receive_shadows) (function) of class CW::DrawingElement is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:101: warning: Member operator SUEntityRef() const  (function) of class CW::Entity is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:108: warning: Member operator SUEntityRef *() (function) of class CW::Entity is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/ComponentInstance.hpp:43: warning: Member m_instance (variable) of class CW::ComponentInstance is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:49: warning: Member m_drawing_element (variable) of class CW::DrawingElement is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:48: warning: Member m_drawing_element (variable) of class CW::DrawingElement is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/ImageRep.hpp:76: warning: Member ref() const  (function) of class CW::ImageRep is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/ImageRep.hpp:77: warning: Member operator SUImageRepRef() const  (function) of class CW::ImageRep is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/ImageRep.hpp:78: warning: Member operator SUImageRepRef *() (function) of class CW::ImageRep is not documented.
@@ -2795,5 +2794,5 @@ Generating file index...
 Generating file member index...
 Generating example index...
 finalizing index lists...
-lookup cache used 4339/65536 hits=94992 misses=4591
+lookup cache used 4366/65536 hits=95301 misses=4619
 finished...
