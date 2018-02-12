@@ -36,12 +36,10 @@
 
 #include "SUAPI-CppWrapper/model/Entity.hpp"
 
-class TypedValue;
-class String;
-
 namespace CW {
 
 class TypedValue;
+class String;
 /*
 * Entity object wrapper
 */
