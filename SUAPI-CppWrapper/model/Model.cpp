@@ -40,6 +40,7 @@
 #include "SUAPI-CppWrapper/model/TypedValue.hpp"
 #include "SUAPI-CppWrapper/model/OptionsManager.hpp"
 #include "SUAPI-CppWrapper/model/RenderingOptions.hpp"
+#include "SUAPI-CppWrapper/model/ShadowInfo.hpp"
 
 
 namespace CW {
@@ -351,7 +352,7 @@ std::vector<Material> Model::materials() const {
   for (size_t i=0; i < count; ++i) {
     materials.push_back(Material(mats[i]));
   }
-  delete mats;
+  delete mats; //TODO delete [] mats;
   return materials;
 }
 
@@ -481,6 +482,14 @@ RenderingOptions Model::rendering_options()
   SUResult res = SUModelGetRenderingOptions(m_model, &ref);
   assert(res == SU_ERROR_NONE);
   return RenderingOptions(ref);
+}
+
+ShadowInfo Model::shadow_info()
+{
+  SUShadowInfoRef ref = SU_INVALID;
+  SUResult res = SUModelGetShadowInfo(m_model, &ref);
+  assert(res == SU_ERROR_NONE);
+  return ShadowInfo(ref);
 }
 
 
