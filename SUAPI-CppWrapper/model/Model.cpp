@@ -403,7 +403,7 @@ size_t Model::num_faces() const {
     throw std::logic_error("CW::Model::num_faces(): Model is null");
   }
   ModelStatistics model_statistics((*this));
-  return model_statistics.num_faces();
+  return model_statistics.faces();
 }
 
 OptionsManager Model::options()
@@ -526,10 +526,40 @@ ModelStatistics::ModelStatistics(const Model& model):
   assert(res == SU_ERROR_NONE);
 }
   
-int ModelStatistics::num_faces() {
+int ModelStatistics::edges() const
+{
+  return m_model_statistics.entity_counts[SUModelStatistics::SUEntityType_Edge];
+}
+
+int ModelStatistics::faces() const
+{
   return m_model_statistics.entity_counts[SUModelStatistics::SUEntityType_Face];
 }
-  
+int ModelStatistics::instances() const
+{
+  return m_model_statistics.entity_counts[SUModelStatistics::SUEntityType_ComponentInstance];
+}
+int ModelStatistics::groups() const
+{
+  return m_model_statistics.entity_counts[SUModelStatistics::SUEntityType_Group];
+}
+int ModelStatistics::definitions() const
+{
+  return m_model_statistics.entity_counts[SUModelStatistics::SUEntityType_ComponentDefinition];
+}
+int ModelStatistics::layers() const
+{
+  return m_model_statistics.entity_counts[SUModelStatistics::SUEntityType_Layer];
+}
+int ModelStatistics::materials() const
+{
+  return m_model_statistics.entity_counts[SUModelStatistics::SUEntityType_Material];
+}
+int ModelStatistics::images() const
+{
+  return m_model_statistics.entity_counts[SUModelStatistics::SUEntityType_Image];
+}
+
   
 
 } /* namespace CW */
