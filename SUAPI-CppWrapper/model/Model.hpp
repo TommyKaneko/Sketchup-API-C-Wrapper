@@ -321,8 +321,14 @@ class ModelStatistics {
   /**
   * Return the number of faces in the model.
   */
-  int num_faces();
-  
+  int faces() const;
+  int edges() const;
+  int instances() const;
+  int groups() const;
+  int images() const;
+  int definitions() const;
+  int layers() const;
+  int materials() const;
 };
 
 } /* namespace CW */
