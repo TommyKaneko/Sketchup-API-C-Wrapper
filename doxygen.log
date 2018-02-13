@@ -2606,6 +2606,13 @@ Generating docs for c/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/Sketc
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Model.hpp:294: warning: Member shadow_info() (function) of class CW::Model is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Model.hpp:318: warning: Member ModelStatistics(SUModelStatistics model_statistics) (function) of class CW::ModelStatistics is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Model.hpp:319: warning: Member ModelStatistics(const Model &model) (function) of class CW::ModelStatistics is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Model.hpp:325: warning: Member edges() const  (function) of class CW::ModelStatistics is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Model.hpp:326: warning: Member instances() const  (function) of class CW::ModelStatistics is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Model.hpp:327: warning: Member groups() const  (function) of class CW::ModelStatistics is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Model.hpp:328: warning: Member images() const  (function) of class CW::ModelStatistics is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Model.hpp:329: warning: Member definitions() const  (function) of class CW::ModelStatistics is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Model.hpp:330: warning: Member layers() const  (function) of class CW::ModelStatistics is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Model.hpp:331: warning: Member materials() const  (function) of class CW::ModelStatistics is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/OptionsManager.hpp:50: warning: Member OptionsProvider(SUOptionsProviderRef) (function) of class CW::OptionsProvider is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/OptionsManager.hpp:51: warning: Member keys() const  (function) of class CW::OptionsProvider is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/OptionsManager.hpp:52: warning: Member get_value(std::string key) const  (function) of class CW::OptionsProvider is not documented.
@@ -2807,5 +2814,5 @@ Generating file index...
 Generating file member index...
 Generating example index...
 finalizing index lists...
-lookup cache used 4394/65536 hits=95579 misses=4649
+lookup cache used 4417/65536 hits=95727 misses=4672
 finished...
