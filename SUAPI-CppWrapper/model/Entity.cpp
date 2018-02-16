@@ -28,6 +28,8 @@
 #include "SUAPI-CppWrapper/model/Entity.hpp"
 
 #include <cassert>
+#include <stdexcept>
+
 #include "SUAPI-CppWrapper/model/AttributeDictionary.hpp"
 
 

@@ -1,6 +1,8 @@
 #pragma once
 
 #include <vector>
+#include <string>
+
 #include <SketchUpAPI/model/rendering_options.h>
 
 namespace CW {
