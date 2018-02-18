@@ -97,7 +97,7 @@ class Model {
   bool operator!() const;
 
   /**
-  * Returns the model version in the form major.minor.build
+  * Returns a string of the model version in the form "major.minor.build"
   */
   std::string version_string() const;
 
