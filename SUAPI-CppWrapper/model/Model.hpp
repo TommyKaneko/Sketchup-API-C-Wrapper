@@ -95,7 +95,12 @@ class Model {
   * @return true if the model is invalid
   */
   bool operator!() const;
-  
+
+  /**
+  * Returns a string of the model version in the form "major.minor.build"
+  */
+  std::string version_string() const;
+
   /*
   * Returns active, or 'default' Layer object
   * @return layer Layer object that is the active layer
