@@ -124,6 +124,11 @@ AttributeDictionary& AttributeDictionary::operator=(const AttributeDictionary& o
 }
 
 
+SUAttributeDictionaryRef AttributeDictionary::ref() const {
+  return m_dict;
+}
+
+
 AttributeDictionary::operator SUAttributeDictionaryRef() const {
   return m_dict;
 }

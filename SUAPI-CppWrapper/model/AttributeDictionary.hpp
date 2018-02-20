@@ -96,6 +96,7 @@ class AttributeDictionary :public Entity {
   AttributeDictionary& operator=(const AttributeDictionary& other);
 
   /** Cast to native object **/
+  SUAttributeDictionaryRef ref() const;
   operator SUAttributeDictionaryRef() const;
   operator SUAttributeDictionaryRef*();
   
