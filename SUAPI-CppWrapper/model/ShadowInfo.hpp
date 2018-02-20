@@ -1,6 +1,7 @@
 #pragma once
 
 #include <vector>
+#include <string>
 #include <SketchUpAPI/model/shadow_info.h>
 
 namespace CW {

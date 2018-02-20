@@ -28,6 +28,8 @@
 #include "SUAPI-CppWrapper/model/Layer.hpp"
 
 #include <cassert>
+#include <stdexcept>
+
 #include "SUAPI-CppWrapper/String.hpp"
 
 

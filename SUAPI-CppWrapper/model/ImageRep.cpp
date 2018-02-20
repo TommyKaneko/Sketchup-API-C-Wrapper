@@ -29,6 +29,7 @@
 #include "SUAPI-CppWrapper/model/ImageRep.hpp"
 
 #include <cassert>
+#include <stdexcept>
 
 namespace CW {
 

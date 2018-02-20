@@ -27,6 +27,7 @@
 
 #include "SUAPI-CppWrapper/model/Texture.hpp"
 #include <cassert>
+#include <stdexcept>
 #include <stdio.h>
 
 #include "SUAPI-CppWrapper/model/ImageRep.hpp"

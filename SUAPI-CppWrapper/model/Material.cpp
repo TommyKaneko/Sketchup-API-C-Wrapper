@@ -28,6 +28,8 @@
 #include "SUAPI-CppWrapper/model/Material.hpp"
 
 #include <cassert>
+#include <stdexcept>
+
 #include "SUAPI-CppWrapper/String.hpp"
 #include "SUAPI-CppWrapper/Color.hpp"
 #include "SUAPI-CppWrapper/model/Texture.hpp"
