@@ -26,6 +26,7 @@
 //
 
 #include <cassert>
+#include <stdexcept>
 
 #include <SketchUpAPI/model/edge.h>
 

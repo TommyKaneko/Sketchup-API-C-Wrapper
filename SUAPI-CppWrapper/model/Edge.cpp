@@ -28,6 +28,7 @@
 #include "SUAPI-CppWrapper/model/Edge.hpp"
 
 #include <cassert>
+#include <stdexcept>
 
 #include "SUAPI-CppWrapper/Color.hpp"
 #include "SUAPI-CppWrapper/model/Vertex.hpp"

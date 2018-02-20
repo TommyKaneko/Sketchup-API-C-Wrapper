@@ -25,6 +25,7 @@
 // SOFTWARE.
 //
 #include <cassert>
+#include <stdexcept>
 
 #include "SUAPI-CppWrapper/model/Curve.hpp"
 

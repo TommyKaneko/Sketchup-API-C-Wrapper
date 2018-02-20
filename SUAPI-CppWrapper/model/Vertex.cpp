@@ -28,6 +28,7 @@
 #include "SUAPI-CppWrapper/model/Vertex.hpp"
 
 #include <cassert>
+#include <stdexcept>
 
 namespace CW {
 /******************************

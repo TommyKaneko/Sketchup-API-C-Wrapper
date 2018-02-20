@@ -110,6 +110,15 @@ bool Model::operator!() const {
   return !bool(*this);
 }
 
+std::string Model::version_string() const
+{
+  int major = 0, minor = 0, build = 0;
+  SUResult res = SUModelGetVersion(m_model, &major, &minor, &build);
+  assert(res == SU_ERROR_NONE);
+  std::string version = std::to_string(major) + "." + std::to_string(minor) + "." + std::to_string(build);
+  return version;
+}
+
 
 Layer Model::active_layer() const {
   if(!(*this)) {
@@ -403,7 +412,7 @@ size_t Model::num_faces() const {
     throw std::logic_error("CW::Model::num_faces(): Model is null");
   }
   ModelStatistics model_statistics((*this));
-  return model_statistics.num_faces();
+  return model_statistics.faces();
 }
 
 OptionsManager Model::options()
@@ -526,10 +535,40 @@ ModelStatistics::ModelStatistics(const Model& model):
   assert(res == SU_ERROR_NONE);
 }
   
-int ModelStatistics::num_faces() {
+int ModelStatistics::edges() const
+{
+  return m_model_statistics.entity_counts[SUModelStatistics::SUEntityType_Edge];
+}
+
+int ModelStatistics::faces() const
+{
   return m_model_statistics.entity_counts[SUModelStatistics::SUEntityType_Face];
 }
-  
+int ModelStatistics::instances() const
+{
+  return m_model_statistics.entity_counts[SUModelStatistics::SUEntityType_ComponentInstance];
+}
+int ModelStatistics::groups() const
+{
+  return m_model_statistics.entity_counts[SUModelStatistics::SUEntityType_Group];
+}
+int ModelStatistics::definitions() const
+{
+  return m_model_statistics.entity_counts[SUModelStatistics::SUEntityType_ComponentDefinition];
+}
+int ModelStatistics::layers() const
+{
+  return m_model_statistics.entity_counts[SUModelStatistics::SUEntityType_Layer];
+}
+int ModelStatistics::materials() const
+{
+  return m_model_statistics.entity_counts[SUModelStatistics::SUEntityType_Material];
+}
+int ModelStatistics::images() const
+{
+  return m_model_statistics.entity_counts[SUModelStatistics::SUEntityType_Image];
+}
+
   
 
 } /* namespace CW */

@@ -27,6 +27,7 @@
 #include "SUAPI-CppWrapper/model/DrawingElement.hpp"
 
 #include <cassert>
+#include <stdexcept>
 
 #include "SUAPI-CppWrapper/model/Layer.hpp"
 #include "SUAPI-CppWrapper/model/Material.hpp"
