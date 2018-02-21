@@ -38,9 +38,7 @@ namespace CW {
 class String;
 
 class Layer :public Entity {
-  private:
-  SULayerRef m_layer;
-  
+  private:  
   static SULayerRef create_layer();
   static SULayerRef copy_reference(const Layer& other);
   

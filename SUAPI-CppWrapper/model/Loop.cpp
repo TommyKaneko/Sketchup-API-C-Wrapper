@@ -40,18 +40,23 @@
 
 namespace CW {
 
-Loop::Loop(SULoopRef loop):
-  m_loop(loop)
-{}
-
-
 Loop::Loop():
-  m_loop(SU_INVALID)
+  Entity()
 {}
 
 
-bool Loop::operator!() const {
-  return SUIsInvalid(m_loop);
+Loop::Loop(SULoopRef loop, bool attached):
+  Entity(SULoopToEntity(loop), attached)
+{}
+
+
+Loop::Loop(const Loop& other):
+  Entity(other, other.m_entity)
+{}
+
+
+SULoopRef Loop::ref() const {
+  return SULoopFromEntity(m_entity);
 }
 
 
@@ -80,10 +85,10 @@ std::vector<Edge> Loop::edges() const {
     throw std::logic_error("CW::Loop::edges(): Loop is null");
   }
   size_t count = 0;
-  SUResult res = SULoopGetNumVertices(m_loop, &count);
+  SUResult res = SULoopGetNumVertices(this->ref(), &count);
   assert(res == SU_ERROR_NONE);
   SUEdgeRef* edge_array = new SUEdgeRef[count];
-  res = SULoopGetEdges(m_loop, count, &edge_array[0], &count);
+  res = SULoopGetEdges(this->ref(), count, &edge_array[0], &count);
   assert(res == SU_ERROR_NONE);
   std::vector<Edge> edges;
   edges.reserve(count);
@@ -100,10 +105,10 @@ std::vector<Vertex> Loop::vertices() const {
     throw std::logic_error("CW::Loop::vertices(): Loop is null");
   }
   size_t count = 0;
-  SUResult res = SULoopGetNumVertices(m_loop, &count);
+  SUResult res = SULoopGetNumVertices(this->ref(), &count);
   assert(res == SU_ERROR_NONE);
   SUVertexRef* verts_array = new SUVertexRef[count];
-  res = SULoopGetVertices(m_loop, count, &verts_array[0], &count);
+  res = SULoopGetVertices(this->ref(), count, &verts_array[0], &count);
   assert(res == SU_ERROR_NONE);
   std::vector<Vertex> vertices;
   vertices.reserve(count);
@@ -145,17 +150,12 @@ size_t Loop::size() const {
     throw std::logic_error("CW::Loop::size(): Loop is null");
   }
   size_t count = 0;
-  SUResult res = SULoopGetNumVertices(m_loop, &count);
+  SUResult res = SULoopGetNumVertices(this->ref(), &count);
   assert(res == SU_ERROR_NONE);
   return count;
 }
 
 
-SULoopRef Loop::ref() const {
-  return m_loop;
-}
-  
-  
 PointLoopClassify Loop::classify_point(const std::vector<Point3D>& loop_points, const Point3D& test_point) {
   if(loop_points.size() < 3) {
     throw std::invalid_argument("CW::Loop::classify_point(): Fewer than 3 points given - not a valid loop.");

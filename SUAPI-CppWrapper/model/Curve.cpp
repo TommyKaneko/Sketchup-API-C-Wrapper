@@ -39,12 +39,11 @@ Curve::Curve(std::vector<Edge> edges, SUCurveType curve_type):
 
 Curve::Curve(SUCurveRef curve,  SUCurveType curve_type):
   Entity(SUCurveToEntity(curve)),
-  m_curve(curve),
   m_curve_type(curve_type)
-{
-}
+{}
 
 Curve::~Curve(){
+  // TODO:
 }
 
 SUCurveRef Curve::create_curve(std::vector<Edge>& edges, SUResult &result) {
@@ -54,7 +53,9 @@ SUCurveRef Curve::create_curve(std::vector<Edge>& edges, SUResult &result) {
 }
 
 
-SUCurveRef Curve::ref(){ return m_curve;}
+SUCurveRef Curve::ref() const {
+  return SUCurveFromEntity(m_entity);
+}
 
 
 std::vector<Edge> Curve::get_edges() const{
@@ -62,10 +63,10 @@ std::vector<Edge> Curve::get_edges() const{
     throw std::logic_error("CW::Curve::get_edges(): Curve is null");
   }
   size_t num_edges = 0;
-  SUResult res = SUCurveGetNumEdges(m_curve, &num_edges);
+  SUResult res = SUCurveGetNumEdges(this->ref(), &num_edges);
   assert(res == SU_ERROR_NONE);
   SUEdgeRef* ref_edges = new SUEdgeRef[num_edges];
-  res = SUCurveGetEdges(m_curve, num_edges, &ref_edges[0], &num_edges);
+  res = SUCurveGetEdges(this->ref(), num_edges, &ref_edges[0], &num_edges);
   assert(res == SU_ERROR_NONE);
   std::vector<Edge> edges;
   edges.reserve(num_edges);
@@ -81,7 +82,7 @@ SUCurveType Curve::get_type() {
   if (!(*this)) {
     throw std::logic_error("CW::Curve::get_type(): Curve is null");
   }
-  SUCurveGetType(m_curve, &m_curve_type);
+  SUCurveGetType(this->ref(), &m_curve_type);
   return m_curve_type;
 }
  
