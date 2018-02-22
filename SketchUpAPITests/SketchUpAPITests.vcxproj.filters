@@ -29,14 +29,14 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SketchUpAPITests.cpp">
+    <ClCompile Include="..\tests\ColorTests.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tests\TypedValueTests.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tests\SketchUpAPITests.cpp">
       <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ColorTests.cpp">
-      <Filter>Tests</Filter>
-    </ClCompile>
-    <ClCompile Include="TypedValueTests.cpp">
-      <Filter>Tests</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
