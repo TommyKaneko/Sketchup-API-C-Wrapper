@@ -60,7 +60,7 @@
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a61d77444c5e9019c17e5896750adf898"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_w_1_1_loop_input.html#a61d77444c5e9019c17e5896750adf898">LoopInput</a> ()</td></tr>
 <tr class="separator:a61d77444c5e9019c17e5896750adf898"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a24b070d5120a1017ecabd87941230142"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_w_1_1_loop_input.html#a24b070d5120a1017ecabd87941230142">LoopInput</a> (<a class="el" href="struct_s_u_loop_input_ref.html">SULoopInputRef</a> loop_input, bool attached=false)</td></tr>
+<tr class="memitem:a24b070d5120a1017ecabd87941230142"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_w_1_1_loop_input.html#a24b070d5120a1017ecabd87941230142">LoopInput</a> (SULoopInputRef loop_input, bool attached=false)</td></tr>
 <tr class="separator:a24b070d5120a1017ecabd87941230142"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3a8125f3e88a015edbdaa379d84751e9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_w_1_1_loop_input.html#a3a8125f3e88a015edbdaa379d84751e9">LoopInput</a> (const std::vector&lt; <a class="el" href="struct_c_w_1_1_input_edge_properties.html">InputEdgeProperties</a> &gt; &amp;loop_edge_properties, size_t vertex_index=0)</td></tr>
 <tr class="separator:a3a8125f3e88a015edbdaa379d84751e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -69,7 +69,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ad499c1d15420cc6706d34f990159da66"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_c_w_1_1_loop_input.html">LoopInput</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_w_1_1_loop_input.html#ad499c1d15420cc6706d34f990159da66">operator=</a> (const <a class="el" href="class_c_w_1_1_loop_input.html">LoopInput</a> &amp;other)</td></tr>
 <tr class="separator:ad499c1d15420cc6706d34f990159da66"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9af66bb008a08ca7157b8612a5848394"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9af66bb008a08ca7157b8612a5848394"></a>
-<a class="el" href="struct_s_u_loop_input_ref.html">SULoopInputRef</a>&#160;</td><td class="memItemRight" valign="bottom"><b>ref</b> () const </td></tr>
+SULoopInputRef&#160;</td><td class="memItemRight" valign="bottom"><b>ref</b> () const </td></tr>
 <tr class="separator:a9af66bb008a08ca7157b8612a5848394"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad3e6f1a195004c214eb0f0c1bf2e4385"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad3e6f1a195004c214eb0f0c1bf2e4385"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>operator SULoopInputRef</b> () const </td></tr>
@@ -135,7 +135,7 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>GeometryInput</b></t
         <tr>
           <td class="memname">CW::LoopInput::LoopInput </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_s_u_loop_input_ref.html">SULoopInputRef</a>&#160;</td>
+          <td class="paramtype">SULoopInputRef&#160;</td>
           <td class="paramname"><em>loop_input</em>, </td>
         </tr>
         <tr>
@@ -151,7 +151,7 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>GeometryInput</b></t
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Create <a class="el" href="class_c_w_1_1_loop_input.html">LoopInput</a> object from preexisting <a class="el" href="struct_s_u_loop_input_ref.html" title="References a loop input object. ">SULoopInputRef</a> object </p>
+<p>Create <a class="el" href="class_c_w_1_1_loop_input.html">LoopInput</a> object from preexisting SULoopInputRef object </p>
 
 <p>Definition at line <a class="el" href="_loop_input_8cpp_source.html#l00056">56</a> of file <a class="el" href="_loop_input_8cpp_source.html">LoopInput.cpp</a>.</p>
 
@@ -184,9 +184,9 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>GeometryInput</b></t
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">loop_edges</td><td>- vector of edges from which properties will be copied into the new loop input. </td></tr>
-    <tr><td class="paramname">vertex_index</td><td>- 0 by default. This is the first index of the vertex to be added to the loop. Only when using <a class="el" href="struct_s_u_geometry_input_ref.html" title="References a geometry input object. It is used as an input to /ref SUEntitiesFill. ">SUGeometryInputRef</a> object would you use an index higher than 0. Create <a class="el" href="class_c_w_1_1_loop_input.html">LoopInput</a> object from vector of edge properties that can form a loop. </td></tr>
+    <tr><td class="paramname">vertex_index</td><td>- 0 by default. This is the first index of the vertex to be added to the loop. Only when using SUGeometryInputRef object would you use an index higher than 0. Create <a class="el" href="class_c_w_1_1_loop_input.html">LoopInput</a> object from vector of edge properties that can form a loop. </td></tr>
     <tr><td class="paramname">loop_edge_properties</td><td>- vector of <a class="el" href="struct_c_w_1_1_input_edge_properties.html">InputEdgeProperties</a> from which edge properties will be copied to the new loop input. </td></tr>
-    <tr><td class="paramname">vertex_index</td><td>- 0 by default. This is the first index of the vertex to be added to the loop. Only when using <a class="el" href="struct_s_u_geometry_input_ref.html" title="References a geometry input object. It is used as an input to /ref SUEntitiesFill. ">SUGeometryInputRef</a> object would you use an index higher than 0. </td></tr>
+    <tr><td class="paramname">vertex_index</td><td>- 0 by default. This is the first index of the vertex to be added to the loop. Only when using SUGeometryInputRef object would you use an index higher than 0. </td></tr>
   </table>
   </dd>
 </dl>
@@ -231,7 +231,7 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>GeometryInput</b></t
 <p>Adds a vertex index to the loop. <a class="el" href="class_c_w_1_1_loop_input.html">LoopInput</a> does not hold the point locations of vertices. It holds information on the edges that form the loop. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">index</td><td>- the vertex index of the loop. When used with SUCreateFace(), it would be a zero-based index. When used with SUGeometryInputAddFace(), the vertex index would need to correspond to specific indices of the vertices that have been added to <a class="el" href="struct_s_u_geometry_input_ref.html" title="References a geometry input object. It is used as an input to /ref SUEntitiesFill. ">SUGeometryInputRef</a> object. </td></tr>
+    <tr><td class="paramname">index</td><td>- the vertex index of the loop. When used with SUCreateFace(), it would be a zero-based index. When used with SUGeometryInputAddFace(), the vertex index would need to correspond to specific indices of the vertices that have been added to SUGeometryInputRef object. </td></tr>
   </table>
   </dd>
 </dl>
@@ -273,7 +273,7 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>GeometryInput</b></t
       </table>
 </div><div class="memdoc">
 <p>Copy assignment operator </p>
-<p>size_t vertex_index = 0; <a class="el" href="struct_s_u_loop_input_ref.html" title="References a loop input object. ">SULoopInputRef</a> other_loop_input = other.ref(); while (SULoopInputEdgeSetHidden(other_loop_input, size_t edge_index, bool hidden))</p>
+<p>size_t vertex_index = 0; SULoopInputRef other_loop_input = other.ref(); while (SULoopInputEdgeSetHidden(other_loop_input, size_t edge_index, bool hidden))</p>
 
 <p>Definition at line <a class="el" href="_loop_input_8cpp_source.html#l00125">125</a> of file <a class="el" href="_loop_input_8cpp_source.html">LoopInput.cpp</a>.</p>
 
@@ -286,7 +286,7 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>GeometryInput</b></t
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Feb 22 2018 16:22:26 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Feb 22 2018 16:27:22 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

@@ -42,7 +42,7 @@
   </div>
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_1e6f28ee2bb0919f3d150f269c31b204.html">SUAPI-CppWrapper</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_f5ad1096a8ea229eeb47a854ea8e871a.html">src</a></li><li class="navelem"><a class="el" href="dir_059aedaba3b45634f6ec731c8b380205.html">SUAPI-CppWrapper</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -94,7 +94,7 @@
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
 <div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="class_c_w_1_1_transformation.html">   43</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_c_w_1_1_transformation.html">Transformation</a> {</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  <a class="code" href="struct_s_u_transformation.html">SUTransformation</a> m_transformation;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  SUTransformation m_transformation;</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  constexpr <span class="keyword">static</span> <span class="keywordtype">double</span> EPSILON = 0.001; <span class="comment">// Sketchup Tolerance is 1/1000&quot;</span></div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  <span class="comment"></span></div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment">  /**</span></div>
@@ -119,7 +119,7 @@
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="comment">  /**</span></div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="comment">  * Construct a Transformation from native SUTransformation object.</span></div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="comment">  */</span></div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  <a class="code" href="class_c_w_1_1_transformation.html#a7f5f4edba7a8cf56773d17a7c59a8f04">Transformation</a>(<a class="code" href="struct_s_u_transformation.html">SUTransformation</a> transformation);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  <a class="code" href="class_c_w_1_1_transformation.html#a7f5f4edba7a8cf56773d17a7c59a8f04">Transformation</a>(SUTransformation transformation);</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="comment"></span></div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="comment">  /**</span></div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="comment">  * Construct a Transformation by setting axes and translation.</span></div>
@@ -190,9 +190,9 @@
 <div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;  <span class="comment">/*</span></div>
 <div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;<span class="comment">  * Cast to SUTransformation struct</span></div>
 <div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;<span class="comment">  */</span></div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;  <a class="code" href="struct_s_u_transformation.html">SUTransformation</a> ref() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;  <span class="keyword">operator</span> <a class="code" href="struct_s_u_transformation.html">SUTransformation</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;  <span class="keyword">operator</span> <span class="keyword">const</span> <a class="code" href="struct_s_u_transformation.html">SUTransformation</a>*() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;  SUTransformation ref() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;  <span class="keyword">operator</span> SUTransformation() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;  <span class="keyword">operator</span> <span class="keyword">const</span> SUTransformation*() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;  <span class="comment"></span></div>
 <div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;<span class="comment">  /**</span></div>
 <div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;<span class="comment">  * Returns true if this Transformation is identity (no change).</span></div>
@@ -312,12 +312,11 @@
 <div class="ttc" id="class_c_w_1_1_transformation_html"><div class="ttname"><a href="class_c_w_1_1_transformation.html">CW::Transformation</a></div><div class="ttdef"><b>Definition:</b> <a href="_transformation_8hpp_source.html#l00043">Transformation.hpp:43</a></div></div>
 <div class="ttc" id="class_c_w_1_1_face_html"><div class="ttname"><a href="class_c_w_1_1_face.html">CW::Face</a></div><div class="ttdef"><b>Definition:</b> <a href="_face_8hpp_source.html#l00062">Face.hpp:62</a></div></div>
 <div class="ttc" id="class_c_w_1_1_transformation_html_a251739240487120bc061038ea39ca99f"><div class="ttname"><a href="class_c_w_1_1_transformation.html#a251739240487120bc061038ea39ca99f">CW::Transformation::y_axis</a></div><div class="ttdeci">Vector3D y_axis() const </div><div class="ttdef"><b>Definition:</b> <a href="_transformation_8cpp_source.html#l00212">Transformation.cpp:212</a></div></div>
-<div class="ttc" id="struct_s_u_transformation_html"><div class="ttname"><a href="struct_s_u_transformation.html">SUTransformation</a></div><div class="ttdoc">Represents a 3D (4x4) geometric transformation matrix. </div><div class="ttdef"><b>Definition:</b> <a href="2016_2_sketch_up_a_p_i_8framework_2_headers_2transformation_8h_source.html#l00032">transformation.h:32</a></div></div>
 <div class="ttc" id="class_c_w_1_1_transformation_html_a71f3a94dbe8d768783fe15e615ddaf33"><div class="ttname"><a href="class_c_w_1_1_transformation.html#a71f3a94dbe8d768783fe15e615ddaf33">CW::Transformation::normalize</a></div><div class="ttdeci">Transformation &amp; normalize()</div><div class="ttdef"><b>Definition:</b> <a href="_transformation_8cpp_source.html#l00236">Transformation.cpp:236</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Feb 22 2018 16:22:25 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Feb 22 2018 16:27:22 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

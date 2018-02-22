@@ -42,7 +42,7 @@
   </div>
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_1e6f28ee2bb0919f3d150f269c31b204.html">SUAPI-CppWrapper</a></li><li class="navelem"><a class="el" href="dir_13216040867bbb762e833bf5f8aa9ba2.html">model</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_f5ad1096a8ea229eeb47a854ea8e871a.html">src</a></li><li class="navelem"><a class="el" href="dir_059aedaba3b45634f6ec731c8b380205.html">SUAPI-CppWrapper</a></li><li class="navelem"><a class="el" href="dir_8b970082db578f41e103709fbfabc55a.html">model</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -93,14 +93,14 @@
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment">/**************************</span></div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment">* Private static methods **</span></div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment">***************************/</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<a class="code" href="struct_s_u_group_ref.html">SUGroupRef</a> Group::create_group() {</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  <a class="code" href="struct_s_u_group_ref.html">SUGroupRef</a> group_ref = SU_INVALID;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;SUGroupRef Group::create_group() {</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  SUGroupRef group_ref = SU_INVALID;</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  SUResult res = SUGroupCreate(&amp;group_ref);</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  assert(res == SU_ERROR_NONE);</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  <span class="keywordflow">return</span> group_ref;</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;}</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<a class="code" href="struct_s_u_group_ref.html">SUGroupRef</a> Group::copy_reference(<span class="keyword">const</span> Group&amp; other) {</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;SUGroupRef Group::copy_reference(<span class="keyword">const</span> Group&amp; other) {</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  <span class="keywordflow">if</span> (other.m_attached) {</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordflow">return</span> other.m_group;</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  }</div>
@@ -117,7 +117,7 @@
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;{}</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
-<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="class_c_w_1_1_group.html#aabd66564a104310ca92a18add4672eb0">   68</a></span>&#160;<a class="code" href="class_c_w_1_1_group.html#ac5b331bf2d4ffb1733a51311f65774dd">Group::Group</a>(<a class="code" href="struct_s_u_group_ref.html">SUGroupRef</a> group, <span class="keywordtype">bool</span> attached):</div>
+<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="class_c_w_1_1_group.html#aabd66564a104310ca92a18add4672eb0">   68</a></span>&#160;<a class="code" href="class_c_w_1_1_group.html#ac5b331bf2d4ffb1733a51311f65774dd">Group::Group</a>(SUGroupRef group, <span class="keywordtype">bool</span> attached):</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  <a class="code" href="class_c_w_1_1_component_instance.html">ComponentInstance</a>(SUGroupToComponentInstance(group), attached),</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  m_group(group)</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;{}</div>
@@ -144,12 +144,12 @@
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;}</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;Group::operator <a class="code" href="struct_s_u_group_ref.html">SUGroupRef</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;Group::operator SUGroupRef()<span class="keyword"> const </span>{</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  <span class="keywordflow">return</span> ref();</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;}</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;Group::operator <a class="code" href="struct_s_u_group_ref.html">SUGroupRef</a>*() {</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;Group::operator SUGroupRef*() {</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;  <span class="keywordflow">return</span> &amp;m_group;</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;}</div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;</div>
@@ -158,7 +158,7 @@
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;  <span class="keywordflow">if</span>(!(*<span class="keyword">this</span>)) {</div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::Group::definition(): Group is null&quot;</span>);</div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;  }</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;  <a class="code" href="struct_s_u_component_definition_ref.html">SUComponentDefinitionRef</a> def_ref = SU_INVALID;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;  SUComponentDefinitionRef def_ref = SU_INVALID;</div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;  SUResult res = SUGroupGetDefinition(m_group, &amp;def_ref);</div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;  assert(res == SU_ERROR_NONE);</div>
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="class_c_w_1_1_component_definition.html">ComponentDefinition</a>(def_ref);</div>
@@ -169,7 +169,7 @@
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;  <span class="keywordflow">if</span>(!(*<span class="keyword">this</span>)) {</div>
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::Group::entities(): Group is null&quot;</span>);</div>
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;  }</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;  <a class="code" href="struct_s_u_entities_ref.html">SUEntitiesRef</a> <a class="code" href="class_c_w_1_1_group.html#ababebc7b67c24692859d9347af7911b1">entities</a> = SU_INVALID;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;  SUEntitiesRef <a class="code" href="class_c_w_1_1_group.html#ababebc7b67c24692859d9347af7911b1">entities</a> = SU_INVALID;</div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;  SUGroupGetEntities(m_group, &amp;entities);</div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="class_c_w_1_1_entities.html">Entities</a>(entities);</div>
 <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;}</div>
@@ -180,7 +180,7 @@
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::Group::name(): Group is null&quot;</span>);</div>
 <div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;  }</div>
 <div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;  <a class="code" href="class_c_w_1_1_string.html">String</a> string;</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;  <a class="code" href="struct_s_u_string_ref.html">SUStringRef</a> * <span class="keyword">const</span> string_ref = string;</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;  SUStringRef * <span class="keyword">const</span> string_ref = string;</div>
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;  SUResult res = SUGroupGetName(m_group, string_ref);</div>
 <div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;  assert(res == SU_ERROR_NONE);</div>
 <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;  <span class="keywordflow">return</span> string;</div>
@@ -200,7 +200,7 @@
 <div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;  <span class="keywordflow">if</span>(!(*<span class="keyword">this</span>)) {</div>
 <div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::Group::transformation(): Group is null&quot;</span>);</div>
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;  }</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;  <a class="code" href="struct_s_u_transformation.html">SUTransformation</a> transform{};</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;  SUTransformation transform{};</div>
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;  SUGroupGetTransform(m_group, &amp;transform);</div>
 <div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="class_c_w_1_1_transformation.html">Transformation</a>(transform);</div>
 <div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;}</div>
@@ -210,22 +210,20 @@
 <div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;  <span class="keywordflow">if</span>(!(*<span class="keyword">this</span>)) {</div>
 <div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::Group::transformation(): Group is null&quot;</span>);</div>
 <div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;  }</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;  <a class="code" href="struct_s_u_transformation.html">SUTransformation</a> transform_ref = transform.ref();</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;  SUTransformation transform_ref = transform.ref();</div>
 <div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;  SUResult res = SUGroupSetTransform(m_group, &amp;transform_ref);</div>
 <div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;  assert(res == SU_ERROR_NONE);</div>
 <div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;}</div>
 <div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;</div>
 <div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;</div>
-<div class="line"><a name="l00167"></a><span class="lineno"><a class="line" href="class_c_w_1_1_group.html#af2656e96be24f276ae254d2f62053c4c">  167</a></span>&#160;<a class="code" href="struct_s_u_group_ref.html">SUGroupRef</a> <a class="code" href="class_c_w_1_1_group.html#af2656e96be24f276ae254d2f62053c4c">Group::ref</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00167"></a><span class="lineno"><a class="line" href="class_c_w_1_1_group.html#af2656e96be24f276ae254d2f62053c4c">  167</a></span>&#160;SUGroupRef <a class="code" href="class_c_w_1_1_group.html#af2656e96be24f276ae254d2f62053c4c">Group::ref</a>()<span class="keyword"> const </span>{</div>
 <div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;  <span class="keywordflow">return</span> m_group;</div>
 <div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;}</div>
 <div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;</div>
 <div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;</div>
 <div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;} <span class="comment">/* namespace CW */</span></div>
 <div class="ttc" id="class_c_w_1_1_entity_html_aea6450abce4d5aebad0061e213c840b1"><div class="ttname"><a href="class_c_w_1_1_entity.html#aea6450abce4d5aebad0061e213c840b1">CW::Entity::m_attached</a></div><div class="ttdeci">bool m_attached</div><div class="ttdoc">Indicates whether the Entity has been attached to a model. </div><div class="ttdef"><b>Definition:</b> <a href="_entity_8hpp_source.html#l00062">Entity.hpp:62</a></div></div>
-<div class="ttc" id="struct_s_u_entities_ref_html"><div class="ttname"><a href="struct_s_u_entities_ref.html">SUEntitiesRef</a></div><div class="ttdoc">References a container object for all entities in a model, component definition or a group...</div></div>
 <div class="ttc" id="class_c_w_1_1_group_html_af2656e96be24f276ae254d2f62053c4c"><div class="ttname"><a href="class_c_w_1_1_group.html#af2656e96be24f276ae254d2f62053c4c">CW::Group::ref</a></div><div class="ttdeci">SUGroupRef ref() const </div><div class="ttdef"><b>Definition:</b> <a href="_group_8cpp_source.html#l00167">Group.cpp:167</a></div></div>
-<div class="ttc" id="struct_s_u_string_ref_html"><div class="ttname"><a href="struct_s_u_string_ref.html">SUStringRef</a></div><div class="ttdoc">Stores a Unicode string for use as output string parameters in the API. </div></div>
 <div class="ttc" id="class_c_w_1_1_component_instance_html"><div class="ttname"><a href="class_c_w_1_1_component_instance.html">CW::ComponentInstance</a></div><div class="ttdef"><b>Definition:</b> <a href="_component_instance_8hpp_source.html#l00041">ComponentInstance.hpp:41</a></div></div>
 <div class="ttc" id="class_c_w_1_1_entities_html"><div class="ttname"><a href="class_c_w_1_1_entities.html">CW::Entities</a></div><div class="ttdef"><b>Definition:</b> <a href="_entities_8hpp_source.html#l00056">Entities.hpp:56</a></div></div>
 <div class="ttc" id="class_c_w_1_1_group_html"><div class="ttname"><a href="class_c_w_1_1_group.html">CW::Group</a></div><div class="ttdef"><b>Definition:</b> <a href="_group_8hpp_source.html#l00045">Group.hpp:45</a></div></div>
@@ -233,20 +231,17 @@
 <div class="ttc" id="class_c_w_1_1_group_html_ac5b331bf2d4ffb1733a51311f65774dd"><div class="ttname"><a href="class_c_w_1_1_group.html#ac5b331bf2d4ffb1733a51311f65774dd">CW::Group::Group</a></div><div class="ttdeci">Group()</div><div class="ttdef"><b>Definition:</b> <a href="_group_8cpp_source.html#l00063">Group.cpp:63</a></div></div>
 <div class="ttc" id="class_c_w_1_1_group_html_a7069f72c2ff330bf0e05587ef2fa36dd"><div class="ttname"><a href="class_c_w_1_1_group.html#a7069f72c2ff330bf0e05587ef2fa36dd">CW::Group::operator=</a></div><div class="ttdeci">Group &amp; operator=(const Group &amp;other)</div><div class="ttdef"><b>Definition:</b> <a href="_group_8cpp_source.html#l00086">Group.cpp:86</a></div></div>
 <div class="ttc" id="class_c_w_1_1_component_definition_html"><div class="ttname"><a href="class_c_w_1_1_component_definition.html">CW::ComponentDefinition</a></div><div class="ttdef"><b>Definition:</b> <a href="_component_definition_8hpp_source.html#l00050">ComponentDefinition.hpp:50</a></div></div>
-<div class="ttc" id="struct_s_u_component_definition_ref_html"><div class="ttname"><a href="struct_s_u_component_definition_ref.html">SUComponentDefinitionRef</a></div><div class="ttdoc">References a component definition. </div></div>
 <div class="ttc" id="class_c_w_1_1_group_html_a2e9a51c697dd675116a0391a0474d05b"><div class="ttname"><a href="class_c_w_1_1_group.html#a2e9a51c697dd675116a0391a0474d05b">CW::Group::transformation</a></div><div class="ttdeci">Transformation transformation() const </div><div class="ttdef"><b>Definition:</b> <a href="_group_8cpp_source.html#l00147">Group.cpp:147</a></div></div>
 <div class="ttc" id="class_c_w_1_1_group_html_a35199d1c2f1e457e55d40f9635f9b602"><div class="ttname"><a href="class_c_w_1_1_group.html#a35199d1c2f1e457e55d40f9635f9b602">CW::Group::name</a></div><div class="ttdeci">String name() const </div><div class="ttdef"><b>Definition:</b> <a href="_group_8cpp_source.html#l00126">Group.cpp:126</a></div></div>
 <div class="ttc" id="class_c_w_1_1_component_instance_html_aebb100337dd2d359fbf4aaabe4103746"><div class="ttname"><a href="class_c_w_1_1_component_instance.html#aebb100337dd2d359fbf4aaabe4103746">CW::ComponentInstance::operator=</a></div><div class="ttdeci">ComponentInstance &amp; operator=(const ComponentInstance &amp;other)</div><div class="ttdef"><b>Definition:</b> <a href="_component_instance_8cpp_source.html#l00089">ComponentInstance.cpp:89</a></div></div>
 <div class="ttc" id="class_c_w_1_1_group_html_a3eeece8df27544980192a3ed9a453f8d"><div class="ttname"><a href="class_c_w_1_1_group.html#a3eeece8df27544980192a3ed9a453f8d">CW::Group::~Group</a></div><div class="ttdeci">~Group()</div><div class="ttdef"><b>Definition:</b> <a href="_group_8cpp_source.html#l00080">Group.cpp:80</a></div></div>
 <div class="ttc" id="class_c_w_1_1_string_html"><div class="ttname"><a href="class_c_w_1_1_string.html">CW::String</a></div><div class="ttdef"><b>Definition:</b> <a href="_string_8hpp_source.html#l00045">String.hpp:45</a></div></div>
-<div class="ttc" id="struct_s_u_group_ref_html"><div class="ttname"><a href="struct_s_u_group_ref.html">SUGroupRef</a></div><div class="ttdoc">References a group object. </div></div>
 <div class="ttc" id="class_c_w_1_1_transformation_html"><div class="ttname"><a href="class_c_w_1_1_transformation.html">CW::Transformation</a></div><div class="ttdef"><b>Definition:</b> <a href="_transformation_8hpp_source.html#l00043">Transformation.hpp:43</a></div></div>
-<div class="ttc" id="struct_s_u_transformation_html"><div class="ttname"><a href="struct_s_u_transformation.html">SUTransformation</a></div><div class="ttdoc">Represents a 3D (4x4) geometric transformation matrix. </div><div class="ttdef"><b>Definition:</b> <a href="2016_2_sketch_up_a_p_i_8framework_2_headers_2transformation_8h_source.html#l00032">transformation.h:32</a></div></div>
 <div class="ttc" id="class_c_w_1_1_group_html_ababebc7b67c24692859d9347af7911b1"><div class="ttname"><a href="class_c_w_1_1_group.html#ababebc7b67c24692859d9347af7911b1">CW::Group::entities</a></div><div class="ttdeci">Entities entities() const </div><div class="ttdef"><b>Definition:</b> <a href="_group_8cpp_source.html#l00116">Group.cpp:116</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Feb 22 2018 16:22:25 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Feb 22 2018 16:27:21 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

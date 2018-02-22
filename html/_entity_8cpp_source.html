@@ -42,7 +42,7 @@
   </div>
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_1e6f28ee2bb0919f3d150f269c31b204.html">SUAPI-CppWrapper</a></li><li class="navelem"><a class="el" href="dir_13216040867bbb762e833bf5f8aa9ba2.html">model</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_f5ad1096a8ea229eeb47a854ea8e871a.html">src</a></li><li class="navelem"><a class="el" href="dir_059aedaba3b45634f6ec731c8b380205.html">SUAPI-CppWrapper</a></li><li class="navelem"><a class="el" href="dir_8b970082db578f41e103709fbfabc55a.html">model</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -96,13 +96,13 @@
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;{}</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
-<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="class_c_w_1_1_entity.html#a20e7493de8d68dee3f6465478435eb3a">   47</a></span>&#160;<a class="code" href="class_c_w_1_1_entity.html#a53d07669ec73b8aba57784b7b0eb4d08">Entity::Entity</a>(<a class="code" href="struct_s_u_entity_ref.html">SUEntityRef</a> entity, <span class="keywordtype">bool</span> attached):</div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="class_c_w_1_1_entity.html#a20e7493de8d68dee3f6465478435eb3a">   47</a></span>&#160;<a class="code" href="class_c_w_1_1_entity.html#a53d07669ec73b8aba57784b7b0eb4d08">Entity::Entity</a>(SUEntityRef entity, <span class="keywordtype">bool</span> attached):</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  m_entity(entity),</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  m_attached(attached)</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;{}</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
-<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="class_c_w_1_1_entity.html#a2acf0ed23480bd7f5be2b257b61ad4c1">   53</a></span>&#160;<a class="code" href="class_c_w_1_1_entity.html#a53d07669ec73b8aba57784b7b0eb4d08">Entity::Entity</a>(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_entity.html">Entity</a>&amp; other, <a class="code" href="struct_s_u_entity_ref.html">SUEntityRef</a> entity_ref):</div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="class_c_w_1_1_entity.html#a2acf0ed23480bd7f5be2b257b61ad4c1">   53</a></span>&#160;<a class="code" href="class_c_w_1_1_entity.html#a53d07669ec73b8aba57784b7b0eb4d08">Entity::Entity</a>(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_entity.html">Entity</a>&amp; other, SUEntityRef entity_ref):</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  m_entity(entity_ref),</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  m_attached(other.m_attached)</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;{}</div>
@@ -127,12 +127,12 @@
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;}</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;Entity::operator <a class="code" href="struct_s_u_entity_ref.html">SUEntityRef</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;Entity::operator SUEntityRef()<span class="keyword"> const </span>{</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  <span class="keywordflow">return</span> m_entity;</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;}</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;Entity::operator <a class="code" href="struct_s_u_entity_ref.html">SUEntityRef</a>*() {</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;Entity::operator SUEntityRef*() {</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  <span class="keywordflow">return</span> &amp;m_entity;</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;}</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div>
@@ -162,7 +162,7 @@
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;  assert(res == SU_ERROR_NONE);</div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;  std::vector&lt;AttributeDictionary&gt; dicts(num_dicts);</div>
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;  std::transform(dicts_ref.begin(), dicts_ref.end(), dicts.begin(),</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;  [](<span class="keyword">const</span> <a class="code" href="struct_s_u_attribute_dictionary_ref.html">SUAttributeDictionaryRef</a>&amp; value) {</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;  [](<span class="keyword">const</span> SUAttributeDictionaryRef&amp; value) {</div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="class_c_w_1_1_attribute_dictionary.html">AttributeDictionary</a>(value);</div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;  });;</div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;  <span class="keywordflow">return</span> dicts;</div>
@@ -173,7 +173,7 @@
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::Entity::attribute_dictionary(): Entity is null&quot;</span>);</div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;  }</div>
 <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;  <span class="keywordtype">char</span> <span class="keyword">const</span> *c_name = name.c_str();</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;  <a class="code" href="struct_s_u_attribute_dictionary_ref.html">SUAttributeDictionaryRef</a> dict_ref = SU_INVALID;</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;  SUAttributeDictionaryRef dict_ref = SU_INVALID;</div>
 <div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;  SUResult res = SUEntityGetAttributeDictionary(<a class="code" href="class_c_w_1_1_entity.html#ad1d5c635add16702f770b6e14c186e9c">m_entity</a>, &amp;c_name[0], &amp;dict_ref);</div>
 <div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;  <span class="keywordflow">if</span> (res == SU_ERROR_NONE) {</div>
 <div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="class_c_w_1_1_attribute_dictionary.html">AttributeDictionary</a>(dict_ref);</div>
@@ -297,11 +297,9 @@
 <div class="ttc" id="class_c_w_1_1_entity_html_a53d07669ec73b8aba57784b7b0eb4d08"><div class="ttname"><a href="class_c_w_1_1_entity.html#a53d07669ec73b8aba57784b7b0eb4d08">CW::Entity::Entity</a></div><div class="ttdeci">Entity()</div><div class="ttdoc">Constructor representing a null objject. </div><div class="ttdef"><b>Definition:</b> <a href="_entity_8cpp_source.html#l00041">Entity.cpp:41</a></div></div>
 <div class="ttc" id="class_c_w_1_1_entity_html_a64762c829bba997b0b3070d51f7c059d"><div class="ttname"><a href="class_c_w_1_1_entity.html#a64762c829bba997b0b3070d51f7c059d">CW::Entity::attached</a></div><div class="ttdeci">bool attached() const </div><div class="ttdoc">Returns true if the entity is attached to another object. </div><div class="ttdef"><b>Definition:</b> <a href="_entity_8cpp_source.html#l00088">Entity.cpp:88</a></div></div>
 <div class="ttc" id="class_c_w_1_1_typed_value_html"><div class="ttname"><a href="class_c_w_1_1_typed_value.html">CW::TypedValue</a></div><div class="ttdef"><b>Definition:</b> <a href="_typed_value_8hpp_source.html#l00045">TypedValue.hpp:45</a></div></div>
-<div class="ttc" id="struct_s_u_entity_ref_html"><div class="ttname"><a href="struct_s_u_entity_ref.html">SUEntityRef</a></div><div class="ttdoc">References an entity, which is an abstract base type for most API types. </div></div>
 <div class="ttc" id="class_c_w_1_1_entity_html_a994f71e4dad4fc104ac483b326a039a9"><div class="ttname"><a href="class_c_w_1_1_entity.html#a994f71e4dad4fc104ac483b326a039a9">CW::Entity::copy_attributes_from</a></div><div class="ttdeci">bool copy_attributes_from(const Entity &amp;entity)</div><div class="ttdoc">Copies attributes from another Entity object to this one. </div><div class="ttdef"><b>Definition:</b> <a href="_entity_8cpp_source.html#l00133">Entity.cpp:133</a></div></div>
 <div class="ttc" id="class_c_w_1_1_entity_html_aae2d0d2d1496e1d8f4a5a320a63af2fd"><div class="ttname"><a href="class_c_w_1_1_entity.html#aae2d0d2d1496e1d8f4a5a320a63af2fd">CW::Entity::attribute_dictionaries</a></div><div class="ttdeci">std::vector&lt; AttributeDictionary &gt; attribute_dictionaries() const </div><div class="ttdoc">Returns the AttributeDictionaries collection attached to the entity. </div><div class="ttdef"><b>Definition:</b> <a href="_entity_8cpp_source.html#l00098">Entity.cpp:98</a></div></div>
 <div class="ttc" id="class_c_w_1_1_attribute_dictionary_html_a8814b15285e78fc88a14018ee7bdc963"><div class="ttname"><a href="class_c_w_1_1_attribute_dictionary.html#a8814b15285e78fc88a14018ee7bdc963">CW::AttributeDictionary::get_attribute</a></div><div class="ttdeci">TypedValue get_attribute(const std::string &amp;key, const TypedValue &amp;default_value) const </div><div class="ttdef"><b>Definition:</b> <a href="_attribute_dictionary_8cpp_source.html#l00143">AttributeDictionary.cpp:143</a></div></div>
-<div class="ttc" id="struct_s_u_attribute_dictionary_ref_html"><div class="ttname"><a href="struct_s_u_attribute_dictionary_ref.html">SUAttributeDictionaryRef</a></div><div class="ttdoc">A dictionary type with SUStringRef objects as keys and SUTypedValueRef objects as values...</div></div>
 <div class="ttc" id="class_c_w_1_1_entity_html_a2be7d9a49679a12cc615883622ecdef8"><div class="ttname"><a href="class_c_w_1_1_entity.html#a2be7d9a49679a12cc615883622ecdef8">CW::Entity::entity_type</a></div><div class="ttdeci">enum SURefType entity_type() const </div><div class="ttdoc">Returns the type of the entity. See enum SURefType. </div><div class="ttdef"><b>Definition:</b> <a href="_entity_8cpp_source.html#l00210">Entity.cpp:210</a></div></div>
 <div class="ttc" id="class_c_w_1_1_entity_html_a9a8f76aa5e1f2edf5c280740333242b1"><div class="ttname"><a href="class_c_w_1_1_entity.html#a9a8f76aa5e1f2edf5c280740333242b1">CW::Entity::~Entity</a></div><div class="ttdeci">~Entity()</div><div class="ttdoc">Destructor. </div><div class="ttdef"><b>Definition:</b> <a href="_entity_8cpp_source.html#l00059">Entity.cpp:59</a></div></div>
 <div class="ttc" id="class_c_w_1_1_entity_html_ad1d5c635add16702f770b6e14c186e9c"><div class="ttname"><a href="class_c_w_1_1_entity.html#ad1d5c635add16702f770b6e14c186e9c">CW::Entity::m_entity</a></div><div class="ttdeci">SUEntityRef m_entity</div><div class="ttdoc">The C SUEntityRef that this class wraps. </div><div class="ttdef"><b>Definition:</b> <a href="_entity_8hpp_source.html#l00057">Entity.hpp:57</a></div></div>
@@ -317,7 +315,7 @@
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Feb 22 2018 16:22:25 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Feb 22 2018 16:27:21 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

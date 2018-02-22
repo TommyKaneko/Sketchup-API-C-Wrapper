@@ -42,7 +42,7 @@
   </div>
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_1e6f28ee2bb0919f3d150f269c31b204.html">SUAPI-CppWrapper</a></li><li class="navelem"><a class="el" href="dir_13216040867bbb762e833bf5f8aa9ba2.html">model</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_f5ad1096a8ea229eeb47a854ea8e871a.html">src</a></li><li class="navelem"><a class="el" href="dir_059aedaba3b45634f6ec731c8b380205.html">SUAPI-CppWrapper</a></li><li class="navelem"><a class="el" href="dir_8b970082db578f41e103709fbfabc55a.html">model</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -106,16 +106,16 @@
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  </div>
 <div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="class_c_w_1_1_model.html">   55</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_c_w_1_1_model.html">Model</a> {</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  <a class="code" href="struct_s_u_model_ref.html">SUModelRef</a> m_model;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  SUModelRef m_model;</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <span class="keywordtype">bool</span> m_release_on_destroy;</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  </div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  SUResult m_result = SU_ERROR_NONE; <span class="comment">// the result on creation of model</span></div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  </div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  <span class="keyword">static</span> <a class="code" href="struct_s_u_model_ref.html">SUModelRef</a> create_model();</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  <span class="keyword">static</span> SUModelRef create_model();</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  </div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  <span class="keyword">public</span>:</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  <a class="code" href="class_c_w_1_1_model.html">Model</a>();</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  <a class="code" href="class_c_w_1_1_model.html">Model</a>(<a class="code" href="struct_s_u_model_ref.html">SUModelRef</a> model_ref, <span class="keywordtype">bool</span> release_on_destroy = <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  <a class="code" href="class_c_w_1_1_model.html">Model</a>(SUModelRef model_ref, <span class="keywordtype">bool</span> release_on_destroy = <span class="keyword">true</span>);</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  <a class="code" href="class_c_w_1_1_model.html">Model</a>(std::string file_path);</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  <span class="comment"></span></div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="comment">  /** Copy Constructor **/</span></div>
@@ -129,13 +129,13 @@
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="comment">  /**</span></div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="comment">  * Returns SUModelRef object for the Model.</span></div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="comment">  */</span></div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  <a class="code" href="struct_s_u_model_ref.html">SUModelRef</a> <a class="code" href="class_c_w_1_1_model.html#a586a581447bec7cbad3197400af780fd">ref</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  SUModelRef <a class="code" href="class_c_w_1_1_model.html#a586a581447bec7cbad3197400af780fd">ref</a>() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  <span class="comment">/*</span></div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="comment">  * The class object can be converted to a SUModelRef without loss of data.</span></div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="comment">  */</span></div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  <span class="keyword">operator</span> <a class="code" href="struct_s_u_model_ref.html">SUModelRef</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  <span class="keyword">operator</span> <a class="code" href="struct_s_u_model_ref.html">SUModelRef</a>*();</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  <span class="keyword">operator</span> SUModelRef() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  <span class="keyword">operator</span> SUModelRef*();</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  </div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  <span class="comment">/*</span></div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="comment">  * Returns true if object is valid.</span></div>
@@ -369,10 +369,10 @@
 <div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;</div>
 <div class="line"><a name="l00318"></a><span class="lineno"><a class="line" href="class_c_w_1_1_model_statistics.html">  318</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_c_w_1_1_model_statistics.html">ModelStatistics</a> {</div>
 <div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;  <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;  <a class="code" href="struct_s_u_model_statistics.html">SUModelStatistics</a> m_model_statistics;</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;  SUModelStatistics m_model_statistics;</div>
 <div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;  </div>
 <div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;  <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;  <a class="code" href="class_c_w_1_1_model_statistics.html">ModelStatistics</a>(<a class="code" href="struct_s_u_model_statistics.html">SUModelStatistics</a> model_statistics);</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;  <a class="code" href="class_c_w_1_1_model_statistics.html">ModelStatistics</a>(SUModelStatistics model_statistics);</div>
 <div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;  <a class="code" href="class_c_w_1_1_model_statistics.html">ModelStatistics</a>(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_model.html">Model</a>&amp; model);</div>
 <div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;  <span class="comment"></span></div>
 <div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;<span class="comment">  /**</span></div>
@@ -393,7 +393,6 @@
 <div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* Model_hpp */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="class_c_w_1_1_axes_html"><div class="ttname"><a href="class_c_w_1_1_axes.html">CW::Axes</a></div><div class="ttdef"><b>Definition:</b> <a href="_axes_8hpp_source.html#l00046">Axes.hpp:46</a></div></div>
 <div class="ttc" id="class_c_w_1_1_classifications_html"><div class="ttname"><a href="class_c_w_1_1_classifications.html">CW::Classifications</a></div><div class="ttdef"><b>Definition:</b> <a href="_classifications_8hpp_source.html#l00041">Classifications.hpp:41</a></div></div>
-<div class="ttc" id="struct_s_u_model_ref_html"><div class="ttname"><a href="struct_s_u_model_ref.html">SUModelRef</a></div><div class="ttdoc">A SketchUp model. </div></div>
 <div class="ttc" id="class_c_w_1_1_layer_html"><div class="ttname"><a href="class_c_w_1_1_layer.html">CW::Layer</a></div><div class="ttdef"><b>Definition:</b> <a href="_layer_8hpp_source.html#l00040">Layer.hpp:40</a></div></div>
 <div class="ttc" id="class_c_w_1_1_model_html_a5141b470a1563bddf9228dc2a6d820cb"><div class="ttname"><a href="class_c_w_1_1_model.html#a5141b470a1563bddf9228dc2a6d820cb">CW::Model::version_string</a></div><div class="ttdeci">std::string version_string() const </div><div class="ttdef"><b>Definition:</b> <a href="_model_8cpp_source.html#l00113">Model.cpp:113</a></div></div>
 <div class="ttc" id="class_c_w_1_1_entities_html"><div class="ttname"><a href="class_c_w_1_1_entities.html">CW::Entities</a></div><div class="ttdef"><b>Definition:</b> <a href="_entities_8hpp_source.html#l00056">Entities.hpp:56</a></div></div>
@@ -413,11 +412,10 @@
 <div class="ttc" id="class_c_w_1_1_model_html_ad10ec689a9beece3934ddbe9980afc46"><div class="ttname"><a href="class_c_w_1_1_model.html#ad10ec689a9beece3934ddbe9980afc46">CW::Model::add_definition</a></div><div class="ttdeci">bool add_definition(ComponentDefinition &amp;definition)</div><div class="ttdef"><b>Definition:</b> <a href="_model_8cpp_source.html#l00142">Model.cpp:142</a></div></div>
 <div class="ttc" id="class_c_w_1_1_model_html_a586a581447bec7cbad3197400af780fd"><div class="ttname"><a href="class_c_w_1_1_model.html#a586a581447bec7cbad3197400af780fd">CW::Model::ref</a></div><div class="ttdeci">SUModelRef ref() const </div><div class="ttdef"><b>Definition:</b> <a href="_model_8cpp_source.html#l00086">Model.cpp:86</a></div></div>
 <div class="ttc" id="class_c_w_1_1_model_statistics_html"><div class="ttname"><a href="class_c_w_1_1_model_statistics.html">CW::ModelStatistics</a></div><div class="ttdef"><b>Definition:</b> <a href="_model_8hpp_source.html#l00318">Model.hpp:318</a></div></div>
-<div class="ttc" id="struct_s_u_model_statistics_html"><div class="ttname"><a href="struct_s_u_model_statistics.html">SUModelStatistics</a></div><div class="ttdoc">Contains an array of entity counts that can be indexed per entity type. </div><div class="ttdef"><b>Definition:</b> <a href="2016_2_sketch_up_a_p_i_8framework_2_headers_2model_2model_8h_source.html#l00025">model.h:25</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Feb 22 2018 16:22:25 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Feb 22 2018 16:27:22 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

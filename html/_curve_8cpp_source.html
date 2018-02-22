@@ -42,7 +42,7 @@
   </div>
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_1e6f28ee2bb0919f3d150f269c31b204.html">SUAPI-CppWrapper</a></li><li class="navelem"><a class="el" href="dir_13216040867bbb762e833bf5f8aa9ba2.html">model</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_f5ad1096a8ea229eeb47a854ea8e871a.html">src</a></li><li class="navelem"><a class="el" href="dir_059aedaba3b45634f6ec731c8b380205.html">SUAPI-CppWrapper</a></li><li class="navelem"><a class="el" href="dir_8b970082db578f41e103709fbfabc55a.html">model</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -89,7 +89,7 @@
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;{</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;}</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<a class="code" href="class_c_w_1_1_curve.html#ae12ccb72044be8bebb0e29c69af3690a">Curve::Curve</a>(<a class="code" href="struct_s_u_curve_ref.html">SUCurveRef</a> curve,  SUCurveType curve_type):</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<a class="code" href="class_c_w_1_1_curve.html#ae12ccb72044be8bebb0e29c69af3690a">Curve::Curve</a>(SUCurveRef curve,  SUCurveType curve_type):</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  <a class="code" href="class_c_w_1_1_entity.html">Entity</a>(SUCurveToEntity(curve)),</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  m_curve(curve),</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  m_curve_type(curve_type)</div>
@@ -99,14 +99,14 @@
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;Curve::~Curve(){</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;}</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<a class="code" href="struct_s_u_curve_ref.html">SUCurveRef</a> Curve::create_curve(std::vector&lt;Edge&gt;&amp; edges, SUResult &amp;result) {</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  <a class="code" href="struct_s_u_curve_ref.html">SUCurveRef</a> curve_ref = SU_INVALID;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;SUCurveRef Curve::create_curve(std::vector&lt;Edge&gt;&amp; edges, SUResult &amp;result) {</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  SUCurveRef curve_ref = SU_INVALID;</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  result = SUCurveCreateWithEdges(&amp;curve_ref, edges[0], edges.size());</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  <span class="keywordflow">return</span> curve_ref;</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;}</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
-<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="class_c_w_1_1_curve.html#a5cd59e3c1bfaad5c1fc6b93d8e585361">   57</a></span>&#160;<a class="code" href="struct_s_u_curve_ref.html">SUCurveRef</a> <a class="code" href="class_c_w_1_1_curve.html#a5cd59e3c1bfaad5c1fc6b93d8e585361">Curve::ref</a>(){ <span class="keywordflow">return</span> m_curve;}</div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="class_c_w_1_1_curve.html#a5cd59e3c1bfaad5c1fc6b93d8e585361">   57</a></span>&#160;SUCurveRef <a class="code" href="class_c_w_1_1_curve.html#a5cd59e3c1bfaad5c1fc6b93d8e585361">Curve::ref</a>(){ <span class="keywordflow">return</span> m_curve;}</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
 <div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="class_c_w_1_1_curve.html#a7a1a2db9333ad3f94520f0f0f87a2d79">   60</a></span>&#160;std::vector&lt;Edge&gt; <a class="code" href="class_c_w_1_1_curve.html#a7a1a2db9333ad3f94520f0f0f87a2d79">Curve::get_edges</a>()<span class="keyword"> const</span>{</div>
@@ -121,7 +121,7 @@
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  assert(res == SU_ERROR_NONE);</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  std::vector&lt;Edge&gt; edges(num_edges);</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  std::transform(ref_edges.begin(), ref_edges.end(), edges.begin(),</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  [](<span class="keyword">const</span> <a class="code" href="struct_s_u_edge_ref.html">SUEdgeRef</a>&amp; value) {</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  [](<span class="keyword">const</span> SUEdgeRef&amp; value) {</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="class_c_w_1_1_edge.html">Edge</a>(value);</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  });</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  <span class="keywordflow">return</span> edges;</div>
@@ -157,18 +157,16 @@
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;} <span class="comment">/* namespace CW */</span></div>
 <div class="ttc" id="class_c_w_1_1_edge_html"><div class="ttname"><a href="class_c_w_1_1_edge.html">CW::Edge</a></div><div class="ttdef"><b>Definition:</b> <a href="_edge_8hpp_source.html#l00048">Edge.hpp:48</a></div></div>
 <div class="ttc" id="class_c_w_1_1_curve_html_a964c4984c58a5d4326a112ad26393c89"><div class="ttname"><a href="class_c_w_1_1_curve.html#a964c4984c58a5d4326a112ad26393c89">CW::Curve::get_type</a></div><div class="ttdeci">SUCurveType get_type()</div><div class="ttdef"><b>Definition:</b> <a href="_curve_8cpp_source.html#l00079">Curve.cpp:79</a></div></div>
-<div class="ttc" id="struct_s_u_curve_ref_html"><div class="ttname"><a href="struct_s_u_curve_ref.html">SUCurveRef</a></div><div class="ttdoc">References a curve. </div></div>
 <div class="ttc" id="class_c_w_1_1_entity_html"><div class="ttname"><a href="class_c_w_1_1_entity.html">CW::Entity</a></div><div class="ttdef"><b>Definition:</b> <a href="_entity_8hpp_source.html#l00052">Entity.hpp:52</a></div></div>
 <div class="ttc" id="class_c_w_1_1_curve_html_ac343694df68673bfdda39008fb9082c8"><div class="ttname"><a href="class_c_w_1_1_curve.html#ac343694df68673bfdda39008fb9082c8">CW::Curve::operator!</a></div><div class="ttdeci">bool operator!() const </div><div class="ttdef"><b>Definition:</b> <a href="_curve_8cpp_source.html#l00101">Curve.cpp:101</a></div></div>
 <div class="ttc" id="class_c_w_1_1_curve_html_a5cd59e3c1bfaad5c1fc6b93d8e585361"><div class="ttname"><a href="class_c_w_1_1_curve.html#a5cd59e3c1bfaad5c1fc6b93d8e585361">CW::Curve::ref</a></div><div class="ttdeci">SUCurveRef ref()</div><div class="ttdef"><b>Definition:</b> <a href="_curve_8cpp_source.html#l00057">Curve.cpp:57</a></div></div>
-<div class="ttc" id="struct_s_u_edge_ref_html"><div class="ttname"><a href="struct_s_u_edge_ref.html">SUEdgeRef</a></div><div class="ttdoc">References an edge. </div></div>
 <div class="ttc" id="class_c_w_1_1_curve_html_a7a1a2db9333ad3f94520f0f0f87a2d79"><div class="ttname"><a href="class_c_w_1_1_curve.html#a7a1a2db9333ad3f94520f0f0f87a2d79">CW::Curve::get_edges</a></div><div class="ttdeci">std::vector&lt; Edge &gt; get_edges() const </div><div class="ttdef"><b>Definition:</b> <a href="_curve_8cpp_source.html#l00060">Curve.cpp:60</a></div></div>
 <div class="ttc" id="class_c_w_1_1_curve_html"><div class="ttname"><a href="class_c_w_1_1_curve.html">CW::Curve</a></div><div class="ttdef"><b>Definition:</b> <a href="_curve_8hpp_source.html#l00040">Curve.hpp:40</a></div></div>
 <div class="ttc" id="class_c_w_1_1_curve_html_ae12ccb72044be8bebb0e29c69af3690a"><div class="ttname"><a href="class_c_w_1_1_curve.html#ae12ccb72044be8bebb0e29c69af3690a">CW::Curve::Curve</a></div><div class="ttdeci">Curve(std::vector&lt; Edge &gt; edges, SUCurveType curve_type=SUCurveType_Simple)</div><div class="ttdef"><b>Definition:</b> <a href="_curve_8cpp_source.html#l00035">Curve.cpp:35</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Feb 22 2018 16:22:25 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Feb 22 2018 16:27:21 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
