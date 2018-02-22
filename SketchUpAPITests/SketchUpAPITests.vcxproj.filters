@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Tests">
+      <UniqueIdentifier>{fa7d22b4-2ed6-4fe0-ab25-31ef56229bc0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -28,6 +31,9 @@
     </ClCompile>
     <ClCompile Include="SketchUpAPITests.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ColorTests.cpp">
+      <Filter>Tests</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
