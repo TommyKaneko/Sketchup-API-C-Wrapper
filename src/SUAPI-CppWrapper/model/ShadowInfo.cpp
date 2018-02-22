@@ -1,4 +1,4 @@
-#include "ShadowInfo.hpp"
+#include "SUAPI-CppWrapper/model/ShadowInfo.hpp"
 #include "SUAPI-CppWrapper/String.hpp"
 #include "SUAPI-CppWrapper/model/TypedValue.hpp"
 #include <cassert>

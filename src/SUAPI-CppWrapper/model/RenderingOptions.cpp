@@ -1,4 +1,4 @@
-#include "RenderingOptions.hpp"
+#include "SUAPI-CppWrapper/model/RenderingOptions.hpp"
 #include "SUAPI-CppWrapper/String.hpp"
 #include "SUAPI-CppWrapper/model/TypedValue.hpp"
 #include <cassert>
