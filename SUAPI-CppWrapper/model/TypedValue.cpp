@@ -455,11 +455,17 @@ std::vector<TypedValue> TypedValue::typed_value_array() const {
   std::vector<SUTypedValueRef> value_refs(count, SU_INVALID);
   res = SUTypedValueGetArrayItems(m_typed_value, count, value_refs.data(), &count);
   assert(res == SU_ERROR_NONE);
-  std::vector<TypedValue> typed_vals(count);
-  std::transform(value_refs.begin(), value_refs.end(), typed_vals.begin(),
+  // TypedValue from TypedValue arrays should not actually be released.  This poses a problem for the wrapper object which will want to release it.  The solution is to copy these special TypedValues that don't release into new TypedValue objects that do.
+  std::vector<TypedValue> temp_vals(count);
+  std::transform(value_refs.begin(), value_refs.end(), temp_vals.begin(),
     [](const SUTypedValueRef& value) {
       return TypedValue(value, true);
     });
+  std::vector<TypedValue> typed_vals(count);
+  // Force a copy operation to create an object that will be released normally.
+  for (size_t i=0; i < typed_vals.size(); i++) {
+    typed_vals[i] = temp_vals[i];
+  }
   return typed_vals;
 }
 
