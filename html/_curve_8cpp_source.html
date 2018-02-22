@@ -116,51 +116,50 @@
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  <span class="keywordtype">size_t</span> num_edges = 0;</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  SUResult res = SUCurveGetNumEdges(m_curve, &amp;num_edges);</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  assert(res == SU_ERROR_NONE);</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  <a class="code" href="struct_s_u_edge_ref.html">SUEdgeRef</a>* ref_edges = <span class="keyword">new</span> <a class="code" href="struct_s_u_edge_ref.html">SUEdgeRef</a>[num_edges];</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  res = SUCurveGetEdges(m_curve, num_edges, &amp;ref_edges[0], &amp;num_edges);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  std::vector&lt;SUEdgeRef&gt; ref_edges(num_edges);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  res = SUCurveGetEdges(m_curve, num_edges, ref_edges.data(), &amp;num_edges);</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  assert(res == SU_ERROR_NONE);</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  std::vector&lt;Edge&gt; edges;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  edges.reserve(num_edges);</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i=0; i &lt; num_edges; ++i) {</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    edges.push_back(<a class="code" href="class_c_w_1_1_edge.html">Edge</a>(ref_edges[i]));</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  }</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  <span class="keyword">delete</span> ref_edges;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  <span class="keywordflow">return</span> edges;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;}</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  std::vector&lt;Edge&gt; edges(num_edges);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  std::transform(ref_edges.begin(), ref_edges.end(), edges.begin(),</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  [](<span class="keyword">const</span> <a class="code" href="struct_s_u_edge_ref.html">SUEdgeRef</a>&amp; value) {</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="class_c_w_1_1_edge.html">Edge</a>(value);</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  });</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  <span class="keywordflow">return</span> edges;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;}</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
-<div class="line"><a name="l00080"></a><span class="lineno"><a class="line" href="class_c_w_1_1_curve.html#a964c4984c58a5d4326a112ad26393c89">   80</a></span>&#160;SUCurveType <a class="code" href="class_c_w_1_1_curve.html#a964c4984c58a5d4326a112ad26393c89">Curve::get_type</a>() {</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  <span class="keywordflow">if</span> (!(*<span class="keyword">this</span>)) {</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::Curve::get_type(): Curve is null&quot;</span>);</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  }</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  SUCurveGetType(m_curve, &amp;m_curve_type);</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  <span class="keywordflow">return</span> m_curve_type;</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;}</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;SUResult Curve::get_result()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;  <span class="keywordflow">return</span> m_create_result;</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;}</div>
+<div class="line"><a name="l00079"></a><span class="lineno"><a class="line" href="class_c_w_1_1_curve.html#a964c4984c58a5d4326a112ad26393c89">   79</a></span>&#160;SUCurveType <a class="code" href="class_c_w_1_1_curve.html#a964c4984c58a5d4326a112ad26393c89">Curve::get_type</a>() {</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  <span class="keywordflow">if</span> (!(*<span class="keyword">this</span>)) {</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::Curve::get_type(): Curve is null&quot;</span>);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  }</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  SUCurveGetType(m_curve, &amp;m_curve_type);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  <span class="keywordflow">return</span> m_curve_type;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;}</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;SUResult Curve::get_result()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  <span class="keywordflow">return</span> m_create_result;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;}</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;Curve::operator bool()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  <span class="keywordflow">if</span> (m_create_result == SU_ERROR_NONE) {</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  }</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;}</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;Curve::operator bool()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  <span class="keywordflow">if</span> (m_create_result == SU_ERROR_NONE) {</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  }</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;}</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;</div>
-<div class="line"><a name="l00102"></a><span class="lineno"><a class="line" href="class_c_w_1_1_curve.html#ac343694df68673bfdda39008fb9082c8">  102</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="class_c_w_1_1_curve.html#ac343694df68673bfdda39008fb9082c8">Curve::operator!</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;  <span class="keywordflow">return</span> !bool(<span class="keyword">this</span>);</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;}</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;} <span class="comment">/* namespace CW */</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno"><a class="line" href="class_c_w_1_1_curve.html#ac343694df68673bfdda39008fb9082c8">  101</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="class_c_w_1_1_curve.html#ac343694df68673bfdda39008fb9082c8">Curve::operator!</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;  <span class="keywordflow">return</span> !bool(<span class="keyword">this</span>);</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;}</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;} <span class="comment">/* namespace CW */</span></div>
 <div class="ttc" id="class_c_w_1_1_edge_html"><div class="ttname"><a href="class_c_w_1_1_edge.html">CW::Edge</a></div><div class="ttdef"><b>Definition:</b> <a href="_edge_8hpp_source.html#l00048">Edge.hpp:48</a></div></div>
-<div class="ttc" id="class_c_w_1_1_curve_html_a964c4984c58a5d4326a112ad26393c89"><div class="ttname"><a href="class_c_w_1_1_curve.html#a964c4984c58a5d4326a112ad26393c89">CW::Curve::get_type</a></div><div class="ttdeci">SUCurveType get_type()</div><div class="ttdef"><b>Definition:</b> <a href="_curve_8cpp_source.html#l00080">Curve.cpp:80</a></div></div>
+<div class="ttc" id="class_c_w_1_1_curve_html_a964c4984c58a5d4326a112ad26393c89"><div class="ttname"><a href="class_c_w_1_1_curve.html#a964c4984c58a5d4326a112ad26393c89">CW::Curve::get_type</a></div><div class="ttdeci">SUCurveType get_type()</div><div class="ttdef"><b>Definition:</b> <a href="_curve_8cpp_source.html#l00079">Curve.cpp:79</a></div></div>
 <div class="ttc" id="struct_s_u_curve_ref_html"><div class="ttname"><a href="struct_s_u_curve_ref.html">SUCurveRef</a></div><div class="ttdoc">References a curve. </div></div>
 <div class="ttc" id="class_c_w_1_1_entity_html"><div class="ttname"><a href="class_c_w_1_1_entity.html">CW::Entity</a></div><div class="ttdef"><b>Definition:</b> <a href="_entity_8hpp_source.html#l00052">Entity.hpp:52</a></div></div>
-<div class="ttc" id="class_c_w_1_1_curve_html_ac343694df68673bfdda39008fb9082c8"><div class="ttname"><a href="class_c_w_1_1_curve.html#ac343694df68673bfdda39008fb9082c8">CW::Curve::operator!</a></div><div class="ttdeci">bool operator!() const </div><div class="ttdef"><b>Definition:</b> <a href="_curve_8cpp_source.html#l00102">Curve.cpp:102</a></div></div>
+<div class="ttc" id="class_c_w_1_1_curve_html_ac343694df68673bfdda39008fb9082c8"><div class="ttname"><a href="class_c_w_1_1_curve.html#ac343694df68673bfdda39008fb9082c8">CW::Curve::operator!</a></div><div class="ttdeci">bool operator!() const </div><div class="ttdef"><b>Definition:</b> <a href="_curve_8cpp_source.html#l00101">Curve.cpp:101</a></div></div>
 <div class="ttc" id="class_c_w_1_1_curve_html_a5cd59e3c1bfaad5c1fc6b93d8e585361"><div class="ttname"><a href="class_c_w_1_1_curve.html#a5cd59e3c1bfaad5c1fc6b93d8e585361">CW::Curve::ref</a></div><div class="ttdeci">SUCurveRef ref()</div><div class="ttdef"><b>Definition:</b> <a href="_curve_8cpp_source.html#l00057">Curve.cpp:57</a></div></div>
 <div class="ttc" id="struct_s_u_edge_ref_html"><div class="ttname"><a href="struct_s_u_edge_ref.html">SUEdgeRef</a></div><div class="ttdoc">References an edge. </div></div>
 <div class="ttc" id="class_c_w_1_1_curve_html_a7a1a2db9333ad3f94520f0f0f87a2d79"><div class="ttname"><a href="class_c_w_1_1_curve.html#a7a1a2db9333ad3f94520f0f0f87a2d79">CW::Curve::get_edges</a></div><div class="ttdeci">std::vector&lt; Edge &gt; get_edges() const </div><div class="ttdef"><b>Definition:</b> <a href="_curve_8cpp_source.html#l00060">Curve.cpp:60</a></div></div>
@@ -169,7 +168,7 @@
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Feb 20 2018 10:45:27 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Feb 22 2018 10:34:39 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

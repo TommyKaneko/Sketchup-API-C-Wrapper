@@ -1450,7 +1450,7 @@ Searching for memb/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-Cp
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Texture.hpp:46: warning: Compound CW::Texture is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/TextureWriter.hpp:40: warning: Compound CW::TextureWriter is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/ComponentInstance.hpp:41: warning: Compound CW::ComponentInstance is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/AttributeDictionary.hpp:48: warning: Compound CW::AttributeDictionary is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/AttributeDictionary.hpp:46: warning: Compound CW::AttributeDictionary is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/String.hpp:45: warning: Compound CW::String is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/MaterialInput.hpp:40: warning: Compound CW::MaterialInput is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/Transformation.hpp:43: warning: Compound CW::Transformation is not documented.
@@ -2353,7 +2353,8 @@ Generating docs for c/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/Sketc
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/Geometry.hpp:589: warning: argument 'other_line' of command @param is not found in the argument list of CW::Line3D::closest_points(const Line3D &line) const
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/Geometry.hpp:589: warning: The following parameters of CW::Line3D::closest_points(const Line3D &line) const are not documented:
   parameter 'line'
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/AttributeDictionary.hpp:102: warning: Member operator SUAttributeDictionaryRef *() (function) of class CW::AttributeDictionary is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/AttributeDictionary.hpp:100: warning: Member operator SUAttributeDictionaryRef() const  (function) of class CW::AttributeDictionary is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/AttributeDictionary.hpp:101: warning: Member operator SUAttributeDictionaryRef *() (function) of class CW::AttributeDictionary is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:101: warning: Member operator SUEntityRef() const  (function) of class CW::Entity is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Entity.hpp:108: warning: Member operator SUEntityRef *() (function) of class CW::Entity is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Axes.hpp:99: warning: Member y_axis() const  (function) of class CW::Axes is not documented.
@@ -2403,8 +2404,8 @@ Generating docs for c/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/Sketc
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/ComponentDefinition.hpp:157: warning: Member always_face_camera (variable) of class CW::Behavior is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/ComponentDefinition.hpp:159: warning: Member shadows_face_sun (variable) of class CW::Behavior is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/ComponentDefinition.hpp:161: warning: Member no_scale_mask (variable) of class CW::Behavior is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/ComponentInstance.hpp:49: warning: Member ComponentInstance(SUComponentInstanceRef instance, bool attached=true) (function) of class CW::ComponentInstance is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/ComponentInstance.hpp:72: warning: Member operator SUComponentInstanceRef *() (function) of class CW::ComponentInstance is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/ComponentInstance.hpp:54: warning: Member ComponentInstance(SUComponentInstanceRef instance, bool attached=true) (function) of class CW::ComponentInstance is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/ComponentInstance.hpp:77: warning: Member operator SUComponentInstanceRef *() (function) of class CW::ComponentInstance is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:75: warning: Member operator SUDrawingElementRef *() (function) of class CW::DrawingElement is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:93: warning: Member casts_shadows() const  (function) of class CW::DrawingElement is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:100: warning: Member casts_shadows(bool casts_shadows) (function) of class CW::DrawingElement is not documented.
@@ -2527,8 +2528,8 @@ Generating docs for c/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/Sketc
   parameter 'face'
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Group.hpp:79: warning: Member operator SUGroupRef() const  (function) of class CW::Group is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/Group.hpp:80: warning: Member operator SUGroupRef *() (function) of class CW::Group is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/ComponentInstance.hpp:49: warning: Member ComponentInstance(SUComponentInstanceRef instance, bool attached=true) (function) of class CW::ComponentInstance is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/ComponentInstance.hpp:72: warning: Member operator SUComponentInstanceRef *() (function) of class CW::ComponentInstance is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/ComponentInstance.hpp:54: warning: Member ComponentInstance(SUComponentInstanceRef instance, bool attached=true) (function) of class CW::ComponentInstance is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/ComponentInstance.hpp:77: warning: Member operator SUComponentInstanceRef *() (function) of class CW::ComponentInstance is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:75: warning: Member operator SUDrawingElementRef *() (function) of class CW::DrawingElement is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:93: warning: Member casts_shadows() const  (function) of class CW::DrawingElement is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/DrawingElement.hpp:100: warning: Member casts_shadows(bool casts_shadows) (function) of class CW::DrawingElement is not documented.
@@ -2814,5 +2815,5 @@ Generating file index...
 Generating file member index...
 Generating example index...
 finalizing index lists...
-lookup cache used 4421/65536 hits=95755 misses=4676
+lookup cache used 4422/65536 hits=95837 misses=4677
 finished...
