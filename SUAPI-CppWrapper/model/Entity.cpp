@@ -105,14 +105,14 @@ std::vector<AttributeDictionary>  Entity::attribute_dictionaries() const {
   if (num_dicts == 0) {
     return std::vector<AttributeDictionary>{};
   }
-  SUAttributeDictionaryRef* dicts_ref = new SUAttributeDictionaryRef[num_dicts];
-  res = SUEntityGetAttributeDictionaries(m_entity, num_dicts, &dicts_ref[0], &num_dicts);
+  std::vector<SUAttributeDictionaryRef> dicts_ref(num_dicts, SU_INVALID);
+  res = SUEntityGetAttributeDictionaries(m_entity, num_dicts, dicts_ref.data(), &num_dicts);
   assert(res == SU_ERROR_NONE);
   std::vector<AttributeDictionary> dicts(num_dicts);
-  for (size_t i=0; i < num_dicts; i++) {
-    dicts[i] = AttributeDictionary(dicts_ref[i]);
-  }
-  delete[] dicts_ref;
+  std::transform(dicts_ref.begin(), dicts_ref.end(), dicts.begin(),
+  [](const SUAttributeDictionaryRef& value) {
+    return AttributeDictionary(value);
+  });;
   return dicts;
 }
 

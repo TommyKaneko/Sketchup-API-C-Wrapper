@@ -200,20 +200,19 @@ std::vector<Face> Edge::faces() const {
   }
   size_t count = 0;
   SUResult res = SUEdgeGetNumFaces(m_edge, &count);
-  SUFaceRef* faces = new SUFaceRef[count];
   assert(res == SU_ERROR_NONE);
   if (count == 0) {
     return std::vector<Face>();
   }
-  res = SUEdgeGetFaces(m_edge, count, &faces[0], &count);
+  std::vector<SUFaceRef> face_refs(count, SU_INVALID);
+  res = SUEdgeGetFaces(m_edge, count, face_refs.data(), &count);
   assert(res == SU_ERROR_NONE);
-  std::vector<Face> return_faces;
-  return_faces.reserve(count);
-  for (size_t i=0; i < count; ++i) {
-    return_faces.push_back(Face(faces[i]));
-  }
-  delete faces;
-  return return_faces;
+  std::vector<Face> faces(count);
+  std::transform(face_refs.begin(), face_refs.end(), faces.begin(),
+  [](const SUFaceRef& value) {
+    return Face(value);
+  });
+  return faces;
 }
 
 Vector3D Edge::vector() const {

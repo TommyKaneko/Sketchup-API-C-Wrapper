@@ -37,15 +37,18 @@ TypedValue::TypedValue():
   m_typed_value(create_typed_value())
 {}
 
+
 TypedValue::TypedValue(SUTypedValueRef typed_val):
   m_typed_value(typed_val)
 {}
+ 
  
 TypedValue::TypedValue(const char chars[]):
   m_typed_value(create_typed_value())
 {
   this->string_value(String(chars));
 }
+
 
 /** Copy constructor */
 TypedValue::TypedValue(const TypedValue& other):
@@ -107,13 +110,16 @@ SUTypedValueRef TypedValue::ref() const {
   return m_typed_value;
 }
 
+
 TypedValue::operator SUTypedValueRef() {
   return ref();
 }
 
+
 TypedValue::operator SUTypedValueRef*() {
   return &m_typed_value;
 }
+
 
 bool TypedValue::operator!() const {
   if (SUIsValid(m_typed_value)) {
@@ -122,6 +128,7 @@ bool TypedValue::operator!() const {
   return true;
 }
 
+
 bool TypedValue::empty() const {
   if (SUIsInvalid(m_typed_value) ||
       get_type() == SUTypedValueType::SUTypedValueType_Empty) {
@@ -129,7 +136,6 @@ bool TypedValue::empty() const {
   }
   return false;
 }
-
 
 
 /*
@@ -141,6 +147,7 @@ SUTypedValueRef TypedValue::create_typed_value() {
   assert(res == SU_ERROR_NONE);
   return typed_value;
 }
+
 
 TypedValue::~TypedValue() {
   if (SUIsValid(m_typed_value)) {
@@ -197,6 +204,7 @@ int16_t TypedValue::int16_value() const {
   return int16_val;
 }
 
+
 TypedValue& TypedValue::int16_value(const int16_t int16_val) {
   if (!(*this)) {
     m_typed_value = create_typed_value();
@@ -205,6 +213,8 @@ TypedValue& TypedValue::int16_value(const int16_t int16_val) {
   assert(res == SU_ERROR_NONE);
   return *this;
 }
+
+
 TypedValue::operator int16_t() const {
   return int16_value();
 }
@@ -220,6 +230,7 @@ int32_t TypedValue::int32_value() const {
   return int32_val;
 }
 
+
 TypedValue& TypedValue::int32_value(const int32_t int32_val) {
   if (!(*this)) {
     m_typed_value = create_typed_value();
@@ -228,6 +239,7 @@ TypedValue& TypedValue::int32_value(const int32_t int32_val) {
   assert(res == SU_ERROR_NONE);
   return *this;
 }
+
 
 TypedValue::operator int32_t() const {
   return int32_value();
@@ -244,6 +256,7 @@ float TypedValue::float_value() const{
   return float_val;
 }
 
+
 TypedValue& TypedValue::float_value(const float float_val) {
   if (!(*this)) {
     m_typed_value = create_typed_value();
@@ -253,9 +266,11 @@ TypedValue& TypedValue::float_value(const float float_val) {
   return *this;
 }
 
+
 TypedValue::operator float() const {
   return float_value();
 }
+
 
 double TypedValue::double_value() const {
   if (!(*this)) {
@@ -267,6 +282,7 @@ double TypedValue::double_value() const {
   return double_val;
 }
 
+
 TypedValue& TypedValue::double_value(const double double_val) {
   if (!(*this)) {
     m_typed_value = create_typed_value();
@@ -276,9 +292,11 @@ TypedValue& TypedValue::double_value(const double double_val) {
   return *this;
 }
 
+
 TypedValue::operator double() const {
   return double_value();
 }
+
 
 bool TypedValue::bool_value() const {
   if (!(*this)) {
@@ -290,6 +308,7 @@ bool TypedValue::bool_value() const {
   return bool_val;
 }
 
+
 TypedValue& TypedValue::bool_value(const bool bool_val) {
   if (!(*this)) {
     m_typed_value = create_typed_value();
@@ -298,6 +317,7 @@ TypedValue& TypedValue::bool_value(const bool bool_val) {
   assert(res == SU_ERROR_NONE);
   return *this;
 }
+
 
 TypedValue::operator bool() const {
   return bool_value();
@@ -314,6 +334,7 @@ Color TypedValue::color_value() const {
   return Color(color_val);
 }
 
+
 TypedValue& TypedValue::color_value(const Color &color_val) {
   if (!(*this)) {
     m_typed_value = create_typed_value();
@@ -324,9 +345,11 @@ TypedValue& TypedValue::color_value(const Color &color_val) {
   return *this;
 }
 
+
 TypedValue::operator Color() const {
   return color_value();
 }
+
 
 int64_t TypedValue::time_value() const {
   if (!(*this)) {
@@ -338,6 +361,7 @@ int64_t TypedValue::time_value() const {
   return time_val;
 }
 
+
 TypedValue& TypedValue::time_value(const int64_t time_val) {
   if (!(*this)) {
     m_typed_value = create_typed_value();
@@ -347,9 +371,11 @@ TypedValue& TypedValue::time_value(const int64_t time_val) {
   return *this;
 }
 
+
 TypedValue::operator int64_t() const {
   return time_value();
 }
+
 
 String TypedValue::string_value() const {
   if (!(*this)) {
@@ -362,6 +388,7 @@ String TypedValue::string_value() const {
   return string;
 }
 
+
 TypedValue& TypedValue::string_value(const String &string_val) {
   if (!(*this)) {
     m_typed_value = create_typed_value();
@@ -372,13 +399,17 @@ TypedValue& TypedValue::string_value(const String &string_val) {
   return *this;
 }
 
+
 TypedValue& TypedValue::string_value(const std::string &string_val) {
   return string_value(String(string_val));
 }
 
+
 TypedValue::operator String() const {
   return string_value();
 }
+
+
 TypedValue::operator std::string() const {
   return string_value();
 }
@@ -394,6 +425,7 @@ Vector3D TypedValue::vector_value() const {
   return Vector3D(vector3d_value[0], vector3d_value[1], vector3d_value[2]);
 }
 
+
 TypedValue& TypedValue::vector_value(const Vector3D &vector_val) {
   if (!(*this)) {
     m_typed_value = create_typed_value();
@@ -404,9 +436,11 @@ TypedValue& TypedValue::vector_value(const Vector3D &vector_val) {
   return *this;
 }
 
+
 TypedValue::operator Vector3D() const {
   return vector_value();
 }
+
 
 std::vector<TypedValue> TypedValue::typed_value_array() const {
   if (!(*this)) {
@@ -415,17 +449,17 @@ std::vector<TypedValue> TypedValue::typed_value_array() const {
   size_t count = 0;
   SUResult res = SUTypedValueGetNumArrayItems(m_typed_value, &count);
   assert(res == SU_ERROR_NONE);
-  SUTypedValueRef* values = new SUTypedValueRef[count];
-  res = SUTypedValueGetArrayItems(m_typed_value, count, &values[0], &count);
+  std::vector<SUTypedValueRef> value_refs(count, SU_INVALID);
+  res = SUTypedValueGetArrayItems(m_typed_value, count, value_refs.data(), &count);
   assert(res == SU_ERROR_NONE);
-  std::vector<TypedValue> typed_vals;
-  typed_vals.reserve(count);
-  for (size_t i=0; i < count; ++i) {
-    typed_vals.push_back(TypedValue(values[i]));
-  }
-  delete values;
+  std::vector<TypedValue> typed_vals(count);
+  std::transform(value_refs.begin(), value_refs.end(), typed_vals.begin(),
+    [](const SUTypedValueRef& value) {
+      return TypedValue(value);
+    });
   return typed_vals;
 }
+
 
 TypedValue& TypedValue::typed_value_array(std::vector<TypedValue> &typed_val_array) {
   if (!(*this)) {
@@ -435,6 +469,7 @@ TypedValue& TypedValue::typed_value_array(std::vector<TypedValue> &typed_val_arr
   assert(res == SU_ERROR_NONE);
   return *this;
 }
+
 
 TypedValue::operator std::vector<TypedValue>() const {
   return typed_value_array();

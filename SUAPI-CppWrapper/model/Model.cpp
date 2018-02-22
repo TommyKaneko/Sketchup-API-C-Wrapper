@@ -167,16 +167,15 @@ std::vector<AttributeDictionary>  Model::attribute_dictionaries() const {
   size_t count = 0;
   SUResult res = SUModelGetNumAttributeDictionaries(m_model, &count);
   assert(res == SU_ERROR_NONE);
-  SUAttributeDictionaryRef* dicts = new SUAttributeDictionaryRef[count];
-  res = SUModelGetAttributeDictionaries(m_model, count, &dicts[0], &count);
+  std::vector<SUAttributeDictionaryRef> dict_refs(count);
+  res = SUModelGetAttributeDictionaries(m_model, count, dict_refs.data(), &count);
   assert(res == SU_ERROR_NONE);
-  std::vector<AttributeDictionary> dictionaries;
-  dictionaries.reserve(count);
-  for (size_t i=0; i < count; ++i) {
-    dictionaries.push_back(AttributeDictionary(dicts[i]));
-  }
-  delete dicts;
-  return dictionaries;
+  std::vector<AttributeDictionary> dicts(count);
+  std::transform(dict_refs.begin(), dict_refs.end(), dicts.begin(),
+    [](const SUAttributeDictionaryRef& value){
+      return AttributeDictionary(value);
+    });
+  return dicts;
 }
 
 
@@ -231,16 +230,15 @@ std::vector<ComponentDefinition> Model::definitions() const {
   size_t count = 0;
   SUResult res = SUModelGetNumComponentDefinitions(m_model, &count);
   assert(res == SU_ERROR_NONE);
-  SUComponentDefinitionRef* defs = new SUComponentDefinitionRef[count];
-  res = SUModelGetComponentDefinitions(m_model, count, &defs[0], &count);
+  std::vector<SUComponentDefinitionRef> def_refs(count);
+  res = SUModelGetComponentDefinitions(m_model, count, def_refs.data(), &count);
   assert(res == SU_ERROR_NONE);
-  std::vector<ComponentDefinition> definitions;
-  definitions.reserve(count);
-  for (size_t i=0; i < count; ++i) {
-    definitions.push_back(ComponentDefinition(defs[i]));
-  }
-  delete defs;
-  return definitions;
+  std::vector<ComponentDefinition> defs(count);
+  std::transform(def_refs.begin(), def_refs.end(), defs.begin(),
+    [](const SUComponentDefinitionRef& value){
+      return ComponentDefinition(value);
+    });
+  return defs;
 }
 
 
@@ -251,16 +249,15 @@ std::vector<ComponentDefinition> Model::group_definitions() const {
   size_t count = 0;
   SUResult res = SUModelGetNumGroupDefinitions(m_model, &count);
   assert(res == SU_ERROR_NONE);
-  SUComponentDefinitionRef* defs = new SUComponentDefinitionRef[count];
-  res = SUModelGetGroupDefinitions(m_model, count, &defs[0], &count);
+  std::vector<SUComponentDefinitionRef> def_refs(count);
+  res = SUModelGetGroupDefinitions(m_model, count, def_refs.data(), &count);
   assert(res == SU_ERROR_NONE);
-  std::vector<ComponentDefinition> definitions;
-  definitions.reserve(count);
-  for (size_t i=0; i < count; ++i) {
-    definitions.push_back(ComponentDefinition(defs[i]));
-  }
-  delete defs;
-  return definitions;
+  std::vector<ComponentDefinition> defs(count);
+  std::transform(def_refs.begin(), def_refs.end(), defs.begin(),
+    [](const SUComponentDefinitionRef& value){
+      return ComponentDefinition(value);
+    });
+  return defs;
 }
 
 
@@ -324,15 +321,14 @@ std::vector<Layer> Model::layers() const {
   size_t count = 0;
   SUResult res = SUModelGetNumLayers(m_model, &count);
   assert(res == SU_ERROR_NONE);
-  SULayerRef* layer_refs = new SULayerRef[count];
-  res = SUModelGetLayers(m_model, count, &layer_refs[0], &count);
+  std::vector<SULayerRef> layer_refs(count);
+  res = SUModelGetLayers(m_model, count, layer_refs.data(), &count);
   assert(res == SU_ERROR_NONE);
-  std::vector<Layer> layers;
-  layers.reserve(count);
-  for (size_t i=0; i < count; ++i) {
-    layers.push_back(Layer(layer_refs[i]));
-  }
-  delete layer_refs;
+  std::vector<Layer> layers(count);
+  std::transform(layer_refs.begin(), layer_refs.end(), layers.begin(),
+    [](const SULayerRef& value){
+      return Layer(value);
+    });
   return layers;
 }
 
@@ -353,34 +349,35 @@ std::vector<Material> Model::materials() const {
   if (count == 0) {
     return std::vector<Material> {};
   }
-  SUMaterialRef* mats = new SUMaterialRef[count];
-  res = SUModelGetMaterials(m_model, count, &mats[0], &count);
+  std::vector<SUMaterialRef> material_refs(count, SU_INVALID);
+  res = SUModelGetMaterials(m_model, count, material_refs.data(), &count);
   assert(res == SU_ERROR_NONE);
-  std::vector<Material> materials;
-  materials.reserve(count);
-  for (size_t i=0; i < count; ++i) {
-    materials.push_back(Material(mats[i]));
-  }
-  delete mats; //TODO delete [] mats;
+  std::vector<Material> materials(count);
+  std::transform(material_refs.begin(), material_refs.end(), materials.begin(),
+    [](const SUMaterialRef& value){
+      return Material(value);
+    });
   return materials;
 }
 
 
 void Model::add_materials(std::vector<Material>& materials) {
-  SUMaterialRef* mats = new SUMaterialRef[materials.size()];
   for (size_t i=0; i < materials.size(); i++) {
-    mats[i] = materials[i].ref();
     // Check that each material is not attached to another model
     if (materials[i].attached()) {
       throw std::invalid_argument("CW::Model::add_materials(): At least one of the Material objects passed is attached to another model.  Use Material::copy() to create a new unattached Material object and try again.");
     }
   }
-  SUResult res = SUModelAddMaterials(m_model, materials.size(), mats);
+  std::vector<SUMaterialRef> material_refs(materials.size(), SU_INVALID);
+  std::transform(materials.begin(), materials.end(), material_refs.begin(),
+    [](const Material& value){
+      return value.ref();
+    });
+  SUResult res = SUModelAddMaterials(m_model, materials.size(), material_refs.data());
   assert(res == SU_ERROR_NONE);
   for (size_t i=0; i < materials.size(); i++) {
     materials[i].attached(true);
   }
-  delete mats;
 }
 
 

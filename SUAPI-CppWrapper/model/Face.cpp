@@ -56,17 +56,17 @@ SUFaceRef Face::create_face(std::vector<Point3D>& outer_points) {
 SUFaceRef Face::create_face(std::vector<Point3D>& outer_points, LoopInput& loop_input) {
   SUFaceRef face = SU_INVALID;
   SULoopInputRef loop_input_ref = loop_input.ref();
-  SUPoint3D* su_points = new SUPoint3D[outer_points.size()];
-  for (size_t i=0; i < outer_points.size(); i++) {
-    su_points[i] = SUPoint3D(outer_points[i]);
-  }
-  SUResult res = SUFaceCreate(&face, &su_points[0], &loop_input_ref);
+  std::vector<SUPoint3D> su_points(outer_points.size());
+  std::transform(outer_points.begin(), outer_points.end(), su_points.begin(),
+    [](const Point3D& value){
+      return (SUPoint3D)value;
+    });
+  SUResult res = SUFaceCreate(&face, su_points.data(), &loop_input_ref);
   if (res != SU_ERROR_NONE) {
     // The points cannot be made into a face: either the points do not lie in a plane, or is somehow problematic.
     return SU_INVALID;
   }
   loop_input.m_attached = true;
-  delete su_points;
   return face;
 }
 
@@ -309,14 +309,13 @@ std::vector<Loop> Face::inner_loops() const {
   }
   size_t num_loops = 0;
   SUFaceGetNumInnerLoops(m_face, &num_loops);
-  SULoopRef* inner_loops = new SULoopRef[num_loops];
-  SUFaceGetInnerLoops(m_face, num_loops, &inner_loops[0], &num_loops);
-  std::vector<Loop> loops;
-  loops.reserve(num_loops);
-  for (size_t i=0; i < num_loops; i++) {
-    loops.push_back(Loop(inner_loops[i]));
-  }
-  delete inner_loops;
+  std::vector<SULoopRef> inner_loops(num_loops);
+  SUFaceGetInnerLoops(m_face, num_loops, inner_loops.data(), &num_loops);
+  std::vector<Loop> loops(num_loops);
+  std::transform(inner_loops.begin(), inner_loops.end(), loops.begin(),
+    [](const SULoopRef& value){
+      return Loop(value);
+    });
   return loops;
 }
 
@@ -403,16 +402,14 @@ std::vector<Vertex> Face::vertices() const {
   }
   size_t num_vertices = 0;
   SUFaceGetNumVertices(m_face, &num_vertices);
-  SUVertexRef* vertices = new SUVertexRef[num_vertices];
-  SUResult res = SUFaceGetVertices(m_face, num_vertices, &vertices[0], &num_vertices);
-  assert(res == SU_ERROR_NONE);
-  std::vector<Vertex> verts;
-  verts.reserve(num_vertices);
-  for (size_t i=0; i < num_vertices; i++) {
-    verts.push_back(Vertex(vertices[i]));
-  }
-  delete vertices;
-  return verts;
+  std::vector<SUVertexRef> vertex_refs(num_vertices);
+  SUFaceGetVertices(m_face, num_vertices, vertex_refs.data(), &num_vertices);
+  std::vector<Vertex> vertices(num_vertices);
+  std::transform(vertex_refs.begin(), vertex_refs.end(), vertices.begin(),
+    [](const SUVertexRef& value){
+      return Vertex(value);
+    });
+  return vertices;
 }
   
 } /* namespace CW */

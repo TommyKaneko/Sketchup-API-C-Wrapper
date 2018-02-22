@@ -51,11 +51,16 @@ SUComponentInstanceRef ComponentInstance::copy_reference(const ComponentInstance
 /*****************************
 * Constructors / Destructor **
 ******************************/
+ComponentInstance::ComponentInstance():
+  DrawingElement(),
+  m_instance(SU_INVALID)
+{}
+
+
 ComponentInstance::ComponentInstance(SUComponentInstanceRef instance, bool attached):
   DrawingElement(SUComponentInstanceToDrawingElement(instance), attached),
   m_instance(instance)
-{
-}
+{}
 
 
 ComponentInstance::ComponentInstance(const ComponentInstance& other):

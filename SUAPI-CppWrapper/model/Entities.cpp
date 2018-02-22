@@ -63,15 +63,14 @@ std::vector<Face> Entities::faces() const {
   if (count == 0) {
     return std::vector<Face>(0);
   }
-  SUFaceRef* face_refs = new SUFaceRef[count];
-  res = SUEntitiesGetFaces(m_entities, count, &face_refs[0], &count);
+  std::vector<SUFaceRef> face_refs(count, SU_INVALID);
+  res = SUEntitiesGetFaces(m_entities, count, face_refs.data(), &count);
   assert(res == SU_ERROR_NONE);
-  std::vector<Face> faces;
-  faces.reserve(count);
-  for (size_t i=0; i < count; ++i) {
-    faces.push_back(Face(face_refs[i]));
-  }
-  delete[] face_refs;
+  std::vector<Face> faces(count);
+  std::transform(face_refs.begin(), face_refs.end(), faces.begin(),
+  [](const SUFaceRef& value) {
+    return Face(value);
+  });
   return faces;
 }
 
@@ -86,15 +85,14 @@ std::vector<Edge> Entities::edges(bool stray_only) const {
   if (count == 0) {
     return std::vector<Edge>(0);
   }
-  SUEdgeRef* edge_refs = new SUEdgeRef[count];
-  res = SUEntitiesGetEdges(m_entities, stray_only, count, &edge_refs[0], &count);
+  std::vector<SUEdgeRef> edge_refs(count, SU_INVALID);
+  res = SUEntitiesGetEdges(m_entities, stray_only, count, edge_refs.data(), &count);
   assert(res == SU_ERROR_NONE);
-  std::vector<Edge> edges;
-  edges.reserve(count);
-  for (size_t i=0; i < count; ++i) {
-    edges.push_back(Edge(edge_refs[i]));
-  }
-  delete[] edge_refs;
+  std::vector<Edge> edges(count);
+  std::transform(edge_refs.begin(), edge_refs.end(), edges.begin(),
+  [](const SUEdgeRef& value) {
+    return Edge(value);
+  });
   return edges;
 }
 
@@ -109,15 +107,14 @@ std::vector<ComponentInstance> Entities::instances() const {
   if (count == 0) {
     return std::vector<ComponentInstance>{};
   }
-  SUComponentInstanceRef* instance_refs = new SUComponentInstanceRef[count];
-  res = SUEntitiesGetInstances(m_entities, count, &instance_refs[0], &count);
+  std::vector<SUComponentInstanceRef> instance_refs(count, SU_INVALID);
+  res = SUEntitiesGetInstances(m_entities, count, instance_refs.data(), &count);
   assert(res == SU_ERROR_NONE);
-  std::vector<ComponentInstance> instances;
-  instances.reserve(count);
-  for (size_t i=0; i < count; ++i) {
-    instances.push_back(ComponentInstance(instance_refs[i]));
-  }
-  delete[] instance_refs;
+  std::vector<ComponentInstance> instances(count);
+  std::transform(instance_refs.begin(), instance_refs.end(), instances.begin(),
+  [](const SUComponentInstanceRef& value) {
+    return ComponentInstance(value);
+  });;
   return instances;
 }
 

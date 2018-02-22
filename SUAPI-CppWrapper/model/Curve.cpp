@@ -64,15 +64,14 @@ std::vector<Edge> Curve::get_edges() const{
   size_t num_edges = 0;
   SUResult res = SUCurveGetNumEdges(m_curve, &num_edges);
   assert(res == SU_ERROR_NONE);
-  SUEdgeRef* ref_edges = new SUEdgeRef[num_edges];
-  res = SUCurveGetEdges(m_curve, num_edges, &ref_edges[0], &num_edges);
+  std::vector<SUEdgeRef> ref_edges(num_edges);
+  res = SUCurveGetEdges(m_curve, num_edges, ref_edges.data(), &num_edges);
   assert(res == SU_ERROR_NONE);
-  std::vector<Edge> edges;
-  edges.reserve(num_edges);
-  for (size_t i=0; i < num_edges; ++i) {
-    edges.push_back(Edge(ref_edges[i]));
-  }
-  delete ref_edges;
+  std::vector<Edge> edges(num_edges);
+  std::transform(ref_edges.begin(), ref_edges.end(), edges.begin(),
+  [](const SUEdgeRef& value) {
+    return Edge(value);
+  });
   return edges;
 }
 

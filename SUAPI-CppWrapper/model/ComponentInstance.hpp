@@ -46,6 +46,11 @@ class ComponentInstance :public DrawingElement {
   SUComponentInstanceRef copy_reference(const ComponentInstance& other);
 
   public:
+  /**
+  * Constructor for null object
+  */
+  ComponentInstance();
+
   ComponentInstance(SUComponentInstanceRef instance, bool attached = true);
   
   /** Copy constructor */
