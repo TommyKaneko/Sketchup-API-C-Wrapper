@@ -26,13 +26,13 @@
 //
 
 #include <cassert>
-#ifdef WIN32
-#include <ctgmath>
-#else
-#include <tgmath.h>
-#endif // WIN32
+#include <cmath>
 
 #include "SUAPI-CppWrapper/Transformation.hpp"
+
+#include <SketchUpAPI/geometry/vector3d.h>
+#include <SketchUpAPI/geometry/point3d.h>
+#include <SketchUpAPI/geometry/plane3d.h>
 
 #include "SUAPI-CppWrapper/model/Axes.hpp"
 #include "SUAPI-CppWrapper/model/Face.hpp"
@@ -44,10 +44,7 @@
 namespace CW {
 
 Transformation::Transformation():
-  m_transformation(SUTransformation{1.0, 0.0, 0.0, 0.0, // col-1 (column-major order)
-                                    0.0, 1.0, 0.0, 0.0, // col-2
-                                    0.0, 0.0, 1.0, 0.0, // col-3
-                                    0.0, 0.0, 0.0, 1.0}) // col-4
+  Transformation(1.0)
 {}
 
 
@@ -55,32 +52,75 @@ Transformation::Transformation(SUTransformation transformation):
   m_transformation(transformation)
 {}
 
-Transformation::Transformation(Axes axes, Vector3D translation, double scalar):
-  m_transformation(axes.transformation() * Transformation(translation) * Transformation(scalar))
+Transformation::Transformation(const Axes& axes, const Vector3D& translation, double scalar):
+  Transformation(Point3D(translation), axes.x_axis(), axes.y_axis(), axes.z_axis(), scalar)
 {}
 
-Transformation::Transformation(Vector3D x_axis, Vector3D y_axis, Vector3D z_axis, Vector3D translation, double scalar):
-  m_transformation(Transformation())
+Transformation::  Transformation(const Point3D& origin, const Vector3D& x_axis, const Vector3D& y_axis, const Vector3D& z_axis, double scalar):
+  m_transformation(SU_INVALID)
 {
-  // TODO
+  SUResult res = SUTransformationSetFromPointAndAxes(&m_transformation, origin, x_axis, y_axis, z_axis);
+  assert(res == SU_ERROR_NONE);
+  if (scalar != 1.0) {
+    // TODO:
+    assert(false);
+  }
 }
 
 Transformation::Transformation(double scalar):
-  m_transformation(SUTransformation{1.0, 0.0, 0.0, 0.0,
-                                    0.0, 1.0, 0.0, 0.0,
-                                    0.0, 0.0, 1.0, 0.0,
-                                    0.0, 0.0, 0.0, 1.0/scalar})
-{}
+  m_transformation(SU_INVALID)
+{
+  SUResult res = SUTransformationScale(&m_transformation, scalar);
+  assert(res == SU_ERROR_NONE);
+}
 
-Transformation::Transformation(Vector3D translation):
-  m_transformation(SUTransformation{1.0, 0.0, 0.0, 0.0,
-                                    0.0, 1.0, 0.0, 0.0,
-                                    0.0, 0.0, 1.0, 0.0,
-                                    translation.x, translation.y, translation.z, 1.0})
-{}
-Transformation::Transformation(Point3D translation):
-  Transformation(Vector3D(translation))
-{}
+
+Transformation::Transformation(double x_scale, double y_scale, double z_scale):
+  m_transformation(SU_INVALID)
+{
+  SUResult res = SUTransformationNonUniformScale(&m_transformation, x_scale, y_scale, z_scale);
+  assert(res == SU_ERROR_NONE);
+}
+
+
+Transformation::Transformation(const Vector3D& translation):
+  m_transformation(SU_INVALID)
+{
+  SUResult res = SUTransformationTranslation(&m_transformation, translation);
+  assert(res == SU_ERROR_NONE);
+}
+
+
+Transformation::Transformation(const Point3D& translation, double scalar):
+  m_transformation(SU_INVALID)
+{
+  SUResult res = SUTransformationScaleAboutPoint(&m_transformation, translation, scalar);
+  assert(res == SU_ERROR_NONE);
+}
+
+
+Transformation::Transformation(const Point3D& translation, const Vector3D& normal):
+  m_transformation(SU_INVALID)
+{
+  SUResult res = SUTransformationSetFromPointAndNormal(&m_transformation, translation, normal);
+  assert(res == SU_ERROR_NONE);
+}
+
+
+Transformation::Transformation(const Point3D& point, const Vector3D& vector, double angle):
+  m_transformation(SU_INVALID)
+{
+  SUResult res = SUTransformationRotation(&m_transformation, point, vector, angle);
+  assert(res == SU_ERROR_NONE);
+}
+
+
+Transformation::Transformation(const Transformation& transform1, const Transformation& transform2, double weight):
+  m_transformation(SU_INVALID)
+{
+  SUResult res = SUTransformationInterpolate(&m_transformation, transform1, transform2, weight);
+  assert(res == SU_ERROR_NONE);
+}
 
 
 double Transformation::determinant() const {
@@ -94,68 +134,6 @@ double Transformation::determinant() const {
     m_transformation.values[4] * m_transformation.values[1] * m_transformation.values[14] * m_transformation.values[11]-m_transformation.values[0] * m_transformation.values[5] * m_transformation.values[14] * m_transformation.values[11]-m_transformation.values[8] * m_transformation.values[5] * m_transformation.values[2] * m_transformation.values[15]+m_transformation.values[4] * m_transformation.values[9] * m_transformation.values[2] * m_transformation.values[15]+
     m_transformation.values[8] * m_transformation.values[1] * m_transformation.values[6] * m_transformation.values[15]-m_transformation.values[0] * m_transformation.values[9] * m_transformation.values[6] * m_transformation.values[15]-m_transformation.values[4] * m_transformation.values[1] * m_transformation.values[10] * m_transformation.values[15]+m_transformation.values[0] * m_transformation.values[5] * m_transformation.values[10] * m_transformation.values[15];
  return value;
-}
-
-
-Transformation Transformation::matrix_inverse() const {
-  // Method for transformation is illustrated here: http://stackoverflow.com/questions/2624422/efficient-4x4-matrix-inverse-affine-transform
-  const double& i00 = m_transformation.values[0];
-  const double& i01 = m_transformation.values[1];
-  const double& i02 = m_transformation.values[2];
-  const double& i03 = m_transformation.values[3];
-  const double& i10 = m_transformation.values[4];
-  const double& i11 = m_transformation.values[5];
-  const double& i12 = m_transformation.values[6];
-  const double& i13 = m_transformation.values[7];
-  const double& i20 = m_transformation.values[8];
-  const double& i21 = m_transformation.values[9];
-  const double& i22 = m_transformation.values[10];
-  const double& i23 = m_transformation.values[11];
-  const double& i30 = m_transformation.values[12];
-  const double& i31 = m_transformation.values[13];
-  const double& i32 = m_transformation.values[14];
-  const double& i33 = m_transformation.values[15];
-  
-  double s0 = i00 * i11 - i10 * i01;
-  double s1 = i00 * i12 - i10 * i02;
-  double s2 = i00 * i13 - i10 * i03;
-  double s3 = i01 * i12 - i11 * i02;
-  double s4 = i01 * i13 - i11 * i03;
-  double s5 = i02 * i13 - i12 * i03;
-
-  double c5 = i22 * i33 - i32 * i23;
-  double c4 = i21 * i33 - i31 * i23;
-  double c3 = i21 * i32 - i31 * i22;
-  double c2 = i20 * i33 - i30 * i23;
-  double c1 = i20 * i32 - i30 * i22;
-  double c0 = i20 * i31 - i30 * i21;
-
-  double det = s0 * c5 - s1 * c4 + s2 * c3 + s3 * c2 - s4 * c1 + s5 * c0;
-  assert(det != 0.0);
-  double invdet = 1 / det;
-  
-  SUTransformation inverted_t;
-  inverted_t.values[0] = (i11 * c5 - i12 * c4 + i13 * c3) * invdet;
-  inverted_t.values[1] = (-i01 * c5 + i02 * c4 - i03 * c3) * invdet;
-  inverted_t.values[2] = (i31 * s5 - i32 * s4 + i33 * s3) * invdet;
-  inverted_t.values[3] = (-i21 * s5 + i22 * s4 - i23 * s3) * invdet;
-
-  inverted_t.values[4] = (-i10 * c5 + i12 * c2 - i13 * c1) * invdet;
-  inverted_t.values[5] = (i00 * c5 - i02 * c2 + i03 * c1) * invdet;
-  inverted_t.values[6] = (-i30 * s5 + i32 * s2 - i33 * s1) * invdet;
-  inverted_t.values[7] = (i20 * s5 - i22 * s2 + i23 * s1) * invdet;
-
-  inverted_t.values[8] = (i10 * c4 - i11 * c2 + i13 * c0) * invdet;
-  inverted_t.values[9] = (-i00 * c4 + i01 * c2 - i03 * c0) * invdet;
-  inverted_t.values[10] = (i30 * s4 - i31 * s2 + i33 * s0) * invdet;
-  inverted_t.values[11] = (-i20 * s4 + i21 * s2 - i23 * s0) * invdet;
-
-  inverted_t.values[12] = (-i10 * c3 + i11 * c1 - i12 * c0) * invdet;
-  inverted_t.values[13] = (i00 * c3 - i01 * c1 + i02 * c0) * invdet;
-  inverted_t.values[14] = (-i30 * s3 + i31 * s1 - i32 * s0) * invdet;
-  inverted_t.values[15] = (i20 * s3 - i21 * s1 + i22 * s0) * invdet;
-
-  return Transformation(inverted_t);
 }
 
 
@@ -202,147 +180,57 @@ Transformation::operator SUTransformation() const {
   return ref();
 }
 
-Transformation::operator SUTransformation*() {
+Transformation::operator const SUTransformation*() const {
   return &m_transformation;
 }
 
 
+bool Transformation::is_identity() const {
+  bool is_identity;
+  SUResult res = SUTransformationIsIdentity(&m_transformation, &is_identity);
+  assert(res == SU_ERROR_NONE);
+  return is_identity;
+}
+
+
 Transformation Transformation::inverse() const {
-  if (m_transformation.values[3] != 0.0 ||
-          m_transformation.values[7] != 0.0 ||
-          m_transformation.values[11] != 0.0 ||
-          m_transformation.values[15] != 1.0) {
-    return this->matrix_inverse();
-  }
-
-  SUTransformation inverted_t;
-  // Method for transformation is illustrated here: http://stackoverflow.com/questions/2624422/efficient-4x4-matrix-inverse-affine-transform
-  /*
-   M = [ R T ]
-        [ 0 W ]
-  where M is 4x4, R is 3x3, T is 3x1, and the bottom row is (0,0,0,1), then
-  inv(M) = [ inv(R)   -inv(R) * T ]
-           [   0              1   ]
-  // First invert the 3x3 sub matrix R (the rotation part)
-  */
-  // [ 0 4 8 ]
-  // [ 1 5 9 ]
-  // [ 2 6 10]
-  // matrix value = ((1. matrix of minors) * 2. cofactor, 3. swap_diagonals) / 4. determinant
-  /*
-  double matrix_minors3x3[9];
-  // 1. Get matrix of minors
-  matrix_minors3x3[0] = ((m_transformation.values[5] * m_transformation.values[10]) - (m_transformation.values[6] * m_transformation.values[9]));
-  matrix_minors3x3[1] = ((m_transformation.values[4] * m_transformation.values[10]) - (m_transformation.values[6] * m_transformation.values[8]));
-  matrix_minors3x3[2] = ((m_transformation.values[4] * m_transformation.values[9]) - (m_transformation.values[5] * m_transformation.values[8]));
-  matrix_minors3x3[3] = ((m_transformation.values[1] * m_transformation.values[10]) - (m_transformation.values[2] * m_transformation.values[9]));
-  matrix_minors3x3[4] = ((m_transformation.values[0] * m_transformation.values[10]) - (m_transformation.values[2] * m_transformation.values[8]));
-  matrix_minors3x3[5] = ((m_transformation.values[0] * m_transformation.values[9]) - (m_transformation.values[1] * m_transformation.values[8]));
-  matrix_minors3x3[6] = ((m_transformation.values[1] * m_transformation.values[6]) - (m_transformation.values[2] * m_transformation.values[5]));
-  matrix_minors3x3[7] = ((m_transformation.values[0] * m_transformation.values[6]) - (m_transformation.values[2] * m_transformation.values[4]));
-  matrix_minors3x3[8] = ((m_transformation.values[1] * m_transformation.values[5]) - (m_transformation.values[1] * m_transformation.values[4]));
-  b[2, 2] = ( values[12]a[3, 0] * s4 - a[3, 1] * s2 + a[3, 3] * s0) * invdet;
-  matrix_minors3x3[8] = ((m_transformation.values[1] * m_transformation.values[5]) - (m_transformation.values[1] * m_transformation.values[4]));
-  // 4. find determinant
-  double determinant = (m_transformation.values[0] * matrix_minors3x3[0]) -
-                       (m_transformation.values[4] * matrix_minors3x3[3]) +
-                       (m_transformation.values[8] * matrix_minors3x3[6]);
-  assert(determinant != 0.0);
-  // 2. 3., 4. - create matrix of cofactors, adjudicate and divide by determinant.
-  inverted_t.values[0] = matrix_minors3x3[0] / determinant;
-  inverted_t.values[1] = matrix_minors3x3[3] * (-1.0) / determinant; // swapped with 4
-  inverted_t.values[2] = matrix_minors3x3[6] / determinant; //swapped with 8
-  inverted_t.values[4] = matrix_minors3x3[1] * (-1.0) / determinant; // swapped with 1
-  inverted_t.values[5] = matrix_minors3x3[4] / determinant;
-  inverted_t.values[6] = matrix_minors3x3[7] * (-1.0) / determinant; // swapped with 9
-  inverted_t.values[8] = matrix_minors3x3[2] / determinant; // swaped with 2
-  inverted_t.values[9] = matrix_minors3x3[5] * (-1.0) / determinant; // swapped with 6
-  inverted_t.values[10] = matrix_minors3x3[8] / determinant;
-  // Second, calculate inverted sub matrix T (the translation part)  (-inv(R) * T)
-  //            [ 12 ]
-  // -inv(R) * [ 13 ]
-  //            [ 14 ]
-  // matrix cell = column(val1) * row_val1 + ... +column(val3) * row_val3
-  inverted_t.values[12] = (-inverted_t.values[0]) * m_transformation.values[12] +
-                          (-inverted_t.values[4]) * m_transformation.values[13] +
-                          (-inverted_t.values[8]) * m_transformation.values[14];
-  inverted_t.values[13] = (-inverted_t.values[1]) * m_transformation.values[12] +
-                          (-inverted_t.values[5]) * m_transformation.values[13] +
-                          (-inverted_t.values[9]) * m_transformation.values[14];
-  inverted_t.values[14] = (-inverted_t.values[2]) * m_transformation.values[12] +
-                          (-inverted_t.values[6]) * m_transformation.values[13] +
-                          (-inverted_t.values[10]) * m_transformation.values[14];
-  // Fill in the fixed values:
-  inverted_t.values[3] = 0;
-  inverted_t.values[7] = 0;
-  inverted_t.values[11] = 0;
-  inverted_t.values[15] = 1.0;
-  return Transformation(inverted_t);
-  */
-  const double& i00 = m_transformation.values[0];
-  const double& i01 = m_transformation.values[1];
-  const double& i02 = m_transformation.values[2];
-  //const double& i03 = m_transformation.values[3];
-  const double& i10 = m_transformation.values[4];
-  const double& i11 = m_transformation.values[5];
-  const double& i12 = m_transformation.values[6];
-  //const double& i13 = m_transformation.values[7];
-  const double& i20 = m_transformation.values[8];
-  const double& i21 = m_transformation.values[9];
-  const double& i22 = m_transformation.values[10];
-  //const double& i23 = m_transformation.values[11];
-  const double& i30 = m_transformation.values[12];
-  const double& i31 = m_transformation.values[13];
-  const double& i32 = m_transformation.values[14];
-  //const double& i33 = m_transformation.values[15];
-  
-  double s0 = i00 * i11 - i10 * i01;
-  double s1 = i00 * i12 - i10 * i02;
-  //double s2 = 0.0;
-  double s3 = i01 * i12 - i11 * i02;
-  //double s4 = 0.0;
-  //double s5 = 0.0;
-
-  //double c5 = i22;
-  //double c4 = i21;
-  double c3 = i21 * i32 - i31 * i22;
-  //double c2 = i20;
-  double c1 = i20 * i32 - i30 * i22;
-  double c0 = i20 * i31 - i30 * i21;
-
-  double det = s0 * i22 - s1 * i21 + s3 * i20;
-  assert(det != 0.0);
-  double invdet = 1 / det;
-
-  inverted_t.values[0] = (i11 * i22 - i12 * i21) * invdet;
-  inverted_t.values[1] = (-i01 * i22 + i02 * i21) * invdet;
-  inverted_t.values[2] = s3 * invdet;
-  inverted_t.values[3] = 0.0;
-
-  inverted_t.values[4] = (-i10 * i22 + i12 * i20) * invdet;
-  inverted_t.values[5] = (i00 * i22 - i02 * i20) * invdet;
-  inverted_t.values[6] = -s1 * invdet;
-  inverted_t.values[7] = 0.0;
-
-  inverted_t.values[8] = (i10 * i21 - i11 * i20) * invdet;
-  inverted_t.values[9] = (-i00 * i21 + i01 * i20) * invdet;
-  inverted_t.values[10] = s0 * invdet;
-  inverted_t.values[11] = 0.0;
-
-  inverted_t.values[12] = (-i10 * c3 + i11 * c1 - i12 * c0) * invdet;
-  inverted_t.values[13] = (i00 * c3 - i01 * c1 + i02 * c0) * invdet;
-  inverted_t.values[14] = (-i30 * s3 + i31 * s1 - i32 * s0) * invdet;
-  inverted_t.values[15] = 1.0;
-
-  return Transformation(inverted_t);
+  SUTransformation inverse = SU_INVALID;
+  SUResult res = SUTransformationGetInverse(&m_transformation, &inverse);
+  assert(res == SU_ERROR_NONE);
+  return Transformation(inverse);
 }
   
-  /**
-  * Returns the axis of the rigid transformation.
-  */
-  //Vector3D x_axis();
-  //Vector3D y_axis();
-  //Vector3D z_axis();
+
+Vector3D Transformation::x_axis() const {
+  SUVector3D x_axis = SU_INVALID;
+  SUResult res = SUTransformationGetXAxis(&m_transformation, &x_axis);
+  assert(res == SU_ERROR_NONE);
+  return Vector3D(x_axis);
+}
+
+
+Vector3D Transformation::y_axis() const {
+  SUVector3D y_axis = SU_INVALID;
+  SUResult res = SUTransformationGetYAxis(&m_transformation, &y_axis);
+  assert(res == SU_ERROR_NONE);
+  return Vector3D(y_axis);
+}
+
+
+Vector3D Transformation::z_axis() const {
+  SUVector3D z_axis = SU_INVALID;
+  SUResult res = SUTransformationGetZAxis(&m_transformation, &z_axis);
+  assert(res == SU_ERROR_NONE);
+  return Vector3D(z_axis);
+}
+
+
+double Transformation::z_rotation() const {
+  double z_rotation;
+  SUResult res = SUTransformationGetZRotation(&m_transformation, &z_rotation);
+  assert(res == SU_ERROR_NONE);
+  return z_rotation;
+}
 
 
 Transformation& Transformation::normalize() {
@@ -359,14 +247,11 @@ Transformation& Transformation::normalize() {
 }
 
 
-
-  /**
-  * Retrieves the origin of a rigid transformation.
-  */
 Point3D Transformation::origin() const {
-  // TODO
-  assert(false);
-  return Point3D(); // Temporary return value, to allow compiling on Windows
+  SUPoint3D origin = SU_INVALID;
+  SUResult res = SUTransformationGetOrigin(&m_transformation, &origin);
+  assert(res == SU_ERROR_NONE);
+  return Point3D(origin);
 }
   
 
@@ -379,22 +264,13 @@ Vector3D Transformation::translation() const {
 
   
 Transformation Transformation::operator*(Transformation transform) {
-  double new_matrix[4][4];
-  for (size_t col=0; col < 4; ++col) {
-    for (size_t row=0; row < 4; ++row) {
-      new_matrix[col][row] = 0.0;
-      for (size_t i=0; i < 4; ++i) {
-        new_matrix[col][row] += ((*this)[(i*4)+row] * transform[(col*4)+i]);
-      }
-    }
-  }
-  SUTransformation array_vals = {{new_matrix[0][0], new_matrix[0][1], new_matrix[0][2], new_matrix[0][3],
-                                  new_matrix[1][0], new_matrix[1][1], new_matrix[1][2], new_matrix[1][3],
-                                  new_matrix[2][0], new_matrix[2][1], new_matrix[2][2], new_matrix[2][3],
-                                  new_matrix[3][0], new_matrix[3][1], new_matrix[3][2], new_matrix[3][3]}};
-  return Transformation(array_vals);
+  SUTransformation out_transform = SU_INVALID;
+  SUResult res = SUTransformationMultiply(&m_transformation, &transform.m_transformation, &out_transform);
+  assert(res == SU_ERROR_NONE);
+  return Transformation(out_transform);
 }
-  
+
+
 /**
 * Friend Functions of class Transformation
 */
@@ -402,10 +278,10 @@ Vector3D operator*(const Transformation &lhs, const Vector3D &rhs) {
   if (!rhs) {
     throw std::invalid_argument("CW::Transformation::operator*(const Vector3D &lhs, const Transformation &rhs): Vector3D given is null");
   }
-  // More info about multiplying vectors here: http://www.euclideanspace.com/maths/geometry/affine/matrix4x4/index.htm
-  std::array<double, 4> matrix4x1{rhs.x, rhs.y, rhs.z, 0.0}; // Set w value to 0 (unaffected by translation)
-  std::array<double, 4> return4x1 = lhs.multiply4x1(matrix4x1);
-  return Vector3D(return4x1[0], return4x1[1], return4x1[2]);
+  SUVector3D transformed = rhs;
+  SUResult res = SUVector3DTransform(&lhs.m_transformation, &transformed);
+  assert(res == SU_ERROR_NONE);
+  return Vector3D(transformed);
 }
 
 Vector3D operator*(const Vector3D &lhs, const Transformation &rhs) {
@@ -420,36 +296,34 @@ Point3D operator*(const Transformation &lhs, const Point3D &rhs) {
   if (!rhs) {
     throw std::invalid_argument("CW::Transformation::operator*(const Point3D &lhs, const Transformation &rhs): Point3D given is null");
   }
-  // More info about multiplying vectors here: http://www.euclideanspace.com/maths/geometry/affine/matrix4x4/index.htm
-  std::array<double, 4> matrix4x1{rhs.x, rhs.y, rhs.z, 1.0}; // Set w value to 1 (affected by translation)
-  std::array<double, 4> return4x1 = lhs.multiply4x1(matrix4x1);
-  if (return4x1[3] == 1.0) {
-    return Point3D(return4x1[0], return4x1[1], return4x1[2]);
-  }
-  else {
-    return Point3D(return4x1[0] / return4x1[3], return4x1[1] / return4x1[3], return4x1[2] / return4x1[3]);
-  }
+  SUPoint3D transformed = rhs;
+  SUResult res = SUPoint3DTransform(&lhs.m_transformation, &transformed);
+  assert(res == SU_ERROR_NONE);
+  return Vector3D(transformed);
 }
+
+
 Point3D operator*(const Point3D &lhs, const Transformation &rhs) {
   // Can't actually multiply a vector by transformation, so return the transforamtion multiplied by the vector
   return rhs * lhs;
 }
 
+
 /**
 * Friend Functions of class Transformation
 */
-Plane3D operator*(const Plane3D &lhs, const Transformation &rhs) {
-  if (!lhs) {
-    throw std::invalid_argument("CW::Transformation::operator*(const Plane3D &lhs, const Transformation &rhs): Plane3D given is null");
+Plane3D operator*(const Transformation &lhs, const Plane3D &rhs) {
+  if (!rhs) {
+    throw std::invalid_argument("CW::Transformation::operator*(const Transformation &lhs, const Plane3D &rhs): Plane3D given is null");
   }
-  Vector3D plane_normal = lhs.normal();
-  Point3D plane_point = plane_normal * -lhs.d;
-  std::array<double, 4> trans_plane_point = rhs.multiply4x1({plane_point.x, plane_point.y, plane_point.z, 1.0});
-  std::array<double, 4> trans_plane_normal = rhs.multiply4x1({plane_normal.x, plane_normal.y, plane_normal.z, 0.0});
-  return Plane3D(Point3D(trans_plane_point[0], trans_plane_point[1], trans_plane_point[2]), Vector3D(trans_plane_normal[0], trans_plane_normal[1], trans_plane_normal[2]));
+  SUPlane3D transformed = rhs;
+  SUResult res = SUPlane3DTransform(&lhs.m_transformation, &transformed);
+  assert(res == SU_ERROR_NONE);
+  return Plane3D(transformed);
 }
 
-Plane3D operator*(const Transformation &lhs, const Plane3D &rhs) {
+
+Plane3D operator*(const Plane3D &lhs, const Transformation &rhs) {
   return rhs * lhs;
 }
 
@@ -515,6 +389,8 @@ Transformation Transformation::transformation_rotate_about_line(const double ang
   if (!line) {
     throw std::invalid_argument("CW::Transformation::transformation_rotate_about_line(): Line3D given is null");
   }
+  // TODO: create solution in terms of SU's native Transformation functions.
+  
   // Solution derived from this article: http://inside.mines.edu/fs_home/gmurray/ArbitraryAxisRotation/
   SUTransformation transform;
   double u = line.direction.x;

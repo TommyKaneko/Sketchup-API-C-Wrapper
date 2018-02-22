@@ -31,7 +31,7 @@
 #include <stdio.h>
 #include <array>
 
-#include <SketchUpAPI/transformation.h>
+#include <SketchUpAPI/geometry/transformation.h>
 
 #include "SUAPI-CppWrapper/Geometry.hpp"
 
@@ -57,28 +57,78 @@ class Transformation {
   */
   double determinant() const;
   
-  /**
-  * Inverts the transformation matrix, regardless of the values on the bottom row of the matrix.
-  */
-  Transformation matrix_inverse() const;
-  
   public:
   /**
-  * Construct a Transformation object which would conduct no transformations.
+  * Construct a Transformation with a simple scale of 1 (no change).
+  * @since SketchUp 2018, API v6.0
   */
   Transformation();
   
   /**
-  *
+  * Construct a Transformation from native SUTransformation object.
   */
   Transformation(SUTransformation transformation);
-  Transformation(Axes axes, Vector3D translation, double scalar);
-  Transformation(Vector3D x_axis, Vector3D y_axis, Vector3D z_axis, Vector3D translation, double scalar);  
-  explicit Transformation(double scalar);
-  explicit Transformation(Vector3D translation);
-  explicit Transformation(Point3D translation);
 
+  /**
+  * Construct a Transformation by setting axes and translation.
+  * @since SketchUp 2018, API v6.0
+  */
+  Transformation(const Axes& axes, const Vector3D& translation, double scalar = 1.0);
+
+  /**
+  * Construct a Transformation by setting axes and translation.
+  * @since SketchUp 2018, API v6.0
+  */
+  Transformation(const Point3D& origin, const Vector3D& x_axis, const Vector3D& y_axis, const Vector3D& z_axis, double scalar = 1.0);
   
+  /**
+  * Construct a scale Transformation.
+  * @since SketchUp 2018, API v6.0
+  */
+  explicit Transformation(double scalar);
+
+  /**
+  * Construct a non-uniform scale Transformation.
+  * @since SketchUp 2018, API v6.0
+  */
+  Transformation(double x_scale, double y_scale, double z_scale);
+
+  /**
+  * Construct a translation Transformation.
+  * @since SketchUp 2018, API v6.0
+  */
+  explicit Transformation(const Vector3D& translation);
+  
+  /**
+  * Construct a Transformation from a point representing the translation, and a scale.
+  * @since SketchUp 2018, API v6.0
+  */
+  Transformation(const Point3D& translation, double scalar);
+
+  /**
+  * Construct a Transformation from a point representing the origin (translation), and vector representing the Z-Axis.  The other two axes in the transformed space are computed using the "Arbitrary axis algorithm".
+  * @since SketchUp 2017, API v5.0
+  */
+  Transformation(const Point3D& translation, const Vector3D& normal);
+  
+  /**
+  * Construct a Transformation given an origin, vector of rotation, and angle.
+  * @since SketchUp 2018, API v6.0
+  * @param point - The point specifying the translation component of the transformation.
+  * @param vector - The vector about which rotation will occur.
+  * @param angle - The rotation in radians for the transformation.
+  */
+  Transformation(const Point3D& point, const Vector3D& vector, double angle);
+
+  /**
+  * Construct a Transformation object from an interpolation between two transformations. The weight determines the amount of interpolation. A weight of 0.0 would return a transformation of t1, while a weight of 1.0 would return a transformation of t2.
+  * @since SketchUp 2018, API v6.0
+  * @param transform1 - The first transformation object.
+  * @param transform2 - The second transformation object.
+  * @param weight - The weight determines the amount of interpolation from t1 to t2.
+  */
+  Transformation(const Transformation& transform1, const Transformation& transform2, double weight);
+
   /*
   * Allows access to the array of numbers in the SUTransformation struct.
   */
@@ -90,19 +140,42 @@ class Transformation {
   */
   SUTransformation ref() const;
   operator SUTransformation() const;
-  operator SUTransformation*();
+  operator const SUTransformation*() const;
+  
+  /**
+  * Returns true if this Transformation is identity (no change).
+  */
+  bool is_identity() const;
   
   /**
   * Return the inverse Transformation object (see inverse Transformation matrices)
+  * @since SketchUp 2018, API v6.0
   */
   Transformation inverse() const;
   
   /**
-  * Returns the axis of the rigid transformation.
+  * Returns the X-axis of the rigid transformation.
+  * @since SketchUp 2018, API v6.0
   */
   Vector3D x_axis() const;
+
+  /**
+  * Returns the Y-axis of the rigid transformation.
+  * @since SketchUp 2018, API v6.0
+  */
   Vector3D y_axis() const;
+
+  /**
+  * Returns the Z-axis of the rigid transformation.
+  * @since SketchUp 2018, API v6.0
+  */
   Vector3D z_axis() const;
+  
+  /**
+  * Returns the rotation about the Z-axis in radians.
+  * @since SketchUp 2018, API v6.0
+  */
+  double z_rotation() const;
   
   /**
   * Normalise the transformation, so that the bottom row of the 4x4 matrix reads (0,0,0,1)
@@ -111,6 +184,7 @@ class Transformation {
   
   /**
   * Retrieves the origin of a rigid transformation.
+  * @since SketchUp 2018, API v6.0
   */
   Point3D origin() const;
   
@@ -121,11 +195,13 @@ class Transformation {
   
   /**
   * Mulitplication of Transformation matrices.
+  * @since SketchUp 2018, API v6.0
   */
   Transformation operator*(Transformation transform);
 
   /**
   * Return transformed vectors.
+  * @since SketchUp 2018, API v6.0
   */
   friend Vector3D operator*(const Transformation &lhs, const Vector3D &rhs);
   /** You can't technically multiply a 4x1 matrix by a 4x4 matrix (only the other way around), so return it flipped */
@@ -133,6 +209,7 @@ class Transformation {
 
   /**
   * Return transformed point.
+  * @since SketchUp 2018, API v6.0
   */
   friend Point3D operator*(const Transformation &lhs, const Point3D &rhs);
   /** You can't technically multiply a 4x1 matrix by a 4x4 matrix (only the other way around), so return it flipped */
@@ -140,6 +217,7 @@ class Transformation {
   
   /**
   * Return transformed plane.
+  * @since SketchUp 2018, API v6.0
   */
   friend Plane3D operator*(const Plane3D &lhs, const Transformation &rhs);
   friend Plane3D operator*(const Transformation &lhs, const Plane3D &rhs);
@@ -160,21 +238,6 @@ class Transformation {
   */
   static Transformation transformation_rotate_about_line(const double angle, const Line3D line);
 };
-
-/**
-* Allows the multiplication operator to be on the other side of the vector.
-*/
-//Vector3D operator*(const Vector3D &lhs, const Transformation &rhs);
-//Point3D operator*(const Point3D &lhs, const Transformation &rhs);
-//Plane3D operator*(const Plane3D &lhs, const Transformation &rhs);
-
-/*
-static Vector3D operator*(const Vector3D &lhs, const Transformation &rhs)
-{  return rhs * lhs;}
-
-static Point3D operator*(const Point3D &lhs, const Transformation &rhs)
-{  return rhs * lhs;}
-*/
 
 } /* namespace CW */
 #endif /* Transformation_hpp */

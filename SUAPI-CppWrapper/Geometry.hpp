@@ -148,6 +148,11 @@ class Vector3D {
   */
   operator SUVector3D() const;
   
+  /**
+  * Pointer to internal SUVector3D object
+  */
+  operator const SUVector3D*() const;
+
   /*
   * Cast to Point3D object
   */
@@ -163,7 +168,7 @@ class Vector3D {
   */
   Vector3D &operator=(const Vector3D &vector);
   Vector3D &operator=(const SUVector3D &vector);
-  
+
   /**
   * Arithmetic operator overloads
   */
@@ -316,7 +321,7 @@ class Point3D {
   * Cast to SUPoint3D struct
   */
   operator SUPoint3D() const;
-  operator SUPoint3D*();
+  operator const SUPoint3D*() const;
   
   /*
   * Cast to Vector3D

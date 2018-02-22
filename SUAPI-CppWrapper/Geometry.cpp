@@ -195,6 +195,8 @@ Vector3D& Vector3D::operator=(const SUVector3D &vector) {
 // Casting
 Vector3D::operator SUVector3D() const { return m_vector; }
 
+Vector3D::operator const SUVector3D*() const { return &m_vector; }
+
 Vector3D::operator Point3D() const { return Point3D(m_vector); }
 
 // Operator overloads
@@ -373,7 +375,7 @@ Point3D& Point3D::operator=(const Point3D &point) {
 Point3D::operator SUPoint3D() const { return SUPoint3D {m_point.x, m_point.y, m_point.z}; }
 
 
-Point3D::operator SUPoint3D*() {
+Point3D::operator const SUPoint3D*() const{
   //m_point = SUPoint3D{m_point.x, m_point.y, m_point.z};
   return &m_point;
 }
