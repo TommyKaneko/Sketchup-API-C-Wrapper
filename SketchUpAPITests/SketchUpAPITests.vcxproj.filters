@@ -35,5 +35,8 @@
     <ClCompile Include="ColorTests.cpp">
       <Filter>Tests</Filter>
     </ClCompile>
+    <ClCompile Include="TypedValueTests.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

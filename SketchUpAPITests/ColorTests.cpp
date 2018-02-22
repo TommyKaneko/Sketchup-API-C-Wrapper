@@ -1,5 +1,4 @@
 #include "stdafx.h"
-
 #include "gtest/gtest.h"
 
 #include <SketchUpAPI/sketchup.h>
