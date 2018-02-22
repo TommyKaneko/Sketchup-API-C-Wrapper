@@ -82,7 +82,7 @@ std::vector<Edge> Loop::edges() const {
   size_t count = 0;
   SUResult res = SULoopGetNumVertices(m_loop, &count);
   assert(res == SU_ERROR_NONE);
-  std::vector<SUEdgeRef> edge_refs(count);
+  std::vector<SUEdgeRef> edge_refs(count, SU_INVALID);
   res = SULoopGetEdges(m_loop, count, edge_refs.data(), &count);
   assert(res == SU_ERROR_NONE);
   std::vector<Edge> edges(count);
@@ -101,7 +101,7 @@ std::vector<Vertex> Loop::vertices() const {
   size_t count = 0;
   SUResult res = SULoopGetNumVertices(m_loop, &count);
   assert(res == SU_ERROR_NONE);
-  std::vector<SUVertexRef> verts_array(count);
+  std::vector<SUVertexRef> verts_array(count, SU_INVALID);
   res = SULoopGetVertices(m_loop, count, verts_array.data(), &count);
   assert(res == SU_ERROR_NONE);
   std::vector<Vertex> vertices(count);

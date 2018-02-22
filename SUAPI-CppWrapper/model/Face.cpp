@@ -309,7 +309,7 @@ std::vector<Loop> Face::inner_loops() const {
   }
   size_t num_loops = 0;
   SUFaceGetNumInnerLoops(m_face, &num_loops);
-  std::vector<SULoopRef> inner_loops(num_loops);
+  std::vector<SULoopRef> inner_loops(num_loops, SU_INVALID);
   SUFaceGetInnerLoops(m_face, num_loops, inner_loops.data(), &num_loops);
   std::vector<Loop> loops(num_loops);
   std::transform(inner_loops.begin(), inner_loops.end(), loops.begin(),
@@ -402,7 +402,7 @@ std::vector<Vertex> Face::vertices() const {
   }
   size_t num_vertices = 0;
   SUFaceGetNumVertices(m_face, &num_vertices);
-  std::vector<SUVertexRef> vertex_refs(num_vertices);
+  std::vector<SUVertexRef> vertex_refs(num_vertices, SU_INVALID);
   SUFaceGetVertices(m_face, num_vertices, vertex_refs.data(), &num_vertices);
   std::vector<Vertex> vertices(num_vertices);
   std::transform(vertex_refs.begin(), vertex_refs.end(), vertices.begin(),

@@ -167,7 +167,7 @@ std::vector<AttributeDictionary>  Model::attribute_dictionaries() const {
   size_t count = 0;
   SUResult res = SUModelGetNumAttributeDictionaries(m_model, &count);
   assert(res == SU_ERROR_NONE);
-  std::vector<SUAttributeDictionaryRef> dict_refs(count);
+  std::vector<SUAttributeDictionaryRef> dict_refs(count, SU_INVALID);
   res = SUModelGetAttributeDictionaries(m_model, count, dict_refs.data(), &count);
   assert(res == SU_ERROR_NONE);
   std::vector<AttributeDictionary> dicts(count);
@@ -230,7 +230,7 @@ std::vector<ComponentDefinition> Model::definitions() const {
   size_t count = 0;
   SUResult res = SUModelGetNumComponentDefinitions(m_model, &count);
   assert(res == SU_ERROR_NONE);
-  std::vector<SUComponentDefinitionRef> def_refs(count);
+  std::vector<SUComponentDefinitionRef> def_refs(count, SU_INVALID);
   res = SUModelGetComponentDefinitions(m_model, count, def_refs.data(), &count);
   assert(res == SU_ERROR_NONE);
   std::vector<ComponentDefinition> defs(count);
@@ -249,7 +249,7 @@ std::vector<ComponentDefinition> Model::group_definitions() const {
   size_t count = 0;
   SUResult res = SUModelGetNumGroupDefinitions(m_model, &count);
   assert(res == SU_ERROR_NONE);
-  std::vector<SUComponentDefinitionRef> def_refs(count);
+  std::vector<SUComponentDefinitionRef> def_refs(count, SU_INVALID);
   res = SUModelGetGroupDefinitions(m_model, count, def_refs.data(), &count);
   assert(res == SU_ERROR_NONE);
   std::vector<ComponentDefinition> defs(count);
@@ -321,7 +321,7 @@ std::vector<Layer> Model::layers() const {
   size_t count = 0;
   SUResult res = SUModelGetNumLayers(m_model, &count);
   assert(res == SU_ERROR_NONE);
-  std::vector<SULayerRef> layer_refs(count);
+  std::vector<SULayerRef> layer_refs(count, SU_INVALID);
   res = SUModelGetLayers(m_model, count, layer_refs.data(), &count);
   assert(res == SU_ERROR_NONE);
   std::vector<Layer> layers(count);
