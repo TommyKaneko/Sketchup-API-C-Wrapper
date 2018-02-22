@@ -24,19 +24,20 @@ RenderingOptions::~RenderingOptions()
 std::vector<std::string> RenderingOptions::get_keys() const
 {
   size_t len = 0, count = 0;
-  std::vector<std::string> keys;
   SUResult res = SU_ERROR_NONE;
 
   res = SURenderingOptionsGetNumKeys(m_rendering_options, &len);
   assert(res == SU_ERROR_NONE);
   assert(len > 0);
 
-  std::vector<SUStringRef> refs(len);
+  std::vector<SUStringRef> refs(len, SU_INVALID);
   for(auto i = 0; i < len; i++) {
-    assert(SUStringCreate(&refs[i]) == SU_ERROR_NONE);
+    res = SUStringCreate(&refs[i]);
+    assert(res == SU_ERROR_NONE);
   }
   res = SURenderingOptionsGetKeys(m_rendering_options, len, &refs[0], &count);
   assert(res == SU_ERROR_NONE);
+  std::vector<std::string> keys;
   for(auto ref : refs) {
     keys.push_back(String(ref).std_string());
   }
