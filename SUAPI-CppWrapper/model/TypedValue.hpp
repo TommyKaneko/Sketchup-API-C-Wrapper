@@ -45,12 +45,16 @@ class Vector3D;
 class TypedValue {
   private:
   SUTypedValueRef m_typed_value;
+  /**
+  * Indicates whether the TypedValue is attached to another TypedValue
+  */
+  bool m_attached;
   
   static SUTypedValueRef create_typed_value();
   
   public:
   TypedValue();
-  TypedValue(SUTypedValueRef typed_val);
+  TypedValue(SUTypedValueRef typed_val, bool attached = false);
   TypedValue(const char chars[]);
   //TypedValue(const std::string string);
   

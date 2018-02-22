@@ -34,17 +34,20 @@
 namespace CW {
 
 TypedValue::TypedValue():
-  m_typed_value(create_typed_value())
+  m_typed_value(create_typed_value()),
+  m_attached(false)
 {}
 
 
-TypedValue::TypedValue(SUTypedValueRef typed_val):
-  m_typed_value(typed_val)
+TypedValue::TypedValue(SUTypedValueRef typed_val, bool attached):
+  m_typed_value(typed_val),
+  m_attached(attached)
 {}
  
  
 TypedValue::TypedValue(const char chars[]):
-  m_typed_value(create_typed_value())
+  m_typed_value(create_typed_value()),
+  m_attached(false)
 {
   this->string_value(String(chars));
 }
@@ -150,7 +153,7 @@ SUTypedValueRef TypedValue::create_typed_value() {
 
 
 TypedValue::~TypedValue() {
-  if (SUIsValid(m_typed_value)) {
+  if (SUIsValid(m_typed_value) && !m_attached) {
     SUResult res = SUTypedValueRelease(&m_typed_value);
     assert(res == SU_ERROR_NONE);
   }
@@ -455,7 +458,7 @@ std::vector<TypedValue> TypedValue::typed_value_array() const {
   std::vector<TypedValue> typed_vals(count);
   std::transform(value_refs.begin(), value_refs.end(), typed_vals.begin(),
     [](const SUTypedValueRef& value) {
-      return TypedValue(value);
+      return TypedValue(value, true);
     });
   return typed_vals;
 }
