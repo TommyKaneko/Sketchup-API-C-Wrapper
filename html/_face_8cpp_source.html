@@ -31,6 +31,7 @@
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
       <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
     </ul>
@@ -42,7 +43,7 @@
   </div>
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_f5ad1096a8ea229eeb47a854ea8e871a.html">src</a></li><li class="navelem"><a class="el" href="dir_059aedaba3b45634f6ec731c8b380205.html">SUAPI-CppWrapper</a></li><li class="navelem"><a class="el" href="dir_8b970082db578f41e103709fbfabc55a.html">model</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_1e6f28ee2bb0919f3d150f269c31b204.html">SUAPI-CppWrapper</a></li><li class="navelem"><a class="el" href="dir_13216040867bbb762e833bf5f8aa9ba2.html">model</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -96,7 +97,7 @@
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment">/**************************</span></div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment">* Private static methods **</span></div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment">***************************/</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;SUFaceRef Face::create_face(std::vector&lt;Point3D&gt;&amp; outer_points) {</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<a class="code" href="struct_s_u_face_ref.html">SUFaceRef</a> Face::create_face(std::vector&lt;Point3D&gt;&amp; outer_points) {</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  LoopInput loop_input;</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i=0; i &lt; outer_points.size(); ++i) {</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    loop_input.add_vertex_index(i);</div>
@@ -105,13 +106,13 @@
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;}</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;SUFaceRef Face::create_face(std::vector&lt;Point3D&gt;&amp; outer_points, LoopInput&amp; loop_input) {</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  SUFaceRef face = SU_INVALID;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<a class="code" href="struct_s_u_face_ref.html">SUFaceRef</a> Face::create_face(std::vector&lt;Point3D&gt;&amp; outer_points, LoopInput&amp; loop_input) {</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  <a class="code" href="struct_s_u_face_ref.html">SUFaceRef</a> face = SU_INVALID;</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  SULoopInputRef loop_input_ref = loop_input.ref();</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  std::vector&lt;SUPoint3D&gt; su_points(outer_points.size());</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  std::transform(outer_points.begin(), outer_points.end(), su_points.begin(),</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    [](<span class="keyword">const</span> Point3D&amp; value){</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;      <span class="keywordflow">return</span> (SUPoint3D)value;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;      <span class="keywordflow">return</span> (<a class="code" href="struct_s_u_point3_d.html">SUPoint3D</a>)value;</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    });</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  SUResult res = SUFaceCreate(&amp;face, su_points.data(), &amp;loop_input_ref);</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  <span class="keywordflow">if</span> (res != SU_ERROR_NONE) {</div>
@@ -123,7 +124,7 @@
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;}</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;SUFaceRef Face::copy_reference(<span class="keyword">const</span> Face&amp; other) {</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<a class="code" href="struct_s_u_face_ref.html">SUFaceRef</a> Face::copy_reference(<span class="keyword">const</span> Face&amp; other) {</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  <span class="keywordflow">if</span> (other.m_attached || !other) {</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordflow">return</span> other.m_face;</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  }</div>
@@ -131,7 +132,7 @@
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  Loop other_outer_loop = other.outer_loop();</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  std::vector&lt;Point3D&gt; other_outer_points = other_outer_loop.points();</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  LoopInput outer_loop_input = other_outer_loop.loop_input();</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  SUFaceRef new_face = create_face(other_outer_points, outer_loop_input);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  <a class="code" href="struct_s_u_face_ref.html">SUFaceRef</a> new_face = create_face(other_outer_points, outer_loop_input);</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  <span class="keywordflow">return</span> new_face;</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;}</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
@@ -155,7 +156,7 @@
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;{}</div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;</div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<a class="code" href="class_c_w_1_1_face.html#a0e23cafc9d34b527424a4e0df564b320">Face::Face</a>(SUFaceRef face, <span class="keywordtype">bool</span> attached):</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<a class="code" href="class_c_w_1_1_face.html#a0e23cafc9d34b527424a4e0df564b320">Face::Face</a>(<a class="code" href="struct_s_u_face_ref.html">SUFaceRef</a> face, <span class="keywordtype">bool</span> attached):</div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;  DrawingElement(SUFaceToDrawingElement(face), attached),</div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;  m_face(face)</div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;{}</div>
@@ -204,9 +205,9 @@
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;}</div>
 <div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;</div>
 <div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;  </div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;SUFaceRef Face::ref()<span class="keyword"> const </span>{  <span class="keywordflow">return</span> m_face; }</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;Face::operator SUFaceRef()<span class="keyword"> const </span>{  <span class="keywordflow">return</span> m_face;}</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;Face::operator SUFaceRef*() {  <span class="keywordflow">return</span> &amp;m_face;}</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;<a class="code" href="struct_s_u_face_ref.html">SUFaceRef</a> Face::ref()<span class="keyword"> const </span>{  <span class="keywordflow">return</span> m_face; }</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;Face::operator <a class="code" href="struct_s_u_face_ref.html">SUFaceRef</a>()<span class="keyword"> const </span>{  <span class="keywordflow">return</span> m_face;}</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;Face::operator <a class="code" href="struct_s_u_face_ref.html">SUFaceRef</a>*() {  <span class="keywordflow">return</span> &amp;m_face;}</div>
 <div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;</div>
 <div class="line"><a name="l00159"></a><span class="lineno"><a class="line" href="class_c_w_1_1_face.html#a4126ac3da934f335587716e927f87b18">  159</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="class_c_w_1_1_face.html#a4126ac3da934f335587716e927f87b18">Face::operator!</a>()<span class="keyword"> const </span>{</div>
 <div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;  <span class="keywordflow">if</span> (SUIsInvalid(this-&gt;m_face)) {</div>
@@ -246,7 +247,7 @@
 <div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;  <span class="keywordflow">if</span> (!(*<span class="keyword">this</span>)) {</div>
 <div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::Face::back_material(): Face is null&quot;</span>);</div>
 <div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;  }</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;  SUMaterialRef material = SU_INVALID;</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;  <a class="code" href="struct_s_u_material_ref.html">SUMaterialRef</a> material = SU_INVALID;</div>
 <div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;  SUResult res = SUFaceGetBackMaterial(m_face, &amp;material);</div>
 <div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;  <span class="keywordflow">if</span> (res == SU_ERROR_NO_DATA) {</div>
 <div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    <span class="keywordflow">return</span> Material();</div>
@@ -365,7 +366,7 @@
 <div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;  SUFaceGetInnerLoops(m_face, num_loops, inner_loops.data(), &amp;num_loops);</div>
 <div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;  std::vector&lt;Loop&gt; loops(num_loops);</div>
 <div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;  std::transform(inner_loops.begin(), inner_loops.end(), loops.begin(),</div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;    [](<span class="keyword">const</span> SULoopRef&amp; value){</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;    [](<span class="keyword">const</span> <a class="code" href="struct_s_u_loop_ref.html">SULoopRef</a>&amp; value){</div>
 <div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;      <span class="keywordflow">return</span> <a class="code" href="class_c_w_1_1_loop.html">Loop</a>(value);</div>
 <div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;    });</div>
 <div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;  <span class="keywordflow">return</span> loops;</div>
@@ -403,7 +404,7 @@
 <div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;  <span class="keywordflow">if</span> (!(*<span class="keyword">this</span>)) {</div>
 <div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;    <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::Face::outer_loop(): Face is null&quot;</span>);</div>
 <div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;  }</div>
-<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;  SULoopRef lp = SU_INVALID;</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;  <a class="code" href="struct_s_u_loop_ref.html">SULoopRef</a> lp = SU_INVALID;</div>
 <div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;  SUResult res = SUFaceGetOuterLoop(m_face, &amp;lp);</div>
 <div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;  assert(res == SU_ERROR_NONE);</div>
 <div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;  <span class="keywordflow">return</span> Loop(lp);</div>
@@ -414,7 +415,7 @@
 <div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;  <span class="keywordflow">if</span> (!(*<span class="keyword">this</span>)) {</div>
 <div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;    <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::Face::plane(): Face is null&quot;</span>);</div>
 <div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;  }</div>
-<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;  SUPlane3D plane = SU_INVALID;</div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;  <a class="code" href="struct_s_u_plane3_d.html">SUPlane3D</a> plane = SU_INVALID;</div>
 <div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;  SUFaceGetPlane(m_face, &amp;plane);</div>
 <div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;  <span class="keywordflow">return</span> Plane3D(plane);</div>
 <div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;}</div>
@@ -458,7 +459,7 @@
 <div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;  SUFaceGetVertices(m_face, num_vertices, vertex_refs.data(), &amp;num_vertices);</div>
 <div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;  std::vector&lt;Vertex&gt; <a class="code" href="class_c_w_1_1_face.html#afa91c3cee0474d92b346ebc27e2cd2d2">vertices</a>(num_vertices);</div>
 <div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;  std::transform(vertex_refs.begin(), vertex_refs.end(), vertices.begin(),</div>
-<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;    [](<span class="keyword">const</span> SUVertexRef&amp; value){</div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;    [](<span class="keyword">const</span> <a class="code" href="struct_s_u_vertex_ref.html">SUVertexRef</a>&amp; value){</div>
 <div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;      <span class="keywordflow">return</span> <a class="code" href="class_c_w_1_1_vertex.html">Vertex</a>(value);</div>
 <div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;    });</div>
 <div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="class_c_w_1_1_face.html#afa91c3cee0474d92b346ebc27e2cd2d2">vertices</a>;</div>
@@ -467,24 +468,30 @@
 <div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;} <span class="comment">/* namespace CW */</span></div>
 <div class="ttc" id="class_c_w_1_1_entity_html_aea6450abce4d5aebad0061e213c840b1"><div class="ttname"><a href="class_c_w_1_1_entity.html#aea6450abce4d5aebad0061e213c840b1">CW::Entity::m_attached</a></div><div class="ttdeci">bool m_attached</div><div class="ttdoc">Indicates whether the Entity has been attached to a model. </div><div class="ttdef"><b>Definition:</b> <a href="_entity_8hpp_source.html#l00062">Entity.hpp:62</a></div></div>
 <div class="ttc" id="class_c_w_1_1_material_html"><div class="ttname"><a href="class_c_w_1_1_material.html">CW::Material</a></div><div class="ttdef"><b>Definition:</b> <a href="_material_8hpp_source.html#l00043">Material.hpp:43</a></div></div>
+<div class="ttc" id="struct_s_u_loop_ref_html"><div class="ttname"><a href="struct_s_u_loop_ref.html">SULoopRef</a></div><div class="ttdoc">References a loop object, which can be either the outer loop or an inner loop (hole) of a face...</div></div>
 <div class="ttc" id="class_c_w_1_1_drawing_element_html"><div class="ttname"><a href="class_c_w_1_1_drawing_element.html">CW::DrawingElement</a></div><div class="ttdef"><b>Definition:</b> <a href="_drawing_element_8hpp_source.html#l00046">DrawingElement.hpp:46</a></div></div>
 <div class="ttc" id="class_c_w_1_1_face_html_ab31a1f1cef5ca30439cf72590a1f04a2"><div class="ttname"><a href="class_c_w_1_1_face.html#ab31a1f1cef5ca30439cf72590a1f04a2">CW::Face::add_inner_loop</a></div><div class="ttdeci">void add_inner_loop(std::vector&lt; Point3D &gt; &amp;points, LoopInput &amp;loop_input)</div><div class="ttdef"><b>Definition:</b> <a href="_face_8cpp_source.html#l00178">Face.cpp:178</a></div></div>
 <div class="ttc" id="class_c_w_1_1_loop_html"><div class="ttname"><a href="class_c_w_1_1_loop.html">CW::Loop</a></div><div class="ttdef"><b>Definition:</b> <a href="_loop_8hpp_source.html#l00063">Loop.hpp:63</a></div></div>
 <div class="ttc" id="class_c_w_1_1_face_html_a9ece8e40cb9c4a96a3150997964b0c34"><div class="ttname"><a href="class_c_w_1_1_face.html#a9ece8e40cb9c4a96a3150997964b0c34">CW::Face::inner_loops</a></div><div class="ttdeci">std::vector&lt; Loop &gt; inner_loops() const </div><div class="ttdef"><b>Definition:</b> <a href="_face_8cpp_source.html#l00306">Face.cpp:306</a></div></div>
 <div class="ttc" id="class_c_w_1_1_face_html_a1ec7c3ab77a36faac0ee0ec698c794e5"><div class="ttname"><a href="class_c_w_1_1_face.html#a1ec7c3ab77a36faac0ee0ec698c794e5">CW::Face::reverse</a></div><div class="ttdeci">Face &amp; reverse()</div><div class="ttdef"><b>Definition:</b> <a href="_face_8cpp_source.html#l00375">Face.cpp:375</a></div></div>
 <div class="ttc" id="class_c_w_1_1_face_html_a0e23cafc9d34b527424a4e0df564b320"><div class="ttname"><a href="class_c_w_1_1_face.html#a0e23cafc9d34b527424a4e0df564b320">CW::Face::Face</a></div><div class="ttdeci">Face()</div><div class="ttdef"><b>Definition:</b> <a href="_face_8cpp_source.html#l00090">Face.cpp:90</a></div></div>
+<div class="ttc" id="struct_s_u_point3_d_html"><div class="ttname"><a href="struct_s_u_point3_d.html">SUPoint3D</a></div><div class="ttdoc">Represents a point in 3-dimensional space. </div><div class="ttdef"><b>Definition:</b> <a href="_sketch_up_a_p_i_8framework_2_versions_2_a_2_headers_2geometry_8h_source.html#l00038">geometry.h:38</a></div></div>
 <div class="ttc" id="class_c_w_1_1_drawing_element_html_a0d66dcc652715cba98998b2c69ac15e0"><div class="ttname"><a href="class_c_w_1_1_drawing_element.html#a0d66dcc652715cba98998b2c69ac15e0">CW::DrawingElement::operator=</a></div><div class="ttdeci">DrawingElement &amp; operator=(const DrawingElement &amp;other)</div><div class="ttdef"><b>Definition:</b> <a href="_drawing_element_8cpp_source.html#l00058">DrawingElement.cpp:58</a></div></div>
 <div class="ttc" id="class_c_w_1_1_face_html_abe73fd79e6529f3e9de5b4264147b817"><div class="ttname"><a href="class_c_w_1_1_face.html#abe73fd79e6529f3e9de5b4264147b817">CW::Face::~Face</a></div><div class="ttdeci">~Face()</div><div class="ttdef"><b>Definition:</b> <a href="_face_8cpp_source.html#l00132">Face.cpp:132</a></div></div>
 <div class="ttc" id="class_c_w_1_1_loop_input_html"><div class="ttname"><a href="class_c_w_1_1_loop_input.html">CW::LoopInput</a></div><div class="ttdef"><b>Definition:</b> <a href="_loop_input_8hpp_source.html#l00059">LoopInput.hpp:59</a></div></div>
+<div class="ttc" id="struct_s_u_face_ref_html"><div class="ttname"><a href="struct_s_u_face_ref.html">SUFaceRef</a></div><div class="ttdoc">References a face. </div></div>
+<div class="ttc" id="struct_s_u_material_ref_html"><div class="ttname"><a href="struct_s_u_material_ref.html">SUMaterialRef</a></div><div class="ttdoc">References a material object. </div></div>
 <div class="ttc" id="class_c_w_1_1_face_html_ac8523d3e39e2684209d75f907ccc36d9"><div class="ttname"><a href="class_c_w_1_1_face.html#ac8523d3e39e2684209d75f907ccc36d9">CW::Face::operator=</a></div><div class="ttdeci">Face &amp; operator=(const Face &amp;other)</div><div class="ttdef"><b>Definition:</b> <a href="_face_8cpp_source.html#l00143">Face.cpp:143</a></div></div>
+<div class="ttc" id="struct_s_u_plane3_d_html"><div class="ttname"><a href="struct_s_u_plane3_d.html">SUPlane3D</a></div><div class="ttdoc">Represents a 3D plane by the parameters a, b, c, d. For any point on the plane, ax + by + cz + d = 0...</div><div class="ttdef"><b>Definition:</b> <a href="_sketch_up_a_p_i_8framework_2_versions_2_a_2_headers_2geometry_8h_source.html#l00060">geometry.h:60</a></div></div>
 <div class="ttc" id="class_c_w_1_1_face_html_afa91c3cee0474d92b346ebc27e2cd2d2"><div class="ttname"><a href="class_c_w_1_1_face.html#afa91c3cee0474d92b346ebc27e2cd2d2">CW::Face::vertices</a></div><div class="ttdeci">std::vector&lt; Vertex &gt; vertices() const </div><div class="ttdef"><b>Definition:</b> <a href="_face_8cpp_source.html#l00399">Face.cpp:399</a></div></div>
 <div class="ttc" id="class_c_w_1_1_face_html_a4126ac3da934f335587716e927f87b18"><div class="ttname"><a href="class_c_w_1_1_face.html#a4126ac3da934f335587716e927f87b18">CW::Face::operator!</a></div><div class="ttdeci">bool operator!() const </div><div class="ttdef"><b>Definition:</b> <a href="_face_8cpp_source.html#l00159">Face.cpp:159</a></div></div>
 <div class="ttc" id="class_c_w_1_1_vertex_html"><div class="ttname"><a href="class_c_w_1_1_vertex.html">CW::Vertex</a></div><div class="ttdef"><b>Definition:</b> <a href="_vertex_8hpp_source.html#l00042">Vertex.hpp:42</a></div></div>
+<div class="ttc" id="struct_s_u_vertex_ref_html"><div class="ttname"><a href="struct_s_u_vertex_ref.html">SUVertexRef</a></div><div class="ttdoc">A vertex type that has a position and is associated with other geometry like edges, faces, and loops. </div></div>
 <div class="ttc" id="class_c_w_1_1_face_html"><div class="ttname"><a href="class_c_w_1_1_face.html">CW::Face</a></div><div class="ttdef"><b>Definition:</b> <a href="_face_8hpp_source.html#l00062">Face.hpp:62</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Feb 22 2018 16:27:21 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Feb 22 2018 16:30:26 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

@@ -31,6 +31,7 @@
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
       <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
     </ul>
@@ -42,7 +43,7 @@
   </div>
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_f5ad1096a8ea229eeb47a854ea8e871a.html">src</a></li><li class="navelem"><a class="el" href="dir_059aedaba3b45634f6ec731c8b380205.html">SUAPI-CppWrapper</a></li><li class="navelem"><a class="el" href="dir_8b970082db578f41e103709fbfabc55a.html">model</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_1e6f28ee2bb0919f3d150f269c31b204.html">SUAPI-CppWrapper</a></li><li class="navelem"><a class="el" href="dir_13216040867bbb762e833bf5f8aa9ba2.html">model</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -91,19 +92,19 @@
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
 <div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="class_c_w_1_1_material_input.html">   40</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_c_w_1_1_material_input.html">MaterialInput</a> {</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  SUMaterialInput m_material_input;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  <a class="code" href="struct_s_u_material_input.html">SUMaterialInput</a> m_material_input;</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  <span class="comment"></span></div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment">  /**</span></div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment">  * Creates a SUMaterialInput struct, with default values derived from the Material object.</span></div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment">  */</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  <span class="keyword">static</span> SUMaterialInput create_material_input(<a class="code" href="class_c_w_1_1_material.html">Material</a> material);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  <span class="keyword">static</span> <a class="code" href="struct_s_u_material_input.html">SUMaterialInput</a> create_material_input(<a class="code" href="class_c_w_1_1_material.html">Material</a> material);</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  </div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  <span class="keyword">public</span>:</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  <span class="comment">//MaterialInput();</span></div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  <a class="code" href="class_c_w_1_1_material_input.html">MaterialInput</a>(<a class="code" href="class_c_w_1_1_material.html">Material</a> material);</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  <a class="code" href="class_c_w_1_1_material_input.html">MaterialInput</a>(SUMaterialInput material_input);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  <a class="code" href="class_c_w_1_1_material_input.html">MaterialInput</a>(<a class="code" href="struct_s_u_material_input.html">SUMaterialInput</a> material_input);</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  </div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  SUMaterialInput ref();</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  <a class="code" href="struct_s_u_material_input.html">SUMaterialInput</a> ref();</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;};</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;} <span class="comment">/* namespace CW */</span></div>
@@ -111,10 +112,11 @@
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* MaterialInput_hpp */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="class_c_w_1_1_material_html"><div class="ttname"><a href="class_c_w_1_1_material.html">CW::Material</a></div><div class="ttdef"><b>Definition:</b> <a href="_material_8hpp_source.html#l00043">Material.hpp:43</a></div></div>
 <div class="ttc" id="class_c_w_1_1_material_input_html"><div class="ttname"><a href="class_c_w_1_1_material_input.html">CW::MaterialInput</a></div><div class="ttdef"><b>Definition:</b> <a href="_material_input_8hpp_source.html#l00040">MaterialInput.hpp:40</a></div></div>
+<div class="ttc" id="struct_s_u_material_input_html"><div class="ttname"><a href="struct_s_u_material_input.html">SUMaterialInput</a></div><div class="ttdoc">SUMaterialInput contains information that is needed to apply a material to a face. The conventional method for applying a material to a face is to use 1 to 4 UV coordinates, which are Cartesian textures coordinates and corresponding vertex indices on the face. The vertices are referenced by index into the top level SUGeometryInputRef&#39;s vertex array. The member variable &#39;material&#39; must be a valid material object, and once the material input is used (e.g. with /ref SUEntitiesFill), the material object must not be released since it will be associated with a parent object. </div><div class="ttdef"><b>Definition:</b> <a href="geometry__input_8h_source.html#l00032">geometry_input.h:32</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Feb 22 2018 16:27:21 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Feb 22 2018 16:30:27 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

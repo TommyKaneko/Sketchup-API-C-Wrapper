@@ -31,6 +31,7 @@
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
       <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
     </ul>
@@ -42,7 +43,7 @@
   </div>
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_f5ad1096a8ea229eeb47a854ea8e871a.html">src</a></li><li class="navelem"><a class="el" href="dir_059aedaba3b45634f6ec731c8b380205.html">SUAPI-CppWrapper</a></li><li class="navelem"><a class="el" href="dir_8b970082db578f41e103709fbfabc55a.html">model</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_1e6f28ee2bb0919f3d150f269c31b204.html">SUAPI-CppWrapper</a></li><li class="navelem"><a class="el" href="dir_13216040867bbb762e833bf5f8aa9ba2.html">model</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -84,7 +85,7 @@
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;OptionsManager::OptionsManager()</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;{</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;}</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;OptionsManager::OptionsManager(SUOptionsManagerRef ref): m_options_manager(ref)</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;OptionsManager::OptionsManager(<a class="code" href="struct_s_u_options_manager_ref.html">SUOptionsManagerRef</a> ref): m_options_manager(ref)</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;{}</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;std::vector&lt;std::string&gt; OptionsManager::get_provider_names()<span class="keyword"> const</span></div>
@@ -108,7 +109,7 @@
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;OptionsProvider OptionsManager::get_provider(<span class="keyword">const</span> std::string&amp; name)</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;{</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  SUOptionsProviderRef provider = SU_INVALID;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  <a class="code" href="struct_s_u_options_provider_ref.html">SUOptionsProviderRef</a> provider = SU_INVALID;</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  SUResult res = SUOptionsManagerGetOptionsProviderByName(m_options_manager, &amp;name[0], &amp;provider);</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  <span class="keywordflow">return</span> OptionsProvider(provider);</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;}</div>
@@ -122,7 +123,7 @@
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;{</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;}</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;OptionsProvider::OptionsProvider(SUOptionsProviderRef provider_ref):</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;OptionsProvider::OptionsProvider(<a class="code" href="struct_s_u_options_provider_ref.html">SUOptionsProviderRef</a> provider_ref):</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  m_options_provider(provider_ref)</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;{ }</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
@@ -155,14 +156,14 @@
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="keyword"></span>{</div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;  <span class="keyword">const</span> <span class="keywordtype">char</span>* key_char = key.c_str();</div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;  TypedValue tval;</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;  SUTypedValueRef *t = tval;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;  <a class="code" href="struct_s_u_typed_value_ref.html">SUTypedValueRef</a> *t = tval;</div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;  SUResult res = SUOptionsProviderGetValue(m_options_provider, key_char, t);</div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;  <span class="keywordflow">return</span> tval;</div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;}</div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;</div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="keywordtype">bool</span> OptionsProvider::set_value(std::string key, <span class="keyword">const</span> TypedValue&amp; tval)</div>
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;{</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;  SUTypedValueRef t = tval.ref();</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;  <a class="code" href="struct_s_u_typed_value_ref.html">SUTypedValueRef</a> t = tval.ref();</div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;  SUResult res = SUOptionsProviderSetValue(m_options_provider, key.c_str(), t);</div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;  <span class="keywordflow">if</span>(res == SU_ERROR_NONE)</div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
@@ -171,10 +172,13 @@
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;}</div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;</div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;} <span class="comment">/* namespace CW */</span></div>
+<div class="ttc" id="struct_s_u_options_manager_ref_html"><div class="ttname"><a href="struct_s_u_options_manager_ref.html">SUOptionsManagerRef</a></div><div class="ttdoc">Provides access to the different options provider objects in the model. Available options providers a...</div></div>
+<div class="ttc" id="struct_s_u_options_provider_ref_html"><div class="ttname"><a href="struct_s_u_options_provider_ref.html">SUOptionsProviderRef</a></div><div class="ttdoc">Provides ability to get and set options on an options provider object. Available options providers ar...</div></div>
+<div class="ttc" id="struct_s_u_typed_value_ref_html"><div class="ttname"><a href="struct_s_u_typed_value_ref.html">SUTypedValueRef</a></div><div class="ttdoc">Variant object used to represent the value of a key-value attribute pair. </div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Feb 22 2018 16:27:22 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Feb 22 2018 16:30:27 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

@@ -31,6 +31,7 @@
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
       <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
     </ul>
@@ -42,7 +43,7 @@
   </div>
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_f5ad1096a8ea229eeb47a854ea8e871a.html">src</a></li><li class="navelem"><a class="el" href="dir_059aedaba3b45634f6ec731c8b380205.html">SUAPI-CppWrapper</a></li><li class="navelem"><a class="el" href="dir_8b970082db578f41e103709fbfabc55a.html">model</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_1e6f28ee2bb0919f3d150f269c31b204.html">SUAPI-CppWrapper</a></li><li class="navelem"><a class="el" href="dir_13216040867bbb762e833bf5f8aa9ba2.html">model</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -90,16 +91,16 @@
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment">** Private Static Methods *****</span></div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment">*******************************/</span></div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;SUTextureRef Texture::create_texture(ImageRep&amp; image_rep) {</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  SUImageRepRef image = image_rep.ref();</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  SUTextureRef texture = SU_INVALID;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<a class="code" href="struct_s_u_texture_ref.html">SUTextureRef</a> Texture::create_texture(ImageRep&amp; image_rep) {</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  <a class="code" href="struct_s_u_image_rep_ref.html">SUImageRepRef</a> image = image_rep.ref();</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  <a class="code" href="struct_s_u_texture_ref.html">SUTextureRef</a> texture = SU_INVALID;</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  SUResult res = SUTextureCreateFromImageRep(&amp;texture, image);</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  assert(res == SU_ERROR_NONE);</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  <span class="keywordflow">return</span> texture;</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;}</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;SUTextureRef Texture::create_texture(<span class="keyword">const</span> std::string file_path, <span class="keywordtype">double</span> s_scale, <span class="keywordtype">double</span> t_scale) {</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  SUTextureRef texture = SU_INVALID;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<a class="code" href="struct_s_u_texture_ref.html">SUTextureRef</a> Texture::create_texture(<span class="keyword">const</span> std::string file_path, <span class="keywordtype">double</span> s_scale, <span class="keywordtype">double</span> t_scale) {</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  <a class="code" href="struct_s_u_texture_ref.html">SUTextureRef</a> texture = SU_INVALID;</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  SUResult res = SUTextureCreateFromFile(&amp;texture, file_path.c_str(), <a class="code" href="class_c_w_1_1_texture.html#a3105cad2d9bb2841b7345cc143ec8538">s_scale</a>,<a class="code" href="class_c_w_1_1_texture.html#ae91aef328e46f953bd70de6d86f6afa4">t_scale</a>);</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  <span class="keywordflow">if</span> (res != SU_ERROR_NONE) {</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordflow">return</span> SU_INVALID;</div>
@@ -108,7 +109,7 @@
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;}</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;SUTextureRef Texture::copy_reference(<span class="keyword">const</span> Texture&amp; other) {</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<a class="code" href="struct_s_u_texture_ref.html">SUTextureRef</a> Texture::copy_reference(<span class="keyword">const</span> Texture&amp; other) {</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  <span class="keywordflow">return</span> other.m_texture;</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;}</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
@@ -121,7 +122,7 @@
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;{}</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
-<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="class_c_w_1_1_texture.html#a5ca659aa6aff8a4c3951ca0f7d5b7c51">   72</a></span>&#160;<a class="code" href="class_c_w_1_1_texture.html#afc43ae096ba6f73b5554912cee4ed33d">Texture::Texture</a>(SUTextureRef texture, <span class="keywordtype">bool</span> attached):</div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="class_c_w_1_1_texture.html#a5ca659aa6aff8a4c3951ca0f7d5b7c51">   72</a></span>&#160;<a class="code" href="class_c_w_1_1_texture.html#afc43ae096ba6f73b5554912cee4ed33d">Texture::Texture</a>(<a class="code" href="struct_s_u_texture_ref.html">SUTextureRef</a> texture, <span class="keywordtype">bool</span> attached):</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  <a class="code" href="class_c_w_1_1_entity.html">Entity</a>(SUTextureToEntity(texture), attached),</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  m_texture(texture)</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;{}</div>
@@ -157,17 +158,17 @@
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;}</div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;</div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;Texture::operator SUTextureRef()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;Texture::operator <a class="code" href="struct_s_u_texture_ref.html">SUTextureRef</a>()<span class="keyword"> const </span>{</div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;  <span class="keywordflow">return</span> ref();</div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;}</div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;</div>
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;Texture::operator SUTextureRef*() {</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;Texture::operator <a class="code" href="struct_s_u_texture_ref.html">SUTextureRef</a>*() {</div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;  <span class="keywordflow">return</span> &amp;m_texture;</div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;}</div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;</div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;SUTextureRef Texture::ref()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<a class="code" href="struct_s_u_texture_ref.html">SUTextureRef</a> Texture::ref()<span class="keyword"> const </span>{</div>
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;  <span class="keywordflow">return</span> m_texture;</div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;}</div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;</div>
@@ -209,7 +210,7 @@
 <div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;  <span class="keywordflow">if</span> (!(*<span class="keyword">this</span>)) {</div>
 <div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::Texture::alpha_used(): Texture is null&quot;</span>);</div>
 <div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;  }</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;  SUImageRepRef image_rep = SU_INVALID;</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;  <a class="code" href="struct_s_u_image_rep_ref.html">SUImageRepRef</a> image_rep = SU_INVALID;</div>
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;  SUResult res = SUImageRepCreate(&amp;image_rep);</div>
 <div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;  assert(res == SU_ERROR_NONE);</div>
 <div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;  res = SUTextureGetImageRep(m_texture, &amp;image_rep);</div>
@@ -220,7 +221,7 @@
 <div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;</div>
 <div class="line"><a name="l00169"></a><span class="lineno"><a class="line" href="class_c_w_1_1_texture.html#a313c0a3f000c92bf1bbcc6429d06b89b">  169</a></span>&#160;<a class="code" href="class_c_w_1_1_string.html">String</a> <a class="code" href="class_c_w_1_1_texture.html#a313c0a3f000c92bf1bbcc6429d06b89b">Texture::file_name</a>()<span class="keyword"> const </span>{</div>
 <div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;  <a class="code" href="class_c_w_1_1_string.html">String</a> name;</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;  SUStringRef file_ref = name.ref();</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;  <a class="code" href="struct_s_u_string_ref.html">SUStringRef</a> file_ref = name.ref();</div>
 <div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;  SUResult res = SUTextureGetFileName(m_texture, &amp;file_ref);</div>
 <div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;  <span class="keywordflow">return</span> name;</div>
 <div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;}</div>
@@ -296,11 +297,14 @@
 <div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;}</div>
 <div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;</div>
 <div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;} <span class="comment">/* namespace CW */</span></div>
+<div class="ttc" id="struct_s_u_string_ref_html"><div class="ttname"><a href="struct_s_u_string_ref.html">SUStringRef</a></div><div class="ttdoc">Stores a Unicode string for use as output string parameters in the API. </div></div>
 <div class="ttc" id="class_c_w_1_1_texture_html_ab0ed8ff0fcd3412beb8bff4a674a1eb7"><div class="ttname"><a href="class_c_w_1_1_texture.html#ab0ed8ff0fcd3412beb8bff4a674a1eb7">CW::Texture::height</a></div><div class="ttdeci">size_t height() const </div><div class="ttdef"><b>Definition:</b> <a href="_texture_8cpp_source.html#l00198">Texture.cpp:198</a></div></div>
 <div class="ttc" id="class_c_w_1_1_texture_html"><div class="ttname"><a href="class_c_w_1_1_texture.html">CW::Texture</a></div><div class="ttdef"><b>Definition:</b> <a href="_texture_8hpp_source.html#l00046">Texture.hpp:46</a></div></div>
 <div class="ttc" id="class_c_w_1_1_texture_html_a87bb3888972267087ff22568c60e1146"><div class="ttname"><a href="class_c_w_1_1_texture.html#a87bb3888972267087ff22568c60e1146">CW::Texture::~Texture</a></div><div class="ttdeci">~Texture()</div><div class="ttdef"><b>Definition:</b> <a href="_texture_8cpp_source.html#l00094">Texture.cpp:94</a></div></div>
 <div class="ttc" id="class_c_w_1_1_texture_html_ac19d89c4bdcae4146b00abc53c3c3b7f"><div class="ttname"><a href="class_c_w_1_1_texture.html#ac19d89c4bdcae4146b00abc53c3c3b7f">CW::Texture::width</a></div><div class="ttdeci">size_t width() const </div><div class="ttdef"><b>Definition:</b> <a href="_texture_8cpp_source.html#l00184">Texture.cpp:184</a></div></div>
 <div class="ttc" id="class_c_w_1_1_texture_html_a70e7af2f90d4ecba304082264de36602"><div class="ttname"><a href="class_c_w_1_1_texture.html#a70e7af2f90d4ecba304082264de36602">CW::Texture::copy</a></div><div class="ttdeci">Texture copy() const </div><div class="ttdef"><b>Definition:</b> <a href="_texture_8cpp_source.html#l00122">Texture.cpp:122</a></div></div>
+<div class="ttc" id="struct_s_u_texture_ref_html"><div class="ttname"><a href="struct_s_u_texture_ref.html">SUTextureRef</a></div><div class="ttdoc">Used to manage image data that can be associated with any SUEntityRef. </div></div>
+<div class="ttc" id="struct_s_u_image_rep_ref_html"><div class="ttname"><a href="struct_s_u_image_rep_ref.html">SUImageRepRef</a></div><div class="ttdoc">References an image representation object. </div></div>
 <div class="ttc" id="class_c_w_1_1_entity_html_ad1d5c635add16702f770b6e14c186e9c"><div class="ttname"><a href="class_c_w_1_1_entity.html#ad1d5c635add16702f770b6e14c186e9c">CW::Entity::m_entity</a></div><div class="ttdeci">SUEntityRef m_entity</div><div class="ttdoc">The C SUEntityRef that this class wraps. </div><div class="ttdef"><b>Definition:</b> <a href="_entity_8hpp_source.html#l00057">Entity.hpp:57</a></div></div>
 <div class="ttc" id="class_c_w_1_1_entity_html"><div class="ttname"><a href="class_c_w_1_1_entity.html">CW::Entity</a></div><div class="ttdef"><b>Definition:</b> <a href="_entity_8hpp_source.html#l00052">Entity.hpp:52</a></div></div>
 <div class="ttc" id="class_c_w_1_1_texture_html_afc43ae096ba6f73b5554912cee4ed33d"><div class="ttname"><a href="class_c_w_1_1_texture.html#afc43ae096ba6f73b5554912cee4ed33d">CW::Texture::Texture</a></div><div class="ttdeci">Texture()</div><div class="ttdef"><b>Definition:</b> <a href="_texture_8cpp_source.html#l00066">Texture.cpp:66</a></div></div>
@@ -317,7 +321,7 @@
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Feb 22 2018 16:27:22 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Feb 22 2018 16:30:27 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

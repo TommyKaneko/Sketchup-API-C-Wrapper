@@ -31,6 +31,7 @@
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
       <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
     </ul>
@@ -42,7 +43,7 @@
   </div>
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_f5ad1096a8ea229eeb47a854ea8e871a.html">src</a></li><li class="navelem"><a class="el" href="dir_059aedaba3b45634f6ec731c8b380205.html">SUAPI-CppWrapper</a></li><li class="navelem"><a class="el" href="dir_8b970082db578f41e103709fbfabc55a.html">model</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_1e6f28ee2bb0919f3d150f269c31b204.html">SUAPI-CppWrapper</a></li><li class="navelem"><a class="el" href="dir_13216040867bbb762e833bf5f8aa9ba2.html">model</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -96,14 +97,14 @@
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
 <div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="class_c_w_1_1_group.html">   45</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_c_w_1_1_group.html">Group</a> :<span class="keyword">public</span> <a class="code" href="class_c_w_1_1_component_instance.html">ComponentInstance</a> {</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  SUGroupRef m_group;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  <a class="code" href="struct_s_u_group_ref.html">SUGroupRef</a> m_group;</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  <span class="comment"></span></div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment">  /**</span></div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment">  * Create new SUGroupRef object</span></div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment">  */</span></div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  <span class="keyword">static</span> SUGroupRef create_group();</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  <span class="keyword">static</span> <a class="code" href="struct_s_u_group_ref.html">SUGroupRef</a> create_group();</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  </div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  <span class="keyword">static</span> SUGroupRef copy_reference(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_group.html">Group</a>&amp; other);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  <span class="keyword">static</span> <a class="code" href="struct_s_u_group_ref.html">SUGroupRef</a> copy_reference(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_group.html">Group</a>&amp; other);</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  <span class="keyword">public</span>:<span class="comment"></span></div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="comment">  /**</span></div>
@@ -114,7 +115,7 @@
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="comment">  /**</span></div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="comment">  * Construct a Group from an existing SUGroupRef object.</span></div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="comment">  */</span></div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  <a class="code" href="class_c_w_1_1_group.html#ac5b331bf2d4ffb1733a51311f65774dd">Group</a>(SUGroupRef group, <span class="keywordtype">bool</span> <a class="code" href="class_c_w_1_1_entity.html#a64762c829bba997b0b3070d51f7c059d">attached</a> = <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  <a class="code" href="class_c_w_1_1_group.html#ac5b331bf2d4ffb1733a51311f65774dd">Group</a>(<a class="code" href="struct_s_u_group_ref.html">SUGroupRef</a> group, <span class="keywordtype">bool</span> <a class="code" href="class_c_w_1_1_entity.html#a64762c829bba997b0b3070d51f7c059d">attached</a> = <span class="keyword">false</span>);</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="comment"></span></div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="comment">  /** Copy constructor */</span></div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  <a class="code" href="class_c_w_1_1_group.html#ac5b331bf2d4ffb1733a51311f65774dd">Group</a>(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_group.html">Group</a>&amp; other);</div>
@@ -128,8 +129,8 @@
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  <span class="comment">/*</span></div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="comment">  * The class object can be converted to a SUGroupRef.</span></div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="comment">  */</span></div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  <span class="keyword">operator</span> SUGroupRef() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  <span class="keyword">operator</span> SUGroupRef*();</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  <span class="keyword">operator</span> <a class="code" href="struct_s_u_group_ref.html">SUGroupRef</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  <span class="keyword">operator</span> <a class="code" href="struct_s_u_group_ref.html">SUGroupRef</a>*();</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  <span class="comment"></span></div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="comment">  /**</span></div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="comment">  * Return the ComponentDefinition of the Group.</span></div>
@@ -164,7 +165,7 @@
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="comment">  /**</span></div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="comment">  * Returns the raw SUGroupRef object.</span></div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="comment">  */</span></div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;  SUGroupRef <a class="code" href="class_c_w_1_1_group.html#af2656e96be24f276ae254d2f62053c4c">ref</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;  <a class="code" href="struct_s_u_group_ref.html">SUGroupRef</a> <a class="code" href="class_c_w_1_1_group.html#af2656e96be24f276ae254d2f62053c4c">ref</a>() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;  </div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;};</div>
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;</div>
@@ -184,12 +185,13 @@
 <div class="ttc" id="class_c_w_1_1_group_html_a35199d1c2f1e457e55d40f9635f9b602"><div class="ttname"><a href="class_c_w_1_1_group.html#a35199d1c2f1e457e55d40f9635f9b602">CW::Group::name</a></div><div class="ttdeci">String name() const </div><div class="ttdef"><b>Definition:</b> <a href="_group_8cpp_source.html#l00126">Group.cpp:126</a></div></div>
 <div class="ttc" id="class_c_w_1_1_group_html_a3eeece8df27544980192a3ed9a453f8d"><div class="ttname"><a href="class_c_w_1_1_group.html#a3eeece8df27544980192a3ed9a453f8d">CW::Group::~Group</a></div><div class="ttdeci">~Group()</div><div class="ttdef"><b>Definition:</b> <a href="_group_8cpp_source.html#l00080">Group.cpp:80</a></div></div>
 <div class="ttc" id="class_c_w_1_1_string_html"><div class="ttname"><a href="class_c_w_1_1_string.html">CW::String</a></div><div class="ttdef"><b>Definition:</b> <a href="_string_8hpp_source.html#l00045">String.hpp:45</a></div></div>
+<div class="ttc" id="struct_s_u_group_ref_html"><div class="ttname"><a href="struct_s_u_group_ref.html">SUGroupRef</a></div><div class="ttdoc">References a group object. </div></div>
 <div class="ttc" id="class_c_w_1_1_transformation_html"><div class="ttname"><a href="class_c_w_1_1_transformation.html">CW::Transformation</a></div><div class="ttdef"><b>Definition:</b> <a href="_transformation_8hpp_source.html#l00043">Transformation.hpp:43</a></div></div>
 <div class="ttc" id="class_c_w_1_1_group_html_ababebc7b67c24692859d9347af7911b1"><div class="ttname"><a href="class_c_w_1_1_group.html#ababebc7b67c24692859d9347af7911b1">CW::Group::entities</a></div><div class="ttdeci">Entities entities() const </div><div class="ttdef"><b>Definition:</b> <a href="_group_8cpp_source.html#l00116">Group.cpp:116</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Feb 22 2018 16:27:21 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Feb 22 2018 16:30:26 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

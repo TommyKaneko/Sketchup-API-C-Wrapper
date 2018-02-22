@@ -31,6 +31,7 @@
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
       <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
     </ul>
@@ -42,7 +43,7 @@
   </div>
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_f5ad1096a8ea229eeb47a854ea8e871a.html">src</a></li><li class="navelem"><a class="el" href="dir_059aedaba3b45634f6ec731c8b380205.html">SUAPI-CppWrapper</a></li><li class="navelem"><a class="el" href="dir_8b970082db578f41e103709fbfabc55a.html">model</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_1e6f28ee2bb0919f3d150f269c31b204.html">SUAPI-CppWrapper</a></li><li class="navelem"><a class="el" href="dir_13216040867bbb762e833bf5f8aa9ba2.html">model</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -97,16 +98,16 @@
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment">*/</span></div>
 <div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="class_c_w_1_1_image_rep.html">   46</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_c_w_1_1_image_rep.html">ImageRep</a>  {</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  SUImageRepRef m_image_rep;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  <a class="code" href="struct_s_u_image_rep_ref.html">SUImageRepRef</a> m_image_rep;</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  <span class="keywordtype">bool</span> m_attached;</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  </div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  <span class="keyword">static</span> SUImageRepRef copy_reference(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_image_rep.html">ImageRep</a>&amp; other);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  <span class="keyword">static</span> <a class="code" href="struct_s_u_image_rep_ref.html">SUImageRepRef</a> copy_reference(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_image_rep.html">ImageRep</a>&amp; other);</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  <span class="keyword">public</span>:<span class="comment"></span></div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment">  /** Constructor for null ImageRep value */</span></div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  <a class="code" href="class_c_w_1_1_image_rep.html#a136a19d802eb31329a525f4ea0b798d3">ImageRep</a>();</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  <span class="comment"></span></div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment">  /** Construct ImageRep from existing ImageRep object */</span></div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  <a class="code" href="class_c_w_1_1_image_rep.html#a136a19d802eb31329a525f4ea0b798d3">ImageRep</a>(SUImageRepRef image_rep, <span class="keywordtype">bool</span> attached = <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  <a class="code" href="class_c_w_1_1_image_rep.html#a136a19d802eb31329a525f4ea0b798d3">ImageRep</a>(<a class="code" href="struct_s_u_image_rep_ref.html">SUImageRepRef</a> image_rep, <span class="keywordtype">bool</span> attached = <span class="keyword">true</span>);</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <span class="comment"></span></div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="comment">  /** Copy constructor */</span></div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  <a class="code" href="class_c_w_1_1_image_rep.html#a136a19d802eb31329a525f4ea0b798d3">ImageRep</a>(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_image_rep.html">ImageRep</a>&amp; other);</div>
@@ -125,9 +126,9 @@
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  <span class="comment">/*</span></div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="comment">  * The class object can be converted to a SUImageRepRef without loss of data.</span></div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="comment">  */</span></div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  SUImageRepRef ref() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  <span class="keyword">operator</span> SUImageRepRef() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  <span class="keyword">operator</span> SUImageRepRef*();</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  <a class="code" href="struct_s_u_image_rep_ref.html">SUImageRepRef</a> ref() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  <span class="keyword">operator</span> <a class="code" href="struct_s_u_image_rep_ref.html">SUImageRepRef</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  <span class="keyword">operator</span> <a class="code" href="struct_s_u_image_rep_ref.html">SUImageRepRef</a>*();</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  <span class="comment"></span></div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="comment">  /**</span></div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="comment">  * Returns a duplicate ImgaeRep object</span></div>
@@ -203,6 +204,7 @@
 <div class="ttc" id="class_c_w_1_1_image_rep_html_ae41e8e19e9eb30cd97d7159699f5d490"><div class="ttname"><a href="class_c_w_1_1_image_rep.html#ae41e8e19e9eb30cd97d7159699f5d490">CW::ImageRep::operator!</a></div><div class="ttdeci">bool operator!() const </div><div class="ttdef"><b>Definition:</b> <a href="_image_rep_8cpp_source.html#l00087">ImageRep.cpp:87</a></div></div>
 <div class="ttc" id="class_c_w_1_1_image_rep_html_a24d2381a75849b6c8d66e0d65092a6ee"><div class="ttname"><a href="class_c_w_1_1_image_rep.html#a24d2381a75849b6c8d66e0d65092a6ee">CW::ImageRep::resize</a></div><div class="ttdeci">void resize(size_t width, size_t height)</div><div class="ttdef"><b>Definition:</b> <a href="_image_rep_8cpp_source.html#l00200">ImageRep.cpp:200</a></div></div>
 <div class="ttc" id="class_c_w_1_1_image_rep_html_ad2100af785f63db968cd97ed4bfdc8de"><div class="ttname"><a href="class_c_w_1_1_image_rep.html#ad2100af785f63db968cd97ed4bfdc8de">CW::ImageRep::operator=</a></div><div class="ttdeci">ImageRep &amp; operator=(const ImageRep &amp;other)</div><div class="ttdef"><b>Definition:</b> <a href="_image_rep_8cpp_source.html#l00076">ImageRep.cpp:76</a></div></div>
+<div class="ttc" id="struct_s_u_image_rep_ref_html"><div class="ttname"><a href="struct_s_u_image_rep_ref.html">SUImageRepRef</a></div><div class="ttdoc">References an image representation object. </div></div>
 <div class="ttc" id="class_c_w_1_1_image_rep_html_a996193494c26b784228b27e676405e7e"><div class="ttname"><a href="class_c_w_1_1_image_rep.html#a996193494c26b784228b27e676405e7e">CW::ImageRep::width</a></div><div class="ttdeci">size_t width() const </div><div class="ttdef"><b>Definition:</b> <a href="_image_rep_8cpp_source.html#l00165">ImageRep.cpp:165</a></div></div>
 <div class="ttc" id="class_c_w_1_1_image_rep_html_aff70b87fd3e52ff709b9c244cb2ec0bb"><div class="ttname"><a href="class_c_w_1_1_image_rep.html#aff70b87fd3e52ff709b9c244cb2ec0bb">CW::ImageRep::row_padding</a></div><div class="ttdeci">size_t row_padding() const </div><div class="ttdef"><b>Definition:</b> <a href="_image_rep_8cpp_source.html#l00189">ImageRep.cpp:189</a></div></div>
 <div class="ttc" id="class_c_w_1_1_image_rep_html_a07c86b829a0901349cfb9cc2e08deef4"><div class="ttname"><a href="class_c_w_1_1_image_rep.html#a07c86b829a0901349cfb9cc2e08deef4">CW::ImageRep::bits_per_pixel</a></div><div class="ttdeci">size_t bits_per_pixel() const </div><div class="ttdef"><b>Definition:</b> <a href="_image_rep_8cpp_source.html#l00236">ImageRep.cpp:236</a></div></div>
@@ -215,7 +217,7 @@
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Feb 22 2018 16:27:21 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Feb 22 2018 16:30:26 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

@@ -31,6 +31,7 @@
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
       <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
     </ul>
@@ -42,7 +43,7 @@
   </div>
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_f5ad1096a8ea229eeb47a854ea8e871a.html">src</a></li><li class="navelem"><a class="el" href="dir_059aedaba3b45634f6ec731c8b380205.html">SUAPI-CppWrapper</a></li><li class="navelem"><a class="el" href="dir_8b970082db578f41e103709fbfabc55a.html">model</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_1e6f28ee2bb0919f3d150f269c31b204.html">SUAPI-CppWrapper</a></li><li class="navelem"><a class="el" href="dir_13216040867bbb762e833bf5f8aa9ba2.html">model</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -92,15 +93,15 @@
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment">* Static private methods **</span></div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment">***************************/</span></div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;SUMaterialRef Material::create_material() {</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  SUMaterialRef material = SU_INVALID;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<a class="code" href="struct_s_u_material_ref.html">SUMaterialRef</a> Material::create_material() {</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  <a class="code" href="struct_s_u_material_ref.html">SUMaterialRef</a> material = SU_INVALID;</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  SUResult res = SUMaterialCreate(&amp;material);</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  assert(res == SU_ERROR_NONE);</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  <span class="keywordflow">return</span> material;</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;}</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;SUMaterialRef Material::copy_reference(<span class="keyword">const</span> Material&amp; mat) {</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<a class="code" href="struct_s_u_material_ref.html">SUMaterialRef</a> Material::copy_reference(<span class="keyword">const</span> Material&amp; mat) {</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  <span class="keywordflow">if</span> (mat.m_attached || SUIsInvalid(mat.m_material)) {</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordflow">return</span> mat.m_material;</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  }</div>
@@ -116,7 +117,7 @@
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;{}</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;Material::Material(SUMaterialRef material_ref, <span class="keywordtype">bool</span> attached):</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;Material::Material(<a class="code" href="struct_s_u_material_ref.html">SUMaterialRef</a> material_ref, <span class="keywordtype">bool</span> attached):</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  Entity(SUMaterialToEntity(material_ref), attached),</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  m_material(material_ref)</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;{}</div>
@@ -175,17 +176,17 @@
 <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;}</div>
 <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;</div>
 <div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;SUMaterialRef Material::ref()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<a class="code" href="struct_s_u_material_ref.html">SUMaterialRef</a> Material::ref()<span class="keyword"> const </span>{</div>
 <div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;  <span class="keywordflow">return</span> m_material;</div>
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;}</div>
 <div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;</div>
 <div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;Material::operator SUMaterialRef()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;Material::operator <a class="code" href="struct_s_u_material_ref.html">SUMaterialRef</a>()<span class="keyword"> const </span>{</div>
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;  <span class="keywordflow">return</span> ref();</div>
 <div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;}</div>
 <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;</div>
 <div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;Material::operator SUMaterialRef*() {</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;Material::operator <a class="code" href="struct_s_u_material_ref.html">SUMaterialRef</a>*() {</div>
 <div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;  <span class="keywordflow">return</span> &amp;m_material;</div>
 <div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;}</div>
 <div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;</div>
@@ -214,7 +215,7 @@
 <div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;  <span class="keywordflow">if</span> (!(*<span class="keyword">this</span>)) {</div>
 <div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="class_c_w_1_1_color.html">Color</a>();</div>
 <div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;  }</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;  SUColor new_color = SU_INVALID;</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;  <a class="code" href="struct_s_u_color.html">SUColor</a> new_color = SU_INVALID;</div>
 <div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;  SUResult res =  SUMaterialGetColor(m_material, &amp;new_color);</div>
 <div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;  <span class="keywordflow">if</span> (res == SU_ERROR_NONE) {</div>
 <div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="class_c_w_1_1_color.html">Color</a>(new_color);</div>
@@ -227,7 +228,7 @@
 <div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;  <span class="keywordflow">if</span>(!(*<span class="keyword">this</span>)) {</div>
 <div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;    <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::Material::color(): Material is null&quot;</span>);</div>
 <div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;  }</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;  SUColor set_color = color.ref();</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;  <a class="code" href="struct_s_u_color.html">SUColor</a> set_color = color.ref();</div>
 <div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;  SUResult res = SUMaterialSetColor(m_material, &amp;set_color);</div>
 <div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;  assert(res != SU_ERROR_INVALID_INPUT);</div>
 <div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;}</div>
@@ -237,7 +238,7 @@
 <div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;  <span class="keywordflow">if</span> (!(*<span class="keyword">this</span>)) {</div>
 <div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="class_c_w_1_1_string.html">String</a>();</div>
 <div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;  }</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;  SUStringRef name_ref = SU_INVALID;</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;  <a class="code" href="struct_s_u_string_ref.html">SUStringRef</a> name_ref = SU_INVALID;</div>
 <div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;  SUResult res = SUStringCreate(&amp;name_ref);</div>
 <div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;  assert(res == SU_ERROR_NONE);</div>
 <div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;  res = SUMaterialGetName(m_material, &amp;name_ref);</div>
@@ -294,7 +295,7 @@
 <div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;  <span class="keywordflow">if</span>(!(*<span class="keyword">this</span>)) {</div>
 <div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;    <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::Material::TEXTURE(): Material is null&quot;</span>);</div>
 <div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;  }</div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;  SUTextureRef get_texture = SU_INVALID;</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;  <a class="code" href="struct_s_u_texture_ref.html">SUTextureRef</a> get_texture = SU_INVALID;</div>
 <div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;  SUResult res = SUMaterialGetTexture(m_material, &amp;get_texture);</div>
 <div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;  <span class="keywordflow">if</span> (res != SU_ERROR_NONE) {</div>
 <div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="class_c_w_1_1_texture.html">Texture</a>();</div>
@@ -314,7 +315,7 @@
 <div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;  <span class="keywordflow">if</span> (texture.<a class="code" href="class_c_w_1_1_entity.html#a64762c829bba997b0b3070d51f7c059d">attached</a>()) {</div>
 <div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="class_c_w_1_1_material.html#ae8d498e84350b53ab4ea33564044ff0d">texture</a>(texture.<a class="code" href="class_c_w_1_1_texture.html#a70e7af2f90d4ecba304082264de36602">copy</a>());</div>
 <div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;  }</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;  SUTextureRef texture_ref = texture.ref();</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;  <a class="code" href="struct_s_u_texture_ref.html">SUTextureRef</a> texture_ref = texture.ref();</div>
 <div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;  SUResult res = SUMaterialSetTexture(m_material, texture_ref);</div>
 <div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;  assert(res == SU_ERROR_NONE);</div>
 <div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;}</div>
@@ -368,15 +369,19 @@
 <div class="ttc" id="class_c_w_1_1_material_html_ae8d498e84350b53ab4ea33564044ff0d"><div class="ttname"><a href="class_c_w_1_1_material.html#ae8d498e84350b53ab4ea33564044ff0d">CW::Material::texture</a></div><div class="ttdeci">Texture texture() const </div><div class="ttdef"><b>Definition:</b> <a href="_material_8cpp_source.html#l00241">Material.cpp:241</a></div></div>
 <div class="ttc" id="class_c_w_1_1_material_html"><div class="ttname"><a href="class_c_w_1_1_material.html">CW::Material</a></div><div class="ttdef"><b>Definition:</b> <a href="_material_8hpp_source.html#l00043">Material.hpp:43</a></div></div>
 <div class="ttc" id="class_c_w_1_1_material_html_a0bc60a8080cf181b20e9ca458431cbcf"><div class="ttname"><a href="class_c_w_1_1_material.html#a0bc60a8080cf181b20e9ca458431cbcf">CW::Material::operator=</a></div><div class="ttdeci">Material &amp; operator=(const Material &amp;other)</div><div class="ttdef"><b>Definition:</b> <a href="_material_8cpp_source.html#l00088">Material.cpp:88</a></div></div>
+<div class="ttc" id="struct_s_u_string_ref_html"><div class="ttname"><a href="struct_s_u_string_ref.html">SUStringRef</a></div><div class="ttdoc">Stores a Unicode string for use as output string parameters in the API. </div></div>
 <div class="ttc" id="class_c_w_1_1_material_html_acb96fcb213e56913a3361dc169e6182b"><div class="ttname"><a href="class_c_w_1_1_material.html#acb96fcb213e56913a3361dc169e6182b">CW::Material::copy</a></div><div class="ttdeci">Material copy() const </div><div class="ttdef"><b>Definition:</b> <a href="_material_8cpp_source.html#l00147">Material.cpp:147</a></div></div>
 <div class="ttc" id="class_c_w_1_1_entity_html_a64762c829bba997b0b3070d51f7c059d"><div class="ttname"><a href="class_c_w_1_1_entity.html#a64762c829bba997b0b3070d51f7c059d">CW::Entity::attached</a></div><div class="ttdeci">bool attached() const </div><div class="ttdoc">Returns true if the entity is attached to another object. </div><div class="ttdef"><b>Definition:</b> <a href="_entity_8cpp_source.html#l00088">Entity.cpp:88</a></div></div>
 <div class="ttc" id="class_c_w_1_1_texture_html"><div class="ttname"><a href="class_c_w_1_1_texture.html">CW::Texture</a></div><div class="ttdef"><b>Definition:</b> <a href="_texture_8hpp_source.html#l00046">Texture.hpp:46</a></div></div>
 <div class="ttc" id="class_c_w_1_1_material_html_aebc4db1c686d55f7a44fc070d6e354b1"><div class="ttname"><a href="class_c_w_1_1_material.html#aebc4db1c686d55f7a44fc070d6e354b1">CW::Material::~Material</a></div><div class="ttdeci">~Material()</div><div class="ttdef"><b>Definition:</b> <a href="_material_8cpp_source.html#l00118">Material.cpp:118</a></div></div>
 <div class="ttc" id="class_c_w_1_1_texture_html_a70e7af2f90d4ecba304082264de36602"><div class="ttname"><a href="class_c_w_1_1_texture.html#a70e7af2f90d4ecba304082264de36602">CW::Texture::copy</a></div><div class="ttdeci">Texture copy() const </div><div class="ttdef"><b>Definition:</b> <a href="_texture_8cpp_source.html#l00122">Texture.cpp:122</a></div></div>
+<div class="ttc" id="struct_s_u_texture_ref_html"><div class="ttname"><a href="struct_s_u_texture_ref.html">SUTextureRef</a></div><div class="ttdoc">Used to manage image data that can be associated with any SUEntityRef. </div></div>
 <div class="ttc" id="class_c_w_1_1_entity_html_ad1d5c635add16702f770b6e14c186e9c"><div class="ttname"><a href="class_c_w_1_1_entity.html#ad1d5c635add16702f770b6e14c186e9c">CW::Entity::m_entity</a></div><div class="ttdeci">SUEntityRef m_entity</div><div class="ttdoc">The C SUEntityRef that this class wraps. </div><div class="ttdef"><b>Definition:</b> <a href="_entity_8hpp_source.html#l00057">Entity.hpp:57</a></div></div>
+<div class="ttc" id="struct_s_u_color_html"><div class="ttname"><a href="struct_s_u_color.html">SUColor</a></div><div class="ttdoc">Stores a RGBA color with 8 bit channels. </div><div class="ttdef"><b>Definition:</b> <a href="color_8h_source.html#l00023">color.h:23</a></div></div>
 <div class="ttc" id="class_c_w_1_1_entity_html"><div class="ttname"><a href="class_c_w_1_1_entity.html">CW::Entity</a></div><div class="ttdef"><b>Definition:</b> <a href="_entity_8hpp_source.html#l00052">Entity.hpp:52</a></div></div>
 <div class="ttc" id="class_c_w_1_1_material_html_a90ef79578d3f8412087d620d1bdfdf1c"><div class="ttname"><a href="class_c_w_1_1_material.html#a90ef79578d3f8412087d620d1bdfdf1c">CW::Material::opacity</a></div><div class="ttdeci">double opacity() const </div><div class="ttdef"><b>Definition:</b> <a href="_material_8cpp_source.html#l00212">Material.cpp:212</a></div></div>
 <div class="ttc" id="class_c_w_1_1_color_html"><div class="ttname"><a href="class_c_w_1_1_color.html">CW::Color</a></div><div class="ttdef"><b>Definition:</b> <a href="_color_8hpp_source.html#l00039">Color.hpp:39</a></div></div>
+<div class="ttc" id="struct_s_u_material_ref_html"><div class="ttname"><a href="struct_s_u_material_ref.html">SUMaterialRef</a></div><div class="ttdoc">References a material object. </div></div>
 <div class="ttc" id="class_c_w_1_1_material_html_a7ae7bc69086019d7fc25140b0830b6b8"><div class="ttname"><a href="class_c_w_1_1_material.html#a7ae7bc69086019d7fc25140b0830b6b8">CW::Material::color</a></div><div class="ttdeci">Color color() const </div><div class="ttdef"><b>Definition:</b> <a href="_material_8cpp_source.html#l00161">Material.cpp:161</a></div></div>
 <div class="ttc" id="class_c_w_1_1_material_html_a483773179828671924889b257287fc03"><div class="ttname"><a href="class_c_w_1_1_material.html#a483773179828671924889b257287fc03">CW::Material::operator!</a></div><div class="ttdeci">bool operator!() const </div><div class="ttdef"><b>Definition:</b> <a href="_material_8cpp_source.html#l00140">Material.cpp:140</a></div></div>
 <div class="ttc" id="class_c_w_1_1_string_html"><div class="ttname"><a href="class_c_w_1_1_string.html">CW::String</a></div><div class="ttdef"><b>Definition:</b> <a href="_string_8hpp_source.html#l00045">String.hpp:45</a></div></div>
@@ -386,7 +391,7 @@
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Feb 22 2018 16:27:21 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Feb 22 2018 16:30:27 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

@@ -31,6 +31,7 @@
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
       <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
     </ul>
@@ -42,7 +43,7 @@
   </div>
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_f5ad1096a8ea229eeb47a854ea8e871a.html">src</a></li><li class="navelem"><a class="el" href="dir_059aedaba3b45634f6ec731c8b380205.html">SUAPI-CppWrapper</a></li><li class="navelem"><a class="el" href="dir_8b970082db578f41e103709fbfabc55a.html">model</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_1e6f28ee2bb0919f3d150f269c31b204.html">SUAPI-CppWrapper</a></li><li class="navelem"><a class="el" href="dir_13216040867bbb762e833bf5f8aa9ba2.html">model</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -96,10 +97,10 @@
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
 <div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="class_c_w_1_1_options_provider.html">   45</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_c_w_1_1_options_provider.html">OptionsProvider</a> {</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  SUOptionsProviderRef m_options_provider;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  <a class="code" href="struct_s_u_options_provider_ref.html">SUOptionsProviderRef</a> m_options_provider;</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  <span class="keyword">public</span>:</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  <a class="code" href="class_c_w_1_1_options_provider.html">OptionsProvider</a>();</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  <a class="code" href="class_c_w_1_1_options_provider.html">OptionsProvider</a>(SUOptionsProviderRef);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  <a class="code" href="class_c_w_1_1_options_provider.html">OptionsProvider</a>(<a class="code" href="struct_s_u_options_provider_ref.html">SUOptionsProviderRef</a>);</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  std::vector&lt;std::string&gt; keys() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  <a class="code" href="class_c_w_1_1_typed_value.html">TypedValue</a> get_value(std::string key) <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  <span class="keywordtype">bool</span> set_value(std::string key, <span class="keyword">const</span> <a class="code" href="class_c_w_1_1_typed_value.html">TypedValue</a>&amp; tval);</div>
@@ -107,11 +108,11 @@
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
 <div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="class_c_w_1_1_options_manager.html">   56</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_c_w_1_1_options_manager.html">OptionsManager</a> {</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  SUOptionsManagerRef m_options_manager;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <a class="code" href="struct_s_u_options_manager_ref.html">SUOptionsManagerRef</a> m_options_manager;</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  <span class="keyword">public</span>:</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  <a class="code" href="class_c_w_1_1_options_manager.html">OptionsManager</a>();</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  <a class="code" href="class_c_w_1_1_options_manager.html">OptionsManager</a>(SUOptionsManagerRef options_manager);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  <a class="code" href="class_c_w_1_1_options_manager.html">OptionsManager</a>(<a class="code" href="struct_s_u_options_manager_ref.html">SUOptionsManagerRef</a> options_manager);</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  <span class="comment">// Returns a list of the names of OptionProviders</span></div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  std::vector&lt;std::string&gt; get_provider_names() <span class="keyword">const</span>;</div>
@@ -125,13 +126,15 @@
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;} <span class="comment">/* namespace CW */</span></div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* OptionsManager_hpp */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="struct_s_u_options_manager_ref_html"><div class="ttname"><a href="struct_s_u_options_manager_ref.html">SUOptionsManagerRef</a></div><div class="ttdoc">Provides access to the different options provider objects in the model. Available options providers a...</div></div>
 <div class="ttc" id="class_c_w_1_1_typed_value_html"><div class="ttname"><a href="class_c_w_1_1_typed_value.html">CW::TypedValue</a></div><div class="ttdef"><b>Definition:</b> <a href="_typed_value_8hpp_source.html#l00045">TypedValue.hpp:45</a></div></div>
+<div class="ttc" id="struct_s_u_options_provider_ref_html"><div class="ttname"><a href="struct_s_u_options_provider_ref.html">SUOptionsProviderRef</a></div><div class="ttdoc">Provides ability to get and set options on an options provider object. Available options providers ar...</div></div>
 <div class="ttc" id="class_c_w_1_1_options_manager_html"><div class="ttname"><a href="class_c_w_1_1_options_manager.html">CW::OptionsManager</a></div><div class="ttdef"><b>Definition:</b> <a href="_options_manager_8hpp_source.html#l00056">OptionsManager.hpp:56</a></div></div>
 <div class="ttc" id="class_c_w_1_1_options_provider_html"><div class="ttname"><a href="class_c_w_1_1_options_provider.html">CW::OptionsProvider</a></div><div class="ttdef"><b>Definition:</b> <a href="_options_manager_8hpp_source.html#l00045">OptionsManager.hpp:45</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Feb 22 2018 16:27:22 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Feb 22 2018 16:30:27 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

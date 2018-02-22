@@ -31,6 +31,7 @@
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
       <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
     </ul>
@@ -42,7 +43,7 @@
   </div>
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_f5ad1096a8ea229eeb47a854ea8e871a.html">src</a></li><li class="navelem"><a class="el" href="dir_059aedaba3b45634f6ec731c8b380205.html">SUAPI-CppWrapper</a></li><li class="navelem"><a class="el" href="dir_8b970082db578f41e103709fbfabc55a.html">model</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_1e6f28ee2bb0919f3d150f269c31b204.html">SUAPI-CppWrapper</a></li><li class="navelem"><a class="el" href="dir_13216040867bbb762e833bf5f8aa9ba2.html">model</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -98,8 +99,8 @@
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="keyword">namespace </span>CW {</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;SUModelRef Model::create_model() {</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  SUModelRef model = SU_INVALID;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<a class="code" href="struct_s_u_model_ref.html">SUModelRef</a> Model::create_model() {</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  <a class="code" href="struct_s_u_model_ref.html">SUModelRef</a> model = SU_INVALID;</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  SUResult res = SUModelCreate(&amp;model);</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  assert(res == SU_ERROR_NONE);</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  <span class="keywordflow">return</span> model;</div>
@@ -112,7 +113,7 @@
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;{}</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;Model::Model(SUModelRef model_ref, <span class="keywordtype">bool</span> release_on_destroy):</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;Model::Model(<a class="code" href="struct_s_u_model_ref.html">SUModelRef</a> model_ref, <span class="keywordtype">bool</span> release_on_destroy):</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  m_model(model_ref),</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  m_release_on_destroy(release_on_destroy)</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;{}</div>
@@ -135,17 +136,17 @@
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;}</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
-<div class="line"><a name="l00086"></a><span class="lineno"><a class="line" href="class_c_w_1_1_model.html#a586a581447bec7cbad3197400af780fd">   86</a></span>&#160;SUModelRef <a class="code" href="class_c_w_1_1_model.html#a586a581447bec7cbad3197400af780fd">Model::ref</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00086"></a><span class="lineno"><a class="line" href="class_c_w_1_1_model.html#a586a581447bec7cbad3197400af780fd">   86</a></span>&#160;<a class="code" href="struct_s_u_model_ref.html">SUModelRef</a> <a class="code" href="class_c_w_1_1_model.html#a586a581447bec7cbad3197400af780fd">Model::ref</a>()<span class="keyword"> const </span>{</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  <span class="keywordflow">return</span> m_model;</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;}</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;Model::operator SUModelRef()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;Model::operator <a class="code" href="struct_s_u_model_ref.html">SUModelRef</a>()<span class="keyword"> const </span>{</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;  <span class="keywordflow">return</span> ref();</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;}</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;Model::operator SUModelRef*() {</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;Model::operator <a class="code" href="struct_s_u_model_ref.html">SUModelRef</a>*() {</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  <span class="keywordflow">return</span> &amp;m_model;</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;}</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div>
@@ -176,7 +177,7 @@
 <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;  <span class="keywordflow">if</span>(!(*<span class="keyword">this</span>)) {</div>
 <div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::Model::active_layer(): Model is null&quot;</span>);</div>
 <div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;  }</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;  SULayerRef layer = SU_INVALID;</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;  <a class="code" href="struct_s_u_layer_ref.html">SULayerRef</a> layer = SU_INVALID;</div>
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;  SUResult res = SUModelGetDefaultLayer(m_model, &amp;layer);</div>
 <div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;  assert(res == SU_ERROR_NONE);</div>
 <div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;  <span class="keywordflow">return</span> Layer(layer);</div>
@@ -224,7 +225,7 @@
 <div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;  assert(res == SU_ERROR_NONE);</div>
 <div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;  std::vector&lt;AttributeDictionary&gt; dicts(count);</div>
 <div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;  std::transform(dict_refs.begin(), dict_refs.end(), dicts.begin(),</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    [](<span class="keyword">const</span> SUAttributeDictionaryRef&amp; value){</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    [](<span class="keyword">const</span> <a class="code" href="struct_s_u_attribute_dictionary_ref.html">SUAttributeDictionaryRef</a>&amp; value){</div>
 <div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;      <span class="keywordflow">return</span> AttributeDictionary(value);</div>
 <div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    });</div>
 <div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;  <span class="keywordflow">return</span> dicts;</div>
@@ -235,7 +236,7 @@
 <div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;  <span class="keywordflow">if</span>(!(*<span class="keyword">this</span>)) {</div>
 <div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;    <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::Model::attribute_dictionary(): Model is null&quot;</span>);</div>
 <div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;  }</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;  SUAttributeDictionaryRef dict = SU_INVALID;</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;  <a class="code" href="struct_s_u_attribute_dictionary_ref.html">SUAttributeDictionaryRef</a> dict = SU_INVALID;</div>
 <div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;  SUResult res = SUModelGetAttributeDictionary(m_model, dict_name.c_str(), &amp;dict);</div>
 <div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;  assert(res == SU_ERROR_NONE);</div>
 <div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;  <span class="keywordflow">return</span> AttributeDictionary(dict);</div>
@@ -247,7 +248,7 @@
 <div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;  <span class="keywordflow">if</span>(!(*<span class="keyword">this</span>)) {</div>
 <div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::Model::axes(): Model is null&quot;</span>);</div>
 <div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;  }</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;  SUAxesRef axes = SU_INVALID;</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;  <a class="code" href="struct_s_u_axes_ref.html">SUAxesRef</a> axes = SU_INVALID;</div>
 <div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;  SUResult res = SUModelGetAxes(m_model, &amp;axes);</div>
 <div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;  assert(res == SU_ERROR_NONE);</div>
 <div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;  <span class="keywordflow">return</span> Axes(axes);</div>
@@ -261,7 +262,7 @@
 <div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;  <span class="keywordflow">if</span>(!(*<span class="keyword">this</span>)) {</div>
 <div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;    <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::Model::classifications(): Model is null&quot;</span>);</div>
 <div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;  }</div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;  SUClassificationsRef classifications = SU_INVALID;</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;  <a class="code" href="struct_s_u_classifications_ref.html">SUClassificationsRef</a> classifications = SU_INVALID;</div>
 <div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;  SUResult res = SUModelGetClassifications(m_model, &amp;classifications);</div>
 <div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;  assert(res == SU_ERROR_NONE);</div>
 <div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;  <span class="keywordflow">return</span> Classifications(classifications);</div>
@@ -287,7 +288,7 @@
 <div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;  assert(res == SU_ERROR_NONE);</div>
 <div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;  std::vector&lt;ComponentDefinition&gt; defs(count);</div>
 <div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;  std::transform(def_refs.begin(), def_refs.end(), defs.begin(),</div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    [](<span class="keyword">const</span> SUComponentDefinitionRef&amp; value){</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    [](<span class="keyword">const</span> <a class="code" href="struct_s_u_component_definition_ref.html">SUComponentDefinitionRef</a>&amp; value){</div>
 <div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;      <span class="keywordflow">return</span> ComponentDefinition(value);</div>
 <div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;    });</div>
 <div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;  <span class="keywordflow">return</span> defs;</div>
@@ -306,7 +307,7 @@
 <div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;  assert(res == SU_ERROR_NONE);</div>
 <div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;  std::vector&lt;ComponentDefinition&gt; defs(count);</div>
 <div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;  std::transform(def_refs.begin(), def_refs.end(), defs.begin(),</div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;    [](<span class="keyword">const</span> SUComponentDefinitionRef&amp; value){</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;    [](<span class="keyword">const</span> <a class="code" href="struct_s_u_component_definition_ref.html">SUComponentDefinitionRef</a>&amp; value){</div>
 <div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;      <span class="keywordflow">return</span> ComponentDefinition(value);</div>
 <div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;    });</div>
 <div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;  <span class="keywordflow">return</span> defs;</div>
@@ -317,7 +318,7 @@
 <div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;  <span class="keywordflow">if</span>(!(*<span class="keyword">this</span>)) {</div>
 <div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;    <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::Model::entities(): Model is null&quot;</span>);</div>
 <div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;  }</div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;  SUEntitiesRef entities = SU_INVALID;</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;  <a class="code" href="struct_s_u_entities_ref.html">SUEntitiesRef</a> entities = SU_INVALID;</div>
 <div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;  SUResult res = SUModelGetEntities(m_model, &amp;entities);</div>
 <div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;  assert(res == SU_ERROR_NONE);</div>
 <div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;  <span class="keywordflow">return</span> Entities(entities);</div>
@@ -378,7 +379,7 @@
 <div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;  assert(res == SU_ERROR_NONE);</div>
 <div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;  std::vector&lt;Layer&gt; layers(count);</div>
 <div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;  std::transform(layer_refs.begin(), layer_refs.end(), layers.begin(),</div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;    [](<span class="keyword">const</span> SULayerRef&amp; value){</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;    [](<span class="keyword">const</span> <a class="code" href="struct_s_u_layer_ref.html">SULayerRef</a>&amp; value){</div>
 <div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;      <span class="keywordflow">return</span> Layer(value);</div>
 <div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;    });</div>
 <div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;  <span class="keywordflow">return</span> layers;</div>
@@ -406,7 +407,7 @@
 <div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;  assert(res == SU_ERROR_NONE);</div>
 <div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;  std::vector&lt;Material&gt; materials(count);</div>
 <div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;  std::transform(material_refs.begin(), material_refs.end(), materials.begin(),</div>
-<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;    [](<span class="keyword">const</span> SUMaterialRef&amp; value){</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;    [](<span class="keyword">const</span> <a class="code" href="struct_s_u_material_ref.html">SUMaterialRef</a>&amp; value){</div>
 <div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;      <span class="keywordflow">return</span> Material(value);</div>
 <div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;    });</div>
 <div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;  <span class="keywordflow">return</span> materials;</div>
@@ -437,7 +438,7 @@
 <div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;  <span class="keywordflow">if</span> (!(*<span class="keyword">this</span>)) {</div>
 <div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;    <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::Model::name(): Model is null&quot;</span>);</div>
 <div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;  }</div>
-<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;  SUStringRef name = SU_INVALID;</div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;  <a class="code" href="struct_s_u_string_ref.html">SUStringRef</a> name = SU_INVALID;</div>
 <div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;  SUModelGetName(m_model, &amp;name);</div>
 <div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;  <span class="keywordflow">return</span> String(name);</div>
 <div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;}</div>
@@ -466,7 +467,7 @@
 <div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;</div>
 <div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;OptionsManager Model::options()</div>
 <div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;{</div>
-<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;  SUOptionsManagerRef options_manager = SU_INVALID;</div>
+<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;  <a class="code" href="struct_s_u_options_manager_ref.html">SUOptionsManagerRef</a> options_manager = SU_INVALID;</div>
 <div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;  SUResult res = SUModelGetOptionsManager(m_model, &amp;options_manager);</div>
 <div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;  assert(res == SU_ERROR_NONE);</div>
 <div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;  <span class="keywordflow">return</span> OptionsManager(options_manager);</div>
@@ -536,7 +537,7 @@
 <div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160;</div>
 <div class="line"><a name="l00485"></a><span class="lineno"><a class="line" href="class_c_w_1_1_model.html#ae448f27b6aaeac6c80ed13e3f4d0f745">  485</a></span>&#160;<a class="code" href="class_c_w_1_1_rendering_options.html">RenderingOptions</a> <a class="code" href="class_c_w_1_1_model.html#ae448f27b6aaeac6c80ed13e3f4d0f745">Model::rendering_options</a>()</div>
 <div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160;{</div>
-<div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160;  SURenderingOptionsRef <a class="code" href="class_c_w_1_1_model.html#a586a581447bec7cbad3197400af780fd">ref</a> = SU_INVALID;</div>
+<div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160;  <a class="code" href="struct_s_u_rendering_options_ref.html">SURenderingOptionsRef</a> <a class="code" href="class_c_w_1_1_model.html#a586a581447bec7cbad3197400af780fd">ref</a> = SU_INVALID;</div>
 <div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160;  SUResult res = SUModelGetRenderingOptions(m_model, &amp;ref);</div>
 <div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160;  assert(res == SU_ERROR_NONE);</div>
 <div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="class_c_w_1_1_rendering_options.html">RenderingOptions</a>(ref);</div>
@@ -544,7 +545,7 @@
 <div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160;</div>
 <div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160;<a class="code" href="class_c_w_1_1_shadow_info.html">ShadowInfo</a> Model::shadow_info()</div>
 <div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160;{</div>
-<div class="line"><a name="l00495"></a><span class="lineno">  495</span>&#160;  SUShadowInfoRef <a class="code" href="class_c_w_1_1_model.html#a586a581447bec7cbad3197400af780fd">ref</a> = SU_INVALID;</div>
+<div class="line"><a name="l00495"></a><span class="lineno">  495</span>&#160;  <a class="code" href="struct_s_u_shadow_info_ref.html">SUShadowInfoRef</a> <a class="code" href="class_c_w_1_1_model.html#a586a581447bec7cbad3197400af780fd">ref</a> = SU_INVALID;</div>
 <div class="line"><a name="l00496"></a><span class="lineno">  496</span>&#160;  SUResult res = SUModelGetShadowInfo(m_model, &amp;ref);</div>
 <div class="line"><a name="l00497"></a><span class="lineno">  497</span>&#160;  assert(res == SU_ERROR_NONE);</div>
 <div class="line"><a name="l00498"></a><span class="lineno">  498</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="class_c_w_1_1_shadow_info.html">ShadowInfo</a>(ref);</div>
@@ -573,12 +574,12 @@
 <div class="line"><a name="l00521"></a><span class="lineno">  521</span>&#160;<span class="comment">/******************</span></div>
 <div class="line"><a name="l00522"></a><span class="lineno">  522</span>&#160;<span class="comment">* ModelStatistics *</span></div>
 <div class="line"><a name="l00523"></a><span class="lineno">  523</span>&#160;<span class="comment">*******************/</span></div>
-<div class="line"><a name="l00524"></a><span class="lineno">  524</span>&#160;ModelStatistics::ModelStatistics(SUModelStatistics model_statistics):</div>
+<div class="line"><a name="l00524"></a><span class="lineno">  524</span>&#160;ModelStatistics::ModelStatistics(<a class="code" href="struct_s_u_model_statistics.html">SUModelStatistics</a> model_statistics):</div>
 <div class="line"><a name="l00525"></a><span class="lineno">  525</span>&#160;  m_model_statistics(model_statistics)</div>
 <div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160;{}</div>
 <div class="line"><a name="l00527"></a><span class="lineno">  527</span>&#160;</div>
 <div class="line"><a name="l00528"></a><span class="lineno">  528</span>&#160;ModelStatistics::ModelStatistics(<span class="keyword">const</span> Model&amp; model):</div>
-<div class="line"><a name="l00529"></a><span class="lineno">  529</span>&#160;  m_model_statistics(SUModelStatistics{})</div>
+<div class="line"><a name="l00529"></a><span class="lineno">  529</span>&#160;  m_model_statistics(<a class="code" href="struct_s_u_model_statistics.html">SUModelStatistics</a>{})</div>
 <div class="line"><a name="l00530"></a><span class="lineno">  530</span>&#160;{</div>
 <div class="line"><a name="l00531"></a><span class="lineno">  531</span>&#160;  SUResult res = SUModelGetStatistics(model, &amp;m_model_statistics);</div>
 <div class="line"><a name="l00532"></a><span class="lineno">  532</span>&#160;  assert(res == SU_ERROR_NONE);</div>
@@ -621,24 +622,37 @@
 <div class="line"><a name="l00569"></a><span class="lineno">  569</span>&#160;  </div>
 <div class="line"><a name="l00570"></a><span class="lineno">  570</span>&#160;</div>
 <div class="line"><a name="l00571"></a><span class="lineno">  571</span>&#160;} <span class="comment">/* namespace CW */</span></div>
+<div class="ttc" id="struct_s_u_model_ref_html"><div class="ttname"><a href="struct_s_u_model_ref.html">SUModelRef</a></div><div class="ttdoc">A SketchUp model. </div></div>
+<div class="ttc" id="struct_s_u_entities_ref_html"><div class="ttname"><a href="struct_s_u_entities_ref.html">SUEntitiesRef</a></div><div class="ttdoc">References a container object for all entities in a model, component definition or a group...</div></div>
 <div class="ttc" id="class_c_w_1_1_material_html"><div class="ttname"><a href="class_c_w_1_1_material.html">CW::Material</a></div><div class="ttdef"><b>Definition:</b> <a href="_material_8hpp_source.html#l00043">Material.hpp:43</a></div></div>
+<div class="ttc" id="struct_s_u_options_manager_ref_html"><div class="ttname"><a href="struct_s_u_options_manager_ref.html">SUOptionsManagerRef</a></div><div class="ttdoc">Provides access to the different options provider objects in the model. Available options providers a...</div></div>
+<div class="ttc" id="struct_s_u_string_ref_html"><div class="ttname"><a href="struct_s_u_string_ref.html">SUStringRef</a></div><div class="ttdoc">Stores a Unicode string for use as output string parameters in the API. </div></div>
 <div class="ttc" id="class_c_w_1_1_layer_html"><div class="ttname"><a href="class_c_w_1_1_layer.html">CW::Layer</a></div><div class="ttdef"><b>Definition:</b> <a href="_layer_8hpp_source.html#l00040">Layer.hpp:40</a></div></div>
 <div class="ttc" id="class_c_w_1_1_model_html_a5141b470a1563bddf9228dc2a6d820cb"><div class="ttname"><a href="class_c_w_1_1_model.html#a5141b470a1563bddf9228dc2a6d820cb">CW::Model::version_string</a></div><div class="ttdeci">std::string version_string() const </div><div class="ttdef"><b>Definition:</b> <a href="_model_8cpp_source.html#l00113">Model.cpp:113</a></div></div>
+<div class="ttc" id="struct_s_u_rendering_options_ref_html"><div class="ttname"><a href="struct_s_u_rendering_options_ref.html">SURenderingOptionsRef</a></div><div class="ttdoc">Used to get and set values in a rendering options object. </div></div>
 <div class="ttc" id="class_c_w_1_1_model_html_a968c568e419faa21ea99a393943b7910"><div class="ttname"><a href="class_c_w_1_1_model.html#a968c568e419faa21ea99a393943b7910">CW::Model::add_materials</a></div><div class="ttdeci">void add_materials(std::vector&lt; Material &gt; &amp;materials)</div><div class="ttdef"><b>Definition:</b> <a href="_model_8cpp_source.html#l00364">Model.cpp:364</a></div></div>
 <div class="ttc" id="class_c_w_1_1_rendering_options_html"><div class="ttname"><a href="class_c_w_1_1_rendering_options.html">CW::RenderingOptions</a></div><div class="ttdef"><b>Definition:</b> <a href="_rendering_options_8hpp_source.html#l00012">RenderingOptions.hpp:12</a></div></div>
+<div class="ttc" id="struct_s_u_attribute_dictionary_ref_html"><div class="ttname"><a href="struct_s_u_attribute_dictionary_ref.html">SUAttributeDictionaryRef</a></div><div class="ttdoc">A dictionary type with SUStringRef objects as keys and SUTypedValueRef objects as values...</div></div>
 <div class="ttc" id="class_c_w_1_1_shadow_info_html"><div class="ttname"><a href="class_c_w_1_1_shadow_info.html">CW::ShadowInfo</a></div><div class="ttdef"><b>Definition:</b> <a href="_shadow_info_8hpp_source.html#l00011">ShadowInfo.hpp:11</a></div></div>
 <div class="ttc" id="class_c_w_1_1_component_definition_html"><div class="ttname"><a href="class_c_w_1_1_component_definition.html">CW::ComponentDefinition</a></div><div class="ttdef"><b>Definition:</b> <a href="_component_definition_8hpp_source.html#l00050">ComponentDefinition.hpp:50</a></div></div>
+<div class="ttc" id="struct_s_u_component_definition_ref_html"><div class="ttname"><a href="struct_s_u_component_definition_ref.html">SUComponentDefinitionRef</a></div><div class="ttdoc">References a component definition. </div></div>
 <div class="ttc" id="class_c_w_1_1_model_html_add4455fc98f791814001af8afd8c9d22"><div class="ttname"><a href="class_c_w_1_1_model.html#add4455fc98f791814001af8afd8c9d22">CW::Model::operator!</a></div><div class="ttdeci">bool operator!() const </div><div class="ttdef"><b>Definition:</b> <a href="_model_8cpp_source.html#l00109">Model.cpp:109</a></div></div>
 <div class="ttc" id="class_c_w_1_1_model_html"><div class="ttname"><a href="class_c_w_1_1_model.html">CW::Model</a></div><div class="ttdef"><b>Definition:</b> <a href="_model_8hpp_source.html#l00055">Model.hpp:55</a></div></div>
 <div class="ttc" id="class_c_w_1_1_model_statistics_html_aa2b2ab86edb2e754f4af516161711149"><div class="ttname"><a href="class_c_w_1_1_model_statistics.html#aa2b2ab86edb2e754f4af516161711149">CW::ModelStatistics::faces</a></div><div class="ttdeci">int faces() const </div><div class="ttdef"><b>Definition:</b> <a href="_model_8cpp_source.html#l00540">Model.cpp:540</a></div></div>
+<div class="ttc" id="struct_s_u_material_ref_html"><div class="ttname"><a href="struct_s_u_material_ref.html">SUMaterialRef</a></div><div class="ttdoc">References a material object. </div></div>
 <div class="ttc" id="class_c_w_1_1_model_html_ae448f27b6aaeac6c80ed13e3f4d0f745"><div class="ttname"><a href="class_c_w_1_1_model.html#ae448f27b6aaeac6c80ed13e3f4d0f745">CW::Model::rendering_options</a></div><div class="ttdeci">RenderingOptions rendering_options()</div><div class="ttdoc">RenderingOptions. </div><div class="ttdef"><b>Definition:</b> <a href="_model_8cpp_source.html#l00485">Model.cpp:485</a></div></div>
+<div class="ttc" id="struct_s_u_shadow_info_ref_html"><div class="ttname"><a href="struct_s_u_shadow_info_ref.html">SUShadowInfoRef</a></div><div class="ttdoc">Used to get and set values in a shadow info object. </div></div>
+<div class="ttc" id="struct_s_u_layer_ref_html"><div class="ttname"><a href="struct_s_u_layer_ref.html">SULayerRef</a></div><div class="ttdoc">References a layer object. </div></div>
 <div class="ttc" id="class_c_w_1_1_string_html"><div class="ttname"><a href="class_c_w_1_1_string.html">CW::String</a></div><div class="ttdef"><b>Definition:</b> <a href="_string_8hpp_source.html#l00045">String.hpp:45</a></div></div>
 <div class="ttc" id="class_c_w_1_1_model_html_ad10ec689a9beece3934ddbe9980afc46"><div class="ttname"><a href="class_c_w_1_1_model.html#ad10ec689a9beece3934ddbe9980afc46">CW::Model::add_definition</a></div><div class="ttdeci">bool add_definition(ComponentDefinition &amp;definition)</div><div class="ttdef"><b>Definition:</b> <a href="_model_8cpp_source.html#l00142">Model.cpp:142</a></div></div>
+<div class="ttc" id="struct_s_u_axes_ref_html"><div class="ttname"><a href="struct_s_u_axes_ref.html">SUAxesRef</a></div><div class="ttdoc">An axes entity reference. </div></div>
 <div class="ttc" id="class_c_w_1_1_model_html_a586a581447bec7cbad3197400af780fd"><div class="ttname"><a href="class_c_w_1_1_model.html#a586a581447bec7cbad3197400af780fd">CW::Model::ref</a></div><div class="ttdeci">SUModelRef ref() const </div><div class="ttdef"><b>Definition:</b> <a href="_model_8cpp_source.html#l00086">Model.cpp:86</a></div></div>
+<div class="ttc" id="struct_s_u_model_statistics_html"><div class="ttname"><a href="struct_s_u_model_statistics.html">SUModelStatistics</a></div><div class="ttdoc">Contains an array of entity counts that can be indexed per entity type. </div><div class="ttdef"><b>Definition:</b> <a href="model_8h_source.html#l00032">model.h:32</a></div></div>
+<div class="ttc" id="struct_s_u_classifications_ref_html"><div class="ttname"><a href="struct_s_u_classifications_ref.html">SUClassificationsRef</a></div><div class="ttdoc">Used to manage a Classifications object. </div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Feb 22 2018 16:27:21 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Feb 22 2018 16:30:27 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

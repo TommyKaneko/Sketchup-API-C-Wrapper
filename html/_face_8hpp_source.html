@@ -31,6 +31,7 @@
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
       <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
     </ul>
@@ -42,7 +43,7 @@
   </div>
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_f5ad1096a8ea229eeb47a854ea8e871a.html">src</a></li><li class="navelem"><a class="el" href="dir_059aedaba3b45634f6ec731c8b380205.html">SUAPI-CppWrapper</a></li><li class="navelem"><a class="el" href="dir_8b970082db578f41e103709fbfabc55a.html">model</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_1e6f28ee2bb0919f3d150f269c31b204.html">SUAPI-CppWrapper</a></li><li class="navelem"><a class="el" href="dir_13216040867bbb762e833bf5f8aa9ba2.html">model</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -113,7 +114,7 @@
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
 <div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="class_c_w_1_1_face.html">   62</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_c_w_1_1_face.html">Face</a> :<span class="keyword">public</span> <a class="code" href="class_c_w_1_1_drawing_element.html">DrawingElement</a> {</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  SUFaceRef m_face;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  <a class="code" href="struct_s_u_face_ref.html">SUFaceRef</a> m_face;</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  <span class="comment">//SUResult m_create_result = SU_ERROR_NONE;</span></div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  <span class="comment"></span></div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="comment">  /**</span></div>
@@ -121,8 +122,8 @@
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="comment">  * @param outer_loop vector of points for the vertices in the outer loop.</span></div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="comment">  * @return SUFaceRef object with the defined loops.  If there was an error, a SU_INVALID SUFaceRef will be returned.</span></div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="comment">  */</span></div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  <span class="keyword">static</span> SUFaceRef create_face(std::vector&lt;Point3D&gt;&amp; outer_points);</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  <span class="keyword">static</span> SUFaceRef create_face(std::vector&lt;Point3D&gt;&amp; outer_points, <a class="code" href="class_c_w_1_1_loop_input.html">LoopInput</a>&amp; loop_input);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  <span class="keyword">static</span> <a class="code" href="struct_s_u_face_ref.html">SUFaceRef</a> create_face(std::vector&lt;Point3D&gt;&amp; outer_points);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  <span class="keyword">static</span> <a class="code" href="struct_s_u_face_ref.html">SUFaceRef</a> create_face(std::vector&lt;Point3D&gt;&amp; outer_points, <a class="code" href="class_c_w_1_1_loop_input.html">LoopInput</a>&amp; loop_input);</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  <span class="comment"></span></div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="comment">  /**</span></div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="comment">  * Creates a SUFaceRef object from an array of points that represent the loops.</span></div>
@@ -137,7 +138,7 @@
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="comment">  * @param face - Face object to derive the new SUFaceRef object from</span></div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="comment">  * @return if the Face object is already attached to a model, its SUFaceRef object will be returned. If the Face object has not been attached to a model, a new SUFaceRef object will be created. Bear in mind all properties will not be copied in the latter case</span></div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="comment">  */</span></div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  <span class="keyword">static</span> SUFaceRef copy_reference(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_face.html">Face</a>&amp; face);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  <span class="keyword">static</span> <a class="code" href="struct_s_u_face_ref.html">SUFaceRef</a> copy_reference(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_face.html">Face</a>&amp; face);</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  </div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;  <span class="comment">//static SUFaceRef create_face(std::vector&lt;Point3D&gt; outer_loop, std::vector&lt;std::vector&lt;Point3D&gt;&gt; inner_loops, SUResult &amp;create_result);</span></div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  <span class="comment">//static SUFaceRef check_face(SUFaceRef face, SUResult &amp;create_result);</span></div>
@@ -160,7 +161,7 @@
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="comment">  * @param SUFaceRef* pointer to the face.</span></div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="comment">  * @param bool false if the face should be released when this class object is destroyed.  True, if the destruction of the face object is handled elsewhere (use with caution).</span></div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="comment">  */</span></div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;  <a class="code" href="class_c_w_1_1_face.html#a0e23cafc9d34b527424a4e0df564b320">Face</a>(SUFaceRef face, <span class="keywordtype">bool</span> <a class="code" href="class_c_w_1_1_entity.html#a64762c829bba997b0b3070d51f7c059d">attached</a> = <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;  <a class="code" href="class_c_w_1_1_face.html#a0e23cafc9d34b527424a4e0df564b320">Face</a>(<a class="code" href="struct_s_u_face_ref.html">SUFaceRef</a> face, <span class="keywordtype">bool</span> <a class="code" href="class_c_w_1_1_entity.html#a64762c829bba997b0b3070d51f7c059d">attached</a> = <span class="keyword">true</span>);</div>
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="comment"></span></div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="comment">  /** Copy constructor */</span></div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;  <a class="code" href="class_c_w_1_1_face.html#a0e23cafc9d34b527424a4e0df564b320">Face</a>(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_face.html">Face</a>&amp; other);</div>
@@ -174,13 +175,13 @@
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;  <span class="comment">/*</span></div>
 <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="comment">  * Returns the C-style face_ref object</span></div>
 <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="comment">  */</span></div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;  SUFaceRef ref() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;  <a class="code" href="struct_s_u_face_ref.html">SUFaceRef</a> ref() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;  </div>
 <div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;  <span class="comment">/*</span></div>
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;<span class="comment">  * The class object can be converted to a SUFaceRef without loss of data.</span></div>
 <div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="comment">  */</span></div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;  <span class="keyword">operator</span> SUFaceRef() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;  <span class="keyword">operator</span> SUFaceRef*();</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;  <span class="keyword">operator</span> <a class="code" href="struct_s_u_face_ref.html">SUFaceRef</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;  <span class="keyword">operator</span> <a class="code" href="struct_s_u_face_ref.html">SUFaceRef</a>*();</div>
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;  </div>
 <div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;  <span class="comment">/*</span></div>
 <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;<span class="comment">  * Returns whether the class is a valid SU object.</span></div>
@@ -333,6 +334,7 @@
 <div class="ttc" id="class_c_w_1_1_vector3_d_html"><div class="ttname"><a href="class_c_w_1_1_vector3_d.html">CW::Vector3D</a></div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8hpp_source.html#l00112">Geometry.hpp:112</a></div></div>
 <div class="ttc" id="class_c_w_1_1_face_html_abe73fd79e6529f3e9de5b4264147b817"><div class="ttname"><a href="class_c_w_1_1_face.html#abe73fd79e6529f3e9de5b4264147b817">CW::Face::~Face</a></div><div class="ttdeci">~Face()</div><div class="ttdef"><b>Definition:</b> <a href="_face_8cpp_source.html#l00132">Face.cpp:132</a></div></div>
 <div class="ttc" id="class_c_w_1_1_loop_input_html"><div class="ttname"><a href="class_c_w_1_1_loop_input.html">CW::LoopInput</a></div><div class="ttdef"><b>Definition:</b> <a href="_loop_input_8hpp_source.html#l00059">LoopInput.hpp:59</a></div></div>
+<div class="ttc" id="struct_s_u_face_ref_html"><div class="ttname"><a href="struct_s_u_face_ref.html">SUFaceRef</a></div><div class="ttdoc">References a face. </div></div>
 <div class="ttc" id="class_c_w_1_1_face_html_ac8523d3e39e2684209d75f907ccc36d9"><div class="ttname"><a href="class_c_w_1_1_face.html#ac8523d3e39e2684209d75f907ccc36d9">CW::Face::operator=</a></div><div class="ttdeci">Face &amp; operator=(const Face &amp;other)</div><div class="ttdef"><b>Definition:</b> <a href="_face_8cpp_source.html#l00143">Face.cpp:143</a></div></div>
 <div class="ttc" id="class_c_w_1_1_face_html_afa91c3cee0474d92b346ebc27e2cd2d2"><div class="ttname"><a href="class_c_w_1_1_face.html#afa91c3cee0474d92b346ebc27e2cd2d2">CW::Face::vertices</a></div><div class="ttdeci">std::vector&lt; Vertex &gt; vertices() const </div><div class="ttdef"><b>Definition:</b> <a href="_face_8cpp_source.html#l00399">Face.cpp:399</a></div></div>
 <div class="ttc" id="class_c_w_1_1_face_html_a4126ac3da934f335587716e927f87b18"><div class="ttname"><a href="class_c_w_1_1_face.html#a4126ac3da934f335587716e927f87b18">CW::Face::operator!</a></div><div class="ttdeci">bool operator!() const </div><div class="ttdef"><b>Definition:</b> <a href="_face_8cpp_source.html#l00159">Face.cpp:159</a></div></div>
@@ -340,7 +342,7 @@
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Feb 22 2018 16:27:21 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Feb 22 2018 16:30:26 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

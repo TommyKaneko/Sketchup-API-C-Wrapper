@@ -31,6 +31,7 @@
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
       <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
     </ul>
@@ -42,7 +43,7 @@
   </div>
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_f5ad1096a8ea229eeb47a854ea8e871a.html">src</a></li><li class="navelem"><a class="el" href="dir_059aedaba3b45634f6ec731c8b380205.html">SUAPI-CppWrapper</a></li><li class="navelem"><a class="el" href="dir_8b970082db578f41e103709fbfabc55a.html">model</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_1e6f28ee2bb0919f3d150f269c31b204.html">SUAPI-CppWrapper</a></li><li class="navelem"><a class="el" href="dir_13216040867bbb762e833bf5f8aa9ba2.html">model</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -86,15 +87,15 @@
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment">/**************************</span></div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">* Private static methods **</span></div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment">***************************/</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;SUAxesRef Axes::create_axes() {</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  SUAxesRef axes = SU_INVALID;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<a class="code" href="struct_s_u_axes_ref.html">SUAxesRef</a> Axes::create_axes() {</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  <a class="code" href="struct_s_u_axes_ref.html">SUAxesRef</a> axes = SU_INVALID;</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  SUResult res = SUAxesCreate(&amp;axes);</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  assert(res == SU_ERROR_NONE);</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  <span class="keywordflow">return</span> axes;</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;}</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;SUAxesRef Axes::create_custom_axes(<span class="keyword">const</span> SUPoint3D&amp; origin, <span class="keyword">const</span> SUVector3D&amp; xaxis, <span class="keyword">const</span> SUVector3D&amp; yaxis, <span class="keyword">const</span> SUVector3D&amp; zaxis) {</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  SUAxesRef axes = SU_INVALID;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<a class="code" href="struct_s_u_axes_ref.html">SUAxesRef</a> Axes::create_custom_axes(<span class="keyword">const</span> <a class="code" href="struct_s_u_point3_d.html">SUPoint3D</a>&amp; origin, <span class="keyword">const</span> <a class="code" href="struct_s_u_vector3_d.html">SUVector3D</a>&amp; xaxis, <span class="keyword">const</span> <a class="code" href="struct_s_u_vector3_d.html">SUVector3D</a>&amp; yaxis, <span class="keyword">const</span> <a class="code" href="struct_s_u_vector3_d.html">SUVector3D</a>&amp; zaxis) {</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  <a class="code" href="struct_s_u_axes_ref.html">SUAxesRef</a> axes = SU_INVALID;</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  SUResult res = SUAxesCreateCustom(&amp;axes, &amp;origin, &amp;xaxis, &amp;yaxis, &amp;zaxis);</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  <span class="keywordflow">if</span>(res != SU_ERROR_NONE) {</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="comment">// There is a problem with this axis, so return an invalid one</span></div>
@@ -106,12 +107,12 @@
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  <span class="keywordflow">return</span> axes;</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;}</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;SUAxesRef Axes::copy_reference(<span class="keyword">const</span> Axes&amp; other) {</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<a class="code" href="struct_s_u_axes_ref.html">SUAxesRef</a> Axes::copy_reference(<span class="keyword">const</span> Axes&amp; other) {</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <span class="keywordflow">if</span> (other.m_attached) {</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordflow">return</span> other.m_axes;</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  }</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  <span class="comment">// The other axes has not been attached to the model, so copy its properties to a new object</span></div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  SUAxesRef new_axes = create_custom_axes(other.origin(), other.x_axis(), other.y_axis(), other.z_axis());</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  <a class="code" href="struct_s_u_axes_ref.html">SUAxesRef</a> new_axes = create_custom_axes(other.origin(), other.x_axis(), other.y_axis(), other.z_axis());</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  <span class="keywordflow">return</span> new_axes;</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;}</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
@@ -125,7 +126,7 @@
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;{}</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
-<div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="class_c_w_1_1_axes.html#a99bfb635998294cad4f745820158aa37">   76</a></span>&#160;<a class="code" href="class_c_w_1_1_axes.html#a1a014bf74dfc8bc16b62390112014862">Axes::Axes</a>(SUAxesRef axes, <span class="keywordtype">bool</span> attached):</div>
+<div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="class_c_w_1_1_axes.html#a99bfb635998294cad4f745820158aa37">   76</a></span>&#160;<a class="code" href="class_c_w_1_1_axes.html#a1a014bf74dfc8bc16b62390112014862">Axes::Axes</a>(<a class="code" href="struct_s_u_axes_ref.html">SUAxesRef</a> axes, <span class="keywordtype">bool</span> attached):</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  <a class="code" href="class_c_w_1_1_drawing_element.html">DrawingElement</a>(SUAxesToDrawingElement(axes), attached),</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  m_axes(axes)</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;{}</div>
@@ -180,7 +181,7 @@
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;  <span class="keywordflow">if</span> (!(*<span class="keyword">this</span>)) {</div>
 <div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::Axes::x_axis(): Axes is null&quot;</span>);</div>
 <div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;  }</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;  SUVector3D axis;</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;  <a class="code" href="struct_s_u_vector3_d.html">SUVector3D</a> axis;</div>
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;  SUResult res = SUAxesGetXAxis(m_axes, &amp;axis);</div>
 <div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;  assert(res == SU_ERROR_NONE);</div>
 <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="class_c_w_1_1_vector3_d.html">Vector3D</a>(axis);</div>
@@ -190,7 +191,7 @@
 <div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;  <span class="keywordflow">if</span> (!(*<span class="keyword">this</span>)) {</div>
 <div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::Axes::x_axis(): Axes is null&quot;</span>);</div>
 <div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;  }</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;  SUVector3D axis;</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;  <a class="code" href="struct_s_u_vector3_d.html">SUVector3D</a> axis;</div>
 <div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;  SUResult res = SUAxesGetYAxis(m_axes, &amp;axis);</div>
 <div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;  assert(res == SU_ERROR_NONE);</div>
 <div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;  <span class="keywordflow">return</span> Vector3D(axis);</div>
@@ -200,7 +201,7 @@
 <div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;  <span class="keywordflow">if</span> (!(*<span class="keyword">this</span>)) {</div>
 <div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::Axes::x_axis(): Axes is null&quot;</span>);</div>
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;  }</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;  SUVector3D axis;</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;  <a class="code" href="struct_s_u_vector3_d.html">SUVector3D</a> axis;</div>
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;  SUResult res = SUAxesGetZAxis(m_axes, &amp;axis);</div>
 <div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;  assert(res == SU_ERROR_NONE);</div>
 <div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;  <span class="keywordflow">return</span> Vector3D(axis);</div>
@@ -211,7 +212,7 @@
 <div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;  <span class="keywordflow">if</span> (!(*<span class="keyword">this</span>)) {</div>
 <div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::Axes::x_axis(): Axes is null&quot;</span>);</div>
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;  }</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;  SUPoint3D <a class="code" href="class_c_w_1_1_axes.html#af1fee3c2bc800574f7bddb7075a2d3b0">origin</a>;</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;  <a class="code" href="struct_s_u_point3_d.html">SUPoint3D</a> <a class="code" href="class_c_w_1_1_axes.html#af1fee3c2bc800574f7bddb7075a2d3b0">origin</a>;</div>
 <div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;  SUResult res = SUAxesGetOrigin(m_axes, &amp;origin);</div>
 <div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;  assert(res == SU_ERROR_NONE);</div>
 <div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a>(origin);</div>
@@ -222,7 +223,7 @@
 <div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;  <span class="keywordflow">if</span> (!(*<span class="keyword">this</span>)) {</div>
 <div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::Axes::x_axis(): Axes is null&quot;</span>);</div>
 <div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;  }</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;  SUTransformation transform;</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;  <a class="code" href="struct_s_u_transformation.html">SUTransformation</a> transform;</div>
 <div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;  SUResult res = SUAxesGetTransform(m_axes, &amp;transform);</div>
 <div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;  assert(res == SU_ERROR_NONE);</div>
 <div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="class_c_w_1_1_transformation.html">Transformation</a>(transform);</div>
@@ -237,16 +238,20 @@
 <div class="ttc" id="class_c_w_1_1_drawing_element_html"><div class="ttname"><a href="class_c_w_1_1_drawing_element.html">CW::DrawingElement</a></div><div class="ttdef"><b>Definition:</b> <a href="_drawing_element_8hpp_source.html#l00046">DrawingElement.hpp:46</a></div></div>
 <div class="ttc" id="class_c_w_1_1_axes_html_af1fee3c2bc800574f7bddb7075a2d3b0"><div class="ttname"><a href="class_c_w_1_1_axes.html#af1fee3c2bc800574f7bddb7075a2d3b0">CW::Axes::origin</a></div><div class="ttdeci">Point3D origin() const </div><div class="ttdef"><b>Definition:</b> <a href="_axes_8cpp_source.html#l00158">Axes.cpp:158</a></div></div>
 <div class="ttc" id="class_c_w_1_1_axes_html_abd841e88a4137cacf4c6b813a04b38b1"><div class="ttname"><a href="class_c_w_1_1_axes.html#abd841e88a4137cacf4c6b813a04b38b1">CW::Axes::transformation</a></div><div class="ttdeci">Transformation transformation() const </div><div class="ttdef"><b>Definition:</b> <a href="_axes_8cpp_source.html#l00169">Axes.cpp:169</a></div></div>
+<div class="ttc" id="struct_s_u_point3_d_html"><div class="ttname"><a href="struct_s_u_point3_d.html">SUPoint3D</a></div><div class="ttdoc">Represents a point in 3-dimensional space. </div><div class="ttdef"><b>Definition:</b> <a href="_sketch_up_a_p_i_8framework_2_versions_2_a_2_headers_2geometry_8h_source.html#l00038">geometry.h:38</a></div></div>
 <div class="ttc" id="class_c_w_1_1_vector3_d_html"><div class="ttname"><a href="class_c_w_1_1_vector3_d.html">CW::Vector3D</a></div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8hpp_source.html#l00112">Geometry.hpp:112</a></div></div>
 <div class="ttc" id="class_c_w_1_1_drawing_element_html_a0d66dcc652715cba98998b2c69ac15e0"><div class="ttname"><a href="class_c_w_1_1_drawing_element.html#a0d66dcc652715cba98998b2c69ac15e0">CW::DrawingElement::operator=</a></div><div class="ttdeci">DrawingElement &amp; operator=(const DrawingElement &amp;other)</div><div class="ttdef"><b>Definition:</b> <a href="_drawing_element_8cpp_source.html#l00058">DrawingElement.cpp:58</a></div></div>
 <div class="ttc" id="class_c_w_1_1_axes_html_a1a014bf74dfc8bc16b62390112014862"><div class="ttname"><a href="class_c_w_1_1_axes.html#a1a014bf74dfc8bc16b62390112014862">CW::Axes::Axes</a></div><div class="ttdeci">Axes()</div><div class="ttdef"><b>Definition:</b> <a href="_axes_8cpp_source.html#l00070">Axes.cpp:70</a></div></div>
+<div class="ttc" id="struct_s_u_vector3_d_html"><div class="ttname"><a href="struct_s_u_vector3_d.html">SUVector3D</a></div><div class="ttdoc">Represents a vector in 3-dimensional space. </div><div class="ttdef"><b>Definition:</b> <a href="_sketch_up_a_p_i_8framework_2_versions_2_a_2_headers_2geometry_8h_source.html#l00048">geometry.h:48</a></div></div>
 <div class="ttc" id="class_c_w_1_1_axes_html_a17b23828958b3b0cdc6e24d562286b6e"><div class="ttname"><a href="class_c_w_1_1_axes.html#a17b23828958b3b0cdc6e24d562286b6e">CW::Axes::x_axis</a></div><div class="ttdeci">Vector3D x_axis() const </div><div class="ttdef"><b>Definition:</b> <a href="_axes_8cpp_source.html#l00127">Axes.cpp:127</a></div></div>
+<div class="ttc" id="struct_s_u_axes_ref_html"><div class="ttname"><a href="struct_s_u_axes_ref.html">SUAxesRef</a></div><div class="ttdoc">An axes entity reference. </div></div>
 <div class="ttc" id="class_c_w_1_1_transformation_html"><div class="ttname"><a href="class_c_w_1_1_transformation.html">CW::Transformation</a></div><div class="ttdef"><b>Definition:</b> <a href="_transformation_8hpp_source.html#l00043">Transformation.hpp:43</a></div></div>
+<div class="ttc" id="struct_s_u_transformation_html"><div class="ttname"><a href="struct_s_u_transformation.html">SUTransformation</a></div><div class="ttdoc">Represents a 3D (4x4) geometric transformation matrix. </div><div class="ttdef"><b>Definition:</b> <a href="_sketch_up_a_p_i_8framework_2_versions_2_a_2_headers_2geometry_8h_source.html#l00117">geometry.h:117</a></div></div>
 <div class="ttc" id="class_c_w_1_1_axes_html_a73212b0a3fa85a9bdb604ec26d563a9b"><div class="ttname"><a href="class_c_w_1_1_axes.html#a73212b0a3fa85a9bdb604ec26d563a9b">CW::Axes::operator!</a></div><div class="ttdeci">bool operator!() const </div><div class="ttdef"><b>Definition:</b> <a href="_axes_8cpp_source.html#l00119">Axes.cpp:119</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Feb 22 2018 16:27:21 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Feb 22 2018 16:30:26 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

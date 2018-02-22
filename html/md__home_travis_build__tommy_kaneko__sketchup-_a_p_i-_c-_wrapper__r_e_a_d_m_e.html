@@ -31,6 +31,7 @@
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li class="current"><a href="pages.html"><span>Related&#160;Pages</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
       <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
     </ul>
@@ -44,7 +45,7 @@
 <div class="textblock"><p>================ </p>
 <h2>Introduction</h2>
 <p>SketchUp C API is made for the C programming language: For C++ programmers, the non-object-orientated nature of the C API means simple operations for retrieving objects through is time consuming. This project provides a wrapper class for every SketchUp C API object that considerably shortens the amount of code required to perform simple tasks.</p>
-<p>For example, to get an array of faces from an entities object, you could write this: ``` SUEntitiesRef entities = SU_INVALID; SUModelGetEntities(model, &amp;entities); size_t faceCount = 0; SUEntitiesGetNumFaces(entities, &amp;faceCount); std::vector&lt;SUFaceRef&gt; faces[faceCount]; SUEntitiesGetFaces(entities, faceCount, &amp;faces[0], &amp;faceCount); ``` With the C++ Wrapper, to achieve the above, you just need to write this: ``` #include &lt;<a class="el" href="_model_8hpp_source.html">SUAPI-CppWrapper/model/Model.hpp</a>&gt; #include &lt;<a class="el" href="_face_8hpp_source.html">SUAPI-CppWrapper/model/Face.hpp</a>&gt; std::vector&lt;CW::Face&gt; faces = <a class="el" href="class_c_w_1_1_model.html">CW::Model(model)</a>.entities().faces(); ``` Added to this benefit, the wrapper classes have helper functions to help with geometric manipulations, much in the style of the SketchUp Ruby API </p>
+<p>For example, to get an array of faces from an entities object, you could write this: ``` <a class="el" href="struct_s_u_entities_ref.html" title="References a container object for all entities in a model, component definition or a group...">SUEntitiesRef</a> entities = SU_INVALID; SUModelGetEntities(model, &amp;entities); size_t faceCount = 0; SUEntitiesGetNumFaces(entities, &amp;faceCount); std::vector&lt;SUFaceRef&gt; faces[faceCount]; SUEntitiesGetFaces(entities, faceCount, &amp;faces[0], &amp;faceCount); ``` With the C++ Wrapper, to achieve the above, you just need to write this: ``` #include &lt;<a class="el" href="_model_8hpp_source.html">SUAPI-CppWrapper/model/Model.hpp</a>&gt; #include &lt;<a class="el" href="_face_8hpp_source.html">SUAPI-CppWrapper/model/Face.hpp</a>&gt; std::vector&lt;CW::Face&gt; faces = <a class="el" href="class_c_w_1_1_model.html">CW::Model(model)</a>.entities().faces(); ``` Added to this benefit, the wrapper classes have helper functions to help with geometric manipulations, much in the style of the SketchUp Ruby API </p>
 <hr/>
  <h2>Reference</h2>
 <p>The project is documented in Doxygen, accessible here: <a href="https://tommykaneko.github.io/Sketchup-API-C-Wrapper/html">https://tommykaneko.github.io/Sketchup-API-C-Wrapper/html</a> </p>
@@ -59,16 +60,16 @@
 <hr/>
  <h2>Programming Principles</h2>
 <h5>Data Structure</h5>
-<p>Each C++ Wrapper class object holds its equivalent C API class object as a member variable (ie - <a class="el" href="class_c_w_1_1_face.html">CW::Face</a> holds SUFaceRef). Further variables should be kept to a minimum, if at all.</p>
+<p>Each C++ Wrapper class object holds its equivalent C API class object as a member variable (ie - <a class="el" href="class_c_w_1_1_face.html">CW::Face</a> holds <a class="el" href="struct_s_u_face_ref.html" title="References a face. ">SUFaceRef</a>). Further variables should be kept to a minimum, if at all.</p>
 <h5>Releasing Objects</h5>
 <p>With the use of the C++ Wrapper, the SketchUp API should "feel" like a native C++ API. This means the idea of "releasing" objects that are not attached to a model object, for example, should not have to be considered by the programmer. Instead, the wrapper class will deal with releasing of an object when the object goes out of scope.</p>
-<p>The only exception to this rule is if the wrapped object (<code><a class="el" href="class_c_w_1_1_face.html">CW::Face</a></code>, for example), is converted to a regular C object ( <code>SUFaceRef</code>, for example), in which case it can be assumed that the programmer is taking charge of the C object and will be dealing with any releasing.</p>
+<p>The only exception to this rule is if the wrapped object (<code><a class="el" href="class_c_w_1_1_face.html">CW::Face</a></code>, for example), is converted to a regular C object ( <code><a class="el" href="struct_s_u_face_ref.html" title="References a face. ">SUFaceRef</a></code>, for example), in which case it can be assumed that the programmer is taking charge of the C object and will be dealing with any releasing.</p>
 <h5>Method Names</h5>
 <p>Method names take inspiration mostly from the SketchUp Ruby API. That said, these are not wholy consistent, and some liberties have been taken to make the method names make sense. </p>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Feb 22 2018 16:27:22 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Feb 22 2018 16:30:27 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
