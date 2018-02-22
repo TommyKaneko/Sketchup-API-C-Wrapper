@@ -116,7 +116,7 @@
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  <span class="keywordtype">size_t</span> num_edges = 0;</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  SUResult res = SUCurveGetNumEdges(m_curve, &amp;num_edges);</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  assert(res == SU_ERROR_NONE);</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  std::vector&lt;SUEdgeRef&gt; ref_edges(num_edges);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  std::vector&lt;SUEdgeRef&gt; ref_edges(num_edges, SU_INVALID);</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  res = SUCurveGetEdges(m_curve, num_edges, ref_edges.data(), &amp;num_edges);</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  assert(res == SU_ERROR_NONE);</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  std::vector&lt;Edge&gt; edges(num_edges);</div>
@@ -168,7 +168,7 @@
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Feb 22 2018 10:34:39 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Feb 22 2018 10:53:04 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

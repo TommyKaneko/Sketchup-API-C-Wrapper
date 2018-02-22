@@ -134,7 +134,7 @@
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  <span class="keywordtype">size_t</span> count = 0;</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  SUResult res = SULoopGetNumVertices(m_loop, &amp;count);</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  assert(res == SU_ERROR_NONE);</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  std::vector&lt;SUEdgeRef&gt; edge_refs(count);</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  std::vector&lt;SUEdgeRef&gt; edge_refs(count, SU_INVALID);</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  res = SULoopGetEdges(m_loop, count, edge_refs.data(), &amp;count);</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  assert(res == SU_ERROR_NONE);</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  std::vector&lt;Edge&gt; <a class="code" href="class_c_w_1_1_loop.html#abc9600f8e4d18c2058461d8177ac9bd5">edges</a>(count);</div>
@@ -153,7 +153,7 @@
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;  <span class="keywordtype">size_t</span> count = 0;</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;  SUResult res = SULoopGetNumVertices(m_loop, &amp;count);</div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;  assert(res == SU_ERROR_NONE);</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;  std::vector&lt;SUVertexRef&gt; verts_array(count);</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;  std::vector&lt;SUVertexRef&gt; verts_array(count, SU_INVALID);</div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;  res = SULoopGetVertices(m_loop, count, verts_array.data(), &amp;count);</div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;  assert(res == SU_ERROR_NONE);</div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;  std::vector&lt;Vertex&gt; <a class="code" href="class_c_w_1_1_loop.html#a6994648358236c506e0d9fae458f5174">vertices</a>(count);</div>
@@ -330,7 +330,7 @@
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Feb 22 2018 10:34:39 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Feb 22 2018 10:53:04 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

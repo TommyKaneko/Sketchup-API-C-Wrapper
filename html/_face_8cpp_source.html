@@ -361,7 +361,7 @@
 <div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;  }</div>
 <div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;  <span class="keywordtype">size_t</span> num_loops = 0;</div>
 <div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;  SUFaceGetNumInnerLoops(m_face, &amp;num_loops);</div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;  std::vector&lt;SULoopRef&gt; <a class="code" href="class_c_w_1_1_face.html#a9ece8e40cb9c4a96a3150997964b0c34">inner_loops</a>(num_loops);</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;  std::vector&lt;SULoopRef&gt; <a class="code" href="class_c_w_1_1_face.html#a9ece8e40cb9c4a96a3150997964b0c34">inner_loops</a>(num_loops, SU_INVALID);</div>
 <div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;  SUFaceGetInnerLoops(m_face, num_loops, inner_loops.data(), &amp;num_loops);</div>
 <div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;  std::vector&lt;Loop&gt; loops(num_loops);</div>
 <div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;  std::transform(inner_loops.begin(), inner_loops.end(), loops.begin(),</div>
@@ -454,7 +454,7 @@
 <div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;  }</div>
 <div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;  <span class="keywordtype">size_t</span> num_vertices = 0;</div>
 <div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;  SUFaceGetNumVertices(m_face, &amp;num_vertices);</div>
-<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;  std::vector&lt;SUVertexRef&gt; vertex_refs(num_vertices);</div>
+<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;  std::vector&lt;SUVertexRef&gt; vertex_refs(num_vertices, SU_INVALID);</div>
 <div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;  SUFaceGetVertices(m_face, num_vertices, vertex_refs.data(), &amp;num_vertices);</div>
 <div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;  std::vector&lt;Vertex&gt; <a class="code" href="class_c_w_1_1_face.html#afa91c3cee0474d92b346ebc27e2cd2d2">vertices</a>(num_vertices);</div>
 <div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;  std::transform(vertex_refs.begin(), vertex_refs.end(), vertices.begin(),</div>
@@ -491,7 +491,7 @@
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Feb 22 2018 10:34:39 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Feb 22 2018 10:53:04 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

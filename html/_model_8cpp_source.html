@@ -219,7 +219,7 @@
 <div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;  <span class="keywordtype">size_t</span> count = 0;</div>
 <div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;  SUResult res = SUModelGetNumAttributeDictionaries(m_model, &amp;count);</div>
 <div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;  assert(res == SU_ERROR_NONE);</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;  std::vector&lt;SUAttributeDictionaryRef&gt; dict_refs(count);</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;  std::vector&lt;SUAttributeDictionaryRef&gt; dict_refs(count, SU_INVALID);</div>
 <div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;  res = SUModelGetAttributeDictionaries(m_model, count, dict_refs.data(), &amp;count);</div>
 <div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;  assert(res == SU_ERROR_NONE);</div>
 <div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;  std::vector&lt;AttributeDictionary&gt; dicts(count);</div>
@@ -282,7 +282,7 @@
 <div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;  <span class="keywordtype">size_t</span> count = 0;</div>
 <div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;  SUResult res = SUModelGetNumComponentDefinitions(m_model, &amp;count);</div>
 <div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;  assert(res == SU_ERROR_NONE);</div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;  std::vector&lt;SUComponentDefinitionRef&gt; def_refs(count);</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;  std::vector&lt;SUComponentDefinitionRef&gt; def_refs(count, SU_INVALID);</div>
 <div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;  res = SUModelGetComponentDefinitions(m_model, count, def_refs.data(), &amp;count);</div>
 <div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;  assert(res == SU_ERROR_NONE);</div>
 <div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;  std::vector&lt;ComponentDefinition&gt; defs(count);</div>
@@ -301,7 +301,7 @@
 <div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;  <span class="keywordtype">size_t</span> count = 0;</div>
 <div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;  SUResult res = SUModelGetNumGroupDefinitions(m_model, &amp;count);</div>
 <div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;  assert(res == SU_ERROR_NONE);</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;  std::vector&lt;SUComponentDefinitionRef&gt; def_refs(count);</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;  std::vector&lt;SUComponentDefinitionRef&gt; def_refs(count, SU_INVALID);</div>
 <div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;  res = SUModelGetGroupDefinitions(m_model, count, def_refs.data(), &amp;count);</div>
 <div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;  assert(res == SU_ERROR_NONE);</div>
 <div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;  std::vector&lt;ComponentDefinition&gt; defs(count);</div>
@@ -373,7 +373,7 @@
 <div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;  <span class="keywordtype">size_t</span> count = 0;</div>
 <div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;  SUResult res = SUModelGetNumLayers(m_model, &amp;count);</div>
 <div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;  assert(res == SU_ERROR_NONE);</div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;  std::vector&lt;SULayerRef&gt; layer_refs(count);</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;  std::vector&lt;SULayerRef&gt; layer_refs(count, SU_INVALID);</div>
 <div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;  res = SUModelGetLayers(m_model, count, layer_refs.data(), &amp;count);</div>
 <div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;  assert(res == SU_ERROR_NONE);</div>
 <div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;  std::vector&lt;Layer&gt; layers(count);</div>
@@ -651,7 +651,7 @@
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Feb 22 2018 10:34:39 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Feb 22 2018 10:53:04 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
