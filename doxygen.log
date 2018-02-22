@@ -2725,36 +2725,36 @@ Generating docs for compound CW::RenderingOptions...
 Generating docs for compound CW::ShadowInfo...
 Generating docs for compound CW::Texture...
 Generating docs for compound CW::TextureWriter...
-Generating docs for compo/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/TypedValue.hpp:53: warning: Member TypedValue(SUTypedValueRef typed_val) (function) of class CW::TypedValue is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/TypedValue.hpp:54: warning: Member TypedValue(const char chars[]) (function) of class CW::TypedValue is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/TypedValue.hpp:65: warning: Member ref() const  (function) of class CW::TypedValue is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/TypedValue.hpp:66: warning: Member operator SUTypedValueRef() (function) of class CW::TypedValue is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/TypedValue.hpp:67: warning: Member operator SUTypedValueRef *() (function) of class CW::TypedValue is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/TypedValue.hpp:90: warning: Member byte_value(const char byte_val) (function) of class CW::TypedValue is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/TypedValue.hpp:91: warning: Member operator char() const  (function) of class CW::TypedValue is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/TypedValue.hpp:97: warning: Member int16_value(const int16_t int16_val) (function) of class CW::TypedValue is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/TypedValue.hpp:98: warning: Member operator int16_t() const  (function) of class CW::TypedValue is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/TypedValue.hpp:104: warning: Member int32_value(const int32_t int32_val) (function) of class CW::TypedValue is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/TypedValue.hpp:105: warning: Member operator int32_t() const  (function) of class CW::TypedValue is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/TypedValue.hpp:111: warning: Member float_value(const float float_val) (function) of class CW::TypedValue is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/TypedValue.hpp:112: warning: Member operator float() const  (function) of class CW::TypedValue is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/TypedValue.hpp:118: warning: Member double_value(const double double_val) (function) of class CW::TypedValue is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/TypedValue.hpp:119: warning: Member operator double() const  (function) of class CW::TypedValue is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/TypedValue.hpp:125: warning: Member bool_value(bool bool_val) (function) of class CW::TypedValue is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/TypedValue.hpp:126: warning: Member operator bool() const  (function) of class CW::TypedValue is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/TypedValue.hpp:132: warning: Member color_value(const Color &color_val) (function) of class CW::TypedValue is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/TypedValue.hpp:133: warning: Member operator Color() const  (function) of class CW::TypedValue is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/TypedValue.hpp:139: warning: Member time_value(int64_t time_val) (function) of class CW::TypedValue is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/TypedValue.hpp:140: warning: Member operator int64_t() const  (function) of class CW::TypedValue is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/TypedValue.hpp:146: warning: Member string_value(const String &string_val) (function) of class CW::TypedValue is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/TypedValue.hpp:147: warning: Member string_value(const std::string &string_val) (function) of class CW::TypedValue is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/TypedValue.hpp:148: warning: Member operator String() const  (function) of class CW::TypedValue is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/TypedValue.hpp:149: warning: Member operator std::string() const  (function) of class CW::TypedValue is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/TypedValue.hpp:155: warning: Member vector_value(const Vector3D &vector_val) (function) of class CW::TypedValue is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/TypedValue.hpp:156: warning: Member operator Vector3D() const  (function) of class CW::TypedValue is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/TypedValue.hpp:162: warning: Member typed_value_array(std::vector< TypedValue > &typed_val_array) (function) of class CW::TypedValue is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/TypedValue.hpp:163: warning: Member operator std::vector< TypedValue >() const  (function) of class CW::TypedValue is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/TypedValue.hpp:169: warning: Member operator!=(const TypedValue &val1, const TypedValue &val2) (friend) of class CW::TypedValue is not documented.
+Generating docs for compo/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/TypedValue.hpp:57: warning: Member TypedValue(SUTypedValueRef typed_val, bool attached=false) (function) of class CW::TypedValue is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/TypedValue.hpp:58: warning: Member TypedValue(const char chars[]) (function) of class CW::TypedValue is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/TypedValue.hpp:69: warning: Member ref() const  (function) of class CW::TypedValue is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/TypedValue.hpp:70: warning: Member operator SUTypedValueRef() (function) of class CW::TypedValue is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/TypedValue.hpp:71: warning: Member operator SUTypedValueRef *() (function) of class CW::TypedValue is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/TypedValue.hpp:94: warning: Member byte_value(const char byte_val) (function) of class CW::TypedValue is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/TypedValue.hpp:95: warning: Member operator char() const  (function) of class CW::TypedValue is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/TypedValue.hpp:101: warning: Member int16_value(const int16_t int16_val) (function) of class CW::TypedValue is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/TypedValue.hpp:102: warning: Member operator int16_t() const  (function) of class CW::TypedValue is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/TypedValue.hpp:108: warning: Member int32_value(const int32_t int32_val) (function) of class CW::TypedValue is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/TypedValue.hpp:109: warning: Member operator int32_t() const  (function) of class CW::TypedValue is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/TypedValue.hpp:115: warning: Member float_value(const float float_val) (function) of class CW::TypedValue is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/TypedValue.hpp:116: warning: Member operator float() const  (function) of class CW::TypedValue is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/TypedValue.hpp:122: warning: Member double_value(const double double_val) (function) of class CW::TypedValue is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/TypedValue.hpp:123: warning: Member operator double() const  (function) of class CW::TypedValue is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/TypedValue.hpp:129: warning: Member bool_value(bool bool_val) (function) of class CW::TypedValue is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/TypedValue.hpp:130: warning: Member operator bool() const  (function) of class CW::TypedValue is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/TypedValue.hpp:136: warning: Member color_value(const Color &color_val) (function) of class CW::TypedValue is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/TypedValue.hpp:137: warning: Member operator Color() const  (function) of class CW::TypedValue is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/TypedValue.hpp:143: warning: Member time_value(int64_t time_val) (function) of class CW::TypedValue is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/TypedValue.hpp:144: warning: Member operator int64_t() const  (function) of class CW::TypedValue is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/TypedValue.hpp:150: warning: Member string_value(const String &string_val) (function) of class CW::TypedValue is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/TypedValue.hpp:151: warning: Member string_value(const std::string &string_val) (function) of class CW::TypedValue is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/TypedValue.hpp:152: warning: Member operator String() const  (function) of class CW::TypedValue is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/TypedValue.hpp:153: warning: Member operator std::string() const  (function) of class CW::TypedValue is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/TypedValue.hpp:159: warning: Member vector_value(const Vector3D &vector_val) (function) of class CW::TypedValue is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/TypedValue.hpp:160: warning: Member operator Vector3D() const  (function) of class CW::TypedValue is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/TypedValue.hpp:166: warning: Member typed_value_array(std::vector< TypedValue > &typed_val_array) (function) of class CW::TypedValue is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/TypedValue.hpp:167: warning: Member operator std::vector< TypedValue >() const  (function) of class CW::TypedValue is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/TypedValue.hpp:173: warning: Member operator!=(const TypedValue &val1, const TypedValue &val2) (friend) of class CW::TypedValue is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/UVHelper.hpp:47: warning: Member UVHelper(SUUVHelperRef uv_helper_ref, bool release_on_destroy=false) (function) of class CW::UVHelper is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/UVHelper.hpp:49: warning: Member operator SUUVHelperRef() const  (function) of class CW::UVHelper is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/SUAPI-CppWrapper/model/UVHelper.hpp:50: warning: Member operator SUUVHelperRef *() const  (function) of class CW::UVHelper is not documented.
@@ -2815,5 +2815,5 @@ Generating file index...
 Generating file member index...
 Generating example index...
 finalizing index lists...
-lookup cache used 4423/65536 hits=95846 misses=4678
+lookup cache used 4425/65536 hits=95865 misses=4680
 finished...
