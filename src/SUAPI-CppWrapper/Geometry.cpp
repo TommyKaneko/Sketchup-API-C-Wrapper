@@ -46,15 +46,13 @@ namespace CW {
 */
 Radians::Radians(const double &rhs):
   m_val(rhs)
-{ 
-    if(rhs > (2*PI)) {
-      int numPi = rhs / (2*PI); // Get number of times 2pi fits in to rhs
-      m_val = rhs - (numPi*2*PI);
-    }
-    else if(rhs < 0.0) {
-      int numPi = (rhs / (2*PI)) - 1; // Get number of times 2pi fits in to rhs
-      m_val = rhs - (numPi*2*PI);
-    }
+{
+  if(rhs > (2 * PI)) {
+    m_val = std::fmod(rhs, 2 * PI);
+  }
+  else if(rhs < 0.0) {
+    m_val = std::fmod(rhs, -(2 * PI));
+  }
 }
 
 // Copy constructor
