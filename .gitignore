@@ -48,6 +48,6 @@ Thumbs.db
 
 # Visual Studio
 .vs/
-
-# Project specific
-
+Debug/
+Release/
+*.vcxproj.user
