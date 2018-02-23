@@ -27,104 +27,104 @@
     <ClInclude Include="targetver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\SUAPI-CppWrapper\Color.hpp">
+    <ClInclude Include="..\include\SUAPI-CppWrapper\model\AttributeDictionary.hpp">
+      <Filter>Header Files\model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SUAPI-CppWrapper\model\Axes.hpp">
+      <Filter>Header Files\model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SUAPI-CppWrapper\model\Classifications.hpp">
+      <Filter>Header Files\model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SUAPI-CppWrapper\model\ComponentDefinition.hpp">
+      <Filter>Header Files\model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SUAPI-CppWrapper\model\ComponentInstance.hpp">
+      <Filter>Header Files\model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SUAPI-CppWrapper\model\Curve.hpp">
+      <Filter>Header Files\model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SUAPI-CppWrapper\model\DrawingElement.hpp">
+      <Filter>Header Files\model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SUAPI-CppWrapper\model\Edge.hpp">
+      <Filter>Header Files\model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SUAPI-CppWrapper\model\Entities.hpp">
+      <Filter>Header Files\model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SUAPI-CppWrapper\model\Entity.hpp">
+      <Filter>Header Files\model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SUAPI-CppWrapper\model\Face.hpp">
+      <Filter>Header Files\model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SUAPI-CppWrapper\model\GeometryInput.hpp">
+      <Filter>Header Files\model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SUAPI-CppWrapper\model\Group.hpp">
+      <Filter>Header Files\model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SUAPI-CppWrapper\model\ImageRep.hpp">
+      <Filter>Header Files\model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SUAPI-CppWrapper\model\Layer.hpp">
+      <Filter>Header Files\model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SUAPI-CppWrapper\model\Loop.hpp">
+      <Filter>Header Files\model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SUAPI-CppWrapper\model\LoopInput.hpp">
+      <Filter>Header Files\model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SUAPI-CppWrapper\model\Material.hpp">
+      <Filter>Header Files\model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SUAPI-CppWrapper\model\MaterialInput.hpp">
+      <Filter>Header Files\model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SUAPI-CppWrapper\model\Model.hpp">
+      <Filter>Header Files\model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SUAPI-CppWrapper\model\OptionsManager.hpp">
+      <Filter>Header Files\model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SUAPI-CppWrapper\model\RenderingOptions.hpp">
+      <Filter>Header Files\model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SUAPI-CppWrapper\model\ShadowInfo.hpp">
+      <Filter>Header Files\model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SUAPI-CppWrapper\model\Texture.hpp">
+      <Filter>Header Files\model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SUAPI-CppWrapper\model\TextureWriter.hpp">
+      <Filter>Header Files\model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SUAPI-CppWrapper\model\TypedValue.hpp">
+      <Filter>Header Files\model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SUAPI-CppWrapper\model\UVHelper.hpp">
+      <Filter>Header Files\model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SUAPI-CppWrapper\model\Vertex.hpp">
+      <Filter>Header Files\model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SUAPI-CppWrapper\Color.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\SUAPI-CppWrapper\Geometry.hpp">
+    <ClInclude Include="..\include\SUAPI-CppWrapper\Geometry.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\SUAPI-CppWrapper\Initialize.hpp">
+    <ClInclude Include="..\include\SUAPI-CppWrapper\Initialize.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\SUAPI-CppWrapper\String.hpp">
+    <ClInclude Include="..\include\SUAPI-CppWrapper\String.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\SUAPI-CppWrapper\Transformation.hpp">
+    <ClInclude Include="..\include\SUAPI-CppWrapper\Transformation.hpp">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\SUAPI-CppWrapper\model\Texture.hpp">
-      <Filter>Header Files\model</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\SUAPI-CppWrapper\model\TextureWriter.hpp">
-      <Filter>Header Files\model</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\SUAPI-CppWrapper\model\TypedValue.hpp">
-      <Filter>Header Files\model</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\SUAPI-CppWrapper\model\UVHelper.hpp">
-      <Filter>Header Files\model</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\SUAPI-CppWrapper\model\Vertex.hpp">
-      <Filter>Header Files\model</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\SUAPI-CppWrapper\model\AttributeDictionary.hpp">
-      <Filter>Header Files\model</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\SUAPI-CppWrapper\model\Axes.hpp">
-      <Filter>Header Files\model</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\SUAPI-CppWrapper\model\Classifications.hpp">
-      <Filter>Header Files\model</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\SUAPI-CppWrapper\model\ComponentDefinition.hpp">
-      <Filter>Header Files\model</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\SUAPI-CppWrapper\model\ComponentInstance.hpp">
-      <Filter>Header Files\model</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\SUAPI-CppWrapper\model\Curve.hpp">
-      <Filter>Header Files\model</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\SUAPI-CppWrapper\model\DrawingElement.hpp">
-      <Filter>Header Files\model</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\SUAPI-CppWrapper\model\Edge.hpp">
-      <Filter>Header Files\model</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\SUAPI-CppWrapper\model\Entities.hpp">
-      <Filter>Header Files\model</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\SUAPI-CppWrapper\model\Entity.hpp">
-      <Filter>Header Files\model</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\SUAPI-CppWrapper\model\Face.hpp">
-      <Filter>Header Files\model</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\SUAPI-CppWrapper\model\GeometryInput.hpp">
-      <Filter>Header Files\model</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\SUAPI-CppWrapper\model\Group.hpp">
-      <Filter>Header Files\model</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\SUAPI-CppWrapper\model\ImageRep.hpp">
-      <Filter>Header Files\model</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\SUAPI-CppWrapper\model\Layer.hpp">
-      <Filter>Header Files\model</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\SUAPI-CppWrapper\model\Loop.hpp">
-      <Filter>Header Files\model</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\SUAPI-CppWrapper\model\LoopInput.hpp">
-      <Filter>Header Files\model</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\SUAPI-CppWrapper\model\Material.hpp">
-      <Filter>Header Files\model</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\SUAPI-CppWrapper\model\MaterialInput.hpp">
-      <Filter>Header Files\model</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\SUAPI-CppWrapper\model\Model.hpp">
-      <Filter>Header Files\model</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\SUAPI-CppWrapper\model\OptionsManager.hpp">
-      <Filter>Header Files\model</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\SUAPI-CppWrapper\model\RenderingOptions.hpp">
-      <Filter>Header Files\model</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\SUAPI-CppWrapper\model\ShadowInfo.hpp">
-      <Filter>Header Files\model</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

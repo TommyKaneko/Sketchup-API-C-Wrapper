@@ -90,7 +90,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)src\;$(SolutionDir)third-party\SDK_Win_x64_18-0-18664\headers\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)include\;$(SolutionDir)third-party\SDK_Win_x64_18-0-18664\headers\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ForcedIncludeFiles>stdafx.h</ForcedIncludeFiles>
     </ClCompile>
     <Link>
@@ -106,7 +106,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)src\;$(SolutionDir)third-party\SDK_Win_x64_18-0-18664\headers\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)include\;$(SolutionDir)third-party\SDK_Win_x64_18-0-18664\headers\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ForcedIncludeFiles>stdafx.h</ForcedIncludeFiles>
     </ClCompile>
     <Link>
@@ -124,7 +124,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)src\;$(SolutionDir)third-party\SDK_Win_x64_18-0-18664\headers\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)include\;$(SolutionDir)third-party\SDK_Win_x64_18-0-18664\headers\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ForcedIncludeFiles>stdafx.h</ForcedIncludeFiles>
     </ClCompile>
     <Link>
@@ -144,7 +144,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)src\;$(SolutionDir)third-party\SDK_Win_x64_18-0-18664\headers\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)include\;$(SolutionDir)third-party\SDK_Win_x64_18-0-18664\headers\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ForcedIncludeFiles>stdafx.h</ForcedIncludeFiles>
     </ClCompile>
     <Link>
@@ -155,39 +155,39 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\src\SUAPI-CppWrapper\Color.hpp" />
-    <ClInclude Include="..\src\SUAPI-CppWrapper\Geometry.hpp" />
-    <ClInclude Include="..\src\SUAPI-CppWrapper\Initialize.hpp" />
-    <ClInclude Include="..\src\SUAPI-CppWrapper\model\AttributeDictionary.hpp" />
-    <ClInclude Include="..\src\SUAPI-CppWrapper\model\Axes.hpp" />
-    <ClInclude Include="..\src\SUAPI-CppWrapper\model\Classifications.hpp" />
-    <ClInclude Include="..\src\SUAPI-CppWrapper\model\ComponentDefinition.hpp" />
-    <ClInclude Include="..\src\SUAPI-CppWrapper\model\ComponentInstance.hpp" />
-    <ClInclude Include="..\src\SUAPI-CppWrapper\model\Curve.hpp" />
-    <ClInclude Include="..\src\SUAPI-CppWrapper\model\DrawingElement.hpp" />
-    <ClInclude Include="..\src\SUAPI-CppWrapper\model\Edge.hpp" />
-    <ClInclude Include="..\src\SUAPI-CppWrapper\model\Entities.hpp" />
-    <ClInclude Include="..\src\SUAPI-CppWrapper\model\Entity.hpp" />
-    <ClInclude Include="..\src\SUAPI-CppWrapper\model\Face.hpp" />
-    <ClInclude Include="..\src\SUAPI-CppWrapper\model\GeometryInput.hpp" />
-    <ClInclude Include="..\src\SUAPI-CppWrapper\model\Group.hpp" />
-    <ClInclude Include="..\src\SUAPI-CppWrapper\model\ImageRep.hpp" />
-    <ClInclude Include="..\src\SUAPI-CppWrapper\model\Layer.hpp" />
-    <ClInclude Include="..\src\SUAPI-CppWrapper\model\Loop.hpp" />
-    <ClInclude Include="..\src\SUAPI-CppWrapper\model\LoopInput.hpp" />
-    <ClInclude Include="..\src\SUAPI-CppWrapper\model\Material.hpp" />
-    <ClInclude Include="..\src\SUAPI-CppWrapper\model\MaterialInput.hpp" />
-    <ClInclude Include="..\src\SUAPI-CppWrapper\model\Model.hpp" />
-    <ClInclude Include="..\src\SUAPI-CppWrapper\model\OptionsManager.hpp" />
-    <ClInclude Include="..\src\SUAPI-CppWrapper\model\RenderingOptions.hpp" />
-    <ClInclude Include="..\src\SUAPI-CppWrapper\model\ShadowInfo.hpp" />
-    <ClInclude Include="..\src\SUAPI-CppWrapper\model\Texture.hpp" />
-    <ClInclude Include="..\src\SUAPI-CppWrapper\model\TextureWriter.hpp" />
-    <ClInclude Include="..\src\SUAPI-CppWrapper\model\TypedValue.hpp" />
-    <ClInclude Include="..\src\SUAPI-CppWrapper\model\UVHelper.hpp" />
-    <ClInclude Include="..\src\SUAPI-CppWrapper\model\Vertex.hpp" />
-    <ClInclude Include="..\src\SUAPI-CppWrapper\String.hpp" />
-    <ClInclude Include="..\src\SUAPI-CppWrapper\Transformation.hpp" />
+    <ClInclude Include="..\include\SUAPI-CppWrapper\Color.hpp" />
+    <ClInclude Include="..\include\SUAPI-CppWrapper\Geometry.hpp" />
+    <ClInclude Include="..\include\SUAPI-CppWrapper\Initialize.hpp" />
+    <ClInclude Include="..\include\SUAPI-CppWrapper\model\AttributeDictionary.hpp" />
+    <ClInclude Include="..\include\SUAPI-CppWrapper\model\Axes.hpp" />
+    <ClInclude Include="..\include\SUAPI-CppWrapper\model\Classifications.hpp" />
+    <ClInclude Include="..\include\SUAPI-CppWrapper\model\ComponentDefinition.hpp" />
+    <ClInclude Include="..\include\SUAPI-CppWrapper\model\ComponentInstance.hpp" />
+    <ClInclude Include="..\include\SUAPI-CppWrapper\model\Curve.hpp" />
+    <ClInclude Include="..\include\SUAPI-CppWrapper\model\DrawingElement.hpp" />
+    <ClInclude Include="..\include\SUAPI-CppWrapper\model\Edge.hpp" />
+    <ClInclude Include="..\include\SUAPI-CppWrapper\model\Entities.hpp" />
+    <ClInclude Include="..\include\SUAPI-CppWrapper\model\Entity.hpp" />
+    <ClInclude Include="..\include\SUAPI-CppWrapper\model\Face.hpp" />
+    <ClInclude Include="..\include\SUAPI-CppWrapper\model\GeometryInput.hpp" />
+    <ClInclude Include="..\include\SUAPI-CppWrapper\model\Group.hpp" />
+    <ClInclude Include="..\include\SUAPI-CppWrapper\model\ImageRep.hpp" />
+    <ClInclude Include="..\include\SUAPI-CppWrapper\model\Layer.hpp" />
+    <ClInclude Include="..\include\SUAPI-CppWrapper\model\Loop.hpp" />
+    <ClInclude Include="..\include\SUAPI-CppWrapper\model\LoopInput.hpp" />
+    <ClInclude Include="..\include\SUAPI-CppWrapper\model\Material.hpp" />
+    <ClInclude Include="..\include\SUAPI-CppWrapper\model\MaterialInput.hpp" />
+    <ClInclude Include="..\include\SUAPI-CppWrapper\model\Model.hpp" />
+    <ClInclude Include="..\include\SUAPI-CppWrapper\model\OptionsManager.hpp" />
+    <ClInclude Include="..\include\SUAPI-CppWrapper\model\RenderingOptions.hpp" />
+    <ClInclude Include="..\include\SUAPI-CppWrapper\model\ShadowInfo.hpp" />
+    <ClInclude Include="..\include\SUAPI-CppWrapper\model\Texture.hpp" />
+    <ClInclude Include="..\include\SUAPI-CppWrapper\model\TextureWriter.hpp" />
+    <ClInclude Include="..\include\SUAPI-CppWrapper\model\TypedValue.hpp" />
+    <ClInclude Include="..\include\SUAPI-CppWrapper\model\UVHelper.hpp" />
+    <ClInclude Include="..\include\SUAPI-CppWrapper\model\Vertex.hpp" />
+    <ClInclude Include="..\include\SUAPI-CppWrapper\String.hpp" />
+    <ClInclude Include="..\include\SUAPI-CppWrapper\Transformation.hpp" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
