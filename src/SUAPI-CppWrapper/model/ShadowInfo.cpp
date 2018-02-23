@@ -35,7 +35,7 @@ std::vector<std::string> ShadowInfo::get_keys()
   std::vector<SUStringRef> refs(len, SU_INVALID);
   for(auto i = 0; i < len; i++) {
     res = SUStringCreate(&refs[i]);
-    assert(red == SU_ERROR_NONE);
+    assert(res == SU_ERROR_NONE);
   }
   res = SUShadowInfoGetKeys(m_shadow_info, len, &refs[0], &count);
   assert(res == SU_ERROR_NONE);
