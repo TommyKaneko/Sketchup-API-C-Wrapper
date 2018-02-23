@@ -25,6 +25,7 @@
 // SOFTWARE.
 //
 #include <cassert>
+#include <stdexcept>
 
 #include "SUAPI-CppWrapper/model/TypedValue.hpp"
 #include "SUAPI-CppWrapper/Color.hpp"
@@ -162,7 +163,7 @@ TypedValue::~TypedValue() {
 
 SUTypedValueType TypedValue::get_type() const {
   if (!(*this)) {
-    return SUTypedValueType::SUTypedValueType_Empty;
+    throw std::logic_error("CW::TypedValue::get_type(): TypedValue is null");
   }
   SUTypedValueType type;
   SUResult res = SUTypedValueGetType(m_typed_value, &type);
@@ -173,7 +174,7 @@ SUTypedValueType TypedValue::get_type() const {
 
 char TypedValue::byte_value() const {
   if (!(*this)) {
-    return 0;
+    throw std::logic_error("CW::TypedValue::byte_value(): TypedValue is null");
   }
   char byte_val;
   SUResult res = SUTypedValueGetByte(m_typed_value, &byte_val);
@@ -199,7 +200,7 @@ TypedValue::operator char() const {
 
 int16_t TypedValue::int16_value() const {
   if (!(*this)) {
-    return 0;
+    throw std::logic_error("CW::TypedValue::int16_value(): TypedValue is null");
   }
   int16_t int16_val;
   SUResult res = SUTypedValueGetInt16(m_typed_value, &int16_val);
@@ -225,7 +226,7 @@ TypedValue::operator int16_t() const {
 
 int32_t TypedValue::int32_value() const {
   if (!(*this)) {
-    return 0;
+    throw std::logic_error("CW::TypedValue::int32_value(): TypedValue is null");
   }
   int32_t int32_val;
   SUResult res = SUTypedValueGetInt32(m_typed_value, &int32_val);
@@ -251,7 +252,7 @@ TypedValue::operator int32_t() const {
 
 float TypedValue::float_value() const{
   if (!(*this)) {
-    return 0;
+    throw std::logic_error("CW::TypedValue::float_value(): TypedValue is null");
   }
   float float_val;
   SUResult res = SUTypedValueGetFloat(m_typed_value, &float_val);
@@ -277,7 +278,7 @@ TypedValue::operator float() const {
 
 double TypedValue::double_value() const {
   if (!(*this)) {
-    return 0;
+    throw std::logic_error("CW::TypedValue::double_value(): TypedValue is null");
   }
   double double_val;
   SUResult res = SUTypedValueGetDouble(m_typed_value, &double_val);
@@ -303,7 +304,7 @@ TypedValue::operator double() const {
 
 bool TypedValue::bool_value() const {
   if (!(*this)) {
-    return 0;
+    throw std::logic_error("CW::TypedValue::bool_value(): TypedValue is null");
   }
   bool bool_val;
   SUResult res = SUTypedValueGetBool(m_typed_value, &bool_val);
@@ -329,7 +330,7 @@ TypedValue::operator bool() const {
 
 Color TypedValue::color_value() const {
   if (!(*this)) {
-    return Color();
+    throw std::logic_error("CW::TypedValue::color_value(): TypedValue is null");
   }
   SUColor color_val;
   SUResult res = SUTypedValueGetColor(m_typed_value, &color_val);
@@ -356,7 +357,7 @@ TypedValue::operator Color() const {
 
 int64_t TypedValue::time_value() const {
   if (!(*this)) {
-    return 0;
+    throw std::logic_error("CW::TypedValue::time_value(): TypedValue is null");
   }
   int64_t time_val;
   SUResult res = SUTypedValueGetTime(m_typed_value, &time_val);
@@ -382,7 +383,7 @@ TypedValue::operator int64_t() const {
 
 String TypedValue::string_value() const {
   if (!(*this)) {
-    return String();
+    throw std::logic_error("CW::TypedValue::string_value(): TypedValue is null");
   }
   String string;
   SUStringRef &string_ref = string;
@@ -420,7 +421,7 @@ TypedValue::operator std::string() const {
 
 Vector3D TypedValue::vector_value() const {
   if (!(*this)) {
-    return Vector3D();
+    throw std::logic_error("CW::TypedValue::vector_value(): TypedValue is null");
   }
   double vector3d_value[3];
   SUResult res = SUTypedValueGetVector3d(m_typed_value, &vector3d_value[0]);
@@ -447,7 +448,7 @@ TypedValue::operator Vector3D() const {
 
 std::vector<TypedValue> TypedValue::typed_value_array() const {
   if (!(*this)) {
-    return std::vector<TypedValue>();
+    throw std::logic_error("CW::TypedValue::typed_value_array(): TypedValue is null");
   }
   size_t count = 0;
   SUResult res = SUTypedValueGetNumArrayItems(m_typed_value, &count);
