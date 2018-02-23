@@ -48,9 +48,10 @@ SUGroupRef Group::create_group() {
   return group_ref;
 }
 
+
 SUGroupRef Group::copy_reference(const Group& other) {
   if (other.m_attached) {
-    return other.m_group;
+    return other.ref();
   }
   // The other group has not been attached to the model, so copy its properties to a new object
   Group new_group;
@@ -60,25 +61,26 @@ SUGroupRef Group::copy_reference(const Group& other) {
   return new_group.ref();
 }
 
+
 Group::Group():
   Group(create_group(), false)
 {}
 
 
 Group::Group(SUGroupRef group, bool attached):
-  ComponentInstance(SUGroupToComponentInstance(group), attached),
-  m_group(group)
+  ComponentInstance(SUGroupToComponentInstance(group), attached)
 {}
+
 
 /** Copy constructor */
 Group::Group(const Group& other):
-  ComponentInstance(other, SUGroupToComponentInstance(copy_reference(other))),
-  m_group(SUGroupFromComponentInstance(m_instance))
+  ComponentInstance(other, SUGroupToComponentInstance(copy_reference(other)))
 {}
 
 
 Group::~Group() {
-  if (!m_attached && SUIsValid(m_group)) {
+  if (!m_attached && SUIsValid(m_entity)) {
+    // There is no release function - we assume that the parent class ComponentInstance takes care of releasing.
   }
 }
 
@@ -86,9 +88,13 @@ Group::~Group() {
 Group& Group::operator=(const Group& other) {
   // SUGroupRef does not have a release function, so we rely on the component instance to do that for us.
   ComponentInstance::operator=(other);
-  m_group = SUGroupFromComponentInstance(m_instance);
   // Groups have nothing else to copy.
   return *this;
+}
+
+
+SUGroupRef Group::ref() const {
+  return SUGroupFromEntity(m_entity);
 }
 
 
@@ -98,7 +104,9 @@ Group::operator SUGroupRef() const {
 
 
 Group::operator SUGroupRef*() {
-  return &m_group;
+  // TODO: Test that the solution below works, and not result in a bad access error.
+  SUGroupRef group = this->ref();
+  return &group;
 }
 
 
@@ -107,7 +115,7 @@ ComponentDefinition Group::definition() const {
     throw std::logic_error("CW::Group::definition(): Group is null");
   }
   SUComponentDefinitionRef def_ref = SU_INVALID;
-  SUResult res = SUGroupGetDefinition(m_group, &def_ref);
+  SUResult res = SUGroupGetDefinition(this->ref(), &def_ref);
   assert(res == SU_ERROR_NONE);
   return ComponentDefinition(def_ref);
 }
@@ -118,7 +126,7 @@ Entities Group::entities() const {
     throw std::logic_error("CW::Group::entities(): Group is null");
   }
   SUEntitiesRef entities = SU_INVALID;
-  SUGroupGetEntities(m_group, &entities);
+  SUGroupGetEntities(this->ref(), &entities);
   return Entities(entities);
 }
 
@@ -129,7 +137,7 @@ String Group::name() const {
   }
   String string;
   SUStringRef * const string_ref = string;
-  SUResult res = SUGroupGetName(m_group, string_ref);
+  SUResult res = SUGroupGetName(this->ref(), string_ref);
   assert(res == SU_ERROR_NONE);
   return string;
 }
@@ -140,16 +148,17 @@ void Group::name(const String& string) {
     throw std::logic_error("CW::Group::name(): Group is null");
   }
   std::string name_string = string.std_string();
-  SUResult res = SUGroupSetName(m_group, name_string.c_str());
+  SUResult res = SUGroupSetName(this->ref(), name_string.c_str());
   assert(res == SU_ERROR_NONE);
 }
+
 
 Transformation Group::transformation() const {
   if(!(*this)) {
     throw std::logic_error("CW::Group::transformation(): Group is null");
   }
   SUTransformation transform{};
-  SUGroupGetTransform(m_group, &transform);
+  SUGroupGetTransform(this->ref(), &transform);
   return Transformation(transform);
 }
 
@@ -159,14 +168,8 @@ void Group::transformation(const Transformation& transform) {
     throw std::logic_error("CW::Group::transformation(): Group is null");
   }
   SUTransformation transform_ref = transform.ref();
-  SUResult res = SUGroupSetTransform(m_group, &transform_ref);
+  SUResult res = SUGroupSetTransform(this->ref(), &transform_ref);
   assert(res == SU_ERROR_NONE);
 }
-
-
-SUGroupRef Group::ref() const {
-  return m_group;
-}
-
 
 } /* namespace CW */

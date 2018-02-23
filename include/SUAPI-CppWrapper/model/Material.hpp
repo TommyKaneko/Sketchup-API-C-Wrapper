@@ -42,8 +42,6 @@ class Texture;
 
 class Material :public Entity {
   private:
-  SUMaterialRef m_material;
-  
   static SUMaterialRef create_material();
 
   /**
@@ -67,7 +65,6 @@ class Material :public Entity {
   * Destructor
   */
   ~Material();
-
   
   SUMaterialRef ref() const;
   
