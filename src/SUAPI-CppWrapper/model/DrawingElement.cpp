@@ -69,12 +69,6 @@ DrawingElement::operator SUDrawingElementRef() const {
   return this->ref();
 }
 
-DrawingElement::operator SUDrawingElementRef*() {
-  // TODO: test if the solution below works.
-  SUDrawingElementRef drawing_element = this->ref();
-  return &(drawing_element);
-}
-
 
 BoundingBox3D DrawingElement::bounds() {
   if (SUIsInvalid(m_entity)) {

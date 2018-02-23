@@ -88,12 +88,6 @@ Vertex::operator SUVertexRef() const {
   return this->ref();
 }
 
-Vertex::operator SUVertexRef*() {
-  // TODO: Test that the solution below works, and not result in a bad access error.
-  SUVertexRef vertex = SUVertexFromEntity(m_entity);
-  return &vertex;
-}
-
 SUVertexRef Vertex::ref() const {
   return SUVertexFromEntity(m_entity);
 }

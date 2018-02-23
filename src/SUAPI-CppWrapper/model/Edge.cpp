@@ -137,20 +137,6 @@ Edge::operator SUEdgeRef() const {
   return this->ref();
 }
 
-Edge::operator SUEdgeRef*() {
-  // TODO: test if the solution below works.
-  SUEdgeRef edge = this->ref();
-  return &edge;
-}
-  
-/*
-Edge::operator bool() const {
-  if (m_create_result == SU_ERROR_NONE) {
-    return true;
-  }
-  return false;
-}
-*/
 
 bool Edge::operator!() const {
   if (SUIsInvalid(m_entity)) {

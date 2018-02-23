@@ -117,11 +117,6 @@ SUComponentDefinitionRef ComponentDefinition::ref() const {
 ComponentDefinition::operator SUComponentDefinitionRef() const {
   return this->ref();
 }
-ComponentDefinition::operator SUComponentDefinitionRef*() {
-  // TODO: test if the solution below works.
-  SUComponentDefinitionRef definition = this->ref();
-  return &definition;
-}
 
 
 ComponentInstance ComponentDefinition::create_instance() const {

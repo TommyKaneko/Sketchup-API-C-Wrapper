@@ -103,13 +103,6 @@ Group::operator SUGroupRef() const {
 }
 
 
-Group::operator SUGroupRef*() {
-  // TODO: Test that the solution below works, and not result in a bad access error.
-  SUGroupRef group = this->ref();
-  return &group;
-}
-
-
 ComponentDefinition Group::definition() const {
   if(!(*this)) {
     throw std::logic_error("CW::Group::definition(): Group is null");

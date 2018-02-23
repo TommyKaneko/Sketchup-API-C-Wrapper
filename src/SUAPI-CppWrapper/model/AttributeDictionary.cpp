@@ -134,13 +134,6 @@ AttributeDictionary::operator SUAttributeDictionaryRef() const {
 }
 
 
-AttributeDictionary::operator SUAttributeDictionaryRef*() {
-  // TODO: test if the solution below works.
-  SUAttributeDictionaryRef dict = SUAttributeDictionaryFromEntity(m_entity);
-  return &dict;
-}
-
-
 TypedValue AttributeDictionary::get_attribute(const std::string &key, const TypedValue &default_value) const {
   if (!(*this)) {
     throw std::logic_error("CW::AttributeDictionary::get_attribute(): AttributeDictionary is null");
