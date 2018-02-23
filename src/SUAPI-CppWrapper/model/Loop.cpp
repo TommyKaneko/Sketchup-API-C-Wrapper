@@ -152,11 +152,6 @@ size_t Loop::size() const {
   assert(res == SU_ERROR_NONE);
   return count;
 }
-
-
-SULoopRef Loop::ref() const {
-  return SULoopFromEntity(m_entity);
-}
   
   
 PointLoopClassify Loop::classify_point(const std::vector<Point3D>& loop_points, const Point3D& test_point) {
