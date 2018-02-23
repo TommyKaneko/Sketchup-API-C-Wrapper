@@ -27,3 +27,4 @@ TEST(Radians, InitializeRollAroundNegative)
   auto expected = 5.5663706143591725;
   ASSERT_DOUBLE_EQ(expected, radians);	
 }
+

@@ -1,3 +1,4 @@
+#include "SketchUpAPITests.hpp"
 #include "gtest/gtest.h"
 
 #include <SketchUpAPI/sketchup.h>

@@ -3,9 +3,7 @@ cmake_minimum_required(VERSION 3.6)
 set(CMAKE_CXX_STANDARD 14)
 # set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++1y -Wall")
 
-project (SketchUpApi)
-
-# set (SOLUTION_PATH PROJECT_SOURCE_DIR)
+project (SketchUpApiCppWrapper)
 
 # GoogleTest 1.8 produce a warning that must be silenced. The fix is yet to be
 # pushed to the GoogleTest stable branch.
@@ -15,5 +13,10 @@ project (SketchUpApi)
 #   have received this warning.
 add_definitions(-D_SILENCE_TR1_NAMESPACE_DEPRECATION_WARNING)
 
-include(${CMAKE_CURRENT_SOURCE_DIR}/tests/CMakeGoogleTest.cmake)
-include(${CMAKE_CURRENT_SOURCE_DIR}/tests/SketchUpAPITests.cmake)
+# Avoid conflicting macros from Win32 API.
+add_definitions(-DWIN32_LEAN_AND_MEAN)
+add_definitions(-DNOMINMAX)
+
+include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/SketchUpAPICpp.cmake)
+include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/GoogleTest.cmake)
+include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/SketchUpAPITests.cmake)
