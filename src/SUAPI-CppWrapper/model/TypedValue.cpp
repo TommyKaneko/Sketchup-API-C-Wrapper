@@ -176,6 +176,9 @@ char TypedValue::byte_value() const {
   if (!(*this)) {
     throw std::logic_error("CW::TypedValue::byte_value(): TypedValue is null");
   }
+  if (get_type() != SUTypedValueType_Byte) {
+    throw std::logic_error("CW::TypedValue::byte_value(): TypedValue is not SUTypedValueType_Byte type");
+  }
   char byte_val;
   SUResult res = SUTypedValueGetByte(m_typed_value, &byte_val);
   assert(res == SU_ERROR_NONE);
@@ -202,6 +205,10 @@ int16_t TypedValue::int16_value() const {
   if (!(*this)) {
     throw std::logic_error("CW::TypedValue::int16_value(): TypedValue is null");
   }
+  // TODO: uncomment below once types are checked.
+  //if (get_type() != SUTypedValueType_Int16) {
+  //  throw std::logic_error("CW::TypedValue::int16_value(): TypedValue is not SUTypedValueType_Int16 type");
+  //}
   int16_t int16_val;
   SUResult res = SUTypedValueGetInt16(m_typed_value, &int16_val);
   assert(res == SU_ERROR_NONE);
@@ -227,6 +234,9 @@ TypedValue::operator int16_t() const {
 int32_t TypedValue::int32_value() const {
   if (!(*this)) {
     throw std::logic_error("CW::TypedValue::int32_value(): TypedValue is null");
+  }
+  if (get_type() != SUTypedValueType_Int32) {
+    throw std::logic_error("CW::TypedValue::int32_value(): TypedValue is not SUTypedValueType_Int32 type");
   }
   int32_t int32_val;
   SUResult res = SUTypedValueGetInt32(m_typed_value, &int32_val);
@@ -254,6 +264,9 @@ float TypedValue::float_value() const{
   if (!(*this)) {
     throw std::logic_error("CW::TypedValue::float_value(): TypedValue is null");
   }
+  if (get_type() != SUTypedValueType_Float) {
+    throw std::logic_error("CW::TypedValue::float_value(): TypedValue is not SUTypedValueType_Float type");
+  }
   float float_val;
   SUResult res = SUTypedValueGetFloat(m_typed_value, &float_val);
   assert(res == SU_ERROR_NONE);
@@ -279,6 +292,9 @@ TypedValue::operator float() const {
 double TypedValue::double_value() const {
   if (!(*this)) {
     throw std::logic_error("CW::TypedValue::double_value(): TypedValue is null");
+  }
+  if (get_type() != SUTypedValueType_Double) {
+    throw std::logic_error("CW::TypedValue::double_value(): TypedValue is not SUTypedValueType_Double type");
   }
   double double_val;
   SUResult res = SUTypedValueGetDouble(m_typed_value, &double_val);
@@ -306,6 +322,9 @@ bool TypedValue::bool_value() const {
   if (!(*this)) {
     throw std::logic_error("CW::TypedValue::bool_value(): TypedValue is null");
   }
+  if (get_type() != SUTypedValueType_Bool) {
+    throw std::logic_error("CW::TypedValue::bool_value(): TypedValue is not SUTypedValueType_Bool type");
+  }
   bool bool_val;
   SUResult res = SUTypedValueGetBool(m_typed_value, &bool_val);
   assert(res == SU_ERROR_NONE);
@@ -331,6 +350,9 @@ TypedValue::operator bool() const {
 Color TypedValue::color_value() const {
   if (!(*this)) {
     throw std::logic_error("CW::TypedValue::color_value(): TypedValue is null");
+  }
+  if (get_type() != SUTypedValueType_Color) {
+    throw std::logic_error("CW::TypedValue::color_value(): TypedValue is not SUTypedValueType_Color type");
   }
   SUColor color_val;
   SUResult res = SUTypedValueGetColor(m_typed_value, &color_val);
@@ -359,6 +381,9 @@ int64_t TypedValue::time_value() const {
   if (!(*this)) {
     throw std::logic_error("CW::TypedValue::time_value(): TypedValue is null");
   }
+  if (get_type() != SUTypedValueType_Time) {
+    throw std::logic_error("CW::TypedValue::time_value(): TypedValue is not SUTypedValueType_Time type");
+  }
   int64_t time_val;
   SUResult res = SUTypedValueGetTime(m_typed_value, &time_val);
   assert(res == SU_ERROR_NONE);
@@ -384,6 +409,9 @@ TypedValue::operator int64_t() const {
 String TypedValue::string_value() const {
   if (!(*this)) {
     throw std::logic_error("CW::TypedValue::string_value(): TypedValue is null");
+  }
+  if (get_type() != SUTypedValueType_String) {
+    throw std::logic_error("CW::TypedValue::string_value(): TypedValue is not SUTypedValueType_String type");
   }
   String string;
   SUStringRef &string_ref = string;
@@ -423,6 +451,9 @@ Vector3D TypedValue::vector_value() const {
   if (!(*this)) {
     throw std::logic_error("CW::TypedValue::vector_value(): TypedValue is null");
   }
+  if (get_type() != SUTypedValueType_Vector3D) {
+    throw std::logic_error("CW::TypedValue::vector_value(): TypedValue is not SUTypedValueType_Vector3D type");
+  }
   double vector3d_value[3];
   SUResult res = SUTypedValueGetVector3d(m_typed_value, &vector3d_value[0]);
   assert(res == SU_ERROR_NONE);
@@ -449,6 +480,9 @@ TypedValue::operator Vector3D() const {
 std::vector<TypedValue> TypedValue::typed_value_array() const {
   if (!(*this)) {
     throw std::logic_error("CW::TypedValue::typed_value_array(): TypedValue is null");
+  }
+  if (get_type() != SUTypedValueType_Array) {
+    throw std::logic_error("CW::TypedValue::typed_value_array(): TypedValue is not SUTypedValueType_Array type");
   }
   size_t count = 0;
   SUResult res = SUTypedValueGetNumArrayItems(m_typed_value, &count);
