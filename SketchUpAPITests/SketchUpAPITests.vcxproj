@@ -90,18 +90,18 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions);_SILENCE_TR1_NAMESPACE_DEPRECATION_WARNING</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)third-party\googletest\googletest\include\;$(SolutionDir)include\;$(SolutionDir)third-party\SDK_Win_x64_18-0-18664\headers\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)third-party\googletest\googletest\include\;$(SolutionDir)include\;$(SolutionDir)third-party\slapi\win\headers\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ForcedIncludeFiles>stdafx.h</ForcedIncludeFiles>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>DebugFull</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)third-party\SDK_Win_x64_18-0-18664\binaries\sketchup\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)third-party\slapi\win\binaries\sketchup\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>SketchUpAPI.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy $(SolutionDir)third-party\SDK_Win_x64_18-0-18664\binaries\sketchup\x64\SketchUpAPI.dll $(OutputPath)  /D /Y
-xcopy $(SolutionDir)third-party\SDK_Win_x64_18-0-18664\binaries\sketchup\x64\SketchUpCommonPreferences.dll $(OutputPath)  /D /Y</Command>
+      <Command>xcopy $(SolutionDir)third-party\slapi\win\binaries\sketchup\x64\SketchUpAPI.dll $(OutputPath)  /D /Y
+xcopy $(SolutionDir)third-party\slapi\win\binaries\sketchup\x64\SketchUpCommonPreferences.dll $(OutputPath)  /D /Y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -112,7 +112,7 @@ xcopy $(SolutionDir)third-party\SDK_Win_x64_18-0-18664\binaries\sketchup\x64\Ske
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions);_SILENCE_TR1_NAMESPACE_DEPRECATION_WARNING</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)third-party\googletest\googletest\include\;$(SolutionDir)include\;$(SolutionDir)third-party\SDK_Win_x64_18-0-18664\headers\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)third-party\googletest\googletest\include\;$(SolutionDir)include\;$(SolutionDir)third-party\slapi\win\headers\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ForcedIncludeFiles>stdafx.h</ForcedIncludeFiles>
     </ClCompile>
     <Link>
@@ -130,7 +130,7 @@ xcopy $(SolutionDir)third-party\SDK_Win_x64_18-0-18664\binaries\sketchup\x64\Ske
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions);_SILENCE_TR1_NAMESPACE_DEPRECATION_WARNING</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)third-party\googletest\googletest\include\;$(SolutionDir)include\;$(SolutionDir)third-party\SDK_Win_x64_18-0-18664\headers\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)third-party\googletest\googletest\include\;$(SolutionDir)include\;$(SolutionDir)third-party\slapi\win\headers\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ForcedIncludeFiles>stdafx.h</ForcedIncludeFiles>
     </ClCompile>
     <Link>
@@ -150,7 +150,7 @@ xcopy $(SolutionDir)third-party\SDK_Win_x64_18-0-18664\binaries\sketchup\x64\Ske
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions);_SILENCE_TR1_NAMESPACE_DEPRECATION_WARNING</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)third-party\googletest\googletest\include\;$(SolutionDir)include\;$(SolutionDir)third-party\SDK_Win_x64_18-0-18664\headers\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)third-party\googletest\googletest\include\;$(SolutionDir)include\;$(SolutionDir)third-party\slapi\win\headers\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ForcedIncludeFiles>stdafx.h</ForcedIncludeFiles>
     </ClCompile>
     <Link>
@@ -158,12 +158,12 @@ xcopy $(SolutionDir)third-party\SDK_Win_x64_18-0-18664\binaries\sketchup\x64\Ske
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>DebugFull</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)third-party\SDK_Win_x64_18-0-18664\binaries\sketchup\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)third-party\slapi\win\binaries\sketchup\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>SketchUpAPI.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy $(SolutionDir)third-party\SDK_Win_x64_18-0-18664\binaries\sketchup\x64\SketchUpAPI.dll $(OutputPath)  /D /Y
-xcopy $(SolutionDir)third-party\SDK_Win_x64_18-0-18664\binaries\sketchup\x64\SketchUpCommonPreferences.dll $(OutputPath)  /D /Y</Command>
+      <Command>xcopy $(SolutionDir)third-party\slapi\win\binaries\sketchup\x64\SketchUpAPI.dll $(OutputPath)  /D /Y
+xcopy $(SolutionDir)third-party\slapi\win\binaries\sketchup\x64\SketchUpCommonPreferences.dll $(OutputPath)  /D /Y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
