@@ -458,7 +458,7 @@ Associating documenta/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/inclu
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Material.hpp:43: warning: Compound CW::Material is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:500: warning: Compound CW::BoundingBox3D is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ImageRep.hpp:46: warning: Compound CW::ImageRep is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/RenderingOptions.hpp:13: warning: Compound CW::RenderingOptions is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/RenderingOptions.hpp:14: warning: Compound CW::RenderingOptions is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:262: warning: Compound CW::Point3D is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Face.hpp:62: warning: Compound CW::Face is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:52: warning: Compound CW::Entity is not documented.
@@ -477,7 +477,7 @@ Associating documenta/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/inclu
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/LoopInput.hpp:59: warning: Compound CW::LoopInput is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:380: warning: Compound CW::Plane3D is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Curve.hpp:40: warning: Compound CW::Curve is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ShadowInfo.hpp:12: warning: Compound CW::ShadowInfo is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ShadowInfo.hpp:13: warning: Compound CW::ShadowInfo is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/TypedValue.hpp:45: warning: Compound CW::TypedValue is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Vertex.hpp:42: warning: Compound CW::Vertex is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Material.hpp:161: warning: Compound std::hash< CW::Material > is not documented.
@@ -1278,14 +1278,14 @@ Generating docs for compound C/home/travis/build/TommyKaneko/Sketchup-API-C-Wrap
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/OptionsManager.hpp:62: warning: Member OptionsManager(SUOptionsManagerRef options_manager) (function) of class CW::OptionsManager is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/OptionsManager.hpp:65: warning: Member get_provider_names() const  (function) of class CW::OptionsManager is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/OptionsManager.hpp:68: warning: Member get_provider(const std::string &) (function) of class CW::OptionsManager is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/RenderingOptions.hpp:16: warning: Member RenderingOptions(SURenderingOptionsRef) (function) of class CW::RenderingOptions is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/RenderingOptions.hpp:21: warning: Member get_keys() const  (function) of class CW::RenderingOptions is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/RenderingOptions.hpp:22: warning: Member get_value(const std::string &key) const  (function) of class CW::RenderingOptions is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/RenderingOptions.hpp:23: warning: Member set_value(const std::string &key, const TypedValue &tval) (function) of class CW::RenderingOptions is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ShadowInfo.hpp:15: warning: Member ShadowInfo(SUShadowInfoRef) (function) of class CW::ShadowInfo is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ShadowInfo.hpp:20: warning: Member get_keys() (function) of class CW::ShadowInfo is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ShadowInfo.hpp:21: warning: Member get_value(const std::string &key) (function) of class CW::ShadowInfo is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ShadowInfo.hpp:22: warning: Member set_value(const std::string &key, const TypedValue &tval) (function) of class CW::ShadowInfo is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/RenderingOptions.hpp:17: warning: Member RenderingOptions(SURenderingOptionsRef) (function) of class CW::RenderingOptions is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/RenderingOptions.hpp:22: warning: Member get_keys() const  (function) of class CW::RenderingOptions is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/RenderingOptions.hpp:23: warning: Member get_value(const std::string &key) const  (function) of class CW::RenderingOptions is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/RenderingOptions.hpp:24: warning: Member set_value(const std::string &key, const TypedValue &tval) (function) of class CW::RenderingOptions is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ShadowInfo.hpp:16: warning: Member ShadowInfo(SUShadowInfoRef) (function) of class CW::ShadowInfo is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ShadowInfo.hpp:21: warning: Member get_keys() (function) of class CW::ShadowInfo is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ShadowInfo.hpp:22: warning: Member get_value(const std::string &key) (function) of class CW::ShadowInfo is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ShadowInfo.hpp:23: warning: Member set_value(const std::string &key, const TypedValue &tval) (function) of class CW::ShadowInfo is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Texture.hpp:104: warning: Member ref() const  (function) of class CW::Texture is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Texture.hpp:105: warning: Member operator SUTextureRef() const  (function) of class CW::Texture is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Texture.hpp:106: warning: Member operator SUTextureRef *() (function) of class CW::Texture is not documented.
@@ -1385,5 +1385,5 @@ Generating file index...
 Generating file member index...
 Generating example index...
 finalizing index lists...
-lookup cache used 4616/65536 hits=35095 misses=4806
+lookup cache used 4616/65536 hits=35100 misses=4806
 finished...
