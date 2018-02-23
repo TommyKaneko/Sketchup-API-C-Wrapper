@@ -47,11 +47,11 @@ namespace CW {
 Radians::Radians(const double &rhs):
   m_val(rhs)
 {
-  if(rhs > (2 * PI)) {
-    m_val = std::fmod(rhs, 2 * PI);
+  if(rhs > PI2) {
+    m_val = std::fmod(rhs, PI2);
   }
   else if(rhs < 0.0) {
-    m_val = std::fmod(rhs, -(2 * PI));
+    m_val = PI2 - std::fmod(std::fabs(rhs), PI2);
   }
 }
 

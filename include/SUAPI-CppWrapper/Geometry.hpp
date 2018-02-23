@@ -58,6 +58,7 @@ private:
 public:
   double m_val;
   static constexpr double PI = 3.141592653589793;
+  static constexpr double PI2 = PI * 2;
   // Estimate the degree of correctness of angles (Sketchup Tolerance is 1/1000", so try to make some sort of guess - suggest discrepancies of 1/1000" over radians rotations over 30m (approx 1000")
   constexpr static double EPSILON = 0.0000000000005; // Sketchup Tolerance is 1/1000"
   
