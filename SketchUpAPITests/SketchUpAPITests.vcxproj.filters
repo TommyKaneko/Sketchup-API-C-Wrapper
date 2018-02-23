@@ -41,5 +41,8 @@
     <ClCompile Include="..\tests\StringTests.cpp">
       <Filter>Tests</Filter>
     </ClCompile>
+    <ClCompile Include="RadiansTests.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
