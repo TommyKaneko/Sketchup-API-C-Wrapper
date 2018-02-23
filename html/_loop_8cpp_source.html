@@ -93,245 +93,251 @@
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keyword">namespace </span>CW {</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<a class="code" href="class_c_w_1_1_loop.html#a4d17d33722865e3da50409c909f61747">Loop::Loop</a>(<a class="code" href="struct_s_u_loop_ref.html">SULoopRef</a> loop):</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  m_loop(loop)</div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="class_c_w_1_1_loop.html#a4d17d33722865e3da50409c909f61747">   43</a></span>&#160;<a class="code" href="class_c_w_1_1_loop.html#a4d17d33722865e3da50409c909f61747">Loop::Loop</a>():</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  <a class="code" href="class_c_w_1_1_entity.html">Entity</a>()</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;{}</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
-<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="class_c_w_1_1_loop.html#a4d17d33722865e3da50409c909f61747">   48</a></span>&#160;<a class="code" href="class_c_w_1_1_loop.html#a4d17d33722865e3da50409c909f61747">Loop::Loop</a>():</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  m_loop(SU_INVALID)</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<a class="code" href="class_c_w_1_1_loop.html#a4d17d33722865e3da50409c909f61747">Loop::Loop</a>(<a class="code" href="struct_s_u_loop_ref.html">SULoopRef</a> loop, <span class="keywordtype">bool</span> attached):</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  <a class="code" href="class_c_w_1_1_entity.html">Entity</a>(SULoopToEntity(loop), attached)</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;{}</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
-<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="class_c_w_1_1_loop.html#a71689a33c8a458ab6a280c8311855eae">   53</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="class_c_w_1_1_loop.html#a71689a33c8a458ab6a280c8311855eae">Loop::operator!</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  <span class="keywordflow">return</span> SUIsInvalid(m_loop);</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;}</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<a class="code" href="class_c_w_1_1_loop.html#a4d17d33722865e3da50409c909f61747">Loop::Loop</a>(<span class="keyword">const</span> Loop&amp; other):</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  Entity(other, other.m_entity)</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;{}</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<a class="code" href="class_c_w_1_1_loop_input.html">LoopInput</a> Loop::loop_input()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  <span class="keywordflow">if</span>(!(*<span class="keyword">this</span>)) {</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::Loop::loop_input(): Loop is null&quot;</span>);</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  }</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  std::vector&lt;Edge&gt; <a class="code" href="class_c_w_1_1_loop.html#abc9600f8e4d18c2058461d8177ac9bd5">edges</a> = this-&gt;<a class="code" href="class_c_w_1_1_loop.html#abc9600f8e4d18c2058461d8177ac9bd5">edges</a>();</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  std::vector&lt;InputEdgeProperties&gt; edge_properties;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  edge_properties.reserve(edges.size());</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i=0; i &lt; edges.size(); i++) {</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    InputEdgeProperties edge_prop;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    edge_prop.hidden = edges[i].hidden();</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    edge_prop.soft = edges[i].soft();</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    edge_prop.smooth = edges[i].smooth();</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    edge_prop.material = edges[i].material();</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    edge_prop.layer = edges[i].layer();</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    edge_properties.push_back(edge_prop);</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  }</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  <span class="keywordflow">return</span> LoopInput(edge_properties);</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;}</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
-<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="class_c_w_1_1_loop.html#abc9600f8e4d18c2058461d8177ac9bd5">   78</a></span>&#160;std::vector&lt;Edge&gt; <a class="code" href="class_c_w_1_1_loop.html#abc9600f8e4d18c2058461d8177ac9bd5">Loop::edges</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  <span class="keywordflow">if</span>(!(*<span class="keyword">this</span>)) {</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::Loop::edges(): Loop is null&quot;</span>);</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  }</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  <span class="keywordtype">size_t</span> count = 0;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  SUResult res = SULoopGetNumVertices(m_loop, &amp;count);</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  assert(res == SU_ERROR_NONE);</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  std::vector&lt;SUEdgeRef&gt; edge_refs(count, SU_INVALID);</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  res = SULoopGetEdges(m_loop, count, edge_refs.data(), &amp;count);</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  assert(res == SU_ERROR_NONE);</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  std::vector&lt;Edge&gt; <a class="code" href="class_c_w_1_1_loop.html#abc9600f8e4d18c2058461d8177ac9bd5">edges</a>(count);</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  std::transform(edge_refs.begin(), edge_refs.end(), edges.begin(),</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    [](<span class="keyword">const</span> <a class="code" href="struct_s_u_edge_ref.html">SUEdgeRef</a>&amp; value){</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;      <span class="keywordflow">return</span> <a class="code" href="class_c_w_1_1_edge.html">Edge</a>(value);</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    });</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="class_c_w_1_1_loop.html#abc9600f8e4d18c2058461d8177ac9bd5">edges</a>;</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;}</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
-<div class="line"><a name="l00097"></a><span class="lineno"><a class="line" href="class_c_w_1_1_loop.html#a6994648358236c506e0d9fae458f5174">   97</a></span>&#160;std::vector&lt;Vertex&gt; <a class="code" href="class_c_w_1_1_loop.html#a6994648358236c506e0d9fae458f5174">Loop::vertices</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;  <span class="keywordflow">if</span>(!(*<span class="keyword">this</span>)) {</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::Loop::vertices(): Loop is null&quot;</span>);</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;  }</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;  <span class="keywordtype">size_t</span> count = 0;</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;  SUResult res = SULoopGetNumVertices(m_loop, &amp;count);</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;  assert(res == SU_ERROR_NONE);</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;  std::vector&lt;SUVertexRef&gt; verts_array(count, SU_INVALID);</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;  res = SULoopGetVertices(m_loop, count, verts_array.data(), &amp;count);</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;  assert(res == SU_ERROR_NONE);</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;  std::vector&lt;Vertex&gt; <a class="code" href="class_c_w_1_1_loop.html#a6994648358236c506e0d9fae458f5174">vertices</a>(count);</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;  std::transform(verts_array.begin(), verts_array.end(), vertices.begin(),</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    [](<span class="keyword">const</span> <a class="code" href="struct_s_u_vertex_ref.html">SUVertexRef</a>&amp; value){</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;      <span class="keywordflow">return</span> <a class="code" href="class_c_w_1_1_vertex.html">Vertex</a>(value);</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    });</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="class_c_w_1_1_loop.html#a6994648358236c506e0d9fae458f5174">vertices</a>;</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;}</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;</div>
-<div class="line"><a name="l00116"></a><span class="lineno"><a class="line" href="class_c_w_1_1_loop.html#a1bb8004c28392149003bd4cca1566b2c">  116</a></span>&#160;std::vector&lt;Point3D&gt; <a class="code" href="class_c_w_1_1_loop.html#a1bb8004c28392149003bd4cca1566b2c">Loop::points</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;  <span class="keywordflow">if</span>(!(*<span class="keyword">this</span>)) {</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::Loop::points(): Loop is null&quot;</span>);</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;  }</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;  std::vector&lt;Vertex&gt; verts = <a class="code" href="class_c_w_1_1_loop.html#a6994648358236c506e0d9fae458f5174">vertices</a>();</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;  std::vector&lt;Point3D&gt; <a class="code" href="class_c_w_1_1_loop.html#a1bb8004c28392149003bd4cca1566b2c">points</a>;</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;  points.reserve(verts.size());</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;  <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i=0; i &lt; verts.size(); ++i) {</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    points.push_back(verts[i].position());</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;  }</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="class_c_w_1_1_loop.html#a1bb8004c28392149003bd4cca1566b2c">points</a>;</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;}</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;</div>
-<div class="line"><a name="l00130"></a><span class="lineno"><a class="line" href="class_c_w_1_1_loop.html#a0637c58678b248349fff7c4ef757bcba">  130</a></span>&#160;PointLoopClassify <a class="code" href="class_c_w_1_1_loop.html#a0637c58678b248349fff7c4ef757bcba">Loop::classify_point</a>(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a>&amp; point)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;  <span class="keywordflow">if</span>(!(*<span class="keyword">this</span>)) {</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::Loop::classify_point(): Loop is null&quot;</span>);</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;  }</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;  <span class="keywordflow">if</span>(!point) {</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;CW::Loop::classify_point(): Point3D given is null&quot;</span>);</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;  }</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="class_c_w_1_1_loop.html#a0637c58678b248349fff7c4ef757bcba">classify_point</a>(this-&gt;<a class="code" href="class_c_w_1_1_loop.html#a1bb8004c28392149003bd4cca1566b2c">points</a>(), point);</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;}</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;</div>
-<div class="line"><a name="l00141"></a><span class="lineno"><a class="line" href="class_c_w_1_1_loop.html#a800178f494a5b4d63d2c4992f4f0aa8b">  141</a></span>&#160;<span class="keywordtype">size_t</span> <a class="code" href="class_c_w_1_1_loop.html#a800178f494a5b4d63d2c4992f4f0aa8b">Loop::size</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;  <span class="keywordflow">if</span>(!(*<span class="keyword">this</span>)) {</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::Loop::size(): Loop is null&quot;</span>);</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;  }</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;  <span class="keywordtype">size_t</span> count = 0;</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;  SUResult res = SULoopGetNumVertices(m_loop, &amp;count);</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;  assert(res == SU_ERROR_NONE);</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;  <span class="keywordflow">return</span> count;</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;}</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;</div>
-<div class="line"><a name="l00152"></a><span class="lineno"><a class="line" href="class_c_w_1_1_loop.html#a5e5c94b0b62655ee508943f12231f4cb">  152</a></span>&#160;<a class="code" href="struct_s_u_loop_ref.html">SULoopRef</a> <a class="code" href="class_c_w_1_1_loop.html#a5e5c94b0b62655ee508943f12231f4cb">Loop::ref</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;  <span class="keywordflow">return</span> m_loop;</div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="class_c_w_1_1_loop.html#a5e5c94b0b62655ee508943f12231f4cb">   58</a></span>&#160;<a class="code" href="struct_s_u_loop_ref.html">SULoopRef</a> <a class="code" href="class_c_w_1_1_loop.html#a5e5c94b0b62655ee508943f12231f4cb">Loop::ref</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  <span class="keywordflow">return</span> SULoopFromEntity(<a class="code" href="class_c_w_1_1_entity.html#ad1d5c635add16702f770b6e14c186e9c">m_entity</a>);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;}</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<a class="code" href="class_c_w_1_1_loop_input.html">LoopInput</a> Loop::loop_input()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  <span class="keywordflow">if</span>(!(*<span class="keyword">this</span>)) {</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::Loop::loop_input(): Loop is null&quot;</span>);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  }</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  std::vector&lt;Edge&gt; <a class="code" href="class_c_w_1_1_loop.html#abc9600f8e4d18c2058461d8177ac9bd5">edges</a> = this-&gt;<a class="code" href="class_c_w_1_1_loop.html#abc9600f8e4d18c2058461d8177ac9bd5">edges</a>();</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  std::vector&lt;InputEdgeProperties&gt; edge_properties;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  edge_properties.reserve(edges.size());</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i=0; i &lt; edges.size(); i++) {</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    InputEdgeProperties edge_prop;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    edge_prop.hidden = edges[i].hidden();</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    edge_prop.soft = edges[i].soft();</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    edge_prop.smooth = edges[i].smooth();</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    edge_prop.material = edges[i].material();</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    edge_prop.layer = edges[i].layer();</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    edge_properties.push_back(edge_prop);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  }</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  <span class="keywordflow">return</span> LoopInput(edge_properties);</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;}</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
+<div class="line"><a name="l00083"></a><span class="lineno"><a class="line" href="class_c_w_1_1_loop.html#abc9600f8e4d18c2058461d8177ac9bd5">   83</a></span>&#160;std::vector&lt;Edge&gt; <a class="code" href="class_c_w_1_1_loop.html#abc9600f8e4d18c2058461d8177ac9bd5">Loop::edges</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  <span class="keywordflow">if</span>(!(*<span class="keyword">this</span>)) {</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::Loop::edges(): Loop is null&quot;</span>);</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  }</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  <span class="keywordtype">size_t</span> count = 0;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  SUResult res = SULoopGetNumVertices(this-&gt;<a class="code" href="class_c_w_1_1_loop.html#a5e5c94b0b62655ee508943f12231f4cb">ref</a>(), &amp;count);</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  assert(res == SU_ERROR_NONE);</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;  std::vector&lt;SUEdgeRef&gt; edge_refs(count, SU_INVALID);</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  res = SULoopGetEdges(this-&gt;<a class="code" href="class_c_w_1_1_loop.html#a5e5c94b0b62655ee508943f12231f4cb">ref</a>(), count, edge_refs.data(), &amp;count);</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;  assert(res == SU_ERROR_NONE);</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  std::vector&lt;Edge&gt; <a class="code" href="class_c_w_1_1_loop.html#abc9600f8e4d18c2058461d8177ac9bd5">edges</a>(count);</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  std::transform(edge_refs.begin(), edge_refs.end(), edges.begin(),</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    [](<span class="keyword">const</span> <a class="code" href="struct_s_u_edge_ref.html">SUEdgeRef</a>&amp; value){</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;      <span class="keywordflow">return</span> <a class="code" href="class_c_w_1_1_edge.html">Edge</a>(value);</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    });</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="class_c_w_1_1_loop.html#abc9600f8e4d18c2058461d8177ac9bd5">edges</a>;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;}</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;</div>
+<div class="line"><a name="l00102"></a><span class="lineno"><a class="line" href="class_c_w_1_1_loop.html#a6994648358236c506e0d9fae458f5174">  102</a></span>&#160;std::vector&lt;Vertex&gt; <a class="code" href="class_c_w_1_1_loop.html#a6994648358236c506e0d9fae458f5174">Loop::vertices</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;  <span class="keywordflow">if</span>(!(*<span class="keyword">this</span>)) {</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::Loop::vertices(): Loop is null&quot;</span>);</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;  }</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;  <span class="keywordtype">size_t</span> count = 0;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;  SUResult res = SULoopGetNumVertices(this-&gt;<a class="code" href="class_c_w_1_1_loop.html#a5e5c94b0b62655ee508943f12231f4cb">ref</a>(), &amp;count);</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;  assert(res == SU_ERROR_NONE);</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;  std::vector&lt;SUVertexRef&gt; verts_array(count, SU_INVALID);</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;  res = SULoopGetVertices(this-&gt;<a class="code" href="class_c_w_1_1_loop.html#a5e5c94b0b62655ee508943f12231f4cb">ref</a>(), count, verts_array.data(), &amp;count);</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;  assert(res == SU_ERROR_NONE);</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;  std::vector&lt;Vertex&gt; <a class="code" href="class_c_w_1_1_loop.html#a6994648358236c506e0d9fae458f5174">vertices</a>(count);</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;  std::transform(verts_array.begin(), verts_array.end(), vertices.begin(),</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    [](<span class="keyword">const</span> <a class="code" href="struct_s_u_vertex_ref.html">SUVertexRef</a>&amp; value){</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;      <span class="keywordflow">return</span> <a class="code" href="class_c_w_1_1_vertex.html">Vertex</a>(value);</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    });</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="class_c_w_1_1_loop.html#a6994648358236c506e0d9fae458f5174">vertices</a>;</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;}</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;</div>
+<div class="line"><a name="l00121"></a><span class="lineno"><a class="line" href="class_c_w_1_1_loop.html#a1bb8004c28392149003bd4cca1566b2c">  121</a></span>&#160;std::vector&lt;Point3D&gt; <a class="code" href="class_c_w_1_1_loop.html#a1bb8004c28392149003bd4cca1566b2c">Loop::points</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;  <span class="keywordflow">if</span>(!(*<span class="keyword">this</span>)) {</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::Loop::points(): Loop is null&quot;</span>);</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;  }</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;  std::vector&lt;Vertex&gt; verts = <a class="code" href="class_c_w_1_1_loop.html#a6994648358236c506e0d9fae458f5174">vertices</a>();</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;  std::vector&lt;Point3D&gt; <a class="code" href="class_c_w_1_1_loop.html#a1bb8004c28392149003bd4cca1566b2c">points</a>;</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;  points.reserve(verts.size());</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;  <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i=0; i &lt; verts.size(); ++i) {</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    points.push_back(verts[i].position());</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;  }</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="class_c_w_1_1_loop.html#a1bb8004c28392149003bd4cca1566b2c">points</a>;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;}</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;</div>
+<div class="line"><a name="l00135"></a><span class="lineno"><a class="line" href="class_c_w_1_1_loop.html#a0637c58678b248349fff7c4ef757bcba">  135</a></span>&#160;PointLoopClassify <a class="code" href="class_c_w_1_1_loop.html#a0637c58678b248349fff7c4ef757bcba">Loop::classify_point</a>(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a>&amp; point)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;  <span class="keywordflow">if</span>(!(*<span class="keyword">this</span>)) {</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::Loop::classify_point(): Loop is null&quot;</span>);</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;  }</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;  <span class="keywordflow">if</span>(!point) {</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;CW::Loop::classify_point(): Point3D given is null&quot;</span>);</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;  }</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="class_c_w_1_1_loop.html#a0637c58678b248349fff7c4ef757bcba">classify_point</a>(this-&gt;<a class="code" href="class_c_w_1_1_loop.html#a1bb8004c28392149003bd4cca1566b2c">points</a>(), point);</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;}</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;</div>
+<div class="line"><a name="l00146"></a><span class="lineno"><a class="line" href="class_c_w_1_1_loop.html#a800178f494a5b4d63d2c4992f4f0aa8b">  146</a></span>&#160;<span class="keywordtype">size_t</span> <a class="code" href="class_c_w_1_1_loop.html#a800178f494a5b4d63d2c4992f4f0aa8b">Loop::size</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;  <span class="keywordflow">if</span>(!(*<span class="keyword">this</span>)) {</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::Loop::size(): Loop is null&quot;</span>);</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;  }</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;  <span class="keywordtype">size_t</span> count = 0;</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;  SUResult res = SULoopGetNumVertices(this-&gt;<a class="code" href="class_c_w_1_1_loop.html#a5e5c94b0b62655ee508943f12231f4cb">ref</a>(), &amp;count);</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;  assert(res == SU_ERROR_NONE);</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;  <span class="keywordflow">return</span> count;</div>
 <div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;}</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;  </div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;  </div>
-<div class="line"><a name="l00157"></a><span class="lineno"><a class="line" href="class_c_w_1_1_loop.html#a3fd1021296614cff2a6aa5942a083667">  157</a></span>&#160;PointLoopClassify <a class="code" href="class_c_w_1_1_loop.html#a0637c58678b248349fff7c4ef757bcba">Loop::classify_point</a>(<span class="keyword">const</span> std::vector&lt;Point3D&gt;&amp; loop_points, <span class="keyword">const</span> <a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a>&amp; test_point) {</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;  <span class="keywordflow">if</span>(loop_points.size() &lt; 3) {</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;CW::Loop::classify_point(): Fewer than 3 points given - not a valid loop.&quot;</span>);</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;  }</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;  <span class="keywordflow">if</span>(!test_point) {</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;CW::Loop::classify_point(): Point3D given is null&quot;</span>);</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;  }</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;  <span class="comment">// http://www.geeksforgeeks.org/how-to-check-if-a-given-point-lies-inside-a-polygon/</span></div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;  <span class="comment">// First check that the test point is on the plane</span></div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;  <a class="code" href="class_c_w_1_1_plane3_d.html">Plane3D</a> loop_plane = <a class="code" href="class_c_w_1_1_plane3_d.html#a9a625d2e826d474f25a80dd9d61ae88c">Plane3D::plane_from_loop</a>(loop_points);</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;  <span class="keywordflow">if</span> (!loop_plane) {</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;CW::Loop::classify_point(): Points given does not form a  valid loop.&quot;</span>);</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;  }</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;  <span class="keywordflow">else</span> <span class="keywordflow">if</span> (!loop_plane.<a class="code" href="class_c_w_1_1_plane3_d.html#a418d955dd7448e629c8794cfc63a50c9">on_plane</a>(test_point)) {</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    <span class="keywordflow">return</span> PointLoopClassify::PointNotOnPlane;</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;  }</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;  <span class="comment">// Now check if it is on the vertices</span></div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;  <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i=0; i &lt; loop_points.size(); i++) {</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    <span class="keywordflow">if</span> (loop_points[i] == test_point) {</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;      <span class="keywordflow">return</span> PointLoopClassify::PointOnVertex;</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    }</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;  }</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;  <span class="comment">// Now check if it is on the edges</span></div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;  <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i=0; i &lt; loop_points.size(); i++) {</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    <a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a> next_point;</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;    <span class="keywordflow">if</span> (i == loop_points.size()-1) {</div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;      next_point = loop_points[0];</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;    }</div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;      next_point = loop_points[i+1];</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    }</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="class_c_w_1_1_line3_d.html#a5ad79cc396a93fa1beb590ad74d6b999">Line3D::on_line_segment</a>(loop_points[i], next_point, test_point)) {</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;      <span class="keywordflow">return</span> PointLoopClassify::PointOnEdge;</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    }</div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;  }</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;  <span class="comment">// Now check if it is inside or outside, given that we know that the point is (a) on the same plane of the loop, and (b) not on the edge, and (c) not on the vertices.</span></div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;  <span class="comment">// From: http://www.geeksforgeeks.org/how-to-check-if-a-given-point-lies-inside-a-polygon/</span></div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;  <span class="comment">// We draw a line from the point, and if it intersects with the loop an even number of times, then it is outside, if it intersects an odd number of times, it is inside.</span></div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;  <span class="comment">// The line to draw can be any vector that is coplanar to the loop&#39;s plane - the simple one is get a vector of two points within the loop.</span></div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;  assert(loop_points[0] != loop_points[1]);</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;  <a class="code" href="class_c_w_1_1_vector3_d.html">Vector3D</a> ray = <a class="code" href="class_c_w_1_1_vector3_d.html">Vector3D</a>(loop_points[1] - loop_points[0]).unit();</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;  <span class="comment">// Colinear line segments create problems for the algorith below, so we ignore them by creating a new list of points to calculate that exclude colinear edges.</span></div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;  <span class="keyword">struct </span>LoopPoint {</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    <a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a> point;</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    <a class="code" href="class_c_w_1_1_vector3_d.html">Vector3D</a> vector_to_next;</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;  };</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;  std::vector&lt;LoopPoint&gt; red_loop_points;</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;  red_loop_points.reserve(loop_points.size());</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;  <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i=0; i &lt; loop_points.size(); i++) {</div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;    <a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a> next_point;</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;    <span class="keywordflow">if</span> (i == loop_points.size()-1) {</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;      next_point = loop_points[0];</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;      next_point = loop_points[i+1];</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;    }</div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;    <a class="code" href="class_c_w_1_1_vector3_d.html">Vector3D</a> next_vector = next_point - loop_points[i];</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;    <span class="keywordflow">if</span> (next_vector.unit() != ray.unit() &amp;&amp; next_vector.unit() != -ray.unit()) {</div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;      red_loop_points.push_back(LoopPoint{loop_points[i], next_vector});</div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;    }</div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;  }</div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;  <span class="comment">// Now we have a list of points with colinear points removed, find intersections with the line segments</span></div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;  <span class="keywordtype">size_t</span> num_intersections = 0;</div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;  <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i=0; i &lt; red_loop_points.size(); i++) {</div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;    <a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a> intersection = <a class="code" href="class_c_w_1_1_point3_d.html#a73d0a55245fab18cdbaabd1528b5f8ec">Point3D::ray_line_intersection</a>(red_loop_points[i].point, red_loop_points[i].vector_to_next, test_point, ray, <span class="keyword">false</span>);</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;    <span class="keywordflow">if</span> (!!intersection) {</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;      <span class="comment">// There is a case where the ray intersection lies on a vertex of the loop. Whether this should be counted as an intersection of both lines connected to the loop or just once through depends on the orientation of the ray relative to the lines connected to that vertex</span></div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;      <span class="keywordflow">if</span> (intersection == red_loop_points[i].point) {</div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;        <span class="comment">// Get the directions of the lines connected to the vertex</span></div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;        LoopPoint prev_point;</div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;        <span class="keywordflow">if</span> (i == 0) {</div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;          prev_point = red_loop_points[red_loop_points.size()-1];</div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;        }</div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;        <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;          prev_point = red_loop_points[i-1];</div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;        }</div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;        <a class="code" href="class_c_w_1_1_vector3_d.html">Vector3D</a> prev_cross = ray.<a class="code" href="class_c_w_1_1_vector3_d.html#a605fc20adf72d08fc432b9c499b8ff2c">cross</a>(prev_point.vector_to_next);</div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;        <a class="code" href="class_c_w_1_1_vector3_d.html">Vector3D</a> next_cross = ray.<a class="code" href="class_c_w_1_1_vector3_d.html#a605fc20adf72d08fc432b9c499b8ff2c">cross</a>(red_loop_points[i].vector_to_next);</div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;        assert(fabs(next_cross.length()) &gt; Vector3D::EPSILON);</div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;        <span class="keywordflow">if</span> (prev_cross.unit() != next_cross.unit()) {</div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;          <span class="comment">// The cross product direction is in opposite directions - ie the lines connected to the vertex are on the same side of the ray, therefore, count this as an additional intersection</span></div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;          num_intersections++;</div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;        }</div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;      }</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;      <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;        num_intersections++;</div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;      }</div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;    }</div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;  }</div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;  <span class="keywordflow">if</span> (num_intersections % 2 == 0) {</div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;    <span class="comment">// Even number of intersections</span></div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;    <span class="keywordflow">return</span> PointLoopClassify::PointOutside;</div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;  }</div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;  <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;    <span class="keywordflow">return</span> PointLoopClassify::PointInside;</div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;  }</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;}</div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;</div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;</div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;} <span class="comment">/* namespace CW */</span></div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;<a class="code" href="struct_s_u_loop_ref.html">SULoopRef</a> <a class="code" href="class_c_w_1_1_loop.html#a5e5c94b0b62655ee508943f12231f4cb">Loop::ref</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;  <span class="keywordflow">return</span> SULoopFromEntity(<a class="code" href="class_c_w_1_1_entity.html#ad1d5c635add16702f770b6e14c186e9c">m_entity</a>);</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;}</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;  </div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;  </div>
+<div class="line"><a name="l00162"></a><span class="lineno"><a class="line" href="class_c_w_1_1_loop.html#a3fd1021296614cff2a6aa5942a083667">  162</a></span>&#160;PointLoopClassify <a class="code" href="class_c_w_1_1_loop.html#a0637c58678b248349fff7c4ef757bcba">Loop::classify_point</a>(<span class="keyword">const</span> std::vector&lt;Point3D&gt;&amp; loop_points, <span class="keyword">const</span> <a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a>&amp; test_point) {</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;  <span class="keywordflow">if</span>(loop_points.size() &lt; 3) {</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;CW::Loop::classify_point(): Fewer than 3 points given - not a valid loop.&quot;</span>);</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;  }</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;  <span class="keywordflow">if</span>(!test_point) {</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;CW::Loop::classify_point(): Point3D given is null&quot;</span>);</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;  }</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;  <span class="comment">// http://www.geeksforgeeks.org/how-to-check-if-a-given-point-lies-inside-a-polygon/</span></div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;  <span class="comment">// First check that the test point is on the plane</span></div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;  <a class="code" href="class_c_w_1_1_plane3_d.html">Plane3D</a> loop_plane = <a class="code" href="class_c_w_1_1_plane3_d.html#a9a625d2e826d474f25a80dd9d61ae88c">Plane3D::plane_from_loop</a>(loop_points);</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;  <span class="keywordflow">if</span> (!loop_plane) {</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;CW::Loop::classify_point(): Points given does not form a  valid loop.&quot;</span>);</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;  }</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;  <span class="keywordflow">else</span> <span class="keywordflow">if</span> (!loop_plane.<a class="code" href="class_c_w_1_1_plane3_d.html#a418d955dd7448e629c8794cfc63a50c9">on_plane</a>(test_point)) {</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;    <span class="keywordflow">return</span> PointLoopClassify::PointNotOnPlane;</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;  }</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;  <span class="comment">// Now check if it is on the vertices</span></div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;  <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i=0; i &lt; loop_points.size(); i++) {</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    <span class="keywordflow">if</span> (loop_points[i] == test_point) {</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;      <span class="keywordflow">return</span> PointLoopClassify::PointOnVertex;</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;    }</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;  }</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;  <span class="comment">// Now check if it is on the edges</span></div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;  <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i=0; i &lt; loop_points.size(); i++) {</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;    <a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a> next_point;</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    <span class="keywordflow">if</span> (i == loop_points.size()-1) {</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;      next_point = loop_points[0];</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;    }</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;      next_point = loop_points[i+1];</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;    }</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="class_c_w_1_1_line3_d.html#a5ad79cc396a93fa1beb590ad74d6b999">Line3D::on_line_segment</a>(loop_points[i], next_point, test_point)) {</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;      <span class="keywordflow">return</span> PointLoopClassify::PointOnEdge;</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    }</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;  }</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;  <span class="comment">// Now check if it is inside or outside, given that we know that the point is (a) on the same plane of the loop, and (b) not on the edge, and (c) not on the vertices.</span></div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;  <span class="comment">// From: http://www.geeksforgeeks.org/how-to-check-if-a-given-point-lies-inside-a-polygon/</span></div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;  <span class="comment">// We draw a line from the point, and if it intersects with the loop an even number of times, then it is outside, if it intersects an odd number of times, it is inside.</span></div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;  <span class="comment">// The line to draw can be any vector that is coplanar to the loop&#39;s plane - the simple one is get a vector of two points within the loop.</span></div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;  assert(loop_points[0] != loop_points[1]);</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;  <a class="code" href="class_c_w_1_1_vector3_d.html">Vector3D</a> ray = <a class="code" href="class_c_w_1_1_vector3_d.html">Vector3D</a>(loop_points[1] - loop_points[0]).unit();</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;  <span class="comment">// Colinear line segments create problems for the algorith below, so we ignore them by creating a new list of points to calculate that exclude colinear edges.</span></div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;  <span class="keyword">struct </span>LoopPoint {</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    <a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a> point;</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;    <a class="code" href="class_c_w_1_1_vector3_d.html">Vector3D</a> vector_to_next;</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;  };</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;  std::vector&lt;LoopPoint&gt; red_loop_points;</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;  red_loop_points.reserve(loop_points.size());</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;  <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i=0; i &lt; loop_points.size(); i++) {</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;    <a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a> next_point;</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;    <span class="keywordflow">if</span> (i == loop_points.size()-1) {</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;      next_point = loop_points[0];</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;      next_point = loop_points[i+1];</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;    }</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;    <a class="code" href="class_c_w_1_1_vector3_d.html">Vector3D</a> next_vector = next_point - loop_points[i];</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;    <span class="keywordflow">if</span> (next_vector.unit() != ray.unit() &amp;&amp; next_vector.unit() != -ray.unit()) {</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;      red_loop_points.push_back(LoopPoint{loop_points[i], next_vector});</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;    }</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;  }</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;  <span class="comment">// Now we have a list of points with colinear points removed, find intersections with the line segments</span></div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;  <span class="keywordtype">size_t</span> num_intersections = 0;</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;  <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i=0; i &lt; red_loop_points.size(); i++) {</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;    <a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a> intersection = <a class="code" href="class_c_w_1_1_point3_d.html#a73d0a55245fab18cdbaabd1528b5f8ec">Point3D::ray_line_intersection</a>(red_loop_points[i].point, red_loop_points[i].vector_to_next, test_point, ray, <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;    <span class="keywordflow">if</span> (!!intersection) {</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;      <span class="comment">// There is a case where the ray intersection lies on a vertex of the loop. Whether this should be counted as an intersection of both lines connected to the loop or just once through depends on the orientation of the ray relative to the lines connected to that vertex</span></div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;      <span class="keywordflow">if</span> (intersection == red_loop_points[i].point) {</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;        <span class="comment">// Get the directions of the lines connected to the vertex</span></div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;        LoopPoint prev_point;</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;        <span class="keywordflow">if</span> (i == 0) {</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;          prev_point = red_loop_points[red_loop_points.size()-1];</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;        }</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;        <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;          prev_point = red_loop_points[i-1];</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;        }</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;        <a class="code" href="class_c_w_1_1_vector3_d.html">Vector3D</a> prev_cross = ray.<a class="code" href="class_c_w_1_1_vector3_d.html#a605fc20adf72d08fc432b9c499b8ff2c">cross</a>(prev_point.vector_to_next);</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;        <a class="code" href="class_c_w_1_1_vector3_d.html">Vector3D</a> next_cross = ray.<a class="code" href="class_c_w_1_1_vector3_d.html#a605fc20adf72d08fc432b9c499b8ff2c">cross</a>(red_loop_points[i].vector_to_next);</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;        assert(fabs(next_cross.length()) &gt; Vector3D::EPSILON);</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;        <span class="keywordflow">if</span> (prev_cross.unit() != next_cross.unit()) {</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;          <span class="comment">// The cross product direction is in opposite directions - ie the lines connected to the vertex are on the same side of the ray, therefore, count this as an additional intersection</span></div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;          num_intersections++;</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;        }</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;      }</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;      <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;        num_intersections++;</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;      }</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    }</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;  }</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;  <span class="keywordflow">if</span> (num_intersections % 2 == 0) {</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;    <span class="comment">// Even number of intersections</span></div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;    <span class="keywordflow">return</span> PointLoopClassify::PointOutside;</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;  }</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;  <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;    <span class="keywordflow">return</span> PointLoopClassify::PointInside;</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;  }</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;}</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;} <span class="comment">/* namespace CW */</span></div>
 <div class="ttc" id="class_c_w_1_1_point3_d_html"><div class="ttname"><a href="class_c_w_1_1_point3_d.html">CW::Point3D</a></div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8hpp_source.html#l00262">Geometry.hpp:262</a></div></div>
 <div class="ttc" id="class_c_w_1_1_edge_html"><div class="ttname"><a href="class_c_w_1_1_edge.html">CW::Edge</a></div><div class="ttdef"><b>Definition:</b> <a href="_edge_8hpp_source.html#l00048">Edge.hpp:48</a></div></div>
-<div class="ttc" id="class_c_w_1_1_loop_html_a5e5c94b0b62655ee508943f12231f4cb"><div class="ttname"><a href="class_c_w_1_1_loop.html#a5e5c94b0b62655ee508943f12231f4cb">CW::Loop::ref</a></div><div class="ttdeci">SULoopRef ref() const </div><div class="ttdef"><b>Definition:</b> <a href="_loop_8cpp_source.html#l00152">Loop.cpp:152</a></div></div>
+<div class="ttc" id="class_c_w_1_1_loop_html_a5e5c94b0b62655ee508943f12231f4cb"><div class="ttname"><a href="class_c_w_1_1_loop.html#a5e5c94b0b62655ee508943f12231f4cb">CW::Loop::ref</a></div><div class="ttdeci">SULoopRef ref() const </div><div class="ttdef"><b>Definition:</b> <a href="_loop_8cpp_source.html#l00058">Loop.cpp:58</a></div></div>
 <div class="ttc" id="class_c_w_1_1_point3_d_html_a73d0a55245fab18cdbaabd1528b5f8ec"><div class="ttname"><a href="class_c_w_1_1_point3_d.html#a73d0a55245fab18cdbaabd1528b5f8ec">CW::Point3D::ray_line_intersection</a></div><div class="ttdeci">static Point3D ray_line_intersection(const Point3D &amp;point_a, const Vector3D &amp;vector_a, const Point3D &amp;point_b, const Vector3D &amp;ray_b, bool return_colinear=false)</div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8cpp_source.html#l00526">Geometry.cpp:526</a></div></div>
-<div class="ttc" id="class_c_w_1_1_loop_html_abc9600f8e4d18c2058461d8177ac9bd5"><div class="ttname"><a href="class_c_w_1_1_loop.html#abc9600f8e4d18c2058461d8177ac9bd5">CW::Loop::edges</a></div><div class="ttdeci">std::vector&lt; Edge &gt; edges() const </div><div class="ttdef"><b>Definition:</b> <a href="_loop_8cpp_source.html#l00078">Loop.cpp:78</a></div></div>
+<div class="ttc" id="class_c_w_1_1_loop_html_abc9600f8e4d18c2058461d8177ac9bd5"><div class="ttname"><a href="class_c_w_1_1_loop.html#abc9600f8e4d18c2058461d8177ac9bd5">CW::Loop::edges</a></div><div class="ttdeci">std::vector&lt; Edge &gt; edges() const </div><div class="ttdef"><b>Definition:</b> <a href="_loop_8cpp_source.html#l00083">Loop.cpp:83</a></div></div>
 <div class="ttc" id="struct_s_u_loop_ref_html"><div class="ttname"><a href="struct_s_u_loop_ref.html">SULoopRef</a></div><div class="ttdoc">References a loop object, which can be either the outer loop or an inner loop (hole) of a face...</div></div>
 <div class="ttc" id="class_c_w_1_1_plane3_d_html"><div class="ttname"><a href="class_c_w_1_1_plane3_d.html">CW::Plane3D</a></div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8hpp_source.html#l00380">Geometry.hpp:380</a></div></div>
 <div class="ttc" id="class_c_w_1_1_line3_d_html_a5ad79cc396a93fa1beb590ad74d6b999"><div class="ttname"><a href="class_c_w_1_1_line3_d.html#a5ad79cc396a93fa1beb590ad74d6b999">CW::Line3D::on_line_segment</a></div><div class="ttdeci">static bool on_line_segment(const Point3D &amp;point_a, const Point3D &amp;point_b, const Point3D &amp;test_point)</div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8cpp_source.html#l01164">Geometry.cpp:1164</a></div></div>
 <div class="ttc" id="class_c_w_1_1_vector3_d_html"><div class="ttname"><a href="class_c_w_1_1_vector3_d.html">CW::Vector3D</a></div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8hpp_source.html#l00112">Geometry.hpp:112</a></div></div>
-<div class="ttc" id="class_c_w_1_1_loop_html_a1bb8004c28392149003bd4cca1566b2c"><div class="ttname"><a href="class_c_w_1_1_loop.html#a1bb8004c28392149003bd4cca1566b2c">CW::Loop::points</a></div><div class="ttdeci">std::vector&lt; Point3D &gt; points() const </div><div class="ttdef"><b>Definition:</b> <a href="_loop_8cpp_source.html#l00116">Loop.cpp:116</a></div></div>
-<div class="ttc" id="class_c_w_1_1_loop_html_a800178f494a5b4d63d2c4992f4f0aa8b"><div class="ttname"><a href="class_c_w_1_1_loop.html#a800178f494a5b4d63d2c4992f4f0aa8b">CW::Loop::size</a></div><div class="ttdeci">size_t size() const </div><div class="ttdef"><b>Definition:</b> <a href="_loop_8cpp_source.html#l00141">Loop.cpp:141</a></div></div>
-<div class="ttc" id="class_c_w_1_1_loop_html_a71689a33c8a458ab6a280c8311855eae"><div class="ttname"><a href="class_c_w_1_1_loop.html#a71689a33c8a458ab6a280c8311855eae">CW::Loop::operator!</a></div><div class="ttdeci">bool operator!() const </div><div class="ttdef"><b>Definition:</b> <a href="_loop_8cpp_source.html#l00053">Loop.cpp:53</a></div></div>
+<div class="ttc" id="class_c_w_1_1_entity_html_ad1d5c635add16702f770b6e14c186e9c"><div class="ttname"><a href="class_c_w_1_1_entity.html#ad1d5c635add16702f770b6e14c186e9c">CW::Entity::m_entity</a></div><div class="ttdeci">SUEntityRef m_entity</div><div class="ttdoc">The C SUEntityRef that this class wraps. </div><div class="ttdef"><b>Definition:</b> <a href="_entity_8hpp_source.html#l00057">Entity.hpp:57</a></div></div>
+<div class="ttc" id="class_c_w_1_1_entity_html"><div class="ttname"><a href="class_c_w_1_1_entity.html">CW::Entity</a></div><div class="ttdef"><b>Definition:</b> <a href="_entity_8hpp_source.html#l00052">Entity.hpp:52</a></div></div>
+<div class="ttc" id="class_c_w_1_1_loop_html_a1bb8004c28392149003bd4cca1566b2c"><div class="ttname"><a href="class_c_w_1_1_loop.html#a1bb8004c28392149003bd4cca1566b2c">CW::Loop::points</a></div><div class="ttdeci">std::vector&lt; Point3D &gt; points() const </div><div class="ttdef"><b>Definition:</b> <a href="_loop_8cpp_source.html#l00121">Loop.cpp:121</a></div></div>
+<div class="ttc" id="class_c_w_1_1_loop_html_a800178f494a5b4d63d2c4992f4f0aa8b"><div class="ttname"><a href="class_c_w_1_1_loop.html#a800178f494a5b4d63d2c4992f4f0aa8b">CW::Loop::size</a></div><div class="ttdeci">size_t size() const </div><div class="ttdef"><b>Definition:</b> <a href="_loop_8cpp_source.html#l00146">Loop.cpp:146</a></div></div>
 <div class="ttc" id="class_c_w_1_1_loop_input_html"><div class="ttname"><a href="class_c_w_1_1_loop_input.html">CW::LoopInput</a></div><div class="ttdef"><b>Definition:</b> <a href="_loop_input_8hpp_source.html#l00059">LoopInput.hpp:59</a></div></div>
-<div class="ttc" id="class_c_w_1_1_loop_html_a4d17d33722865e3da50409c909f61747"><div class="ttname"><a href="class_c_w_1_1_loop.html#a4d17d33722865e3da50409c909f61747">CW::Loop::Loop</a></div><div class="ttdeci">Loop()</div><div class="ttdef"><b>Definition:</b> <a href="_loop_8cpp_source.html#l00048">Loop.cpp:48</a></div></div>
-<div class="ttc" id="class_c_w_1_1_loop_html_a0637c58678b248349fff7c4ef757bcba"><div class="ttname"><a href="class_c_w_1_1_loop.html#a0637c58678b248349fff7c4ef757bcba">CW::Loop::classify_point</a></div><div class="ttdeci">PointLoopClassify classify_point(const Point3D &amp;point) const </div><div class="ttdef"><b>Definition:</b> <a href="_loop_8cpp_source.html#l00130">Loop.cpp:130</a></div></div>
+<div class="ttc" id="class_c_w_1_1_loop_html_a4d17d33722865e3da50409c909f61747"><div class="ttname"><a href="class_c_w_1_1_loop.html#a4d17d33722865e3da50409c909f61747">CW::Loop::Loop</a></div><div class="ttdeci">Loop()</div><div class="ttdef"><b>Definition:</b> <a href="_loop_8cpp_source.html#l00043">Loop.cpp:43</a></div></div>
+<div class="ttc" id="class_c_w_1_1_loop_html_a0637c58678b248349fff7c4ef757bcba"><div class="ttname"><a href="class_c_w_1_1_loop.html#a0637c58678b248349fff7c4ef757bcba">CW::Loop::classify_point</a></div><div class="ttdeci">PointLoopClassify classify_point(const Point3D &amp;point) const </div><div class="ttdef"><b>Definition:</b> <a href="_loop_8cpp_source.html#l00135">Loop.cpp:135</a></div></div>
 <div class="ttc" id="class_c_w_1_1_plane3_d_html_a418d955dd7448e629c8794cfc63a50c9"><div class="ttname"><a href="class_c_w_1_1_plane3_d.html#a418d955dd7448e629c8794cfc63a50c9">CW::Plane3D::on_plane</a></div><div class="ttdeci">bool on_plane(const Point3D &amp;point) const </div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8cpp_source.html#l00793">Geometry.cpp:793</a></div></div>
 <div class="ttc" id="class_c_w_1_1_vector3_d_html_a605fc20adf72d08fc432b9c499b8ff2c"><div class="ttname"><a href="class_c_w_1_1_vector3_d.html#a605fc20adf72d08fc432b9c499b8ff2c">CW::Vector3D::cross</a></div><div class="ttdeci">Vector3D cross(const Vector3D &amp;vector2) const </div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8cpp_source.html#l00279">Geometry.cpp:279</a></div></div>
 <div class="ttc" id="class_c_w_1_1_vertex_html"><div class="ttname"><a href="class_c_w_1_1_vertex.html">CW::Vertex</a></div><div class="ttdef"><b>Definition:</b> <a href="_vertex_8hpp_source.html#l00042">Vertex.hpp:42</a></div></div>
 <div class="ttc" id="struct_s_u_vertex_ref_html"><div class="ttname"><a href="struct_s_u_vertex_ref.html">SUVertexRef</a></div><div class="ttdoc">A vertex type that has a position and is associated with other geometry like edges, faces, and loops. </div></div>
 <div class="ttc" id="struct_s_u_edge_ref_html"><div class="ttname"><a href="struct_s_u_edge_ref.html">SUEdgeRef</a></div><div class="ttdoc">References an edge. </div></div>
-<div class="ttc" id="class_c_w_1_1_loop_html_a6994648358236c506e0d9fae458f5174"><div class="ttname"><a href="class_c_w_1_1_loop.html#a6994648358236c506e0d9fae458f5174">CW::Loop::vertices</a></div><div class="ttdeci">std::vector&lt; Vertex &gt; vertices() const </div><div class="ttdef"><b>Definition:</b> <a href="_loop_8cpp_source.html#l00097">Loop.cpp:97</a></div></div>
+<div class="ttc" id="class_c_w_1_1_loop_html_a6994648358236c506e0d9fae458f5174"><div class="ttname"><a href="class_c_w_1_1_loop.html#a6994648358236c506e0d9fae458f5174">CW::Loop::vertices</a></div><div class="ttdeci">std::vector&lt; Vertex &gt; vertices() const </div><div class="ttdef"><b>Definition:</b> <a href="_loop_8cpp_source.html#l00102">Loop.cpp:102</a></div></div>
 <div class="ttc" id="class_c_w_1_1_plane3_d_html_a9a625d2e826d474f25a80dd9d61ae88c"><div class="ttname"><a href="class_c_w_1_1_plane3_d.html#a9a625d2e826d474f25a80dd9d61ae88c">CW::Plane3D::plane_from_loop</a></div><div class="ttdeci">static Plane3D plane_from_loop(const std::vector&lt; Point3D &gt; &amp;loop_points)</div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8cpp_source.html#l00843">Geometry.cpp:843</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Feb 23 2018 09:51:03 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Feb 23 2018 10:36:51 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
