@@ -56,7 +56,7 @@ SUAxesRef Axes::create_custom_axes(const SUPoint3D& origin, const SUVector3D& xa
 
 SUAxesRef Axes::copy_reference(const Axes& other) {
   if (other.m_attached) {
-    return SUAxesFromEntity(other.m_entity);
+    return other.m_axes;
   }
   // The other axes has not been attached to the model, so copy its properties to a new object
   SUAxesRef new_axes = create_custom_axes(other.origin(), other.x_axis(), other.y_axis(), other.z_axis());
@@ -68,29 +68,32 @@ SUAxesRef Axes::copy_reference(const Axes& other) {
 * Constructors / Destructor **
 ******************************/
 Axes::Axes():
-  DrawingElement(SU_INVALID)
+  DrawingElement(SU_INVALID),
+  m_axes(SU_INVALID)
 {}
 
 
 Axes::Axes(SUAxesRef axes, bool attached):
-  DrawingElement(SUAxesToDrawingElement(axes), attached)
+  DrawingElement(SUAxesToDrawingElement(axes), attached),
+  m_axes(axes)
 {}
 
 
 Axes::Axes(Point3D origin, Vector3D x_axis, Vector3D y_axis, Vector3D z_axis):
-  DrawingElement(SUAxesToDrawingElement(create_custom_axes(origin, x_axis, y_axis, z_axis)), false)
+  DrawingElement(SUAxesToDrawingElement(create_custom_axes(origin, x_axis, y_axis, z_axis)), false),
+  m_axes(SUAxesFromDrawingElement(m_drawing_element))
 {}
 
 /** Copy constructor */
 Axes::Axes(const Axes& other):
-  DrawingElement(other, SUAxesToDrawingElement(copy_reference(other)))
+  DrawingElement(other, SUAxesToDrawingElement(copy_reference(other))),
+  m_axes(SUAxesFromDrawingElement(m_drawing_element))
 {}
 
 
 Axes::~Axes() {
-  if (!m_attached && SUIsValid(m_entity)) {
-    SUAxesRef axes = this->ref();
-    SUResult res = SUAxesRelease(&axes);
+  if (!m_attached && SUIsValid(m_axes)) {
+    SUResult res = SUAxesRelease(&m_axes);
     assert(res == SU_ERROR_NONE);
   }
 }
@@ -102,37 +105,31 @@ Axes::~Axes() {
 
 /** Copy assignment operator */
 Axes& Axes::operator=(const Axes& other) {
-  if (m_attached && SUIsValid(m_entity)) {
-    SUAxesRef axes = this->ref();
-    SUResult res = SUAxesRelease(&axes);
+  if (m_attached && SUIsValid(m_axes)) {
+    SUResult res = SUAxesRelease(&m_axes);
     assert(res == SU_ERROR_NONE);
   }
-  m_entity = SUAxesToEntity(copy_reference(other));
+  m_axes = copy_reference(other);
+  m_drawing_element = SUAxesToDrawingElement(m_axes);
   DrawingElement::operator=(other);
   return *this;
 }
 
 
 bool Axes::operator!() const {
-  if (SUIsInvalid(m_entity)) {
+  if (SUIsInvalid(m_axes)) {
     return true;
   }
   return false;
 }
 
-/**
-* Returns the SU native reference
-*/
-SUAxesRef Axes::ref() const {
-  return SUAxesFromEntity(m_entity);
-}
 
 Vector3D Axes::x_axis() const {
   if (!(*this)) {
     throw std::logic_error("CW::Axes::x_axis(): Axes is null");
   }
   SUVector3D axis;
-  SUResult res = SUAxesGetXAxis(this->ref(), &axis);
+  SUResult res = SUAxesGetXAxis(m_axes, &axis);
   assert(res == SU_ERROR_NONE);
   return Vector3D(axis);
 }
@@ -142,7 +139,7 @@ Vector3D Axes::y_axis() const {
     throw std::logic_error("CW::Axes::x_axis(): Axes is null");
   }
   SUVector3D axis;
-  SUResult res = SUAxesGetYAxis(this->ref(), &axis);
+  SUResult res = SUAxesGetYAxis(m_axes, &axis);
   assert(res == SU_ERROR_NONE);
   return Vector3D(axis);
 }
@@ -152,7 +149,7 @@ Vector3D Axes::z_axis() const {
     throw std::logic_error("CW::Axes::x_axis(): Axes is null");
   }
   SUVector3D axis;
-  SUResult res = SUAxesGetZAxis(this->ref(), &axis);
+  SUResult res = SUAxesGetZAxis(m_axes, &axis);
   assert(res == SU_ERROR_NONE);
   return Vector3D(axis);
 }
@@ -163,7 +160,7 @@ Point3D Axes::origin() const {
     throw std::logic_error("CW::Axes::x_axis(): Axes is null");
   }
   SUPoint3D origin;
-  SUResult res = SUAxesGetOrigin(this->ref(), &origin);
+  SUResult res = SUAxesGetOrigin(m_axes, &origin);
   assert(res == SU_ERROR_NONE);
   return Point3D(origin);
 }
@@ -174,7 +171,7 @@ Transformation Axes::transformation() const {
     throw std::logic_error("CW::Axes::x_axis(): Axes is null");
   }
   SUTransformation transform;
-  SUResult res = SUAxesGetTransform(this->ref(), &transform);
+  SUResult res = SUAxesGetTransform(m_axes, &transform);
   assert(res == SU_ERROR_NONE);
   return Transformation(transform);
 }

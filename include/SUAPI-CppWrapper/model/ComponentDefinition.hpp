@@ -49,6 +49,7 @@ class Model;
 */
 class ComponentDefinition :public DrawingElement {
   private:
+  SUComponentDefinitionRef m_definition;
   
   static SUComponentDefinitionRef create_definition();
   
@@ -82,13 +83,14 @@ class ComponentDefinition :public DrawingElement {
   ComponentDefinition& operator=(const ComponentDefinition& other);
   
   /** Cast to native objects */
-  /**
-  * Returns the SUComponentDefinitionRef that this class wraps.
-  */
-  SUComponentDefinitionRef ref() const;
   operator SUComponentDefinitionRef() const;
   operator SUComponentDefinitionRef*();
-    
+  
+  /**
+  * Returns the bounding box of this Component Definition
+  */
+  BoundingBox3D bounds() const;
+  
   /**
   * Creates a new ComponentInstance from this ComponentDefinition.
   */
@@ -106,6 +108,11 @@ class ComponentDefinition :public DrawingElement {
   */
   Entities entities() const;
   
+  /**
+  * Returns the SUComponentDefinitionRef that this class wraps.
+  */
+  SUComponentDefinitionRef ref() const;
+
   /**
   * Gets the name of the component.
   */

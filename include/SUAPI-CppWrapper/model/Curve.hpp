@@ -39,6 +39,7 @@ namespace CW {
 
 class Curve :public Entity {
   private:
+  SUCurveRef m_curve;
   SUCurveType m_curve_type;
   SUResult m_create_result;
   
@@ -58,7 +59,7 @@ class Curve :public Entity {
   /**
   * Returns SUCurveRef object of this curve.
   */
-  SUCurveRef ref() const;
+  SUCurveRef ref();
   
   /**
   * Returns the series of Edge objects in the Curve.
@@ -85,7 +86,6 @@ class Curve :public Entity {
   * Returns whether the class is a valid object.
   */
   operator bool() const;
-  
   /**
   * NOT operator.  Checks if the CurveRef is valid.
   * @return true if the curve is invalid

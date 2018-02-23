@@ -37,51 +37,49 @@
 namespace CW {
 
 DrawingElement::DrawingElement(SUDrawingElementRef drawing_element, bool attached):
-  Entity(SUDrawingElementToEntity(drawing_element), attached)
-{}
+  Entity(SUDrawingElementToEntity(drawing_element), attached),
+  m_drawing_element(drawing_element)
+{
+}
 
 
 DrawingElement::DrawingElement(const DrawingElement& other, SUDrawingElementRef element_ref):
-  Entity(other, SUDrawingElementToEntity(element_ref))
+  Entity(other, SUDrawingElementToEntity(element_ref)),
+  m_drawing_element(element_ref)
 {}
 
 DrawingElement::DrawingElement():
-  Entity()
+  Entity(),
+  m_drawing_element(SU_INVALID)
 {}
 
 
 /** Copy assignment operator */
 DrawingElement& DrawingElement::operator=(const DrawingElement& other) {
-  if (!other.m_attached && SUIsValid(other.m_entity)) {
+  if (!other.m_attached && SUIsValid(other.m_drawing_element)) {
     this->copy_properties_from(other);
   }
+  m_entity = SUDrawingElementToEntity(m_drawing_element);
   Entity::operator=(other);
   return (*this);
 }
 
 
-SUDrawingElementRef DrawingElement::ref() const {
-  return SUDrawingElementFromEntity(m_entity);
-}
-
-
 DrawingElement::operator SUDrawingElementRef() const {
-  return this->ref();
+  return m_drawing_element;
 }
 
 DrawingElement::operator SUDrawingElementRef*() {
-  // TODO: test if the solution below works.
-  SUDrawingElementRef drawing_element = this->ref();
-  return &(drawing_element);
+  return &m_drawing_element;
 }
 
 
 BoundingBox3D DrawingElement::bounds() {
-  if (SUIsInvalid(m_entity)) {
+  if (SUIsInvalid(m_drawing_element)) {
     throw std::logic_error("CW::DrawingElement::bounds(): DrawingElement is null");
   }
   SUBoundingBox3D box = SU_INVALID;
-  SUResult res = SUDrawingElementGetBoundingBox(this->ref(), &box);
+  SUResult res = SUDrawingElementGetBoundingBox(m_drawing_element, &box);
   assert(res == SU_ERROR_NONE);
   return BoundingBox3D(box);
 }
@@ -110,21 +108,21 @@ bool DrawingElement::copy_properties_from(const DrawingElement& element) {
 
 
 bool DrawingElement::casts_shadows() const {
-  if (SUIsInvalid(m_entity)) {
+  if (SUIsInvalid(m_drawing_element)) {
     throw std::logic_error("CW::DrawingElement::casts_shadows(): DrawingElement is null");
   }
   bool cast_shadows_flag;
-  SUResult res = SUDrawingElementGetCastsShadows(this->ref(), &cast_shadows_flag);
+  SUResult res = SUDrawingElementGetCastsShadows(m_drawing_element, &cast_shadows_flag);
   assert(res == SU_ERROR_NONE);
   return cast_shadows_flag;
 }
 
 
 bool DrawingElement::casts_shadows(bool casts_shadows) {
-  if (SUIsInvalid(m_entity)) {
+  if (SUIsInvalid(m_drawing_element)) {
     throw std::logic_error("CW::DrawingElement::casts_shadows(): DrawingElement is null");
   }
-  SUResult res = SUDrawingElementSetCastsShadows(this->ref(), casts_shadows);
+  SUResult res = SUDrawingElementSetCastsShadows(m_drawing_element, casts_shadows);
   if (res == SU_ERROR_NONE) {
     return true;
   }
@@ -133,20 +131,20 @@ bool DrawingElement::casts_shadows(bool casts_shadows) {
 
 
 bool DrawingElement::hidden() const {
-  if (SUIsInvalid(m_entity)) {
+  if (SUIsInvalid(m_drawing_element)) {
     throw std::logic_error("CW::DrawingElement::hidden(): DrawingElement is null");
   }
   bool hide_flag;
-  SUDrawingElementGetHidden(this->ref(), &hide_flag);
+  SUDrawingElementGetHidden(m_drawing_element, &hide_flag);
   return hide_flag;
 }
 
 
 bool DrawingElement::hidden(bool hidden) {
-  if (SUIsInvalid(m_entity)) {
+  if (SUIsInvalid(m_drawing_element)) {
     throw std::logic_error("CW::DrawingElement::hidden(): DrawingElement is null");
   }
-  SUResult res = SUDrawingElementSetHidden(this->ref(), hidden);
+  SUResult res = SUDrawingElementSetHidden(m_drawing_element, hidden);
   if (res == SU_ERROR_NONE) {
     return true;
   }
@@ -155,11 +153,11 @@ bool DrawingElement::hidden(bool hidden) {
 
 
 Layer DrawingElement::layer() const {
-  if (SUIsInvalid(m_entity)) {
+  if (SUIsInvalid(m_drawing_element)) {
     throw std::logic_error("CW::DrawingElement::layer(): DrawingElement is null");
   }
   SULayerRef layer_ref = SU_INVALID;
-  SUResult res = SUDrawingElementGetLayer(this->ref(), &layer_ref);
+  SUResult res = SUDrawingElementGetLayer(m_drawing_element, &layer_ref);
   if (res == SU_ERROR_NULL_POINTER_OUTPUT || res == SU_ERROR_NO_DATA) {
     return Layer();
   }
@@ -169,10 +167,10 @@ Layer DrawingElement::layer() const {
 
 
 bool DrawingElement::layer(Layer& layer){
-  if (SUIsInvalid(m_entity)) {
+  if (SUIsInvalid(m_drawing_element)) {
     throw std::logic_error("CW::DrawingElement::layer(): DrawingElement is null");
   }
-  SUResult res = SUDrawingElementSetLayer(this->ref(), layer);
+  SUResult res = SUDrawingElementSetLayer(m_drawing_element, layer);
   if (res == SU_ERROR_NONE) {
     layer.attached(true);
     return true;
@@ -182,11 +180,11 @@ bool DrawingElement::layer(Layer& layer){
 
 
 Material DrawingElement::material() const {
-  if (SUIsInvalid(m_entity)) {
+  if (SUIsInvalid(m_drawing_element)) {
     throw std::logic_error("CW::DrawingElement::material(): DrawingElement is null");
   }
   SUMaterialRef material_ref = SU_INVALID;
-  SUResult res = SUDrawingElementGetMaterial(this->ref(), &material_ref);
+  SUResult res = SUDrawingElementGetMaterial(m_drawing_element, &material_ref);
   if (res == SU_ERROR_NO_DATA || res == SU_ERROR_NULL_POINTER_OUTPUT) {
     return Material();
   }
@@ -196,10 +194,10 @@ Material DrawingElement::material() const {
 
 
 bool DrawingElement::material(const Material& material) {
-  if (SUIsInvalid(m_entity)) {
+  if (SUIsInvalid(m_drawing_element)) {
     throw std::logic_error("CW::DrawingElement::material(): DrawingElement is null");
   }
-  SUResult res = SUDrawingElementSetMaterial(this->ref(), material);
+  SUResult res = SUDrawingElementSetMaterial(m_drawing_element, material);
   if (res == SU_ERROR_NONE) {
     return true;
   }
@@ -208,21 +206,21 @@ bool DrawingElement::material(const Material& material) {
 
 
 bool DrawingElement::receive_shadows() const {
-  if (SUIsInvalid(m_entity)) {
+  if (SUIsInvalid(m_drawing_element)) {
     throw std::logic_error("CW::DrawingElement::receive_shadows(): DrawingElement is null");
   }
   bool receives_shadows_flag;
-  SUResult res = SUDrawingElementGetReceivesShadows(this->ref(), &receives_shadows_flag);
+  SUResult res = SUDrawingElementGetReceivesShadows(m_drawing_element, &receives_shadows_flag);
   assert (res == SU_ERROR_NONE);
   return receives_shadows_flag;
 }
 
 
 bool DrawingElement::receive_shadows(bool receives_shadows_flag) {
-  if (SUIsInvalid(m_entity)) {
+  if (SUIsInvalid(m_drawing_element)) {
     throw std::logic_error("CW::DrawingElement::receive_shadows(): DrawingElement is null");
   }
-  SUResult res = SUDrawingElementSetReceivesShadows(this->ref(), receives_shadows_flag);
+  SUResult res = SUDrawingElementSetReceivesShadows(m_drawing_element, receives_shadows_flag);
   if (res == SU_ERROR_NONE) {
     return true;
   }

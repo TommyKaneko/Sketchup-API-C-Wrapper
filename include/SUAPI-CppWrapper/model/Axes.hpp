@@ -45,6 +45,8 @@ namespace CW {
 */
 class Axes :public DrawingElement {
   private:
+  SUAxesRef m_axes;
+  
   /** Returns an empty SUAxesRef object using SUAxesCreate(). **/
   static SUAxesRef create_axes();
 
@@ -81,11 +83,6 @@ class Axes :public DrawingElement {
   
   /** Destructor */
   ~Axes();
-  
-  /**
-  * Returns the SU native reference
-  */
-  SUAxesRef ref() const;
   
   /** Copy assignment operator override */
   Axes& operator=(const Axes& other);

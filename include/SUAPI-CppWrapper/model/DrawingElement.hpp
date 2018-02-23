@@ -44,6 +44,9 @@ class BoundingBox3D;
 * Drawing Element wrapper
 */
 class DrawingElement :public Entity {
+  protected:
+  SUDrawingElementRef m_drawing_element;
+  
   public:
    /**
   * Most common constructor.
@@ -68,7 +71,6 @@ class DrawingElement :public Entity {
   DrawingElement& operator=(const DrawingElement& other);
   
   /** Cast to native objects */
-  SUDrawingElementRef ref() const;
   operator SUDrawingElementRef() const;
   operator SUDrawingElementRef*();
   

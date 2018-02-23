@@ -40,7 +40,9 @@ namespace CW {
 * Vertex wrapper
 */
 class Vertex :public Entity {
-  private:  
+  private:
+  SUVertexRef m_vertex;
+  
   static SUVertexRef copy_reference(const Vertex& other);
   
   public:

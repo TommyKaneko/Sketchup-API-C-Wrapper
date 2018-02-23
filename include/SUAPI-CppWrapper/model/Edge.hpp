@@ -47,6 +47,8 @@ class Color;
 */
 class Edge :public DrawingElement {
   private:
+  SUEdgeRef m_edge;
+  
   static SUEdgeRef create_edge(const Point3D& start, const Point3D& end);
 
   static SUEdgeRef copy_reference(const Edge& other);
@@ -88,6 +90,7 @@ class Edge :public DrawingElement {
   ~Edge();
   
   Edge& operator=(const Edge& other);
+  
   
   /**
   * Returns SUEdgeRef object for the Edge.

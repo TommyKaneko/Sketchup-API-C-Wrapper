@@ -40,23 +40,18 @@
 
 namespace CW {
 
+Loop::Loop(SULoopRef loop):
+  m_loop(loop)
+{}
+
+
 Loop::Loop():
-  Entity()
+  m_loop(SU_INVALID)
 {}
 
 
-Loop::Loop(SULoopRef loop, bool attached):
-  Entity(SULoopToEntity(loop), attached)
-{}
-
-
-Loop::Loop(const Loop& other):
-  Entity(other, other.m_entity)
-{}
-
-
-SULoopRef Loop::ref() const {
-  return SULoopFromEntity(m_entity);
+bool Loop::operator!() const {
+  return SUIsInvalid(m_loop);
 }
 
 
@@ -85,10 +80,10 @@ std::vector<Edge> Loop::edges() const {
     throw std::logic_error("CW::Loop::edges(): Loop is null");
   }
   size_t count = 0;
-  SUResult res = SULoopGetNumVertices(this->ref(), &count);
+  SUResult res = SULoopGetNumVertices(m_loop, &count);
   assert(res == SU_ERROR_NONE);
   std::vector<SUEdgeRef> edge_refs(count, SU_INVALID);
-  res = SULoopGetEdges(this->ref(), count, edge_refs.data(), &count);
+  res = SULoopGetEdges(m_loop, count, edge_refs.data(), &count);
   assert(res == SU_ERROR_NONE);
   std::vector<Edge> edges(count);
   std::transform(edge_refs.begin(), edge_refs.end(), edges.begin(),
@@ -104,10 +99,10 @@ std::vector<Vertex> Loop::vertices() const {
     throw std::logic_error("CW::Loop::vertices(): Loop is null");
   }
   size_t count = 0;
-  SUResult res = SULoopGetNumVertices(this->ref(), &count);
+  SUResult res = SULoopGetNumVertices(m_loop, &count);
   assert(res == SU_ERROR_NONE);
   std::vector<SUVertexRef> verts_array(count, SU_INVALID);
-  res = SULoopGetVertices(this->ref(), count, verts_array.data(), &count);
+  res = SULoopGetVertices(m_loop, count, verts_array.data(), &count);
   assert(res == SU_ERROR_NONE);
   std::vector<Vertex> vertices(count);
   std::transform(verts_array.begin(), verts_array.end(), vertices.begin(),
@@ -148,14 +143,14 @@ size_t Loop::size() const {
     throw std::logic_error("CW::Loop::size(): Loop is null");
   }
   size_t count = 0;
-  SUResult res = SULoopGetNumVertices(this->ref(), &count);
+  SUResult res = SULoopGetNumVertices(m_loop, &count);
   assert(res == SU_ERROR_NONE);
   return count;
 }
 
 
 SULoopRef Loop::ref() const {
-  return SULoopFromEntity(m_entity);
+  return m_loop;
 }
   
   

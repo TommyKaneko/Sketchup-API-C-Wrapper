@@ -44,6 +44,8 @@ class String;
 
 class Group :public ComponentInstance {
   private:
+  SUGroupRef m_group;
+  
   /**
   * Create new SUGroupRef object
   */
@@ -61,7 +63,7 @@ class Group :public ComponentInstance {
   * Construct a Group from an existing SUGroupRef object.
   */
   Group(SUGroupRef group, bool attached = false);
-  
+    
   /** Copy constructor */
   Group(const Group& other);
   
@@ -70,12 +72,7 @@ class Group :public ComponentInstance {
 
   /** Copy assignment operator */
   Group& operator=(const Group& other);
-
-  /**
-  * Returns the raw SUGroupRef object.
-  */
-  SUGroupRef ref() const;
-
+  
   /*
   * The class object can be converted to a SUGroupRef.
   */
@@ -111,6 +108,11 @@ class Group :public ComponentInstance {
   * Set the Transformation of the group.
   */
   void transformation(const Transformation& transform);
+  
+  /**
+  * Returns the raw SUGroupRef object.
+  */
+  SUGroupRef ref() const;
   
 };
 

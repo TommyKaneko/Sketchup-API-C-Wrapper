@@ -30,8 +30,8 @@
 
 #include <stdio.h>
 #include <vector>
-
-#include "SUAPI-CppWrapper/model/Entity.hpp"
+//#include "SUAPI-CppWrapper/DrawingElement.hpp"
+//#include "SUAPI-CppWrapper/Edge.hpp"
 
 //#include <SketchUpAPI/geometry.h>
 //#include <SketchUpAPI/model/geometry_input.h>
@@ -60,29 +60,26 @@ enum class PointLoopClassify {
 /**
 * A face is made up of an outer loop and inner loops.
 */
-class Loop :public Entity {
-  public:  
+class Loop {
+  private:
+  SULoopRef m_loop;
+  
+  public:
+  /*
+  * Creates a Loop object from the SULoopRef.
+  * @param SULoopRef object that is already attached to a SUFaceRef
+  */
+  Loop(SULoopRef loop);
+  
   /**
   * Creates an invalid Loop object.
   */
   Loop();
-
-  /*
-  * Creates a Loop object from the SULoopRef.
-  * @param SULoopRef object that is already attached to a SUFaceRef
-  * @param bool true if the loop is attached to a face.
-  */
-  Loop(SULoopRef loop, bool attached = true);
-
-  /*
-  * Copy Constructor.
-  */
-  Loop(const Loop& other);
-
+  
   /**
-  * Returns the SULoopRef object stored in this loop.
+  * Tests for valid object.
   */
-  SULoopRef ref() const;
+  bool operator!() const;
 
   /*
   * Returns the LoopInput object for this loop. A SULoopInputRef will be created using the values of the original SULoopRef object.
@@ -114,6 +111,11 @@ class Loop :public Entity {
   * Returns the number of edges/vertices in the loop.
   */
   size_t size() const;
+  
+  /**
+  * Returns the SULoopRef object stored in this loop.
+  */
+  SULoopRef ref() const;
   
   /**
   * Returns whether a point is within a loop, given by the vector of points.

@@ -57,24 +57,27 @@ SUTextureRef Texture::create_texture(const std::string file_path, double s_scale
 
 
 SUTextureRef Texture::copy_reference(const Texture& other) {
-  return other.ref();
+  return other.m_texture;
 }
 
 /******************************
 ** Constructors / Destructor **
 *******************************/
 Texture::Texture():
-  Entity()
+  Entity(),
+  m_texture(SU_INVALID)
 {}
 
 
 Texture::Texture(SUTextureRef texture, bool attached):
-  Entity(SUTextureToEntity(texture), attached)
+  Entity(SUTextureToEntity(texture), attached),
+  m_texture(texture)
 {}
 
 
 Texture::Texture(const Texture& other):
-  Entity(other, SUTextureToEntity(copy_reference(other)))
+  Entity(other, SUTextureToEntity(copy_reference(other))),
+  m_texture(SUTextureFromEntity(m_entity))
 {}
 
 
@@ -89,31 +92,31 @@ Texture::Texture(ImageRep& image):
 
 
 Texture::~Texture() {
+
 }
 
 
 Texture& Texture::operator=(const Texture& other) {
-  // Simply assign the other texture to this object.
-  m_entity = SUTextureToEntity(other.ref());
+  // Simply assign the other vertex to this object.
+  m_texture = other.m_texture;
+  m_entity = SUTextureToEntity(m_texture);
   Entity::operator=(other);
   return (*this);
 }
 
 
-SUTextureRef Texture::ref() const {
-  return SUTextureFromEntity(m_entity);
-}
-
-
 Texture::operator SUTextureRef() const {
-  return this->ref();
+  return ref();
 }
 
 
 Texture::operator SUTextureRef*() {
-  // TODO: Test that the solution below works, and not result in a bad access error.
-  SUTextureRef texture = this->ref();
-  return &texture;
+  return &m_texture;
+}
+
+
+SUTextureRef Texture::ref() const {
+  return m_texture;
 }
 
 Texture Texture::copy() const {
@@ -144,7 +147,7 @@ bool Texture::alpha_used() const {
     throw std::logic_error("CW::Texture::alpha_used(): Texture is null");
   }
   bool alpha_channel_used;
-  SUResult res = SUTextureGetUseAlphaChannel(this->ref(), &alpha_channel_used);
+  SUResult res = SUTextureGetUseAlphaChannel  (m_texture,  &alpha_channel_used);
   assert(res == SU_ERROR_NONE);
   return alpha_channel_used;
 }
@@ -157,7 +160,7 @@ ImageRep Texture::image_rep() const {
   SUImageRepRef image_rep = SU_INVALID;
   SUResult res = SUImageRepCreate(&image_rep);
   assert(res == SU_ERROR_NONE);
-  res = SUTextureGetImageRep(this->ref(), &image_rep);
+  res = SUTextureGetImageRep(m_texture, &image_rep);
   assert(res == SU_ERROR_NONE);
   return ImageRep(image_rep);
 }
@@ -166,14 +169,14 @@ ImageRep Texture::image_rep() const {
 String Texture::file_name() const {
   String name;
   SUStringRef file_ref = name.ref();
-  SUResult res = SUTextureGetFileName(this->ref(), &file_ref);
+  SUResult res = SUTextureGetFileName(m_texture, &file_ref);
   return name;
 }
 
 
 void Texture::file_name(const String& string) const {
   const char* chars = string.std_string().c_str();
-  SUResult res = SUTextureSetFileName(this->ref(), chars);
+  SUResult res = SUTextureSetFileName(m_texture, chars);
   assert(res == SU_ERROR_NONE);
 }
 
@@ -186,7 +189,7 @@ size_t Texture::width() const {
   size_t height;
   double s_scale;
   double t_scale;
-  SUResult res = SUTextureGetDimensions(this->ref(), &width, &height, &s_scale, &t_scale);
+  SUResult res = SUTextureGetDimensions(m_texture, &width, &height, &s_scale, &t_scale);
   assert(res == SU_ERROR_NONE);
   return width;
 }
@@ -200,7 +203,7 @@ size_t Texture::height() const {
   size_t height;
   double s_scale;
   double t_scale;
-  SUResult res = SUTextureGetDimensions(this->ref(), &width, &height, &s_scale, &t_scale);
+  SUResult res = SUTextureGetDimensions(m_texture, &width, &height, &s_scale, &t_scale);
   assert(res == SU_ERROR_NONE);
   return height;
 }
@@ -214,7 +217,7 @@ double Texture::s_scale() const {
   size_t height;
   double s_scale;
   double t_scale;
-  SUResult res = SUTextureGetDimensions(this->ref(), &width, &height, &s_scale, &t_scale);
+  SUResult res = SUTextureGetDimensions(m_texture, &width, &height, &s_scale, &t_scale);
   assert(res == SU_ERROR_NONE);
   return s_scale;
 }
@@ -228,7 +231,7 @@ double Texture::t_scale() const {
   size_t height;
   double s_scale;
   double t_scale;
-  SUResult res = SUTextureGetDimensions(this->ref(), &width, &height, &s_scale, &t_scale);
+  SUResult res = SUTextureGetDimensions(m_texture, &width, &height, &s_scale, &t_scale);
   assert(res == SU_ERROR_NONE);
   return t_scale;
 }
@@ -236,7 +239,7 @@ double Texture::t_scale() const {
 
 SUResult Texture::save(const std::string& file_path) const {
   const char *cstr = file_path.c_str();
-  SUResult res = SUTextureWriteToFile(this->ref(), cstr);
+  SUResult res = SUTextureWriteToFile(m_texture, cstr);
   return res;
 }
 

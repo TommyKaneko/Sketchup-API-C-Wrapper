@@ -57,7 +57,7 @@ SUAttributeDictionaryRef AttributeDictionary::copy_reference(const AttributeDict
     throw std::logic_error("AttributeDictionary::create_attribute_dictionary(): Cannot use function prior to SU version 2018");
   }
   if (other.m_attached || !other) {
-    return other.ref();
+    return other.m_dict;
   }
   // The other Attributedictionary has not been attached to the model, so copy its properties to a new object
   SUAttributeDictionaryRef new_dict = create_attribute_dictionary(other.get_name());
@@ -69,7 +69,8 @@ SUAttributeDictionaryRef AttributeDictionary::copy_reference(const AttributeDict
 * Constructor / Destructors **
 ******************************/
 AttributeDictionary::AttributeDictionary():
-  Entity(SU_INVALID)
+  Entity(SU_INVALID),
+  m_dict(SU_INVALID)
 {}
   
 
@@ -79,15 +80,17 @@ AttributeDictionary::AttributeDictionary(std::string name):
 
 
 AttributeDictionary::AttributeDictionary(SUAttributeDictionaryRef dict_ref, bool attached):
-  Entity(SUAttributeDictionaryToEntity(dict_ref), attached)
+  Entity(SUAttributeDictionaryToEntity(dict_ref), attached),
+  m_dict(dict_ref)
 {}
 
 
 /** Copy constructor */
 AttributeDictionary::AttributeDictionary(const AttributeDictionary& other):
-  Entity(other, SUAttributeDictionaryToEntity(copy_reference(other)))
+  Entity(other, SUAttributeDictionaryToEntity(copy_reference(other))),
+  m_dict(SUAttributeDictionaryFromEntity(m_entity))
 {
-  if (!other.m_attached && SUIsValid(other.m_entity)) {
+  if (!other.m_attached && SUIsValid(other.m_dict)) {
     // Create a copy of the keys and values
     std::vector<std::string> keys = other.get_keys();
     for (size_t i=0; i < keys.size(); i++) {
@@ -99,9 +102,8 @@ AttributeDictionary::AttributeDictionary(const AttributeDictionary& other):
 
 AttributeDictionary::~AttributeDictionary() {
   if (SU_VERSION_MAJOR >= 18) {
-    if (!m_attached && SUIsValid(m_entity)) {
-      SUAttributeDictionaryRef dict = this->ref();
-      SUResult res = SUAttributeDictionaryRelease(&dict);
+    if (!m_attached && SUIsValid(m_dict)) {
+      SUResult res = SUAttributeDictionaryRelease(&m_dict);
       assert(res == SU_ERROR_NONE);
     }
   }
@@ -112,32 +114,29 @@ AttributeDictionary::~AttributeDictionary() {
 *******************/
 /** Copy assignment operator */
 AttributeDictionary& AttributeDictionary::operator=(const AttributeDictionary& other) {
-  if (SU_VERSION_MAJOR >= 18 && !m_attached && SUIsValid(m_entity)) {
-    SUAttributeDictionaryRef dict = this->ref();
-    SUResult res = SUAttributeDictionaryRelease(&dict);
+  if (SU_VERSION_MAJOR >= 18 && !m_attached && SUIsValid(m_dict)) {
+    SUResult res = SUAttributeDictionaryRelease(&m_dict);
     assert(res == SU_ERROR_NONE);
   }
-  SUAttributeDictionaryRef dict = copy_reference(other);
-  m_entity = SUAttributeDictionaryToEntity(dict);
+  m_dict = copy_reference(other);
+  m_entity = SUAttributeDictionaryToEntity(m_dict);
   Entity::operator=(other);
   return *this;
 }
 
 
 SUAttributeDictionaryRef AttributeDictionary::ref() const {
-  return SUAttributeDictionaryFromEntity(m_entity);
+  return m_dict;
 }
 
 
 AttributeDictionary::operator SUAttributeDictionaryRef() const {
-  return this->ref();
+  return m_dict;
 }
 
 
 AttributeDictionary::operator SUAttributeDictionaryRef*() {
-  // TODO: test if the solution below works.
-  SUAttributeDictionaryRef dict = SUAttributeDictionaryFromEntity(m_entity);
-  return &dict;
+  return &m_dict;
 }
 
 
@@ -148,7 +147,7 @@ TypedValue AttributeDictionary::get_attribute(const std::string &key, const Type
   TypedValue value_out;
   SUTypedValueRef *val = value_out;
   const char* key_char = key.c_str();
-  SUResult res = SUAttributeDictionaryGetValue(this->ref(), &key_char[0], val);
+  SUResult res = SUAttributeDictionaryGetValue(m_dict, &key_char[0], val);
   if (res == SU_ERROR_NO_DATA) {
     return default_value;
   }
@@ -165,7 +164,7 @@ bool AttributeDictionary::set_attribute(const std::string &key, const TypedValue
   }
   SUTypedValueRef val = value.ref();
   const char* key_char = key.c_str();
-  SUResult res = SUAttributeDictionarySetValue(this->ref(), &key_char[0], val);
+  SUResult res = SUAttributeDictionarySetValue(m_dict, &key_char[0], val);
   if (res == SU_ERROR_NONE) {
     return true;
   }
@@ -179,9 +178,8 @@ std::vector<std::string> AttributeDictionary::get_keys() const {
     throw std::logic_error("CW::AttributeDictionary::get_keys(): AttributeDictionary is null");
   }
   size_t num_keys = 0;
-  SUResult res = SUAttributeDictionaryGetNumKeys(this->ref(), &num_keys);
+  SUResult res = SUAttributeDictionaryGetNumKeys(m_dict, &num_keys);
   assert(res == SU_ERROR_NONE);
-<<<<<<< HEAD:src/SUAPI-CppWrapper/model/AttributeDictionary.cpp
   std::vector<SUStringRef> keys_ref(num_keys, SU_INVALID);
   std::for_each(keys_ref.begin(), keys_ref.end(),
   [](SUStringRef& value) {
@@ -195,20 +193,6 @@ std::vector<std::string> AttributeDictionary::get_keys() const {
   [](const SUStringRef& value) {
     return String(value).std_string();
   });
-=======
-  SUStringRef* keys_ref = new SUStringRef[num_keys];
-  for (size_t i=0; i < num_keys; i++) {
-    keys_ref[i] = SU_INVALID;
-    SUStringCreate(&keys_ref[i]);
-  }
-  SUAttributeDictionaryGetKeys(this->ref(), num_keys, &keys_ref[0], &num_keys);
-  std::vector<std::string> keys;
-  keys.reserve(num_keys);
-  for (size_t i=0; i < num_keys; i++) {
-    keys.push_back(String(keys_ref[i]));
-  }
-  delete[] keys_ref;
->>>>>>> single_member:SUAPI-CppWrapper/model/AttributeDictionary.cpp
   return keys;
 }
 
@@ -219,13 +203,13 @@ TypedValue AttributeDictionary::get_value(const std::string &key) const {
 std::string AttributeDictionary::get_name() const {
   String string;
   SUStringRef *string_ref = string;
-  SUResult res = SUAttributeDictionaryGetName(this->ref(), string_ref);
+  SUResult res = SUAttributeDictionaryGetName(m_dict, string_ref);
   assert(res == SU_ERROR_NONE);
   return string;
 }
 
 bool AttributeDictionary::operator !() const {
-  if (SUIsValid(m_entity)) {
+  if (SUIsValid(m_dict)) {
     return false;
   }
   return true;

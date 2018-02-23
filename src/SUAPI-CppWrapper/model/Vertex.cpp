@@ -36,24 +36,27 @@ namespace CW {
 *******************************/
 SUVertexRef Vertex::copy_reference(const Vertex& other) {
   // As vertices cannot be "copied", we simply pass the existing reference.
-  return other.ref();
+  return other.m_vertex;
 }
 
 /******************************
 ** Constructors / Destructor **
 *******************************/
 Vertex::Vertex():
-  Entity()
+  Entity(),
+  m_vertex(SU_INVALID)
 {}
 
 
 Vertex::Vertex(SUVertexRef vertex):
-  Entity(SUVertexToEntity(vertex), true)
+  Entity(SUVertexToEntity(vertex), true),
+  m_vertex(vertex)
 {}
 
 
 Vertex::Vertex(const Vertex& other):
-  Entity(other, SUVertexToEntity(copy_reference(other)))
+  Entity(other, SUVertexToEntity(copy_reference(other))),
+  m_vertex(SUVertexFromEntity(m_entity))
 {}
 
 
@@ -64,7 +67,8 @@ Vertex::~Vertex() {
 
 Vertex& Vertex::operator=(const Vertex& other) {
   // Simply assign the other vertex to this object.
-  m_entity = other.m_entity;
+  m_vertex = other.m_vertex;
+  m_entity = SUVertexToEntity(m_vertex);
   Entity::operator=(other);
   return (*this);
 }
@@ -78,24 +82,22 @@ Point3D Vertex::position() const {
     throw std::logic_error("CW::Vertex::position(): Vertex is null");
   }
   SUPoint3D point;
-  SUResult res = SUVertexGetPosition(this->ref(), &point);
+  SUResult res = SUVertexGetPosition(m_vertex, &point);
   assert(res == SU_ERROR_NONE);
   return Point3D(point);
 }
 
 
 Vertex::operator SUVertexRef() const {
-  return this->ref();
+  return ref();
 }
 
 Vertex::operator SUVertexRef*() {
-  // TODO: Test that the solution below works, and not result in a bad access error.
-  SUVertexRef vertex = SUVertexFromEntity(m_entity);
-  return &vertex;
+  return &m_vertex;
 }
 
 SUVertexRef Vertex::ref() const {
-  return SUVertexFromEntity(m_entity);
+  return m_vertex;
 }
 
 Vertex::operator SUPoint3D() const {

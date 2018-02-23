@@ -152,13 +152,7 @@ bool Model::add_definitions(std::vector<ComponentDefinition>& definitions) {
   if(!(*this)) {
     throw std::logic_error("CW::Model::add_definitions(): Model is null");
   }
-  std::vector<SUComponentDefinitionRef> defs(definitions.size(), SU_INVALID);
-  std::transform(definitions.begin(), definitions.end(), defs.begin(),
-    [](const ComponentDefinition& definition) {
-      return definition.ref();
-    }
-  );
-  SUResult res = SUModelAddComponentDefinitions(m_model, definitions.size(), defs.data());
+  SUResult res = SUModelAddComponentDefinitions(m_model, definitions.size(), definitions[0]);
   if (res == SU_ERROR_NONE) {
     return true;
   }
