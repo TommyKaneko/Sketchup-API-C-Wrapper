@@ -234,53 +234,56 @@
 <div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;  SUResult res = SUAttributeDictionaryGetNumKeys(m_dict, &amp;num_keys);</div>
 <div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;  assert(res == SU_ERROR_NONE);</div>
 <div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;  std::vector&lt;SUStringRef&gt; keys_ref(num_keys, SU_INVALID);</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;  <span class="comment">//for (size_t i=0; i &lt; num_keys; i++) {</span></div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;  <span class="comment">//  SUStringCreate(&amp;keys_ref[i]);</span></div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;  <span class="comment">//}</span></div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;  SUAttributeDictionaryGetKeys(m_dict, num_keys, keys_ref.data(), &amp;num_keys);</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;  std::vector&lt;std::string&gt; keys(num_keys);</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;  std::transform(keys_ref.begin(), keys_ref.end(), keys.begin(),</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;  [](<span class="keyword">const</span> <a class="code" href="struct_s_u_string_ref.html">SUStringRef</a>&amp; value) {</div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="class_c_w_1_1_string.html">String</a>(value).std_string();</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;  });</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;  <span class="keywordflow">return</span> keys;</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;}</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;</div>
-<div class="line"><a name="l00196"></a><span class="lineno"><a class="line" href="class_c_w_1_1_attribute_dictionary.html#ad4c403542e7ee8497c6d457751c6562c">  196</a></span>&#160;<a class="code" href="class_c_w_1_1_typed_value.html">TypedValue</a> <a class="code" href="class_c_w_1_1_attribute_dictionary.html#ad4c403542e7ee8497c6d457751c6562c">AttributeDictionary::get_value</a>(<span class="keyword">const</span> std::string &amp;key)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="class_c_w_1_1_attribute_dictionary.html#a8814b15285e78fc88a14018ee7bdc963">get_attribute</a>(key, <a class="code" href="class_c_w_1_1_typed_value.html">TypedValue</a>());</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;}</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;</div>
-<div class="line"><a name="l00200"></a><span class="lineno"><a class="line" href="class_c_w_1_1_attribute_dictionary.html#a5a48357f5ce9d61e033be2ace3581c96">  200</a></span>&#160;std::string <a class="code" href="class_c_w_1_1_attribute_dictionary.html#a5a48357f5ce9d61e033be2ace3581c96">AttributeDictionary::get_name</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;  <a class="code" href="class_c_w_1_1_string.html">String</a> string;</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;  <a class="code" href="struct_s_u_string_ref.html">SUStringRef</a> *string_ref = string;</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;  SUResult res = SUAttributeDictionaryGetName(m_dict, string_ref);</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;  assert(res == SU_ERROR_NONE);</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;  <span class="keywordflow">return</span> string;</div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;}</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;</div>
-<div class="line"><a name="l00208"></a><span class="lineno"><a class="line" href="class_c_w_1_1_attribute_dictionary.html#abd676bec9f4fb94393549c1b1584e182">  208</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="class_c_w_1_1_attribute_dictionary.html#abd676bec9f4fb94393549c1b1584e182">AttributeDictionary::operator !</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;  <span class="keywordflow">if</span> (SUIsValid(m_dict)) {</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;  }</div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;}</div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;</div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;</div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;} <span class="comment">/* namespace CW */</span></div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;  std::for_each(keys_ref.begin(), keys_ref.end(),</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;  [](<a class="code" href="struct_s_u_string_ref.html">SUStringRef</a>&amp; value) {</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;    SUResult res = SUStringCreate(&amp;value);</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    assert(res == SU_ERROR_NONE);</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;  });</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;  res = SUAttributeDictionaryGetKeys(m_dict, num_keys, keys_ref.data(), &amp;num_keys);</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;  assert(res == SU_ERROR_NONE);</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;  std::vector&lt;std::string&gt; keys(num_keys);</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;  std::transform(keys_ref.begin(), keys_ref.end(), keys.begin(),</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;  [](<span class="keyword">const</span> <a class="code" href="struct_s_u_string_ref.html">SUStringRef</a>&amp; value) {</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="class_c_w_1_1_string.html">String</a>(value).std_string();</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;  });</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;  <span class="keywordflow">return</span> keys;</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;}</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;</div>
+<div class="line"><a name="l00199"></a><span class="lineno"><a class="line" href="class_c_w_1_1_attribute_dictionary.html#ad4c403542e7ee8497c6d457751c6562c">  199</a></span>&#160;<a class="code" href="class_c_w_1_1_typed_value.html">TypedValue</a> <a class="code" href="class_c_w_1_1_attribute_dictionary.html#ad4c403542e7ee8497c6d457751c6562c">AttributeDictionary::get_value</a>(<span class="keyword">const</span> std::string &amp;key)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="class_c_w_1_1_attribute_dictionary.html#a8814b15285e78fc88a14018ee7bdc963">get_attribute</a>(key, <a class="code" href="class_c_w_1_1_typed_value.html">TypedValue</a>());</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;}</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;</div>
+<div class="line"><a name="l00203"></a><span class="lineno"><a class="line" href="class_c_w_1_1_attribute_dictionary.html#a5a48357f5ce9d61e033be2ace3581c96">  203</a></span>&#160;std::string <a class="code" href="class_c_w_1_1_attribute_dictionary.html#a5a48357f5ce9d61e033be2ace3581c96">AttributeDictionary::get_name</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;  <a class="code" href="class_c_w_1_1_string.html">String</a> string;</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;  <a class="code" href="struct_s_u_string_ref.html">SUStringRef</a> *string_ref = string;</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;  SUResult res = SUAttributeDictionaryGetName(m_dict, string_ref);</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;  assert(res == SU_ERROR_NONE);</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;  <span class="keywordflow">return</span> string;</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;}</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;</div>
+<div class="line"><a name="l00211"></a><span class="lineno"><a class="line" href="class_c_w_1_1_attribute_dictionary.html#abd676bec9f4fb94393549c1b1584e182">  211</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="class_c_w_1_1_attribute_dictionary.html#abd676bec9f4fb94393549c1b1584e182">AttributeDictionary::operator !</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;  <span class="keywordflow">if</span> (SUIsValid(m_dict)) {</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;  }</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;}</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;} <span class="comment">/* namespace CW */</span></div>
 <div class="ttc" id="class_c_w_1_1_entity_html_aea6450abce4d5aebad0061e213c840b1"><div class="ttname"><a href="class_c_w_1_1_entity.html#aea6450abce4d5aebad0061e213c840b1">CW::Entity::m_attached</a></div><div class="ttdeci">bool m_attached</div><div class="ttdoc">Indicates whether the Entity has been attached to a model. </div><div class="ttdef"><b>Definition:</b> <a href="_entity_8hpp_source.html#l00062">Entity.hpp:62</a></div></div>
 <div class="ttc" id="class_c_w_1_1_attribute_dictionary_html_ac63b2f3d69ce1137c8cd0a06f6170b0e"><div class="ttname"><a href="class_c_w_1_1_attribute_dictionary.html#ac63b2f3d69ce1137c8cd0a06f6170b0e">CW::AttributeDictionary::ref</a></div><div class="ttdeci">SUAttributeDictionaryRef ref() const </div><div class="ttdef"><b>Definition:</b> <a href="_attribute_dictionary_8cpp_source.html#l00128">AttributeDictionary.cpp:128</a></div></div>
 <div class="ttc" id="class_c_w_1_1_attribute_dictionary_html_a6a81dac1d4ebf68e473c645647d2f53b"><div class="ttname"><a href="class_c_w_1_1_attribute_dictionary.html#a6a81dac1d4ebf68e473c645647d2f53b">CW::AttributeDictionary::AttributeDictionary</a></div><div class="ttdeci">AttributeDictionary()</div><div class="ttdef"><b>Definition:</b> <a href="_attribute_dictionary_8cpp_source.html#l00071">AttributeDictionary.cpp:71</a></div></div>
 <div class="ttc" id="struct_s_u_string_ref_html"><div class="ttname"><a href="struct_s_u_string_ref.html">SUStringRef</a></div><div class="ttdoc">Stores a Unicode string for use as output string parameters in the API. </div></div>
-<div class="ttc" id="class_c_w_1_1_attribute_dictionary_html_a5a48357f5ce9d61e033be2ace3581c96"><div class="ttname"><a href="class_c_w_1_1_attribute_dictionary.html#a5a48357f5ce9d61e033be2ace3581c96">CW::AttributeDictionary::get_name</a></div><div class="ttdeci">std::string get_name() const </div><div class="ttdef"><b>Definition:</b> <a href="_attribute_dictionary_8cpp_source.html#l00200">AttributeDictionary.cpp:200</a></div></div>
+<div class="ttc" id="class_c_w_1_1_attribute_dictionary_html_a5a48357f5ce9d61e033be2ace3581c96"><div class="ttname"><a href="class_c_w_1_1_attribute_dictionary.html#a5a48357f5ce9d61e033be2ace3581c96">CW::AttributeDictionary::get_name</a></div><div class="ttdeci">std::string get_name() const </div><div class="ttdef"><b>Definition:</b> <a href="_attribute_dictionary_8cpp_source.html#l00203">AttributeDictionary.cpp:203</a></div></div>
 <div class="ttc" id="class_c_w_1_1_attribute_dictionary_html_a3c7b4614809c194e853b655093779d64"><div class="ttname"><a href="class_c_w_1_1_attribute_dictionary.html#a3c7b4614809c194e853b655093779d64">CW::AttributeDictionary::operator=</a></div><div class="ttdeci">AttributeDictionary &amp; operator=(const AttributeDictionary &amp;other)</div><div class="ttdef"><b>Definition:</b> <a href="_attribute_dictionary_8cpp_source.html#l00116">AttributeDictionary.cpp:116</a></div></div>
 <div class="ttc" id="class_c_w_1_1_typed_value_html"><div class="ttname"><a href="class_c_w_1_1_typed_value.html">CW::TypedValue</a></div><div class="ttdef"><b>Definition:</b> <a href="_typed_value_8hpp_source.html#l00045">TypedValue.hpp:45</a></div></div>
 <div class="ttc" id="class_c_w_1_1_attribute_dictionary_html_a8814b15285e78fc88a14018ee7bdc963"><div class="ttname"><a href="class_c_w_1_1_attribute_dictionary.html#a8814b15285e78fc88a14018ee7bdc963">CW::AttributeDictionary::get_attribute</a></div><div class="ttdeci">TypedValue get_attribute(const std::string &amp;key, const TypedValue &amp;default_value) const </div><div class="ttdef"><b>Definition:</b> <a href="_attribute_dictionary_8cpp_source.html#l00143">AttributeDictionary.cpp:143</a></div></div>
 <div class="ttc" id="struct_s_u_attribute_dictionary_ref_html"><div class="ttname"><a href="struct_s_u_attribute_dictionary_ref.html">SUAttributeDictionaryRef</a></div><div class="ttdoc">A dictionary type with SUStringRef objects as keys and SUTypedValueRef objects as values...</div></div>
-<div class="ttc" id="class_c_w_1_1_attribute_dictionary_html_ad4c403542e7ee8497c6d457751c6562c"><div class="ttname"><a href="class_c_w_1_1_attribute_dictionary.html#ad4c403542e7ee8497c6d457751c6562c">CW::AttributeDictionary::get_value</a></div><div class="ttdeci">TypedValue get_value(const std::string &amp;key) const </div><div class="ttdef"><b>Definition:</b> <a href="_attribute_dictionary_8cpp_source.html#l00196">AttributeDictionary.cpp:196</a></div></div>
+<div class="ttc" id="class_c_w_1_1_attribute_dictionary_html_ad4c403542e7ee8497c6d457751c6562c"><div class="ttname"><a href="class_c_w_1_1_attribute_dictionary.html#ad4c403542e7ee8497c6d457751c6562c">CW::AttributeDictionary::get_value</a></div><div class="ttdeci">TypedValue get_value(const std::string &amp;key) const </div><div class="ttdef"><b>Definition:</b> <a href="_attribute_dictionary_8cpp_source.html#l00199">AttributeDictionary.cpp:199</a></div></div>
 <div class="ttc" id="struct_s_u_typed_value_ref_html"><div class="ttname"><a href="struct_s_u_typed_value_ref.html">SUTypedValueRef</a></div><div class="ttdoc">Variant object used to represent the value of a key-value attribute pair. </div></div>
 <div class="ttc" id="class_c_w_1_1_entity_html_ad1d5c635add16702f770b6e14c186e9c"><div class="ttname"><a href="class_c_w_1_1_entity.html#ad1d5c635add16702f770b6e14c186e9c">CW::Entity::m_entity</a></div><div class="ttdeci">SUEntityRef m_entity</div><div class="ttdoc">The C SUEntityRef that this class wraps. </div><div class="ttdef"><b>Definition:</b> <a href="_entity_8hpp_source.html#l00057">Entity.hpp:57</a></div></div>
 <div class="ttc" id="class_c_w_1_1_entity_html"><div class="ttname"><a href="class_c_w_1_1_entity.html">CW::Entity</a></div><div class="ttdef"><b>Definition:</b> <a href="_entity_8hpp_source.html#l00052">Entity.hpp:52</a></div></div>
-<div class="ttc" id="class_c_w_1_1_attribute_dictionary_html_abd676bec9f4fb94393549c1b1584e182"><div class="ttname"><a href="class_c_w_1_1_attribute_dictionary.html#abd676bec9f4fb94393549c1b1584e182">CW::AttributeDictionary::operator!</a></div><div class="ttdeci">bool operator!() const </div><div class="ttdef"><b>Definition:</b> <a href="_attribute_dictionary_8cpp_source.html#l00208">AttributeDictionary.cpp:208</a></div></div>
+<div class="ttc" id="class_c_w_1_1_attribute_dictionary_html_abd676bec9f4fb94393549c1b1584e182"><div class="ttname"><a href="class_c_w_1_1_attribute_dictionary.html#abd676bec9f4fb94393549c1b1584e182">CW::AttributeDictionary::operator!</a></div><div class="ttdeci">bool operator!() const </div><div class="ttdef"><b>Definition:</b> <a href="_attribute_dictionary_8cpp_source.html#l00211">AttributeDictionary.cpp:211</a></div></div>
 <div class="ttc" id="class_c_w_1_1_attribute_dictionary_html"><div class="ttname"><a href="class_c_w_1_1_attribute_dictionary.html">CW::AttributeDictionary</a></div><div class="ttdef"><b>Definition:</b> <a href="_attribute_dictionary_8hpp_source.html#l00046">AttributeDictionary.hpp:46</a></div></div>
 <div class="ttc" id="class_c_w_1_1_string_html"><div class="ttname"><a href="class_c_w_1_1_string.html">CW::String</a></div><div class="ttdef"><b>Definition:</b> <a href="_string_8hpp_source.html#l00045">String.hpp:45</a></div></div>
 <div class="ttc" id="class_c_w_1_1_attribute_dictionary_html_a1734eaf713084347f4d2193be19edffb"><div class="ttname"><a href="class_c_w_1_1_attribute_dictionary.html#a1734eaf713084347f4d2193be19edffb">CW::AttributeDictionary::~AttributeDictionary</a></div><div class="ttdeci">~AttributeDictionary()</div><div class="ttdef"><b>Definition:</b> <a href="_attribute_dictionary_8cpp_source.html#l00103">AttributeDictionary.cpp:103</a></div></div>
@@ -290,7 +293,7 @@
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Feb 22 2018 20:38:13 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Feb 23 2018 08:42:14 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
