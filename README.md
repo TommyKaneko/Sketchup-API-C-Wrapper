@@ -30,6 +30,31 @@ Added to this benefit, the wrapper classes have helper functions to help with ge
 The project is documented in Doxygen, accessible here:
 https://tommykaneko.github.io/Sketchup-API-C-Wrapper/html
 
+## Testing
+The project uses GoogleTest for unit testing. It's included as a submodule so make sure to also initialize those when checking out the project.
+
+The tests are located under `/tests/`. One file per testcase. One testcase per class being tested.
+
+Keep tests small, keep their name descriptive.
+
+### Running Tests
+
+#### Visual Studio
+1. Set the SketchUpAPITests project as your startup project.
+2. Build
+3. Run
+
+Alternativly you can use the [Google Test Adapter extension](https://marketplace.visualstudio.com/items?itemName=ChristianSoltenborn.GoogleTestAdapter) which provides  overview of the tests from the UI. Makes it easy to run induvidual tests.
+
+#### Xcode
+*Coming soon.*
+
+### GoogleTests References
+* https://github.com/google/googletest/blob/master/googlemock/docs/ForDummies.md
+* https://github.com/google/googletest/blob/master/googletest/docs/Primer.md
+* https://github.com/google/googletest/blob/master/googletest/docs/AdvancedGuide.md
+* https://github.com/google/googletest/blob/master/googletest/docs/FAQ.md
+
 ======================
 ## Project Objectives
 

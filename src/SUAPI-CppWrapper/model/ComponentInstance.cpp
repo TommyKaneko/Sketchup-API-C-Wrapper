@@ -105,13 +105,6 @@ ComponentInstance::operator SUComponentInstanceRef() const {
 }
 
 
-ComponentInstance::operator SUComponentInstanceRef*() {
-  // TODO: test if the solution below works.
-  SUComponentInstanceRef instance = this->ref();
-  return &instance;
-}
-
-
 Transformation ComponentInstance::transformation() const {
   if (!(*this)) {
     throw std::logic_error("CW::ComponentInstance::transformation(): ComponentInstance is null");

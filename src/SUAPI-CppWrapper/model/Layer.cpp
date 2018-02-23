@@ -111,12 +111,6 @@ Layer::operator SULayerRef() const {
   return this->ref();
 }
 
-Layer::operator SULayerRef*() {
-  // TODO: Test that the solution below works, and not result in a bad access error.
-  SULayerRef layer = this->ref();
-  return &layer;
-}
-
 
 bool Layer::operator!() const {
   if (SUIsInvalid(m_entity)) {

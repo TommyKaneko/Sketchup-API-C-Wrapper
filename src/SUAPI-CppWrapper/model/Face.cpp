@@ -160,13 +160,6 @@ SUFaceRef Face::ref() const {  return SUFaceFromEntity(m_entity); }
 Face::operator SUFaceRef() const {  return this->ref();}
 
 
-Face::operator SUFaceRef*() {
-  // TODO: test if the solution below works.
-  SUFaceRef face = this->ref();
-  return &face;
-}
-
-
 bool Face::operator!() const {
   if (SUIsInvalid(m_entity)) {
     return true;

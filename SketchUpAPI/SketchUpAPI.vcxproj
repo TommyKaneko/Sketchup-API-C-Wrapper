@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>15.0</VCProjectVersion>
+    <ProjectGuid>{D733F133-DA17-4B7F-AE7F-91238A35D7B3}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>SketchUpAPI</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)include\;$(SolutionDir)third-party\slapi\win\headers\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ForcedIncludeFiles>stdafx.h</ForcedIncludeFiles>
+      <TreatWarningAsError>true</TreatWarningAsError>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)include\;$(SolutionDir)third-party\slapi\win\headers\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ForcedIncludeFiles>stdafx.h</ForcedIncludeFiles>
+      <TreatWarningAsError>true</TreatWarningAsError>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)include\;$(SolutionDir)third-party\slapi\win\headers\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ForcedIncludeFiles>stdafx.h</ForcedIncludeFiles>
+      <TreatWarningAsError>true</TreatWarningAsError>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)include\;$(SolutionDir)third-party\slapi\win\headers\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ForcedIncludeFiles>stdafx.h</ForcedIncludeFiles>
+      <TreatWarningAsError>true</TreatWarningAsError>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\include\SUAPI-CppWrapper\Color.hpp" />
+    <ClInclude Include="..\include\SUAPI-CppWrapper\Geometry.hpp" />
+    <ClInclude Include="..\include\SUAPI-CppWrapper\Initialize.hpp" />
+    <ClInclude Include="..\include\SUAPI-CppWrapper\model\AttributeDictionary.hpp" />
+    <ClInclude Include="..\include\SUAPI-CppWrapper\model\Axes.hpp" />
+    <ClInclude Include="..\include\SUAPI-CppWrapper\model\Classifications.hpp" />
+    <ClInclude Include="..\include\SUAPI-CppWrapper\model\ComponentDefinition.hpp" />
+    <ClInclude Include="..\include\SUAPI-CppWrapper\model\ComponentInstance.hpp" />
+    <ClInclude Include="..\include\SUAPI-CppWrapper\model\Curve.hpp" />
+    <ClInclude Include="..\include\SUAPI-CppWrapper\model\DrawingElement.hpp" />
+    <ClInclude Include="..\include\SUAPI-CppWrapper\model\Edge.hpp" />
+    <ClInclude Include="..\include\SUAPI-CppWrapper\model\Entities.hpp" />
+    <ClInclude Include="..\include\SUAPI-CppWrapper\model\Entity.hpp" />
+    <ClInclude Include="..\include\SUAPI-CppWrapper\model\Face.hpp" />
+    <ClInclude Include="..\include\SUAPI-CppWrapper\model\GeometryInput.hpp" />
+    <ClInclude Include="..\include\SUAPI-CppWrapper\model\Group.hpp" />
+    <ClInclude Include="..\include\SUAPI-CppWrapper\model\ImageRep.hpp" />
+    <ClInclude Include="..\include\SUAPI-CppWrapper\model\Layer.hpp" />
+    <ClInclude Include="..\include\SUAPI-CppWrapper\model\Loop.hpp" />
+    <ClInclude Include="..\include\SUAPI-CppWrapper\model\LoopInput.hpp" />
+    <ClInclude Include="..\include\SUAPI-CppWrapper\model\Material.hpp" />
+    <ClInclude Include="..\include\SUAPI-CppWrapper\model\MaterialInput.hpp" />
+    <ClInclude Include="..\include\SUAPI-CppWrapper\model\Model.hpp" />
+    <ClInclude Include="..\include\SUAPI-CppWrapper\model\OptionsManager.hpp" />
+    <ClInclude Include="..\include\SUAPI-CppWrapper\model\RenderingOptions.hpp" />
+    <ClInclude Include="..\include\SUAPI-CppWrapper\model\ShadowInfo.hpp" />
+    <ClInclude Include="..\include\SUAPI-CppWrapper\model\Texture.hpp" />
+    <ClInclude Include="..\include\SUAPI-CppWrapper\model\TextureWriter.hpp" />
+    <ClInclude Include="..\include\SUAPI-CppWrapper\model\TypedValue.hpp" />
+    <ClInclude Include="..\include\SUAPI-CppWrapper\model\UVHelper.hpp" />
+    <ClInclude Include="..\include\SUAPI-CppWrapper\model\Vertex.hpp" />
+    <ClInclude Include="..\include\SUAPI-CppWrapper\String.hpp" />
+    <ClInclude Include="..\include\SUAPI-CppWrapper\Transformation.hpp" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="targetver.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\SUAPI-CppWrapper\Color.cpp" />
+    <ClCompile Include="..\src\SUAPI-CppWrapper\Geometry.cpp" />
+    <ClCompile Include="..\src\SUAPI-CppWrapper\Initialize.cpp" />
+    <ClCompile Include="..\src\SUAPI-CppWrapper\model\AttributeDictionary.cpp" />
+    <ClCompile Include="..\src\SUAPI-CppWrapper\model\Axes.cpp" />
+    <ClCompile Include="..\src\SUAPI-CppWrapper\model\Classifications.cpp" />
+    <ClCompile Include="..\src\SUAPI-CppWrapper\model\ComponentDefinition.cpp" />
+    <ClCompile Include="..\src\SUAPI-CppWrapper\model\ComponentInstance.cpp" />
+    <ClCompile Include="..\src\SUAPI-CppWrapper\model\Curve.cpp" />
+    <ClCompile Include="..\src\SUAPI-CppWrapper\model\DrawingElement.cpp" />
+    <ClCompile Include="..\src\SUAPI-CppWrapper\model\Edge.cpp" />
+    <ClCompile Include="..\src\SUAPI-CppWrapper\model\Entities.cpp" />
+    <ClCompile Include="..\src\SUAPI-CppWrapper\model\Entity.cpp" />
+    <ClCompile Include="..\src\SUAPI-CppWrapper\model\Face.cpp" />
+    <ClCompile Include="..\src\SUAPI-CppWrapper\model\GeometryInput.cpp" />
+    <ClCompile Include="..\src\SUAPI-CppWrapper\model\Group.cpp" />
+    <ClCompile Include="..\src\SUAPI-CppWrapper\model\ImageRep.cpp" />
+    <ClCompile Include="..\src\SUAPI-CppWrapper\model\Layer.cpp" />
+    <ClCompile Include="..\src\SUAPI-CppWrapper\model\Loop.cpp" />
+    <ClCompile Include="..\src\SUAPI-CppWrapper\model\LoopInput.cpp" />
+    <ClCompile Include="..\src\SUAPI-CppWrapper\model\Material.cpp" />
+    <ClCompile Include="..\src\SUAPI-CppWrapper\model\MaterialInput.cpp" />
+    <ClCompile Include="..\src\SUAPI-CppWrapper\model\Model.cpp" />
+    <ClCompile Include="..\src\SUAPI-CppWrapper\model\OptionsManager.cpp" />
+    <ClCompile Include="..\src\SUAPI-CppWrapper\model\RenderingOptions.cpp" />
+    <ClCompile Include="..\src\SUAPI-CppWrapper\model\ShadowInfo.cpp" />
+    <ClCompile Include="..\src\SUAPI-CppWrapper\model\Texture.cpp" />
+    <ClCompile Include="..\src\SUAPI-CppWrapper\model\TextureWriter.cpp" />
+    <ClCompile Include="..\src\SUAPI-CppWrapper\model\TypedValue.cpp" />
+    <ClCompile Include="..\src\SUAPI-CppWrapper\model\UVHelper.cpp" />
+    <ClCompile Include="..\src\SUAPI-CppWrapper\model\Vertex.cpp" />
+    <ClCompile Include="..\src\SUAPI-CppWrapper\String.cpp" />
+    <ClCompile Include="..\src\SUAPI-CppWrapper\Transformation.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

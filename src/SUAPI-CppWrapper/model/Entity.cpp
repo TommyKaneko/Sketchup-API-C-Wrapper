@@ -27,6 +27,7 @@
 
 #include "SUAPI-CppWrapper/model/Entity.hpp"
 
+#include <algorithm>
 #include <cassert>
 #include <stdexcept>
 #include <algorithm>

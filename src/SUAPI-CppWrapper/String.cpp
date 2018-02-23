@@ -152,11 +152,11 @@ std::string String::std_string() const {
   size_t out_length = 0;
   SUResult res = SUStringGetUTF8Length(m_string, &out_length);
   assert(res == SU_ERROR_NONE);
-  out_length++; // Allow for null termianted string
-  std::vector<char> char_array(out_length);
+  out_length++; // Allow for null terminated string
+  std::vector<char> char_array(out_length, 0);
   res = SUStringGetUTF8(m_string, out_length, char_array.data(), &out_length);
   assert(res == SU_ERROR_NONE);
-  std::string str(char_array.begin(),char_array.end());
+  std::string str(char_array.data());
   return str;
 }
 
