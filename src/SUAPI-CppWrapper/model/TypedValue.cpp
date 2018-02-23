@@ -205,10 +205,9 @@ int16_t TypedValue::int16_value() const {
   if (!(*this)) {
     throw std::logic_error("CW::TypedValue::int16_value(): TypedValue is null");
   }
-  // TODO: uncomment below once types are checked.
-  //if (get_type() != SUTypedValueType_Int16) {
-  //  throw std::logic_error("CW::TypedValue::int16_value(): TypedValue is not SUTypedValueType_Int16 type");
-  //}
+  if (get_type() != SUTypedValueType_Short) {
+    throw std::logic_error("CW::TypedValue::int16_value(): TypedValue is not SUTypedValueType_Short (Int16) type");
+  }
   int16_t int16_val;
   SUResult res = SUTypedValueGetInt16(m_typed_value, &int16_val);
   assert(res == SU_ERROR_NONE);
