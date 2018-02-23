@@ -41,7 +41,7 @@
 ehthumbs.db
 Thumbs.db
 
-# Xcode 
+# Xcode
 *.xcuserstate
 *.xcodeproj/project.xcworkspace/
 *.xcodeproj/xcuserdata/
@@ -51,3 +51,6 @@ Thumbs.db
 Debug/
 Release/
 *.vcxproj.user
+
+# CMake
+build/

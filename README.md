@@ -30,6 +30,18 @@ Added to this benefit, the wrapper classes have helper functions to help with ge
 The project is documented in Doxygen, accessible here:
 https://tommykaneko.github.io/Sketchup-API-C-Wrapper/html
 
+## CMake
+
+### Visual Studio
+
+```
+ CMake .. -G "Visual Studio 15 2017 Win64"
+```
+
+### XCode
+
+Coming...
+
 ## Testing
 The project uses GoogleTest for unit testing. It's included as a submodule so make sure to also initialize those when checking out the project.
 
