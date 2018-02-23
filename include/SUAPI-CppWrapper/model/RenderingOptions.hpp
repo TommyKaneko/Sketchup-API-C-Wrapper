@@ -1,4 +1,5 @@
-#pragma once
+#ifndef RenderingOptions_hpp
+#define RenderingOptions_hpp
 
 #include <vector>
 #include <string>
@@ -28,3 +29,5 @@ class RenderingOptions
 }; // class RenderingOptions
 
 } // namespace CW
+
+#endif

@@ -1,4 +1,5 @@
-#pragma once
+#ifndef ShadowInfo_hpp
+#define ShadowInfo_hpp
 
 #include <vector>
 #include <string>
@@ -26,3 +27,5 @@ class ShadowInfo
 }; // class ShadowInfo
 
 } // namespace CW
+
+#endif
