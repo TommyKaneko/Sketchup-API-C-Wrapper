@@ -181,10 +181,13 @@ std::vector<std::string> AttributeDictionary::get_keys() const {
   SUResult res = SUAttributeDictionaryGetNumKeys(m_dict, &num_keys);
   assert(res == SU_ERROR_NONE);
   std::vector<SUStringRef> keys_ref(num_keys, SU_INVALID);
-  //for (size_t i=0; i < num_keys; i++) {
-  //  SUStringCreate(&keys_ref[i]);
-  //}
-  SUAttributeDictionaryGetKeys(m_dict, num_keys, keys_ref.data(), &num_keys);
+  std::for_each(keys_ref.begin(), keys_ref.end(),
+  [](SUStringRef& value) {
+    SUResult res = SUStringCreate(&value);
+    assert(res == SU_ERROR_NONE);
+  });
+  res = SUAttributeDictionaryGetKeys(m_dict, num_keys, keys_ref.data(), &num_keys);
+  assert(res == SU_ERROR_NONE);
   std::vector<std::string> keys(num_keys);
   std::transform(keys_ref.begin(), keys_ref.end(), keys.begin(),
   [](const SUStringRef& value) {
