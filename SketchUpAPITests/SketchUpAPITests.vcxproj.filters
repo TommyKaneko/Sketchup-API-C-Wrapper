@@ -38,5 +38,8 @@
     <ClCompile Include="..\tests\SketchUpAPITests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\tests\StringTests.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

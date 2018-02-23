@@ -173,6 +173,7 @@ xcopy $(SolutionDir)third-party\SDK_Win_x64_18-0-18664\binaries\sketchup\x64\Ske
   <ItemGroup>
     <ClCompile Include="..\tests\ColorTests.cpp" />
     <ClCompile Include="..\tests\SketchUpAPITests.cpp" />
+    <ClCompile Include="..\tests\StringTests.cpp" />
     <ClCompile Include="..\tests\TypedValueTests.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
