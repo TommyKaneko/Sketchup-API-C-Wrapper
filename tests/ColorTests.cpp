@@ -6,7 +6,7 @@
 #include "SUAPI-CppWrapper/Color.hpp"
 
 
-TEST(SUColor, Initialize)
+TEST(Color, Initialize)
 {
   SUColor su_color{ 255, 128, 64, 32 };
   CW::Color color(su_color);
@@ -17,7 +17,7 @@ TEST(SUColor, Initialize)
   ASSERT_EQ( 32, color.alpha);
 }
 
-TEST(SUColor, ImplicitCastToSUColor)
+TEST(Color, ImplicitCastToSUColor)
 {
   CW::Color color({ 255, 128, 64, 32 });
   SUColor su_color = color;
@@ -28,7 +28,7 @@ TEST(SUColor, ImplicitCastToSUColor)
   ASSERT_EQ( 32, su_color.alpha);
 }
 
-TEST(SUColor, ImplicitCastFromSUColor)
+TEST(Color, ImplicitCastFromSUColor)
 {
   SUColor su_color{ 255, 128, 64, 32 };
   CW::Color color = su_color;
@@ -39,7 +39,7 @@ TEST(SUColor, ImplicitCastFromSUColor)
   ASSERT_EQ( 32, color.alpha);
 }
 
-TEST(SUColor, EqualComparison)
+TEST(Color, EqualComparison)
 {
   CW::Color color1({ 255, 128, 64, 32 });
   CW::Color color2({ 255, 128, 64, 32 });
