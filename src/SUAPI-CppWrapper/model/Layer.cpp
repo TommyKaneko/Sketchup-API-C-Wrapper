@@ -45,8 +45,8 @@ SULayerRef Layer::create_layer() {
 }
 
 SULayerRef Layer::copy_reference(const Layer& other) {
-  if (other.m_attached || SUIsInvalid(other.m_layer)) {
-    return other.m_layer;
+  if (other.m_attached || SUIsInvalid(other.m_entity)) {
+    return other.ref();
   }
   SULayerRef new_layer = create_layer();
   return new_layer;
@@ -56,22 +56,19 @@ SULayerRef Layer::copy_reference(const Layer& other) {
 ** Constructors / Destructor **
 *******************************/
 Layer::Layer():
-  Entity(SU_INVALID, false),
-  m_layer(SU_INVALID)
+  Entity(SU_INVALID, false)
 {}
 
 
 Layer::Layer(SULayerRef layer_ref, bool attached):
-  Entity(SULayerToEntity(layer_ref), attached),
-  m_layer(layer_ref)
+  Entity(SULayerToEntity(layer_ref), attached)
 {}
 
 
 Layer::Layer(const Layer& other):
-  Entity(SULayerToEntity(copy_reference(other)), other.m_attached),
-  m_layer(SULayerFromEntity(m_entity))
+  Entity(SULayerToEntity(copy_reference(other)), other.m_attached)
 {
-  if (!other.m_attached && SUIsValid(other.m_layer)) {
+  if (!other.m_attached && SUIsValid(other.m_entity)) {
     this->name(other.name());
     // TODO: Set layer material
   }
@@ -79,8 +76,9 @@ Layer::Layer(const Layer& other):
 
 
 Layer::~Layer() {
-  if (!m_attached && SUIsValid(m_layer)) {
-    SUResult res = SULayerRelease(&m_layer);
+  if (!m_attached && SUIsValid(m_entity)) {
+    SULayerRef layer = this->ref();
+    SUResult res = SULayerRelease(&layer);
     assert(res == SU_ERROR_NONE);
   }
 }
@@ -90,40 +88,42 @@ Layer::~Layer() {
 ** Public Methods **
 ********************/
 Layer& Layer::operator=(const Layer& other) {
-  if (!m_attached && SUIsValid(m_layer)) {
-    SUResult res = SULayerRelease(&m_layer);
+  if (!m_attached && SUIsValid(m_entity)) {
+    SULayerRef layer = this->ref();
+    SUResult res = SULayerRelease(&layer);
     assert(res == SU_ERROR_NONE);
   }
-  m_layer = copy_reference(other);
-  m_entity = SULayerToEntity(m_layer);
-  Entity::operator=(other);
-  if (!other.m_attached && SUIsValid(other.m_layer)) {
+  m_entity = SULayerToEntity(copy_reference(other));
+  if (!other.m_attached && SUIsValid(other.m_entity)) {
     this->name(other.name());
     // TODO: Set layer material
   }
+  Entity::operator=(other);
   return (*this);
 }
 
 
 SULayerRef Layer::ref() const {
-  return m_layer;
+  return SULayerFromEntity(m_entity);
 }
 
 Layer::operator SULayerRef() const {
-  return ref();
+  return this->ref();
 }
 
 Layer::operator SULayerRef*() {
-  return &m_layer;
+  // TODO: Test that the solution below works, and not result in a bad access error.
+  SULayerRef layer = this->ref();
+  return &layer;
 }
 
 
 bool Layer::operator!() const {
-  if (SUIsInvalid(m_layer)) {
+  if (SUIsInvalid(m_entity)) {
     return true;
   }
   String name;
-  SUResult res = SULayerGetName(m_layer, name);
+  SUResult res = SULayerGetName(this->ref(), name);
   if (res == SU_ERROR_NULL_POINTER_OUTPUT) {
     return true;
   }
@@ -136,7 +136,7 @@ String Layer::name() const {
     throw std::logic_error("CW::Layer::name(): Layer is null");
   }
   String string;
-  SUResult res = SULayerGetName(m_layer, string);
+  SUResult res = SULayerGetName(this->ref(), string);
   assert(res == SU_ERROR_NONE);
   return string;
 }
@@ -146,7 +146,7 @@ void Layer::name(const String& string) {
   if(!(*this)) {
     throw std::logic_error("CW::Layer::name(): Layer is null");
   }
-  SUResult res = SULayerSetName(m_layer, string.std_string().c_str());
+  SUResult res = SULayerSetName(this->ref(), string.std_string().c_str());
   assert(res == SU_ERROR_NONE);
 }
 
@@ -155,7 +155,7 @@ void Layer::name(const std::string& string) {
   if(!(*this)) {
     throw std::logic_error("CW::Layer::name(): Layer is null");
   }
-  SUResult res = SULayerSetName(m_layer, string.c_str());
+  SUResult res = SULayerSetName(this->ref(), string.c_str());
   assert(res == SU_ERROR_NONE);
 }
 

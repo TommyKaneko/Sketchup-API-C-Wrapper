@@ -61,9 +61,6 @@ class Edge;
 
 class Face :public DrawingElement {
   private:
-  SUFaceRef m_face;
-  //SUResult m_create_result = SU_ERROR_NONE;
-  
   /**
   * Creates a SUFaceRef object from an array of points that represent the outer loop.
   * @param outer_loop vector of points for the vertices in the outer loop.

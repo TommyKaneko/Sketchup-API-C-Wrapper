@@ -39,7 +39,7 @@ namespace CW {
 
 SUComponentInstanceRef ComponentInstance::copy_reference(const ComponentInstance& other) {
   if (other.m_attached) {
-    return other.m_instance;
+    return other.ref();
   }
   // The other face has not been attached to the model, so copy its properties to a new object
   ComponentInstance new_instance = other.definition().create_instance();
@@ -52,32 +52,29 @@ SUComponentInstanceRef ComponentInstance::copy_reference(const ComponentInstance
 * Constructors / Destructor **
 ******************************/
 ComponentInstance::ComponentInstance():
-  DrawingElement(),
-  m_instance(SU_INVALID)
+  DrawingElement()
 {}
 
 
 ComponentInstance::ComponentInstance(SUComponentInstanceRef instance, bool attached):
-  DrawingElement(SUComponentInstanceToDrawingElement(instance), attached),
-  m_instance(instance)
+  DrawingElement(SUComponentInstanceToDrawingElement(instance), attached)
 {}
 
 
 ComponentInstance::ComponentInstance(const ComponentInstance& other):
-  DrawingElement(other, SUComponentInstanceToDrawingElement(copy_reference(other))),
-  m_instance(SUComponentInstanceFromDrawingElement(m_drawing_element))
+  DrawingElement(other, SUComponentInstanceToDrawingElement(copy_reference(other)))
 {}
 
 
 ComponentInstance::ComponentInstance(const ComponentInstance& other, SUComponentInstanceRef instance_ref):
-  DrawingElement(other, SUComponentInstanceToDrawingElement(instance_ref)),
-  m_instance(instance_ref)
+  DrawingElement(other, SUComponentInstanceToDrawingElement(instance_ref))
 {}
 
 
 ComponentInstance::~ComponentInstance() {
-  if (!m_attached && SUIsValid(m_instance)) {
-    SUResult res = SUComponentInstanceRelease(&m_instance);
+  if (!m_attached && SUIsValid(m_entity)) {
+    SUComponentInstanceRef instance = SUComponentInstanceFromEntity(m_entity);
+    SUResult res = SUComponentInstanceRelease(&instance);
     assert(res == SU_ERROR_NONE);
   }
 }
@@ -87,35 +84,40 @@ ComponentInstance::~ComponentInstance() {
 *******************/
 /** Copy assignment operator */
 ComponentInstance& ComponentInstance::operator=(const ComponentInstance& other) {
-  if (!m_attached && SUIsValid(m_instance)) {
-    SUResult res = SUComponentInstanceRelease(&m_instance);
+  if (!m_attached && SUIsValid(m_entity)) {
+    SUComponentInstanceRef instance = SUComponentInstanceFromEntity(m_entity);
+    SUResult res = SUComponentInstanceRelease(&instance);
     assert(res == SU_ERROR_NONE);
   }
-  m_instance = copy_reference(other);
-  m_drawing_element = SUComponentInstanceToDrawingElement(m_instance);
+  m_entity = SUComponentInstanceToEntity(copy_reference(other));
   DrawingElement::operator=(other);
   return *this;
 }
 
 
-
-SUComponentInstanceRef ComponentInstance::ref() {
-  return m_instance;
+SUComponentInstanceRef ComponentInstance::ref() const {
+  return SUComponentInstanceFromEntity(m_entity);
 }
+
 
 ComponentInstance::operator SUComponentInstanceRef() const {
-  return m_instance;
+  return this->ref();
 }
+
+
 ComponentInstance::operator SUComponentInstanceRef*() {
-  return &m_instance;
+  // TODO: test if the solution below works.
+  SUComponentInstanceRef instance = this->ref();
+  return &instance;
 }
+
 
 Transformation ComponentInstance::transformation() const {
   if (!(*this)) {
     throw std::logic_error("CW::ComponentInstance::transformation(): ComponentInstance is null");
   }
   SUTransformation transform;
-  SUResult res = SUComponentInstanceGetTransform(m_instance, &transform);
+  SUResult res = SUComponentInstanceGetTransform(this->ref(), &transform);
   assert(res == SU_ERROR_NONE);
   return Transformation(transform);
 }
@@ -126,7 +128,7 @@ void ComponentInstance::transformation(const Transformation& transform) {
     throw std::logic_error("CW::ComponentInstance::transformation(): ComponentInstance is null");
   }
   SUTransformation su_transform = transform.ref();
-  SUResult res = SUComponentInstanceSetTransform(m_instance, &su_transform);
+  SUResult res = SUComponentInstanceSetTransform(this->ref(), &su_transform);
   assert(res == SU_ERROR_NONE);
 }
 
@@ -136,7 +138,7 @@ ComponentDefinition ComponentInstance::definition() const{
     throw std::logic_error("CW::ComponentInstance::definition(): ComponentInstance is null");
   }
   SUComponentDefinitionRef component = SU_INVALID;
-  SUResult res = SUComponentInstanceGetDefinition(m_instance, &component);
+  SUResult res = SUComponentInstanceGetDefinition(this->ref(), &component);
   assert(res == SU_ERROR_NONE);
   return ComponentDefinition(component);
 }
@@ -148,7 +150,7 @@ String ComponentInstance::name() const {
   }
   String string;
   SUStringRef * const string_ref = string;
-  SUResult res = SUComponentInstanceGetName(m_instance, string_ref);
+  SUResult res = SUComponentInstanceGetName(this->ref(), string_ref);
   assert(res == SU_ERROR_NONE);
   return string;
 }
@@ -159,7 +161,7 @@ void ComponentInstance::name(const String& string) {
     throw std::logic_error("CW::ComponentInstance::name(): ComponentInstance is null");
   }
   std::string name_string = string.std_string();
-  SUResult res = SUComponentInstanceSetName(m_instance, name_string.c_str());
+  SUResult res = SUComponentInstanceSetName(this->ref(), name_string.c_str());
   assert(res == SU_ERROR_NONE);
 }
 

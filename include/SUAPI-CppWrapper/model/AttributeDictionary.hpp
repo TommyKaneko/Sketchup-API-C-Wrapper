@@ -40,13 +40,11 @@ namespace CW {
 
 class TypedValue;
 class String;
+
 /*
 * Entity object wrapper
 */
 class AttributeDictionary :public Entity {
-  private:
-  SUAttributeDictionaryRef m_dict;
-  
   /**
   * Creates a SUAttributeDictionaryRef object using the given name.
   * @param name - name of the created AttributeDictionary object.

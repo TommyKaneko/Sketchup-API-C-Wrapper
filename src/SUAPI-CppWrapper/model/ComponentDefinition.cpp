@@ -44,17 +44,19 @@ SUComponentDefinitionRef ComponentDefinition::create_definition() {
 }
 
 SUComponentDefinitionRef ComponentDefinition::copy_reference(const ComponentDefinition& other) {
-  if (other.m_attached) {
-    return other.m_definition;
+  if (other.m_attached && SUIsValid(other.m_entity)) {
+    return other.ref();
   }
   // The other definition has not been attached to the model, so copy its properties to a new object
   SUComponentDefinitionRef new_definition = create_definition();
-  // Copy across all nested geometry
-  SUEntitiesRef new_entities_ref = SU_INVALID;
-  SUResult res = SUComponentDefinitionGetEntities(new_definition, &new_entities_ref);
-  assert(res == SU_ERROR_NONE);
-  Entities new_entities(new_entities_ref);
-  new_entities.add(other.entities());
+  if (SUIsValid(other.m_entity)) {
+    // Copy across all nested geometry
+    SUEntitiesRef new_entities_ref = SU_INVALID;
+    SUResult res = SUComponentDefinitionGetEntities(new_definition, &new_entities_ref);
+    assert(res == SU_ERROR_NONE);
+    Entities new_entities(new_entities_ref);
+    new_entities.add(other.entities());
+  }
   return new_definition;
 }
 
@@ -69,8 +71,7 @@ ComponentDefinition::ComponentDefinition():
 
 
 ComponentDefinition::ComponentDefinition(SUComponentDefinitionRef definition, bool attached):
-  DrawingElement(SUComponentDefinitionToDrawingElement(definition), attached),
-  m_definition(definition)
+  DrawingElement(SUComponentDefinitionToDrawingElement(definition), attached)
 {}
 
 
@@ -78,14 +79,14 @@ ComponentDefinition::ComponentDefinition(SUComponentDefinitionRef definition, bo
 * Copy constructor.
 */
 ComponentDefinition::ComponentDefinition(const ComponentDefinition& other):
-  DrawingElement(SUComponentDefinitionToDrawingElement(copy_reference(other))),
-  m_definition(SUComponentDefinitionFromDrawingElement(m_drawing_element))
+  DrawingElement(SUComponentDefinitionToDrawingElement(copy_reference(other)))
 {}
 
 
 ComponentDefinition::~ComponentDefinition() {
-  if (!m_attached && SUIsValid(m_definition)) {
-    SUComponentDefinitionRelease(&m_definition);
+  if (!m_attached && SUIsValid(m_entity)) {
+    SUComponentDefinitionRef definition = this->ref();
+    SUComponentDefinitionRelease(&definition);
   }
 }
 
@@ -94,41 +95,32 @@ ComponentDefinition::~ComponentDefinition() {
 * Copy assignment operator.
 */
 ComponentDefinition& ComponentDefinition::operator=(const ComponentDefinition& other) {
-  if (m_attached && SUIsValid(m_definition)) {
-    SUResult res = SUComponentDefinitionRelease(&m_definition);
+  if (!m_attached && SUIsValid(m_entity)) {
+    SUComponentDefinitionRef definition = this->ref();
+    SUResult res = SUComponentDefinitionRelease(&definition);
     assert(res == SU_ERROR_NONE);
   }
-  m_definition = copy_reference(other);
-  m_drawing_element = SUComponentDefinitionToDrawingElement(m_definition);
-  DrawingElement::operator=(other);
-  
+  m_entity = SUComponentDefinitionToEntity(copy_reference(other));
   // Copy across all ComponentDefinition properties
   this->name(other.name());
   this->behavior(other.behavior());
+  DrawingElement::operator=(other);
   return *this;
 }
 
 
+SUComponentDefinitionRef ComponentDefinition::ref() const {
+  return SUComponentDefinitionFromEntity(m_entity);
+}
+
+
 ComponentDefinition::operator SUComponentDefinitionRef() const {
-  return m_definition;
+  return this->ref();
 }
 ComponentDefinition::operator SUComponentDefinitionRef*() {
-  return &m_definition;
-}
-
-
-BoundingBox3D ComponentDefinition::bounds() const {
-  if (!(*this)) {
-    throw std::logic_error("CW::ComponentDefinition::bounds(): ComponentDefinition is null");
-  }
-  // If this definition is empty, then the bounding box returned by SUDrawingElementGetBoundingBox has wild numbers.  So return min 0 and max 0.
-  if (entities().size() == 0) {
-    return BoundingBox3D(false);
-  }
-  SUBoundingBox3D box = SU_INVALID;
-  SUResult res = SUDrawingElementGetBoundingBox(m_drawing_element, &box);
-  assert(res == SU_ERROR_NONE);
-  return BoundingBox3D(box);
+  // TODO: test if the solution below works.
+  SUComponentDefinitionRef definition = this->ref();
+  return &definition;
 }
 
 
@@ -137,7 +129,7 @@ ComponentInstance ComponentDefinition::create_instance() const {
     throw std::logic_error("CW::ComponentDefinition::create_instance(): ComponentDefinition is null");
   }
   SUComponentInstanceRef instance = SU_INVALID;
-  SUResult res = SUComponentDefinitionCreateInstance(m_definition, &instance);
+  SUResult res = SUComponentDefinitionCreateInstance(this->ref(), &instance);
   assert(res == SU_ERROR_NONE);
   return ComponentInstance(instance, false);
 }
@@ -159,7 +151,7 @@ Entities ComponentDefinition::entities() const {
     throw std::logic_error("CW::ComponentDefinition::entities(): ComponentDefinition is null");
   }
   SUEntitiesRef entities = SU_INVALID;
-  SUResult res = SUComponentDefinitionGetEntities( m_definition, &entities);
+  SUResult res = SUComponentDefinitionGetEntities(this->ref(), &entities);
   assert(res == SU_ERROR_NONE);
   return Entities(entities);
 }
@@ -172,7 +164,7 @@ String ComponentDefinition::name() const {
   SUStringRef name_string = SU_INVALID;
   SUResult res = SUStringCreate(&name_string);
   assert(res == SU_ERROR_NONE);
-  res = SUComponentDefinitionGetName(m_definition, &name_string);
+  res = SUComponentDefinitionGetName(this->ref(), &name_string);
   assert(res == SU_ERROR_NONE);
   return String(name_string);
 }
@@ -182,16 +174,11 @@ bool ComponentDefinition::name(String name) {
   if (!(*this)) {
     throw std::logic_error("CW::ComponentDefinition::name(): ComponentDefinition is null");
   }
-  SUResult res = SUComponentDefinitionSetName(m_definition, std::string(name).c_str());
+  SUResult res = SUComponentDefinitionSetName(this->ref(), std::string(name).c_str());
   if (res == SU_ERROR_NONE) {
     return true;
   }
   return false;
-}
-  
-
-SUComponentDefinitionRef ComponentDefinition::ref() const {
-  return m_definition;
 }
 
 
@@ -200,7 +187,7 @@ bool ComponentDefinition::is_group() const {
     throw std::logic_error("CW::ComponentDefinition::is_group(): ComponentDefinition is null");
   }
   SUComponentType type;
-  SUResult res = SUComponentDefinitionGetType(m_definition, &type);
+  SUResult res = SUComponentDefinitionGetType(this->ref(), &type);
   assert(res == SU_ERROR_NONE);
   if (type == SUComponentType_Group) {
     return true;
@@ -216,7 +203,7 @@ Behavior ComponentDefinition::behavior() const {
     throw std::logic_error("CW::ComponentDefinition::behavior(): ComponentDefinition is null");
   }
   SUComponentBehavior behavior;
-  SUResult res = SUComponentDefinitionGetBehavior(m_definition, &behavior);
+  SUResult res = SUComponentDefinitionGetBehavior(this->ref(), &behavior);
   assert(res == SU_ERROR_NONE);
   return Behavior(behavior);
 }
@@ -226,7 +213,7 @@ void ComponentDefinition::behavior(const Behavior& behavior) const {
     throw std::logic_error("CW::ComponentDefinition::behavior(): ComponentDefinition is null");
   }
   SUComponentBehavior behavior_ref = behavior.ref();
-  SUResult res = SUComponentDefinitionSetBehavior(m_definition, &behavior_ref);
+  SUResult res = SUComponentDefinitionSetBehavior(this->ref(), &behavior_ref);
   assert(res == SU_ERROR_NONE);
 }
   

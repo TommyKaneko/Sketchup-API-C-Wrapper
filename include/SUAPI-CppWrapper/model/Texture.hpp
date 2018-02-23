@@ -44,9 +44,7 @@ class String;
 * Texture wrapper
 */
 class Texture :public Entity {
-  private:
-  SUTextureRef m_texture;
-  
+  private:  
   /**
   * Create texture from ImageRep
   */
