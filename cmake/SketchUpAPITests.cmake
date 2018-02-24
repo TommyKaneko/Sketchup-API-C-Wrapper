@@ -1,19 +1,27 @@
-include_directories("${PROJECT_SOURCE_DIR}/tests")
-include_directories("${PROJECT_SOURCE_DIR}/third-party/googletest/googletest/include")
+include_directories("${CPP_API_TESTS_PATH}")
+include_directories("${GOOGLETEST_INCLUDE_PATH}")
 
-file(GLOB_RECURSE TESTS_HEADERS ${PROJECT_SOURCE_DIR}/tests/*.hpp)
-file(GLOB_RECURSE TESTS_SOURCES ${PROJECT_SOURCE_DIR}/tests/*.cpp)
+file(GLOB_RECURSE TESTS_HEADERS ${CPP_API_TESTS_PATH}/*.hpp)
+file(GLOB_RECURSE TESTS_SOURCES ${CPP_API_TESTS_PATH}/*.cpp)
 
 add_executable(SketchUpAPITests ${TESTS_HEADERS} ${TESTS_SOURCES})
 
-# TODO(thomthom): Add library paths per platform, and try to add just "SketchUpAPI"
-#                 to `target_link_libraries`.
-set(SLAPI_LIB "${PROJECT_SOURCE_DIR}/third-party/slapi/win/binaries/sketchup/x64/SketchUpAPI.lib")
-
 target_link_libraries(SketchUpAPITests GoogleTest SketchUpAPICpp ${SLAPI_LIB})
+
+source_group(
+  "Tests"
+  REGULAR_EXPRESSION "${CPP_API_TESTS_PATH}/[^\//]+Tests.cpp"
+)
+# Force the CPP file that define `main` to not appear in the Tests list.
+source_group(
+  "Source Files"
+  FILES "${CPP_API_TESTS_PATH}/SketchUpAPITests.cpp"
+)
 
 # TODO(thomthom): Set up per-platform post-build commands.
 add_custom_command(TARGET SketchUpAPITests POST_BUILD
-  COMMAND xcopy \"${PROJECT_SOURCE_DIR}\\third-party\\slapi\\win\\binaries\\sketchup\\x64\\SketchUpAPI.dll\" $(OutputPath) /D /Y
-  COMMAND xcopy \"${PROJECT_SOURCE_DIR}\\third-party\\slapi\\win\\binaries\\sketchup\\x64\\SketchUpCommonPreferences.dll\" $(OutputPath) /D /Y
+  # xcopy seem to require at least one \ slash in the source path, otherwise it
+  # appear to fail.
+  COMMAND xcopy \"${SLAPI_BINARIES_PATH}\\sketchup\\x64\\SketchUpAPI.dll\" $(OutputPath) /D /Y
+  COMMAND xcopy \"${SLAPI_BINARIES_PATH}\\sketchup\\x64\\SketchUpCommonPreferences.dll\" $(OutputPath) /D /Y
 )

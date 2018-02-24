@@ -1,9 +1,29 @@
-cmake_minimum_required(VERSION 3.6)
+cmake_minimum_required(VERSION 3.8)
 
 set(CMAKE_CXX_STANDARD 14)
 # set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++1y -Wall")
 
 project (SketchUpApiCppWrapper)
+
+set(CPP_API_BASENAME "SUAPI-CppWrapper")
+set(CPP_API_INCLUDE_PATH "${PROJECT_SOURCE_DIR}/include")
+set(CPP_API_SOURCE_PATH "${PROJECT_SOURCE_DIR}/src")
+set(CPP_API_TESTS_PATH "${PROJECT_SOURCE_DIR}/tests")
+
+set(CPP_API_THIRD_PARTY_PATH "${PROJECT_SOURCE_DIR}/third-party")
+
+# TODO(thomthom): Configure for Mac:
+set(SLAPI_PATH "${CPP_API_THIRD_PARTY_PATH}/slapi")
+set(SLAPI_INCLUDE_PATH "${SLAPI_PATH}/win/headers")
+set(SLAPI_BINARIES_PATH "${SLAPI_PATH}/win/binaries")
+set(SLAPI_BINARIES_X64_PATH "${SLAPI_BINARIES_PATH}/sketchup/x64")
+# TODO(thomthom): Add library paths per platform, and try to add just "SketchUpAPI"
+#                 to `target_link_libraries`.
+set(SLAPI_LIB "${SLAPI_BINARIES_X64_PATH}/SketchUpAPI.lib")
+
+set(GOOGLETEST_PATH "${CPP_API_THIRD_PARTY_PATH}/googletest/googletest")
+set(GOOGLETEST_INCLUDE_PATH "${GOOGLETEST_PATH}/include")
+
 
 # GoogleTest 1.8 produce a warning that must be silenced. The fix is yet to be
 # pushed to the GoogleTest stable branch.
