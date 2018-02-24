@@ -8,6 +8,8 @@ add_executable(SketchUpAPITests ${TESTS_HEADERS} ${TESTS_SOURCES})
 
 target_link_libraries(SketchUpAPITests GoogleTest SketchUpAPICpp ${SLAPI_LIB})
 
+set_target_properties(${SketchUpAPITests} PROPERTIES COMPILE_FLAGS "-Wall")
+
 source_group(
   "Tests"
   REGULAR_EXPRESSION "${CPP_API_TESTS_PATH}/[^\//]+Tests.cpp"

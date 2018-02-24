@@ -1,9 +1,10 @@
 cmake_minimum_required(VERSION 3.8)
 
 set(CMAKE_CXX_STANDARD 14)
-# set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++1y -Wall")
 
 project (SketchUpApiCppWrapper)
+
+# Define various paths:
 
 set(CPP_API_BASENAME "SUAPI-CppWrapper")
 set(CPP_API_INCLUDE_PATH "${PROJECT_SOURCE_DIR}/include")
@@ -36,6 +37,7 @@ add_definitions(-D_SILENCE_TR1_NAMESPACE_DEPRECATION_WARNING)
 # Avoid conflicting macros from Win32 API.
 add_definitions(-DWIN32_LEAN_AND_MEAN)
 add_definitions(-DNOMINMAX)
+
 
 include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/SketchUpAPICpp.cmake)
 include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/GoogleTest.cmake)
