@@ -182,7 +182,12 @@ class Vector3D {
   Vector3D operator-(const SUVector3D &vector) const {return *this - Vector3D(vector);}
   Vector3D operator*(const double &scalar) const;
   Vector3D operator/(const double &scalar) const;
-  
+
+  /**
+  * Allows the multiplication operator to be on the other side of the vector.
+  */
+  friend Vector3D operator*(const double &lhs, const Vector3D &rhs);
+
   /**
   * Comparator operator overloads
   */
@@ -244,13 +249,9 @@ class Vector3D {
   * Returns a valid vector that has zero length.
   */
   static Vector3D zero_vector();
+
 };
 
-/**
-* Allows the multiplication operator to be on the other side of the vector.
-*/
-static Vector3D operator*(const double &lhs, const Vector3D &rhs)
-{  return rhs * lhs;}
 
 
 /*

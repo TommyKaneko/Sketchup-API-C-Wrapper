@@ -28,12 +28,12 @@
 
 namespace CW {
   
-extern size_t SU_VERSION_MAJOR = 18;
-extern size_t SU_VERSION_MINOR = 0;
-extern size_t SU_VERSION_BUILD = 0;
+size_t SU_VERSION_MAJOR = 18;
+size_t SU_VERSION_MINOR = 0;
+size_t SU_VERSION_BUILD = 0;
 
-extern size_t SU_API_VERSION_MAJOR = 1;
-extern size_t SU_API_VERSION_MINOR = 0;
+size_t SU_API_VERSION_MAJOR = 1;
+size_t SU_API_VERSION_MINOR = 0;
 
 void initialize() {
   SUInitialize();

@@ -97,6 +97,10 @@ Radians Radians::operator/(const double divider) const {
   return m_val * divider;
 }
 
+Vector3D operator*(const double &lhs, const Vector3D &rhs) {
+  return rhs * lhs;
+}
+
 bool Radians::operator==(const Radians& rhs) const {
   return (fabs(static_cast<double>(*this) - static_cast<double>(rhs))) < EPSILON;
 }
@@ -143,8 +147,8 @@ Vector3D::Vector3D( double x, double y, double z):
 {}
 
 Vector3D::Vector3D(bool valid):
-  null(!valid),
   m_vector(SUVector3D{0.0,0.0,0.0}),
+  null(!valid),
   x(m_vector.x),
   y(m_vector.y),
   z(m_vector.z)
@@ -157,10 +161,10 @@ Vector3D::Vector3D(const Edge &edge):
 
 Vector3D::Vector3D(const Vector3D &vector):
   m_vector(vector.m_vector),
+  null(vector.null),
   x(m_vector.x),
   y(m_vector.y),
-  z(m_vector.z),
-  null(vector.null)
+  z(m_vector.z)
 {}
 
 
@@ -323,8 +327,8 @@ Point3D::Point3D():
 {}
 
 Point3D::Point3D(bool valid):
-  null(!valid),
   m_point(SUPoint3D{0.0,0.0,0.0}),
+  null(!valid),
   x(m_point.x),
   y(m_point.y),
   z(m_point.z)
@@ -347,10 +351,10 @@ Point3D::Point3D(double x, double y, double z):
 
 Point3D::Point3D(const Point3D& other):
   m_point(other.m_point),
+  null(other.null),
   x(m_point.x),
   y(m_point.y),
-  z(m_point.z),
-  null(other.null)
+  z(m_point.z)
 {}
 
 
@@ -627,11 +631,11 @@ Plane3D::Plane3D():
 
 Plane3D::Plane3D(SUPlane3D plane):
   m_plane(plane),
+  null((m_plane.a == 0.0 && m_plane.b == 0.0 && m_plane.c == 0.0)),
   a(m_plane.a),
   b(m_plane.b),
   c(m_plane.c),
-  d(m_plane.d),
-  null((m_plane.a == 0.0 && m_plane.b == 0.0 && m_plane.c == 0.0))
+  d(m_plane.d)
 {}
 
 
@@ -646,8 +650,8 @@ Plane3D::Plane3D(const Face &face):
 
 
 Plane3D::Plane3D(const Plane3D &plane):
-  null(plane.null),
   m_plane(plane.m_plane),
+  null(plane.null),
   a(m_plane.a),
   b(m_plane.b),
   c(m_plane.c),
@@ -665,8 +669,8 @@ Plane3D::Plane3D(const Point3D& point, const Vector3D& normal):
 
 
 Plane3D::Plane3D(bool valid):
-  null(!valid),
   m_plane(SUPlane3D{1.0,0.0,0.0,0.0}),
+  null(!valid),
   a(m_plane.a),
   b(m_plane.b),
   c(m_plane.c),
@@ -907,8 +911,8 @@ BoundingBox3D::BoundingBox3D():
 {}
 
 BoundingBox3D::BoundingBox3D(bool valid):
-  null(!valid),
-  m_bounding_box(SUBoundingBox3D{Point3D(), Point3D()})
+  m_bounding_box(SUBoundingBox3D{Point3D(), Point3D()}),
+  null(!valid)
 {}
 
 BoundingBox3D::BoundingBox3D(SUBoundingBox3D bounding_box):
@@ -969,8 +973,8 @@ Line3D::Line3D(bool valid):
   m_point(Point3D(valid)),
   m_direction(Vector3D(valid)),
   point(m_point),
-  direction(m_direction),
-  null(!valid)
+  null(!valid),
+  direction(m_direction)
 {}
 
 
@@ -978,8 +982,8 @@ Line3D::Line3D(const Line3D& other):
   m_point(other.m_point),
   m_direction(other.m_direction),
   point(m_point),
-  direction(m_direction),
-  null(other.null)
+  null(other.null),
+  direction(m_direction)
 {}
 
 
