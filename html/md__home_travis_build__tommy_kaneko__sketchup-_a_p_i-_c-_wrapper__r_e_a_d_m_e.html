@@ -48,9 +48,35 @@
 <p>For example, to get an array of faces from an entities object, you could write this: ``` <a class="el" href="struct_s_u_entities_ref.html" title="References a container object for all entities in a model, component definition or a group...">SUEntitiesRef</a> entities = SU_INVALID; SUModelGetEntities(model, &amp;entities); size_t faceCount = 0; SUEntitiesGetNumFaces(entities, &amp;faceCount); std::vector&lt;SUFaceRef&gt; faces[faceCount]; SUEntitiesGetFaces(entities, faceCount, &amp;faces[0], &amp;faceCount); ``` With the C++ Wrapper, to achieve the above, you just need to write this: ``` #include &lt;<a class="el" href="_model_8hpp_source.html">SUAPI-CppWrapper/model/Model.hpp</a>&gt; #include &lt;<a class="el" href="_face_8hpp_source.html">SUAPI-CppWrapper/model/Face.hpp</a>&gt; std::vector&lt;CW::Face&gt; faces = <a class="el" href="class_c_w_1_1_model.html">CW::Model(model)</a>.entities().faces(); ``` Added to this benefit, the wrapper classes have helper functions to help with geometric manipulations, much in the style of the SketchUp Ruby API </p>
 <hr/>
  <h2>Reference</h2>
-<p>The project is documented in Doxygen, accessible here: <a href="https://tommykaneko.github.io/Sketchup-API-C-Wrapper/html">https://tommykaneko.github.io/Sketchup-API-C-Wrapper/html</a> </p>
-<hr/>
+<p>The project is documented in Doxygen, accessible here: <a href="https://tommykaneko.github.io/Sketchup-API-C-Wrapper/html">https://tommykaneko.github.io/Sketchup-API-C-Wrapper/html</a></p>
+<h2>CMake</h2>
+<h3>Visual Studio</h3>
+<p>``` CMake .. -G "Visual Studio 15 2017 Win64" ```</p>
+<h3>XCode</h3>
+<p>Coming...</p>
+<h2>Testing</h2>
+<p>The project uses GoogleTest for unit testing. It's included as a submodule so make sure to also initialize those when checking out the project.</p>
+<p>The tests are located under <code>/tests/</code>. One file per testcase. One testcase per class being tested.</p>
+<p>Keep tests small, keep their name descriptive.</p>
+<h3>Running Tests</h3>
+<h4>Visual Studio</h4>
+<ol type="1">
+<li>Set the SketchUpAPITests project as your startup project.</li>
+<li>Build</li>
+<li>Run</li>
+</ol>
+<p>Alternativly you can use the <a href="https://marketplace.visualstudio.com/items?itemName=ChristianSoltenborn.GoogleTestAdapter">Google Test Adapter extension</a> which provides overview of the tests from the UI. Makes it easy to run induvidual tests.</p>
+<h4>Xcode</h4>
+<p><em>Coming soon.</em></p>
+<h3>GoogleTests References</h3>
+<ul>
+<li><a href="https://github.com/google/googletest/blob/master/googlemock/docs/ForDummies.md">https://github.com/google/googletest/blob/master/googlemock/docs/ForDummies.md</a></li>
+<li><a href="https://github.com/google/googletest/blob/master/googletest/docs/Primer.md">https://github.com/google/googletest/blob/master/googletest/docs/Primer.md</a></li>
+<li><a href="https://github.com/google/googletest/blob/master/googletest/docs/AdvancedGuide.md">https://github.com/google/googletest/blob/master/googletest/docs/AdvancedGuide.md</a></li>
+<li><a href="https://github.com/google/googletest/blob/master/googletest/docs/FAQ.md">https://github.com/google/googletest/blob/master/googletest/docs/FAQ.md</a> <hr/>
  <h2>Project Objectives</h2>
+</li>
+</ul>
 <p>The aims of this set of wrapper classes are:</p>
 <ul>
 <li>to make the SketchUp C API quicker and easier to use, from a C++ programmer's perspective.</li>
@@ -69,7 +95,7 @@
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Feb 23 2018 11:14:54 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Feb 26 2018 16:30:36 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

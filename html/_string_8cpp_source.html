@@ -43,7 +43,7 @@
   </div>
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_f5ad1096a8ea229eeb47a854ea8e871a.html">src</a></li><li class="navelem"><a class="el" href="dir_059aedaba3b45634f6ec731c8b380205.html">SUAPI-CppWrapper</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_1e6f28ee2bb0919f3d150f269c31b204.html">SUAPI-CppWrapper</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -205,11 +205,11 @@
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;  <span class="keywordtype">size_t</span> out_length = 0;</div>
 <div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;  SUResult res = SUStringGetUTF8Length(m_string, &amp;out_length);</div>
 <div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;  assert(res == SU_ERROR_NONE);</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;  out_length++; <span class="comment">// Allow for null termianted string</span></div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;  std::vector&lt;char&gt; char_array(out_length);</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;  out_length++; <span class="comment">// Allow for null terminated string</span></div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;  std::vector&lt;char&gt; char_array(out_length, 0);</div>
 <div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;  res = SUStringGetUTF8(m_string, out_length, char_array.data(), &amp;out_length);</div>
 <div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;  assert(res == SU_ERROR_NONE);</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;  std::string str(char_array.begin(),char_array.end());</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;  std::string str(char_array.data());</div>
 <div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;  <span class="keywordflow">return</span> str;</div>
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;}</div>
 <div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;</div>
@@ -244,7 +244,7 @@
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Feb 23 2018 11:14:54 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Feb 26 2018 16:30:30 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

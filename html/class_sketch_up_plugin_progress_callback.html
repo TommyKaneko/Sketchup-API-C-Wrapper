@@ -52,13 +52,29 @@
 </div><!--header-->
 <div class="contents">
 
-<p>Interface to provide import/export progress feedback and cancellation.  
+<p><a class="el" href="class_interface.html">Interface</a> to provide import/export progress feedback and cancellation.  
  <a href="class_sketch_up_plugin_progress_callback.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="pluginprogresscallback_8h_source.html">pluginprogresscallback.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="resources_2_sketch_up_a_p_i_22018_2_sketch_up_a_p_i_8framework_2_versions_2_a_2_headers_2import_050fbb3f28f564607291623face1b8a0_source.html">pluginprogresscallback.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:ac39ccb503ab905885902e1b8a3421d26"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sketch_up_plugin_progress_callback.html#ac39ccb503ab905885902e1b8a3421d26">HasBeenCancelled</a> ()=0</td></tr>
+<tr class="memdesc:ac39ccb503ab905885902e1b8a3421d26"><td class="mdescLeft">&#160;</td><td class="mdescRight">Call this to test if the user has pressed the cancel button. Your code should clean up and return promptly after detecting this.  <a href="#ac39ccb503ab905885902e1b8a3421d26">More...</a><br/></td></tr>
+<tr class="separator:ac39ccb503ab905885902e1b8a3421d26"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a30387ef9071a2008b6c8f572e50b76e3"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sketch_up_plugin_progress_callback.html#a30387ef9071a2008b6c8f572e50b76e3">SetPercentDone</a> (double percent)=0</td></tr>
+<tr class="memdesc:a30387ef9071a2008b6c8f572e50b76e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Call this to set the percent complete on the dialog.  <a href="#a30387ef9071a2008b6c8f572e50b76e3">More...</a><br/></td></tr>
+<tr class="separator:a30387ef9071a2008b6c8f572e50b76e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a1a763b2e4ebf387b0352ac5e1b849d"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sketch_up_plugin_progress_callback.html#a2a1a763b2e4ebf387b0352ac5e1b849d">SetStepSize</a> (double percent)=0</td></tr>
+<tr class="memdesc:a2a1a763b2e4ebf387b0352ac5e1b849d"><td class="mdescLeft">&#160;</td><td class="mdescRight">You may also set a step size and increment it using the Step method.  <a href="#a2a1a763b2e4ebf387b0352ac5e1b849d">More...</a><br/></td></tr>
+<tr class="separator:a2a1a763b2e4ebf387b0352ac5e1b849d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b2cc9ca58129fd8ee93a835c5381651"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5b2cc9ca58129fd8ee93a835c5381651"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sketch_up_plugin_progress_callback.html#a5b2cc9ca58129fd8ee93a835c5381651">Step</a> ()=0</td></tr>
+<tr class="memdesc:a5b2cc9ca58129fd8ee93a835c5381651"><td class="mdescLeft">&#160;</td><td class="mdescRight">Increments the progress dialog by the step size set using SetStepSize. <br/></td></tr>
+<tr class="separator:a5b2cc9ca58129fd8ee93a835c5381651"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0373c10483c8536da115e0be0f0e6fc0"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sketch_up_plugin_progress_callback.html#a0373c10483c8536da115e0be0f0e6fc0">SetProgressMessage</a> (const std::string &amp;utf8_message)=0</td></tr>
+<tr class="memdesc:a0373c10483c8536da115e0be0f0e6fc0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Supplies a UTF-8 message which will be presented on the progress dialog.  <a href="#a0373c10483c8536da115e0be0f0e6fc0">More...</a><br/></td></tr>
+<tr class="separator:a0373c10483c8536da115e0be0f0e6fc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac39ccb503ab905885902e1b8a3421d26"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sketch_up_plugin_progress_callback.html#ac39ccb503ab905885902e1b8a3421d26">HasBeenCancelled</a> ()=0</td></tr>
 <tr class="memdesc:ac39ccb503ab905885902e1b8a3421d26"><td class="mdescLeft">&#160;</td><td class="mdescRight">Call this to test if the user has pressed the cancel button. Your code should clean up and return promptly after detecting this.  <a href="#ac39ccb503ab905885902e1b8a3421d26">More...</a><br/></td></tr>
 <tr class="separator:ac39ccb503ab905885902e1b8a3421d26"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -98,8 +114,32 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 <div class="line"><span class="comment">// Success!</span></div>
 <div class="line"><span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 </div><!-- fragment --> 
-<p>Definition at line <a class="el" href="pluginprogresscallback_8h_source.html#l00044">44</a> of file <a class="el" href="pluginprogresscallback_8h_source.html">pluginprogresscallback.h</a>.</p>
+<p>Definition at line <a class="el" href="resources_2_sketch_up_a_p_i_22018_2_sketch_up_a_p_i_8framework_2_versions_2_a_2_headers_2import_050fbb3f28f564607291623face1b8a0_source.html#l00044">44</a> of file <a class="el" href="resources_2_sketch_up_a_p_i_22018_2_sketch_up_a_p_i_8framework_2_versions_2_a_2_headers_2import_050fbb3f28f564607291623face1b8a0_source.html">pluginprogresscallback.h</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="ac39ccb503ab905885902e1b8a3421d26"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool SketchUpPluginProgressCallback::HasBeenCancelled </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>Returns true if the user has pressed cancel. </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="ac39ccb503ab905885902e1b8a3421d26"></a>
 <div class="memitem">
 <div class="memproto">
@@ -148,6 +188,66 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">percent</td><td>The percent done from 0 to 100. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a30387ef9071a2008b6c8f572e50b76e3"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void SketchUpPluginProgressCallback::SetPercentDone </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>percent</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">percent</td><td>The percent done from 0 to 100. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a0373c10483c8536da115e0be0f0e6fc0"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void SketchUpPluginProgressCallback::SetProgressMessage </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>utf8_message</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">utf8_message</td><td>The message. </td></tr>
   </table>
   </dd>
 </dl>
@@ -214,13 +314,43 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 
 </div>
 </div>
+<a class="anchor" id="a2a1a763b2e4ebf387b0352ac5e1b849d"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void SketchUpPluginProgressCallback::SetStepSize </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>percent</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">percent</td><td>The percent to increment with each call to Step. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
-<li>/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/resources/SketchUpAPI/2018/SketchUpAPI.framework/Versions/A/Headers/import_export/<a class="el" href="pluginprogresscallback_8h_source.html">pluginprogresscallback.h</a></li>
+<li>/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/resources/SketchUpAPI/2018/SketchUpAPI.framework/Versions/A/Headers/import_export/<a class="el" href="resources_2_sketch_up_a_p_i_22018_2_sketch_up_a_p_i_8framework_2_versions_2_a_2_headers_2import_050fbb3f28f564607291623face1b8a0_source.html">pluginprogresscallback.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Feb 23 2018 11:14:54 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Feb 26 2018 16:30:37 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

@@ -55,18 +55,18 @@
 <p><a class="el" href="struct_s_u_material_input.html" title="SUMaterialInput contains information that is needed to apply a material to a face. The conventional method for applying a material to a face is to use 1 to 4 UV coordinates, which are Cartesian textures coordinates and corresponding vertex indices on the face. The vertices are referenced by index into the top level SUGeometryInputRef&#39;s vertex array. The member variable &#39;material&#39; must be a valid material object, and once the material input is used (e.g. with /ref SUEntitiesFill), the material object must not be released since it will be associated with a parent object. ">SUMaterialInput</a> contains information that is needed to apply a material to a face. The conventional method for applying a material to a face is to use 1 to 4 UV coordinates, which are Cartesian textures coordinates and corresponding vertex indices on the face. The vertices are referenced by index into the top level <a class="el" href="struct_s_u_geometry_input_ref.html" title="References a geometry input object. It is used as an input to /ref SUEntitiesFill. ">SUGeometryInputRef</a>'s vertex array. The member variable 'material' must be a valid material object, and once the material input is used (e.g. with /ref SUEntitiesFill), the material object must not be released since it will be associated with a parent object.  
  <a href="struct_s_u_material_input.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="geometry__input_8h_source.html">geometry_input.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="resources_2_sketch_up_a_p_i_22018_2_sketch_up_a_p_i_8framework_2_versions_2_a_2_headers_2model_2geometry__input_8h_source.html">geometry_input.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
 <tr class="memitem:a8342566af053317571dac7fc0a626d3b"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_s_u_material_input.html#a8342566af053317571dac7fc0a626d3b">num_uv_coords</a></td></tr>
 <tr class="separator:a8342566af053317571dac7fc0a626d3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afdca30a3b8621459534161f6117ba17f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afdca30a3b8621459534161f6117ba17f"></a>
-struct <a class="el" href="struct_s_u_point2_d.html">SUPoint2D</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_s_u_material_input.html#afdca30a3b8621459534161f6117ba17f">uv_coords</a> [4]</td></tr>
-<tr class="memdesc:afdca30a3b8621459534161f6117ba17f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Texture coordinates. <br/></td></tr>
-<tr class="separator:afdca30a3b8621459534161f6117ba17f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5e0e0d58c3d477a8526bb6013fdfc6a7"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_s_u_material_input.html#a5e0e0d58c3d477a8526bb6013fdfc6a7">vertex_indices</a> [4]</td></tr>
-<tr class="separator:a5e0e0d58c3d477a8526bb6013fdfc6a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd331c83a9750bf068c3708399feffa0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acd331c83a9750bf068c3708399feffa0"></a>
+struct <a class="el" href="struct_s_u_point2_d.html">SUPoint2D</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_s_u_material_input.html#acd331c83a9750bf068c3708399feffa0">uv_coords</a> [4]</td></tr>
+<tr class="memdesc:acd331c83a9750bf068c3708399feffa0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Texture coordinates. <br/></td></tr>
+<tr class="separator:acd331c83a9750bf068c3708399feffa0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a895d02dc6076ddb75f0c6b041f2d6780"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_s_u_material_input.html#a895d02dc6076ddb75f0c6b041f2d6780">vertex_indices</a> [4]</td></tr>
+<tr class="separator:a895d02dc6076ddb75f0c6b041f2d6780"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a375cf3067de882c642fe5f7409ee4cc9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a375cf3067de882c642fe5f7409ee4cc9"></a>
 <a class="el" href="struct_s_u_material_ref.html">SUMaterialRef</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_s_u_material_input.html#a375cf3067de882c642fe5f7409ee4cc9">material</a></td></tr>
 <tr class="memdesc:a375cf3067de882c642fe5f7409ee4cc9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Material to be applied. <br/></td></tr>
@@ -74,7 +74,7 @@ struct <a class="el" href="struct_s_u_point2_d.html">SUPoint2D</a>&#160;</td><td
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p>Definition at line <a class="el" href="geometry__input_8h_source.html#l00032">32</a> of file <a class="el" href="geometry__input_8h_source.html">geometry_input.h</a>.</p>
+<p>Definition at line <a class="el" href="resources_2_sketch_up_a_p_i_22018_2_sketch_up_a_p_i_8framework_2_versions_2_a_2_headers_2model_2geometry__input_8h_source.html#l00032">32</a> of file <a class="el" href="resources_2_sketch_up_a_p_i_22018_2_sketch_up_a_p_i_8framework_2_versions_2_a_2_headers_2model_2geometry__input_8h_source.html">geometry_input.h</a>.</p>
 </div><h2 class="groupheader">Field Documentation</h2>
 <a class="anchor" id="a8342566af053317571dac7fc0a626d3b"></a>
 <div class="memitem">
@@ -87,32 +87,32 @@ struct <a class="el" href="struct_s_u_point2_d.html">SUPoint2D</a>&#160;</td><td
 </div><div class="memdoc">
 <p>Number of texture coordinates. 0 if no texture. 1 to 4 otherwise. </p>
 
-<p>Definition at line <a class="el" href="geometry__input_8h_source.html#l00033">33</a> of file <a class="el" href="geometry__input_8h_source.html">geometry_input.h</a>.</p>
+<p>Definition at line <a class="el" href="resources_2_sketch_up_a_p_i_22018_2_sketch_up_a_p_i_8framework_2_versions_2_a_2_headers_2model_2geometry__input_8h_source.html#l00033">33</a> of file <a class="el" href="resources_2_sketch_up_a_p_i_22018_2_sketch_up_a_p_i_8framework_2_versions_2_a_2_headers_2model_2geometry__input_8h_source.html">geometry_input.h</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a5e0e0d58c3d477a8526bb6013fdfc6a7"></a>
+<a class="anchor" id="a895d02dc6076ddb75f0c6b041f2d6780"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">size_t SUMaterialInput::vertex_indices[4]</td>
+          <td class="memname">size_t SUMaterialInput::vertex_indices</td>
         </tr>
       </table>
 </div><div class="memdoc">
 <p>Vertex indices corresponding to the texture coordinates. Should reference the vertex array of the parent <a class="el" href="struct_s_u_geometry_input_ref.html" title="References a geometry input object. It is used as an input to /ref SUEntitiesFill. ">SUGeometryInputRef</a>. </p>
 
-<p>Definition at line <a class="el" href="geometry__input_8h_source.html#l00038">38</a> of file <a class="el" href="geometry__input_8h_source.html">geometry_input.h</a>.</p>
+<p>Definition at line <a class="el" href="resources_2_sketch_up_a_p_i_22018_2_sketch_up_a_p_i_8framework_2_versions_2_a_2_headers_2model_2geometry__input_8h_source.html#l00038">38</a> of file <a class="el" href="resources_2_sketch_up_a_p_i_22018_2_sketch_up_a_p_i_8framework_2_versions_2_a_2_headers_2model_2geometry__input_8h_source.html">geometry_input.h</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
-<li>/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/resources/SketchUpAPI/2018/SketchUpAPI.framework/Versions/A/Headers/model/<a class="el" href="geometry__input_8h_source.html">geometry_input.h</a></li>
+<li>/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/resources/SketchUpAPI/2018/SketchUpAPI.framework/Versions/A/Headers/model/<a class="el" href="resources_2_sketch_up_a_p_i_22018_2_sketch_up_a_p_i_8framework_2_versions_2_a_2_headers_2model_2geometry__input_8h_source.html">geometry_input.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Feb 23 2018 11:14:54 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Feb 26 2018 16:30:37 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
