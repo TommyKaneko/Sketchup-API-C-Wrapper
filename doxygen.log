@@ -1344,13 +1344,13 @@ Preprocessing /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-more-actions.h:72: warning: Compound testing::internal::InvokeMethodAction is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/internal/gtest-tuple.h:163: warning: Compound std::tr1::gtest_internal::TupleElement< true, 2, GTEST_10_TUPLE_(T) > is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-matchers_test.cc:2817: warning: Compound testing::gmock_matchers_test::FloatingPointNearTest is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:501: warning: Compound CW::BoundingBox3D is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:502: warning: Compound CW::BoundingBox3D is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-generated-function-mockers_test.cc:398: warning: Compound testing::gmock_generated_function_mockers_test::MockStack is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ImageRep.hpp:46: warning: Compound CW::ImageRep is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/internal/gtest-tuple.h:963: warning: Compound std::tr1::gtest_internal::SameSizeTuplePrefixComparator< k, k > is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/RenderingOptions.hpp:14: warning: Compound CW::RenderingOptions is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/scripts/generator/cpp/ast.py:321: warning: Compound cpp::ast::Class is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:263: warning: Compound CW::Point3D is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:264: warning: Compound CW::Point3D is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/scripts/generator/cpp/ast.py:155: warning: Compound cpp::ast::Include is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/internal/gmock-internal-utils.h:422: warning: Compound testing::internal::StlContainerView< Element[N]> is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-matchers.h:3108: warning: Compound testing::internal::ElementsAreMatcherImpl is not documented.
@@ -1598,7 +1598,7 @@ Preprocessing /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-generated-matchers.h:128: warning: Compound testing::internal::TupleFields< Tuple, k0, k1, k2, k3,-1,-1,-1,-1,-1,-1 > is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/internal/gtest-tuple.h:137: warning: Compound std::tr1::gtest_internal::AddRef is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-generated-function-mockers_test.cc:123: warning: Compound testing::gmock_generated_function_mockers_test::MockFoo is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:381: warning: Compound CW::Plane3D is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:382: warning: Compound CW::Plane3D is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-matchers.h:959: warning: Compound testing::internal::LeMatcher is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-actions.h:97: warning: Compound testing::internal::BuiltInDefaultValue is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-matchers.h:776: warning: Compound testing::internal::TuplePrefix< 0 > is not documented.
@@ -4679,7 +4679,7 @@ Generating docs for compound TypeParamT/home/travis/build/TommyKaneko/Sketchup-A
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:60: warning: Member PI (variable) of class CW::Radians is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:61: warning: Member PI2 (variable) of class CW::Radians is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:63: warning: Member EPSILON (variable) of class CW::Radians is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:225: warning: Member Colinearity (enumeration) of class CW::Vector3D is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:230: warning: Member Colinearity (enumeration) of class CW::Vector3D is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:130: warning: Member Vector3D(double x, double y, double z) (function) of class CW::Vector3D is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:150: warning: Member operator SUVector3D() const  (function) of class CW::Vector3D is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:160: warning: Member operator Point3D() const  (function) of class CW::Vector3D is not documented.
@@ -4691,10 +4691,10 @@ Generating docs for compound TypeParamT/home/travis/build/TommyKaneko/Sketchup-A
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:182: warning: Member operator-(const SUVector3D &vector) const  (function) of class CW::Vector3D is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:183: warning: Member operator*(const double &scalar) const  (function) of class CW::Vector3D is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:184: warning: Member operator/(const double &scalar) const  (function) of class CW::Vector3D is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:202: warning: Member length() const  (function) of class CW::Vector3D is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:207: warning: Member unit() const  (function) of class CW::Vector3D is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:212: warning: Member angle(const Vector3D &vector_b) const  (function) of class CW::Vector3D is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:218: warning: Member dot(const Point3D &point) const  (function) of class CW::Vector3D is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:207: warning: Member length() const  (function) of class CW::Vector3D is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:212: warning: Member unit() const  (function) of class CW::Vector3D is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:217: warning: Member angle(const Vector3D &vector_b) const  (function) of class CW::Vector3D is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:223: warning: Member dot(const Point3D &point) const  (function) of class CW::Vector3D is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:120: warning: Member x (variable) of class CW::Vector3D is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:121: warning: Member y (variable) of class CW::Vector3D is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:122: warning: Member z (variable) of class CW::Vector3D is not documented.
@@ -4702,52 +4702,52 @@ Generating docs for compound TypeParamT/home/travis/build/TommyKaneko/Sketchup-A
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:116: warning: Member m_vector (variable) of class CW::Vector3D is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:117: warning: Member null (variable) of class CW::Vector3D is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:178: warning: Member operator+(const Vector3D &lhs, const Point3D &rhs) (friend) of class CW::Vector3D is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:191: warning: Member operator!=(const Vector3D &lhs, const Vector3D &rhs) (friend) of class CW::Vector3D is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:324: warning: Member operator SUPoint3D() const  (function) of class CW::Point3D is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:325: warning: Member operator const SUPoint3D *() const  (function) of class CW::Point3D is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:330: warning: Member operator Vector3D() const  (function) of class CW::Point3D is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:336: warning: Member operator+(const Vector3D &vector) const  (function) of class CW::Point3D is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:337: warning: Member operator+(const SUPoint3D &point) const  (function) of class CW::Point3D is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:338: warning: Member operator-(const Point3D &point) const  (function) of class CW::Point3D is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:339: warning: Member operator-(const Vector3D &vector) const  (function) of class CW::Point3D is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:340: warning: Member operator-(const SUPoint3D &point) const  (function) of class CW::Point3D is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:341: warning: Member operator*(const double &scalar) const  (function) of class CW::Point3D is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:342: warning: Member operator/(const double &scalar) const  (function) of class CW::Point3D is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:271: warning: Member x (variable) of class CW::Point3D is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:272: warning: Member y (variable) of class CW::Point3D is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:273: warning: Member z (variable) of class CW::Point3D is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:270: warning: Member EPSILON (variable) of class CW::Point3D is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:349: warning: Member operator==(const Point3D &lhs, const Point3D &rhs) (friend) of class CW::Point3D is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:350: warning: Member operator!=(const Point3D &lhs, const Point3D &rhs) (friend) of class CW::Point3D is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/Geometry.cpp:442: warning: The following parameters of CW::Point3D::intersection_between_lines(const Point3D &point_a, const Vector3D &vector_a, const Point3D &point_b, const Vector3D &vector_b, bool return_colinear=false) are not documented:
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:196: warning: Member operator!=(const Vector3D &lhs, const Vector3D &rhs) (friend) of class CW::Vector3D is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:325: warning: Member operator SUPoint3D() const  (function) of class CW::Point3D is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:326: warning: Member operator const SUPoint3D *() const  (function) of class CW::Point3D is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:331: warning: Member operator Vector3D() const  (function) of class CW::Point3D is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:337: warning: Member operator+(const Vector3D &vector) const  (function) of class CW::Point3D is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:338: warning: Member operator+(const SUPoint3D &point) const  (function) of class CW::Point3D is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:339: warning: Member operator-(const Point3D &point) const  (function) of class CW::Point3D is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:340: warning: Member operator-(const Vector3D &vector) const  (function) of class CW::Point3D is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:341: warning: Member operator-(const SUPoint3D &point) const  (function) of class CW::Point3D is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:342: warning: Member operator*(const double &scalar) const  (function) of class CW::Point3D is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:343: warning: Member operator/(const double &scalar) const  (function) of class CW::Point3D is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:272: warning: Member x (variable) of class CW::Point3D is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:273: warning: Member y (variable) of class CW::Point3D is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:274: warning: Member z (variable) of class CW::Point3D is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:271: warning: Member EPSILON (variable) of class CW::Point3D is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:350: warning: Member operator==(const Point3D &lhs, const Point3D &rhs) (friend) of class CW::Point3D is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:351: warning: Member operator!=(const Point3D &lhs, const Point3D &rhs) (friend) of class CW::Point3D is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/Geometry.cpp:446: warning: The following parameters of CW::Point3D::intersection_between_lines(const Point3D &point_a, const Vector3D &vector_a, const Point3D &point_b, const Vector3D &vector_b, bool return_colinear=false) are not documented:
   parameter 'point_a'
   parameter 'vector_a'
   parameter 'point_b'
   parameter 'vector_b'
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:394: warning: Member Plane3D(const SUPlane3D plane) (function) of class CW::Plane3D is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:395: warning: Member Plane3D(double a, double b, double c, double d) (function) of class CW::Plane3D is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:396: warning: Member Plane3D(const Face &face) (function) of class CW::Plane3D is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:407: warning: Member Plane3D(const Point3D &point, const Vector3D &normal) (function) of class CW::Plane3D is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:410: warning: Member Plane3D(const Plane3D &plane) (function) of class CW::Plane3D is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:413: warning: Member operator=(const Plane3D &plane) (function) of class CW::Plane3D is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:464: warning: Member angle_with(const Plane3D &plane2) const  (function) of class CW::Plane3D is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:465: warning: Member angle(const Plane3D &plane2) const  (function) of class CW::Plane3D is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:388: warning: Member a (variable) of class CW::Plane3D is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:389: warning: Member b (variable) of class CW::Plane3D is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:390: warning: Member c (variable) of class CW::Plane3D is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:391: warning: Member d (variable) of class CW::Plane3D is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:426: warning: Member operator!=(const Plane3D &lhs, const Plane3D &rhs) (friend) of class CW::Plane3D is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:508: warning: Member BoundingBox3D(SUBoundingBox3D bounding_box) (function) of class CW::BoundingBox3D is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:557: warning: Member Line3D(const Point3D point, const Vector3D direction) (function) of class CW::Line3D is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:558: warning: Member Line3D(const Vector3D direction, const Point3D point) (function) of class CW::Line3D is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:575: warning: Member operator=(const Line3D &line) (function) of class CW::Line3D is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:582: warning: Member intersection(const Line3D &line) const  (function) of class CW::Line3D is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:583: warning: Member intersection(const Plane3D &plane) const  (function) of class CW::Line3D is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:633: warning: Member parallel(const Vector3D &vector) const  (function) of class CW::Line3D is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:571: warning: Member point (variable) of class CW::Line3D is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:572: warning: Member direction (variable) of class CW::Line3D is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:595: warning: argument 'other_line' of command @param is not found in the argument list of CW::Line3D::closest_points(const Line3D &line) const
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:595: warning: The following parameters of CW::Line3D::closest_points(const Line3D &line) const are not documented:
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:395: warning: Member Plane3D(const SUPlane3D plane) (function) of class CW::Plane3D is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:396: warning: Member Plane3D(double a, double b, double c, double d) (function) of class CW::Plane3D is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:397: warning: Member Plane3D(const Face &face) (function) of class CW::Plane3D is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:408: warning: Member Plane3D(const Point3D &point, const Vector3D &normal) (function) of class CW::Plane3D is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:411: warning: Member Plane3D(const Plane3D &plane) (function) of class CW::Plane3D is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:414: warning: Member operator=(const Plane3D &plane) (function) of class CW::Plane3D is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:465: warning: Member angle_with(const Plane3D &plane2) const  (function) of class CW::Plane3D is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:466: warning: Member angle(const Plane3D &plane2) const  (function) of class CW::Plane3D is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:389: warning: Member a (variable) of class CW::Plane3D is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:390: warning: Member b (variable) of class CW::Plane3D is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:391: warning: Member c (variable) of class CW::Plane3D is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:392: warning: Member d (variable) of class CW::Plane3D is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:427: warning: Member operator!=(const Plane3D &lhs, const Plane3D &rhs) (friend) of class CW::Plane3D is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:509: warning: Member BoundingBox3D(SUBoundingBox3D bounding_box) (function) of class CW::BoundingBox3D is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:558: warning: Member Line3D(const Point3D point, const Vector3D direction) (function) of class CW::Line3D is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:559: warning: Member Line3D(const Vector3D direction, const Point3D point) (function) of class CW::Line3D is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:576: warning: Member operator=(const Line3D &line) (function) of class CW::Line3D is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:583: warning: Member intersection(const Line3D &line) const  (function) of class CW::Line3D is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:584: warning: Member intersection(const Plane3D &plane) const  (function) of class CW::Line3D is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:634: warning: Member parallel(const Vector3D &vector) const  (function) of class CW::Line3D is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:572: warning: Member point (variable) of class CW::Line3D is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:573: warning: Member direction (variable) of class CW::Line3D is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:596: warning: argument 'other_line' of command @param is not found in the argument list of CW::Line3D::closest_points(const Line3D &line) const
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:596: warning: The following parameters of CW::Line3D::closest_points(const Line3D &line) const are not documented:
   parameter 'line'
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/AttributeDictionary.hpp:98: warning: Member operator SUAttributeDictionaryRef() const  (function) of class CW::AttributeDictionary is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/AttributeDictionary.hpp:99: warning: Member operator SUAttributeDictionaryRef *() (function) of class CW::AttributeDictionary is not documented.
@@ -8558,5 +8558,5 @@ Generating file index...
 Generating file member index...
 Generating example index...
 finalizing index lists...
-lookup cache used 18947/65536 hits=185105 misses=20292
+lookup cache used 18948/65536 hits=185122 misses=20293
 finished...
