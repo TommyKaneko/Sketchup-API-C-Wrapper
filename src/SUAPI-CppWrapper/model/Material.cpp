@@ -121,13 +121,6 @@ Material::operator SUMaterialRef() const {
   return this->ref();
 }
 
-
-Material::operator SUMaterialRef*() {
-  // TODO: Test that the solution below works, and not result in a bad access error.
-  SUMaterialRef material = this->ref();
-  return &material;
-}
-
 bool Material::operator!() const {
   if (SUIsInvalid(m_entity)) {
     return true;

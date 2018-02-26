@@ -110,12 +110,6 @@ Texture::operator SUTextureRef() const {
 }
 
 
-Texture::operator SUTextureRef*() {
-  // TODO: Test that the solution below works, and not result in a bad access error.
-  SUTextureRef texture = this->ref();
-  return &texture;
-}
-
 Texture Texture::copy() const {
   // First create the file.
   std::string file_path = "/tmp/tmptexture";
