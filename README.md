@@ -40,7 +40,16 @@ https://tommykaneko.github.io/Sketchup-API-C-Wrapper/html
 
 ### XCode
 
-Coming...
+Navigate to the Sketchup-API-C-Wrapper project folder in Terminal and perform these commands:
+```
+mkdir xcode
+cd xcode
+cmake -G "Xcode" ..
+```
+If you get an error, it's probably because you haven't fetched the googletests submodules, so do this and try again:
+```
+git submodule update --init --recursive
+```
 
 ## Testing
 The project uses GoogleTest for unit testing. It's included as a submodule so make sure to also initialize those when checking out the project.
