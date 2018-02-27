@@ -16,6 +16,7 @@ if ( MSVC )
   target_compile_options(SketchUpAPICpp PRIVATE "/MP")
 else()
   # target_compile_options(SketchUpAPICpp PRIVATE "-Wall")
+  target_compile_options(SketchUpAPICpp PRIVATE "-Wno-missing-braces")
   target_compile_options(SketchUpAPICpp PRIVATE "-Werror")
 endif()
 
