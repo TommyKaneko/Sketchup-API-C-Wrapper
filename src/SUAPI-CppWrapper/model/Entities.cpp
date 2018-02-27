@@ -271,7 +271,10 @@ std::vector<Face> Entities::add_faces(std::vector<Face>& faces) {
   if (!SUIsValid(m_entities)) {
     throw std::logic_error("CW::Entities::add_faces(): Entities is null");
   }
-  SUResult res = SUEntitiesAddFaces(m_entities, faces.size(), faces[0]);
+  std::vector<SUFaceRef> refs{};
+  std::transform(faces.begin(), faces.end(), refs.begin(), [](const CW::Face& face) {return face.ref(); });
+
+  SUResult res = SUEntitiesAddFaces(m_entities, refs.size(), refs.data());
   assert(res == SU_ERROR_NONE);
 
   // Transfer ownership of each face
@@ -285,7 +288,10 @@ std::vector<Edge> Entities::add_edges(std::vector<Edge>& edges) {
   if (!SUIsValid(m_entities)) {
     throw std::logic_error("CW::Entities::add_edges(): Entities is null");
   }
-  SUResult res = SUEntitiesAddEdges(m_entities, edges.size(), edges[0]);
+  std::vector<SUEdgeRef> refs{};
+  std::transform(edges.begin(), edges.end(), refs.begin(), [](const CW::Edge& edge) {return edge.ref(); });
+
+  SUResult res = SUEntitiesAddEdges(m_entities, refs.size(), refs.data());
   assert(res == SU_ERROR_NONE);
 
   // Transfer ownership of each edge
