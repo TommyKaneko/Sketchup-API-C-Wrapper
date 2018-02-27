@@ -4843,17 +4843,16 @@ Generating docs for compound cpp::a/home/travis/build/TommyKaneko/Sketchup-API-C
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Edge.hpp:83: warning: Member Edge(SUEdgeRef edge, bool attached=true) (function) of class CW::Edge is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Edge.hpp:90: warning: Member operator=(const Edge &other) (function) of class CW::Edge is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Edge.hpp:100: warning: Member operator SUEdgeRef() const  (function) of class CW::Edge is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Edge.hpp:101: warning: Member operator SUEdgeRef *() (function) of class CW::Edge is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Edge.hpp:116: warning: Member color() const  (function) of class CW::Edge is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Edge.hpp:121: warning: Member color(const Color &input_color) (function) of class CW::Edge is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Edge.hpp:126: warning: Member end() const  (function) of class CW::Edge is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Edge.hpp:131: warning: Member faces() const  (function) of class CW::Edge is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Edge.hpp:146: warning: Member smooth() const  (function) of class CW::Edge is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Edge.hpp:153: warning: Member smooth(bool smooth) (function) of class CW::Edge is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Edge.hpp:159: warning: Member soft() const  (function) of class CW::Edge is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Edge.hpp:166: warning: Member soft(bool soft) (function) of class CW::Edge is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Edge.hpp:171: warning: Member start() const  (function) of class CW::Edge is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Edge.hpp:176: warning: Member vector() const  (function) of class CW::Edge is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Edge.hpp:115: warning: Member color() const  (function) of class CW::Edge is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Edge.hpp:120: warning: Member color(const Color &input_color) (function) of class CW::Edge is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Edge.hpp:125: warning: Member end() const  (function) of class CW::Edge is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Edge.hpp:130: warning: Member faces() const  (function) of class CW::Edge is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Edge.hpp:145: warning: Member smooth() const  (function) of class CW::Edge is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Edge.hpp:152: warning: Member smooth(bool smooth) (function) of class CW::Edge is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Edge.hpp:158: warning: Member soft() const  (function) of class CW::Edge is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Edge.hpp:165: warning: Member soft(bool soft) (function) of class CW::Edge is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Edge.hpp:170: warning: Member start() const  (function) of class CW::Edge is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Edge.hpp:175: warning: Member vector() const  (function) of class CW::Edge is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/DrawingElement.hpp:72: warning: Member operator SUDrawingElementRef() const  (function) of class CW::DrawingElement is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/DrawingElement.hpp:73: warning: Member operator SUDrawingElementRef *() (function) of class CW::DrawingElement is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/DrawingElement.hpp:91: warning: Member casts_shadows() const  (function) of class CW::DrawingElement is not documented.
@@ -4893,18 +4892,17 @@ Generating docs for compound cpp::a/home/travis/build/TommyKaneko/Sketchup-API-C
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Face.hpp:108: warning: Member Face(SUFaceRef face, bool attached=true) (function) of class CW::Face is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Face.hpp:122: warning: Member ref() const  (function) of class CW::Face is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Face.hpp:127: warning: Member operator SUFaceRef() const  (function) of class CW::Face is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Face.hpp:128: warning: Member operator SUFaceRef *() (function) of class CW::Face is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Face.hpp:133: warning: Member operator bool() const  (function) of class CW::Face is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Face.hpp:145: warning: Member area() const  (function) of class CW::Face is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Face.hpp:158: warning: Member back_material() const  (function) of class CW::Face is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Face.hpp:165: warning: Member back_material(const Material &material) (function) of class CW::Face is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Face.hpp:178: warning: Member classify_point(const Point3D &point) (function) of class CW::Face is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Face.hpp:184: warning: Member edges() (function) of class CW::Face is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Face.hpp:200: warning: Member get_texture_projection(const bool frontside) const  (function) of class CW::Face is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Face.hpp:210: warning: Member loops() const  (function) of class CW::Face is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Face.hpp:220: warning: Member normal() const  (function) of class CW::Face is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Face.hpp:225: warning: Member outer_loop() const  (function) of class CW::Face is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Face.hpp:230: warning: Member plane() const  (function) of class CW::Face is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Face.hpp:132: warning: Member operator bool() const  (function) of class CW::Face is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Face.hpp:144: warning: Member area() const  (function) of class CW::Face is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Face.hpp:157: warning: Member back_material() const  (function) of class CW::Face is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Face.hpp:164: warning: Member back_material(const Material &material) (function) of class CW::Face is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Face.hpp:177: warning: Member classify_point(const Point3D &point) (function) of class CW::Face is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Face.hpp:183: warning: Member edges() (function) of class CW::Face is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Face.hpp:199: warning: Member get_texture_projection(const bool frontside) const  (function) of class CW::Face is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Face.hpp:209: warning: Member loops() const  (function) of class CW::Face is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Face.hpp:219: warning: Member normal() const  (function) of class CW::Face is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Face.hpp:224: warning: Member outer_loop() const  (function) of class CW::Face is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Face.hpp:229: warning: Member plane() const  (function) of class CW::Face is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/DrawingElement.hpp:72: warning: Member operator SUDrawingElementRef() const  (function) of class CW::DrawingElement is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/DrawingElement.hpp:73: warning: Member operator SUDrawingElementRef *() (function) of class CW::DrawingElement is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/DrawingElement.hpp:91: warning: Member casts_shadows() const  (function) of class CW::DrawingElement is not documented.
@@ -8549,5 +8547,5 @@ Generating file index...
 Generating file member index...
 Generating example index...
 finalizing index lists...
-lookup cache used 18937/65536 hits=185066 misses=20280
+lookup cache used 18936/65536 hits=185051 misses=20279
 finished...
