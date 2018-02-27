@@ -271,7 +271,7 @@ std::vector<Face> Entities::add_faces(std::vector<Face>& faces) {
   if (!SUIsValid(m_entities)) {
     throw std::logic_error("CW::Entities::add_faces(): Entities is null");
   }
-  std::vector<SUFaceRef> refs{};
+  std::vector<SUFaceRef> refs(faces.size(), SU_INVALID);
   std::transform(faces.begin(), faces.end(), refs.begin(), [](const CW::Face& face) {return face.ref(); });
 
   SUResult res = SUEntitiesAddFaces(m_entities, refs.size(), refs.data());
@@ -288,7 +288,7 @@ std::vector<Edge> Entities::add_edges(std::vector<Edge>& edges) {
   if (!SUIsValid(m_entities)) {
     throw std::logic_error("CW::Entities::add_edges(): Entities is null");
   }
-  std::vector<SUEdgeRef> refs{};
+  std::vector<SUEdgeRef> refs(edges.size(), SU_INVALID);
   std::transform(edges.begin(), edges.end(), refs.begin(), [](const CW::Edge& edge) {return edge.ref(); });
 
   SUResult res = SUEntitiesAddEdges(m_entities, refs.size(), refs.data());
