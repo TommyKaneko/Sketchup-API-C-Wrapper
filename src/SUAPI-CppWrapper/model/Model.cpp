@@ -33,7 +33,7 @@
 #include "SUAPI-CppWrapper/model/Axes.hpp"
 #include "SUAPI-CppWrapper/model/Entities.hpp"
 //#include "SUAPI-CppWrapper/Behavior.hpp"
-#include "SUAPI-CppWrapper/model/Classifications.hpp"
+//#include "SUAPI-CppWrapper/model/Classifications.hpp"
 #include "SUAPI-CppWrapper/model/ComponentDefinition.hpp"
 #include "SUAPI-CppWrapper/model/Material.hpp"
 #include "SUAPI-CppWrapper/model/AttributeDictionary.hpp"
@@ -67,8 +67,8 @@ Model::Model(SUModelRef model_ref, bool release_on_destroy):
 
 Model::Model(std::string file_path):
   m_model(SU_INVALID),
-  m_result(SUModelCreateFromFile(&m_model, file_path.c_str())),
-  m_release_on_destroy(true)
+  m_release_on_destroy(true),
+  m_result(SUModelCreateFromFile(&m_model, file_path.c_str()))
 {}
 
 Model::Model(const Model& other):
@@ -210,7 +210,7 @@ Axes Model::axes() const {
 
 //Behavior behavior(); // TODO: this may not be possible to retrieve
 
-
+/*
 Classifications Model::classifications() const {
   if(!(*this)) {
     throw std::logic_error("CW::Model::classifications(): Model is null");
@@ -220,6 +220,7 @@ Classifications Model::classifications() const {
   assert(res == SU_ERROR_NONE);
   return Classifications(classifications);
 }
+*/
 
 /*
 * Returns the description attached to this model.
