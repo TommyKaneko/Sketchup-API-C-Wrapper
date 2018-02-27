@@ -89,62 +89,71 @@
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">### XCode</span></div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;Coming...</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">## Testing</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor"></span>The project uses GoogleTest for unit testing. It&#39;s included as a submodule so make sure to also initialize those when checking out the project.</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;The tests are located under `/tests/`. One file per testcase. One testcase per class being tested.</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;Keep tests small, keep their name descriptive.</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="preprocessor">### Running Tests</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor">#### Visual Studio</span></div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="preprocessor"></span>1. Set the SketchUpAPITests project as your startup project.</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;2. Build</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;3. Run</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;Navigate to the Sketchup-API-C-Wrapper project folder in Terminal and perform these commands:</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;```</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;mkdir xcode</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;cd xcode</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;cmake -G &quot;Xcode&quot; ..</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;```</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;If you get an error, it&#39;s probably because you haven&#39;t fetched the googletests submodules, so do this and try again:</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;```</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;git submodule update --init --recursive</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;```</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor">## Testing</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="preprocessor"></span>The project uses GoogleTest for unit testing. It&#39;s included as a submodule so make sure to also initialize those when checking out the project.</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;The tests are located under `/tests/`. One file per testcase. One testcase per class being tested.</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;Alternativly you can use the [Google Test Adapter extension](https:<span class="comment">//marketplace.visualstudio.com/items?itemName=ChristianSoltenborn.GoogleTestAdapter) which provides  overview of the tests from the UI. Makes it easy to run induvidual tests.</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;Keep tests small, keep their name descriptive.</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;#### Xcode</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;*Coming soon.*</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;### GoogleTests References</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;* https:<span class="comment">//github.com/google/googletest/blob/master/googlemock/docs/ForDummies.md</span></div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;* https:<span class="comment">//github.com/google/googletest/blob/master/googletest/docs/Primer.md</span></div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;* https:<span class="comment">//github.com/google/googletest/blob/master/googletest/docs/AdvancedGuide.md</span></div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;* https:<span class="comment">//github.com/google/googletest/blob/master/googletest/docs/FAQ.md</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="preprocessor">### Running Tests</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="preprocessor">#### Visual Studio</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="preprocessor"></span>1. Set the SketchUpAPITests project as your startup project.</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;2. Build</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;3. Run</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;Alternativly you can use the [Google Test Adapter extension](https:<span class="comment">//marketplace.visualstudio.com/items?itemName=ChristianSoltenborn.GoogleTestAdapter) which provides  overview of the tests from the UI. Makes it easy to run induvidual tests.</span></div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;======================</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;## Project Objectives</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;#### Xcode</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;*Coming soon.*</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;The aims of this set of wrapper classes are:</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;- to make the SketchUp C API quicker and easier to use, from a C++ programmer&#39;s perspective.</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;- to provide all methods in the SketchUp C API, but in a simplified form.</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;- to provide all methods that are given in the equivalent classes in the SketchUp Ruby API ( [ml]: http:<span class="comment">//www.sketchup.com/intl/en/developer/docs/index ), if it is possible to deliver through the SketchUp C API.</span></div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;### GoogleTests References</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;* https:<span class="comment">//github.com/google/googletest/blob/master/googlemock/docs/ForDummies.md</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;* https:<span class="comment">//github.com/google/googletest/blob/master/googletest/docs/Primer.md</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;* https:<span class="comment">//github.com/google/googletest/blob/master/googletest/docs/AdvancedGuide.md</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;* https:<span class="comment">//github.com/google/googletest/blob/master/googletest/docs/FAQ.md</span></div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;==========================</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;## Programming Principles</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;======================</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;## Project Objectives</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;##### Data Structure</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;Each C++ Wrapper class object holds its equivalent C API class object as a member variable (ie - CW::Face holds SUFaceRef).  Further variables should be kept to a minimum, if at all.</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;##### Releasing Objects</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;With the use of the C++ Wrapper, the SketchUp API should &quot;feel&quot; like a native C++ API.  This means the idea of &quot;releasing&quot; objects that are not attached to a model object, for example, should not have to be considered by the programmer.  Instead, the wrapper class will deal with releasing of an object when the object goes out of scope.</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;The aims of this set of wrapper classes are:</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;- to make the SketchUp C API quicker and easier to use, from a C++ programmer&#39;s perspective.</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;- to provide all methods in the SketchUp C API, but in a simplified form.</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;- to provide all methods that are given in the equivalent classes in the SketchUp Ruby API ( [ml]: http:<span class="comment">//www.sketchup.com/intl/en/developer/docs/index ), if it is possible to deliver through the SketchUp C API.</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;The only exception to this rule is if the wrapped object (`CW::Face`, for example), is converted to a regular C object ( `SUFaceRef`, for example), in which case it can be assumed that the programmer is taking charge of the C object and will be dealing with any releasing.</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;##### Method Names</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;Method names take inspiration mostly from the SketchUp Ruby API.  That said, these are not wholy consistent, and some liberties have been taken to make the method names make sense.</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;==========================</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;## Programming Principles</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;##### Data Structure</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;Each C++ Wrapper class object holds its equivalent C API class object as a member variable (ie - CW::Face holds SUFaceRef).  Further variables should be kept to a minimum, if at all.</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;##### Releasing Objects</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;With the use of the C++ Wrapper, the SketchUp API should &quot;feel&quot; like a native C++ API.  This means the idea of &quot;releasing&quot; objects that are not attached to a model object, for example, should not have to be considered by the programmer.  Instead, the wrapper class will deal with releasing of an object when the object goes out of scope.</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;The only exception to this rule is if the wrapped object (`CW::Face`, for example), is converted to a regular C object ( `SUFaceRef`, for example), in which case it can be assumed that the programmer is taking charge of the C object and will be dealing with any releasing.</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;##### Method Names</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;Method names take inspiration mostly from the SketchUp Ruby API.  That said, these are not wholy consistent, and some liberties have been taken to make the method names make sense.</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;</div>
 <div class="ttc" id="struct_s_u_entities_ref_html"><div class="ttname"><a href="struct_s_u_entities_ref.html">SUEntitiesRef</a></div><div class="ttdoc">References a container object for all entities in a model, component definition or a group...</div></div>
 <div class="ttc" id="class_c_w_1_1_model_html"><div class="ttname"><a href="class_c_w_1_1_model.html">CW::Model</a></div><div class="ttdef"><b>Definition:</b> <a href="_model_8hpp_source.html#l00055">Model.hpp:55</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Feb 27 2018 10:33:54 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Feb 27 2018 10:43:49 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
