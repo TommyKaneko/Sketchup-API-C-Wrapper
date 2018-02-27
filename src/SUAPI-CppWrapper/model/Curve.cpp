@@ -24,6 +24,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 //
+
+#include <algorithm>
 #include <cassert>
 #include <stdexcept>
 
@@ -47,7 +49,10 @@ Curve::~Curve(){
 
 SUCurveRef Curve::create_curve(std::vector<Edge>& edges, SUResult &result) {
   SUCurveRef curve_ref = SU_INVALID;
-  result = SUCurveCreateWithEdges(&curve_ref, edges[0], edges.size());
+  std::vector<SUEdgeRef> refs{};
+  
+  std::transform(edges.begin(), edges.end(), refs.begin(), [](const CW::Edge& edge) {return edge.ref(); });
+  result = SUCurveCreateWithEdges(&curve_ref, refs.data(), refs.size());
   return curve_ref;
 }
 

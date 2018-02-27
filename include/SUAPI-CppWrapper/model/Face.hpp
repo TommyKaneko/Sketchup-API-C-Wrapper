@@ -125,7 +125,6 @@ class Face :public DrawingElement {
   * The class object can be converted to a SUFaceRef without loss of data.
   */
   operator SUFaceRef() const;
-  operator SUFaceRef*();
   
   /*
   * Returns whether the class is a valid SU object.
