@@ -49,7 +49,7 @@ Curve::~Curve(){
 
 SUCurveRef Curve::create_curve(std::vector<Edge>& edges, SUResult &result) {
   SUCurveRef curve_ref = SU_INVALID;
-  std::vector<SUEdgeRef> refs{};
+  std::vector<SUEdgeRef> refs(edges.size(), SU_INVALID);
   
   std::transform(edges.begin(), edges.end(), refs.begin(), [](const CW::Edge& edge) {return edge.ref(); });
   result = SUCurveCreateWithEdges(&curve_ref, refs.data(), refs.size());
