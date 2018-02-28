@@ -102,7 +102,7 @@
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<a class="code" href="struct_s_u_curve_ref.html">SUCurveRef</a> Curve::create_curve(std::vector&lt;Edge&gt;&amp; edges, SUResult &amp;result) {</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  <a class="code" href="struct_s_u_curve_ref.html">SUCurveRef</a> curve_ref = SU_INVALID;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  std::vector&lt;SUEdgeRef&gt; refs{};</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  std::vector&lt;SUEdgeRef&gt; refs(edges.size(), SU_INVALID);</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  </div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  std::transform(edges.begin(), edges.end(), refs.begin(), [](<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_edge.html">CW::Edge</a>&amp; edge) {<span class="keywordflow">return</span> edge.ref(); });</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  result = SUCurveCreateWithEdges(&amp;curve_ref, refs.data(), refs.size());</div>
@@ -175,7 +175,7 @@
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Feb 27 2018 10:43:52 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Feb 28 2018 11:27:51 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
