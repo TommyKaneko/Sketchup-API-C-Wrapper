@@ -138,10 +138,9 @@ TypedValue AttributeDictionary::get_attribute(const std::string &key, const Type
   if (!(*this)) {
     throw std::logic_error("CW::AttributeDictionary::get_attribute(): AttributeDictionary is null");
   }
-  TypedValue value_out;
-  SUTypedValueRef *val = value_out;
+  SUTypedValueRef val = SU_INVALID;
   const char* key_char = key.c_str();
-  SUResult res = SUAttributeDictionaryGetValue(this->ref(), &key_char[0], val);
+  SUResult res = SUAttributeDictionaryGetValue(this->ref(), &key_char[0], &val);
   if (res == SU_ERROR_NO_DATA) {
     return default_value;
   }
@@ -149,7 +148,7 @@ TypedValue AttributeDictionary::get_attribute(const std::string &key, const Type
     assert(false);
     //throw std::logic_error("CW::AttributeDictionary::get_attribute(): index range is between 0 and 15");
   }
-  return value_out;
+  return TypedValue(val);
 }
 
 bool AttributeDictionary::set_attribute(const std::string &key, const TypedValue &value) {
