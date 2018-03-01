@@ -9,7 +9,7 @@
 #include "SUAPI-CppWrapper/model/Model.hpp"
 #include "SUAPI-CppWrapper/Initialize.hpp"
 #include "SUAPI-CppWrapper/model/AttributeDictionary.hpp"
-
+#include "ModelPath.h"
 
 TEST(TypedValue, bool_value_true)
 {
@@ -75,7 +75,7 @@ TEST(TypedValue, typed_value_array_GetInts)
 
 TEST(TypedValue, get_mixed_array_items)
 {
-  const char filepath[] = "C:/Users/Jim/test-model.skp";
+  std::string filepath = TEST_MODEL_PATH  + "/issue-48.skp";
   CW::initialize();
   auto model = CW::Model(filepath);
   CW::TypedValue typed_value_array = model.get_attribute("TypedValues", "Array<mixed>", typed_value_array);

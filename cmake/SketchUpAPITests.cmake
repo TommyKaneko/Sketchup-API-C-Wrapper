@@ -1,3 +1,12 @@
+# Where we keep the test models
+set(CPP_API_TESTS_MODELS_PATH "${PROJECT_SOURCE_DIR}/models")
+
+# Tell the test source code where to find the models
+configure_file (
+  "${CPP_API_TESTS_PATH}/ModelPath.h.in"
+  "${CPP_API_TESTS_PATH}/ModelPath.h"
+)
+
 include_directories("${CPP_API_TESTS_PATH}")
 include_directories("${GOOGLETEST_INCLUDE_PATH}")
 
