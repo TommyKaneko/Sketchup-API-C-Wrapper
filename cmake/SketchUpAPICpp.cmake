@@ -6,6 +6,7 @@ file(GLOB_RECURSE CPP_API_HEADERS ${CPP_API_INCLUDE_PATH}/*.hpp)
 file(GLOB_RECURSE CPP_API_SOURCES ${CPP_API_SOURCE_PATH}/*.cpp)
 
 add_library(SketchUpAPICpp STATIC ${CPP_API_HEADERS} ${CPP_API_SOURCES})
+target_link_libraries(SketchUpAPICpp LINK_PUBLIC SLAPI_LIB)
 
 # https://stackoverflow.com/a/14235055/486990
 if ( MSVC )
