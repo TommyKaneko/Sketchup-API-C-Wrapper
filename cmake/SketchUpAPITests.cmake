@@ -4,11 +4,12 @@ set(CPP_API_TESTS_MODELS_PATH "${PROJECT_SOURCE_DIR}/models")
 # Tell the test source code where to find the models
 configure_file (
   "${CPP_API_TESTS_PATH}/ModelPath.h.in"
-  "${CPP_API_TESTS_PATH}/ModelPath.h"
+  "${PROJECT_BINARY_DIR}/ModelPath.h"
 )
 
 include_directories("${CPP_API_TESTS_PATH}")
 include_directories("${GOOGLETEST_INCLUDE_PATH}")
+include_directories("${PROJECT_BINARY_DIR}")
 
 file(GLOB_RECURSE TESTS_HEADERS ${CPP_API_TESTS_PATH}/*.hpp)
 file(GLOB_RECURSE TESTS_SOURCES ${CPP_API_TESTS_PATH}/*.cpp)
