@@ -78,7 +78,8 @@ TEST(TypedValue, get_mixed_array_items)
   std::string filepath = TEST_MODEL_PATH  + "/issue-48.skp";
   CW::initialize();
   auto model = CW::Model(filepath);
-  CW::TypedValue typed_value_array = model.get_attribute("TypedValues", "Array<mixed>", typed_value_array);
+  CW::TypedValue default_value;
+  CW::TypedValue typed_value_array = model.get_attribute("TypedValues", "Array<mixed>", default_value);
   size_t count = 0;
   SUResult res = SUTypedValueGetNumArrayItems(typed_value_array, &count);
   ASSERT_EQ(3, count);
