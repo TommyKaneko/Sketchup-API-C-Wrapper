@@ -1383,7 +1383,7 @@ Preprocessing /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/scripts/pump.py:408: warning: Compound pump::ForNode is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/test/gtest_unittest.cc:5155: warning: Compound Base is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/internal/gtest-port.h:1254: warning: Compound testing::internal::GTestLog is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:318: warning: Compound CW::ModelStatistics is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:324: warning: Compound CW::ModelStatistics is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/internal/gtest-port.h:2136: warning: Compound testing::internal::Mutex is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-matchers.h:3477: warning: Compound testing::internal::ElementsAreMatcher is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-matchers.h:1434: warning: Compound testing::internal::Ge2Matcher is not documented.
@@ -4984,9 +4984,9 @@ Generating docs for compound CW::Entit/home/travis/build/TommyKaneko/Sketchup-AP
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ImageRep.hpp:76: warning: Member ref() const  (function) of class CW::ImageRep is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ImageRep.hpp:77: warning: Member operator SUImageRepRef() const  (function) of class CW::ImageRep is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ImageRep.hpp:78: warning: Member operator SUImageRepRef *() (function) of class CW::ImageRep is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Layer.hpp:69: warning: Member operator SULayerRef() const  (function) of class CW::Layer is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Layer.hpp:70: warning: Member operator SULayerRef *() (function) of class CW::Layer is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Layer.hpp:87: warning: Member name(const std::string &string) (function) of class CW::Layer is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Layer.hpp:74: warning: Member operator SULayerRef() const  (function) of class CW::Layer is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Layer.hpp:75: warning: Member operator SULayerRef *() (function) of class CW::Layer is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Layer.hpp:96: warning: Member name(const std::string &string) (function) of class CW::Layer is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:101: warning: Member operator SUEntityRef() const  (function) of class CW::Entity is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:108: warning: Member operator SUEntityRef *() (function) of class CW::Entity is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Loop.hpp:75: warning: Member Loop(SULoopRef loop, bool attached=true) (function) of class CW::Loop is not documented.
@@ -5034,25 +5034,25 @@ Generating docs for compound CW::Entit/home/travis/build/TommyKaneko/Sketchup-AP
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:194: warning: Member get_attribute(const AttributeDictionary &dict, const std::string &key, const TypedValue &default_value) const  (function) of class CW::Model is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:195: warning: Member get_attribute(const std::string &dict_name, const std::string &key, const TypedValue &default_value) const  (function) of class CW::Model is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:206: warning: Member layers() const  (function) of class CW::Model is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:218: warning: Member materials() const  (function) of class CW::Model is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:230: warning: Member name() const  (function) of class CW::Model is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:236: warning: Member name(const String &name_string) (function) of class CW::Model is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:241: warning: Member num_faces() const  (function) of class CW::Model is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:249: warning: Member options() (function) of class CW::Model is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:267: warning: Member save(const std::string &file_path) (function) of class CW::Model is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:275: warning: Member save_with_version(const std::string &file_path, SUModelVersion version) (function) of class CW::Model is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:291: warning: Member set_attribute(AttributeDictionary &dict, const std::string &key, const TypedValue &value) (function) of class CW::Model is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:292: warning: Member set_attribute(const std::string &dict_name, const std::string &key, const TypedValue &value) (function) of class CW::Model is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:299: warning: Member shadow_info() (function) of class CW::Model is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:323: warning: Member ModelStatistics(SUModelStatistics model_statistics) (function) of class CW::ModelStatistics is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:324: warning: Member ModelStatistics(const Model &model) (function) of class CW::ModelStatistics is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:330: warning: Member edges() const  (function) of class CW::ModelStatistics is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:331: warning: Member instances() const  (function) of class CW::ModelStatistics is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:332: warning: Member groups() const  (function) of class CW::ModelStatistics is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:333: warning: Member images() const  (function) of class CW::ModelStatistics is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:334: warning: Member definitions() const  (function) of class CW::ModelStatistics is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:335: warning: Member layers() const  (function) of class CW::ModelStatistics is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:336: warning: Member materials() const  (function) of class CW::ModelStatistics is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:224: warning: Member materials() const  (function) of class CW::Model is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:236: warning: Member name() const  (function) of class CW::Model is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:242: warning: Member name(const String &name_string) (function) of class CW::Model is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:247: warning: Member num_faces() const  (function) of class CW::Model is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:255: warning: Member options() (function) of class CW::Model is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:273: warning: Member save(const std::string &file_path) (function) of class CW::Model is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:281: warning: Member save_with_version(const std::string &file_path, SUModelVersion version) (function) of class CW::Model is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:297: warning: Member set_attribute(AttributeDictionary &dict, const std::string &key, const TypedValue &value) (function) of class CW::Model is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:298: warning: Member set_attribute(const std::string &dict_name, const std::string &key, const TypedValue &value) (function) of class CW::Model is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:305: warning: Member shadow_info() (function) of class CW::Model is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:329: warning: Member ModelStatistics(SUModelStatistics model_statistics) (function) of class CW::ModelStatistics is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:330: warning: Member ModelStatistics(const Model &model) (function) of class CW::ModelStatistics is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:336: warning: Member edges() const  (function) of class CW::ModelStatistics is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:337: warning: Member instances() const  (function) of class CW::ModelStatistics is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:338: warning: Member groups() const  (function) of class CW::ModelStatistics is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:339: warning: Member images() const  (function) of class CW::ModelStatistics is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:340: warning: Member definitions() const  (function) of class CW::ModelStatistics is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:341: warning: Member layers() const  (function) of class CW::ModelStatistics is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:342: warning: Member materials() const  (function) of class CW::ModelStatistics is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/OptionsManager.hpp:50: warning: Member OptionsProvider(SUOptionsProviderRef) (function) of class CW::OptionsProvider is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/OptionsManager.hpp:51: warning: Member keys() const  (function) of class CW::OptionsProvider is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/OptionsManager.hpp:52: warning: Member get_value(std::string key) const  (function) of class CW::OptionsProvider is not documented.
@@ -8546,5 +8546,5 @@ Generating file index...
 Generating file member index...
 Generating example index...
 finalizing index lists...
-lookup cache used 18938/65536 hits=185154 misses=20279
+lookup cache used 18941/65536 hits=185268 misses=20282
 finished...
