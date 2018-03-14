@@ -508,7 +508,11 @@ TypedValue& TypedValue::typed_value_array(std::vector<TypedValue> &typed_val_arr
   if (!(*this)) {
     m_typed_value = create_typed_value();
   }
-  SUResult res = SUTypedValueSetArrayItems(m_typed_value, typed_val_array.size(), typed_val_array[0]);
+  SUResult res = SU_ERROR_NONE;
+  std::vector<SUTypedValueRef> refs{typed_val_array.size(), SU_INVALID };
+  std::transform(typed_val_array.begin(), typed_val_array.end(), refs.begin(),
+    [](const CW::TypedValue& typed_value) {return typed_value.ref(); });
+  res = SUTypedValueSetArrayItems(m_typed_value, refs.size(), refs.data());
   assert(res == SU_ERROR_NONE);
   return *this;
 }

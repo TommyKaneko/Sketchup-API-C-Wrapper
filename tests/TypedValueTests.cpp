@@ -6,7 +6,10 @@
 #include <SketchUpAPI/sketchup.h>
 
 #include "SUAPI-CppWrapper/model/TypedValue.hpp"
-
+#include "SUAPI-CppWrapper/model/Model.hpp"
+#include "SUAPI-CppWrapper/Initialize.hpp"
+#include "SUAPI-CppWrapper/model/AttributeDictionary.hpp"
+#include "ModelPath.h"
 
 TEST(TypedValue, bool_value_true)
 {
@@ -68,4 +71,16 @@ TEST(TypedValue, typed_value_array_GetInts)
   ASSERT_EQ(0, values.at(0).int32_value());
   ASSERT_EQ(1, values.at(1).int32_value());
   ASSERT_EQ(2, values.at(2).int32_value());
+}
+
+TEST(TypedValue, get_mixed_array_items)
+{
+  std::string filepath = TEST_MODEL_PATH  + "/issue-48.skp";
+  CW::initialize();
+  auto model = CW::Model(filepath);
+  CW::TypedValue default_value;
+  CW::TypedValue typed_value_array = model.get_attribute("TypedValues", "Array<mixed>", default_value);
+  size_t count = 0;
+  SUResult res = SUTypedValueGetNumArrayItems(typed_value_array, &count);
+  ASSERT_EQ(3, count);
 }

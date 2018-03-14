@@ -1,0 +1,4 @@
+// where are the models?
+// #define CPP_API_TESTS_MODELS_PATH "@CPP_API_TESTS_MODELS_PATH@"
+
+const std::string TEST_MODEL_PATH = "@CPP_API_TESTS_MODELS_PATH@";
