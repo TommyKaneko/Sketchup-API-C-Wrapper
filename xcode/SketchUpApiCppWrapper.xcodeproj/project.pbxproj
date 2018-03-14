@@ -1,0 +1,1384 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		AE28F69A792F440B878C6143 /* ZERO_CHECK */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 100E1473EB7B4214B9103579 /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */;
+			buildPhases = (
+				E2D6FA6AC8EE4466AA0B9A0C /* CMake Rules */,
+			);
+			dependencies = (
+			);
+			name = ZERO_CHECK;
+			productName = ZERO_CHECK;
+		};
+		C8FA727250F044BCBA3D3FD3 /* ALL_BUILD */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 465EDCD9BE524B5CB5FA51A8 /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */;
+			buildPhases = (
+				56603DE9B6A942CFA5AC1220 /* CMake Rules */,
+			);
+			dependencies = (
+				8F4FA8FC168B4840AB889D3C /* PBXTargetDependency */,
+				518B7B129D1E4FB3B8EBBEE5 /* PBXTargetDependency */,
+				03EBE91D4BB4489A848F8513 /* PBXTargetDependency */,
+				EBB7DB5C14A343BE91E07F19 /* PBXTargetDependency */,
+			);
+			name = ALL_BUILD;
+			productName = ALL_BUILD;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		09A7F0B808A64230B8974535 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/AttributeDictionary.hpp */ = {isa = PBXBuildFile; fileRef = 4A11FC46D5DE4574A9044803 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/AttributeDictionary.hpp */; };
+		0AA98BD9C06346B887630A88 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/CMakeLists.txt */ = {isa = PBXBuildFile; fileRef = 110BDBC532464952A330389E /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/CMakeLists.txt */; };
+		0C512FAABFA94AEB8890C2A2 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/CMakeLists.txt */ = {isa = PBXBuildFile; fileRef = D592E3CC3C9E4DEF9606B0AC /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/CMakeLists.txt */; };
+		0DE21C56276744EEA99D2B52 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/tests/SketchUpAPITests.hpp */ = {isa = PBXBuildFile; fileRef = 78369D2DEEEB467491E21FF0 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/tests/SketchUpAPITests.hpp */; };
+		10EE2099F93745859D99EBEC /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp */ = {isa = PBXBuildFile; fileRef = 8DF73424E53F4D839EF15579 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp */; };
+		1382AA11849A4F1CB4EFF8A9 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/CMakeLists.txt */ = {isa = PBXBuildFile; fileRef = C538441C4972415BA033FA47 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/CMakeLists.txt */; };
+		16ADDBD06BCE42DAAED4CFBE /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/TypedValue.cpp */ = {isa = PBXBuildFile; fileRef = 069FE7E03CB64E8CA7112578 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/TypedValue.cpp */; };
+		19BB7147D3E645FBB389A100 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ComponentDefinition.hpp */ = {isa = PBXBuildFile; fileRef = AFAAF965E19D42CA89C5F8E6 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ComponentDefinition.hpp */; };
+		2DC97A38455E48FF8516512A /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/tests/ColorTests.cpp */ = {isa = PBXBuildFile; fileRef = 2F262E3789F3403DB8571762 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/tests/ColorTests.cpp */; };
+		2EC036204C024291B491D3C7 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/ImageRep.cpp */ = {isa = PBXBuildFile; fileRef = D0ABABF85D964312B7C3DFA7 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/ImageRep.cpp */; };
+		343B8F3226414432AAD122E3 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/Loop.cpp */ = {isa = PBXBuildFile; fileRef = 4C06CC30DEB349D2835EACE1 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/Loop.cpp */; };
+		344EAAC0EAF94C0E94E7C842 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/Transformation.cpp */ = {isa = PBXBuildFile; fileRef = 029DCD7E74AC4F7598BA02D8 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/Transformation.cpp */; };
+		3522459571054DBA88B7B6D3 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Initialize.hpp */ = {isa = PBXBuildFile; fileRef = DCD9F406CDB843A8A2FFEBC5 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Initialize.hpp */; };
+		38726F959EDD4A2E9D228A01 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/LoopInput.hpp */ = {isa = PBXBuildFile; fileRef = 189F78E714CE4997BEE27B09 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/LoopInput.hpp */; };
+		38E06FD8FC92483199F85E6C /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/TypedValue.hpp */ = {isa = PBXBuildFile; fileRef = 3B4F03F9AA2B44DD9D643425 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/TypedValue.hpp */; };
+		3C736381517647668098AA3D /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp */ = {isa = PBXBuildFile; fileRef = 5570F2B0FCA84796A4B911F6 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp */; };
+		3D005E87042F4193962BDA66 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/tests/SketchUpAPITests.cpp */ = {isa = PBXBuildFile; fileRef = 047606E51D3942E3A0D32756 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/tests/SketchUpAPITests.cpp */; };
+		4518C1F1B2A34825A8482596 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/Curve.cpp */ = {isa = PBXBuildFile; fileRef = B1E63C2B27F54ED0A3CBED77 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/Curve.cpp */; };
+		4AAB9E8698C644EAB1AFBF77 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/Texture.cpp */ = {isa = PBXBuildFile; fileRef = 327A0E5E53954A879BA04DBC /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/Texture.cpp */; };
+		4AF3BA95FC164B2387E1247E /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/Axes.cpp */ = {isa = PBXBuildFile; fileRef = D71D648BBD1F4215BC17997F /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/Axes.cpp */; };
+		4B23F37B0A1640A5B6459620 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/Color.cpp */ = {isa = PBXBuildFile; fileRef = 965849E6AD244ACFBB88F34F /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/Color.cpp */; };
+		4E86CE5A5F654D51A98CB3B5 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ComponentInstance.hpp */ = {isa = PBXBuildFile; fileRef = 551FC8587AEB4C3D9E422229 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ComponentInstance.hpp */; };
+		531A1CD3A9504DFA900712F0 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/Initialize.cpp */ = {isa = PBXBuildFile; fileRef = E4F228FE8DC44AE3BDF6F54C /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/Initialize.cpp */; };
+		54B6048A65EE4E7AA61C06D3 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Group.hpp */ = {isa = PBXBuildFile; fileRef = A55E34F4AE5341BABD69EB6F /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Group.hpp */; };
+		609D892227DB4026BCFBF081 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/UVHelper.hpp */ = {isa = PBXBuildFile; fileRef = DEBD528FE11044FABA3FFFCA /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/UVHelper.hpp */; };
+		61ADC0B337BB4AC89D8853B6 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ImageRep.hpp */ = {isa = PBXBuildFile; fileRef = F638FC0BA7B3435DA37BD543 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ImageRep.hpp */; };
+		624D019E26944400AC7B4045 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Loop.hpp */ = {isa = PBXBuildFile; fileRef = 44E987080BD74BB7B0B4B762 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Loop.hpp */; };
+		6389CA043BD8482EA70E057F /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Curve.hpp */ = {isa = PBXBuildFile; fileRef = BE817EABF7A94B3487016476 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Curve.hpp */; };
+		6394877D51344905AFC7A509 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/Entities.cpp */ = {isa = PBXBuildFile; fileRef = E38F021DE2AC4BDE895C336A /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/Entities.cpp */; };
+		66A4D12866204EEEACCBE1C8 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/ShadowInfo.cpp */ = {isa = PBXBuildFile; fileRef = 75B478830DE7439B98CA3F36 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/ShadowInfo.cpp */; };
+		6924C75913CF44A194871F59 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/String.cpp */ = {isa = PBXBuildFile; fileRef = 95F40C2AB182457EA8B7967C /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/String.cpp */; };
+		6F88EB4136974BE4AA246B28 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/ComponentDefinition.cpp */ = {isa = PBXBuildFile; fileRef = 3B237C66AF2B45EA8CD9B83B /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/ComponentDefinition.cpp */; };
+		71F114CAED354008BE86FF33 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/third-party/googletest/googletest/src/gtest-all.cc */ = {isa = PBXBuildFile; fileRef = FA35C00FEB794D05A36EE4A1 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/third-party/googletest/googletest/src/gtest-all.cc */; };
+		762667DCD5C3401A903C4CFF /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Axes.hpp */ = {isa = PBXBuildFile; fileRef = 7B127DA201BA4917B2E48F7A /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Axes.hpp */; };
+		7A4FABD113DB4A37855CFA3F /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/MaterialInput.cpp */ = {isa = PBXBuildFile; fileRef = A9466CDD297C4550A86C859A /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/MaterialInput.cpp */; };
+		7B70261A73944DDF8DA35719 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/ComponentInstance.cpp */ = {isa = PBXBuildFile; fileRef = B782C901971B41FE8423E076 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/ComponentInstance.cpp */; };
+		7CF8C79EB98A4E8FA5107180 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/Layer.cpp */ = {isa = PBXBuildFile; fileRef = D106B46D98854DBFA5BCEFD7 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/Layer.cpp */; };
+		814B04509A0C4B019B710B74 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Texture.hpp */ = {isa = PBXBuildFile; fileRef = 6B376E5955AE4B169D52A602 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Texture.hpp */; };
+		8BF1E5E1CA82468DBC68BEF6 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/Geometry.cpp */ = {isa = PBXBuildFile; fileRef = 54F307DB428941E98DD8016B /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/Geometry.cpp */; };
+		8E3CF9D782D74B6D90835B7C /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/MaterialInput.hpp */ = {isa = PBXBuildFile; fileRef = B07E7888BF414FA889502A95 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/MaterialInput.hpp */; };
+		8E4977E8ECC64548BC6732FD /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/Material.cpp */ = {isa = PBXBuildFile; fileRef = 583D7EE6E9A7462DA61B186C /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/Material.cpp */; };
+		911B0A631C464C96AF82B34D /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/DrawingElement.cpp */ = {isa = PBXBuildFile; fileRef = 7249AD7909C84C1BAA6D0E30 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/DrawingElement.cpp */; };
+		916791BA7DB1460FB83C2DF4 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Color.hpp */ = {isa = PBXBuildFile; fileRef = 5A179BE92E1B43F1A5CC45DD /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Color.hpp */; };
+		967F9E3BC02F41FD98AD4383 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Transformation.hpp */ = {isa = PBXBuildFile; fileRef = 6F2D77D6A6844DD7ACBDB225 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Transformation.hpp */; };
+		9716FF73D1224134BF4A47D4 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/Entity.cpp */ = {isa = PBXBuildFile; fileRef = 974100C66A844CB4AC047FE5 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/Entity.cpp */; };
+		992640B1D13B4B93A4016904 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/RenderingOptions.cpp */ = {isa = PBXBuildFile; fileRef = 443D3CFA4E4B4162B03A63AA /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/RenderingOptions.cpp */; };
+		9A65265C7EC94F4DA3912B79 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp */ = {isa = PBXBuildFile; fileRef = EDA041FFAE144ACAB618847E /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp */; };
+		9B8145D3229D4602A7C3AB48 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Edge.hpp */ = {isa = PBXBuildFile; fileRef = 1D2C7EBC8648413BBDECAB1D /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Edge.hpp */; };
+		9DEB100318884402B5A70E05 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/Face.cpp */ = {isa = PBXBuildFile; fileRef = FCB10F64457645C7A6B8C4BA /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/Face.cpp */; };
+		A39EA8A7448345E2BAA9A0AD /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Vertex.hpp */ = {isa = PBXBuildFile; fileRef = B9395BE3ED7745938D467384 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Vertex.hpp */; };
+		AD2C92B0C82A4998867E1C94 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/OptionsManager.hpp */ = {isa = PBXBuildFile; fileRef = 4E76274A3FF54066B56A0405 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/OptionsManager.hpp */; };
+		AE710F518B8A4107889DB454 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/String.hpp */ = {isa = PBXBuildFile; fileRef = 1F8B5C7DA7404640878F64A2 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/String.hpp */; };
+		AF891C1D7FA84700B169C851 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/RenderingOptions.hpp */ = {isa = PBXBuildFile; fileRef = E4D24F9ABD6047AC8D77B25F /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/RenderingOptions.hpp */; };
+		B7110DA5C23E43ADB2A82C08 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/Model.cpp */ = {isa = PBXBuildFile; fileRef = 8B52570ACF674DDE9F63A459 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/Model.cpp */; };
+		B855860A606641F1B792FC2B /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/tests/RadiansTests.cpp */ = {isa = PBXBuildFile; fileRef = B9825E3555E140708D0E9AD6 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/tests/RadiansTests.cpp */; };
+		BA641122D2A1456AB66B8C5B /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/Vertex.cpp */ = {isa = PBXBuildFile; fileRef = 3BC7273D601B41EE8B2A01AD /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/Vertex.cpp */; };
+		BD137FE569FC4BE9A5D40BC8 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Face.hpp */ = {isa = PBXBuildFile; fileRef = BF96EE8C8FD042588010A9BF /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Face.hpp */; };
+		C2B2DAA6E82B4FA8BDEC1BD6 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/Edge.cpp */ = {isa = PBXBuildFile; fileRef = E3A494761A694DC9B5536F82 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/Edge.cpp */; };
+		C3E186E3E7724F0089A4E63B /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/tests/StringTests.cpp */ = {isa = PBXBuildFile; fileRef = 265C1362E5BC4521A55098AE /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/tests/StringTests.cpp */; };
+		C661E12B0490425CB1572769 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/LoopInput.cpp */ = {isa = PBXBuildFile; fileRef = 3C6078D6C2794AA8B5860BDF /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/LoopInput.cpp */; };
+		CD381036281545D08BAC5330 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/tests/TypedValueTests.cpp */ = {isa = PBXBuildFile; fileRef = 3D4A60F785C94FD4977CE0D2 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/tests/TypedValueTests.cpp */; };
+		D38FB691287E43C09E4836B0 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ShadowInfo.hpp */ = {isa = PBXBuildFile; fileRef = 7527F000365F479F9C050658 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ShadowInfo.hpp */; };
+		D4262B725A51456CA9F89609 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/Group.cpp */ = {isa = PBXBuildFile; fileRef = 790BEDE89BF642898A9FFA2D /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/Group.cpp */; };
+		D81B78EBC373491AAD2877C2 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/TextureWriter.cpp */ = {isa = PBXBuildFile; fileRef = 80D0482AE2CB4FCCBF9849B7 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/TextureWriter.cpp */; };
+		E4C36CAE96E044718C9C2021 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/AttributeDictionary.cpp */ = {isa = PBXBuildFile; fileRef = 8572C9F58C8B49999B4F2CC3 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/AttributeDictionary.cpp */; };
+		E521B1193E19421D87D322B1 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/GeometryInput.cpp */ = {isa = PBXBuildFile; fileRef = B501870BE7E44BCFAD30A344 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/GeometryInput.cpp */; };
+		E728809DE76C494CABC0DD99 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entities.hpp */ = {isa = PBXBuildFile; fileRef = E3460A48AFF747D4BC65D6EC /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entities.hpp */; };
+		EA3803234D06447B843DBA77 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/TextureWriter.hpp */ = {isa = PBXBuildFile; fileRef = ABFBC3957A3C4E8893E76E18 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/TextureWriter.hpp */; };
+		EEECCE0B88F7473DA8757AD8 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/UVHelper.cpp */ = {isa = PBXBuildFile; fileRef = 18025D16E1C8415BB5743A57 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/UVHelper.cpp */; };
+		F54BD1BAFF984C3B84142194 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Layer.hpp */ = {isa = PBXBuildFile; fileRef = DF692229FB5448DFB79AD134 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Layer.hpp */; };
+		F87F7837A52A42DA9A77A803 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/GeometryInput.hpp */ = {isa = PBXBuildFile; fileRef = FA546EB0694B4A379CF96301 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/GeometryInput.hpp */; };
+		FAB1031730724639959292A0 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Material.hpp */ = {isa = PBXBuildFile; fileRef = D3CCBCA4115F473DB4BD4C09 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Material.hpp */; };
+		FE9CE68D1FEA41D0BABF7D34 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/DrawingElement.hpp */ = {isa = PBXBuildFile; fileRef = 2239ECECAC914157B5FA83F1 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/DrawingElement.hpp */; };
+		FF457D4FD93D40E799D1A5DF /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/OptionsManager.cpp */ = {isa = PBXBuildFile; fileRef = 426DC62160F4483F99C0302B /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/OptionsManager.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXBuildStyle section */
+		1091C0A132294CE2BF11EF0D /* RelWithDebInfo */ = {
+			isa = PBXBuildStyle;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+			};
+			name = RelWithDebInfo;
+		};
+		29C0E265C5084FA19EED379C /* Release */ = {
+			isa = PBXBuildStyle;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+			};
+			name = Release;
+		};
+		4EC5EDAEF3DA434590FAFA49 /* Debug */ = {
+			isa = PBXBuildStyle;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+			};
+			name = Debug;
+		};
+		DF89FD3200C54567B6821953 /* MinSizeRel */ = {
+			isa = PBXBuildStyle;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+			};
+			name = MinSizeRel;
+		};
+/* End PBXBuildStyle section */
+
+/* Begin PBXContainerItemProxy section */
+		1445947B002C4FB594634FC9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7ED7EF1B2BC3425C85EF570C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5C24C234BDF44C048914C48E;
+			remoteInfo = GoogleTest;
+		};
+		48E0D53E3F9D457EB83B8E67 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7ED7EF1B2BC3425C85EF570C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 23F866F40D5B4E0ABFCFA777;
+			remoteInfo = SketchUpAPICpp;
+		};
+		4D26B326BFFF40ABABFA16A2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7ED7EF1B2BC3425C85EF570C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AE28F69A792F440B878C6143;
+			remoteInfo = ZERO_CHECK;
+		};
+		7B6D6E3146CE4AFBA9D42EC0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7ED7EF1B2BC3425C85EF570C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 23F866F40D5B4E0ABFCFA777;
+			remoteInfo = SketchUpAPICpp;
+		};
+		7F55156C74354F808755D617 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7ED7EF1B2BC3425C85EF570C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AE28F69A792F440B878C6143;
+			remoteInfo = ZERO_CHECK;
+		};
+		84F272022BE347239E5362B3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7ED7EF1B2BC3425C85EF570C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AE28F69A792F440B878C6143;
+			remoteInfo = ZERO_CHECK;
+		};
+		87A6C3D340F740D88C141CBD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7ED7EF1B2BC3425C85EF570C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5C24C234BDF44C048914C48E;
+			remoteInfo = GoogleTest;
+		};
+		A01928A16FB44EE79D2486B4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7ED7EF1B2BC3425C85EF570C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 92EEA8FAF8DC40DE9F35887C;
+			remoteInfo = SketchUpAPITests;
+		};
+		D1850FE275E449F1AE408C35 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7ED7EF1B2BC3425C85EF570C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AE28F69A792F440B878C6143;
+			remoteInfo = ZERO_CHECK;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		029DCD7E74AC4F7598BA02D8 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/Transformation.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = Transformation.cpp; path = "src/SUAPI-CppWrapper/Transformation.cpp"; sourceTree = SOURCE_ROOT; };
+		047606E51D3942E3A0D32756 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/tests/SketchUpAPITests.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = SketchUpAPITests.cpp; path = tests/SketchUpAPITests.cpp; sourceTree = SOURCE_ROOT; };
+		069FE7E03CB64E8CA7112578 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/TypedValue.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = TypedValue.cpp; path = "src/SUAPI-CppWrapper/model/TypedValue.cpp"; sourceTree = SOURCE_ROOT; };
+		110BDBC532464952A330389E /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; name = CMakeLists.txt; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		18025D16E1C8415BB5743A57 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/UVHelper.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = UVHelper.cpp; path = "src/SUAPI-CppWrapper/model/UVHelper.cpp"; sourceTree = SOURCE_ROOT; };
+		184F7F25F2644E91B73C241B /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; name = CMakeLists.txt; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		189F78E714CE4997BEE27B09 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/LoopInput.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = LoopInput.hpp; path = "include/SUAPI-CppWrapper/model/LoopInput.hpp"; sourceTree = SOURCE_ROOT; };
+		1D2C7EBC8648413BBDECAB1D /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Edge.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = Edge.hpp; path = "include/SUAPI-CppWrapper/model/Edge.hpp"; sourceTree = SOURCE_ROOT; };
+		1F8B5C7DA7404640878F64A2 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/String.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = String.hpp; path = "include/SUAPI-CppWrapper/String.hpp"; sourceTree = SOURCE_ROOT; };
+		2239ECECAC914157B5FA83F1 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/DrawingElement.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = DrawingElement.hpp; path = "include/SUAPI-CppWrapper/model/DrawingElement.hpp"; sourceTree = SOURCE_ROOT; };
+		265C1362E5BC4521A55098AE /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/tests/StringTests.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = StringTests.cpp; path = tests/StringTests.cpp; sourceTree = SOURCE_ROOT; };
+		2F262E3789F3403DB8571762 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/tests/ColorTests.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = ColorTests.cpp; path = tests/ColorTests.cpp; sourceTree = SOURCE_ROOT; };
+		327A0E5E53954A879BA04DBC /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/Texture.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = Texture.cpp; path = "src/SUAPI-CppWrapper/model/Texture.cpp"; sourceTree = SOURCE_ROOT; };
+		3B237C66AF2B45EA8CD9B83B /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/ComponentDefinition.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = ComponentDefinition.cpp; path = "src/SUAPI-CppWrapper/model/ComponentDefinition.cpp"; sourceTree = SOURCE_ROOT; };
+		3B4F03F9AA2B44DD9D643425 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/TypedValue.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = TypedValue.hpp; path = "include/SUAPI-CppWrapper/model/TypedValue.hpp"; sourceTree = SOURCE_ROOT; };
+		3BC7273D601B41EE8B2A01AD /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/Vertex.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = Vertex.cpp; path = "src/SUAPI-CppWrapper/model/Vertex.cpp"; sourceTree = SOURCE_ROOT; };
+		3C6078D6C2794AA8B5860BDF /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/LoopInput.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = LoopInput.cpp; path = "src/SUAPI-CppWrapper/model/LoopInput.cpp"; sourceTree = SOURCE_ROOT; };
+		3D4A60F785C94FD4977CE0D2 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/tests/TypedValueTests.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = TypedValueTests.cpp; path = tests/TypedValueTests.cpp; sourceTree = SOURCE_ROOT; };
+		426DC62160F4483F99C0302B /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/OptionsManager.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = OptionsManager.cpp; path = "src/SUAPI-CppWrapper/model/OptionsManager.cpp"; sourceTree = SOURCE_ROOT; };
+		443D3CFA4E4B4162B03A63AA /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/RenderingOptions.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = RenderingOptions.cpp; path = "src/SUAPI-CppWrapper/model/RenderingOptions.cpp"; sourceTree = SOURCE_ROOT; };
+		44E987080BD74BB7B0B4B762 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Loop.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = Loop.hpp; path = "include/SUAPI-CppWrapper/model/Loop.hpp"; sourceTree = SOURCE_ROOT; };
+		4A11FC46D5DE4574A9044803 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/AttributeDictionary.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = AttributeDictionary.hpp; path = "include/SUAPI-CppWrapper/model/AttributeDictionary.hpp"; sourceTree = SOURCE_ROOT; };
+		4C06CC30DEB349D2835EACE1 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/Loop.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = Loop.cpp; path = "src/SUAPI-CppWrapper/model/Loop.cpp"; sourceTree = SOURCE_ROOT; };
+		4E76274A3FF54066B56A0405 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/OptionsManager.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = OptionsManager.hpp; path = "include/SUAPI-CppWrapper/model/OptionsManager.hpp"; sourceTree = SOURCE_ROOT; };
+		50E132EF6A2A4F4DA78F01CB /* SketchUpAPICpp */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSketchUpAPICpp.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		54F307DB428941E98DD8016B /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/Geometry.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = Geometry.cpp; path = "src/SUAPI-CppWrapper/Geometry.cpp"; sourceTree = SOURCE_ROOT; };
+		551FC8587AEB4C3D9E422229 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ComponentInstance.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = ComponentInstance.hpp; path = "include/SUAPI-CppWrapper/model/ComponentInstance.hpp"; sourceTree = SOURCE_ROOT; };
+		5570F2B0FCA84796A4B911F6 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = Model.hpp; path = "include/SUAPI-CppWrapper/model/Model.hpp"; sourceTree = SOURCE_ROOT; };
+		583D7EE6E9A7462DA61B186C /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/Material.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = Material.cpp; path = "src/SUAPI-CppWrapper/model/Material.cpp"; sourceTree = SOURCE_ROOT; };
+		5A179BE92E1B43F1A5CC45DD /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Color.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = Color.hpp; path = "include/SUAPI-CppWrapper/Color.hpp"; sourceTree = SOURCE_ROOT; };
+		6B376E5955AE4B169D52A602 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Texture.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = Texture.hpp; path = "include/SUAPI-CppWrapper/model/Texture.hpp"; sourceTree = SOURCE_ROOT; };
+		6F2D77D6A6844DD7ACBDB225 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Transformation.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = Transformation.hpp; path = "include/SUAPI-CppWrapper/Transformation.hpp"; sourceTree = SOURCE_ROOT; };
+		7249AD7909C84C1BAA6D0E30 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/DrawingElement.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = DrawingElement.cpp; path = "src/SUAPI-CppWrapper/model/DrawingElement.cpp"; sourceTree = SOURCE_ROOT; };
+		7527F000365F479F9C050658 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ShadowInfo.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = ShadowInfo.hpp; path = "include/SUAPI-CppWrapper/model/ShadowInfo.hpp"; sourceTree = SOURCE_ROOT; };
+		75B478830DE7439B98CA3F36 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/ShadowInfo.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = ShadowInfo.cpp; path = "src/SUAPI-CppWrapper/model/ShadowInfo.cpp"; sourceTree = SOURCE_ROOT; };
+		78369D2DEEEB467491E21FF0 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/tests/SketchUpAPITests.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = SketchUpAPITests.hpp; path = tests/SketchUpAPITests.hpp; sourceTree = SOURCE_ROOT; };
+		790BEDE89BF642898A9FFA2D /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/Group.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = Group.cpp; path = "src/SUAPI-CppWrapper/model/Group.cpp"; sourceTree = SOURCE_ROOT; };
+		7B127DA201BA4917B2E48F7A /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Axes.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = Axes.hpp; path = "include/SUAPI-CppWrapper/model/Axes.hpp"; sourceTree = SOURCE_ROOT; };
+		80D0482AE2CB4FCCBF9849B7 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/TextureWriter.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = TextureWriter.cpp; path = "src/SUAPI-CppWrapper/model/TextureWriter.cpp"; sourceTree = SOURCE_ROOT; };
+		8572C9F58C8B49999B4F2CC3 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/AttributeDictionary.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = AttributeDictionary.cpp; path = "src/SUAPI-CppWrapper/model/AttributeDictionary.cpp"; sourceTree = SOURCE_ROOT; };
+		89AE92EF2C5B4334AA002713 /* SketchUpAPITests */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = SketchUpAPITests; sourceTree = BUILT_PRODUCTS_DIR; };
+		8B52570ACF674DDE9F63A459 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/Model.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = Model.cpp; path = "src/SUAPI-CppWrapper/model/Model.cpp"; sourceTree = SOURCE_ROOT; };
+		8DF73424E53F4D839EF15579 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = Geometry.hpp; path = "include/SUAPI-CppWrapper/Geometry.hpp"; sourceTree = SOURCE_ROOT; };
+		95F40C2AB182457EA8B7967C /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/String.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = String.cpp; path = "src/SUAPI-CppWrapper/String.cpp"; sourceTree = SOURCE_ROOT; };
+		965849E6AD244ACFBB88F34F /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/Color.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = Color.cpp; path = "src/SUAPI-CppWrapper/Color.cpp"; sourceTree = SOURCE_ROOT; };
+		974100C66A844CB4AC047FE5 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/Entity.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = Entity.cpp; path = "src/SUAPI-CppWrapper/model/Entity.cpp"; sourceTree = SOURCE_ROOT; };
+		9D69AC74B5D346BE83EC280D /* GoogleTest */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libGoogleTest.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		A55E34F4AE5341BABD69EB6F /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Group.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = Group.hpp; path = "include/SUAPI-CppWrapper/model/Group.hpp"; sourceTree = SOURCE_ROOT; };
+		A9466CDD297C4550A86C859A /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/MaterialInput.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = MaterialInput.cpp; path = "src/SUAPI-CppWrapper/model/MaterialInput.cpp"; sourceTree = SOURCE_ROOT; };
+		ABFBC3957A3C4E8893E76E18 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/TextureWriter.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = TextureWriter.hpp; path = "include/SUAPI-CppWrapper/model/TextureWriter.hpp"; sourceTree = SOURCE_ROOT; };
+		AFAAF965E19D42CA89C5F8E6 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ComponentDefinition.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = ComponentDefinition.hpp; path = "include/SUAPI-CppWrapper/model/ComponentDefinition.hpp"; sourceTree = SOURCE_ROOT; };
+		B07E7888BF414FA889502A95 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/MaterialInput.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = MaterialInput.hpp; path = "include/SUAPI-CppWrapper/model/MaterialInput.hpp"; sourceTree = SOURCE_ROOT; };
+		B1E63C2B27F54ED0A3CBED77 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/Curve.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = Curve.cpp; path = "src/SUAPI-CppWrapper/model/Curve.cpp"; sourceTree = SOURCE_ROOT; };
+		B4E66F0D34724E00AC9AF792 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; name = CMakeLists.txt; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		B501870BE7E44BCFAD30A344 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/GeometryInput.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = GeometryInput.cpp; path = "src/SUAPI-CppWrapper/model/GeometryInput.cpp"; sourceTree = SOURCE_ROOT; };
+		B782C901971B41FE8423E076 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/ComponentInstance.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = ComponentInstance.cpp; path = "src/SUAPI-CppWrapper/model/ComponentInstance.cpp"; sourceTree = SOURCE_ROOT; };
+		B9395BE3ED7745938D467384 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Vertex.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = Vertex.hpp; path = "include/SUAPI-CppWrapper/model/Vertex.hpp"; sourceTree = SOURCE_ROOT; };
+		B9825E3555E140708D0E9AD6 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/tests/RadiansTests.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = RadiansTests.cpp; path = tests/RadiansTests.cpp; sourceTree = SOURCE_ROOT; };
+		BE817EABF7A94B3487016476 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Curve.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = Curve.hpp; path = "include/SUAPI-CppWrapper/model/Curve.hpp"; sourceTree = SOURCE_ROOT; };
+		BF96EE8C8FD042588010A9BF /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Face.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = Face.hpp; path = "include/SUAPI-CppWrapper/model/Face.hpp"; sourceTree = SOURCE_ROOT; };
+		C538441C4972415BA033FA47 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; name = CMakeLists.txt; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		D0ABABF85D964312B7C3DFA7 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/ImageRep.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = ImageRep.cpp; path = "src/SUAPI-CppWrapper/model/ImageRep.cpp"; sourceTree = SOURCE_ROOT; };
+		D106B46D98854DBFA5BCEFD7 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/Layer.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = Layer.cpp; path = "src/SUAPI-CppWrapper/model/Layer.cpp"; sourceTree = SOURCE_ROOT; };
+		D3CCBCA4115F473DB4BD4C09 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Material.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = Material.hpp; path = "include/SUAPI-CppWrapper/model/Material.hpp"; sourceTree = SOURCE_ROOT; };
+		D592E3CC3C9E4DEF9606B0AC /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; name = CMakeLists.txt; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		D71D648BBD1F4215BC17997F /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/Axes.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = Axes.cpp; path = "src/SUAPI-CppWrapper/model/Axes.cpp"; sourceTree = SOURCE_ROOT; };
+		DCD9F406CDB843A8A2FFEBC5 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Initialize.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = Initialize.hpp; path = "include/SUAPI-CppWrapper/Initialize.hpp"; sourceTree = SOURCE_ROOT; };
+		DEBD528FE11044FABA3FFFCA /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/UVHelper.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = UVHelper.hpp; path = "include/SUAPI-CppWrapper/model/UVHelper.hpp"; sourceTree = SOURCE_ROOT; };
+		DF692229FB5448DFB79AD134 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Layer.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = Layer.hpp; path = "include/SUAPI-CppWrapper/model/Layer.hpp"; sourceTree = SOURCE_ROOT; };
+		E3460A48AFF747D4BC65D6EC /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entities.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = Entities.hpp; path = "include/SUAPI-CppWrapper/model/Entities.hpp"; sourceTree = SOURCE_ROOT; };
+		E38F021DE2AC4BDE895C336A /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/Entities.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = Entities.cpp; path = "src/SUAPI-CppWrapper/model/Entities.cpp"; sourceTree = SOURCE_ROOT; };
+		E3A494761A694DC9B5536F82 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/Edge.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = Edge.cpp; path = "src/SUAPI-CppWrapper/model/Edge.cpp"; sourceTree = SOURCE_ROOT; };
+		E4D24F9ABD6047AC8D77B25F /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/RenderingOptions.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = RenderingOptions.hpp; path = "include/SUAPI-CppWrapper/model/RenderingOptions.hpp"; sourceTree = SOURCE_ROOT; };
+		E4F228FE8DC44AE3BDF6F54C /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/Initialize.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = Initialize.cpp; path = "src/SUAPI-CppWrapper/Initialize.cpp"; sourceTree = SOURCE_ROOT; };
+		EDA041FFAE144ACAB618847E /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = Entity.hpp; path = "include/SUAPI-CppWrapper/model/Entity.hpp"; sourceTree = SOURCE_ROOT; };
+		F638FC0BA7B3435DA37BD543 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ImageRep.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = ImageRep.hpp; path = "include/SUAPI-CppWrapper/model/ImageRep.hpp"; sourceTree = SOURCE_ROOT; };
+		FA35C00FEB794D05A36EE4A1 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/third-party/googletest/googletest/src/gtest-all.cc */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = "gtest-all.cc"; path = "third-party/googletest/googletest/src/gtest-all.cc"; sourceTree = SOURCE_ROOT; };
+		FA546EB0694B4A379CF96301 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/GeometryInput.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = GeometryInput.hpp; path = "include/SUAPI-CppWrapper/model/GeometryInput.hpp"; sourceTree = SOURCE_ROOT; };
+		FCB10F64457645C7A6B8C4BA /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/Face.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = Face.cpp; path = "src/SUAPI-CppWrapper/model/Face.cpp"; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		0034A8CB2E4A4CB4A60182CB /* Header Files */ = {
+			isa = PBXGroup;
+			children = (
+				BAF78FCB3A7649029B1BFA73 /* model */,
+				5A179BE92E1B43F1A5CC45DD /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Color.hpp */,
+				8DF73424E53F4D839EF15579 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp */,
+				DCD9F406CDB843A8A2FFEBC5 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Initialize.hpp */,
+				1F8B5C7DA7404640878F64A2 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/String.hpp */,
+				6F2D77D6A6844DD7ACBDB225 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Transformation.hpp */,
+			);
+			name = "Header Files";
+			sourceTree = "<group>";
+		};
+		0E4CC255F2064B17B3055D26 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				8572C9F58C8B49999B4F2CC3 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/AttributeDictionary.cpp */,
+				D71D648BBD1F4215BC17997F /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/Axes.cpp */,
+				3B237C66AF2B45EA8CD9B83B /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/ComponentDefinition.cpp */,
+				B782C901971B41FE8423E076 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/ComponentInstance.cpp */,
+				B1E63C2B27F54ED0A3CBED77 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/Curve.cpp */,
+				7249AD7909C84C1BAA6D0E30 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/DrawingElement.cpp */,
+				E3A494761A694DC9B5536F82 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/Edge.cpp */,
+				E38F021DE2AC4BDE895C336A /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/Entities.cpp */,
+				974100C66A844CB4AC047FE5 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/Entity.cpp */,
+				FCB10F64457645C7A6B8C4BA /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/Face.cpp */,
+				B501870BE7E44BCFAD30A344 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/GeometryInput.cpp */,
+				790BEDE89BF642898A9FFA2D /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/Group.cpp */,
+				D0ABABF85D964312B7C3DFA7 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/ImageRep.cpp */,
+				D106B46D98854DBFA5BCEFD7 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/Layer.cpp */,
+				4C06CC30DEB349D2835EACE1 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/Loop.cpp */,
+				3C6078D6C2794AA8B5860BDF /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/LoopInput.cpp */,
+				583D7EE6E9A7462DA61B186C /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/Material.cpp */,
+				A9466CDD297C4550A86C859A /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/MaterialInput.cpp */,
+				8B52570ACF674DDE9F63A459 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/Model.cpp */,
+				426DC62160F4483F99C0302B /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/OptionsManager.cpp */,
+				443D3CFA4E4B4162B03A63AA /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/RenderingOptions.cpp */,
+				75B478830DE7439B98CA3F36 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/ShadowInfo.cpp */,
+				327A0E5E53954A879BA04DBC /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/Texture.cpp */,
+				80D0482AE2CB4FCCBF9849B7 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/TextureWriter.cpp */,
+				069FE7E03CB64E8CA7112578 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/TypedValue.cpp */,
+				18025D16E1C8415BB5743A57 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/UVHelper.cpp */,
+				3BC7273D601B41EE8B2A01AD /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/Vertex.cpp */,
+			);
+			name = model;
+			sourceTree = "<group>";
+		};
+		18370325266D413BAB1F6F2D /* Source Files */ = {
+			isa = PBXGroup;
+			children = (
+				047606E51D3942E3A0D32756 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/tests/SketchUpAPITests.cpp */,
+			);
+			name = "Source Files";
+			sourceTree = "<group>";
+		};
+		1D89EC7BA31B49EF92579BCD /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				2F262E3789F3403DB8571762 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/tests/ColorTests.cpp */,
+				B9825E3555E140708D0E9AD6 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/tests/RadiansTests.cpp */,
+				265C1362E5BC4521A55098AE /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/tests/StringTests.cpp */,
+				3D4A60F785C94FD4977CE0D2 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/tests/TypedValueTests.cpp */,
+			);
+			name = Tests;
+			sourceTree = "<group>";
+		};
+		1E736B9EA00B4BDFA02393DB /* ZERO_CHECK */ = {
+			isa = PBXGroup;
+			children = (
+				9852686C2FE44010BA244CA1 /* CMake Rules */,
+				B4E66F0D34724E00AC9AF792 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/CMakeLists.txt */,
+			);
+			name = ZERO_CHECK;
+			sourceTree = "<group>";
+		};
+		3129DFA98DE7435B8E1285D5 /* CMake Rules */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "CMake Rules";
+			sourceTree = "<group>";
+		};
+		44525BCF3C064AABAB3A1AB4 /* Source Files */ = {
+			isa = PBXGroup;
+			children = (
+				FA35C00FEB794D05A36EE4A1 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/third-party/googletest/googletest/src/gtest-all.cc */,
+			);
+			name = "Source Files";
+			sourceTree = "<group>";
+		};
+		534BC0D7180E4D6D965AF401 = {
+			isa = PBXGroup;
+			children = (
+				E7FC37F7A1D5472480D61F2A /* SketchUpAPITests */,
+				A66217947A434599822DA756 /* GoogleTest */,
+				9C9036DE5B9146C79FE8B715 /* SketchUpAPICpp */,
+				9292726DA821420C91801B59 /* ALL_BUILD */,
+				1E736B9EA00B4BDFA02393DB /* ZERO_CHECK */,
+				8AC7289B67F0444E9808AC84 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		643BB0A7BEDA4522A5ACC288 /* Header Files */ = {
+			isa = PBXGroup;
+			children = (
+				78369D2DEEEB467491E21FF0 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/tests/SketchUpAPITests.hpp */,
+			);
+			name = "Header Files";
+			sourceTree = "<group>";
+		};
+		8AC7289B67F0444E9808AC84 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9D69AC74B5D346BE83EC280D /* GoogleTest */,
+				50E132EF6A2A4F4DA78F01CB /* SketchUpAPICpp */,
+				89AE92EF2C5B4334AA002713 /* SketchUpAPITests */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9292726DA821420C91801B59 /* ALL_BUILD */ = {
+			isa = PBXGroup;
+			children = (
+				3129DFA98DE7435B8E1285D5 /* CMake Rules */,
+				184F7F25F2644E91B73C241B /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/CMakeLists.txt */,
+			);
+			name = ALL_BUILD;
+			sourceTree = "<group>";
+		};
+		9852686C2FE44010BA244CA1 /* CMake Rules */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "CMake Rules";
+			sourceTree = "<group>";
+		};
+		9C9036DE5B9146C79FE8B715 /* SketchUpAPICpp */ = {
+			isa = PBXGroup;
+			children = (
+				0034A8CB2E4A4CB4A60182CB /* Header Files */,
+				FD2C201092934889A77ACB00 /* Source Files */,
+				C538441C4972415BA033FA47 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/CMakeLists.txt */,
+			);
+			name = SketchUpAPICpp;
+			sourceTree = "<group>";
+		};
+		A66217947A434599822DA756 /* GoogleTest */ = {
+			isa = PBXGroup;
+			children = (
+				44525BCF3C064AABAB3A1AB4 /* Source Files */,
+				110BDBC532464952A330389E /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/CMakeLists.txt */,
+			);
+			name = GoogleTest;
+			sourceTree = "<group>";
+		};
+		BAF78FCB3A7649029B1BFA73 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				4A11FC46D5DE4574A9044803 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/AttributeDictionary.hpp */,
+				7B127DA201BA4917B2E48F7A /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Axes.hpp */,
+				AFAAF965E19D42CA89C5F8E6 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ComponentDefinition.hpp */,
+				551FC8587AEB4C3D9E422229 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ComponentInstance.hpp */,
+				BE817EABF7A94B3487016476 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Curve.hpp */,
+				2239ECECAC914157B5FA83F1 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/DrawingElement.hpp */,
+				1D2C7EBC8648413BBDECAB1D /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Edge.hpp */,
+				E3460A48AFF747D4BC65D6EC /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entities.hpp */,
+				EDA041FFAE144ACAB618847E /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp */,
+				BF96EE8C8FD042588010A9BF /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Face.hpp */,
+				FA546EB0694B4A379CF96301 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/GeometryInput.hpp */,
+				A55E34F4AE5341BABD69EB6F /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Group.hpp */,
+				F638FC0BA7B3435DA37BD543 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ImageRep.hpp */,
+				DF692229FB5448DFB79AD134 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Layer.hpp */,
+				44E987080BD74BB7B0B4B762 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Loop.hpp */,
+				189F78E714CE4997BEE27B09 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/LoopInput.hpp */,
+				D3CCBCA4115F473DB4BD4C09 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Material.hpp */,
+				B07E7888BF414FA889502A95 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/MaterialInput.hpp */,
+				5570F2B0FCA84796A4B911F6 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp */,
+				4E76274A3FF54066B56A0405 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/OptionsManager.hpp */,
+				E4D24F9ABD6047AC8D77B25F /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/RenderingOptions.hpp */,
+				7527F000365F479F9C050658 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ShadowInfo.hpp */,
+				6B376E5955AE4B169D52A602 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Texture.hpp */,
+				ABFBC3957A3C4E8893E76E18 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/TextureWriter.hpp */,
+				3B4F03F9AA2B44DD9D643425 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/TypedValue.hpp */,
+				DEBD528FE11044FABA3FFFCA /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/UVHelper.hpp */,
+				B9395BE3ED7745938D467384 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Vertex.hpp */,
+			);
+			name = model;
+			sourceTree = "<group>";
+		};
+		E7FC37F7A1D5472480D61F2A /* SketchUpAPITests */ = {
+			isa = PBXGroup;
+			children = (
+				643BB0A7BEDA4522A5ACC288 /* Header Files */,
+				1D89EC7BA31B49EF92579BCD /* Tests */,
+				18370325266D413BAB1F6F2D /* Source Files */,
+				D592E3CC3C9E4DEF9606B0AC /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/CMakeLists.txt */,
+			);
+			name = SketchUpAPITests;
+			sourceTree = "<group>";
+		};
+		FD2C201092934889A77ACB00 /* Source Files */ = {
+			isa = PBXGroup;
+			children = (
+				0E4CC255F2064B17B3055D26 /* model */,
+				965849E6AD244ACFBB88F34F /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/Color.cpp */,
+				54F307DB428941E98DD8016B /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/Geometry.cpp */,
+				E4F228FE8DC44AE3BDF6F54C /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/Initialize.cpp */,
+				95F40C2AB182457EA8B7967C /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/String.cpp */,
+				029DCD7E74AC4F7598BA02D8 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/Transformation.cpp */,
+			);
+			name = "Source Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		23F866F40D5B4E0ABFCFA777 /* SketchUpAPICpp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DF36DC4CC5B44DC0AE34B34F /* Build configuration list for PBXNativeTarget "SketchUpAPICpp" */;
+			buildPhases = (
+				FB8D48A9A2FD46EBAF61E133 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5F897AA071064FBEA1967E80 /* PBXTargetDependency */,
+			);
+			name = SketchUpAPICpp;
+			productName = SketchUpAPICpp;
+			productReference = 50E132EF6A2A4F4DA78F01CB /* SketchUpAPICpp */;
+			productType = "com.apple.product-type.library.static";
+		};
+		5C24C234BDF44C048914C48E /* GoogleTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2C992079505C4FD28E55BD48 /* Build configuration list for PBXNativeTarget "GoogleTest" */;
+			buildPhases = (
+				C0BA3DA2AAEA45A09EC15095 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D16B322B55C447568D3BC926 /* PBXTargetDependency */,
+			);
+			name = GoogleTest;
+			productName = GoogleTest;
+			productReference = 9D69AC74B5D346BE83EC280D /* GoogleTest */;
+			productType = "com.apple.product-type.library.static";
+		};
+		92EEA8FAF8DC40DE9F35887C /* SketchUpAPITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 189EC2F1AB7C460F91B0AB6C /* Build configuration list for PBXNativeTarget "SketchUpAPITests" */;
+			buildPhases = (
+				B8299456BF1148FDB2F351A1 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F26B2ABAD3BC405981CF9419 /* PBXTargetDependency */,
+				C6E818F716AD4827941AE039 /* PBXTargetDependency */,
+				ABFA9785993E40759516A43D /* PBXTargetDependency */,
+			);
+			name = SketchUpAPITests;
+			productName = SketchUpAPITests;
+			productReference = 89AE92EF2C5B4334AA002713 /* SketchUpAPITests */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7ED7EF1B2BC3425C85EF570C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 0920;
+			};
+			buildConfigurationList = E6B0CBCBE86D44D49A7C1ECD /* Build configuration list for PBXProject "SketchUpApiCppWrapper" */;
+			buildSettings = {
+			};
+			buildStyles = (
+				4EC5EDAEF3DA434590FAFA49 /* Debug */,
+				29C0E265C5084FA19EED379C /* Release */,
+				DF89FD3200C54567B6821953 /* MinSizeRel */,
+				1091C0A132294CE2BF11EF0D /* RelWithDebInfo */,
+			);
+			compatibilityVersion = "Xcode 3.2";
+			hasScannedForEncodings = 0;
+			mainGroup = 534BC0D7180E4D6D965AF401;
+			projectDirPath = ../;
+			projectRoot = "";
+			targets = (
+				C8FA727250F044BCBA3D3FD3 /* ALL_BUILD */,
+				5C24C234BDF44C048914C48E /* GoogleTest */,
+				23F866F40D5B4E0ABFCFA777 /* SketchUpAPICpp */,
+				92EEA8FAF8DC40DE9F35887C /* SketchUpAPITests */,
+				AE28F69A792F440B878C6143 /* ZERO_CHECK */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		445A8E1F5FAC4AE09E0840B8 = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# shell script goes here
+exit 0";
+			showEnvVarsInLog = 0;
+		};
+		56603DE9B6A942CFA5AC1220 /* CMake Rules */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "CMake Rules";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "make -C /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/xcode -f /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/xcode/CMakeScripts/ALL_BUILD_cmakeRulesBuildPhase.make$CONFIGURATION all";
+			showEnvVarsInLog = 0;
+		};
+		E2D6FA6AC8EE4466AA0B9A0C /* CMake Rules */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "CMake Rules";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "make -C /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/xcode -f /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/xcode/CMakeScripts/ZERO_CHECK_cmakeRulesBuildPhase.make$CONFIGURATION all";
+			showEnvVarsInLog = 0;
+		};
+		FA2647902B6D4E9ABC0C8880 = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# shell script goes here
+exit 0";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B8299456BF1148FDB2F351A1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2DC97A38455E48FF8516512A /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/tests/ColorTests.cpp */,
+				B855860A606641F1B792FC2B /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/tests/RadiansTests.cpp */,
+				3D005E87042F4193962BDA66 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/tests/SketchUpAPITests.cpp */,
+				C3E186E3E7724F0089A4E63B /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/tests/StringTests.cpp */,
+				CD381036281545D08BAC5330 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/tests/TypedValueTests.cpp */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C0BA3DA2AAEA45A09EC15095 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				71F114CAED354008BE86FF33 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/third-party/googletest/googletest/src/gtest-all.cc */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FB8D48A9A2FD46EBAF61E133 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4B23F37B0A1640A5B6459620 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/Color.cpp */,
+				8BF1E5E1CA82468DBC68BEF6 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/Geometry.cpp */,
+				531A1CD3A9504DFA900712F0 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/Initialize.cpp */,
+				6924C75913CF44A194871F59 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/String.cpp */,
+				344EAAC0EAF94C0E94E7C842 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/Transformation.cpp */,
+				E4C36CAE96E044718C9C2021 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/AttributeDictionary.cpp */,
+				4AF3BA95FC164B2387E1247E /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/Axes.cpp */,
+				6F88EB4136974BE4AA246B28 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/ComponentDefinition.cpp */,
+				7B70261A73944DDF8DA35719 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/ComponentInstance.cpp */,
+				4518C1F1B2A34825A8482596 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/Curve.cpp */,
+				911B0A631C464C96AF82B34D /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/DrawingElement.cpp */,
+				C2B2DAA6E82B4FA8BDEC1BD6 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/Edge.cpp */,
+				6394877D51344905AFC7A509 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/Entities.cpp */,
+				9716FF73D1224134BF4A47D4 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/Entity.cpp */,
+				9DEB100318884402B5A70E05 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/Face.cpp */,
+				E521B1193E19421D87D322B1 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/GeometryInput.cpp */,
+				D4262B725A51456CA9F89609 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/Group.cpp */,
+				2EC036204C024291B491D3C7 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/ImageRep.cpp */,
+				7CF8C79EB98A4E8FA5107180 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/Layer.cpp */,
+				343B8F3226414432AAD122E3 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/Loop.cpp */,
+				C661E12B0490425CB1572769 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/LoopInput.cpp */,
+				8E4977E8ECC64548BC6732FD /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/Material.cpp */,
+				7A4FABD113DB4A37855CFA3F /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/MaterialInput.cpp */,
+				B7110DA5C23E43ADB2A82C08 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/Model.cpp */,
+				FF457D4FD93D40E799D1A5DF /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/OptionsManager.cpp */,
+				992640B1D13B4B93A4016904 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/RenderingOptions.cpp */,
+				66A4D12866204EEEACCBE1C8 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/ShadowInfo.cpp */,
+				4AAB9E8698C644EAB1AFBF77 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/Texture.cpp */,
+				D81B78EBC373491AAD2877C2 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/TextureWriter.cpp */,
+				16ADDBD06BCE42DAAED4CFBE /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/TypedValue.cpp */,
+				EEECCE0B88F7473DA8757AD8 /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/UVHelper.cpp */,
+				BA641122D2A1456AB66B8C5B /* /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/Vertex.cpp */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		03EBE91D4BB4489A848F8513 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5C24C234BDF44C048914C48E /* GoogleTest */;
+			targetProxy = 1445947B002C4FB594634FC9 /* PBXContainerItemProxy */;
+		};
+		518B7B129D1E4FB3B8EBBEE5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 92EEA8FAF8DC40DE9F35887C /* SketchUpAPITests */;
+			targetProxy = A01928A16FB44EE79D2486B4 /* PBXContainerItemProxy */;
+		};
+		5F897AA071064FBEA1967E80 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AE28F69A792F440B878C6143 /* ZERO_CHECK */;
+			targetProxy = 7F55156C74354F808755D617 /* PBXContainerItemProxy */;
+		};
+		8F4FA8FC168B4840AB889D3C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AE28F69A792F440B878C6143 /* ZERO_CHECK */;
+			targetProxy = D1850FE275E449F1AE408C35 /* PBXContainerItemProxy */;
+		};
+		ABFA9785993E40759516A43D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 23F866F40D5B4E0ABFCFA777 /* SketchUpAPICpp */;
+			targetProxy = 7B6D6E3146CE4AFBA9D42EC0 /* PBXContainerItemProxy */;
+		};
+		C6E818F716AD4827941AE039 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5C24C234BDF44C048914C48E /* GoogleTest */;
+			targetProxy = 87A6C3D340F740D88C141CBD /* PBXContainerItemProxy */;
+		};
+		D16B322B55C447568D3BC926 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AE28F69A792F440B878C6143 /* ZERO_CHECK */;
+			targetProxy = 4D26B326BFFF40ABABFA16A2 /* PBXContainerItemProxy */;
+		};
+		EBB7DB5C14A343BE91E07F19 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 23F866F40D5B4E0ABFCFA777 /* SketchUpAPICpp */;
+			targetProxy = 48E0D53E3F9D457EB83B8E67 /* PBXContainerItemProxy */;
+		};
+		F26B2ABAD3BC405981CF9419 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AE28F69A792F440B878C6143 /* ZERO_CHECK */;
+			targetProxy = 84F272022BE347239E5362B3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		13CBC3CEAF884062AC8A5A6C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = ("/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/third-party/slapi/mac");
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = ("/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include","/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/third-party/googletest/googletest","/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/tests");
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/xcode";
+				SYSTEM_HEADER_SEARCH_PATHS = ("/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include");
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Debug;
+		};
+		1C4D10B76F7D4552B5F918E0 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = ("/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/third-party/slapi/mac");
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = ("/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include","/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/third-party/googletest/googletest","/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/tests");
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/xcode";
+				SYSTEM_HEADER_SEARCH_PATHS = ("/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include");
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = RelWithDebInfo;
+		};
+		2D8818F2DB284B8DAE0C03B5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = ("/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/third-party/slapi/mac");
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = ("/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include","/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/third-party/googletest/googletest","/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/tests");
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/xcode";
+				SYSTEM_HEADER_SEARCH_PATHS = ("/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include");
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Release;
+		};
+		390624D47462452098F9EF65 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = lib;
+				EXECUTABLE_SUFFIX = .a;
+				FRAMEWORK_SEARCH_PATHS = ("/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/third-party/slapi/mac");
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 2;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",_SILENCE_TR1_NAMESPACE_DEPRECATION_WARNING,WIN32_LEAN_AND_MEAN,NOMINMAX);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = ("/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include","/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/third-party/googletest/googletest","/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/tests");
+				INSTALL_PATH = "";
+				LIBRARY_STYLE = STATIC;
+				OTHER_CPLUSPLUSFLAGS = "       -DNDEBUG -Wno-missing-braces -Werror '-std=gnu++14'  ";
+				OTHER_LIBTOOLFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = SketchUpAPICpp;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/xcode";
+				SYSTEM_HEADER_SEARCH_PATHS = ("/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include");
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = RelWithDebInfo;
+		};
+		51837E02A1C549A782F3D544 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk;
+				SYMROOT = "/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/xcode/build";
+			};
+			name = Debug;
+		};
+		6818B11E2BA243EFA028A6BA /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk;
+				SYMROOT = "/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/xcode/build";
+			};
+			name = RelWithDebInfo;
+		};
+		717080C6A1FF40E4A19D6618 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = ("/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/third-party/slapi/mac");
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = ("/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include","/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/third-party/googletest/googletest","/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/tests");
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/xcode";
+				SYSTEM_HEADER_SEARCH_PATHS = ("/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include");
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Debug;
+		};
+		73A924A1EF7C4FF5AACAE651 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = lib;
+				EXECUTABLE_SUFFIX = .a;
+				FRAMEWORK_SEARCH_PATHS = ("/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/third-party/slapi/mac");
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",_SILENCE_TR1_NAMESPACE_DEPRECATION_WARNING,WIN32_LEAN_AND_MEAN,NOMINMAX);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = ("/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include","/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/third-party/googletest/googletest","/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/tests");
+				INSTALL_PATH = "";
+				LIBRARY_STYLE = STATIC;
+				OTHER_CPLUSPLUSFLAGS = "    -DNDEBUG '-std=gnu++14'  ";
+				OTHER_LIBTOOLFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = GoogleTest;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/xcode";
+				SYSTEM_HEADER_SEARCH_PATHS = ("/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include");
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Release;
+		};
+		9465D8C5B16C4EECA6B92CB3 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				FRAMEWORK_SEARCH_PATHS = ("/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/third-party/slapi/mac");
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 2;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",_SILENCE_TR1_NAMESPACE_DEPRECATION_WARNING,WIN32_LEAN_AND_MEAN,NOMINMAX);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = ("/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include","/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/third-party/googletest/googletest","/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/tests");
+				INSTALL_PATH = "";
+				LD_RUNPATH_SEARCH_PATHS = "/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/third-party/slapi/mac";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CPLUSPLUSFLAGS = "       -DNDEBUG '-std=gnu++14'  ";
+				OTHER_LDFLAGS = " -Wl,-search_paths_first -Wl,-headerpad_max_install_names  /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/xcode/RelWithDebInfo/libGoogleTest.a /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/xcode/RelWithDebInfo/libSketchUpAPICpp.a -framework SketchUpAPI";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = SketchUpAPITests;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/xcode";
+				SYSTEM_HEADER_SEARCH_PATHS = ("/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include");
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = RelWithDebInfo;
+		};
+		95F17CDE98DE43E38DE398BA /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = lib;
+				EXECUTABLE_SUFFIX = .a;
+				FRAMEWORK_SEARCH_PATHS = ("/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/third-party/slapi/mac");
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",_SILENCE_TR1_NAMESPACE_DEPRECATION_WARNING,WIN32_LEAN_AND_MEAN,NOMINMAX);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = ("/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include","/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/third-party/googletest/googletest","/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/tests");
+				INSTALL_PATH = "";
+				LIBRARY_STYLE = STATIC;
+				OTHER_CPLUSPLUSFLAGS = "    -DNDEBUG -Wno-missing-braces -Werror '-std=gnu++14'  ";
+				OTHER_LIBTOOLFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = SketchUpAPICpp;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/xcode";
+				SYSTEM_HEADER_SEARCH_PATHS = ("/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include");
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = MinSizeRel;
+		};
+		975DC95D100D4651BCEAED7C /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = lib;
+				EXECUTABLE_SUFFIX = .a;
+				FRAMEWORK_SEARCH_PATHS = ("/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/third-party/slapi/mac");
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 2;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",_SILENCE_TR1_NAMESPACE_DEPRECATION_WARNING,WIN32_LEAN_AND_MEAN,NOMINMAX);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = ("/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include","/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/third-party/googletest/googletest","/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/tests");
+				INSTALL_PATH = "";
+				LIBRARY_STYLE = STATIC;
+				OTHER_CPLUSPLUSFLAGS = "       -DNDEBUG '-std=gnu++14'  ";
+				OTHER_LIBTOOLFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = GoogleTest;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/xcode";
+				SYSTEM_HEADER_SEARCH_PATHS = ("/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include");
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = RelWithDebInfo;
+		};
+		98D8C17F985D4252BE72E30D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = ("/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/third-party/slapi/mac");
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = ("/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include","/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/third-party/googletest/googletest","/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/tests");
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/xcode";
+				SYSTEM_HEADER_SEARCH_PATHS = ("/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include");
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Release;
+		};
+		9BC5257432734AB3B9D3929F /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = ("/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/third-party/slapi/mac");
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = ("/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include","/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/third-party/googletest/googletest","/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/tests");
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/xcode";
+				SYSTEM_HEADER_SEARCH_PATHS = ("/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include");
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = RelWithDebInfo;
+		};
+		A31DA54C69BE406FA0047362 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = ("/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/third-party/slapi/mac");
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = ("/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include","/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/third-party/googletest/googletest","/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/tests");
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/xcode";
+				SYSTEM_HEADER_SEARCH_PATHS = ("/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include");
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = MinSizeRel;
+		};
+		A3EC623303514760A9DB91DB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				FRAMEWORK_SEARCH_PATHS = ("/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/third-party/slapi/mac");
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",_SILENCE_TR1_NAMESPACE_DEPRECATION_WARNING,WIN32_LEAN_AND_MEAN,NOMINMAX);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = ("/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include","/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/third-party/googletest/googletest","/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/tests");
+				INSTALL_PATH = "";
+				LD_RUNPATH_SEARCH_PATHS = "/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/third-party/slapi/mac";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CPLUSPLUSFLAGS = "   '-std=gnu++14'  ";
+				OTHER_LDFLAGS = " -Wl,-search_paths_first -Wl,-headerpad_max_install_names  /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/xcode/Debug/libGoogleTest.a /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/xcode/Debug/libSketchUpAPICpp.a -framework SketchUpAPI";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = SketchUpAPITests;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/xcode";
+				SYSTEM_HEADER_SEARCH_PATHS = ("/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include");
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Debug;
+		};
+		A43C9C03B584494382C95E52 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = lib;
+				EXECUTABLE_SUFFIX = .a;
+				FRAMEWORK_SEARCH_PATHS = ("/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/third-party/slapi/mac");
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",_SILENCE_TR1_NAMESPACE_DEPRECATION_WARNING,WIN32_LEAN_AND_MEAN,NOMINMAX);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = ("/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include","/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/third-party/googletest/googletest","/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/tests");
+				INSTALL_PATH = "";
+				LIBRARY_STYLE = STATIC;
+				OTHER_CPLUSPLUSFLAGS = "    -DNDEBUG -Wno-missing-braces -Werror '-std=gnu++14'  ";
+				OTHER_LIBTOOLFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = SketchUpAPICpp;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/xcode";
+				SYSTEM_HEADER_SEARCH_PATHS = ("/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include");
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Release;
+		};
+		A446CBBDEE504CFE8BC5BF08 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = lib;
+				EXECUTABLE_SUFFIX = .a;
+				FRAMEWORK_SEARCH_PATHS = ("/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/third-party/slapi/mac");
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",_SILENCE_TR1_NAMESPACE_DEPRECATION_WARNING,WIN32_LEAN_AND_MEAN,NOMINMAX);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = ("/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include","/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/third-party/googletest/googletest","/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/tests");
+				INSTALL_PATH = "";
+				LIBRARY_STYLE = STATIC;
+				OTHER_CPLUSPLUSFLAGS = "   -Wno-missing-braces -Werror '-std=gnu++14'  ";
+				OTHER_LIBTOOLFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = SketchUpAPICpp;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/xcode";
+				SYSTEM_HEADER_SEARCH_PATHS = ("/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include");
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Debug;
+		};
+		A6ACB7D981754F619BAB1F3F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = lib;
+				EXECUTABLE_SUFFIX = .a;
+				FRAMEWORK_SEARCH_PATHS = ("/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/third-party/slapi/mac");
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",_SILENCE_TR1_NAMESPACE_DEPRECATION_WARNING,WIN32_LEAN_AND_MEAN,NOMINMAX);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = ("/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include","/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/third-party/googletest/googletest","/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/tests");
+				INSTALL_PATH = "";
+				LIBRARY_STYLE = STATIC;
+				OTHER_CPLUSPLUSFLAGS = "   '-std=gnu++14'  ";
+				OTHER_LIBTOOLFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = GoogleTest;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/xcode";
+				SYSTEM_HEADER_SEARCH_PATHS = ("/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include");
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Debug;
+		};
+		ADEE423F6AC949D6A91E4FE8 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk;
+				SYMROOT = "/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/xcode/build";
+			};
+			name = MinSizeRel;
+		};
+		CCBC5C3691CE46059132D266 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk;
+				SYMROOT = "/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/xcode/build";
+			};
+			name = Release;
+		};
+		DA750DADFFDF45518A539E60 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = lib;
+				EXECUTABLE_SUFFIX = .a;
+				FRAMEWORK_SEARCH_PATHS = ("/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/third-party/slapi/mac");
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",_SILENCE_TR1_NAMESPACE_DEPRECATION_WARNING,WIN32_LEAN_AND_MEAN,NOMINMAX);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = ("/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include","/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/third-party/googletest/googletest","/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/tests");
+				INSTALL_PATH = "";
+				LIBRARY_STYLE = STATIC;
+				OTHER_CPLUSPLUSFLAGS = "    -DNDEBUG '-std=gnu++14'  ";
+				OTHER_LIBTOOLFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = GoogleTest;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/xcode";
+				SYSTEM_HEADER_SEARCH_PATHS = ("/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include");
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = MinSizeRel;
+		};
+		DFBC456DD5C642459C9B5FF6 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = ("/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/third-party/slapi/mac");
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = ("/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include","/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/third-party/googletest/googletest","/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/tests");
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/xcode";
+				SYSTEM_HEADER_SEARCH_PATHS = ("/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include");
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = MinSizeRel;
+		};
+		E705910D072548F68D5537F2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				FRAMEWORK_SEARCH_PATHS = ("/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/third-party/slapi/mac");
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",_SILENCE_TR1_NAMESPACE_DEPRECATION_WARNING,WIN32_LEAN_AND_MEAN,NOMINMAX);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = ("/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include","/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/third-party/googletest/googletest","/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/tests");
+				INSTALL_PATH = "";
+				LD_RUNPATH_SEARCH_PATHS = "/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/third-party/slapi/mac";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CPLUSPLUSFLAGS = "    -DNDEBUG '-std=gnu++14'  ";
+				OTHER_LDFLAGS = " -Wl,-search_paths_first -Wl,-headerpad_max_install_names  /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/xcode/Release/libGoogleTest.a /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/xcode/Release/libSketchUpAPICpp.a -framework SketchUpAPI";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = SketchUpAPITests;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/xcode";
+				SYSTEM_HEADER_SEARCH_PATHS = ("/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include");
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Release;
+		};
+		EFB07FEFCE9E4906AD7386A1 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				FRAMEWORK_SEARCH_PATHS = ("/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/third-party/slapi/mac");
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",_SILENCE_TR1_NAMESPACE_DEPRECATION_WARNING,WIN32_LEAN_AND_MEAN,NOMINMAX);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = ("/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/include","/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/third-party/googletest/googletest","/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/tests");
+				INSTALL_PATH = "";
+				LD_RUNPATH_SEARCH_PATHS = "/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/third-party/slapi/mac";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CPLUSPLUSFLAGS = "    -DNDEBUG '-std=gnu++14'  ";
+				OTHER_LDFLAGS = " -Wl,-search_paths_first -Wl,-headerpad_max_install_names  /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/xcode/MinSizeRel/libGoogleTest.a /Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/xcode/MinSizeRel/libSketchUpAPICpp.a -framework SketchUpAPI";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = SketchUpAPITests;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/xcode";
+				SYSTEM_HEADER_SEARCH_PATHS = ("/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include");
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = MinSizeRel;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		100E1473EB7B4214B9103579 /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				13CBC3CEAF884062AC8A5A6C /* Debug */,
+				98D8C17F985D4252BE72E30D /* Release */,
+				A31DA54C69BE406FA0047362 /* MinSizeRel */,
+				9BC5257432734AB3B9D3929F /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		189EC2F1AB7C460F91B0AB6C /* Build configuration list for PBXNativeTarget "SketchUpAPITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A3EC623303514760A9DB91DB /* Debug */,
+				E705910D072548F68D5537F2 /* Release */,
+				EFB07FEFCE9E4906AD7386A1 /* MinSizeRel */,
+				9465D8C5B16C4EECA6B92CB3 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		2C992079505C4FD28E55BD48 /* Build configuration list for PBXNativeTarget "GoogleTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A6ACB7D981754F619BAB1F3F /* Debug */,
+				73A924A1EF7C4FF5AACAE651 /* Release */,
+				DA750DADFFDF45518A539E60 /* MinSizeRel */,
+				975DC95D100D4651BCEAED7C /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		465EDCD9BE524B5CB5FA51A8 /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				717080C6A1FF40E4A19D6618 /* Debug */,
+				2D8818F2DB284B8DAE0C03B5 /* Release */,
+				DFBC456DD5C642459C9B5FF6 /* MinSizeRel */,
+				1C4D10B76F7D4552B5F918E0 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		DF36DC4CC5B44DC0AE34B34F /* Build configuration list for PBXNativeTarget "SketchUpAPICpp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A446CBBDEE504CFE8BC5BF08 /* Debug */,
+				A43C9C03B584494382C95E52 /* Release */,
+				95F17CDE98DE43E38DE398BA /* MinSizeRel */,
+				390624D47462452098F9EF65 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		E6B0CBCBE86D44D49A7C1ECD /* Build configuration list for PBXProject "SketchUpApiCppWrapper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				51837E02A1C549A782F3D544 /* Debug */,
+				CCBC5C3691CE46059132D266 /* Release */,
+				ADEE423F6AC949D6A91E4FE8 /* MinSizeRel */,
+				6818B11E2BA243EFA028A6BA /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7ED7EF1B2BC3425C85EF570C /* Project object */;
+}
