@@ -1,5 +1,0 @@
-/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/xcode/CMakeFiles/SketchUpAPITests.dir
-/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/xcode/CMakeFiles/GoogleTest.dir
-/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/xcode/CMakeFiles/SketchUpAPICpp.dir
-/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/xcode/CMakeFiles/ALL_BUILD.dir
-/Users/tomkaneko/Dropbox/Sketchup/Extensions/Sketchup-API-C-Wrapper/xcode/CMakeFiles/ZERO_CHECK.dir
