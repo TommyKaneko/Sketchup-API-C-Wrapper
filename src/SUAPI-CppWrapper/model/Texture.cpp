@@ -161,6 +161,7 @@ String Texture::file_name() const {
   String name;
   SUStringRef file_ref = name.ref();
   SUResult res = SUTextureGetFileName(this->ref(), &file_ref);
+  assert(res == SU_ERROR_NONE);
   return name;
 }
 

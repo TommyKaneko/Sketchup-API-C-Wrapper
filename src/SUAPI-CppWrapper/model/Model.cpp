@@ -33,7 +33,7 @@
 #include "SUAPI-CppWrapper/model/Axes.hpp"
 #include "SUAPI-CppWrapper/model/Entities.hpp"
 //#include "SUAPI-CppWrapper/Behavior.hpp"
-#include "SUAPI-CppWrapper/model/Classifications.hpp"
+//#include "SUAPI-CppWrapper/model/Classifications.hpp"
 #include "SUAPI-CppWrapper/model/ComponentDefinition.hpp"
 #include "SUAPI-CppWrapper/model/Material.hpp"
 #include "SUAPI-CppWrapper/model/AttributeDictionary.hpp"
@@ -67,8 +67,8 @@ Model::Model(SUModelRef model_ref, bool release_on_destroy):
 
 Model::Model(std::string file_path):
   m_model(SU_INVALID),
-  m_result(SUModelCreateFromFile(&m_model, file_path.c_str())),
-  m_release_on_destroy(true)
+  m_release_on_destroy(true),
+  m_result(SUModelCreateFromFile(&m_model, file_path.c_str()))
 {}
 
 Model::Model(const Model& other):
@@ -210,7 +210,7 @@ Axes Model::axes() const {
 
 //Behavior behavior(); // TODO: this may not be possible to retrieve
 
-
+/*
 Classifications Model::classifications() const {
   if(!(*this)) {
     throw std::logic_error("CW::Model::classifications(): Model is null");
@@ -220,6 +220,7 @@ Classifications Model::classifications() const {
   assert(res == SU_ERROR_NONE);
   return Classifications(classifications);
 }
+*/
 
 /*
 * Returns the description attached to this model.
@@ -337,6 +338,27 @@ std::vector<Layer> Model::layers() const {
     });
   return layers;
 }
+
+
+void Model::add_layers(std::vector<Layer>& layers) {
+  for (size_t i=0; i < layers.size(); i++) {
+    // Check that each material is not attached to another model
+    if (layers[i].attached()) {
+      throw std::invalid_argument("CW::Model::add_layers(): At least one of the Layer objects passed is attached to another model.  Use Layer::copy() to create a new unattached Layer object and try again.");
+    }
+  }
+  std::vector<SULayerRef> layer_refs(layers.size(), SU_INVALID);
+  std::transform(layers.begin(), layers.end(), layer_refs.begin(),
+    [](const Layer& value){
+      return value.ref();
+    });
+  SUResult res = SUModelAddLayers(m_model, layers.size(), layer_refs.data());
+  assert(res == SU_ERROR_NONE);
+  for (size_t i=0; i < layers.size(); i++) {
+    layers[i].attached(true);
+  }
+}
+
 
 /*
 * Returns the Location object of the model

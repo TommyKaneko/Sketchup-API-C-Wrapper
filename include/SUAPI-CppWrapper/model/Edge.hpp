@@ -98,7 +98,6 @@ class Edge :public DrawingElement {
   * The class object can be converted to a SUEdgeRef without loss of data.
   */
   operator SUEdgeRef() const;
-  operator SUEdgeRef*();
   
   /*
   * Returns whether the class is a valid object.

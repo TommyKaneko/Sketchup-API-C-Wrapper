@@ -58,6 +58,7 @@ OptionsProvider OptionsManager::get_provider(const std::string& name)
 {
   SUOptionsProviderRef provider = SU_INVALID;
   SUResult res = SUOptionsManagerGetOptionsProviderByName(m_options_manager, &name[0], &provider);
+  assert(res == SU_ERROR_NONE);
   return OptionsProvider(provider);
 }
 
@@ -105,6 +106,7 @@ TypedValue OptionsProvider::get_value(std::string key) const
   TypedValue tval;
   SUTypedValueRef *t = tval;
   SUResult res = SUOptionsProviderGetValue(m_options_provider, key_char, t);
+  assert(res == SU_ERROR_NONE);
   return tval;
 }
 

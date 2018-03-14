@@ -972,8 +972,8 @@ Line3D::Line3D(const Vector3D direction, const Point3D point):
 Line3D::Line3D(bool valid):
   m_point(Point3D(valid)),
   m_direction(Vector3D(valid)),
-  point(m_point),
   null(!valid),
+  point(m_point),
   direction(m_direction)
 {}
 
@@ -981,8 +981,8 @@ Line3D::Line3D(bool valid):
 Line3D::Line3D(const Line3D& other):
   m_point(other.m_point),
   m_direction(other.m_direction),
-  point(m_point),
   null(other.null),
+  point(m_point),
   direction(m_direction)
 {}
 

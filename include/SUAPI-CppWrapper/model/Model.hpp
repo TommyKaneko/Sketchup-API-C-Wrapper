@@ -205,6 +205,12 @@ class Model {
   */
   std::vector<Layer> layers() const;
    
+  /**
+  * Add layers to the model.
+  * @param layers - vector of layer objects to add.  The layers must not be attached to any other model object.
+  */
+  void add_layers(std::vector<Layer>& layers);
+
   /*
   * Returns the Location object of the model
   * @return location Location object. If no location has been assigned to the model, the Location object returned will be invalid.
