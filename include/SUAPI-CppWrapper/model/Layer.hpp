@@ -40,6 +40,11 @@ class String;
 class Layer :public Entity {
   private:  
   static SULayerRef create_layer();
+  /**
+  * Creates a SULayerRef derived from an existing Layer object.
+  * @param other - Layer object to derive the new SULayerRef object from
+  * @return if the Layer object is already attached to a model, its SULayerRef object will be returned. If the Material object has not been attached to a model, a new SULayerRef object will be created. Bear in mind all properties will not be copied in the latter case
+  */
   static SULayerRef copy_reference(const Layer& other);
   
   public:
@@ -73,8 +78,12 @@ class Layer :public Entity {
   * Returns whether this is a NULL layer or not.
   */
   bool operator!() const;
-  //bool operator!() const;
   
+  /**
+  * Returns a copy of the Layer object, which is not attached to a model.
+  */
+  Layer copy() const;
+
   /**
   * Get the name of the layer.
   */

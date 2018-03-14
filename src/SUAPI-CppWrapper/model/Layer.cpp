@@ -125,6 +125,16 @@ bool Layer::operator!() const {
 }
 
 
+Layer Layer::copy() const {
+  if(!(*this)) {
+    throw std::logic_error("CW::Layer::copy(): Layer is null");
+  }
+  Layer new_layer(create_layer(), false);
+  new_layer.name(this->name());
+  return new_layer;
+}
+
+
 String Layer::name() const {
   if(!(*this)) {
     throw std::logic_error("CW::Layer::name(): Layer is null");

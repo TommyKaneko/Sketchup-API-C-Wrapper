@@ -339,6 +339,27 @@ std::vector<Layer> Model::layers() const {
   return layers;
 }
 
+
+void Model::add_layers(std::vector<Layer>& layers) {
+  for (size_t i=0; i < layers.size(); i++) {
+    // Check that each material is not attached to another model
+    if (layers[i].attached()) {
+      throw std::invalid_argument("CW::Model::add_layers(): At least one of the Layer objects passed is attached to another model.  Use Layer::copy() to create a new unattached Layer object and try again.");
+    }
+  }
+  std::vector<SULayerRef> layer_refs(layers.size(), SU_INVALID);
+  std::transform(layers.begin(), layers.end(), layer_refs.begin(),
+    [](const Layer& value){
+      return value.ref();
+    });
+  SUResult res = SUModelAddLayers(m_model, layers.size(), layer_refs.data());
+  assert(res == SU_ERROR_NONE);
+  for (size_t i=0; i < layers.size(); i++) {
+    layers[i].attached(true);
+  }
+}
+
+
 /*
 * Returns the Location object of the model
 * @return location Location object. If no location has been assigned to the model, the Location object returned will be invalid.
