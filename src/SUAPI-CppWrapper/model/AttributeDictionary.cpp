@@ -139,8 +139,10 @@ TypedValue AttributeDictionary::get_attribute(const std::string &key, const Type
     throw std::logic_error("CW::AttributeDictionary::get_attribute(): AttributeDictionary is null");
   }
   SUTypedValueRef val = SU_INVALID;
+  SUResult res = SUTypedValueCreate(&val);
+  assert(res == SU_ERROR_NONE);
   const char* key_char = key.c_str();
-  SUResult res = SUAttributeDictionaryGetValue(this->ref(), &key_char[0], &val);
+  res = SUAttributeDictionaryGetValue(this->ref(), &key_char[0], &val);
   if (res == SU_ERROR_NO_DATA) {
     return default_value;
   }
