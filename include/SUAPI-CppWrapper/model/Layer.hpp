@@ -95,8 +95,24 @@ class Layer :public Entity {
   void name(const String& string);
   void name(const std::string& string);
   
+  /**
+  * Hash function for use with unordered_map
+  */
+  friend std::hash<CW::Layer>;
 };
 
 } /* namespace CW */
+
+namespace std {
+  template <> struct hash<CW::Layer>
+  {
+    size_t operator()(const CW::Layer& k) const
+    {
+      static const size_t shift = (size_t)log2(1 + sizeof(CW::Layer));
+      return (size_t)(k.m_entity.ptr) >> shift;
+    }
+  };
+
+}
 
 #endif /* Layer_hpp */

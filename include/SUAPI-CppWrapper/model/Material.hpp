@@ -146,7 +146,7 @@ class Material :public Entity {
   void use_alpha(bool flag);
   
   /**
-  * Hash function for use wht unordered_map
+  * Hash function for use with unordered_map
   */
   friend std::hash<CW::Material>;
 };
