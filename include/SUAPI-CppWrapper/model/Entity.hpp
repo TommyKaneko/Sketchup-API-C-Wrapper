@@ -107,6 +107,13 @@ class Entity {
   */
   operator SUEntityRef*();
   
+  /*
+  * @brief Returns the wrapped SUEntityRef. USE WITH CAUTION.
+  *
+  * Note that the Entity object still manages the lifetime of the reference, so the SUEntityRef could become invalid.
+  */
+  SUEntityRef ref() const;
+
   /**
   * @brief Returns true if the entity is attached to another object.
   */
@@ -228,8 +235,24 @@ class Entity {
   */
   friend bool operator!=(const Entity& lhs, const Entity& rhs);
 
+  /**
+  * Hash function for use wht unordered_map
+  */
+  friend std::hash<CW::Entity>;
 };
 
 } /* namespace CW */
+
+namespace std {
+  template <> struct hash<CW::Entity>
+  {
+    size_t operator()(const CW::Entity& k) const
+    {
+      static const size_t shift = (size_t)log2(1 + sizeof(CW::Entity));
+      return (size_t)(k.m_entity.ptr) >> shift;
+    }
+  };
+
+}
 
 #endif /* Entity_hpp */

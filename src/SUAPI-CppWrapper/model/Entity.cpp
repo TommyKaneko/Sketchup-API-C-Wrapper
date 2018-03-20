@@ -78,12 +78,17 @@ Entity& Entity::operator=(const Entity& other) {
 
 
 Entity::operator SUEntityRef() const {
-  return m_entity;
+  return ref();
 }
 
 
 Entity::operator SUEntityRef*() {
   return &m_entity;
+}
+
+
+SUEntityRef Entity::ref() const{
+  return m_entity;
 }
 
 
