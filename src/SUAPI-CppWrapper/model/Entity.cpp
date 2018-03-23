@@ -33,6 +33,8 @@
 #include <algorithm>
 
 #include "SUAPI-CppWrapper/model/AttributeDictionary.hpp"
+#include "SUAPI-CppWrapper/model/Model.hpp"
+#include "SUAPI-CppWrapper/model/Entities.hpp"
 
 
 namespace CW {
@@ -219,6 +221,26 @@ enum SURefType Entity::entity_type() const{
     throw std::logic_error("CW::Entity::entity_type(): Entity is null");
   }
   return SUEntityGetType(m_entity);
+}
+
+Model Entity::model() const {
+  if (!(*this)) {
+    throw std::logic_error("CW::Entity::parent(): Entity is null");
+  }
+  SUModelRef model = SU_INVALID;
+  SUResult res = SUEntityGetModel(m_entity, &model);
+  assert(res == SU_ERROR_NONE);
+  return Model(model, false);
+}
+
+Entities Entity::parent() const {
+  if (!(*this)) {
+    throw std::logic_error("CW::Entity::parent(): Entity is null");
+  }
+  SUEntitiesRef entities = SU_INVALID;
+  SUResult res = SUEntityGetParentEntities(m_entity, &entities);
+  assert(res == SU_ERROR_NONE);
+  return Entities(entities);
 }
 
 /*

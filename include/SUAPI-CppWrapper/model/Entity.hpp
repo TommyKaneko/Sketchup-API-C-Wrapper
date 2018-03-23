@@ -41,6 +41,8 @@ namespace CW {
 
 // Forward Declarations
 class AttributeDictionary;
+class Model;
+class Entities;
 
 /*
 * @brief Entity object wrapper.
@@ -219,7 +221,17 @@ class Entity {
   * @brief Returns the type of the entity. See enum SURefType.
   */
   enum SURefType entity_type() const;
+  
+  /**
+  * Returns the model object that holds this entity.
+  */
+  Model model() const;
 
+  /**
+  * Returns the parent Entities object.
+  */
+  Entities parent() const;
+  
   /**
   * Returns whether these objects are the same.
   */
