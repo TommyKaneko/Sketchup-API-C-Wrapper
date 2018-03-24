@@ -30,6 +30,7 @@
 #include "SUAPI-CppWrapper/model/Entities.hpp"
 #include "SUAPI-CppWrapper/model/ComponentInstance.hpp"
 #include "SUAPI-CppWrapper/model/Group.hpp"
+#include "SUAPI-CppWrapper/model/Model.hpp"
 
 namespace CW {
 
@@ -54,7 +55,7 @@ SUComponentDefinitionRef ComponentDefinition::copy_reference(const ComponentDefi
     SUEntitiesRef new_entities_ref = SU_INVALID;
     SUResult res = SUComponentDefinitionGetEntities(new_definition, &new_entities_ref);
     assert(res == SU_ERROR_NONE);
-    Entities new_entities(new_entities_ref);
+    Entities new_entities(new_entities_ref, other.model().ref());
     new_entities.add(other.entities());
   }
   return new_definition;
@@ -148,7 +149,7 @@ Entities ComponentDefinition::entities() const {
   SUEntitiesRef entities = SU_INVALID;
   SUResult res = SUComponentDefinitionGetEntities(this->ref(), &entities);
   assert(res == SU_ERROR_NONE);
-  return Entities(entities);
+  return Entities(entities, this->model().ref());
 }
 
 

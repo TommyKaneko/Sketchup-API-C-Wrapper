@@ -38,13 +38,14 @@
 #include "SUAPI-CppWrapper/model/Face.hpp"
 #include "SUAPI-CppWrapper/model/Edge.hpp"
 #include "SUAPI-CppWrapper/model/Model.hpp"
+#include "SUAPI-CppWrapper/model/Material.hpp"
 
 namespace CW {
 
 
-Entities::Entities(SUEntitiesRef entities/*, Model* model*/):
-  m_entities(entities)/*,
-  m_model(model)*/
+Entities::Entities(SUEntitiesRef entities, const SUModelRef model):
+  m_entities(entities),
+  m_model(model)
 {}
 
 Entities::Entities():
@@ -447,6 +448,12 @@ bool Entities::transform_entities(std::vector<Entity>& elems, std::vector<Transf
 }
 
 
+Model Entities::model() const {
+  if (SUIsInvalid(m_model)) {
+    return Model();
+  }
+  return Model(m_model, false);
+}
 
 
 Entities::operator SUEntitiesRef() {

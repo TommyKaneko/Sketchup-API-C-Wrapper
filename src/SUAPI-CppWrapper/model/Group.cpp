@@ -31,6 +31,7 @@
 
 #include "SUAPI-CppWrapper/String.hpp"
 #include "SUAPI-CppWrapper/model/ComponentDefinition.hpp"
+#include "SUAPI-CppWrapper/model/Model.hpp"
 #include "SUAPI-CppWrapper/model/ComponentInstance.hpp"
 #include "SUAPI-CppWrapper/model/Entities.hpp"
 #include "SUAPI-CppWrapper/Transformation.hpp"
@@ -120,7 +121,7 @@ Entities Group::entities() const {
   }
   SUEntitiesRef entities = SU_INVALID;
   SUGroupGetEntities(this->ref(), &entities);
-  return Entities(entities);
+  return Entities(entities, this->model().ref());
 }
 
 

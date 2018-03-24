@@ -240,7 +240,7 @@ Entities Entity::parent() const {
   SUEntitiesRef entities = SU_INVALID;
   SUResult res = SUEntityGetParentEntities(m_entity, &entities);
   assert(res == SU_ERROR_NONE);
-  return Entities(entities);
+  return Entities(entities, this->model().ref());
 }
 
 /*

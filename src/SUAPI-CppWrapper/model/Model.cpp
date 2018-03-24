@@ -275,7 +275,7 @@ Entities Model::entities() const {
   SUEntitiesRef entities = SU_INVALID;
   SUResult res = SUModelGetEntities(m_model, &entities);
   assert(res == SU_ERROR_NONE);
-  return Entities(entities);
+  return Entities(entities, m_model);
 }
 
 

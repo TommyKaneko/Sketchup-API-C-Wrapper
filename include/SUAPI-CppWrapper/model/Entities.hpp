@@ -56,11 +56,15 @@ class BoundingBox3D;
 class Entities {
   private:
   SUEntitiesRef m_entities;
-  //Model * const m_model;
+  // Store associated model ref, for type checking purposes
+  SUModelRef m_model;
   
   public:
-  Entities(SUEntitiesRef entities/*, Model* model*/);
-  
+  /**
+  * Default constructor.
+  * @param model - SUModelRef object that this entities object resides in. Used for checking that entities added to the entities object is valid for adding to this model.
+  */
+  Entities(SUEntitiesRef entities, const SUModelRef model);
   
   /**
   * Null Entities object
@@ -149,6 +153,11 @@ class Entities {
   * @return true if the operation was successful.  false, if transform failed.
   */
   bool transform_entities(std::vector<Entity>& elems, std::vector<Transformation>& transforms);
+  
+  /**
+  * Returns the model object that conrtains this entities object.
+  */
+  Model model() const;
   
   /*
   * The class object can be converted to a SUEntitiesRef without loss of data.
