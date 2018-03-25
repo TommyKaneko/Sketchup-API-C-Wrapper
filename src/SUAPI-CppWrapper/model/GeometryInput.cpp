@@ -328,4 +328,133 @@ bool GeometryInput::empty() const {
   return false;
 }
 
+
+size_t GeometryInput::add_vertex(const Point3D& point) {
+  SUResult res = SUGeometryInputAddVertex(m_geometry_input, point);
+  assert(res == SU_ERROR_NONE);
+  m_vertex_index++;
+  return m_vertex_index-1;
+}
+
+
+void GeometryInput::set_vertices(const std::vector<SUPoint3D>& points) {
+  assert(m_num_faces == 0); // Undefined behaviour when overwriting vertices
+  assert(m_num_edges == 0); // Undefined behaviour when overwriting vertices
+  SUResult res = SUGeometryInputSetVertices(m_geometry_input, points.size(), points.data());
+  assert(res == SU_ERROR_NONE);
+  // Overwrite the existing vertex count
+  m_vertex_index = points.size();
+}
+
+
+void GeometryInput::set_vertices(const std::vector<Point3D>& points) {
+  std::vector<SUPoint3D> point_refs(points.size());
+  std::transform(points.begin(), points.end(), point_refs.begin(),
+    [](const Point3D& value) {
+    return value;
+  });
+  return this->set_vertices(point_refs);
+}
+
+
+size_t GeometryInput::add_edge(size_t vertex0_index, size_t vertex1_index) {
+  size_t added_edge_index;
+  SUResult res = SUGeometryInputAddEdge(m_geometry_input, vertex0_index, vertex1_index, &added_edge_index);
+  assert(res == SU_ERROR_NONE);
+  return added_edge_index;
+}
+
+
+void GeometryInput::edge_hidden(size_t edge_index, bool hidden) {
+  SUResult res = SUGeometryInputEdgeSetHidden(m_geometry_input, edge_index, hidden);
+  assert(res == SU_ERROR_NONE);
+}
+
+
+void GeometryInput::edge_soft(size_t edge_index, bool soft) {
+  SUResult res = SUGeometryInputEdgeSetSoft(m_geometry_input, edge_index, soft);
+  assert(res == SU_ERROR_NONE);
+}
+
+
+void GeometryInput::edge_smooth(size_t edge_index, bool smooth) {
+  SUResult res = SUGeometryInputEdgeSetSmooth(m_geometry_input, edge_index, smooth);
+  assert(res == SU_ERROR_NONE);
+}
+
+
+void GeometryInput::edge_material(size_t edge_index, const Material& material) {
+  SUResult res = SUGeometryInputEdgeSetMaterial(m_geometry_input, edge_index, material.ref());
+  assert(res == SU_ERROR_NONE);
+  // TODO: check that material exists in target model.
+}
+
+
+void GeometryInput::edge_layer(size_t edge_index, const Layer& layer) {
+  SUResult res = SUGeometryInputEdgeSetLayer(m_geometry_input, edge_index, layer.ref());
+  assert(res == SU_ERROR_NONE);
+  // TODO: check that layer exists in target model.
+}
+
+
+size_t GeometryInput::add_face(LoopInput& loop_input) {
+  size_t added_face_index;
+  SULoopInputRef loop_ref = loop_input.ref();
+  SUResult res = SUGeometryInputAddFace(m_geometry_input, &loop_ref, &added_face_index);
+  assert(res == SU_ERROR_NONE);
+  loop_input.m_attached = true;
+  return added_face_index;
+}
+
+
+void GeometryInput::face_reverse(size_t face_index, bool reverse) {
+  SUResult res = SUGeometryInputFaceSetReverse(m_geometry_input, face_index, reverse);
+  assert(res == SU_ERROR_NONE);
+}
+
+
+void GeometryInput::face_layer(size_t face_index, const Layer& layer) {
+  SUResult res = SUGeometryInputFaceSetLayer(m_geometry_input, face_index, layer.ref());
+  assert(res == SU_ERROR_NONE);
+}
+
+
+void GeometryInput::face_add_inner_loop(size_t face_index, LoopInput& inner_loop) {
+  SULoopInputRef loop_ref = inner_loop.ref();
+  SUResult res = SUGeometryInputFaceAddInnerLoop(m_geometry_input, face_index, &loop_ref);
+  assert(res == SU_ERROR_NONE);
+  inner_loop.m_attached = true;
+}
+
+
+void GeometryInput::face_front_material(size_t face_index, MaterialInput& material_input) {
+  SUMaterialInput material_ref = material_input.ref();
+  SUResult res = SUGeometryInputFaceSetFrontMaterial(m_geometry_input, face_index, &material_ref);
+  assert(res == SU_ERROR_NONE);
+  // TODO: assert MateriealRef in the MaterialInput is not attached to a different model from the one it will be added to.
+}
+
+
+void GeometryInput::face_back_material(size_t face_index, MaterialInput& material_input) {
+  SUMaterialInput material_ref = material_input.ref();
+  SUResult res = SUGeometryInputFaceSetBackMaterial (m_geometry_input, face_index, &material_ref);
+  assert(res == SU_ERROR_NONE);
+  // TODO: assert MateriealRef in the MaterialInput is not attached to a different model from the one it will be added to.
+}
+
+
+void GeometryInput::face_hidden(size_t face_index, bool hidden) {
+  SUResult res = SUGeometryInputFaceSetHidden(m_geometry_input, face_index, hidden);
+  assert(res == SU_ERROR_NONE);
+}
+
+
+std::array<size_t, 5> GeometryInput::counts() const {
+  std::array<size_t, 5> count_arr;
+  SUResult res = SUGeometryInputGetCounts(m_geometry_input, &count_arr[0], &count_arr[1], &count_arr[2], &count_arr[3], &count_arr[4]);
+  assert(res == SU_ERROR_NONE);
+  return count_arr;
+}
+
 } /* namespace CW */
+
