@@ -78,7 +78,8 @@ Model::Model(const Model& other):
 
 Model::~Model() {
   if (m_release_on_destroy && SUIsValid(m_model)) {
-    SUModelRelease(&m_model);
+    SUResult res = SUModelRelease(&m_model);
+    assert(res == SU_ERROR_NONE);
   }
 }
 
@@ -360,6 +361,16 @@ void Model::add_layers(std::vector<Layer>& layers) {
 }
 
 
+bool Model::layer_exists(const Layer& layer) const {
+  std::vector<Layer> layers = this->layers();
+  for (auto& lay : layers) {
+    if (lay == layer) {
+      return true;
+    }
+  }
+  return false;
+}
+
 /*
 * Returns the Location object of the model
 * @return location Location object. If no location has been assigned to the model, the Location object returned will be invalid.
@@ -406,6 +417,17 @@ void Model::add_materials(std::vector<Material>& materials) {
   for (size_t i=0; i < materials.size(); i++) {
     materials[i].attached(true);
   }
+}
+
+
+bool Model::material_exists(const Material& material) const {
+  std::vector<Material> materials = this->materials();
+  for (auto& mat : materials) {
+    if (mat == material) {
+      return true;
+    }
+  }
+  return false;
 }
 
 

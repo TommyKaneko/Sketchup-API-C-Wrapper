@@ -211,6 +211,13 @@ class Model {
   */
   void add_layers(std::vector<Layer>& layers);
 
+  /**
+  * Checks if the given layer is in the list of layers in this model.  This is an expensive method, and is recommended to be used only in debugging.
+  * @param layer - the layer object to check
+  * @return true if the layer is in the model.
+  */
+  bool layer_exists(const Layer& layer) const;
+
   /*
   * Returns the Location object of the model
   * @return location Location object. If no location has been assigned to the model, the Location object returned will be invalid.
@@ -228,7 +235,14 @@ class Model {
   * @param materials - vector of material objects which must not be attached to any other model object.
   */
   void add_materials(std::vector<Material>& materials);
-
+  
+  /**
+  * Checks if the given material is in the list of materials in this model.  This is a very expensive method, and is recommended to be used only in debugging.
+  * @param material - the material object to check
+  * @return true if the material is in the model.
+  */
+  bool material_exists(const Material& material) const;
+  
   /*
   * Returns the name of the model
   * @return name string of the model name.
