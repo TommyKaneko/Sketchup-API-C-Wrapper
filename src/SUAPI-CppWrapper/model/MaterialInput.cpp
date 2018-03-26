@@ -59,5 +59,9 @@ SUMaterialInput MaterialInput::ref()
   return m_material_input;
 }
 
+Material MaterialInput::material() const {
+  return Material(m_material_input.material);
+}
+
 
 } /* namespace CW */

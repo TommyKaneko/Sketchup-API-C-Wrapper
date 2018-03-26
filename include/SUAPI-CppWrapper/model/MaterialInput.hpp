@@ -52,6 +52,8 @@ class MaterialInput {
   MaterialInput(SUMaterialInput material_input);
   
   SUMaterialInput ref();
+  
+  Material material() const;
 };
 
 } /* namespace CW */

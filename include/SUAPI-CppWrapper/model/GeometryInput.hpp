@@ -32,6 +32,7 @@
 #include <algorithm>
 #include <vector>
 #include <array>
+#include <unordered_map>
 
 #include <SketchUpAPI/geometry.h>
 #include <SketchUpAPI/model/entities.h>
@@ -41,6 +42,7 @@
 namespace CW {
 
 // Forward declarations:
+class Model;
 class Entities;
 class Face;
 class Edge;
@@ -63,56 +65,30 @@ SUResult result = entities.fill(geom_input); // the geometry must be output into
 class GeometryInput {
   friend class Entities;
   
-  private:
+private:
   SUGeometryInputRef m_geometry_input;
-
-  /**
-  * As Geometry Input does not always copy all information about an Entity to an Entities object, things like Attributes must be copied into the new Geometry after SUEntitiesFill() is called.  So it is necessary to store information about each entity that was added below, to allow this.
-  */
-  /**
-  * Faces that have been added to the GeometryInput object.  The pairings are with the added face index.  Only faces that require additional properties after the Entities::fill() operation are added here.
-  */
-  std::vector<std::pair<size_t, Face>> m_faces;
-  std::vector<std::pair<size_t, Edge>> m_edges;
-  //std::vector<std::vector<Edge*>> m_curves; // curves are simply collections of Edges.
+  
+  bool m_attached;
+  // GeometryInput objects require that the target model (for inputting information) be known, to ensure that materials and layers assigned to geometry exists in the target model.
+  SUModelRef m_target_model;
   
   size_t m_vertex_index = 0;
-  size_t m_num_faces = 0;
-  size_t m_num_edges = 0;
-   /**
+
+  // Tracks the number of GeometrryInput objects have been allocated, to allow the destructor to release an object only at the right time.
+  static std::unordered_map<SUGeometryInputRef, size_t> num_objects_;
+
+  /**
   * Creates and returns new SUGeometryInputRef object, used for initializing m_geometry_input. The SUGeometryInputRef object must be released with SUGeometryInputRelease() before this class is destroyed.
   */
   static SUGeometryInputRef create_geometry_input();
 
-
-  /*
-  * Adds a constructed LoopInput object into the GeometryInput object.
-  * @see add_face() for the details on how this is used.
-  */
-  //SUResult add_loop(LoopInput &loop);
-
-  //std::vector<SUPoint3D> m_vertices;
-  /**
-  * Faces are stored as a series of nested vectors of vertices.
-  * 1st level - array of faces
-  * 2nd level - array of loops within the face.  The first loop is the outer loop.  All subsequent arrays represent inner loops.
-  * 3rd level - array of indexes that refer to the vertices in the m_vertices array.
-  */
-  //std::vector<std::vector<std::vector<size_t>>> m_faces;
-
-  /**
-  * Edges are stored a series of nested vectors of vertices.
-  * 1st level - array of edges/curves
-  * 2nd level - array of indexes that refer to the vertices in the m_vertices array, which represent edges/curves (curves have more than two vertices)
-  */
-  //std::vector<std::vector<size_t>> m_edges;
-  
-  public:
+public:
   /**
   * Creates a valid, but empty GeometryInput object.
+  * @param target_model - model which will receive this GeometryInput object.
   */
-  GeometryInput();
-  
+  GeometryInput(SUModelRef target_model);
+
   /** Copy Constructor **/
   GeometryInput(const GeometryInput& other);
   
@@ -140,30 +116,13 @@ class GeometryInput {
   size_t num_faces() const;
   
   /**
-  * Returns Face objects stored in this object.  The vector returns a pairing of the added face's index in the GeometryInput object with the Face object.
-  */
-  std::vector<std::pair<size_t, Face>> faces() const;
-  
-  /**
-  * Adds a vertex to the Input object, and returns the index of the added Vertex.
-  * @param vertex Point3D object.
-  * @return index of the vertex that was added.
-  */
-  //size_t add_vertex(Point3D vertex);
-  //std::vector<size_t> add_vertices(std::vector<Point3D> vertices);
-  
-  /**
   * Adds a face to the Geometry Input object.
+  * @param face - the face object to be copied into the GeometryInput object.  Note that materials and layers will NOT be copied.  This must be done manually using face_front_material(), face_back_material(), and face_layer() methods.
+  * @param copy_material_layer - (optional) when true, materials and layers will be copied to the GeometryInput object.  Set to false if you are copying faces from another model - you will have to add a material manually.
   * @return index to the added face.
   */
-  size_t add_face(const Face &face);
-  size_t add_faces(const std::vector<Face>& faces);
-  
-  /*
-  Face add_face(const std::vector<Loop> &loops);
-  Face add_face(const std::vector<SUPoint3D> &outer_loop);
-  Face add_face(const std::vector<Edge*> &outer_edges);
-  */
+  size_t add_face(const Face &face, bool copy_material_layer = true);
+  size_t add_faces(const std::vector<Face>& faces, bool copy_material_layer = true);
   
   /**
   * Adds an Edge to the Geometry Input object.
@@ -171,14 +130,6 @@ class GeometryInput {
   */
   size_t add_edge(const Edge &edge);
   size_t add_edges(const std::vector<Edge>& edges);
-  //size_t add_line(Edge &edge);
-  //Edge add_line(const SUPoint3D start, const SUPoint3D end);
-  //Edge add_edge(const SUPoint3D start, const SUPoint3D end);
-
-  //std::vector<Edge*> add_edges(std::vector<Edge> &edges);
-  //std::vector<Edge*> add_edges(const std::vector<SUPoint3D> &points);
-
-  //std::vector<Edge*> add_curve(const std::vector<SUPoint3D> &points);
   
   /**
   * Returns true if no geometry has been added to this object.
@@ -246,19 +197,28 @@ class GeometryInput {
   */
   void edge_layer(size_t edge_index, const Layer& layer);
   
-  /*
-  // TODO:
-  size_t add_curve(const std::vector<size_t>& edge_indices);
-SU_RESULT   SUGeometryInputAddCurve (SUGeometryInputRef geom_input, size_t num_edges, const size_t edge_indices[], size_t *added_curve_index)
-   Adds a curve to a geometry input object. This method is intended for specifying curves which are not associated with loop inputs. For specifying curves on faces use the SULoopInput interface. More...
+  /**
+  * Adds a curve to a geometry input object. This method is intended for specifying curves which are not associated with loop inputs. For specifying curves on faces use the SULoopInput interface.
+  * @since SketchUp 2017, API 5.0
+  * @param num_edges - The number of edges to be used in the curve.
+  * @param edge_indices - The edge indices to be used in defining the curve.
+  * @param  added_curve_index  (optional) If not NULL, returns the index of the added curve.
   */
+  size_t add_curve(const std::vector<size_t>& edge_indices);
   
-  /*
-  // TODO:
-  std::pair<size_t, size_t> add_arc_curve(size_t start_point, size_t end_point, const struct SUPoint3D *center, const struct SUVector3D *normal, size_t num_segments);
-SU_RESULT   SUGeometryInputAddArcCurve (SUGeometryInputRef geom_input, size_t start_point, size_t end_point, const struct SUPoint3D *center, const struct SUVector3D *normal, size_t num_segments, size_t *added_curve_index, size_t *control_edge_index)
-   Adds an arccurve to a geometry input object. In addition to adding an arccurve to the geometry input this method will append num_segments edges to the geometry's edge collection where control_edge_index is the index of the first new edge. Also, num_segments-1 vertices along the arc will be appended to the geometry's collection of verttices. In order to include an arccurve in a loop the user only needs add the arccurve's points to a loop using SULoopInputAddVertexIndex. More...
-   */
+  /**
+  * Adds an arccurve to a geometry input object. In addition to adding an arccurve to the geometry input this method will append num_segments edges to the geometry's edge collection where control_edge_index is the index of the first new edge. Also, num_segments-1 vertices along the arc will be appended to the geometry's collection of verttices. In order to include an arccurve in a loop the user only needs add the arccurve's points to a loop using SULoopInputAddVertexIndex.
+  * @since SketchUp 2017 M2, API 5.2
+  * @param start_point - The index of the vertex at the start of the arc.
+  * @param end_point - The index of the vertex at the end of the arc.
+  * @param center - The center point of the arc's circle.
+  * @param normal - The normal vector of the arc plane.
+  * @param num_segments - The number of edges for the arc.
+  * @return pair of size_t values:
+      - first - added_curve_index - the index of the added curve.
+  *   - second - control_edge_index - the index of the the arc's control edge which can be used to set the arc's edge properties.
+  */
+  std::pair<size_t, size_t> add_arc_curve(size_t start_point, size_t end_point, const Point3D& center, const Vector3D& normal, size_t num_segments);
   
   /**
   * Adds a face to a geometry input object with a given outer loop for the face.
@@ -321,10 +281,27 @@ SU_RESULT   SUGeometryInputAddArcCurve (SUGeometryInputRef geom_input, size_t st
   *   - [4] - arc_count  The total count of arcs.
   */
   std::array<size_t, 5> counts() const;
-  
+
+  /**
+  * Hash function for use with unordered_map
+  */
+  friend std::hash<SUGeometryInputRef>;
+
 };
 
 
 } /* namespace CW */
+
+namespace std {
+  template <> struct hash<SUGeometryInputRef>
+  {
+    size_t operator()(const SUGeometryInputRef& k) const
+    {
+      static const size_t shift = (size_t)log2(1 + sizeof(SUGeometryInputRef));
+      return (size_t)(k.ptr) >> shift;
+    }
+  };
+}
+
 
 #endif /* GeometryInput_hpp */

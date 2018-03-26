@@ -182,7 +182,7 @@ void Entities::add(const Entities& other) {
   if (!SUIsValid(m_entities) || !SUIsValid(other.m_entities)) {
     throw std::logic_error("CW::Entities::add(): Entities is null");
   }
-  GeometryInput geom_input;
+  GeometryInput geom_input(m_model);
   geom_input.add_faces(other.faces());
   geom_input.add_edges(other.edges());
   this->fill(geom_input);
@@ -218,49 +218,41 @@ SUResult Entities::fill(GeometryInput &geom_input) {
 
   SUResult fill_res = SUEntitiesFill(m_entities, geom_input.m_geometry_input, true);
   assert(fill_res == SU_ERROR_NONE);
-
+  /**
   // Now add other data that SUEntitiesFill cannot add to the entities.
   // Apply properties to Faces
   // TODO: there is an assumption that the faces added to an Entities object is added in sequence, according to the index number.  So that (num_faces_before + face_index_of_geom_input) correspond to the Face number in the Entities object. This needs to be tested.
   size_t num_faces_after = 0;
   res = SUEntitiesGetNumFaces(m_entities, &num_faces_after);
   assert(res == SU_ERROR_NONE);
-  /*
   std::vector<std::pair<size_t, Face>> faces_to_add = geom_input.faces();
   // If all of the faces in the geom_input were not added, it will not be possible to find the added face by looking at its index.
-  // TODO: it is clear that if two overlapping faces are put into GeometryInput object, when output into the Entities object, the result could be three or more faces.  The following code will not recognise this. This shortcoming needs to be overcome.
-  if ((num_faces_after-num_faces_before) == geom_input.num_faces()) {
-
-    SUFaceRef faces_after[num_faces_after];
-    res = SUEntitiesGetFaces(m_entities, num_faces_after, &faces_after[0], &num_faces_after);
-    assert(res == SU_ERROR_NONE);
-    for (size_t i=0; i < faces_to_add.size(); ++i) {
-      size_t new_face_index = faces_to_add[i].first;
-      Face new_face(faces_after[(num_faces_before+new_face_index-1)]);
-      new_face.copy_properties_from(faces_to_add[i].second);
-      new_face.copy_attributes_from(faces_to_add[i].second);
-      // Set attributes for the edges that bound the face.
-      std::vector<Loop> loops = faces_to_add[i].second.loops();
-      std::vector<Loop> new_loops = new_face.loops();
-
-      for (size_t j=0; j < loops.size(); ++j) {
-        std::vector<Edge> old_edges = loops[j].edges();
-        std::vector<Edge> new_edges = new_loops[j].edges();
-        // If there are more new edges, then it means that some edges have been split during a merging operation.  The trick to find these is to see if the end location of the new and old edges match.
-        size_t new_edge_index = 0;
-        size_t old_edge_index = 0;
-        while( old_edge_index < old_edges.size()) {
-          do {
-            new_edges[new_edge_index].copy_properties_from(old_edges[old_edge_index]);
-            // TODO: to save on a little performance, only a few of the DrawingElement properties need to be copied, as hidden and soft properties are already set from GeometryInput object.
-            new_edges[new_edge_index].copy_attributes_from(old_edges[old_edge_index]);
-            ++new_edge_index;
-          }
-          while ((old_edges.size() < new_edges.size()) &&
-                 (new_edge_index < new_edges.size()) &&
-                 (new_edges[new_edge_index-1].end().position() != old_edges[old_edge_index+1].end().position()));
-          ++old_edge_index;
+  assert((num_faces_after-num_faces_before) == geom_input.num_faces());
+  // Copy any attributes to the added faces
+  std::vector<Face> faces_after = this->faces();
+  for (size_t i=0; i < faces_to_add.size(); ++i) {
+    assert(this->model().material_exists(faces_to_add[i].second.material()));
+    size_t new_face_index = faces_to_add[i].first;
+    size_t after_face_index = num_faces_before + new_face_index;
+    faces_after[after_face_index].copy_attributes_from(faces_to_add[i].second);
+    // Set attributes for the edges that bound the face.
+    std::vector<Loop> loops = faces_to_add[i].second.loops();
+    std::vector<Loop> new_loops = faces_after[after_face_index].loops();
+    for (size_t j=0; j < loops.size(); ++j) {
+      std::vector<Edge> old_edges = loops[j].edges();
+      std::vector<Edge> new_edges = new_loops[j].edges();
+      // If there are more new edges, then it means that some edges have been split during a merging operation.  The trick to find these is to see if the end location of the new and old edges match.
+      size_t new_edge_index = 0;
+      size_t old_edge_index = 0;
+      while( old_edge_index < old_edges.size()) {
+        do {
+          new_edges[new_edge_index].copy_attributes_from(old_edges[old_edge_index]);
+          ++new_edge_index;
         }
+        while ((old_edges.size() < new_edges.size()) &&
+               (new_edge_index < new_edges.size()) &&
+               (new_edges[new_edge_index-1].end().position() != old_edges[old_edge_index+1].end().position()));
+        ++old_edge_index;
       }
     }
   }
@@ -370,7 +362,7 @@ Group Entities::add_group(const ComponentDefinition& definition, const Transform
   Entities group_entities = new_group.entities();
   Entities def_entities = definition.entities();
   // Add geometry one by one to Geometry input.
-  GeometryInput geom_input;
+  GeometryInput geom_input(m_model);
   std::vector<Face> def_faces = def_entities.faces();
   for (size_t i=0; i < def_faces.size(); ++i) {
     geom_input.add_face(def_faces[i]);
