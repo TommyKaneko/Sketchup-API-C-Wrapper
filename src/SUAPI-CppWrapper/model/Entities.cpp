@@ -49,8 +49,8 @@ Entities::Entities(SUEntitiesRef entities, const SUModelRef model):
 {}
 
 Entities::Entities():
-  m_entities(SU_INVALID)/*,
-  m_model(nullptr)*/
+  m_entities(SU_INVALID),
+  m_model(SU_INVALID)
 {}
 
 
