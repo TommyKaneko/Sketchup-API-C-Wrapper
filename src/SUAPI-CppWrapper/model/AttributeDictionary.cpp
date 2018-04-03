@@ -157,9 +157,7 @@ bool AttributeDictionary::set_attribute(const std::string &key, const TypedValue
   if (!(*this)) {
     throw std::logic_error("CW::AttributeDictionary::set_attribute(): AttributeDictionary is null");
   }
-  SUTypedValueRef val = value.ref();
-  const char* key_char = key.c_str();
-  SUResult res = SUAttributeDictionarySetValue(this->ref(), &key_char[0], val);
+  SUResult res = SUAttributeDictionarySetValue(this->ref(), key.data(), value.ref());
   if (res == SU_ERROR_NONE) {
     return true;
   }
