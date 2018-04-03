@@ -56,7 +56,7 @@ class TypedValue {
   TypedValue();
   TypedValue(SUTypedValueRef typed_val, bool attached = false);
   TypedValue(const char chars[]);
-  //TypedValue(const std::string string);
+  TypedValue(const std::string& string);
   
   /** Copy constructor */
   TypedValue(const TypedValue& other);

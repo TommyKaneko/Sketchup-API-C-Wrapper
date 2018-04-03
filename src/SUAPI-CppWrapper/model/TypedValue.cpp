@@ -54,6 +54,11 @@ TypedValue::TypedValue(const char chars[]):
 }
 
 
+TypedValue::TypedValue(const std::string& string):
+  TypedValue(string.data())
+{}
+
+
 /** Copy constructor */
 TypedValue::TypedValue(const TypedValue& other):
   TypedValue()
