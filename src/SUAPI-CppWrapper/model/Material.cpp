@@ -138,6 +138,7 @@ Material Material::copy() const {
   new_material.opacity(this->opacity());
   new_material.color(this->color());
   new_material.texture(this->texture());
+  new_material.copy_attributes_from((*this));
   return new_material;
 }
 
