@@ -139,7 +139,14 @@ class Entity {
   * @return AttributeDictionary object with the given name.
   */
   AttributeDictionary attribute_dictionary(const std::string& name) const;
-
+  
+  /**
+  * @brief Adds the AttributeDictionary to the Entity.
+  * @param dict - AttributeDictionary to add
+  * @return true for success, false for failure.
+  */
+  bool add_dictionary(AttributeDictionary& dict);
+  
   /**
   * @brief Copies attributes from another Entity object to this one.
   * @param entity - object to get the attributes from.

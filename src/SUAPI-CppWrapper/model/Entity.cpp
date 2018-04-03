@@ -139,6 +139,17 @@ AttributeDictionary Entity::attribute_dictionary(const std::string& name) const 
   return AttributeDictionary();
 }
 
+
+bool Entity::add_dictionary(AttributeDictionary& dict) {
+  SUResult res = SUEntityAddAttributeDictionary(m_entity, dict.ref());
+  if (res == SU_ERROR_NONE) {
+    dict.attached(true);
+    return true;
+  }
+  return false;
+}
+
+
 bool Entity::copy_attributes_from(const Entity& entity) {
   if (!(*this) || !entity) {
     throw std::logic_error("CW::Entity::copy_attributes_from(): Entity is null");
@@ -207,6 +218,7 @@ bool Entity::set_attribute(const std::string& dict_name, const std::string& key,
   AttributeDictionary dict = attribute_dictionary(dict_name);
   return set_attribute(dict, key, value);
 }
+
 
 bool Entity::set_attribute(AttributeDictionary& dict, const std::string& key, const TypedValue& value) {
   if (!(*this)) {
