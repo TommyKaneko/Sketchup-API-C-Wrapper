@@ -25,6 +25,9 @@
 // SOFTWARE.
 //
 
+// Macro for getting rid of unused variables commonly for assert checking
+#define _unused(x) ((void)(x))
+
 #include "SUAPI-CppWrapper/model/Loop.hpp"
 
 #include "SUAPI-CppWrapper/model/LoopInput.hpp"
@@ -89,7 +92,7 @@ std::vector<Edge> Loop::edges() const {
   assert(res == SU_ERROR_NONE);
   std::vector<SUEdgeRef> edge_refs(count, SU_INVALID);
   res = SULoopGetEdges(this->ref(), count, edge_refs.data(), &count);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   std::vector<Edge> edges(count);
   std::transform(edge_refs.begin(), edge_refs.end(), edges.begin(),
     [](const SUEdgeRef& value){
@@ -108,7 +111,7 @@ std::vector<Vertex> Loop::vertices() const {
   assert(res == SU_ERROR_NONE);
   std::vector<SUVertexRef> verts_array(count, SU_INVALID);
   res = SULoopGetVertices(this->ref(), count, verts_array.data(), &count);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   std::vector<Vertex> vertices(count);
   std::transform(verts_array.begin(), verts_array.end(), vertices.begin(),
     [](const SUVertexRef& value){
@@ -149,7 +152,7 @@ size_t Loop::size() const {
   }
   size_t count = 0;
   SUResult res = SULoopGetNumVertices(this->ref(), &count);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return count;
 }
   

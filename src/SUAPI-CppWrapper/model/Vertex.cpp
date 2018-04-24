@@ -25,6 +25,9 @@
 // SOFTWARE.
 //
 
+// Macro for getting rid of unused variables commonly for assert checking
+#define _unused(x) ((void)(x))
+
 #include "SUAPI-CppWrapper/model/Vertex.hpp"
 
 #include <cassert>
@@ -79,7 +82,7 @@ Point3D Vertex::position() const {
   }
   SUPoint3D point;
   SUResult res = SUVertexGetPosition(this->ref(), &point);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return Point3D(point);
 }
 

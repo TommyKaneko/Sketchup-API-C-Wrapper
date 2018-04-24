@@ -25,6 +25,9 @@
 // SOFTWARE.
 //
 
+// Macro for getting rid of unused variables commonly for assert checking
+#define _unused(x) ((void)(x))
+
 #include "SUAPI-CppWrapper/model/Texture.hpp"
 #include <cassert>
 #include <stdexcept>
@@ -42,7 +45,7 @@ SUTextureRef Texture::create_texture(ImageRep& image_rep) {
   SUImageRepRef image = image_rep.ref();
   SUTextureRef texture = SU_INVALID;
   SUResult res = SUTextureCreateFromImageRep(&texture, image);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return texture;
 }
 
@@ -114,12 +117,12 @@ Texture Texture::copy() const {
   // First create the file.
   std::string file_path = "/tmp/tmptexture";
   SUResult res = this->save(file_path);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   Texture new_texture(file_path, s_scale(), t_scale());
   // Delete the temporary file
   const char *file_path_c = file_path.c_str();
   int ret = std::remove(file_path_c);
-  assert(ret == 0);
+  assert(ret == 0); _unused(ret);
   // Reset the file name
   new_texture.file_name(this->file_name());
   return new_texture;
@@ -139,7 +142,7 @@ bool Texture::alpha_used() const {
   }
   bool alpha_channel_used;
   SUResult res = SUTextureGetUseAlphaChannel(this->ref(), &alpha_channel_used);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return alpha_channel_used;
 }
 
@@ -152,7 +155,7 @@ ImageRep Texture::image_rep() const {
   SUResult res = SUImageRepCreate(&image_rep);
   assert(res == SU_ERROR_NONE);
   res = SUTextureGetImageRep(this->ref(), &image_rep);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return ImageRep(image_rep);
 }
 
@@ -161,7 +164,7 @@ String Texture::file_name() const {
   String name;
   SUStringRef file_ref = name.ref();
   SUResult res = SUTextureGetFileName(this->ref(), &file_ref);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return name;
 }
 
@@ -169,7 +172,7 @@ String Texture::file_name() const {
 void Texture::file_name(const String& string) const {
   const char* chars = string.std_string().c_str();
   SUResult res = SUTextureSetFileName(this->ref(), chars);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
 }
 
 
@@ -182,7 +185,7 @@ size_t Texture::width() const {
   double s_scale;
   double t_scale;
   SUResult res = SUTextureGetDimensions(this->ref(), &width, &height, &s_scale, &t_scale);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return width;
 }
 
@@ -196,7 +199,7 @@ size_t Texture::height() const {
   double s_scale;
   double t_scale;
   SUResult res = SUTextureGetDimensions(this->ref(), &width, &height, &s_scale, &t_scale);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return height;
 }
 
@@ -210,7 +213,7 @@ double Texture::s_scale() const {
   double s_scale;
   double t_scale;
   SUResult res = SUTextureGetDimensions(this->ref(), &width, &height, &s_scale, &t_scale);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return s_scale;
 }
 
@@ -224,7 +227,7 @@ double Texture::t_scale() const {
   double s_scale;
   double t_scale;
   SUResult res = SUTextureGetDimensions(this->ref(), &width, &height, &s_scale, &t_scale);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return t_scale;
 }
 

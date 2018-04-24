@@ -25,6 +25,9 @@
 // SOFTWARE.
 //
 
+// Macro for getting rid of unused variables commonly for assert checking
+#define _unused(x) ((void)(x))
+
 #include "SUAPI-CppWrapper/model/Axes.hpp"
 
 #include <cassert>
@@ -38,6 +41,7 @@ SUAxesRef Axes::create_axes() {
   SUAxesRef axes = SU_INVALID;
   SUResult res = SUAxesCreate(&axes);
   assert(res == SU_ERROR_NONE);
+  _unused(res);
   return axes;
 }
 
@@ -92,6 +96,7 @@ Axes::~Axes() {
     SUAxesRef axes = this->ref();
     SUResult res = SUAxesRelease(&axes);
     assert(res == SU_ERROR_NONE);
+    _unused(res);
   }
 }
   
@@ -106,6 +111,7 @@ Axes& Axes::operator=(const Axes& other) {
     SUAxesRef axes = this->ref();
     SUResult res = SUAxesRelease(&axes);
     assert(res == SU_ERROR_NONE);
+    _unused(res);
   }
   m_entity = SUAxesToEntity(copy_reference(other));
   DrawingElement::operator=(other);
@@ -133,7 +139,7 @@ Vector3D Axes::x_axis() const {
   }
   SUVector3D axis;
   SUResult res = SUAxesGetXAxis(this->ref(), &axis);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return Vector3D(axis);
 }
 
@@ -143,7 +149,7 @@ Vector3D Axes::y_axis() const {
   }
   SUVector3D axis;
   SUResult res = SUAxesGetYAxis(this->ref(), &axis);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return Vector3D(axis);
 }
 
@@ -153,7 +159,7 @@ Vector3D Axes::z_axis() const {
   }
   SUVector3D axis;
   SUResult res = SUAxesGetZAxis(this->ref(), &axis);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return Vector3D(axis);
 }
 
@@ -164,7 +170,7 @@ Point3D Axes::origin() const {
   }
   SUPoint3D origin;
   SUResult res = SUAxesGetOrigin(this->ref(), &origin);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return Point3D(origin);
 }
 
@@ -175,7 +181,7 @@ Transformation Axes::transformation() const {
   }
   SUTransformation transform;
   SUResult res = SUAxesGetTransform(this->ref(), &transform);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return Transformation(transform);
 }
 

@@ -25,6 +25,9 @@
 // SOFTWARE.
 //
 
+// Macro for getting rid of unused variables commonly for assert checking
+#define _unused(x) ((void)(x))
+
 #include "SUAPI-CppWrapper/model/Edge.hpp"
 
 #include <cassert>
@@ -49,7 +52,7 @@ SUEdgeRef Edge::create_edge(const Point3D& start, const Point3D& end) {
   SUPoint3D start_ref = start;
   SUPoint3D end_ref = end;
   SUResult res = SUEdgeCreate(&edge, &start_ref, &end_ref);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return edge;
 }
 
@@ -105,7 +108,7 @@ Edge::~Edge() {
   if (!m_attached && SUIsValid(m_entity)) {
     SUEdgeRef edge = this->ref();
     SUResult res = SUEdgeRelease(&edge);
-    assert(res == SU_ERROR_NONE);
+    assert(res == SU_ERROR_NONE); _unused(res);
   }
 }
 
@@ -116,7 +119,7 @@ Edge& Edge::operator=(const Edge& other) {
   if (!m_attached && SUIsValid(m_entity)) {
     SUEdgeRef edge = this->ref();
     SUResult res = SUEdgeRelease(&edge);
-    assert(res == SU_ERROR_NONE);
+    assert(res == SU_ERROR_NONE); _unused(res);
   }
   m_entity = SUEdgeToEntity(copy_reference(other));
   if (!other.m_attached) {
@@ -191,7 +194,7 @@ std::vector<Face> Edge::faces() const {
   }
   std::vector<SUFaceRef> face_refs(count, SU_INVALID);
   res = SUEdgeGetFaces(this->ref(), count, face_refs.data(), &count);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   std::vector<Face> faces(count);
   std::transform(face_refs.begin(), face_refs.end(), faces.begin(),
   [](const SUFaceRef& value) {

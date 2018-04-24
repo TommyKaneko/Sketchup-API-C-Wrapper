@@ -25,6 +25,9 @@
 // SOFTWARE.
 //
 
+// Macro for getting rid of unused variables commonly for assert checking
+#define _unused(x) ((void)(x))
+
 #include "SUAPI-CppWrapper/model/Material.hpp"
 
 #include <cassert>
@@ -43,7 +46,7 @@ namespace CW {
 SUMaterialRef Material::create_material() {
   SUMaterialRef material = SU_INVALID;
   SUResult res = SUMaterialCreate(&material);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return material;
 }
 
@@ -86,7 +89,7 @@ Material& Material::operator=(const Material& other) {
   if (!m_attached && SUIsValid(m_entity)) {
     SUMaterialRef material = this->ref();
     SUResult res = SUMaterialRelease(&material);
-    assert(res == SU_ERROR_NONE);
+    assert(res == SU_ERROR_NONE); _unused(res);
   }
   m_entity = SUMaterialToEntity(copy_reference(other));
 
@@ -107,7 +110,7 @@ Material::~Material() {
   if (!m_attached && SUIsValid(m_entity)) {
     SUMaterialRef material = this->ref();
     SUResult res = SUMaterialRelease(&material);
-    assert(res == SU_ERROR_NONE);
+    assert(res == SU_ERROR_NONE); _unused(res);
   }
 }
 
@@ -161,7 +164,7 @@ void Material::color(const Color& color) {
   }
   SUColor set_color = color.ref();
   SUResult res = SUMaterialSetColor(this->ref(), &set_color);
-  assert(res != SU_ERROR_INVALID_INPUT);
+  assert(res != SU_ERROR_INVALID_INPUT); _unused(res);
 }
 
 
@@ -188,7 +191,7 @@ void Material::name(const String& string) {
   }
   const char *cstr = string.std_string().c_str();
   SUResult res = SUMaterialSetName(this->ref(), cstr);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return;
 }
 
@@ -218,7 +221,7 @@ void Material::opacity(const double alpha) {
     input_alpha = 0.0;
   }
   SUResult res = SUMaterialSetOpacity(this->ref(), input_alpha);
-  assert(res != SU_ERROR_OUT_OF_RANGE);
+  assert(res != SU_ERROR_OUT_OF_RANGE); _unused(res);
 }
   
 
@@ -248,7 +251,7 @@ void Material::texture(const Texture& texture) {
   }
   SUTextureRef texture_ref = texture.ref();
   SUResult res = SUMaterialSetTexture(this->ref(), texture_ref);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
 }
   
   
@@ -258,7 +261,7 @@ SUMaterialType Material::type() const {
   }
   SUMaterialType mat_type;
   SUResult res = SUMaterialGetType(this->ref(), &mat_type);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return mat_type;
 }
 
@@ -268,7 +271,7 @@ void Material::type(const SUMaterialType& material_type) {
     throw std::logic_error("CW::Material::type(): Material is null");
   }
   SUResult res = SUMaterialSetType(this->ref(), material_type);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
 }
 
 
@@ -278,7 +281,7 @@ bool Material::use_alpha() const {
   }
   bool flag;
   SUResult res = SUMaterialGetUseOpacity(this->ref(), &flag);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return flag;
 }
 
@@ -289,7 +292,7 @@ void Material::use_alpha(bool flag) {
   }
   assert(!!(*this));
   SUResult res = SUMaterialSetUseOpacity(this->ref(), flag);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
 }
 
 

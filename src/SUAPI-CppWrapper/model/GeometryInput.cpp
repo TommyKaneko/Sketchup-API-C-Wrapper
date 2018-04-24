@@ -25,6 +25,9 @@
 // SOFTWARE.
 //
 
+// Macro for getting rid of unused variables commonly for assert checking
+#define _unused(x) ((void)(x))
+
 #include <cassert>
 #include <iostream>
 
@@ -51,7 +54,7 @@ namespace CW {
 SUGeometryInputRef GeometryInput::create_geometry_input() {
   SUGeometryInputRef geom_input = SU_INVALID;
   SUResult res = SUGeometryInputCreate(&geom_input);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return geom_input;
 }
 
@@ -83,7 +86,7 @@ GeometryInput::GeometryInput():
 GeometryInput::~GeometryInput() {
   if (SUIsValid(m_geometry_input)) {
     SUResult res = SUGeometryInputRelease(&m_geometry_input);
-    assert(res == SU_ERROR_NONE);
+    assert(res == SU_ERROR_NONE); _unused(res);
   }
 }
 
@@ -103,7 +106,7 @@ GeometryInput::GeometryInput(const GeometryInput& other):
 GeometryInput& GeometryInput::operator=(const GeometryInput& other) {
   if (SUIsValid(m_geometry_input)) {
     SUResult res = SUGeometryInputRelease(&m_geometry_input);
-    assert(res == SU_ERROR_NONE);
+    assert(res == SU_ERROR_NONE); _unused(res);
   }
   m_geometry_input = create_geometry_input();
   for (size_t i=0; i < other.m_faces.size(); ++i) {
@@ -225,6 +228,7 @@ size_t GeometryInput::add_face(const Face &face) {
     res = SUGeometryInputFaceAddInnerLoop(m_geometry_input, added_face_index, &inner_loop_input);
     assert(res == SU_ERROR_NONE);
   }
+  _unused(res);
   // TODO: deallocate LoopInputRef?  It doesn't FEEL necessary because it has been added to the Geometry Input object. Needs testing.
   // Add layer
   // TODO: there are problems with releasing a model that gets a layer from another model.  The following code causes a EXEC_BAD_ACCESS error when calling SUModelRelease, during CLayerDestroy process.
@@ -300,6 +304,7 @@ size_t GeometryInput::add_edge(const Edge &edge) {
     res = SUGeometryInputEdgeSetSoft(m_geometry_input, added_edge_index, true);
     assert(res == SU_ERROR_NONE);
   }
+  _unused(res);
   m_edges.push_back(std::pair<size_t, Edge> (added_edge_index, edge));
   ++m_num_edges;
   return added_edge_index;

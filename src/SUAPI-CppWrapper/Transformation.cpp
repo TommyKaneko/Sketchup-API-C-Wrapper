@@ -25,6 +25,9 @@
 // SOFTWARE.
 //
 
+// Macro for getting rid of unused variables commonly for assert checking
+#define _unused(x) ((void)(x))
+
 #include <cassert>
 #include <cmath>
 
@@ -60,7 +63,7 @@ Transformation::  Transformation(const Point3D& origin, const Vector3D& x_axis, 
   m_transformation(SU_INVALID)
 {
   SUResult res = SUTransformationSetFromPointAndAxes(&m_transformation, origin, x_axis, y_axis, z_axis);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   if (scalar != 1.0) {
     // TODO:
     assert(false);
@@ -71,7 +74,7 @@ Transformation::Transformation(double scalar):
   m_transformation(SU_INVALID)
 {
   SUResult res = SUTransformationScale(&m_transformation, scalar);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
 }
 
 
@@ -79,7 +82,7 @@ Transformation::Transformation(double x_scale, double y_scale, double z_scale):
   m_transformation(SU_INVALID)
 {
   SUResult res = SUTransformationNonUniformScale(&m_transformation, x_scale, y_scale, z_scale);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
 }
 
 
@@ -87,7 +90,7 @@ Transformation::Transformation(const Vector3D& translation):
   m_transformation(SU_INVALID)
 {
   SUResult res = SUTransformationTranslation(&m_transformation, translation);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
 }
 
 
@@ -95,7 +98,7 @@ Transformation::Transformation(const Point3D& translation, double scalar):
   m_transformation(SU_INVALID)
 {
   SUResult res = SUTransformationScaleAboutPoint(&m_transformation, translation, scalar);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
 }
 
 
@@ -103,7 +106,7 @@ Transformation::Transformation(const Point3D& translation, const Vector3D& norma
   m_transformation(SU_INVALID)
 {
   SUResult res = SUTransformationSetFromPointAndNormal(&m_transformation, translation, normal);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
 }
 
 
@@ -111,7 +114,7 @@ Transformation::Transformation(const Point3D& point, const Vector3D& vector, dou
   m_transformation(SU_INVALID)
 {
   SUResult res = SUTransformationRotation(&m_transformation, point, vector, angle);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
 }
 
 
@@ -119,7 +122,7 @@ Transformation::Transformation(const Transformation& transform1, const Transform
   m_transformation(SU_INVALID)
 {
   SUResult res = SUTransformationInterpolate(&m_transformation, transform1, transform2, weight);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
 }
 
 
@@ -188,7 +191,7 @@ Transformation::operator const SUTransformation*() const {
 bool Transformation::is_identity() const {
   bool is_identity;
   SUResult res = SUTransformationIsIdentity(&m_transformation, &is_identity);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return is_identity;
 }
 
@@ -196,7 +199,7 @@ bool Transformation::is_identity() const {
 Transformation Transformation::inverse() const {
   SUTransformation inverse = SU_INVALID;
   SUResult res = SUTransformationGetInverse(&m_transformation, &inverse);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return Transformation(inverse);
 }
   
@@ -204,7 +207,7 @@ Transformation Transformation::inverse() const {
 Vector3D Transformation::x_axis() const {
   SUVector3D x_axis = SU_INVALID;
   SUResult res = SUTransformationGetXAxis(&m_transformation, &x_axis);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return Vector3D(x_axis);
 }
 
@@ -212,7 +215,7 @@ Vector3D Transformation::x_axis() const {
 Vector3D Transformation::y_axis() const {
   SUVector3D y_axis = SU_INVALID;
   SUResult res = SUTransformationGetYAxis(&m_transformation, &y_axis);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return Vector3D(y_axis);
 }
 
@@ -220,7 +223,7 @@ Vector3D Transformation::y_axis() const {
 Vector3D Transformation::z_axis() const {
   SUVector3D z_axis = SU_INVALID;
   SUResult res = SUTransformationGetZAxis(&m_transformation, &z_axis);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return Vector3D(z_axis);
 }
 
@@ -228,7 +231,7 @@ Vector3D Transformation::z_axis() const {
 double Transformation::z_rotation() const {
   double z_rotation;
   SUResult res = SUTransformationGetZRotation(&m_transformation, &z_rotation);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return z_rotation;
 }
 
@@ -250,7 +253,7 @@ Transformation& Transformation::normalize() {
 Point3D Transformation::origin() const {
   SUPoint3D origin = SU_INVALID;
   SUResult res = SUTransformationGetOrigin(&m_transformation, &origin);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return Point3D(origin);
 }
   
@@ -266,7 +269,7 @@ Vector3D Transformation::translation() const {
 Transformation Transformation::operator*(Transformation transform) {
   SUTransformation out_transform = SU_INVALID;
   SUResult res = SUTransformationMultiply(&m_transformation, &transform.m_transformation, &out_transform);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return Transformation(out_transform);
 }
 
@@ -280,7 +283,7 @@ Vector3D operator*(const Transformation &lhs, const Vector3D &rhs) {
   }
   SUVector3D transformed = rhs;
   SUResult res = SUVector3DTransform(&lhs.m_transformation, &transformed);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return Vector3D(transformed);
 }
 
@@ -298,7 +301,7 @@ Point3D operator*(const Transformation &lhs, const Point3D &rhs) {
   }
   SUPoint3D transformed = rhs;
   SUResult res = SUPoint3DTransform(&lhs.m_transformation, &transformed);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return Vector3D(transformed);
 }
 
@@ -318,7 +321,7 @@ Plane3D operator*(const Transformation &lhs, const Plane3D &rhs) {
   }
   SUPlane3D transformed = rhs;
   SUResult res = SUPlane3DTransform(&lhs.m_transformation, &transformed);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return Plane3D(transformed);
 }
 

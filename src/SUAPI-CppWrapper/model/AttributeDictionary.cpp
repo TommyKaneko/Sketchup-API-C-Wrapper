@@ -25,6 +25,9 @@
 // SOFTWARE.
 //
 
+// Macro for getting rid of unused variables commonly for assert checking
+#define _unused(x) ((void)(x))
+
 #include <cassert>
 #include <stdexcept>
 #include <algorithm>
@@ -48,6 +51,7 @@ SUAttributeDictionaryRef AttributeDictionary::create_attribute_dictionary(const 
   SUAttributeDictionaryRef dict = SU_INVALID;
   SUResult res = SUAttributeDictionaryCreate(&dict, name.c_str());
   assert(res == SU_ERROR_NONE);
+  _unused(res);
   return dict;
 }
 
@@ -103,6 +107,7 @@ AttributeDictionary::~AttributeDictionary() {
       SUAttributeDictionaryRef dict = this->ref();
       SUResult res = SUAttributeDictionaryRelease(&dict);
       assert(res == SU_ERROR_NONE);
+      _unused(res);
     }
   }
 }
@@ -116,6 +121,7 @@ AttributeDictionary& AttributeDictionary::operator=(const AttributeDictionary& o
     SUAttributeDictionaryRef dict = this->ref();
     SUResult res = SUAttributeDictionaryRelease(&dict);
     assert(res == SU_ERROR_NONE);
+    _unused(res);
   }
   SUAttributeDictionaryRef dict = copy_reference(other);
   m_entity = SUAttributeDictionaryToEntity(dict);
@@ -145,10 +151,8 @@ TypedValue AttributeDictionary::get_attribute(const std::string &key, const Type
   if (res == SU_ERROR_NO_DATA) {
     return default_value;
   }
-  if (res != SU_ERROR_NONE) {
-    assert(false);
-    //throw std::logic_error("CW::AttributeDictionary::get_attribute(): index range is between 0 and 15");
-  }
+  assert(res == SU_ERROR_NONE);
+  _unused(res);
   return value_out;
 }
 
@@ -182,6 +186,7 @@ std::vector<std::string> AttributeDictionary::get_keys() const {
   });
   res = SUAttributeDictionaryGetKeys(this->ref(), num_keys, keys_ref.data(), &num_keys);
   assert(res == SU_ERROR_NONE);
+  _unused(res);
   std::vector<std::string> keys(num_keys);
   std::transform(keys_ref.begin(), keys_ref.end(), keys.begin(),
   [](const SUStringRef& value) {
@@ -199,6 +204,7 @@ std::string AttributeDictionary::get_name() const {
   SUStringRef *string_ref = string;
   SUResult res = SUAttributeDictionaryGetName(this->ref(), string_ref);
   assert(res == SU_ERROR_NONE);
+  _unused(res);
   return string;
 }
 

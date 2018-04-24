@@ -25,6 +25,9 @@
 // SOFTWARE.
 //
 
+// Macro for getting rid of unused variables commonly for assert checking
+#define _unused(x) ((void)(x))
+
 #include "SUAPI-CppWrapper/model/Layer.hpp"
 
 #include <cassert>
@@ -40,7 +43,7 @@ namespace CW {
 SULayerRef Layer::create_layer() {
   SULayerRef layer = SU_INVALID;
   SUResult res = SULayerCreate(&layer);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return layer;
 }
 
@@ -79,7 +82,7 @@ Layer::~Layer() {
   if (!m_attached && SUIsValid(m_entity)) {
     SULayerRef layer = this->ref();
     SUResult res = SULayerRelease(&layer);
-    assert(res == SU_ERROR_NONE);
+    assert(res == SU_ERROR_NONE); _unused(res);
   }
 }
 
@@ -91,7 +94,7 @@ Layer& Layer::operator=(const Layer& other) {
   if (!m_attached && SUIsValid(m_entity)) {
     SULayerRef layer = this->ref();
     SUResult res = SULayerRelease(&layer);
-    assert(res == SU_ERROR_NONE);
+    assert(res == SU_ERROR_NONE); _unused(res);
   }
   m_entity = SULayerToEntity(copy_reference(other));
   if (!other.m_attached && SUIsValid(other.m_entity)) {
@@ -141,7 +144,7 @@ String Layer::name() const {
   }
   String string;
   SUResult res = SULayerGetName(this->ref(), string);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return string;
 }
 
@@ -151,7 +154,7 @@ void Layer::name(const String& string) {
     throw std::logic_error("CW::Layer::name(): Layer is null");
   }
   SUResult res = SULayerSetName(this->ref(), string.std_string().c_str());
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
 }
 
 
@@ -160,7 +163,7 @@ void Layer::name(const std::string& string) {
     throw std::logic_error("CW::Layer::name(): Layer is null");
   }
   SUResult res = SULayerSetName(this->ref(), string.c_str());
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
 }
 
 
