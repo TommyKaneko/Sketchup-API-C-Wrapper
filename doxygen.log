@@ -4960,8 +4960,8 @@ Generating docs for compound CW::Entit/home/travis/build/TommyKaneko/Sketchup-AP
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:108: warning: Member operator SUEntityRef *() (function) of class CW::Entity is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/GeometryInput.hpp:155: warning: Member add_faces(const std::vector< Face > &faces) (function) of class CW::GeometryInput is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/GeometryInput.hpp:168: warning: Member add_edges(const std::vector< Edge > &edges) (function) of class CW::GeometryInput is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/GeometryInput.cpp:146: warning: argument 'vertex' of command @param is not found in the argument list of CW::GeometryInput::add_face(const Face &face)
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/GeometryInput.cpp:146: warning: The following parameters of CW::GeometryInput::add_face(const Face &face) are not documented:
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/GeometryInput.cpp:149: warning: argument 'vertex' of command @param is not found in the argument list of CW::GeometryInput::add_face(const Face &face)
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/GeometryInput.cpp:149: warning: The following parameters of CW::GeometryInput::add_face(const Face &face) are not documented:
   parameter 'face'
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Group.hpp:82: warning: Member operator SUGroupRef() const  (function) of class CW::Group is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Group.hpp:83: warning: Member operator SUGroupRef *() (function) of class CW::Group is not documented.
@@ -8546,5 +8546,5 @@ Generating file index...
 Generating file member index...
 Generating example index...
 finalizing index lists...
-lookup cache used 18941/65536 hits=185268 misses=20282
+lookup cache used 18965/65536 hits=185468 misses=20306
 finished...

@@ -116,7 +116,7 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>Entities</b></td></t
 </div><div class="memdoc">
 <p>Faces are stored as a series of nested vectors of vertices. 1st level - array of faces 2nd level - array of loops within the face. The first loop is the outer loop. All subsequent arrays represent inner loops. 3rd level - array of indexes that refer to the vertices in the m_vertices array. Edges are stored a series of nested vectors of vertices. 1st level - array of edges/curves 2nd level - array of indexes that refer to the vertices in the m_vertices array, which represent edges/curves (curves have more than two vertices) Creates a valid, but empty <a class="el" href="class_c_w_1_1_geometry_input.html">GeometryInput</a> object. </p>
 
-<p>Definition at line <a class="el" href="_geometry_input_8cpp_source.html#l00077">77</a> of file <a class="el" href="_geometry_input_8cpp_source.html">GeometryInput.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_geometry_input_8cpp_source.html#l00080">80</a> of file <a class="el" href="_geometry_input_8cpp_source.html">GeometryInput.cpp</a>.</p>
 
 </div>
 </div>
@@ -135,7 +135,7 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>Entities</b></td></t
 </div><div class="memdoc">
 <p>Copy Constructor </p>
 
-<p>Definition at line <a class="el" href="_geometry_input_8cpp_source.html#l00091">91</a> of file <a class="el" href="_geometry_input_8cpp_source.html">GeometryInput.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_geometry_input_8cpp_source.html#l00094">94</a> of file <a class="el" href="_geometry_input_8cpp_source.html">GeometryInput.cpp</a>.</p>
 
 </div>
 </div>
@@ -153,7 +153,7 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>Entities</b></td></t
 </div><div class="memdoc">
 <p>Destructor </p>
 
-<p>Definition at line <a class="el" href="_geometry_input_8cpp_source.html#l00083">83</a> of file <a class="el" href="_geometry_input_8cpp_source.html">GeometryInput.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_geometry_input_8cpp_source.html#l00086">86</a> of file <a class="el" href="_geometry_input_8cpp_source.html">GeometryInput.cpp</a>.</p>
 
 </div>
 </div>
@@ -174,7 +174,7 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>Entities</b></td></t
 <p>Adds an <a class="el" href="class_c_w_1_1_edge.html">Edge</a> to the Geometry Input object. </p>
 <dl class="section return"><dt>Returns</dt><dd>index to the added edge. </dd></dl>
 
-<p>Definition at line <a class="el" href="_geometry_input_8cpp_source.html#l00264">264</a> of file <a class="el" href="_geometry_input_8cpp_source.html">GeometryInput.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_geometry_input_8cpp_source.html#l00268">268</a> of file <a class="el" href="_geometry_input_8cpp_source.html">GeometryInput.cpp</a>.</p>
 
 </div>
 </div>
@@ -204,7 +204,7 @@ index to the added face.</dd></dl>
 <p>size_t GeometryInput::add_vertex(Point3D vertex) { <a class="el" href="struct_s_u_point3_d.html" title="Represents a point in 3-dimensional space. ">SUPoint3D</a> vertex_ref = vertex; SUGeometryInputAddVertex(m_geometry_input, &amp;vertex_ref); return m_vertex_index++; }</p>
 <p>std::vector&lt;size_t&gt; GeometryInput::add_vertices(std::vector&lt;Point3D&gt; vertices) { std::vector&lt;size_t&gt; indices; for (size_t i = 0; i &lt; vertices.size(); i++) { indices.push_back(add_vertex(vertices[i])); } return indices; } </p>
 
-<p>Definition at line <a class="el" href="_geometry_input_8cpp_source.html#l00161">161</a> of file <a class="el" href="_geometry_input_8cpp_source.html">GeometryInput.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_geometry_input_8cpp_source.html#l00164">164</a> of file <a class="el" href="_geometry_input_8cpp_source.html">GeometryInput.cpp</a>.</p>
 
 </div>
 </div>
@@ -222,7 +222,7 @@ index to the added face.</dd></dl>
 </div><div class="memdoc">
 <p>Returns true if no geometry has been added to this object. </p>
 
-<p>Definition at line <a class="el" href="_geometry_input_8cpp_source.html#l00321">321</a> of file <a class="el" href="_geometry_input_8cpp_source.html">GeometryInput.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_geometry_input_8cpp_source.html#l00326">326</a> of file <a class="el" href="_geometry_input_8cpp_source.html">GeometryInput.cpp</a>.</p>
 
 </div>
 </div>
@@ -240,7 +240,7 @@ index to the added face.</dd></dl>
 </div><div class="memdoc">
 <p>Returns <a class="el" href="class_c_w_1_1_face.html">Face</a> objects stored in this object. The vector returns a pairing of the added face's index in the <a class="el" href="class_c_w_1_1_geometry_input.html">GeometryInput</a> object with the <a class="el" href="class_c_w_1_1_face.html">Face</a> object. </p>
 
-<p>Definition at line <a class="el" href="_geometry_input_8cpp_source.html#l00138">138</a> of file <a class="el" href="_geometry_input_8cpp_source.html">GeometryInput.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_geometry_input_8cpp_source.html#l00141">141</a> of file <a class="el" href="_geometry_input_8cpp_source.html">GeometryInput.cpp</a>.</p>
 
 </div>
 </div>
@@ -258,7 +258,7 @@ index to the added face.</dd></dl>
 </div><div class="memdoc">
 <p>Returns the number of faces have been input into this <a class="el" href="class_c_w_1_1_geometry_input.html">GeometryInput</a> object. </p>
 
-<p>Definition at line <a class="el" href="_geometry_input_8cpp_source.html#l00130">130</a> of file <a class="el" href="_geometry_input_8cpp_source.html">GeometryInput.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_geometry_input_8cpp_source.html#l00133">133</a> of file <a class="el" href="_geometry_input_8cpp_source.html">GeometryInput.cpp</a>.</p>
 
 </div>
 </div>
@@ -276,7 +276,7 @@ index to the added face.</dd></dl>
 </div><div class="memdoc">
 <p>Returns true if the objet is valid, false otherwise. </p>
 
-<p>Definition at line <a class="el" href="_geometry_input_8cpp_source.html#l00125">125</a> of file <a class="el" href="_geometry_input_8cpp_source.html">GeometryInput.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_geometry_input_8cpp_source.html#l00128">128</a> of file <a class="el" href="_geometry_input_8cpp_source.html">GeometryInput.cpp</a>.</p>
 
 </div>
 </div>
@@ -295,7 +295,7 @@ index to the added face.</dd></dl>
 </div><div class="memdoc">
 <p>Copy assignment operator. </p>
 
-<p>Definition at line <a class="el" href="_geometry_input_8cpp_source.html#l00103">103</a> of file <a class="el" href="_geometry_input_8cpp_source.html">GeometryInput.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_geometry_input_8cpp_source.html#l00106">106</a> of file <a class="el" href="_geometry_input_8cpp_source.html">GeometryInput.cpp</a>.</p>
 
 </div>
 </div>
@@ -313,7 +313,7 @@ index to the added face.</dd></dl>
 </div><div class="memdoc">
 <p>Returns Raw <a class="el" href="struct_s_u_geometry_input_ref.html" title="References a geometry input object. It is used as an input to /ref SUEntitiesFill. ">SUGeometryInputRef</a> that is stored. </p>
 
-<p>Definition at line <a class="el" href="_geometry_input_8cpp_source.html#l00120">120</a> of file <a class="el" href="_geometry_input_8cpp_source.html">GeometryInput.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_geometry_input_8cpp_source.html#l00123">123</a> of file <a class="el" href="_geometry_input_8cpp_source.html">GeometryInput.cpp</a>.</p>
 
 </div>
 </div>
@@ -324,7 +324,7 @@ index to the added face.</dd></dl>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Mar 14 2018 13:30:31 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Apr 24 2018 12:13:50 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
