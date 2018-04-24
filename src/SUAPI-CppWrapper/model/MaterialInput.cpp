@@ -25,6 +25,9 @@
 // SOFTWARE.
 //
 
+// Macro for getting rid of unused variables commonly for assert checking
+#define _unused(x) ((void)(x))
+
 #include "SUAPI-CppWrapper/model/MaterialInput.hpp"
 
 #include "SUAPI-CppWrapper/model/Material.hpp"

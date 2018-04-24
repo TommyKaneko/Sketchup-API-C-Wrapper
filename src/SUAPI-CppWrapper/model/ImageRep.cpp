@@ -25,6 +25,8 @@
 // SOFTWARE.
 //
 
+// Macro for getting rid of unused variables commonly for assert checking
+#define _unused(x) ((void)(x))
 
 #include "SUAPI-CppWrapper/model/ImageRep.hpp"
 
@@ -68,7 +70,7 @@ ImageRep::ImageRep(const ImageRep& other):
 ImageRep::~ImageRep() {
   if (SUIsValid(m_image_rep) && !m_attached) {
     SUResult res = SUImageRepRelease(&m_image_rep);
-    assert(res == SU_ERROR_NONE);
+    assert(res == SU_ERROR_NONE); _unused(res);
   }
 }
 
@@ -76,7 +78,7 @@ ImageRep::~ImageRep() {
 ImageRep& ImageRep::operator=(const ImageRep& other) {
   if (!m_attached && SUIsValid(m_image_rep)) {
     SUResult res = SUImageRepRelease(&m_image_rep);
-    assert(res == SU_ERROR_NONE);
+    assert(res == SU_ERROR_NONE); _unused(res);
   }
   m_image_rep = copy_reference(other);
   m_attached = other.m_attached;
@@ -112,7 +114,7 @@ ImageRep ImageRep::copy() const {
   SUResult res = SUImageRepCreate(&copy_image);
   assert(res == SU_ERROR_NONE);
   res = SUImageRepCopy(copy_image, m_image_rep);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return ImageRep(copy_image, false);
 }
 
@@ -130,7 +132,7 @@ void ImageRep::set_data(size_t width, size_t height, size_t bits_per_pixel, size
       throw std::invalid_argument("CW::ImageRep::set_data(): given bits_per_pixel must be 8, 24 or 32");
     }
   }
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
 }
 
 
@@ -142,7 +144,7 @@ void ImageRep::load_file(const std::string file_path) {
   if (res == SU_ERROR_SERIALIZATION) {
     throw std::invalid_argument("CW::ImageRep::load_file(): Loading file failed. Probably invalid file path given.");
   }
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
 }
 
 
@@ -157,7 +159,7 @@ SUResult ImageRep::save_to_file(const std::string file_path) const {
   else if (res == SU_ERROR_NO_DATA) {
     throw std::logic_error("CW::ImageRep::save_to_file(): Image contains no data to save.");
   }
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return res;
 }
 
@@ -169,7 +171,7 @@ size_t ImageRep::width() const {
   size_t width;
   size_t height;
   SUResult res = SUImageRepGetPixelDimensions(m_image_rep, &width, &height);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return width;
 }
 
@@ -181,7 +183,7 @@ size_t ImageRep::height() const {
   size_t width;
   size_t height;
   SUResult res = SUImageRepGetPixelDimensions(m_image_rep, &width, &height);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return height;
 }
   
@@ -192,7 +194,7 @@ size_t ImageRep::row_padding() const {
   }
   size_t padding;
   SUResult res =  SUImageRepGetRowPadding(m_image_rep, &padding);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return padding;
 }
 
@@ -205,7 +207,7 @@ void ImageRep::resize(size_t width, size_t height) {
   if (res == SU_ERROR_OUT_OF_RANGE) {
     throw std::invalid_argument("CW::ImageRep::resize(): width and height must be greater than 0.");
   }
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
 }
 
 
@@ -217,7 +219,7 @@ void ImageRep::convert_to_32bits() {
   if (res == SU_ERROR_NO_DATA) {
     throw std::logic_error("CW::ImageRep::convert_to_32bits(): Image contains no data.");
   }
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
 }
 
 
@@ -228,7 +230,7 @@ size_t ImageRep::data_size() const {
   size_t data_size;
   size_t bits_per_pixel;
   SUResult res = SUImageRepGetDataSize(m_image_rep, &data_size, &bits_per_pixel);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return data_size;
 }
  
@@ -240,7 +242,7 @@ size_t ImageRep::bits_per_pixel() const {
   size_t data_size;
   size_t bits_per_pixel;
   SUResult res = SUImageRepGetDataSize(m_image_rep, &data_size, &bits_per_pixel);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return bits_per_pixel;
 }
 
@@ -253,7 +255,7 @@ std::vector<SUByte> ImageRep::pixel_data() const {
   size_t data_size = this->data_size();
   pixel_data.reserve(this->data_size());
   SUResult res = SUImageRepGetData(m_image_rep, data_size, &pixel_data[0]);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return pixel_data;
 }
   

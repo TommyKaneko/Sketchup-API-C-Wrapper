@@ -24,6 +24,10 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 //
+
+// Macro for getting rid of unused variables commonly for assert checking
+#define _unused(x) ((void)(x))
+
 #include <cassert>
 
 #include "SUAPI-CppWrapper/model/ComponentDefinition.hpp"
@@ -40,7 +44,7 @@ namespace CW {
 SUComponentDefinitionRef ComponentDefinition::create_definition() {
   SUComponentDefinitionRef definition = SU_INVALID;
   SUResult res = SUComponentDefinitionCreate(&definition);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return definition;
 }
 
@@ -54,7 +58,7 @@ SUComponentDefinitionRef ComponentDefinition::copy_reference(const ComponentDefi
     // Copy across all nested geometry
     SUEntitiesRef new_entities_ref = SU_INVALID;
     SUResult res = SUComponentDefinitionGetEntities(new_definition, &new_entities_ref);
-    assert(res == SU_ERROR_NONE);
+    assert(res == SU_ERROR_NONE); _unused(res);
     Entities new_entities(new_entities_ref, other.model().ref());
     new_entities.add(other.entities());
   }
@@ -99,7 +103,7 @@ ComponentDefinition& ComponentDefinition::operator=(const ComponentDefinition& o
   if (!m_attached && SUIsValid(m_entity)) {
     SUComponentDefinitionRef definition = this->ref();
     SUResult res = SUComponentDefinitionRelease(&definition);
-    assert(res == SU_ERROR_NONE);
+    assert(res == SU_ERROR_NONE); _unused(res);
   }
   m_entity = SUComponentDefinitionToEntity(copy_reference(other));
   // Copy across all ComponentDefinition properties
@@ -126,7 +130,7 @@ ComponentInstance ComponentDefinition::create_instance() const {
   }
   SUComponentInstanceRef instance = SU_INVALID;
   SUResult res = SUComponentDefinitionCreateInstance(this->ref(), &instance);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return ComponentInstance(instance, false);
 }
 
@@ -135,7 +139,7 @@ Group ComponentDefinition::create_group() const {
   assert(this->is_group());
   SUComponentInstanceRef instance = SU_INVALID;
   SUResult res = SUComponentDefinitionCreateInstance(m_definition, &instance);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   SUGroupRef group = SUGroupFromComponentInstance(instance);
   return Group(group, false);
 }
@@ -148,7 +152,7 @@ Entities ComponentDefinition::entities() const {
   }
   SUEntitiesRef entities = SU_INVALID;
   SUResult res = SUComponentDefinitionGetEntities(this->ref(), &entities);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return Entities(entities, this->model().ref());
 }
 
@@ -161,7 +165,7 @@ String ComponentDefinition::name() const {
   SUResult res = SUStringCreate(&name_string);
   assert(res == SU_ERROR_NONE);
   res = SUComponentDefinitionGetName(this->ref(), &name_string);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return String(name_string);
 }
 
@@ -184,7 +188,7 @@ bool ComponentDefinition::is_group() const {
   }
   SUComponentType type;
   SUResult res = SUComponentDefinitionGetType(this->ref(), &type);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   if (type == SUComponentType_Group) {
     return true;
   }
@@ -200,7 +204,7 @@ Behavior ComponentDefinition::behavior() const {
   }
   SUComponentBehavior behavior;
   SUResult res = SUComponentDefinitionGetBehavior(this->ref(), &behavior);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return Behavior(behavior);
 }
 
@@ -210,7 +214,7 @@ void ComponentDefinition::behavior(const Behavior& behavior) const {
   }
   SUComponentBehavior behavior_ref = behavior.ref();
   SUResult res = SUComponentDefinitionSetBehavior(this->ref(), &behavior_ref);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
 }
   
 /****************

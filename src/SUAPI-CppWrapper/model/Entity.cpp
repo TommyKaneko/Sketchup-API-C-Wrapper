@@ -25,6 +25,9 @@
 // SOFTWARE.
 //
 
+// Macro for getting rid of unused variables commonly for assert checking
+#define _unused(x) ((void)(x))
+
 #include "SUAPI-CppWrapper/model/Entity.hpp"
 
 #include <algorithm>
@@ -116,7 +119,7 @@ std::vector<AttributeDictionary>  Entity::attribute_dictionaries() const {
   }
   std::vector<SUAttributeDictionaryRef> dicts_ref(num_dicts, SU_INVALID);
   res = SUEntityGetAttributeDictionaries(m_entity, num_dicts, dicts_ref.data(), &num_dicts);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   std::vector<AttributeDictionary> dicts(num_dicts);
   std::transform(dicts_ref.begin(), dicts_ref.end(), dicts.begin(),
   [](const SUAttributeDictionaryRef& value) {

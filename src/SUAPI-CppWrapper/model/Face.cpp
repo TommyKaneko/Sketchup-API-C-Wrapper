@@ -25,6 +25,9 @@
 // SOFTWARE.
 //
 
+// Macro for getting rid of unused variables commonly for assert checking
+#define _unused(x) ((void)(x))
+
 #include <cassert>
 #include <stdexcept>
 
@@ -130,7 +133,7 @@ Face::~Face() {
   if (!m_attached && SUIsValid(m_entity)) {
     SUFaceRef face = this->ref();
     SUResult res = SUFaceRelease(&face);
-    assert(res == SU_ERROR_NONE);
+    assert(res == SU_ERROR_NONE); _unused(res);
   }
 }
 
@@ -142,7 +145,7 @@ Face& Face::operator=(const Face& other) {
   if (!m_attached && SUIsValid(m_entity)) {
     SUFaceRef face = this->ref();
     SUResult res = SUFaceRelease(&face);
-    assert(res == SU_ERROR_NONE);
+    assert(res == SU_ERROR_NONE); _unused(res);
   }
   m_entity = SUFaceToEntity(copy_reference(other));
   if (!other.m_attached && SUIsValid(other.m_entity)) {
@@ -174,7 +177,7 @@ double Face::area() const {
   }
   double area;
   SUResult res = SUFaceGetArea(this->ref(), &area);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return area;
 }
 
@@ -190,7 +193,7 @@ void Face::add_inner_loop(std::vector<Point3D>& points, LoopInput &loop_input) {
   if (res == SU_ERROR_INVALID_INPUT) {
     throw std::invalid_argument("CW::Face::add_inner_loop(): Arguments are invalid");
   }
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
 }
 
 
@@ -203,7 +206,7 @@ Material Face::back_material() const {
   if (res == SU_ERROR_NO_DATA) {
     return Material();
   }
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return Material(material);
 }
 
@@ -213,7 +216,7 @@ Material Face::back_material(const Material& material) {
     throw std::logic_error("CW::Face::back_material(): Face is null");
   }
   SUResult res = SUFaceSetBackMaterial(this->ref(), material.ref());
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return material;
 }
 
@@ -357,7 +360,7 @@ Loop Face::outer_loop() const {
   }
   SULoopRef lp = SU_INVALID;
   SUResult res = SUFaceGetOuterLoop(this->ref(), &lp);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return Loop(lp);
 }
 
@@ -381,7 +384,7 @@ Face& Face::reverse() {
     throw std::logic_error("CW::Face::reverse(): Face is null");
   }
   SUResult res = SUFaceReverse(this->ref());
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return *this;
 }
 

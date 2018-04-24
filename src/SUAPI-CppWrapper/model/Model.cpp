@@ -25,6 +25,9 @@
 // SOFTWARE.
 //
 
+// Macro for getting rid of unused variables commonly for assert checking
+#define _unused(x) ((void)(x))
+
 #include "SUAPI-CppWrapper/model/Model.hpp"
 
 #include <cassert>
@@ -49,7 +52,7 @@ namespace CW {
 SUModelRef Model::create_model() {
   SUModelRef model = SU_INVALID;
   SUResult res = SUModelCreate(&model);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return model;
 }
 
@@ -115,7 +118,7 @@ std::string Model::version_string() const
 {
   int major = 0, minor = 0, build = 0;
   SUResult res = SUModelGetVersion(m_model, &major, &minor, &build);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   std::string version = std::to_string(major) + "." + std::to_string(minor) + "." + std::to_string(build);
   return version;
 }
@@ -127,7 +130,7 @@ Layer Model::active_layer() const {
   }
   SULayerRef layer = SU_INVALID;
   SUResult res = SUModelGetDefaultLayer(m_model, &layer);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return Layer(layer);
 }
 
@@ -176,7 +179,7 @@ std::vector<AttributeDictionary>  Model::attribute_dictionaries() const {
   assert(res == SU_ERROR_NONE);
   std::vector<SUAttributeDictionaryRef> dict_refs(count, SU_INVALID);
   res = SUModelGetAttributeDictionaries(m_model, count, dict_refs.data(), &count);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   std::vector<AttributeDictionary> dicts(count);
   std::transform(dict_refs.begin(), dict_refs.end(), dicts.begin(),
     [](const SUAttributeDictionaryRef& value){
@@ -192,7 +195,7 @@ AttributeDictionary Model::attribute_dictionary(const std::string& dict_name) co
   }
   SUAttributeDictionaryRef dict = SU_INVALID;
   SUResult res = SUModelGetAttributeDictionary(m_model, dict_name.c_str(), &dict);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return AttributeDictionary(dict);
 }
 
@@ -204,7 +207,7 @@ Axes Model::axes() const {
   }
   SUAxesRef axes = SU_INVALID;
   SUResult res = SUModelGetAxes(m_model, &axes);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return Axes(axes);
 }
 
@@ -240,7 +243,7 @@ std::vector<ComponentDefinition> Model::definitions() const {
   assert(res == SU_ERROR_NONE);
   std::vector<SUComponentDefinitionRef> def_refs(count, SU_INVALID);
   res = SUModelGetComponentDefinitions(m_model, count, def_refs.data(), &count);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   std::vector<ComponentDefinition> defs(count);
   std::transform(def_refs.begin(), def_refs.end(), defs.begin(),
     [](const SUComponentDefinitionRef& value){
@@ -259,7 +262,7 @@ std::vector<ComponentDefinition> Model::group_definitions() const {
   assert(res == SU_ERROR_NONE);
   std::vector<SUComponentDefinitionRef> def_refs(count, SU_INVALID);
   res = SUModelGetGroupDefinitions(m_model, count, def_refs.data(), &count);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   std::vector<ComponentDefinition> defs(count);
   std::transform(def_refs.begin(), def_refs.end(), defs.begin(),
     [](const SUComponentDefinitionRef& value){
@@ -275,7 +278,7 @@ Entities Model::entities() const {
   }
   SUEntitiesRef entities = SU_INVALID;
   SUResult res = SUModelGetEntities(m_model, &entities);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return Entities(entities, m_model);
 }
 
@@ -331,7 +334,7 @@ std::vector<Layer> Model::layers() const {
   assert(res == SU_ERROR_NONE);
   std::vector<SULayerRef> layer_refs(count, SU_INVALID);
   res = SUModelGetLayers(m_model, count, layer_refs.data(), &count);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   std::vector<Layer> layers(count);
   std::transform(layer_refs.begin(), layer_refs.end(), layers.begin(),
     [](const SULayerRef& value){
@@ -354,7 +357,7 @@ void Model::add_layers(std::vector<Layer>& layers) {
       return value.ref();
     });
   SUResult res = SUModelAddLayers(m_model, layers.size(), layer_refs.data());
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   for (size_t i=0; i < layers.size(); i++) {
     layers[i].attached(true);
   }
@@ -390,7 +393,7 @@ std::vector<Material> Model::materials() const {
   }
   std::vector<SUMaterialRef> material_refs(count, SU_INVALID);
   res = SUModelGetMaterials(m_model, count, material_refs.data(), &count);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   std::vector<Material> materials(count);
   std::transform(material_refs.begin(), material_refs.end(), materials.begin(),
     [](const SUMaterialRef& value){
@@ -413,7 +416,7 @@ void Model::add_materials(std::vector<Material>& materials) {
       return value.ref();
     });
   SUResult res = SUModelAddMaterials(m_model, materials.size(), material_refs.data());
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   for (size_t i=0; i < materials.size(); i++) {
     materials[i].attached(true);
   }
@@ -466,7 +469,7 @@ OptionsManager Model::options()
 {
   SUOptionsManagerRef options_manager = SU_INVALID;
   SUResult res = SUModelGetOptionsManager(m_model, &options_manager);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return OptionsManager(options_manager);
 }
 
@@ -536,7 +539,7 @@ RenderingOptions Model::rendering_options()
 {
   SURenderingOptionsRef ref = SU_INVALID;
   SUResult res = SUModelGetRenderingOptions(m_model, &ref);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return RenderingOptions(ref);
 }
 
@@ -544,7 +547,7 @@ ShadowInfo Model::shadow_info()
 {
   SUShadowInfoRef ref = SU_INVALID;
   SUResult res = SUModelGetShadowInfo(m_model, &ref);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return ShadowInfo(ref);
 }
 
@@ -579,7 +582,7 @@ ModelStatistics::ModelStatistics(const Model& model):
   m_model_statistics(SUModelStatistics{})
 {
   SUResult res = SUModelGetStatistics(model, &m_model_statistics);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
 }
   
 int ModelStatistics::edges() const

@@ -1,5 +1,6 @@
 //
 //  OptionsManager.cpp
+//
 // Sketchup C++ Wrapper for C API
 // MIT License
 //
@@ -23,6 +24,10 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 //
+
+// Macro for getting rid of unused variables commonly for assert checking
+#define _unused(x) ((void)(x))
+
 #include <cassert>
 
 #include "SUAPI-CppWrapper/model/OptionsManager.hpp"
@@ -46,7 +51,7 @@ std::vector<std::string> OptionsManager::get_provider_names() const
     assert(res == SU_ERROR_NONE);
   }
   res = SUOptionsManagerGetOptionsProviderNames(m_options_manager, num_requested, &refs[0], &num_returned);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   std::vector<std::string> keys;
   for(auto i = 0; i < refs.size(); i++) {
     keys.push_back(String(refs[i]));
@@ -58,7 +63,7 @@ OptionsProvider OptionsManager::get_provider(const std::string& name)
 {
   SUOptionsProviderRef provider = SU_INVALID;
   SUResult res = SUOptionsManagerGetOptionsProviderByName(m_options_manager, &name[0], &provider);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return OptionsProvider(provider);
 }
 
@@ -91,7 +96,7 @@ std::vector<std::string> OptionsProvider::keys() const
     assert(res == SU_ERROR_NONE);
   }
   res = SUOptionsProviderGetKeys(m_options_provider, num_requested, &refs[0], &num_returned);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
 
   for(auto i = 0; i < refs.size(); i++) {
     keys.push_back(String(refs[i]));
@@ -106,7 +111,7 @@ TypedValue OptionsProvider::get_value(std::string key) const
   TypedValue tval;
   SUTypedValueRef *t = tval;
   SUResult res = SUOptionsProviderGetValue(m_options_provider, key_char, t);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return tval;
 }
 

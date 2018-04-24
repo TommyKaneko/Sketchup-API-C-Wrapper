@@ -25,6 +25,9 @@
 // SOFTWARE.
 //
 
+// Macro for getting rid of unused variables commonly for assert checking
+#define _unused(x) ((void)(x))
+
 #include "SUAPI-CppWrapper/String.hpp"
 
 #include <cassert>
@@ -75,7 +78,7 @@ String& String::operator=(String& other) {
   // Release old string and create new
   if (SUIsValid(m_string)) {
     SUResult res = SUStringRelease(&m_string);
-    assert(res == SU_ERROR_NONE);
+    assert(res == SU_ERROR_NONE); _unused(res);
   }
   m_string = SU_INVALID;
   m_string = create_string_ref(other.std_string(), StringEncoding::UTF8);
@@ -100,7 +103,7 @@ bool operator==(const String &lhs, const String &rhs) {
 SUStringRef String::create_string_ref() {
   SUStringRef string_ref = SU_INVALID;
   SUResult res = SUStringCreate(&string_ref);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return string_ref;
 }
 
@@ -138,7 +141,7 @@ SUStringRef String::create_string_ref(const unichar string_input[]) {
 String::~String() {
   if (SUIsValid(m_string)) {
     SUResult res = SUStringRelease(&m_string);
-    assert(res == SU_ERROR_NONE);
+    assert(res == SU_ERROR_NONE); _unused(res);
   }
 }
 
@@ -155,7 +158,7 @@ std::string String::std_string() const {
   out_length++; // Allow for null terminated string
   std::vector<char> char_array(out_length, 0);
   res = SUStringGetUTF8(m_string, out_length, char_array.data(), &out_length);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   std::string str(char_array.data());
   return str;
 }
@@ -169,7 +172,7 @@ String::operator std::string() const {
 size_t String::size() const {
   size_t out_length = 0;
   SUResult res = SUStringGetUTF8Length(m_string, &out_length);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return out_length;
 }
 

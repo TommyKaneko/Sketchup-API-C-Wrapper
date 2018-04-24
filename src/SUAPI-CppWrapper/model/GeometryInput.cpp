@@ -25,6 +25,9 @@
 // SOFTWARE.
 //
 
+// Macro for getting rid of unused variables commonly for assert checking
+#define _unused(x) ((void)(x))
+
 #include <cassert>
 #include <iostream>
 
@@ -54,7 +57,7 @@ std::unordered_map<SUGeometryInputRef, size_t> GeometryInput::num_objects_ = {};
 SUGeometryInputRef GeometryInput::create_geometry_input() {
   SUGeometryInputRef geom_input = SU_INVALID;
   SUResult res = SUGeometryInputCreate(&geom_input);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return geom_input;
 }
 
@@ -90,7 +93,7 @@ GeometryInput::~GeometryInput() {
   if (SUIsValid(m_geometry_input) && !m_attached && num_objects_[m_geometry_input] == 1) {
     num_objects_.erase(m_geometry_input);
     SUResult res = SUGeometryInputRelease(&m_geometry_input);
-    assert(res == SU_ERROR_NONE);
+    assert(res == SU_ERROR_NONE); _unused(res);
   }
   else {
     --num_objects_[m_geometry_input];
@@ -119,7 +122,7 @@ GeometryInput& GeometryInput::operator=(const GeometryInput& other) {
   if (SUIsValid(m_geometry_input) && !m_attached && num_objects_[m_geometry_input] == 1) {
     num_objects_.erase(m_geometry_input);
     SUResult res = SUGeometryInputRelease(&m_geometry_input);
-    assert(res == SU_ERROR_NONE);
+    assert(res == SU_ERROR_NONE); _unused(res);
   }
   else {
     --num_objects_[m_geometry_input];

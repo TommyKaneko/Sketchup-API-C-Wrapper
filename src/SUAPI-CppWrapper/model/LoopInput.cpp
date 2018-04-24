@@ -25,6 +25,9 @@
 // SOFTWARE.
 //
 
+// Macro for getting rid of unused variables commonly for assert checking
+#define _unused(x) ((void)(x))
+
 #include "SUAPI-CppWrapper/model/LoopInput.hpp"
 
 #include <cassert>
@@ -115,7 +118,7 @@ LoopInput::LoopInput(const LoopInput& other):
 LoopInput::~LoopInput() {
   if (!m_attached && SUIsValid(m_loop_input)) {
     SUResult res = SULoopInputRelease(&m_loop_input);
-    assert(res == SU_ERROR_NONE);
+    assert(res == SU_ERROR_NONE); _unused(res);
   }
 }
 
@@ -165,7 +168,7 @@ LoopInput& LoopInput::add_vertex_index(const size_t index) {
     throw std::logic_error("CW::LoopInput::add_vertex_index(): LoopInput is null");
   }
   SUResult res = SULoopInputAddVertexIndex(m_loop_input, index);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   m_edge_num++;
   return (*this);
 }
@@ -179,7 +182,7 @@ LoopInput& LoopInput::set_edge_hidden(const size_t edge_index, const bool hidden
   if(res == SU_ERROR_OUT_OF_RANGE) {
     throw std::invalid_argument("CW::LoopInput::set_edge_hidden(): edge_index is larger than the number of vertices in the LoopInput");
   }
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return (*this);
 }
 
@@ -191,7 +194,7 @@ LoopInput& LoopInput::set_edge_soft(const size_t edge_index, const bool soft) {
   if(res == SU_ERROR_OUT_OF_RANGE) {
     throw std::invalid_argument("CW::LoopInput::set_edge_soft(): edge_index is larger than the number of vertices in the LoopInput");
   }
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return (*this);
 }
 
@@ -203,7 +206,7 @@ LoopInput& LoopInput::set_edge_smooth(const size_t edge_index, const bool smooth
   if(res == SU_ERROR_OUT_OF_RANGE) {
     throw std::invalid_argument("CW::LoopInput::set_edge_smooth(): edge_index is larger than the number of vertices in the LoopInput");
   }
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return (*this);
 }
 
@@ -215,7 +218,7 @@ LoopInput& LoopInput::set_edge_material(const size_t edge_index, const Material&
   if(res == SU_ERROR_OUT_OF_RANGE) {
     throw std::invalid_argument("CW::LoopInput::set_edge_material(): edge_index is larger than the number of vertices in the LoopInput");
   }
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return (*this);}
 
 LoopInput& LoopInput::set_edge_layer(const size_t edge_index, const Layer& layer) {
@@ -226,7 +229,7 @@ LoopInput& LoopInput::set_edge_layer(const size_t edge_index, const Layer& layer
   if(res == SU_ERROR_OUT_OF_RANGE) {
     throw std::invalid_argument("CW::LoopInput::set_edge_layer(): edge_index is larger than the number of vertices in the LoopInput");
   }
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return (*this);
 }
 

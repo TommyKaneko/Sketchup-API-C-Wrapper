@@ -24,6 +24,10 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 //
+
+// Macro for getting rid of unused variables commonly for assert checking
+#define _unused(x) ((void)(x))
+
 #include <cassert>
 
 #include "SUAPI-CppWrapper/model/Entities.hpp"
@@ -66,7 +70,7 @@ std::vector<Face> Entities::faces() const {
   }
   std::vector<SUFaceRef> face_refs(count, SU_INVALID);
   res = SUEntitiesGetFaces(m_entities, count, face_refs.data(), &count);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   std::vector<Face> faces(count);
   std::transform(face_refs.begin(), face_refs.end(), faces.begin(),
   [](const SUFaceRef& value) {
@@ -88,7 +92,7 @@ std::vector<Edge> Entities::edges(bool stray_only) const {
   }
   std::vector<SUEdgeRef> edge_refs(count, SU_INVALID);
   res = SUEntitiesGetEdges(m_entities, stray_only, count, edge_refs.data(), &count);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   std::vector<Edge> edges(count);
   std::transform(edge_refs.begin(), edge_refs.end(), edges.begin(),
   [](const SUEdgeRef& value) {
@@ -110,7 +114,7 @@ std::vector<ComponentInstance> Entities::instances() const {
   }
   std::vector<SUComponentInstanceRef> instance_refs(count, SU_INVALID);
   res = SUEntitiesGetInstances(m_entities, count, instance_refs.data(), &count);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   std::vector<ComponentInstance> instances(count);
   std::transform(instance_refs.begin(), instance_refs.end(), instances.begin(),
   [](const SUComponentInstanceRef& value) {
@@ -132,7 +136,7 @@ std::vector<Group> Entities::groups() const {
   }
   std::vector<SUGroupRef> group_refs(count);
   res = SUEntitiesGetGroups(m_entities, count, &group_refs[0], &count);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   std::vector<Group> groups;
   groups.reserve(count);
   for (size_t i=0; i < group_refs.size(); ++i) {
@@ -148,7 +152,7 @@ BoundingBox3D Entities::bounding_box() const {
   }
   SUBoundingBox3D box = SU_INVALID;
   SUResult res = SUEntitiesGetBoundingBox(m_entities, &box);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return BoundingBox3D(box);
 }
 
@@ -172,7 +176,7 @@ size_t Entities::size() const {
   total_count += count;
   count = 0;
   res = SUEntitiesGetNumGroups(m_entities, &count);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   total_count += count;
   return total_count;
 }
@@ -217,7 +221,7 @@ SUResult Entities::fill(GeometryInput &geom_input) {
   assert(res == SU_ERROR_NONE);
 
   SUResult fill_res = SUEntitiesFill(m_entities, geom_input.m_geometry_input, true);
-  assert(fill_res == SU_ERROR_NONE);
+  assert(fill_res == SU_ERROR_NONE); _unused(fill_res);
   /**
   // Now add other data that SUEntitiesFill cannot add to the entities.
   // Apply properties to Faces
@@ -268,7 +272,7 @@ std::vector<Face> Entities::add_faces(std::vector<Face>& faces) {
   std::transform(faces.begin(), faces.end(), refs.begin(), [](const CW::Face& face) {return face.ref(); });
 
   SUResult res = SUEntitiesAddFaces(m_entities, refs.size(), refs.data());
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
 
   // Transfer ownership of each face
   for (auto& face : faces)
@@ -285,7 +289,7 @@ std::vector<Edge> Entities::add_edges(std::vector<Edge>& edges) {
   std::transform(edges.begin(), edges.end(), refs.begin(), [](const CW::Edge& edge) {return edge.ref(); });
 
   SUResult res = SUEntitiesAddEdges(m_entities, refs.size(), refs.data());
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
 
   // Transfer ownership of each edge
   for (auto& edge : edges)
@@ -301,7 +305,7 @@ Edge Entities::add_edge(Edge& edge) {
   }
   SUEdgeRef edge_ref = edge.ref();
   SUResult res = SUEntitiesAddEdges(m_entities, 1, &edge_ref);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   edge.attached(true);
   return edge;
 }
@@ -315,7 +319,7 @@ void Entities::add_instance(ComponentInstance& instance) {
     throw std::invalid_argument("CW::Entities::add_instance(): ComponentInstance argument is invalid");
   }
   SUResult res = SUEntitiesAddInstance(m_entities, instance, nullptr);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   instance.attached(true);
 }
 
@@ -340,7 +344,7 @@ ComponentInstance Entities::add_instance(const ComponentDefinition& definition, 
     SUStringRef name_ref = name.ref();
     res = SUEntitiesAddInstance(m_entities, instance, &name_ref);
   }
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return ComponentInstance(instance, true);
 }
 
@@ -387,7 +391,7 @@ Group Entities::add_group(const ComponentDefinition& definition, const Transform
 
   // TODO: the way groups are implemented are a problem.  Come back to this.
   //SUResult res = SUComponentDefinitionCreateGroup(definition.ref(), &group);
-  //assert(res == SU_ERROR_NONE);
+  //assert(res == SU_ERROR_NONE); _unused(res);
   //SUTransformation transform = transformation.ref();
   //res = SUComponentInstanceSetTransform(instance, &transform);
 }
@@ -399,7 +403,7 @@ Group Entities::add_group() {
   Group new_group;
   // Add group to the entities object before populating it.
   SUResult res = SUEntitiesAddGroup(m_entities, new_group.ref());
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return new_group;
 }
 
@@ -410,7 +414,7 @@ bool Entities::transform_entities(std::vector<Entity>& elems, const Transformati
   }
   SUTransformation trans_ref = transform.ref();
   SUResult res = SUEntitiesTransform(m_entities, elems.size(), elems[0], &trans_ref);
-  assert(res == SU_ERROR_NONE || res == SU_ERROR_GENERIC);
+  assert(res == SU_ERROR_NONE || res == SU_ERROR_GENERIC); _unused(res);
   if (res == SU_ERROR_UNSUPPORTED) {
     throw std::invalid_argument("CW::Entities::transform_entities(): One of the elements given in the Entity vector is not contained by this Entities object.");
   }

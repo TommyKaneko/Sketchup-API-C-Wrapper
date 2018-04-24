@@ -25,6 +25,9 @@
 // SOFTWARE.
 //
 
+// Macro for getting rid of unused variables commonly for assert checking
+#define _unused(x) ((void)(x))
+
 #include "SUAPI-CppWrapper/model/Group.hpp"
 
 #include <cassert>
@@ -45,7 +48,7 @@ namespace CW {
 SUGroupRef Group::create_group() {
   SUGroupRef group_ref = SU_INVALID;
   SUResult res = SUGroupCreate(&group_ref);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return group_ref;
 }
 
@@ -110,7 +113,7 @@ ComponentDefinition Group::definition() const {
   }
   SUComponentDefinitionRef def_ref = SU_INVALID;
   SUResult res = SUGroupGetDefinition(this->ref(), &def_ref);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return ComponentDefinition(def_ref);
 }
 
@@ -132,7 +135,7 @@ String Group::name() const {
   String string;
   SUStringRef * const string_ref = string;
   SUResult res = SUGroupGetName(this->ref(), string_ref);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return string;
 }
 
@@ -143,7 +146,7 @@ void Group::name(const String& string) {
   }
   std::string name_string = string.std_string();
   SUResult res = SUGroupSetName(this->ref(), name_string.c_str());
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
 }
 
 
@@ -163,7 +166,7 @@ void Group::transformation(const Transformation& transform) {
   }
   SUTransformation transform_ref = transform.ref();
   SUResult res = SUGroupSetTransform(this->ref(), &transform_ref);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
 }
 
 } /* namespace CW */

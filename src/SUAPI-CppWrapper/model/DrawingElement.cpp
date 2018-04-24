@@ -24,6 +24,10 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 //
+
+// Macro for getting rid of unused variables commonly for assert checking
+#define _unused(x) ((void)(x))
+
 #include "SUAPI-CppWrapper/model/DrawingElement.hpp"
 
 #include <cassert>
@@ -76,7 +80,7 @@ BoundingBox3D DrawingElement::bounds() {
   }
   SUBoundingBox3D box = SU_INVALID;
   SUResult res = SUDrawingElementGetBoundingBox(this->ref(), &box);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return BoundingBox3D(box);
 }
 
@@ -109,7 +113,7 @@ bool DrawingElement::casts_shadows() const {
   }
   bool cast_shadows_flag;
   SUResult res = SUDrawingElementGetCastsShadows(this->ref(), &cast_shadows_flag);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return cast_shadows_flag;
 }
 
@@ -157,7 +161,7 @@ Layer DrawingElement::layer() const {
   if (res == SU_ERROR_NULL_POINTER_OUTPUT || res == SU_ERROR_NO_DATA) {
     return Layer();
   }
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return Layer(layer_ref, true);
 }
 
@@ -184,7 +188,7 @@ Material DrawingElement::material() const {
   if (res == SU_ERROR_NO_DATA || res == SU_ERROR_NULL_POINTER_OUTPUT) {
     return Material();
   }
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return Material(material_ref, true);
 }
 
@@ -207,7 +211,7 @@ bool DrawingElement::receive_shadows() const {
   }
   bool receives_shadows_flag;
   SUResult res = SUDrawingElementGetReceivesShadows(this->ref(), &receives_shadows_flag);
-  assert (res == SU_ERROR_NONE);
+  assert (res == SU_ERROR_NONE); _unused(res);
   return receives_shadows_flag;
 }
 

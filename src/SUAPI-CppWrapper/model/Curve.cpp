@@ -25,6 +25,9 @@
 // SOFTWARE.
 //
 
+// Macro for getting rid of unused variables commonly for assert checking
+#define _unused(x) ((void)(x))
+
 #include <algorithm>
 #include <cassert>
 #include <stdexcept>
@@ -71,7 +74,7 @@ std::vector<Edge> Curve::get_edges() const{
   assert(res == SU_ERROR_NONE);
   std::vector<SUEdgeRef> ref_edges(num_edges, SU_INVALID);
   res = SUCurveGetEdges(this->ref(), num_edges, ref_edges.data(), &num_edges);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   std::vector<Edge> edges(num_edges);
   std::transform(ref_edges.begin(), ref_edges.end(), edges.begin(),
   [](const SUEdgeRef& value) {

@@ -25,6 +25,9 @@
 // SOFTWARE.
 //
 
+// Macro for getting rid of unused variables commonly for assert checking
+#define _unused(x) ((void)(x))
+
 #include <cassert>
 
 #include "SUAPI-CppWrapper/model/ComponentInstance.hpp"
@@ -75,7 +78,7 @@ ComponentInstance::~ComponentInstance() {
   if (!m_attached && SUIsValid(m_entity)) {
     SUComponentInstanceRef instance = SUComponentInstanceFromEntity(m_entity);
     SUResult res = SUComponentInstanceRelease(&instance);
-    assert(res == SU_ERROR_NONE);
+    assert(res == SU_ERROR_NONE); _unused(res);
   }
 }
 
@@ -87,7 +90,7 @@ ComponentInstance& ComponentInstance::operator=(const ComponentInstance& other) 
   if (!m_attached && SUIsValid(m_entity)) {
     SUComponentInstanceRef instance = SUComponentInstanceFromEntity(m_entity);
     SUResult res = SUComponentInstanceRelease(&instance);
-    assert(res == SU_ERROR_NONE);
+    assert(res == SU_ERROR_NONE); _unused(res);
   }
   m_entity = SUComponentInstanceToEntity(copy_reference(other));
   DrawingElement::operator=(other);
@@ -111,7 +114,7 @@ Transformation ComponentInstance::transformation() const {
   }
   SUTransformation transform;
   SUResult res = SUComponentInstanceGetTransform(this->ref(), &transform);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return Transformation(transform);
 }
 
@@ -122,7 +125,7 @@ void ComponentInstance::transformation(const Transformation& transform) {
   }
   SUTransformation su_transform = transform.ref();
   SUResult res = SUComponentInstanceSetTransform(this->ref(), &su_transform);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
 }
 
 
@@ -132,7 +135,7 @@ ComponentDefinition ComponentInstance::definition() const{
   }
   SUComponentDefinitionRef component = SU_INVALID;
   SUResult res = SUComponentInstanceGetDefinition(this->ref(), &component);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return ComponentDefinition(component);
 }
 
@@ -144,7 +147,7 @@ String ComponentInstance::name() const {
   String string;
   SUStringRef * const string_ref = string;
   SUResult res = SUComponentInstanceGetName(this->ref(), string_ref);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return string;
 }
 
@@ -155,7 +158,7 @@ void ComponentInstance::name(const String& string) {
   }
   std::string name_string = string.std_string();
   SUResult res = SUComponentInstanceSetName(this->ref(), name_string.c_str());
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
 }
 
 

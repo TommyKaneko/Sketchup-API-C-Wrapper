@@ -24,6 +24,10 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 //
+
+// Macro for getting rid of unused variables commonly for assert checking
+#define _unused(x) ((void)(x))
+
 #include <cassert>
 #include <stdexcept>
 
@@ -153,7 +157,7 @@ bool TypedValue::empty() const {
 SUTypedValueRef TypedValue::create_typed_value() {
   SUTypedValueRef typed_value = SU_INVALID;
   SUResult res = SUTypedValueCreate(&typed_value);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return typed_value;
 }
 
@@ -161,7 +165,7 @@ SUTypedValueRef TypedValue::create_typed_value() {
 TypedValue::~TypedValue() {
   if (SUIsValid(m_typed_value) && !m_attached) {
     SUResult res = SUTypedValueRelease(&m_typed_value);
-    assert(res == SU_ERROR_NONE);
+    assert(res == SU_ERROR_NONE); _unused(res);
   }
 }
 
@@ -172,7 +176,7 @@ SUTypedValueType TypedValue::get_type() const {
   }
   SUTypedValueType type;
   SUResult res = SUTypedValueGetType(m_typed_value, &type);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return type;
 }
 
@@ -186,7 +190,7 @@ char TypedValue::byte_value() const {
   }
   char byte_val;
   SUResult res = SUTypedValueGetByte(m_typed_value, &byte_val);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return byte_val;
 }
 
@@ -196,7 +200,7 @@ TypedValue& TypedValue::byte_value(const char byte_val) {
     m_typed_value = create_typed_value();
   }
   SUResult res = SUTypedValueSetByte(m_typed_value, byte_val);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return *this;
 }
 
@@ -215,7 +219,7 @@ int16_t TypedValue::int16_value() const {
   }
   int16_t int16_val;
   SUResult res = SUTypedValueGetInt16(m_typed_value, &int16_val);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return int16_val;
 }
 
@@ -225,7 +229,7 @@ TypedValue& TypedValue::int16_value(const int16_t int16_val) {
     m_typed_value = create_typed_value();
   }
   SUResult res = SUTypedValueSetInt16(m_typed_value, int16_val);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return *this;
 }
 
@@ -244,7 +248,7 @@ int32_t TypedValue::int32_value() const {
   }
   int32_t int32_val;
   SUResult res = SUTypedValueGetInt32(m_typed_value, &int32_val);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return int32_val;
 }
 
@@ -254,7 +258,7 @@ TypedValue& TypedValue::int32_value(const int32_t int32_val) {
     m_typed_value = create_typed_value();
   }
   SUResult res = SUTypedValueSetInt32(m_typed_value, int32_val);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return *this;
 }
 
@@ -273,7 +277,7 @@ float TypedValue::float_value() const{
   }
   float float_val;
   SUResult res = SUTypedValueGetFloat(m_typed_value, &float_val);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return float_val;
 }
 
@@ -283,7 +287,7 @@ TypedValue& TypedValue::float_value(const float float_val) {
     m_typed_value = create_typed_value();
   }
   SUResult res = SUTypedValueSetFloat(m_typed_value, float_val);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return *this;
 }
 
@@ -302,7 +306,7 @@ double TypedValue::double_value() const {
   }
   double double_val;
   SUResult res = SUTypedValueGetDouble(m_typed_value, &double_val);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return double_val;
 }
 
@@ -312,7 +316,7 @@ TypedValue& TypedValue::double_value(const double double_val) {
     m_typed_value = create_typed_value();
   }
   SUResult res = SUTypedValueSetDouble(m_typed_value, double_val);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return *this;
 }
 
@@ -331,7 +335,7 @@ bool TypedValue::bool_value() const {
   }
   bool bool_val;
   SUResult res = SUTypedValueGetBool(m_typed_value, &bool_val);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return bool_val;
 }
 
@@ -341,7 +345,7 @@ TypedValue& TypedValue::bool_value(const bool bool_val) {
     m_typed_value = create_typed_value();
   }
   SUResult res = SUTypedValueSetBool(m_typed_value, bool_val);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return *this;
 }
 
@@ -360,7 +364,7 @@ Color TypedValue::color_value() const {
   }
   SUColor color_val;
   SUResult res = SUTypedValueGetColor(m_typed_value, &color_val);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return Color(color_val);
 }
 
@@ -371,7 +375,7 @@ TypedValue& TypedValue::color_value(const Color &color_val) {
   }
   SUColor color = color_val.ref();
   SUResult res = SUTypedValueSetColor(m_typed_value, &color);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return *this;
 }
 
@@ -390,7 +394,7 @@ int64_t TypedValue::time_value() const {
   }
   int64_t time_val;
   SUResult res = SUTypedValueGetTime(m_typed_value, &time_val);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return time_val;
 }
 
@@ -400,7 +404,7 @@ TypedValue& TypedValue::time_value(const int64_t time_val) {
     m_typed_value = create_typed_value();
   }
   SUResult res = SUTypedValueSetTime(m_typed_value, time_val);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return *this;
 }
 
@@ -420,7 +424,7 @@ String TypedValue::string_value() const {
   String string;
   SUStringRef &string_ref = string;
   SUResult res = SUTypedValueGetString(m_typed_value, &string_ref);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return string;
 }
 
@@ -431,7 +435,7 @@ TypedValue& TypedValue::string_value(const String &string_val) {
   }
   std::string std_string = string_val;
   SUResult res = SUTypedValueSetString(m_typed_value, std_string.c_str());
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return *this;
 }
 
@@ -460,7 +464,7 @@ Vector3D TypedValue::vector_value() const {
   }
   double vector3d_value[3];
   SUResult res = SUTypedValueGetVector3d(m_typed_value, &vector3d_value[0]);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return Vector3D(vector3d_value[0], vector3d_value[1], vector3d_value[2]);
 }
 
@@ -471,7 +475,7 @@ TypedValue& TypedValue::vector_value(const Vector3D &vector_val) {
   }
   double vector3d_value[3] = {vector_val.x, vector_val.y, vector_val.z};
   SUResult res = SUTypedValueSetVector3d(m_typed_value, &vector3d_value[0]);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return *this;
 }
 
@@ -493,7 +497,7 @@ std::vector<TypedValue> TypedValue::typed_value_array() const {
   assert(res == SU_ERROR_NONE);
   std::vector<SUTypedValueRef> value_refs(count, SU_INVALID);
   res = SUTypedValueGetArrayItems(m_typed_value, count, value_refs.data(), &count);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   // TypedValue from TypedValue arrays should not actually be released.  This poses a problem for the wrapper object which will want to release it.  The solution is to copy these special TypedValues that don't release into new TypedValue objects that do.
   std::vector<TypedValue> temp_vals(count);
   std::transform(value_refs.begin(), value_refs.end(), temp_vals.begin(),
@@ -518,7 +522,7 @@ TypedValue& TypedValue::typed_value_array(std::vector<TypedValue> &typed_val_arr
   std::transform(typed_val_array.begin(), typed_val_array.end(), refs.begin(),
     [](const CW::TypedValue& typed_value) {return typed_value.ref(); });
   res = SUTypedValueSetArrayItems(m_typed_value, refs.size(), refs.data());
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return *this;
 }
 
