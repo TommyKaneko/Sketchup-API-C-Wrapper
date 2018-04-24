@@ -211,7 +211,7 @@ bool DrawingElement::receive_shadows() const {
   }
   bool receives_shadows_flag;
   SUResult res = SUDrawingElementGetReceivesShadows(this->ref(), &receives_shadows_flag);
-  assert (res == SU_ERROR_NONE);
+  assert (res == SU_ERROR_NONE); _unused(res);
   return receives_shadows_flag;
 }
 
