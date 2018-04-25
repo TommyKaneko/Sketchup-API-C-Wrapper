@@ -82,7 +82,7 @@ Model::Model(const Model& other):
 Model::~Model() {
   if (m_release_on_destroy && SUIsValid(m_model)) {
     SUResult res = SUModelRelease(&m_model);
-    assert(res == SU_ERROR_NONE);
+    assert(res == SU_ERROR_NONE); _unused(res);
   }
 }
 

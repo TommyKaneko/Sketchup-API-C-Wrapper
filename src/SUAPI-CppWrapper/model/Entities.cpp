@@ -218,7 +218,7 @@ SUResult Entities::fill(GeometryInput &geom_input) {
   // For the indexes of the GeometryInputRef to make sense after we fill the Entities object with its contents, we need to know how many of each entitity currently exists in the Entities object
   size_t num_faces_before = 0;
   SUResult res = SUEntitiesGetNumFaces(m_entities, &num_faces_before);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
 
   SUResult fill_res = SUEntitiesFill(m_entities, geom_input.m_geometry_input, true);
   assert(fill_res == SU_ERROR_NONE); _unused(fill_res);

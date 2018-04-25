@@ -107,7 +107,7 @@ GeometryInput::GeometryInput(const GeometryInput& other):
   if (SUIsValid(m_geometry_input) && !m_attached && num_objects_[m_geometry_input] == 1) {
     num_objects_.erase(m_geometry_input);
     SUResult res = SUGeometryInputRelease(&m_geometry_input);
-    assert(res == SU_ERROR_NONE);
+    assert(res == SU_ERROR_NONE); _unused(res);
   }
   else {
     --num_objects_[m_geometry_input];
@@ -296,7 +296,7 @@ bool GeometryInput::empty() const {
 
 size_t GeometryInput::add_vertex(const Point3D& point) {
   SUResult res = SUGeometryInputAddVertex(m_geometry_input, point);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   m_vertex_index++;
   return m_vertex_index-1;
 }
@@ -306,7 +306,7 @@ void GeometryInput::set_vertices(const std::vector<SUPoint3D>& points) {
   assert(this->counts()[1] == 0); // Undefined behaviour when overwriting vertices
   assert(this->counts()[2] == 0); // Undefined behaviour when overwriting vertices
   SUResult res = SUGeometryInputSetVertices(m_geometry_input, points.size(), points.data());
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   // Overwrite the existing vertex count
   m_vertex_index = points.size();
 }
@@ -325,39 +325,39 @@ void GeometryInput::set_vertices(const std::vector<Point3D>& points) {
 size_t GeometryInput::add_edge(size_t vertex0_index, size_t vertex1_index) {
   size_t added_edge_index;
   SUResult res = SUGeometryInputAddEdge(m_geometry_input, vertex0_index, vertex1_index, &added_edge_index);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return added_edge_index;
 }
 
 
 void GeometryInput::edge_hidden(size_t edge_index, bool hidden) {
   SUResult res = SUGeometryInputEdgeSetHidden(m_geometry_input, edge_index, hidden);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
 }
 
 
 void GeometryInput::edge_soft(size_t edge_index, bool soft) {
   SUResult res = SUGeometryInputEdgeSetSoft(m_geometry_input, edge_index, soft);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
 }
 
 
 void GeometryInput::edge_smooth(size_t edge_index, bool smooth) {
   SUResult res = SUGeometryInputEdgeSetSmooth(m_geometry_input, edge_index, smooth);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
 }
 
 
 void GeometryInput::edge_material(size_t edge_index, const Material& material) {
   SUResult res = SUGeometryInputEdgeSetMaterial(m_geometry_input, edge_index, material.ref());
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   // TODO: check that material exists in target model.
 }
 
 
 void GeometryInput::edge_layer(size_t edge_index, const Layer& layer) {
   SUResult res = SUGeometryInputEdgeSetLayer(m_geometry_input, edge_index, layer.ref());
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   // TODO: check that layer exists in target model.
 }
 
@@ -365,7 +365,7 @@ void GeometryInput::edge_layer(size_t edge_index, const Layer& layer) {
 size_t GeometryInput::add_curve(const std::vector<size_t>& edge_indices) {
   size_t added_curve_index;
   SUResult res = SUGeometryInputAddCurve(m_geometry_input, edge_indices.size(), edge_indices.data(), &added_curve_index);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return added_curve_index;
 }
 
@@ -374,7 +374,7 @@ std::pair<size_t, size_t> GeometryInput::add_arc_curve(size_t start_point, size_
   size_t added_curve_index;
   size_t control_edge_index;
   SUResult res = SUGeometryInputAddArcCurve(m_geometry_input, start_point, end_point, center, normal, num_segments, &added_curve_index, &control_edge_index);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return std::pair<size_t, size_t> {added_curve_index, control_edge_index};
 }
 
@@ -383,7 +383,7 @@ size_t GeometryInput::add_face(LoopInput& loop_input) {
   size_t added_face_index;
   SULoopInputRef loop_ref = loop_input.ref();
   SUResult res = SUGeometryInputAddFace(m_geometry_input, &loop_ref, &added_face_index);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   loop_input.m_attached = true;
   return added_face_index;
 }
@@ -391,20 +391,20 @@ size_t GeometryInput::add_face(LoopInput& loop_input) {
 
 void GeometryInput::face_reverse(size_t face_index, bool reverse) {
   SUResult res = SUGeometryInputFaceSetReverse(m_geometry_input, face_index, reverse);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
 }
 
 
 void GeometryInput::face_layer(size_t face_index, const Layer& layer) {
   SUResult res = SUGeometryInputFaceSetLayer(m_geometry_input, face_index, layer.ref());
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
 }
 
 
 void GeometryInput::face_add_inner_loop(size_t face_index, LoopInput& inner_loop) {
   SULoopInputRef loop_ref = inner_loop.ref();
   SUResult res = SUGeometryInputFaceAddInnerLoop(m_geometry_input, face_index, &loop_ref);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   inner_loop.m_attached = true;
 }
 
@@ -412,7 +412,7 @@ void GeometryInput::face_add_inner_loop(size_t face_index, LoopInput& inner_loop
 void GeometryInput::face_front_material(size_t face_index, MaterialInput& material_input) {
   SUMaterialInput material_ref = material_input.ref();
   SUResult res = SUGeometryInputFaceSetFrontMaterial(m_geometry_input, face_index, &material_ref);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   // TODO: assert MateriealRef in the MaterialInput is not attached to a different model from the one it will be added to.
 }
 
@@ -420,21 +420,21 @@ void GeometryInput::face_front_material(size_t face_index, MaterialInput& materi
 void GeometryInput::face_back_material(size_t face_index, MaterialInput& material_input) {
   SUMaterialInput material_ref = material_input.ref();
   SUResult res = SUGeometryInputFaceSetBackMaterial (m_geometry_input, face_index, &material_ref);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   // TODO: assert MateriealRef in the MaterialInput is not attached to a different model from the one it will be added to.
 }
 
 
 void GeometryInput::face_hidden(size_t face_index, bool hidden) {
   SUResult res = SUGeometryInputFaceSetHidden(m_geometry_input, face_index, hidden);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
 }
 
 
 std::array<size_t, 5> GeometryInput::counts() const {
   std::array<size_t, 5> count_arr;
   SUResult res = SUGeometryInputGetCounts(m_geometry_input, &count_arr[0], &count_arr[1], &count_arr[2], &count_arr[3], &count_arr[4]);
-  assert(res == SU_ERROR_NONE);
+  assert(res == SU_ERROR_NONE); _unused(res);
   return count_arr;
 }
 
