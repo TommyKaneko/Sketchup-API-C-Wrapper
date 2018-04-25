@@ -1292,6 +1292,7 @@ Preprocessing /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-spec-builders.h:105: warning: Compound testing::internal::FunctionMockerBase is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-generated-function-mockers.h:54: warning: Compound testing::internal::FunctionMockerBase is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/internal/gtest-tuple.h:178: warning: Compound std::tr1::gtest_internal::TupleElement< true, 5, GTEST_10_TUPLE_(T) > is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/GeometryInput.hpp:297: warning: Compound std::hash< SUGeometryInputRef > is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-matchers.h:1032: warning: Compound testing::internal::RefMatcher< T & > is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-actions.h:758: warning: Compound testing::internal::AssignAction is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-actions.h:871: warning: Compound testing::internal::InvokeMethodWithoutArgsAction is not documented.
@@ -1343,7 +1344,7 @@ Preprocessing /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/internal/gtest-tuple.h:766: warning: Compound std::tr1::tuple_size< GTEST_5_TUPLE_(T) > is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/samples/sample4.h:38: warning: Compound Counter is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-generated-function-mockers_test.cc:385: warning: Compound testing::gmock_generated_function_mockers_test::StackInterface is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:52: warning: Compound CW::Entity is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:54: warning: Compound CW::Entity is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-generated-actions_test.cc:369: warning: Compound testing::gmock_generated_actions_test::SubstractAction is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-matchers.h:2521: warning: Compound testing::internal::ContainerEqMatcher is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-nice-strict_test.cc:68: warning: Compound testing::gmock_nice_strict_test::Foo is not documented.
@@ -1383,7 +1384,7 @@ Preprocessing /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/scripts/pump.py:408: warning: Compound pump::ForNode is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/test/gtest_unittest.cc:5155: warning: Compound Base is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/internal/gtest-port.h:1254: warning: Compound testing::internal::GTestLog is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:324: warning: Compound CW::ModelStatistics is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:338: warning: Compound CW::ModelStatistics is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/internal/gtest-port.h:2136: warning: Compound testing::internal::Mutex is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-matchers.h:3477: warning: Compound testing::internal::ElementsAreMatcher is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-matchers.h:1434: warning: Compound testing::internal::Ge2Matcher is not documented.
@@ -1533,6 +1534,7 @@ Preprocessing /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-spec-builders.h:99: warning: Compound testing::internal::TypedExpectation is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-matchers_test.cc:3946: warning: Compound testing::gmock_matchers_test::ReferencingFunctor is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-generated-actions.h:390: warning: Compound testing::internal::SelectArgs< Result, ArgumentTuple, k1, k2, k3, k4, k5, k6,-1,-1,-1,-1 > is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:267: warning: Compound std::hash< CW::Entity > is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/test/gtest-port_test.cc:991: warning: Compound testing::internal::NoDefaultContructor is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/String.hpp:45: warning: Compound CW::String is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-cardinalities.h:83: warning: Compound testing::Cardinality is not documented.
@@ -1664,6 +1666,7 @@ Preprocessing /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-matchers.h:1234: warning: Compound testing::internal::StartsWithMatcher is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/test/gtest_output_test_.cc:411: warning: Compound NonFatalFailureInSetUpTest is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/samples/sample2.h:41: warning: Compound MyString is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Layer.hpp:108: warning: Compound std::hash< CW::Layer > is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/src/gtest.cc:4475: warning: Compound testing::internal::TestCaseNameIs is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/scripts/generator/cpp/ast.py:144: warning: Compound cpp::ast::Define is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-matchers_test.cc:919: warning: Compound testing::gmock_matchers_test::Type is not documented.
@@ -1712,6 +1715,9 @@ Preprocessing /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-actions.h:126: warning: Compound testing::internal::BuiltInDefaultValue< const T > is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-matchers_test.cc:2596: warning: Compound testing::gmock_matchers_test::AllArgsHelper is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/src/gtest-internal-inl.h:466: warning: Compound testing::internal::DefaultGlobalTestPartResultReporter is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:260: warning: documented symbol `hash< CW::Entity >' was not declared or defined.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/GeometryInput.hpp:288: warning: documented symbol `hash< SUGeometryInputRef >' was not declared or defined.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Layer.hpp:101: warning: documented symbol `hash< CW::Layer >' was not declared or defined.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Material.hpp:151: warning: documented symbol `hash< CW::Material >' was not declared or defined.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/src/gmock-spec-builders.cc:618: warning: documented symbol `void Mock::AllowUninterestingCalls' was not declared or defined.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/src/gmock-spec-builders.cc:625: warning: documented symbol `void Mock::WarnUninterestingCalls' was not declared or defined.
@@ -4717,8 +4723,9 @@ Generating docs for compound SUPolyl/home/travis/build/TommyKaneko/Sketchup-API-
   parameter 'line'
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/AttributeDictionary.hpp:98: warning: Member operator SUAttributeDictionaryRef() const  (function) of class CW::AttributeDictionary is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/AttributeDictionary.hpp:99: warning: Member operator SUAttributeDictionaryRef *() (function) of class CW::AttributeDictionary is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:101: warning: Member operator SUEntityRef() const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:108: warning: Member operator SUEntityRef *() (function) of class CW::Entity is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:103: warning: Member operator SUEntityRef() const  (function) of class CW::Entity is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:110: warning: Member operator SUEntityRef *() (function) of class CW::Entity is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:117: warning: Member ref() const  (function) of class CW::Entity is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Axes.hpp:102: warning: Member y_axis() const  (function) of class CW::Axes is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Axes.hpp:103: warning: Member z_axis() const  (function) of class CW::Axes is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/DrawingElement.hpp:72: warning: Member operator SUDrawingElementRef() const  (function) of class CW::DrawingElement is not documented.
@@ -4733,8 +4740,9 @@ Generating docs for compound SUPolyl/home/travis/build/TommyKaneko/Sketchup-API-
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/DrawingElement.hpp:135: warning: Member material(const Material &material) (function) of class CW::DrawingElement is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/DrawingElement.hpp:141: warning: Member receive_shadows() const  (function) of class CW::DrawingElement is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/DrawingElement.hpp:148: warning: Member receive_shadows(bool receive_shadows) (function) of class CW::DrawingElement is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:101: warning: Member operator SUEntityRef() const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:108: warning: Member operator SUEntityRef *() (function) of class CW::Entity is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:103: warning: Member operator SUEntityRef() const  (function) of class CW::Entity is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:110: warning: Member operator SUEntityRef *() (function) of class CW::Entity is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:117: warning: Member ref() const  (function) of class CW::Entity is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Axes.hpp:71: warning: argument 'x_axes' of command @param is not found in the argument list of CW::Axes::Axes(Point3D origin, Vector3D x_axis, Vector3D y_axis, Vector3D z_axis)
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Axes.hpp:71: warning: argument 'y_axes' of command @param is not found in the argument list of CW::Axes::Axes(Point3D origin, Vector3D x_axis, Vector3D y_axis, Vector3D z_axis)
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Axes.hpp:71: warning: argument 'z_axes' of command @param is not found in the argument list of CW::Axes::Axes(Point3D origin, Vector3D x_axis, Vector3D y_axis, Vector3D z_axis)
@@ -4757,8 +4765,9 @@ Generating docs for compound SUPolyl/home/travis/build/TommyKaneko/Sketchup-API-
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/DrawingElement.hpp:135: warning: Member material(const Material &material) (function) of class CW::DrawingElement is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/DrawingElement.hpp:141: warning: Member receive_shadows() const  (function) of class CW::DrawingElement is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/DrawingElement.hpp:148: warning: Member receive_shadows(bool receive_shadows) (function) of class CW::DrawingElement is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:101: warning: Member operator SUEntityRef() const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:108: warning: Member operator SUEntityRef *() (function) of class CW::Entity is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:103: warning: Member operator SUEntityRef() const  (function) of class CW::Entity is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:110: warning: Member operator SUEntityRef *() (function) of class CW::Entity is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:117: warning: Member ref() const  (function) of class CW::Entity is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ComponentDefinition.hpp:142: warning: Member Behavior(SUComponentBehavior behavior) (function) of class CW::Behavior is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ComponentDefinition.hpp:146: warning: Member ref() const  (function) of class CW::Behavior is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ComponentDefinition.hpp:144: warning: Member snap (variable) of class CW::Behavior is not documented.
@@ -4780,13 +4789,15 @@ Generating docs for compound SUPolyl/home/travis/build/TommyKaneko/Sketchup-API-
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/DrawingElement.hpp:135: warning: Member material(const Material &material) (function) of class CW::DrawingElement is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/DrawingElement.hpp:141: warning: Member receive_shadows() const  (function) of class CW::DrawingElement is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/DrawingElement.hpp:148: warning: Member receive_shadows(bool receive_shadows) (function) of class CW::DrawingElement is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:101: warning: Member operator SUEntityRef() const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:108: warning: Member operator SUEntityRef *() (function) of class CW::Entity is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:103: warning: Member operator SUEntityRef() const  (function) of class CW::Entity is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:110: warning: Member operator SUEntityRef *() (function) of class CW::Entity is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:117: warning: Member ref() const  (function) of class CW::Entity is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Curve.hpp:54: warning: Member Curve(SUCurveRef curve, SUCurveType curve_type) (function) of class CW::Curve is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Curve.hpp:82: warning: Member get_result() const  (function) of class CW::Curve is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Curve.hpp:87: warning: Member operator bool() const  (function) of class CW::Curve is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:101: warning: Member operator SUEntityRef() const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:108: warning: Member operator SUEntityRef *() (function) of class CW::Entity is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:103: warning: Member operator SUEntityRef() const  (function) of class CW::Entity is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:110: warning: Member operator SUEntityRef *() (function) of class CW::Entity is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:117: warning: Member ref() const  (function) of class CW::Entity is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/DrawingElement.hpp:72: warning: Member operator SUDrawingElementRef() const  (function) of class CW::DrawingElement is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/DrawingElement.hpp:73: warning: Member operator SUDrawingElementRef *() (function) of class CW::DrawingElement is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/DrawingElement.hpp:91: warning: Member casts_shadows() const  (function) of class CW::DrawingElement is not documented.
@@ -4799,8 +4810,9 @@ Generating docs for compound SUPolyl/home/travis/build/TommyKaneko/Sketchup-API-
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/DrawingElement.hpp:135: warning: Member material(const Material &material) (function) of class CW::DrawingElement is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/DrawingElement.hpp:141: warning: Member receive_shadows() const  (function) of class CW::DrawingElement is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/DrawingElement.hpp:148: warning: Member receive_shadows(bool receive_shadows) (function) of class CW::DrawingElement is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:101: warning: Member operator SUEntityRef() const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:108: warning: Member operator SUEntityRef *() (function) of class CW::Entity is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:103: warning: Member operator SUEntityRef() const  (function) of class CW::Entity is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:110: warning: Member operator SUEntityRef *() (function) of class CW::Entity is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:117: warning: Member ref() const  (function) of class CW::Entity is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Edge.hpp:64: warning: Member Edge(const std::vector< Point3D > &points) (function) of class CW::Edge is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Edge.hpp:71: warning: Member Edge(const Point3D &start, const Point3D &end) (function) of class CW::Edge is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Edge.hpp:83: warning: Member Edge(SUEdgeRef edge, bool attached=true) (function) of class CW::Edge is not documented.
@@ -4828,22 +4840,24 @@ Generating docs for compound SUPolyl/home/travis/build/TommyKaneko/Sketchup-API-
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/DrawingElement.hpp:135: warning: Member material(const Material &material) (function) of class CW::DrawingElement is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/DrawingElement.hpp:141: warning: Member receive_shadows() const  (function) of class CW::DrawingElement is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/DrawingElement.hpp:148: warning: Member receive_shadows(bool receive_shadows) (function) of class CW::DrawingElement is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:101: warning: Member operator SUEntityRef() const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:108: warning: Member operator SUEntityRef *() (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entities.hpp:62: warning: Member Entities(SUEntitiesRef entities) (function) of class CW::Entities is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entities.hpp:75: warning: Member faces() const  (function) of class CW::Entities is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entities.hpp:76: warning: Member edges(bool stray_only=true) const  (function) of class CW::Entities is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entities.hpp:77: warning: Member instances() const  (function) of class CW::Entities is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entities.hpp:78: warning: Member groups() const  (function) of class CW::Entities is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entities.hpp:101: warning: Member add_faces(std::vector< Face > &faces) (function) of class CW::Entities is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entities.hpp:102: warning: Member add_face(Face &face) (function) of class CW::Entities is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entities.hpp:110: warning: Member add_edges(std::vector< Edge > &edges) (function) of class CW::Entities is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entities.hpp:111: warning: Member add_edge(Edge &edge) (function) of class CW::Entities is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entities.hpp:117: warning: Member add_instance(ComponentInstance &instance) (function) of class CW::Entities is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entities.hpp:124: warning: Member add_instance(const ComponentDefinition &definition, const Transformation &transformation, const String &name="") (function) of class CW::Entities is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entities.hpp:132: warning: Member add_group(const ComponentDefinition &definition, const Transformation &transformation) (function) of class CW::Entities is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entities.hpp:133: warning: Member add_group() (function) of class CW::Entities is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entities.hpp:156: warning: Member operator SUEntitiesRef() (function) of class CW::Entities is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:103: warning: Member operator SUEntityRef() const  (function) of class CW::Entity is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:110: warning: Member operator SUEntityRef *() (function) of class CW::Entity is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:117: warning: Member ref() const  (function) of class CW::Entity is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entities.hpp:79: warning: Member faces() const  (function) of class CW::Entities is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entities.hpp:80: warning: Member edges(bool stray_only=true) const  (function) of class CW::Entities is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entities.hpp:81: warning: Member instances() const  (function) of class CW::Entities is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entities.hpp:82: warning: Member groups() const  (function) of class CW::Entities is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entities.hpp:105: warning: Member add_faces(std::vector< Face > &faces) (function) of class CW::Entities is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entities.hpp:106: warning: Member add_face(Face &face) (function) of class CW::Entities is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entities.hpp:114: warning: Member add_edges(std::vector< Edge > &edges) (function) of class CW::Entities is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entities.hpp:115: warning: Member add_edge(Edge &edge) (function) of class CW::Entities is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entities.hpp:121: warning: Member add_instance(ComponentInstance &instance) (function) of class CW::Entities is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entities.hpp:128: warning: Member add_instance(const ComponentDefinition &definition, const Transformation &transformation, const String &name="") (function) of class CW::Entities is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entities.hpp:136: warning: Member add_group(const ComponentDefinition &definition, const Transformation &transformation) (function) of class CW::Entities is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entities.hpp:137: warning: Member add_group() (function) of class CW::Entities is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entities.hpp:165: warning: Member operator SUEntitiesRef() (function) of class CW::Entities is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entities.hpp:64: warning: The following parameters of CW::Entities::Entities(SUEntitiesRef entities, const SUModelRef model) are not documented:
+  parameter 'entities'
 ine3dRef...
 Generating docs for compound SURay3D...
 Generating docs for compound SURenderingOptionsRef...
@@ -4922,12 +4936,13 @@ Generating docs for compound CW::Curve...
 Generating docs for compound CW::DrawingElement...
 Generating docs for compound CW::Edge...
 Generating docs for compound CW::Entities...
-Generating docs for compound CW::Entit/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:101: warning: Member operator SUEntityRef() const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:108: warning: Member operator SUEntityRef *() (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:135: warning: argument 'bool' of command @param is not found in the argument list of CW::Entity::copy_attributes_from(const Entity &entity)
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:152: warning: argument 'AttributeDictionary' of command @param is not found in the argument list of CW::Entity::is_valid() const
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:152: warning: argument 'std' of command @param is not found in the argument list of CW::Entity::is_valid() const
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:152: warning: argument 'string' of command @param is not found in the argument list of CW::Entity::is_valid() const
+Generating docs for compound CW::Entit/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:103: warning: Member operator SUEntityRef() const  (function) of class CW::Entity is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:110: warning: Member operator SUEntityRef *() (function) of class CW::Entity is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:117: warning: Member ref() const  (function) of class CW::Entity is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:151: warning: argument 'bool' of command @param is not found in the argument list of CW::Entity::copy_attributes_from(const Entity &entity)
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:168: warning: argument 'AttributeDictionary' of command @param is not found in the argument list of CW::Entity::is_valid() const
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:168: warning: argument 'std' of command @param is not found in the argument list of CW::Entity::is_valid() const
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:168: warning: argument 'string' of command @param is not found in the argument list of CW::Entity::is_valid() const
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Face.hpp:99: warning: Member Face(std::vector< Point3D > &outer_loop) (function) of class CW::Face is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Face.hpp:100: warning: Member Face(std::vector< Point3D > &outer_loop, LoopInput &loop_input) (function) of class CW::Face is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Face.hpp:108: warning: Member Face(SUFaceRef face, bool attached=true) (function) of class CW::Face is not documented.
@@ -4956,13 +4971,20 @@ Generating docs for compound CW::Entit/home/travis/build/TommyKaneko/Sketchup-AP
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/DrawingElement.hpp:135: warning: Member material(const Material &material) (function) of class CW::DrawingElement is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/DrawingElement.hpp:141: warning: Member receive_shadows() const  (function) of class CW::DrawingElement is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/DrawingElement.hpp:148: warning: Member receive_shadows(bool receive_shadows) (function) of class CW::DrawingElement is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:101: warning: Member operator SUEntityRef() const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:108: warning: Member operator SUEntityRef *() (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/GeometryInput.hpp:155: warning: Member add_faces(const std::vector< Face > &faces) (function) of class CW::GeometryInput is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/GeometryInput.hpp:168: warning: Member add_edges(const std::vector< Edge > &edges) (function) of class CW::GeometryInput is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/GeometryInput.cpp:149: warning: argument 'vertex' of command @param is not found in the argument list of CW::GeometryInput::add_face(const Face &face)
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/GeometryInput.cpp:149: warning: The following parameters of CW::GeometryInput::add_face(const Face &face) are not documented:
-  parameter 'face'
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:103: warning: Member operator SUEntityRef() const  (function) of class CW::Entity is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:110: warning: Member operator SUEntityRef *() (function) of class CW::Entity is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:117: warning: Member ref() const  (function) of class CW::Entity is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/GeometryInput.hpp:125: warning: Member add_faces(const std::vector< Face > &faces, bool copy_material_layer=true) (function) of class CW::GeometryInput is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/GeometryInput.hpp:132: warning: Member add_edges(const std::vector< Edge > &edges) (function) of class CW::GeometryInput is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/GeometryInput.hpp:151: warning: Member set_vertices(const std::vector< Point3D > &points) (function) of class CW::GeometryInput is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/GeometryInput.hpp:201: warning: argument 'num_edges' of command @param is not found in the argument list of CW::GeometryInput::add_curve(const std::vector< size_t > &edge_indices)
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/GeometryInput.hpp:201: warning: argument 'added_curve_index' of command @param is not found in the argument list of CW::GeometryInput::add_curve(const std::vector< size_t > &edge_indices)
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/GeometryInput.hpp:224: warning: argument 'outer_loop' of command @param is not found in the argument list of CW::GeometryInput::add_face(LoopInput &loop_input)
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/GeometryInput.hpp:224: warning: The following parameters of CW::GeometryInput::add_face(LoopInput &loop_input) are not documented:
+  parameter 'loop_input'
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/GeometryInput.hpp:245: warning: argument 'loop_input' of command @param is not found in the argument list of CW::GeometryInput::face_add_inner_loop(size_t face_index, LoopInput &inner_loop)
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/GeometryInput.hpp:245: warning: The following parameters of CW::GeometryInput::face_add_inner_loop(size_t face_index, LoopInput &inner_loop) are not documented:
+  parameter 'inner_loop'
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Group.hpp:82: warning: Member operator SUGroupRef() const  (function) of class CW::Group is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Group.hpp:83: warning: Member operator SUGroupRef *() (function) of class CW::Group is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ComponentInstance.hpp:52: warning: Member ComponentInstance(SUComponentInstanceRef instance, bool attached=true) (function) of class CW::ComponentInstance is not documented.
@@ -4979,21 +5001,24 @@ Generating docs for compound CW::Entit/home/travis/build/TommyKaneko/Sketchup-AP
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/DrawingElement.hpp:135: warning: Member material(const Material &material) (function) of class CW::DrawingElement is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/DrawingElement.hpp:141: warning: Member receive_shadows() const  (function) of class CW::DrawingElement is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/DrawingElement.hpp:148: warning: Member receive_shadows(bool receive_shadows) (function) of class CW::DrawingElement is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:101: warning: Member operator SUEntityRef() const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:108: warning: Member operator SUEntityRef *() (function) of class CW::Entity is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:103: warning: Member operator SUEntityRef() const  (function) of class CW::Entity is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:110: warning: Member operator SUEntityRef *() (function) of class CW::Entity is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:117: warning: Member ref() const  (function) of class CW::Entity is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ImageRep.hpp:76: warning: Member ref() const  (function) of class CW::ImageRep is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ImageRep.hpp:77: warning: Member operator SUImageRepRef() const  (function) of class CW::ImageRep is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ImageRep.hpp:78: warning: Member operator SUImageRepRef *() (function) of class CW::ImageRep is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Layer.hpp:74: warning: Member operator SULayerRef() const  (function) of class CW::Layer is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Layer.hpp:75: warning: Member operator SULayerRef *() (function) of class CW::Layer is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Layer.hpp:96: warning: Member name(const std::string &string) (function) of class CW::Layer is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:101: warning: Member operator SUEntityRef() const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:108: warning: Member operator SUEntityRef *() (function) of class CW::Entity is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:103: warning: Member operator SUEntityRef() const  (function) of class CW::Entity is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:110: warning: Member operator SUEntityRef *() (function) of class CW::Entity is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:117: warning: Member ref() const  (function) of class CW::Entity is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Loop.hpp:75: warning: Member Loop(SULoopRef loop, bool attached=true) (function) of class CW::Loop is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Loop.hpp:80: warning: Member Loop(const Loop &other) (function) of class CW::Loop is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Loop.hpp:90: warning: Member loop_input() const  (function) of class CW::Loop is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:101: warning: Member operator SUEntityRef() const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:108: warning: Member operator SUEntityRef *() (function) of class CW::Entity is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:103: warning: Member operator SUEntityRef() const  (function) of class CW::Entity is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:110: warning: Member operator SUEntityRef *() (function) of class CW::Entity is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:117: warning: Member ref() const  (function) of class CW::Entity is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/LoopInput.hpp:52: warning: Member hidden (variable) of class CW::InputEdgeProperties is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/LoopInput.hpp:53: warning: Member soft (variable) of class CW::InputEdgeProperties is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/LoopInput.hpp:54: warning: Member smooth (variable) of class CW::InputEdgeProperties is not documented.
@@ -5012,11 +5037,13 @@ Generating docs for compound CW::Entit/home/travis/build/TommyKaneko/Sketchup-AP
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Material.hpp:69: warning: Member ref() const  (function) of class CW::Material is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Material.hpp:71: warning: Member operator SUMaterialRef() const  (function) of class CW::Material is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Material.hpp:72: warning: Member operator SUMaterialRef *() (function) of class CW::Material is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:101: warning: Member operator SUEntityRef() const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:108: warning: Member operator SUEntityRef *() (function) of class CW::Entity is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:103: warning: Member operator SUEntityRef() const  (function) of class CW::Entity is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:110: warning: Member operator SUEntityRef *() (function) of class CW::Entity is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:117: warning: Member ref() const  (function) of class CW::Entity is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/MaterialInput.hpp:51: warning: Member MaterialInput(Material material) (function) of class CW::MaterialInput is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/MaterialInput.hpp:52: warning: Member MaterialInput(SUMaterialInput material_input) (function) of class CW::MaterialInput is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/MaterialInput.hpp:54: warning: Member ref() (function) of class CW::MaterialInput is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/MaterialInput.hpp:56: warning: Member material() const  (function) of class CW::MaterialInput is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:66: warning: Member Model(SUModelRef model_ref, bool release_on_destroy=true) (function) of class CW::Model is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:67: warning: Member Model(std::string file_path) (function) of class CW::Model is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:85: warning: Member operator SUModelRef() const  (function) of class CW::Model is not documented.
@@ -5034,25 +5061,25 @@ Generating docs for compound CW::Entit/home/travis/build/TommyKaneko/Sketchup-AP
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:194: warning: Member get_attribute(const AttributeDictionary &dict, const std::string &key, const TypedValue &default_value) const  (function) of class CW::Model is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:195: warning: Member get_attribute(const std::string &dict_name, const std::string &key, const TypedValue &default_value) const  (function) of class CW::Model is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:206: warning: Member layers() const  (function) of class CW::Model is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:224: warning: Member materials() const  (function) of class CW::Model is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:236: warning: Member name() const  (function) of class CW::Model is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:242: warning: Member name(const String &name_string) (function) of class CW::Model is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:247: warning: Member num_faces() const  (function) of class CW::Model is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:255: warning: Member options() (function) of class CW::Model is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:273: warning: Member save(const std::string &file_path) (function) of class CW::Model is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:281: warning: Member save_with_version(const std::string &file_path, SUModelVersion version) (function) of class CW::Model is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:297: warning: Member set_attribute(AttributeDictionary &dict, const std::string &key, const TypedValue &value) (function) of class CW::Model is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:298: warning: Member set_attribute(const std::string &dict_name, const std::string &key, const TypedValue &value) (function) of class CW::Model is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:305: warning: Member shadow_info() (function) of class CW::Model is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:329: warning: Member ModelStatistics(SUModelStatistics model_statistics) (function) of class CW::ModelStatistics is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:330: warning: Member ModelStatistics(const Model &model) (function) of class CW::ModelStatistics is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:336: warning: Member edges() const  (function) of class CW::ModelStatistics is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:337: warning: Member instances() const  (function) of class CW::ModelStatistics is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:338: warning: Member groups() const  (function) of class CW::ModelStatistics is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:339: warning: Member images() const  (function) of class CW::ModelStatistics is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:340: warning: Member definitions() const  (function) of class CW::ModelStatistics is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:341: warning: Member layers() const  (function) of class CW::ModelStatistics is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:342: warning: Member materials() const  (function) of class CW::ModelStatistics is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:231: warning: Member materials() const  (function) of class CW::Model is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:250: warning: Member name() const  (function) of class CW::Model is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:256: warning: Member name(const String &name_string) (function) of class CW::Model is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:261: warning: Member num_faces() const  (function) of class CW::Model is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:269: warning: Member options() (function) of class CW::Model is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:287: warning: Member save(const std::string &file_path) (function) of class CW::Model is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:295: warning: Member save_with_version(const std::string &file_path, SUModelVersion version) (function) of class CW::Model is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:311: warning: Member set_attribute(AttributeDictionary &dict, const std::string &key, const TypedValue &value) (function) of class CW::Model is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:312: warning: Member set_attribute(const std::string &dict_name, const std::string &key, const TypedValue &value) (function) of class CW::Model is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:319: warning: Member shadow_info() (function) of class CW::Model is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:343: warning: Member ModelStatistics(SUModelStatistics model_statistics) (function) of class CW::ModelStatistics is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:344: warning: Member ModelStatistics(const Model &model) (function) of class CW::ModelStatistics is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:350: warning: Member edges() const  (function) of class CW::ModelStatistics is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:351: warning: Member instances() const  (function) of class CW::ModelStatistics is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:352: warning: Member groups() const  (function) of class CW::ModelStatistics is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:353: warning: Member images() const  (function) of class CW::ModelStatistics is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:354: warning: Member definitions() const  (function) of class CW::ModelStatistics is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:355: warning: Member layers() const  (function) of class CW::ModelStatistics is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:356: warning: Member materials() const  (function) of class CW::ModelStatistics is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/OptionsManager.hpp:50: warning: Member OptionsProvider(SUOptionsProviderRef) (function) of class CW::OptionsProvider is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/OptionsManager.hpp:51: warning: Member keys() const  (function) of class CW::OptionsProvider is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/OptionsManager.hpp:52: warning: Member get_value(std::string key) const  (function) of class CW::OptionsProvider is not documented.
@@ -5071,13 +5098,15 @@ Generating docs for compound CW::Entit/home/travis/build/TommyKaneko/Sketchup-AP
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Texture.hpp:102: warning: Member ref() const  (function) of class CW::Texture is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Texture.hpp:103: warning: Member operator SUTextureRef() const  (function) of class CW::Texture is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Texture.hpp:104: warning: Member operator SUTextureRef *() (function) of class CW::Texture is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:101: warning: Member operator SUEntityRef() const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:108: warning: Member operator SUEntityRef *() (function) of class CW::Entity is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:103: warning: Member operator SUEntityRef() const  (function) of class CW::Entity is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:110: warning: Member operator SUEntityRef *() (function) of class CW::Entity is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:117: warning: Member ref() const  (function) of class CW::Entity is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/TextureWriter.hpp:46: warning: Member TextureWriter(SUTextureWriterRef texture_writer) (function) of class CW::TextureWriter is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/TextureWriter.hpp:48: warning: Member operator SUTextureWriterRef() const  (function) of class CW::TextureWriter is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/TextureWriter.hpp:49: warning: Member operator SUTextureWriterRef *() const  (function) of class CW::TextureWriter is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/TypedValue.hpp:57: warning: Member TypedValue(SUTypedValueRef typed_val, bool attached=false) (function) of class CW::TypedValue is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/TypedValue.hpp:58: warning: Member TypedValue(const char chars[]) (function) of class CW::TypedValue is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/TypedValue.hpp:59: warning: Member TypedValue(const std::string &string) (function) of class CW::TypedValue is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/TypedValue.hpp:69: warning: Member ref() const  (function) of class CW::TypedValue is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/TypedValue.hpp:70: warning: Member operator SUTypedValueRef() (function) of class CW::TypedValue is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/TypedValue.hpp:71: warning: Member operator SUTypedValueRef *() (function) of class CW::TypedValue is not documented.
@@ -5114,8 +5143,9 @@ Generating docs for compound CW::Entit/home/travis/build/TommyKaneko/Sketchup-AP
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Vertex.hpp:70: warning: Member operator SUVertexRef() const  (function) of class CW::Vertex is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Vertex.hpp:71: warning: Member operator SUVertexRef *() (function) of class CW::Vertex is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Vertex.hpp:77: warning: Member operator Point3D() const  (function) of class CW::Vertex is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:101: warning: Member operator SUEntityRef() const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:108: warning: Member operator SUEntityRef *() (function) of class CW::Entity is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:103: warning: Member operator SUEntityRef() const  (function) of class CW::Entity is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:110: warning: Member operator SUEntityRef *() (function) of class CW::Entity is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:117: warning: Member ref() const  (function) of class CW::Entity is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/String.hpp:61: warning: Member String(SUStringRef string_ref) (function) of class CW::String is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/String.hpp:62: warning: Member String(const std::string &string_input, StringEncoding enc=StringEncoding::UTF8) (function) of class CW::String is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/String.hpp:63: warning: Member String(const char string_input[]) (function) of class CW::String is not documented.
@@ -5283,25 +5313,10 @@ Generating docs for compound CW::Entit/home/travis/build/TommyKaneko/Sketchup-AP
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/scripts/release_docs.py:107: warning: Member search_for_re (variable) of class release_docs::WikiBrancher is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/scripts/release_docs.py:115: warning: Member replace_with (variable) of class release_docs::WikiBrancher is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/scripts/release_docs.py:120: warning: Member project (variable) of class release_docs::WikiBrancher is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:268: warning: Member operator()(const CW::Entity &k) const  (function) of class std::hash< CW::Entity > is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/GeometryInput.hpp:298: warning: Member operator()(const SUGeometryInputRef &k) const  (function) of class std::hash< SUGeometryInputRef > is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Layer.hpp:109: warning: Member operator()(const CW::Layer &k) const  (function) of class std::hash< CW::Layer > is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Material.hpp:159: warning: Member operator()(const CW::Material &k) const  (function) of class std::hash< CW::Material > is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/internal/gtest-tuple.h:619: warning: Member tuple(GTEST_BY_REF_(T0) f0, GTEST_BY_REF_(T1) f1, GTEST_BY_REF_(T2) f2, GTEST_BY_REF_(T3) f3, GTEST_BY_REF_(T4) f4, GTEST_BY_REF_(T5) f5, GTEST_BY_REF_(T6) f6, GTEST_BY_REF_(T7) f7, GTEST_BY_REF_(T8) f8, GTEST_BY_REF_(T9) f9) (function) of class std::tr1::tuple is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/internal/gtest-tuple.h:625: warning: Member tuple(const tuple &t) (function) of class std::tr1::tuple is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/internal/gtest-tuple.h:629: warning: Member tuple(const GTEST_10_TUPLE_(U)&t) (function) of class std::tr1::tuple is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/internal/gtest-tuple.h:633: warning: Member operator=(const tuple &t) (function) of class std::tr1::tuple is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/internal/gtest-tuple.h:636: warning: Member operator=(const GTEST_10_TUPLE_(U)&t) (function) of class std::tr1::tuple is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/internal/gtest-tuple.h:643: warning: Member CopyFrom(const GTEST_10_TUPLE_(U)&t) (function) of class std::tr1::tuple is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/internal/gtest-tuple.h:657: warning: Member f0_ (variable) of class std::tr1::tuple is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/internal/gtest-tuple.h:658: warning: Member f1_ (variable) of class std::tr1::tuple is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/internal/gtest-tuple.h:659: warning: Member f2_ (variable) of class std::tr1::tuple is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/internal/gtest-tuple.h:660: warning: Member f3_ (variable) of class std::tr1::tuple is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/internal/gtest-tuple.h:661: warning: Member f4_ (variable) of class std::tr1::tuple is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/internal/gtest-tuple.h:662: warning: Member f5_ (variable) of class std::tr1::tuple is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/internal/gtest-tuple.h:663: warning: Member f6_ (variable) of class std::tr1::tuple is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/internal/gtest-tuple.h:664: warning: Member f7_ (variable) of class std::tr1::tuple is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/internal/gtest-tuple.h:665: warning: Member f8_ (variable) of class std::tr1::tuple is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/internal/gtest-tuple.h:666: warning: Member f9_ (variable) of class std::tr1::tuple is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/internal/gtest-tuple.h:208: warning: Member tuple(const tuple &) (function) of class std::tr1::tuple<> is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/internal/gtest-tuple.h:209: warning: Member operator=(const tuple &) (function) of class std::tr1::tuple<> is not documented.
 y...
 Generating docs for compound CW::Face...
 Generating docs for compound CW::GeometryInput...
@@ -5370,11 +5385,29 @@ Generating docs for compound pump::ExpNode...
 Generating docs for compound pump::Env...
 Generating docs for compound pump::Output...
 Generating docs for compound release_docs::WikiBrancher...
+Generating docs for compound std::hash< CW::Entity >...
+Generating docs for compound std::hash< SUGeometryInputRef >...
+Generating docs for compound std::hash< CW::Layer >...
 Generating docs for compound std::hash< CW::Material >...
-Generating docs for compound std::tr1::tuple...
-Generating docs for compound std::tr1::tuple<>...
-Generating docs for compound std::tr1::tuple_size...
-Generating docs for compound std::tr1::tuple_size< GTEST_0_T/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/internal/gtest-tuple.h:742: warning: Member value (variable) of class std::tr1::tuple_size< GTEST_0_TUPLE_(T) > is not documented.
+Generating docs for compound std::tr/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/internal/gtest-tuple.h:619: warning: Member tuple(GTEST_BY_REF_(T0) f0, GTEST_BY_REF_(T1) f1, GTEST_BY_REF_(T2) f2, GTEST_BY_REF_(T3) f3, GTEST_BY_REF_(T4) f4, GTEST_BY_REF_(T5) f5, GTEST_BY_REF_(T6) f6, GTEST_BY_REF_(T7) f7, GTEST_BY_REF_(T8) f8, GTEST_BY_REF_(T9) f9) (function) of class std::tr1::tuple is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/internal/gtest-tuple.h:625: warning: Member tuple(const tuple &t) (function) of class std::tr1::tuple is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/internal/gtest-tuple.h:629: warning: Member tuple(const GTEST_10_TUPLE_(U)&t) (function) of class std::tr1::tuple is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/internal/gtest-tuple.h:633: warning: Member operator=(const tuple &t) (function) of class std::tr1::tuple is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/internal/gtest-tuple.h:636: warning: Member operator=(const GTEST_10_TUPLE_(U)&t) (function) of class std::tr1::tuple is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/internal/gtest-tuple.h:643: warning: Member CopyFrom(const GTEST_10_TUPLE_(U)&t) (function) of class std::tr1::tuple is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/internal/gtest-tuple.h:657: warning: Member f0_ (variable) of class std::tr1::tuple is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/internal/gtest-tuple.h:658: warning: Member f1_ (variable) of class std::tr1::tuple is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/internal/gtest-tuple.h:659: warning: Member f2_ (variable) of class std::tr1::tuple is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/internal/gtest-tuple.h:660: warning: Member f3_ (variable) of class std::tr1::tuple is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/internal/gtest-tuple.h:661: warning: Member f4_ (variable) of class std::tr1::tuple is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/internal/gtest-tuple.h:662: warning: Member f5_ (variable) of class std::tr1::tuple is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/internal/gtest-tuple.h:663: warning: Member f6_ (variable) of class std::tr1::tuple is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/internal/gtest-tuple.h:664: warning: Member f7_ (variable) of class std::tr1::tuple is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/internal/gtest-tuple.h:665: warning: Member f8_ (variable) of class std::tr1::tuple is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/internal/gtest-tuple.h:666: warning: Member f9_ (variable) of class std::tr1::tuple is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/internal/gtest-tuple.h:208: warning: Member tuple(const tuple &) (function) of class std::tr1::tuple<> is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/internal/gtest-tuple.h:209: warning: Member operator=(const tuple &) (function) of class std::tr1::tuple<> is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/internal/gtest-tuple.h:742: warning: Member value (variable) of class std::tr1::tuple_size< GTEST_0_TUPLE_(T) > is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/internal/gtest-tuple.h:747: warning: Member value (variable) of class std::tr1::tuple_size< GTEST_1_TUPLE_(T) > is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/internal/gtest-tuple.h:752: warning: Member value (variable) of class std::tr1::tuple_size< GTEST_2_TUPLE_(T) > is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/internal/gtest-tuple.h:757: warning: Member value (variable) of class std::tr1::tuple_size< GTEST_3_TUPLE_(T) > is not documented.
@@ -5464,9 +5497,10 @@ Generating docs for compound std::tr1::tuple_size< GTEST_0_T/home/travis/build/T
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-generated-function-mockers.h:880: warning: Member MOCK_METHOD0_T(Call, R()) (function) of class testing::MockFunction< R()> is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-generated-function-mockers.h:899: warning: Member MOCK_METHOD1_T(Call, R(A0)) (function) of class testing::MockFunction< R(A0)> is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-generated-function-mockers.h:918: warning: Member MOCK_METHOD2_T(Call, R(A0, A1)) (function) of class testing::MockFunction< R(A0, A1)> is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-generated-function-mockers.h:937: warning: Member MOCK_METHOD3_T(Call, R(A0, A1, A2)) (function) of class testing::MockFunction< R(A0, A1, A2)> is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-generated-function-mockers.h:956: warning: Member MOCK_METHOD4_T(Call, R(A0, A1, A2, A3)) (function) of class testing::MockFunction< R(A0, A1, A2, A3)> is not documented.
-UPLE_(T) >...
+1::tuple...
+Generating docs for compound std::tr1::tuple<>...
+Generating docs for compound std::tr1::tuple_size...
+Generating docs for compound std::tr1::tuple_size< GTEST_0_TUPLE_(T) >...
 Generating docs for compound std::tr1::tuple_size< GTEST_1_TUPLE_(T) >...
 Generating docs for compound std::tr1::tuple_size< GTEST_2_TUPLE_(T) >...
 Generating docs for compound std::tr1::tuple_size< GTEST_3_TUPLE_(T) >...
@@ -5519,9 +5553,9 @@ Generating docs for compound testing::MockFunction...
 Generating docs for compound testing::MockFunction< R()>...
 Generating docs for compound testing::MockFunction< R(A0)>...
 Generating docs for compound testing::MockFunction< R(A0, A1)>...
-Generating docs for compound testing::MockFunction< R(A0, A1, A2)>...
-Generating docs for compound testing::MockFunction< R(A0, A1, A2, A3)>...
-Generating docs for compound testing::MockFunction< R(A0, A1, A2, A3/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-generated-function-mockers.h:976: warning: Member MOCK_METHOD5_T(Call, R(A0, A1, A2, A3, A4)) (function) of class testing::MockFunction< R(A0, A1, A2, A3, A4)> is not documented.
+Generating docs for compound testing:/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-generated-function-mockers.h:937: warning: Member MOCK_METHOD3_T(Call, R(A0, A1, A2)) (function) of class testing::MockFunction< R(A0, A1, A2)> is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-generated-function-mockers.h:956: warning: Member MOCK_METHOD4_T(Call, R(A0, A1, A2, A3)) (function) of class testing::MockFunction< R(A0, A1, A2, A3)> is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-generated-function-mockers.h:976: warning: Member MOCK_METHOD5_T(Call, R(A0, A1, A2, A3, A4)) (function) of class testing::MockFunction< R(A0, A1, A2, A3, A4)> is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-generated-function-mockers.h:996: warning: Member MOCK_METHOD6_T(Call, R(A0, A1, A2, A3, A4, A5)) (function) of class testing::MockFunction< R(A0, A1, A2, A3, A4, A5)> is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-generated-function-mockers.h:1016: warning: Member MOCK_METHOD7_T(Call, R(A0, A1, A2, A3, A4, A5, A6)) (function) of class testing::MockFunction< R(A0, A1, A2, A3, A4, A5, A6)> is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-generated-function-mockers.h:1036: warning: Member MOCK_METHOD8_T(Call, R(A0, A1, A2, A3, A4, A5, A6, A7)) (function) of class testing::MockFunction< R(A0, A1, A2, A3, A4, A5, A6, A7)> is not documented.
@@ -5911,54 +5945,9 @@ Generating docs for compound testing::MockFunction< R(A0, A1, A2, A3/home/travis
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-generated-function-mockers_test.cc:101: warning: Member OverloadedOnConstness() const =0 (function) of class testing::gmock_generated_function_mockers_test::FooInterface is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-generated-function-mockers_test.cc:103: warning: Member TypeWithHole(int(*func)())=0 (function) of class testing::gmock_generated_function_mockers_test::FooInterface is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-generated-function-mockers_test.cc:104: warning: Member TypeWithComma(const std::map< int, string > &a_map)=0 (function) of class testing::gmock_generated_function_mockers_test::FooInterface is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-generated-function-mockers_test.cc:128: warning: Member MOCK_METHOD1(VoidReturning, void(int n)) (function) of class testing::gmock_generated_function_mockers_test::MockFoo is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-generated-function-mockers_test.cc:130: warning: Member MOCK_METHOD0(Nullary, int()) (function) of class testing::gmock_generated_function_mockers_test::MockFoo is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-generated-function-mockers_test.cc:133: warning: Member MOCK_METHOD1(Unary, bool(int)) (function) of class testing::gmock_generated_function_mockers_test::MockFoo is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-generated-function-mockers_test.cc:134: warning: Member MOCK_METHOD2(Binary, long(short, int)) (function) of class testing::gmock_generated_function_mockers_test::MockFoo is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-generated-function-mockers_test.cc:135: warning: Member MOCK_METHOD10(Decimal, int(bool, char, short, int, long, float, double, unsigned, char *, const string &str)) (function) of class testing::gmock_generated_function_mockers_test::MockFoo is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-generated-function-mockers_test.cc:138: warning: Member MOCK_METHOD1(TakesNonConstReference, bool(int &)) (function) of class testing::gmock_generated_function_mockers_test::MockFoo is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-generated-function-mockers_test.cc:139: warning: Member MOCK_METHOD1(TakesConstReference, string(const int &)) (function) of class testing::gmock_generated_function_mockers_test::MockFoo is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-generated-function-mockers_test.cc:142: warning: Member MOCK_METHOD1(TakesConst, bool(const int)) (function) of class testing::gmock_generated_function_mockers_test::MockFoo is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-generated-function-mockers_test.cc:146: warning: Member MOCK_METHOD0(ReturnTypeWithComma, std::map< int, string >()) (function) of class testing::gmock_generated_function_mockers_test::MockFoo is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-generated-function-mockers_test.cc:147: warning: Member MOCK_CONST_METHOD1(ReturnTypeWithComma, std::map< int, string >(int)) (function) of class testing::gmock_generated_function_mockers_test::MockFoo is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-generated-function-mockers_test.cc:150: warning: Member MOCK_METHOD0(OverloadedOnArgumentNumber, int()) (function) of class testing::gmock_generated_function_mockers_test::MockFoo is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-generated-function-mockers_test.cc:151: warning: Member MOCK_METHOD1(OverloadedOnArgumentNumber, int(int)) (function) of class testing::gmock_generated_function_mockers_test::MockFoo is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-generated-function-mockers_test.cc:153: warning: Member MOCK_METHOD1(OverloadedOnArgumentType, int(int)) (function) of class testing::gmock_generated_function_mockers_test::MockFoo is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-generated-function-mockers_test.cc:154: warning: Member MOCK_METHOD1(OverloadedOnArgumentType, char(char)) (function) of class testing::gmock_generated_function_mockers_test::MockFoo is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-generated-function-mockers_test.cc:156: warning: Member MOCK_METHOD0(OverloadedOnConstness, int()) (function) of class testing::gmock_generated_function_mockers_test::MockFoo is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-generated-function-mockers_test.cc:157: warning: Member MOCK_CONST_METHOD0(OverloadedOnConstness, char()) (function) of class testing::gmock_generated_function_mockers_test::MockFoo is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-generated-function-mockers_test.cc:159: warning: Member MOCK_METHOD1(TypeWithHole, int(int(*)())) (function) of class testing::gmock_generated_function_mockers_test::MockFoo is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-generated-function-mockers_test.cc:160: warning: Member MOCK_METHOD1(TypeWithComma, int(const std::map< int, string > &)) (function) of class testing::gmock_generated_function_mockers_test::MockFoo is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-generated-function-mockers_test.cc:79: warning: Member VoidReturning(int x)=0 (function) of class testing::gmock_generated_function_mockers_test::FooInterface is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-generated-function-mockers_test.cc:81: warning: Member Nullary()=0 (function) of class testing::gmock_generated_function_mockers_test::FooInterface is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-generated-function-mockers_test.cc:82: warning: Member Unary(int x)=0 (function) of class testing::gmock_generated_function_mockers_test::FooInterface is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-generated-function-mockers_test.cc:83: warning: Member Binary(short x, int y)=0 (function) of class testing::gmock_generated_function_mockers_test::FooInterface is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-generated-function-mockers_test.cc:84: warning: Member Decimal(bool b, char c, short d, int e, long f, float g, double h, unsigned i, char *j, const string &k)=0 (function) of class testing::gmock_generated_function_mockers_test::FooInterface is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-generated-function-mockers_test.cc:88: warning: Member TakesNonConstReference(int &n)=0 (function) of class testing::gmock_generated_function_mockers_test::FooInterface is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-generated-function-mockers_test.cc:89: warning: Member TakesConstReference(const int &n)=0 (function) of class testing::gmock_generated_function_mockers_test::FooInterface is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-generated-function-mockers_test.cc:91: warning: Member TakesConst(const int x)=0 (function) of class testing::gmock_generated_function_mockers_test::FooInterface is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-generated-function-mockers_test.cc:94: warning: Member OverloadedOnArgumentNumber()=0 (function) of class testing::gmock_generated_function_mockers_test::FooInterface is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-generated-function-mockers_test.cc:95: warning: Member OverloadedOnArgumentNumber(int n)=0 (function) of class testing::gmock_generated_function_mockers_test::FooInterface is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-generated-function-mockers_test.cc:97: warning: Member OverloadedOnArgumentType(int n)=0 (function) of class testing::gmock_generated_function_mockers_test::FooInterface is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-generated-function-mockers_test.cc:98: warning: Member OverloadedOnArgumentType(char c)=0 (function) of class testing::gmock_generated_function_mockers_test::FooInterface is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-generated-function-mockers_test.cc:100: warning: Member OverloadedOnConstness()=0 (function) of class testing::gmock_generated_function_mockers_test::FooInterface is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-generated-function-mockers_test.cc:101: warning: Member OverloadedOnConstness() const =0 (function) of class testing::gmock_generated_function_mockers_test::FooInterface is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-generated-function-mockers_test.cc:103: warning: Member TypeWithHole(int(*func)())=0 (function) of class testing::gmock_generated_function_mockers_test::FooInterface is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-generated-function-mockers_test.cc:104: warning: Member TypeWithComma(const std::map< int, string > &a_map)=0 (function) of class testing::gmock_generated_function_mockers_test::FooInterface is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-generated-function-mockers_test.cc:186: warning: Member foo_ (variable) of class testing::gmock_generated_function_mockers_test::FunctionMockerTest is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-generated-function-mockers_test.cc:187: warning: Member mock_foo_ (variable) of class testing::gmock_generated_function_mockers_test::FunctionMockerTest is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/gtest.h:377: warning: Member SetUpTestCaseFunc (typedef) of class testing::Test is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/gtest.h:378: warning: Member TearDownTestCaseFunc (typedef) of class testing::Test is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/gtest.h:389: warning: Member SetUpTestCase() (function) of class testing::Test is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/gtest.h:397: warning: Member TearDownTestCase() (function) of class testing::Test is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/gtest.h:400: warning: Member HasFatalFailure() (function) of class testing::Test is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/gtest.h:403: warning: Member HasNonfatalFailure() (function) of class testing::Test is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/gtest.h:407: warning: Member HasFailure() (function) of class testing::Test is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/gtest.h:422: warning: Member RecordProperty(const std::string &key, const std::string &value) (function) of class testing::Test is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/gtest.h:423: warning: Member RecordProperty(const std::string &key, int value) (function) of class testing::Test is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/gtest.h:430: warning: Member SetUp() (function) of class testing::Test is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/gtest.h:433: warning: Member TearDown() (function) of class testing::Test is not documented.
-, A4)>...
+:MockFunction< R(A0, A1, A2)>...
+Generating docs for compound testing::MockFunction< R(A0, A1, A2, A3)>...
+Generating docs for compound testing::MockFunction< R(A0, A1, A2, A3, A4)>...
 Generating docs for compound testing::MockFunction< R(A0, A1, A2, A3, A4, A5)>...
 Generating docs for compound testing::MockFunction< R(A0, A1, A2, A3, A4, A5, A6)>...
 Generating docs for compound testing::MockFunction< R(A0, A1, A2, A3, A4, A5, A6, A7)>...
@@ -6017,9 +6006,54 @@ Generating docs for compound testing::gmock_generated_actions_test::TenArgConstr
 Generating docs for compound testing::gmock_generated_actions_test::BoolResetter...
 Generating docs for compound testing::gmock_generated_actions_test::GiantTemplate...
 Generating docs for compound testing::gmock_generated_function_mockers_test::FooInterface...
-Generating docs for compound testing::gmock_generated_function_mockers_test::MockFoo...
-Generating docs for compound testing::gmock_generated_function_mockers_test::FunctionMockerTest...
-Generating docs for compound testing::gmock_generated/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-generated-function-mockers_test.cc:357: warning: Member MOCK_METHOD0(DoB, void()) (function) of class testing::gmock_generated_function_mockers_test::MockB is not documented.
+Generating docs for compound testing::gmock_generated_function_mo/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-generated-function-mockers_test.cc:128: warning: Member MOCK_METHOD1(VoidReturning, void(int n)) (function) of class testing::gmock_generated_function_mockers_test::MockFoo is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-generated-function-mockers_test.cc:130: warning: Member MOCK_METHOD0(Nullary, int()) (function) of class testing::gmock_generated_function_mockers_test::MockFoo is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-generated-function-mockers_test.cc:133: warning: Member MOCK_METHOD1(Unary, bool(int)) (function) of class testing::gmock_generated_function_mockers_test::MockFoo is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-generated-function-mockers_test.cc:134: warning: Member MOCK_METHOD2(Binary, long(short, int)) (function) of class testing::gmock_generated_function_mockers_test::MockFoo is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-generated-function-mockers_test.cc:135: warning: Member MOCK_METHOD10(Decimal, int(bool, char, short, int, long, float, double, unsigned, char *, const string &str)) (function) of class testing::gmock_generated_function_mockers_test::MockFoo is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-generated-function-mockers_test.cc:138: warning: Member MOCK_METHOD1(TakesNonConstReference, bool(int &)) (function) of class testing::gmock_generated_function_mockers_test::MockFoo is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-generated-function-mockers_test.cc:139: warning: Member MOCK_METHOD1(TakesConstReference, string(const int &)) (function) of class testing::gmock_generated_function_mockers_test::MockFoo is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-generated-function-mockers_test.cc:142: warning: Member MOCK_METHOD1(TakesConst, bool(const int)) (function) of class testing::gmock_generated_function_mockers_test::MockFoo is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-generated-function-mockers_test.cc:146: warning: Member MOCK_METHOD0(ReturnTypeWithComma, std::map< int, string >()) (function) of class testing::gmock_generated_function_mockers_test::MockFoo is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-generated-function-mockers_test.cc:147: warning: Member MOCK_CONST_METHOD1(ReturnTypeWithComma, std::map< int, string >(int)) (function) of class testing::gmock_generated_function_mockers_test::MockFoo is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-generated-function-mockers_test.cc:150: warning: Member MOCK_METHOD0(OverloadedOnArgumentNumber, int()) (function) of class testing::gmock_generated_function_mockers_test::MockFoo is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-generated-function-mockers_test.cc:151: warning: Member MOCK_METHOD1(OverloadedOnArgumentNumber, int(int)) (function) of class testing::gmock_generated_function_mockers_test::MockFoo is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-generated-function-mockers_test.cc:153: warning: Member MOCK_METHOD1(OverloadedOnArgumentType, int(int)) (function) of class testing::gmock_generated_function_mockers_test::MockFoo is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-generated-function-mockers_test.cc:154: warning: Member MOCK_METHOD1(OverloadedOnArgumentType, char(char)) (function) of class testing::gmock_generated_function_mockers_test::MockFoo is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-generated-function-mockers_test.cc:156: warning: Member MOCK_METHOD0(OverloadedOnConstness, int()) (function) of class testing::gmock_generated_function_mockers_test::MockFoo is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-generated-function-mockers_test.cc:157: warning: Member MOCK_CONST_METHOD0(OverloadedOnConstness, char()) (function) of class testing::gmock_generated_function_mockers_test::MockFoo is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-generated-function-mockers_test.cc:159: warning: Member MOCK_METHOD1(TypeWithHole, int(int(*)())) (function) of class testing::gmock_generated_function_mockers_test::MockFoo is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-generated-function-mockers_test.cc:160: warning: Member MOCK_METHOD1(TypeWithComma, int(const std::map< int, string > &)) (function) of class testing::gmock_generated_function_mockers_test::MockFoo is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-generated-function-mockers_test.cc:79: warning: Member VoidReturning(int x)=0 (function) of class testing::gmock_generated_function_mockers_test::FooInterface is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-generated-function-mockers_test.cc:81: warning: Member Nullary()=0 (function) of class testing::gmock_generated_function_mockers_test::FooInterface is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-generated-function-mockers_test.cc:82: warning: Member Unary(int x)=0 (function) of class testing::gmock_generated_function_mockers_test::FooInterface is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-generated-function-mockers_test.cc:83: warning: Member Binary(short x, int y)=0 (function) of class testing::gmock_generated_function_mockers_test::FooInterface is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-generated-function-mockers_test.cc:84: warning: Member Decimal(bool b, char c, short d, int e, long f, float g, double h, unsigned i, char *j, const string &k)=0 (function) of class testing::gmock_generated_function_mockers_test::FooInterface is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-generated-function-mockers_test.cc:88: warning: Member TakesNonConstReference(int &n)=0 (function) of class testing::gmock_generated_function_mockers_test::FooInterface is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-generated-function-mockers_test.cc:89: warning: Member TakesConstReference(const int &n)=0 (function) of class testing::gmock_generated_function_mockers_test::FooInterface is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-generated-function-mockers_test.cc:91: warning: Member TakesConst(const int x)=0 (function) of class testing::gmock_generated_function_mockers_test::FooInterface is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-generated-function-mockers_test.cc:94: warning: Member OverloadedOnArgumentNumber()=0 (function) of class testing::gmock_generated_function_mockers_test::FooInterface is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-generated-function-mockers_test.cc:95: warning: Member OverloadedOnArgumentNumber(int n)=0 (function) of class testing::gmock_generated_function_mockers_test::FooInterface is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-generated-function-mockers_test.cc:97: warning: Member OverloadedOnArgumentType(int n)=0 (function) of class testing::gmock_generated_function_mockers_test::FooInterface is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-generated-function-mockers_test.cc:98: warning: Member OverloadedOnArgumentType(char c)=0 (function) of class testing::gmock_generated_function_mockers_test::FooInterface is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-generated-function-mockers_test.cc:100: warning: Member OverloadedOnConstness()=0 (function) of class testing::gmock_generated_function_mockers_test::FooInterface is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-generated-function-mockers_test.cc:101: warning: Member OverloadedOnConstness() const =0 (function) of class testing::gmock_generated_function_mockers_test::FooInterface is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-generated-function-mockers_test.cc:103: warning: Member TypeWithHole(int(*func)())=0 (function) of class testing::gmock_generated_function_mockers_test::FooInterface is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-generated-function-mockers_test.cc:104: warning: Member TypeWithComma(const std::map< int, string > &a_map)=0 (function) of class testing::gmock_generated_function_mockers_test::FooInterface is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-generated-function-mockers_test.cc:186: warning: Member foo_ (variable) of class testing::gmock_generated_function_mockers_test::FunctionMockerTest is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-generated-function-mockers_test.cc:187: warning: Member mock_foo_ (variable) of class testing::gmock_generated_function_mockers_test::FunctionMockerTest is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/gtest.h:377: warning: Member SetUpTestCaseFunc (typedef) of class testing::Test is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/gtest.h:378: warning: Member TearDownTestCaseFunc (typedef) of class testing::Test is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/gtest.h:389: warning: Member SetUpTestCase() (function) of class testing::Test is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/gtest.h:397: warning: Member TearDownTestCase() (function) of class testing::Test is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/gtest.h:400: warning: Member HasFatalFailure() (function) of class testing::Test is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/gtest.h:403: warning: Member HasNonfatalFailure() (function) of class testing::Test is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/gtest.h:407: warning: Member HasFailure() (function) of class testing::Test is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/gtest.h:422: warning: Member RecordProperty(const std::string &key, const std::string &value) (function) of class testing::Test is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/gtest.h:423: warning: Member RecordProperty(const std::string &key, int value) (function) of class testing::Test is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/gtest.h:430: warning: Member SetUp() (function) of class testing::Test is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/gtest.h:433: warning: Member TearDown() (function) of class testing::Test is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-generated-function-mockers_test.cc:357: warning: Member MOCK_METHOD0(DoB, void()) (function) of class testing::gmock_generated_function_mockers_test::MockB is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-generated-function-mockers_test.cc:390: warning: Member Push(const T &value)=0 (function) of class testing::gmock_generated_function_mockers_test::StackInterface is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-generated-function-mockers_test.cc:391: warning: Member Pop()=0 (function) of class testing::gmock_generated_function_mockers_test::StackInterface is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-generated-function-mockers_test.cc:392: warning: Member GetSize() const =0 (function) of class testing::gmock_generated_function_mockers_test::StackInterface is not documented.
@@ -6234,19 +6268,9 @@ Generating docs for compound testing::gmock_generated/home/travis/build/TommyKan
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-more-actions_test.cc:216: warning: Member Concat9(const char *s1, const char *s2, const char *s3, const char *s4, const char *s5, const char *s6, const char *s7, const char *s8, const char *s9) (function) of class testing::gmock_more_actions_test::Foo is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-more-actions_test.cc:222: warning: Member Concat10(const char *s1, const char *s2, const char *s3, const char *s4, const char *s5, const char *s6, const char *s7, const char *s8, const char *s9, const char *s10) (function) of class testing::gmock_more_actions_test::Foo is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-more-actions_test.cc:565: warning: Member DeletionTester(bool *is_deleted) (function) of class testing::gmock_more_actions_test::DeletionTester is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-nice-strict_test.cc:72: warning: Member DoThis()=0 (function) of class testing::gmock_nice_strict_test::Foo is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-nice-strict_test.cc:73: warning: Member DoThat(bool flag)=0 (function) of class testing::gmock_nice_strict_test::Foo is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-nice-strict_test.cc:79: warning: Member Delete() (function) of class testing::gmock_nice_strict_test::MockFoo is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-nice-strict_test.cc:81: warning: Member MOCK_METHOD0(DoThis, void()) (function) of class testing::gmock_nice_strict_test::MockFoo is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-nice-strict_test.cc:82: warning: Member MOCK_METHOD1(DoThat, int(bool flag)) (function) of class testing::gmock_nice_strict_test::MockFoo is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-nice-strict_test.cc:72: warning: Member DoThis()=0 (function) of class testing::gmock_nice_strict_test::Foo is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-nice-strict_test.cc:73: warning: Member DoThat(bool flag)=0 (function) of class testing::gmock_nice_strict_test::Foo is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-nice-strict_test.cc:90: warning: Member MockBar(const string &s) (function) of class testing::gmock_nice_strict_test::MockBar is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-nice-strict_test.cc:92: warning: Member MockBar(char a1, char a2, string a3, string a4, int a5, int a6, const string &a7, const string &a8, bool a9, bool a10) (function) of class testing::gmock_nice_strict_test::MockBar is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-nice-strict_test.cc:100: warning: Member str() const  (function) of class testing::gmock_nice_strict_test::MockBar is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-nice-strict_test.cc:102: warning: Member MOCK_METHOD0(This, int()) (function) of class testing::gmock_nice_strict_test::MockBar is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-nice-strict_test.cc:103: warning: Member MOCK_METHOD2(That, string(int, bool)) (function) of class testing::gmock_nice_strict_test::MockBar is not documented.
-_function_mockers_test::MockB...
+ckers_test::MockFoo...
+Generating docs for compound testing::gmock_generated_function_mockers_test::FunctionMockerTest...
+Generating docs for compound testing::gmock_generated_function_mockers_test::MockB...
 Generating docs for compound testing::gmock_generated_function_mockers_test::StackInterface...
 Generating docs for compound testing::gmock_generated_function_mockers_test::MockStack...
 Generating docs for compound testing::gmock_generated_function_mockers_test::MockOverloadedOnArgNumber...
@@ -6295,10 +6319,19 @@ Generating docs for compound testing::gmock_more_actions_test::SumOf5Functor...
 Generating docs for compound testing::gmock_more_actions_test::SumOf6Functor...
 Generating docs for compound testing::gmock_more_actions_test::Foo...
 Generating docs for compound testing::gmock_more_actions_test::DeletionTester...
-Generating docs for compound testing::gmock_nice_strict_test::Foo...
-Generating docs for compound testing::gmock_nice_strict_test::MockFoo...
-Generating docs for compound testing::gmock_nice_strict_test::MockBar...
-Ge/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/test/gtest-printers_test.cc:561: warning: Member MyMethod(char x) (function) of class testing::gtest_printers_test::Foo is not documented.
+Generating docs for compound testing::gmoc/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-nice-strict_test.cc:72: warning: Member DoThis()=0 (function) of class testing::gmock_nice_strict_test::Foo is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-nice-strict_test.cc:73: warning: Member DoThat(bool flag)=0 (function) of class testing::gmock_nice_strict_test::Foo is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-nice-strict_test.cc:79: warning: Member Delete() (function) of class testing::gmock_nice_strict_test::MockFoo is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-nice-strict_test.cc:81: warning: Member MOCK_METHOD0(DoThis, void()) (function) of class testing::gmock_nice_strict_test::MockFoo is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-nice-strict_test.cc:82: warning: Member MOCK_METHOD1(DoThat, int(bool flag)) (function) of class testing::gmock_nice_strict_test::MockFoo is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-nice-strict_test.cc:72: warning: Member DoThis()=0 (function) of class testing::gmock_nice_strict_test::Foo is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-nice-strict_test.cc:73: warning: Member DoThat(bool flag)=0 (function) of class testing::gmock_nice_strict_test::Foo is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-nice-strict_test.cc:90: warning: Member MockBar(const string &s) (function) of class testing::gmock_nice_strict_test::MockBar is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-nice-strict_test.cc:92: warning: Member MockBar(char a1, char a2, string a3, string a4, int a5, int a6, const string &a7, const string &a8, bool a9, bool a10) (function) of class testing::gmock_nice_strict_test::MockBar is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-nice-strict_test.cc:100: warning: Member str() const  (function) of class testing::gmock_nice_strict_test::MockBar is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-nice-strict_test.cc:102: warning: Member MOCK_METHOD0(This, int()) (function) of class testing::gmock_nice_strict_test::MockBar is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-nice-strict_test.cc:103: warning: Member MOCK_METHOD2(That, string(int, bool)) (function) of class testing::gmock_nice_strict_test::MockBar is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/test/gtest-printers_test.cc:561: warning: Member MyMethod(char x) (function) of class testing::gtest_printers_test::Foo is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/test/gtest-printers_test.cc:562: warning: Member MyVirtualMethod(int) (function) of class testing::gtest_printers_test::Foo is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/test/gtest-printers_test.cc:564: warning: Member value (variable) of class testing::gtest_printers_test::Foo is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/test/gtest-printers_test.cc:770: warning: Member operator bool() const  (function) of class testing::gtest_printers_test::AllowsGenericStreamingAndImplicitConversionTemplate is not documented.
@@ -6382,13 +6415,10 @@ Ge/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/g
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-generated-actions.h:337: warning: Member type(GMOCK_FIELD_(ArgumentTuple, k1), GMOCK_FIELD_(ArgumentTuple, k2)) (typedef) of class testing::internal::SelectArgs< Result, ArgumentTuple, k1, k2,-1,-1,-1,-1,-1,-1,-1,-1 > is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-generated-actions.h:339: warning: Member SelectedArgs (typedef) of class testing::internal::SelectArgs< Result, ArgumentTuple, k1, k2,-1,-1,-1,-1,-1,-1,-1,-1 > is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-generated-actions.h:340: warning: Member Select(const ArgumentTuple &args) (function) of class testing::internal::SelectArgs< Result, ArgumentTuple, k1, k2,-1,-1,-1,-1,-1,-1,-1,-1 > is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-generated-actions.h:349: warning: Member type(GMOCK_FIELD_(ArgumentTuple, k1), GMOCK_FIELD_(ArgumentTuple, k2), GMOCK_FIELD_(ArgumentTuple, k3)) (typedef) of class testing::internal::SelectArgs< Result, ArgumentTuple, k1, k2, k3,-1,-1,-1,-1,-1,-1,-1 > is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-generated-actions.h:351: warning: Member SelectedArgs (typedef) of class testing::internal::SelectArgs< Result, ArgumentTuple, k1, k2, k3,-1,-1,-1,-1,-1,-1,-1 > is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-generated-actions.h:352: warning: Member Select(const ArgumentTuple &args) (function) of class testing::internal::SelectArgs< Result, ArgumentTuple, k1, k2, k3,-1,-1,-1,-1,-1,-1,-1 > is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-generated-actions.h:362: warning: Member type(GMOCK_FIELD_(ArgumentTuple, k1), GMOCK_FIELD_(ArgumentTuple, k2), GMOCK_FIELD_(ArgumentTuple, k3), GMOCK_FIELD_(ArgumentTuple, k4)) (typedef) of class testing::internal::SelectArgs< Result, ArgumentTuple, k1, k2, k3, k4,-1,-1,-1,-1,-1,-1 > is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-generated-actions.h:365: warning: Member SelectedArgs (typedef) of class testing::internal::SelectArgs< Result, ArgumentTuple, k1, k2, k3, k4,-1,-1,-1,-1,-1,-1 > is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-generated-actions.h:366: warning: Member Select(const ArgumentTuple &args) (function) of class testing::internal::SelectArgs< Result, ArgumentTuple, k1, k2, k3, k4,-1,-1,-1,-1,-1,-1 > is not documented.
-nerating docs for compound testing::gtest_printers_test::Foo...
+k_nice_strict_test::Foo...
+Generating docs for compound testing::gmock_nice_strict_test::MockFoo...
+Generating docs for compound testing::gmock_nice_strict_test::MockBar...
+Generating docs for compound testing::gtest_printers_test::Foo...
 Generating docs for compound testing::gtest_printers_test::AllowsGenericStreaming...
 Generating docs for compound testing::gtest_printers_test::AllowsGenericStreamingTemplate...
 Generating docs for compound testing::gtest_printers_test::AllowsGenericStreamingAndImplicitConversionTemplate...
@@ -6433,9 +6463,13 @@ Generating docs for compound testing::internal::SelectArgs...
 Generating docs for compound testing::internal::SelectArgs< Result, ArgumentTuple,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 >...
 Generating docs for compound testing::internal::SelectArgs< Result, ArgumentTuple, k1,-1,-1,-1,-1,-1,-1,-1,-1,-1 >...
 Generating docs for compound testing::internal::SelectArgs< Result, ArgumentTuple, k1, k2,-1,-1,-1,-1,-1,-1,-1,-1 >...
-Generating docs for compound testing::internal::SelectArgs< Result, ArgumentTuple, k1, k2, k3,-1,-1,-1,-1,-1,-1,-1 >...
-Generating docs for compound testing::internal::SelectArgs< Result, ArgumentTuple, k1, k2, k3, k4,-1,-1,-1,-1,-1,-1 >...
-Generating docs/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-generated-actions.h:377: warning: Member type(GMOCK_FIELD_(ArgumentTuple, k1), GMOCK_FIELD_(ArgumentTuple, k2), GMOCK_FIELD_(ArgumentTuple, k3), GMOCK_FIELD_(ArgumentTuple, k4), GMOCK_FIELD_(ArgumentTuple, k5)) (typedef) of class testing::internal::SelectArgs< Result, ArgumentTuple, k1, k2, k3, k4, k5,-1,-1,-1,-1,-1 > is not documented.
+Generating docs for compound testing::internal::SelectArgs< Result, ArgumentTuple/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-generated-actions.h:349: warning: Member type(GMOCK_FIELD_(ArgumentTuple, k1), GMOCK_FIELD_(ArgumentTuple, k2), GMOCK_FIELD_(ArgumentTuple, k3)) (typedef) of class testing::internal::SelectArgs< Result, ArgumentTuple, k1, k2, k3,-1,-1,-1,-1,-1,-1,-1 > is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-generated-actions.h:351: warning: Member SelectedArgs (typedef) of class testing::internal::SelectArgs< Result, ArgumentTuple, k1, k2, k3,-1,-1,-1,-1,-1,-1,-1 > is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-generated-actions.h:352: warning: Member Select(const ArgumentTuple &args) (function) of class testing::internal::SelectArgs< Result, ArgumentTuple, k1, k2, k3,-1,-1,-1,-1,-1,-1,-1 > is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-generated-actions.h:362: warning: Member type(GMOCK_FIELD_(ArgumentTuple, k1), GMOCK_FIELD_(ArgumentTuple, k2), GMOCK_FIELD_(ArgumentTuple, k3), GMOCK_FIELD_(ArgumentTuple, k4)) (typedef) of class testing::internal::SelectArgs< Result, ArgumentTuple, k1, k2, k3, k4,-1,-1,-1,-1,-1,-1 > is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-generated-actions.h:365: warning: Member SelectedArgs (typedef) of class testing::internal::SelectArgs< Result, ArgumentTuple, k1, k2, k3, k4,-1,-1,-1,-1,-1,-1 > is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-generated-actions.h:366: warning: Member Select(const ArgumentTuple &args) (function) of class testing::internal::SelectArgs< Result, ArgumentTuple, k1, k2, k3, k4,-1,-1,-1,-1,-1,-1 > is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-generated-actions.h:377: warning: Member type(GMOCK_FIELD_(ArgumentTuple, k1), GMOCK_FIELD_(ArgumentTuple, k2), GMOCK_FIELD_(ArgumentTuple, k3), GMOCK_FIELD_(ArgumentTuple, k4), GMOCK_FIELD_(ArgumentTuple, k5)) (typedef) of class testing::internal::SelectArgs< Result, ArgumentTuple, k1, k2, k3, k4, k5,-1,-1,-1,-1,-1 > is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-generated-actions.h:380: warning: Member SelectedArgs (typedef) of class testing::internal::SelectArgs< Result, ArgumentTuple, k1, k2, k3, k4, k5,-1,-1,-1,-1,-1 > is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-generated-actions.h:381: warning: Member Select(const ArgumentTuple &args) (function) of class testing::internal::SelectArgs< Result, ArgumentTuple, k1, k2, k3, k4, k5,-1,-1,-1,-1,-1 > is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-generated-actions.h:392: warning: Member type(GMOCK_FIELD_(ArgumentTuple, k1), GMOCK_FIELD_(ArgumentTuple, k2), GMOCK_FIELD_(ArgumentTuple, k3), GMOCK_FIELD_(ArgumentTuple, k4), GMOCK_FIELD_(ArgumentTuple, k5), GMOCK_FIELD_(ArgumentTuple, k6)) (typedef) of class testing::internal::SelectArgs< Result, ArgumentTuple, k1, k2, k3, k4, k5, k6,-1,-1,-1,-1 > is not documented.
@@ -6861,10 +6895,9 @@ Generating docs/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-generated-matchers.h:374: warning: Member type (typedef) of class testing::internal::AllOfResult9 is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-generated-matchers.h:383: warning: Member type (typedef) of class testing::internal::AllOfResult10 is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-generated-matchers.h:394: warning: Member type (typedef) of class testing::internal::AnyOfResult1 is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-generated-matchers.h:402: warning: Member type (typedef) of class testing::internal::AnyOfResult2 is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-generated-matchers.h:410: warning: Member type (typedef) of class testing::internal::AnyOfResult3 is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-generated-matchers.h:418: warning: Member type (typedef) of class testing::internal::AnyOfResult4 is not documented.
- for compound testing::internal::SelectArgs< Result, ArgumentTuple, k1, k2, k3, k4, k5,-1,-1,-1,-1,-1 >...
+, k1, k2, k3,-1,-1,-1,-1,-1,-1,-1 >...
+Generating docs for compound testing::internal::SelectArgs< Result, ArgumentTuple, k1, k2, k3, k4,-1,-1,-1,-1,-1,-1 >...
+Generating docs for compound testing::internal::SelectArgs< Result, ArgumentTuple, k1, k2, k3, k4, k5,-1,-1,-1,-1,-1 >...
 Generating docs for compound testing::internal::SelectArgs< Result, ArgumentTuple, k1, k2, k3, k4, k5, k6,-1,-1,-1,-1 >...
 Generating docs for compound testing::internal::SelectArgs< Result, ArgumentTuple, k1, k2, k3, k4, k5, k6, k7,-1,-1,-1 >...
 Generating docs for compound testing::internal::SelectArgs< Result, ArgumentTuple, k1, k2, k3, k4, k5, k6, k7, k8,-1,-1 >...
@@ -6909,10 +6942,10 @@ Generating docs for compound testing::internal::AllOfResult8...
 Generating docs for compound testing::internal::AllOfResult9...
 Generating docs for compound testing::internal::AllOfResult10...
 Generating docs for compound testing::internal::AnyOfResult1...
-Generating docs for compound testing::internal::AnyOfResult2...
-Generating docs for compound testing::internal::AnyOfResult3...
-Generating docs for compound testing::internal::AnyOfResult4...
-Generating do/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-generated-matchers.h:426: warning: Member type (typedef) of class testing::internal::AnyOfResult5 is not documented.
+Generating docs for compound t/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-generated-matchers.h:402: warning: Member type (typedef) of class testing::internal::AnyOfResult2 is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-generated-matchers.h:410: warning: Member type (typedef) of class testing::internal::AnyOfResult3 is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-generated-matchers.h:418: warning: Member type (typedef) of class testing::internal::AnyOfResult4 is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-generated-matchers.h:426: warning: Member type (typedef) of class testing::internal::AnyOfResult5 is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-generated-matchers.h:435: warning: Member type (typedef) of class testing::internal::AnyOfResult6 is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-generated-matchers.h:444: warning: Member type (typedef) of class testing::internal::AnyOfResult7 is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-generated-matchers.h:453: warning: Member type (typedef) of class testing::internal::AnyOfResult8 is not documented.
@@ -7079,21 +7112,10 @@ Generating do/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/g
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-matchers.h:2118: warning: Member DescribeNegationTo(::std::ostream *os) const  (function) of class testing::internal::WhenDynamicCastToMatcherBase is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-matchers.h:2126: warning: Member GetToName() (function) of class testing::internal::WhenDynamicCastToMatcherBase is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-matchers.h:2124: warning: Member matcher_ (variable) of class testing::internal::WhenDynamicCastToMatcherBase is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-matchers.h:2147: warning: Member WhenDynamicCastToMatcher(const Matcher< To > &matcher) (function) of class testing::internal::WhenDynamicCastToMatcher is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-matchers.h:2151: warning: Member MatchAndExplain(From from, MatchResultListener *listener) const  (function) of class testing::internal::WhenDynamicCastToMatcher is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-matchers.h:2110: warning: Member WhenDynamicCastToMatcherBase(const Matcher< To > &matcher) (function) of class testing::internal::WhenDynamicCastToMatcherBase is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-matchers.h:2113: warning: Member DescribeTo(::std::ostream *os) const  (function) of class testing::internal::WhenDynamicCastToMatcherBase is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-matchers.h:2118: warning: Member DescribeNegationTo(::std::ostream *os) const  (function) of class testing::internal::WhenDynamicCastToMatcherBase is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-matchers.h:2126: warning: Member GetToName() (function) of class testing::internal::WhenDynamicCastToMatcherBase is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-matchers.h:2124: warning: Member matcher_ (variable) of class testing::internal::WhenDynamicCastToMatcherBase is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-matchers.h:2163: warning: Member WhenDynamicCastToMatcher(const Matcher< To & > &matcher) (function) of class testing::internal::WhenDynamicCastToMatcher< To & > is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-matchers.h:2167: warning: Member MatchAndExplain(From &from, MatchResultListener *listener) const  (function) of class testing::internal::WhenDynamicCastToMatcher< To & > is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-matchers.h:2110: warning: Member WhenDynamicCastToMatcherBase(const Matcher< To & > &matcher) (function) of class WhenDynamicCastToMatcherBase< To & > is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-matchers.h:2113: warning: Member DescribeTo(::std::ostream *os) const (function) of class WhenDynamicCastToMatcherBase< To & > is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-matchers.h:2118: warning: Member DescribeNegationTo(::std::ostream *os) const (function) of class WhenDynamicCastToMatcherBase< To & > is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-matchers.h:2126: warning: Member GetToName() (function) of class WhenDynamicCastToMatcherBase< To & > is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-matchers.h:2124: warning: Member matcher_ (variable) of class WhenDynamicCastToMatcherBase< To & > is not documented.
-cs for compound testing::internal::AnyOfResult5...
+esting::internal::AnyOfResult2...
+Generating docs for compound testing::internal::AnyOfResult3...
+Generating docs for compound testing::internal::AnyOfResult4...
+Generating docs for compound testing::internal::AnyOfResult5...
 Generating docs for compound testing::internal::AnyOfResult6...
 Generating docs for compound testing::internal::AnyOfResult7...
 Generating docs for compound testing::internal::AnyOfResult8...
@@ -7152,9 +7174,21 @@ Generating docs for compound testing::internal::FloatingEqMatcher...
 Generating docs for nested compound testing::internal::FloatingEqMatcher::Impl...
 Generating docs for compound testing::internal::PointeeMatcher...
 Generating docs for compound testing::internal::WhenDynamicCastToMatcherBase...
-Generating docs for compound testing::internal::WhenDynamicCastToMatcher...
-Generating docs for compound testing::internal::WhenDynamicCastToMatcher< To & >...
-Generating docs for compound testing:/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-matchers.h:2183: warning: Member FieldMatcher(FieldType Class::*field, const Matcher< const FieldType & > &matcher) (function) of class testing::internal::FieldMatcher is not documented.
+Generating docs for co/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-matchers.h:2147: warning: Member WhenDynamicCastToMatcher(const Matcher< To > &matcher) (function) of class testing::internal::WhenDynamicCastToMatcher is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-matchers.h:2151: warning: Member MatchAndExplain(From from, MatchResultListener *listener) const  (function) of class testing::internal::WhenDynamicCastToMatcher is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-matchers.h:2110: warning: Member WhenDynamicCastToMatcherBase(const Matcher< To > &matcher) (function) of class testing::internal::WhenDynamicCastToMatcherBase is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-matchers.h:2113: warning: Member DescribeTo(::std::ostream *os) const  (function) of class testing::internal::WhenDynamicCastToMatcherBase is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-matchers.h:2118: warning: Member DescribeNegationTo(::std::ostream *os) const  (function) of class testing::internal::WhenDynamicCastToMatcherBase is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-matchers.h:2126: warning: Member GetToName() (function) of class testing::internal::WhenDynamicCastToMatcherBase is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-matchers.h:2124: warning: Member matcher_ (variable) of class testing::internal::WhenDynamicCastToMatcherBase is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-matchers.h:2163: warning: Member WhenDynamicCastToMatcher(const Matcher< To & > &matcher) (function) of class testing::internal::WhenDynamicCastToMatcher< To & > is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-matchers.h:2167: warning: Member MatchAndExplain(From &from, MatchResultListener *listener) const  (function) of class testing::internal::WhenDynamicCastToMatcher< To & > is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-matchers.h:2110: warning: Member WhenDynamicCastToMatcherBase(const Matcher< To & > &matcher) (function) of class WhenDynamicCastToMatcherBase< To & > is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-matchers.h:2113: warning: Member DescribeTo(::std::ostream *os) const (function) of class WhenDynamicCastToMatcherBase< To & > is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-matchers.h:2118: warning: Member DescribeNegationTo(::std::ostream *os) const (function) of class WhenDynamicCastToMatcherBase< To & > is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-matchers.h:2126: warning: Member GetToName() (function) of class WhenDynamicCastToMatcherBase< To & > is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-matchers.h:2124: warning: Member matcher_ (variable) of class WhenDynamicCastToMatcherBase< To & > is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-matchers.h:2183: warning: Member FieldMatcher(FieldType Class::*field, const Matcher< const FieldType & > &matcher) (function) of class testing::internal::FieldMatcher is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-matchers.h:2187: warning: Member DescribeTo(::std::ostream *os) const  (function) of class testing::internal::FieldMatcher is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-matchers.h:2192: warning: Member DescribeNegationTo(::std::ostream *os) const  (function) of class testing::internal::FieldMatcher is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-matchers.h:2198: warning: Member MatchAndExplain(const T &value, MatchResultListener *listener) const  (function) of class testing::internal::FieldMatcher is not documented.
@@ -7516,9 +7550,9 @@ Generating docs for compound testing:/home/travis/build/TommyKaneko/Sketchup-API
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/internal/gmock-generated-internal-utils.h:78: warning: Member type (typedef) of class testing::internal::MatcherTuple< ::testing::tuple< A1 > > is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/internal/gmock-generated-internal-utils.h:83: warning: Member type (typedef) of class testing::internal::MatcherTuple< ::testing::tuple< A1, A2 > > is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/internal/gmock-generated-internal-utils.h:88: warning: Member type (typedef) of class testing::internal::MatcherTuple< ::testing::tuple< A1, A2, A3 > > is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/internal/gmock-generated-internal-utils.h:94: warning: Member type (typedef) of class testing::internal::MatcherTuple< ::testing::tuple< A1, A2, A3, A4 > > is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/internal/gmock-generated-internal-utils.h:100: warning: Member type (typedef) of class testing::internal::MatcherTuple< ::testing::tuple< A1, A2, A3, A4, A5 > > is not documented.
-:internal::FieldMatcher...
+mpound testing::internal::WhenDynamicCastToMatcher...
+Generating docs for compound testing::internal::WhenDynamicCastToMatcher< To & >...
+Generating docs for compound testing::internal::FieldMatcher...
 Generating docs for compound testing::internal::PropertyMatcher...
 Generating docs for compound testing::internal::CallableTraits...
 Generating docs for compound testing::internal::CallableTraits< ResType(*)(ArgType)>...
@@ -7571,9 +7605,9 @@ Generating docs for compound testing::internal::MatcherTuple< ::testing::tuple<>
 Generating docs for compound testing::internal::MatcherTuple< ::testing::tuple< A1 > >...
 Generating docs for compound testing::internal::MatcherTuple< ::testing::tuple< A1, A2 > >...
 Generating docs for compound testing::internal::MatcherTuple< ::testing::tuple< A1, A2, A3 > >...
-Generating docs for compound testing::internal::MatcherTuple< ::testing::tuple< A1, A2, A3, A4 > >...
-Generating docs for compound testing::internal::MatcherTuple< ::testing::tuple< A1, A2, A3, A4, A5 > >...
-Generating docs for compound testing::inte/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/internal/gmock-generated-internal-utils.h:107: warning: Member type (typedef) of class testing::internal::MatcherTuple< ::testing::tuple< A1, A2, A3, A4, A5, A6 > > is not documented.
+Generating docs for compound testing::internal::MatcherTuple< ::testing::tu/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/internal/gmock-generated-internal-utils.h:94: warning: Member type (typedef) of class testing::internal::MatcherTuple< ::testing::tuple< A1, A2, A3, A4 > > is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/internal/gmock-generated-internal-utils.h:100: warning: Member type (typedef) of class testing::internal::MatcherTuple< ::testing::tuple< A1, A2, A3, A4, A5 > > is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/internal/gmock-generated-internal-utils.h:107: warning: Member type (typedef) of class testing::internal::MatcherTuple< ::testing::tuple< A1, A2, A3, A4, A5, A6 > > is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/internal/gmock-generated-internal-utils.h:114: warning: Member type (typedef) of class testing::internal::MatcherTuple< ::testing::tuple< A1, A2, A3, A4, A5, A6, A7 > > is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/internal/gmock-generated-internal-utils.h:121: warning: Member type (typedef) of class testing::internal::MatcherTuple< ::testing::tuple< A1, A2, A3, A4, A5, A6, A7, A8 > > is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/internal/gmock-generated-internal-utils.h:128: warning: Member type (typedef) of class testing::internal::MatcherTuple< ::testing::tuple< A1, A2, A3, A4, A5, A6, A7, A8, A9 > > is not documented.
@@ -7958,10 +7992,9 @@ Generating docs for compound testing::inte/home/travis/build/TommyKaneko/Sketchu
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/internal/gmock-internal-utils.h:479: warning: Member Copy(const ::testing::tuple< ElementPointer, Size > &array) (function) of class testing::internal::StlContainerView< ::testing::tuple< ElementPointer, Size > > is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/internal/gmock-internal-utils.h:493: warning: Member type (typedef) of class testing::internal::RemoveConstFromKey is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/internal/gmock-internal-utils.h:499: warning: Member type (typedef) of class testing::internal::RemoveConstFromKey< std::pair< const K, V > > is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/src/gmock-internal-utils.cc:78: warning: Member ReportFailure(FailureType type, const char *file, int line, const string &message) (function) of class testing::internal::GoogleTestFailureReporter is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/src/gmock-matchers.cc:200: warning: Member MaxBipartiteMatchState(const MatchMatrix &graph) (function) of class testing::internal::MaxBipartiteMatchState is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/src/gmock-matchers.cc:207: warning: Member Compute() (function) of class testing::internal::MaxBipartiteMatchState is not documented.
-rnal::MatcherTuple< ::testing::tuple< A1, A2, A3, A4, A5, A6 > >...
+ple< A1, A2, A3, A4 > >...
+Generating docs for compound testing::internal::MatcherTuple< ::testing::tuple< A1, A2, A3, A4, A5 > >...
+Generating docs for compound testing::internal::MatcherTuple< ::testing::tuple< A1, A2, A3, A4, A5, A6 > >...
 Generating docs for compound testing::internal::MatcherTuple< ::testing::tuple< A1, A2, A3, A4, A5, A6, A7 > >...
 Generating docs for compound testing::internal::MatcherTuple< ::testing::tuple< A1, A2, A3, A4, A5, A6, A7, A8 > >...
 Generating docs for compound testing::internal::MatcherTuple< ::testing::tuple< A1, A2, A3, A4, A5, A6, A7, A8, A9 > >...
@@ -8005,10 +8038,10 @@ Generating docs for compound testing::internal::StlContainerView< Element[N]>...
 Generating docs for compound testing::internal::StlContainerView< ::testing::tuple< ElementPointer, Size > >...
 Generating docs for compound testing::internal::RemoveConstFromKey...
 Generating docs for compound testing::internal::RemoveConstFromKey< std::pair< const K, V > >...
-Generating docs for compound testing::internal::BooleanConstant...
-Generating docs for compound testing::internal::GoogleTestFailureReporter...
-Generating docs for compound testing::internal::MaxBipartiteMatchState...
-Generating doc/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-spec-builders_test.cc:55: warning: Member SetCallCount(int n, ExpectationBase *exp) (function) of class testing::internal::ExpectationTester is not documented.
+Generating docs for compound testing::internal::BooleanCo/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/src/gmock-internal-utils.cc:78: warning: Member ReportFailure(FailureType type, const char *file, int line, const string &message) (function) of class testing::internal::GoogleTestFailureReporter is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/src/gmock-matchers.cc:200: warning: Member MaxBipartiteMatchState(const MatchMatrix &graph) (function) of class testing::internal::MaxBipartiteMatchState is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/src/gmock-matchers.cc:207: warning: Member Compute() (function) of class testing::internal::MaxBipartiteMatchState is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-spec-builders_test.cc:55: warning: Member SetCallCount(int n, ExpectationBase *exp) (function) of class testing::internal::ExpectationTester is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/gtest-printers.h:275: warning: Member Format(const ToPrint &value) (function) of class testing::internal::FormatForComparison is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/gtest-printers.h:284: warning: Member Format(const ToPrint *value) (function) of class testing::internal::FormatForComparison< ToPrint[N], OtherOperand > is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/gtest-printers.h:698: warning: Member Print(const T &value,::std::ostream *os) (function) of class testing::internal::UniversalPrinter is not documented.
@@ -8154,11 +8187,10 @@ Generating doc/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/internal/gtest-port.h:2205: warning: Member value (variable) of class testing::internal::bool_constant is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/internal/gtest-port.h:2204: warning: Member type (typedef) of class testing::internal::bool_constant is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/internal/gtest-port.h:2205: warning: Member value (variable) of class testing::internal::bool_constant is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/internal/gtest-port.h:2204: warning: Member type (typedef) of class testing::internal::bool_constant is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/internal/gtest-port.h:2205: warning: Member value (variable) of class testing::internal::bool_constant is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/internal/gtest-port.h:2220: warning: Member value_type (typedef) of class testing::internal::IteratorTraits is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/internal/gtest-port.h:2225: warning: Member value_type (typedef) of class testing::internal::IteratorTraits< T * > is not documented.
-s for compound testing::internal::ExpectationTester...
+nstant...
+Generating docs for compound testing::internal::GoogleTestFailureReporter...
+Generating docs for compound testing::internal::MaxBipartiteMatchState...
+Generating docs for compound testing::internal::ExpectationTester...
 Generating docs for compound testing::internal::FormatForComparison...
 Generating docs for compound testing::internal::FormatForComparison< ToPrint[N], OtherOperand >...
 Generating docs for compound testing::internal::UniversalPrinter...
@@ -8214,10 +8246,11 @@ Generating docs for compound testing::internal::GTestMutexLock...
 Generating docs for compound testing::internal::ThreadLocal...
 Generating docs for compound testing::internal::bool_constant...
 Generating docs for compound testing::internal::is_pointer...
-Generating docs for compound testing::internal::is_pointer< T * >...
-Generating docs for compound testing::internal::IteratorTraits...
-Generating docs for compound testing::internal::IteratorTraits< T * >...
-Ge/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/internal/gtest-port.h:2230: warning: Member value_type (typedef) of class testing::internal::IteratorTraits< const T * > is not documented.
+Generating docs for compound testin/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/internal/gtest-port.h:2204: warning: Member type (typedef) of class testing::internal::bool_constant is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/internal/gtest-port.h:2205: warning: Member value (variable) of class testing::internal::bool_constant is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/internal/gtest-port.h:2220: warning: Member value_type (typedef) of class testing::internal::IteratorTraits is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/internal/gtest-port.h:2225: warning: Member value_type (typedef) of class testing::internal::IteratorTraits< T * > is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/internal/gtest-port.h:2230: warning: Member value_type (typedef) of class testing::internal::IteratorTraits< const T * > is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/internal/gtest-port.h:2465: warning: Member UInt (typedef) of class testing::internal::TypeWithSize is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/internal/gtest-port.h:2476: warning: Member Int (typedef) of class testing::internal::TypeWithSize< 4 > is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/internal/gtest-port.h:2477: warning: Member UInt (typedef) of class testing::internal::TypeWithSize< 4 > is not documented.
@@ -8485,7 +8518,10 @@ Ge/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/g
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/slapi/mac/SketchUpAPI.framework/Versions/A/Headers/model/texture_writer.h:22: warning: unable to resolve reference to `SUMeshHelperCreateWithTextureWriter' for \ref command
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/slapi/mac/SketchUpAPI.framework/Versions/A/Headers/model/image_rep.h:23: warning: unable to resolve reference to `alpha_index' for \ref command
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/slapi/mac/SketchUpAPI.framework/Versions/A/Headers/model/texture_writer.h:22: warning: unable to resolve reference to `SUMeshHelperCreateWithTextureWriter' for \ref command
-nerating docs for compound testing::internal::IteratorTraits< const T * >...
+g::internal::is_pointer< T * >...
+Generating docs for compound testing::internal::IteratorTraits...
+Generating docs for compound testing::internal::IteratorTraits< T * >...
+Generating docs for compound testing::internal::IteratorTraits< const T * >...
 Generating docs for compound testing::internal::TypeWithSize...
 Generating docs for compound testing::internal::TypeWithSize< 4 >...
 Generating docs for compound testing::internal::TypeWithSize< 8 >...
@@ -8546,5 +8582,5 @@ Generating file index...
 Generating file member index...
 Generating example index...
 finalizing index lists...
-lookup cache used 18965/65536 hits=185470 misses=20306
+lookup cache used 19079/65536 hits=186815 misses=20418
 finished...

@@ -115,14 +115,19 @@
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  <span class="keywordflow">return</span> m_material_input;</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;}</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;} <span class="comment">/* namespace CW */</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;Material MaterialInput::material()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  <span class="keywordflow">return</span> Material(m_material_input.<a class="code" href="struct_s_u_material_input.html#a375cf3067de882c642fe5f7409ee4cc9">material</a>);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;}</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;} <span class="comment">/* namespace CW */</span></div>
+<div class="ttc" id="struct_s_u_material_input_html_a375cf3067de882c642fe5f7409ee4cc9"><div class="ttname"><a href="struct_s_u_material_input.html#a375cf3067de882c642fe5f7409ee4cc9">SUMaterialInput::material</a></div><div class="ttdeci">SUMaterialRef material</div><div class="ttdoc">Material to be applied. </div><div class="ttdef"><b>Definition:</b> <a href="mac_2_sketch_up_a_p_i_8framework_2_versions_2_a_2_headers_2model_2geometry__input_8h_source.html#l00042">geometry_input.h:42</a></div></div>
 <div class="ttc" id="struct_s_u_material_input_html"><div class="ttname"><a href="struct_s_u_material_input.html">SUMaterialInput</a></div><div class="ttdoc">SUMaterialInput contains information that is needed to apply a material to a face. The conventional method for applying a material to a face is to use 1 to 4 UV coordinates, which are Cartesian textures coordinates and corresponding vertex indices on the face. The vertices are referenced by index into the top level SUGeometryInputRef&#39;s vertex array. The member variable &#39;material&#39; must be a valid material object, and once the material input is used (e.g. with /ref SUEntitiesFill), the material object must not be released since it will be associated with a parent object. </div><div class="ttdef"><b>Definition:</b> <a href="mac_2_sketch_up_a_p_i_8framework_2_versions_2_a_2_headers_2model_2geometry__input_8h_source.html#l00032">geometry_input.h:32</a></div></div>
 <div class="ttc" id="struct_s_u_material_input_html_a8342566af053317571dac7fc0a626d3b"><div class="ttname"><a href="struct_s_u_material_input.html#a8342566af053317571dac7fc0a626d3b">SUMaterialInput::num_uv_coords</a></div><div class="ttdeci">size_t num_uv_coords</div><div class="ttdef"><b>Definition:</b> <a href="mac_2_sketch_up_a_p_i_8framework_2_versions_2_a_2_headers_2model_2geometry__input_8h_source.html#l00033">geometry_input.h:33</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Apr 24 2018 12:15:56 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Apr 25 2018 09:21:03 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

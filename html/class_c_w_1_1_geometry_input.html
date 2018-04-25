@@ -61,8 +61,8 @@
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:af83acb61858d32fc669871756b2ff142"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_w_1_1_geometry_input.html#af83acb61858d32fc669871756b2ff142">GeometryInput</a> ()</td></tr>
-<tr class="separator:af83acb61858d32fc669871756b2ff142"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e53067b1a90696e108cd9ead874cfed"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_w_1_1_geometry_input.html#a8e53067b1a90696e108cd9ead874cfed">GeometryInput</a> (<a class="el" href="struct_s_u_model_ref.html">SUModelRef</a> target_model)</td></tr>
+<tr class="separator:a8e53067b1a90696e108cd9ead874cfed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0d29891721204795cc7cb7136461db13"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_w_1_1_geometry_input.html#a0d29891721204795cc7cb7136461db13">GeometryInput</a> (const <a class="el" href="class_c_w_1_1_geometry_input.html">GeometryInput</a> &amp;other)</td></tr>
 <tr class="separator:a0d29891721204795cc7cb7136461db13"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7de214f129fef6724e9dde41c40f7ed2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_w_1_1_geometry_input.html#a7de214f129fef6724e9dde41c40f7ed2">~GeometryInput</a> ()</td></tr>
@@ -75,14 +75,11 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:aca07102a66453b4c8cac51f70f5539d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7625da4c6567e3d1abe06191e9da5d22"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_w_1_1_geometry_input.html#a7625da4c6567e3d1abe06191e9da5d22">num_faces</a> () const </td></tr>
 <tr class="separator:a7625da4c6567e3d1abe06191e9da5d22"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a85cf11ad57f96ed88fd249c568b09d36"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::pair&lt; size_t, <br class="typebreak"/>
-<a class="el" href="class_c_w_1_1_face.html">Face</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_w_1_1_geometry_input.html#a85cf11ad57f96ed88fd249c568b09d36">faces</a> () const </td></tr>
-<tr class="separator:a85cf11ad57f96ed88fd249c568b09d36"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3d326f73fa3d9381c49861361d0ebc2a"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_w_1_1_geometry_input.html#a3d326f73fa3d9381c49861361d0ebc2a">add_face</a> (const <a class="el" href="class_c_w_1_1_face.html">Face</a> &amp;face)</td></tr>
-<tr class="separator:a3d326f73fa3d9381c49861361d0ebc2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2002c142bbbb49285d51920b09743ea5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2002c142bbbb49285d51920b09743ea5"></a>
-size_t&#160;</td><td class="memItemRight" valign="bottom"><b>add_faces</b> (const std::vector&lt; <a class="el" href="class_c_w_1_1_face.html">Face</a> &gt; &amp;<a class="el" href="class_c_w_1_1_geometry_input.html#a85cf11ad57f96ed88fd249c568b09d36">faces</a>)</td></tr>
-<tr class="separator:a2002c142bbbb49285d51920b09743ea5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab1e78aa79931be36a610550ebcde37c4"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_w_1_1_geometry_input.html#ab1e78aa79931be36a610550ebcde37c4">add_face</a> (const <a class="el" href="class_c_w_1_1_face.html">Face</a> &amp;face, bool copy_material_layer=true)</td></tr>
+<tr class="separator:ab1e78aa79931be36a610550ebcde37c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7defdd97aa491070bd7c635b7ce94dac"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7defdd97aa491070bd7c635b7ce94dac"></a>
+size_t&#160;</td><td class="memItemRight" valign="bottom"><b>add_faces</b> (const std::vector&lt; <a class="el" href="class_c_w_1_1_face.html">Face</a> &gt; &amp;faces, bool copy_material_layer=true)</td></tr>
+<tr class="separator:a7defdd97aa491070bd7c635b7ce94dac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a10e6265816a5c1c3724c5b23209d355a"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_w_1_1_geometry_input.html#a10e6265816a5c1c3724c5b23209d355a">add_edge</a> (const <a class="el" href="class_c_w_1_1_edge.html">Edge</a> &amp;edge)</td></tr>
 <tr class="separator:a10e6265816a5c1c3724c5b23209d355a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2370f7b31b0b557b8c80006e8638ceaa"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2370f7b31b0b557b8c80006e8638ceaa"></a>
@@ -90,6 +87,45 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>add_edges</b> (cons
 <tr class="separator:a2370f7b31b0b557b8c80006e8638ceaa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae9ac5f77af6c1a501afb5e15b33ffbd5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_w_1_1_geometry_input.html#ae9ac5f77af6c1a501afb5e15b33ffbd5">empty</a> () const </td></tr>
 <tr class="separator:ae9ac5f77af6c1a501afb5e15b33ffbd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b8ae3c54083ee69e6047baf7df96f32"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_w_1_1_geometry_input.html#a8b8ae3c54083ee69e6047baf7df96f32">add_vertex</a> (const <a class="el" href="class_c_w_1_1_point3_d.html">Point3D</a> &amp;point)</td></tr>
+<tr class="separator:a8b8ae3c54083ee69e6047baf7df96f32"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a60515d0c890007c85811d4b52f76238f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_w_1_1_geometry_input.html#a60515d0c890007c85811d4b52f76238f">set_vertices</a> (const std::vector&lt; <a class="el" href="struct_s_u_point3_d.html">SUPoint3D</a> &gt; &amp;points)</td></tr>
+<tr class="separator:a60515d0c890007c85811d4b52f76238f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a98176aecbfaf9a1fd0eabe2c8437b346"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a98176aecbfaf9a1fd0eabe2c8437b346"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>set_vertices</b> (const std::vector&lt; <a class="el" href="class_c_w_1_1_point3_d.html">Point3D</a> &gt; &amp;points)</td></tr>
+<tr class="separator:a98176aecbfaf9a1fd0eabe2c8437b346"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add9e921c504317e4f748b15843964d86"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_w_1_1_geometry_input.html#add9e921c504317e4f748b15843964d86">add_edge</a> (size_t vertex0_index, size_t vertex1_index)</td></tr>
+<tr class="separator:add9e921c504317e4f748b15843964d86"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4866a86f15f15a2c26ca4c4fef447f35"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_w_1_1_geometry_input.html#a4866a86f15f15a2c26ca4c4fef447f35">edge_hidden</a> (size_t edge_index, bool hidden)</td></tr>
+<tr class="separator:a4866a86f15f15a2c26ca4c4fef447f35"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a214497b1480c31dbb2e6f3c883282e2d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_w_1_1_geometry_input.html#a214497b1480c31dbb2e6f3c883282e2d">edge_soft</a> (size_t edge_index, bool soft)</td></tr>
+<tr class="separator:a214497b1480c31dbb2e6f3c883282e2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac62b623399164d5b17af15ec65d37729"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_w_1_1_geometry_input.html#ac62b623399164d5b17af15ec65d37729">edge_smooth</a> (size_t edge_index, bool smooth)</td></tr>
+<tr class="separator:ac62b623399164d5b17af15ec65d37729"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64e4fa5c6c738bf31246092c688fff2e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_w_1_1_geometry_input.html#a64e4fa5c6c738bf31246092c688fff2e">edge_material</a> (size_t edge_index, const <a class="el" href="class_c_w_1_1_material.html">Material</a> &amp;material)</td></tr>
+<tr class="separator:a64e4fa5c6c738bf31246092c688fff2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee06b0347f9d2696ee251ba99ff17285"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_w_1_1_geometry_input.html#aee06b0347f9d2696ee251ba99ff17285">edge_layer</a> (size_t edge_index, const <a class="el" href="class_c_w_1_1_layer.html">Layer</a> &amp;layer)</td></tr>
+<tr class="separator:aee06b0347f9d2696ee251ba99ff17285"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3203c89111dda4cdbd83235434b947d"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_w_1_1_geometry_input.html#ab3203c89111dda4cdbd83235434b947d">add_curve</a> (const std::vector&lt; size_t &gt; &amp;edge_indices)</td></tr>
+<tr class="separator:ab3203c89111dda4cdbd83235434b947d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b8e3c6ca4172fd975e57eafad998d8f"><td class="memItemLeft" align="right" valign="top">std::pair&lt; size_t, size_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_w_1_1_geometry_input.html#a6b8e3c6ca4172fd975e57eafad998d8f">add_arc_curve</a> (size_t start_point, size_t end_point, const <a class="el" href="class_c_w_1_1_point3_d.html">Point3D</a> &amp;center, const <a class="el" href="class_c_w_1_1_vector3_d.html">Vector3D</a> &amp;normal, size_t num_segments)</td></tr>
+<tr class="separator:a6b8e3c6ca4172fd975e57eafad998d8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afcb05effa54e7b16426c377e3ab70031"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_w_1_1_geometry_input.html#afcb05effa54e7b16426c377e3ab70031">add_face</a> (<a class="el" href="class_c_w_1_1_loop_input.html">LoopInput</a> &amp;loop_input)</td></tr>
+<tr class="separator:afcb05effa54e7b16426c377e3ab70031"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add7dff986c67e2180f19ba4d7388c2c5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_w_1_1_geometry_input.html#add7dff986c67e2180f19ba4d7388c2c5">face_reverse</a> (size_t face_index, bool reverse)</td></tr>
+<tr class="separator:add7dff986c67e2180f19ba4d7388c2c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab5f61152fcdbbaa64e87517a3b9d70ef"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_w_1_1_geometry_input.html#ab5f61152fcdbbaa64e87517a3b9d70ef">face_layer</a> (size_t face_index, const <a class="el" href="class_c_w_1_1_layer.html">Layer</a> &amp;layer)</td></tr>
+<tr class="separator:ab5f61152fcdbbaa64e87517a3b9d70ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8e75f273d6ef7e5e753d77aeb71c4de"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_w_1_1_geometry_input.html#aa8e75f273d6ef7e5e753d77aeb71c4de">face_add_inner_loop</a> (size_t face_index, <a class="el" href="class_c_w_1_1_loop_input.html">LoopInput</a> &amp;inner_loop)</td></tr>
+<tr class="separator:aa8e75f273d6ef7e5e753d77aeb71c4de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af69cddecd3034894e7ae6062a2b72577"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_w_1_1_geometry_input.html#af69cddecd3034894e7ae6062a2b72577">face_front_material</a> (size_t face_index, <a class="el" href="class_c_w_1_1_material_input.html">MaterialInput</a> &amp;material_input)</td></tr>
+<tr class="separator:af69cddecd3034894e7ae6062a2b72577"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a20f4923bbbe6f416061c375db793ed89"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_w_1_1_geometry_input.html#a20f4923bbbe6f416061c375db793ed89">face_back_material</a> (size_t face_index, <a class="el" href="class_c_w_1_1_material_input.html">MaterialInput</a> &amp;material_input)</td></tr>
+<tr class="separator:a20f4923bbbe6f416061c375db793ed89"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e99b737e2f5f7df7b12506dd0ae3f37"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_w_1_1_geometry_input.html#a9e99b737e2f5f7df7b12506dd0ae3f37">face_hidden</a> (size_t face_index, bool hidden)</td></tr>
+<tr class="separator:a9e99b737e2f5f7df7b12506dd0ae3f37"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaafb9c80ab76de8f5b5d4e20f2726579"><td class="memItemLeft" align="right" valign="top">std::array&lt; size_t, 5 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_w_1_1_geometry_input.html#aaafb9c80ab76de8f5b5d4e20f2726579">counts</a> () const </td></tr>
+<tr class="separator:aaafb9c80ab76de8f5b5d4e20f2726579"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
 Friends</h2></td></tr>
@@ -100,23 +136,30 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>Entities</b></td></t
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Geometry Input class is an abstraction of Sketchup C API's <a class="el" href="struct_s_u_geometry_input_ref.html" title="References a geometry input object. It is used as an input to /ref SUEntitiesFill. ">SUGeometryInputRef</a> object. It allows a much easier way for programmers to build Sketchup geometry within this class, before exporting it into a built <a class="el" href="struct_s_u_geometry_input_ref.html" title="References a geometry input object. It is used as an input to /ref SUEntitiesFill. ">SUGeometryInputRef</a> object. See below for an example of <a class="el" href="class_c_w_1_1_geometry_input.html">GeometryInput</a> operates: <a class="el" href="class_c_w_1_1_geometry_input.html">GeometryInput</a> geom_input; <a class="el" href="class_c_w_1_1_entities.html">Entities</a> entities; // This is the entities object that we wish to add the geometry to. std::vector&lt;SUPoint3D&gt; outer_loop{<a class="el" href="struct_s_u_point3_d.html" title="Represents a point in 3-dimensional space. ">SUPoint3D</a>(0.0,0.0,0.0), <a class="el" href="struct_s_u_point3_d.html" title="Represents a point in 3-dimensional space. ">SUPoint3D</a>(1.0,0.0,0.0), <a class="el" href="struct_s_u_point3_d.html" title="Represents a point in 3-dimensional space. ">SUPoint3D</a>(0.0,1.0,0.0)}; std::vector&lt;std::vector&lt;SUPoint3D&gt;&gt; inner_loops{{<a class="el" href="struct_s_u_point3_d.html" title="Represents a point in 3-dimensional space. ">SUPoint3D</a>(0.1,0.1,0.0), <a class="el" href="struct_s_u_point3_d.html" title="Represents a point in 3-dimensional space. ">SUPoint3D</a>(0.1,0.2,0.0), <a class="el" href="struct_s_u_point3_d.html" title="Represents a point in 3-dimensional space. ">SUPoint3D</a>(0.2,0.3,0.0)}}; GIFace* face = geom_input.add_face(outer_loop, inner_loops); // <a class="el" href="class_c_w_1_1_geometry_input.html">GeometryInput</a> handles the interface with Sketchup C API when creating geometry. SUResult result = entities.fill(geom_input); // the geometry must be output into a <a class="el" href="struct_s_u_entities_ref.html" title="References a container object for all entities in a model, component definition or a group...">SUEntitiesRef</a> object. </p>
 
-<p>Definition at line <a class="el" href="_geometry_input_8hpp_source.html#l00058">58</a> of file <a class="el" href="_geometry_input_8hpp_source.html">GeometryInput.hpp</a>.</p>
+<p>Definition at line <a class="el" href="_geometry_input_8hpp_source.html#l00065">65</a> of file <a class="el" href="_geometry_input_8hpp_source.html">GeometryInput.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="af83acb61858d32fc669871756b2ff142"></a>
+<a class="anchor" id="a8e53067b1a90696e108cd9ead874cfed"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">CW::GeometryInput::GeometryInput </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype"><a class="el" href="struct_s_u_model_ref.html">SUModelRef</a>&#160;</td>
+          <td class="paramname"><em>target_model</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Faces are stored as a series of nested vectors of vertices. 1st level - array of faces 2nd level - array of loops within the face. The first loop is the outer loop. All subsequent arrays represent inner loops. 3rd level - array of indexes that refer to the vertices in the m_vertices array. Edges are stored a series of nested vectors of vertices. 1st level - array of edges/curves 2nd level - array of indexes that refer to the vertices in the m_vertices array, which represent edges/curves (curves have more than two vertices) Creates a valid, but empty <a class="el" href="class_c_w_1_1_geometry_input.html">GeometryInput</a> object. </p>
+<p>Creates a valid, but empty <a class="el" href="class_c_w_1_1_geometry_input.html">GeometryInput</a> object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">target_model</td><td>- model which will receive this <a class="el" href="class_c_w_1_1_geometry_input.html">GeometryInput</a> object. </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p>Definition at line <a class="el" href="_geometry_input_8cpp_source.html#l00080">80</a> of file <a class="el" href="_geometry_input_8cpp_source.html">GeometryInput.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_geometry_input_8cpp_source.html#l00083">83</a> of file <a class="el" href="_geometry_input_8cpp_source.html">GeometryInput.cpp</a>.</p>
 
 </div>
 </div>
@@ -135,7 +178,7 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>Entities</b></td></t
 </div><div class="memdoc">
 <p>Copy Constructor </p>
 
-<p>Definition at line <a class="el" href="_geometry_input_8cpp_source.html#l00094">94</a> of file <a class="el" href="_geometry_input_8cpp_source.html">GeometryInput.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_geometry_input_8cpp_source.html#l00104">104</a> of file <a class="el" href="_geometry_input_8cpp_source.html">GeometryInput.cpp</a>.</p>
 
 </div>
 </div>
@@ -153,11 +196,102 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>Entities</b></td></t
 </div><div class="memdoc">
 <p>Destructor </p>
 
-<p>Definition at line <a class="el" href="_geometry_input_8cpp_source.html#l00086">86</a> of file <a class="el" href="_geometry_input_8cpp_source.html">GeometryInput.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_geometry_input_8cpp_source.html#l00092">92</a> of file <a class="el" href="_geometry_input_8cpp_source.html">GeometryInput.cpp</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a6b8e3c6ca4172fd975e57eafad998d8f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::pair&lt; size_t, size_t &gt; CW::GeometryInput::add_arc_curve </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>start_point</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>end_point</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="class_c_w_1_1_point3_d.html">Point3D</a> &amp;&#160;</td>
+          <td class="paramname"><em>center</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="class_c_w_1_1_vector3_d.html">Vector3D</a> &amp;&#160;</td>
+          <td class="paramname"><em>normal</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>num_segments</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Adds an arccurve to a geometry input object. In addition to adding an arccurve to the geometry input this method will append num_segments edges to the geometry's edge collection where control_edge_index is the index of the first new edge. Also, num_segments-1 vertices along the arc will be appended to the geometry's collection of verttices. In order to include an arccurve in a loop the user only needs add the arccurve's points to a loop using SULoopInputAddVertexIndex. </p>
+<dl class="section since"><dt>Since</dt><dd>SketchUp 2017 M2, API 5.2 </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">start_point</td><td>- The index of the vertex at the start of the arc. </td></tr>
+    <tr><td class="paramname">end_point</td><td>- The index of the vertex at the end of the arc. </td></tr>
+    <tr><td class="paramname">center</td><td>- The center point of the arc's circle. </td></tr>
+    <tr><td class="paramname">normal</td><td>- The normal vector of the arc plane. </td></tr>
+    <tr><td class="paramname">num_segments</td><td>- The number of edges for the arc. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>pair of size_t values:<ul>
+<li>first - added_curve_index - the index of the added curve.</li>
+<li>second - control_edge_index - the index of the the arc's control edge which can be used to set the arc's edge properties. </li>
+</ul>
+</dd></dl>
+
+<p>Definition at line <a class="el" href="_geometry_input_8cpp_source.html#l00373">373</a> of file <a class="el" href="_geometry_input_8cpp_source.html">GeometryInput.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ab3203c89111dda4cdbd83235434b947d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t CW::GeometryInput::add_curve </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; size_t &gt; &amp;&#160;</td>
+          <td class="paramname"><em>edge_indices</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Adds a curve to a geometry input object. This method is intended for specifying curves which are not associated with loop inputs. For specifying curves on faces use the SULoopInput interface. </p>
+<dl class="section since"><dt>Since</dt><dd>SketchUp 2017, API 5.0 </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">num_edges</td><td>- The number of edges to be used in the curve. </td></tr>
+    <tr><td class="paramname">edge_indices</td><td>- The edge indices to be used in defining the curve. </td></tr>
+    <tr><td class="paramname">added_curve_index</td><td>(optional) If not NULL, returns the index of the added curve. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="_geometry_input_8cpp_source.html#l00365">365</a> of file <a class="el" href="_geometry_input_8cpp_source.html">GeometryInput.cpp</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a10e6265816a5c1c3724c5b23209d355a"></a>
 <div class="memitem">
 <div class="memproto">
@@ -174,11 +308,48 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>Entities</b></td></t
 <p>Adds an <a class="el" href="class_c_w_1_1_edge.html">Edge</a> to the Geometry Input object. </p>
 <dl class="section return"><dt>Returns</dt><dd>index to the added edge. </dd></dl>
 
-<p>Definition at line <a class="el" href="_geometry_input_8cpp_source.html#l00268">268</a> of file <a class="el" href="_geometry_input_8cpp_source.html">GeometryInput.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_geometry_input_8cpp_source.html#l00244">244</a> of file <a class="el" href="_geometry_input_8cpp_source.html">GeometryInput.cpp</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a3d326f73fa3d9381c49861361d0ebc2a"></a>
+<a class="anchor" id="add9e921c504317e4f748b15843964d86"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t CW::GeometryInput::add_edge </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>vertex0_index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>vertex1_index</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Adds an edge to a geometry input object. This method is intended for specifying edges which are not associated with loop inputs. For specifying edge properties on a face use the SULoopInput interface. More... </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">vertex0_index</td><td>- vertex index of start point of edge. </td></tr>
+    <tr><td class="paramname">vertex1_index</td><td>- vertex index of end point of edge. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>index of added edge </dd></dl>
+
+<p>Definition at line <a class="el" href="_geometry_input_8cpp_source.html#l00325">325</a> of file <a class="el" href="_geometry_input_8cpp_source.html">GeometryInput.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ab1e78aa79931be36a610550ebcde37c4"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -186,25 +357,295 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>Entities</b></td></t
           <td class="memname">size_t CW::GeometryInput::add_face </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="class_c_w_1_1_face.html">Face</a> &amp;&#160;</td>
-          <td class="paramname"><em>face</em></td><td>)</td>
+          <td class="paramname"><em>face</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>copy_material_layer</em> = <code>true</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Adds a face to the Geometry Input object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">face</td><td>- the face object to be copied into the <a class="el" href="class_c_w_1_1_geometry_input.html">GeometryInput</a> object. Note that materials and layers will NOT be copied. This must be done manually using <a class="el" href="class_c_w_1_1_geometry_input.html#af69cddecd3034894e7ae6062a2b72577">face_front_material()</a>, <a class="el" href="class_c_w_1_1_geometry_input.html#a20f4923bbbe6f416061c375db793ed89">face_back_material()</a>, and <a class="el" href="class_c_w_1_1_geometry_input.html#ab5f61152fcdbbaa64e87517a3b9d70ef">face_layer()</a> methods. </td></tr>
+    <tr><td class="paramname">copy_material_layer</td><td>- (optional) when true, materials and layers will be copied to the <a class="el" href="class_c_w_1_1_geometry_input.html">GeometryInput</a> object. Set to false if you are copying faces from another model - you will have to add a material manually. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>index to the added face. </dd></dl>
+
+<p>Definition at line <a class="el" href="_geometry_input_8cpp_source.html#l00157">157</a> of file <a class="el" href="_geometry_input_8cpp_source.html">GeometryInput.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="afcb05effa54e7b16426c377e3ab70031"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t CW::GeometryInput::add_face </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_c_w_1_1_loop_input.html">LoopInput</a> &amp;&#160;</td>
+          <td class="paramname"><em>loop_input</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Adds a vertex to the Input object, and returns the index of the added <a class="el" href="class_c_w_1_1_vertex.html">Vertex</a>. </p>
+<p>Adds a face to a geometry input object with a given outer loop for the face. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">vertex</td><td><a class="el" href="class_c_w_1_1_point3_d.html">Point3D</a> object. </td></tr>
+    <tr><td class="paramname">outer_loop</td><td>- The outer loop to be set for the face. If the function succeeds (i.e. returns SU_ERROR_NONE), this loop will be deallocated. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>index of the vertex that was added. Adds a face to the Geometry Input object. </dd>
-<dd>
-index to the added face.</dd></dl>
-<p>size_t GeometryInput::add_vertex(Point3D vertex) { <a class="el" href="struct_s_u_point3_d.html" title="Represents a point in 3-dimensional space. ">SUPoint3D</a> vertex_ref = vertex; SUGeometryInputAddVertex(m_geometry_input, &amp;vertex_ref); return m_vertex_index++; }</p>
-<p>std::vector&lt;size_t&gt; GeometryInput::add_vertices(std::vector&lt;Point3D&gt; vertices) { std::vector&lt;size_t&gt; indices; for (size_t i = 0; i &lt; vertices.size(); i++) { indices.push_back(add_vertex(vertices[i])); } return indices; } </p>
+<dl class="section return"><dt>Returns</dt><dd>returns the index of the added face. </dd></dl>
 
-<p>Definition at line <a class="el" href="_geometry_input_8cpp_source.html#l00164">164</a> of file <a class="el" href="_geometry_input_8cpp_source.html">GeometryInput.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_geometry_input_8cpp_source.html#l00382">382</a> of file <a class="el" href="_geometry_input_8cpp_source.html">GeometryInput.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a8b8ae3c54083ee69e6047baf7df96f32"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t CW::GeometryInput::add_vertex </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_c_w_1_1_point3_d.html">Point3D</a> &amp;&#160;</td>
+          <td class="paramname"><em>point</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Adds a vertex to the <a class="el" href="class_c_w_1_1_geometry_input.html">GeometryInput</a> object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">point</td><td>- the <a class="el" href="class_c_w_1_1_point3_d.html">Point3D</a> location of the vertex to add. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the index number of the added vertex </dd></dl>
+
+<p>Definition at line <a class="el" href="_geometry_input_8cpp_source.html#l00297">297</a> of file <a class="el" href="_geometry_input_8cpp_source.html">GeometryInput.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aaafb9c80ab76de8f5b5d4e20f2726579"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::array&lt; size_t, 5 &gt; CW::GeometryInput::counts </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Returns all the various geometry counts. </p>
+<dl class="section since"><dt>Since</dt><dd>SketchUp 2018, API 6.0 </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>array of counts:<ul>
+<li>[0] - vertices_count - The total count of vertices.</li>
+<li>[1] - faces_count The total count of faces.</li>
+<li>[2] - edge_count The total count of edges.</li>
+<li>[3] - curve_count The total count of curves.</li>
+<li>[4] - arc_count The total count of arcs. </li>
+</ul>
+</dd></dl>
+
+<p>Definition at line <a class="el" href="_geometry_input_8cpp_source.html#l00434">434</a> of file <a class="el" href="_geometry_input_8cpp_source.html">GeometryInput.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a4866a86f15f15a2c26ca4c4fef447f35"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CW::GeometryInput::edge_hidden </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>edge_index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>hidden</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Sets the hidden flag of an edge in a geometry input object which is not associated with a loop input. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">edge_index</td><td>- index of the edge to set the hidden flag. </td></tr>
+    <tr><td class="paramname">hidden</td><td>- the flag to set. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="_geometry_input_8cpp_source.html#l00333">333</a> of file <a class="el" href="_geometry_input_8cpp_source.html">GeometryInput.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aee06b0347f9d2696ee251ba99ff17285"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CW::GeometryInput::edge_layer </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>edge_index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="class_c_w_1_1_layer.html">Layer</a> &amp;&#160;</td>
+          <td class="paramname"><em>layer</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Sets the layer of an edge in the geometry input. </p>
+<dl class="section since"><dt>Since</dt><dd>SketchUp 2017, API 5.0 </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">edge_index</td><td>- Index of the edge to set the layer. </td></tr>
+    <tr><td class="paramname">layer</td><td>- The layer to be set. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="_geometry_input_8cpp_source.html#l00358">358</a> of file <a class="el" href="_geometry_input_8cpp_source.html">GeometryInput.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a64e4fa5c6c738bf31246092c688fff2e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CW::GeometryInput::edge_material </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>edge_index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="class_c_w_1_1_material.html">Material</a> &amp;&#160;</td>
+          <td class="paramname"><em>material</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Sets the material of an edge in the geometry input. </p>
+<dl class="section since"><dt>Since</dt><dd>SketchUp 2017, API 5.0 </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">edge_index</td><td>- Index of the edge to set the material. </td></tr>
+    <tr><td class="paramname">material</td><td>- The material to be set. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="_geometry_input_8cpp_source.html#l00351">351</a> of file <a class="el" href="_geometry_input_8cpp_source.html">GeometryInput.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ac62b623399164d5b17af15ec65d37729"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CW::GeometryInput::edge_smooth </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>edge_index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>smooth</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Sets the smooth flag of an edge in a geometry input object which is not associated with a loop input. </p>
+<dl class="section since"><dt>Since</dt><dd>SketchUp 2017, API 5.0 </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">edge_index</td><td>- The zero-based index of the edge which is not associated with a loop input. </td></tr>
+    <tr><td class="paramname">smooth</td><td>- The flag to set. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="_geometry_input_8cpp_source.html#l00345">345</a> of file <a class="el" href="_geometry_input_8cpp_source.html">GeometryInput.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a214497b1480c31dbb2e6f3c883282e2d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CW::GeometryInput::edge_soft </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>edge_index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>soft</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Sets the soft flag of an edge in a geometry input object which is not associated with a loop input. </p>
+<dl class="section since"><dt>Since</dt><dd>SketchUp 2017, API 5.0 </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">edge_index</td><td>- The zero-based index of the edge which is not associated with a loop input. </td></tr>
+    <tr><td class="paramname">soft</td><td>- The flag to set. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="_geometry_input_8cpp_source.html#l00339">339</a> of file <a class="el" href="_geometry_input_8cpp_source.html">GeometryInput.cpp</a>.</p>
 
 </div>
 </div>
@@ -222,25 +663,224 @@ index to the added face.</dd></dl>
 </div><div class="memdoc">
 <p>Returns true if no geometry has been added to this object. </p>
 
-<p>Definition at line <a class="el" href="_geometry_input_8cpp_source.html#l00326">326</a> of file <a class="el" href="_geometry_input_8cpp_source.html">GeometryInput.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_geometry_input_8cpp_source.html#l00285">285</a> of file <a class="el" href="_geometry_input_8cpp_source.html">GeometryInput.cpp</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a85cf11ad57f96ed88fd249c568b09d36"></a>
+<a class="anchor" id="aa8e75f273d6ef7e5e753d77aeb71c4de"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt; std::pair&lt; size_t, <a class="el" href="class_c_w_1_1_face.html">Face</a> &gt; &gt; CW::GeometryInput::faces </td>
+          <td class="memname">void CW::GeometryInput::face_add_inner_loop </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>face_index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_c_w_1_1_loop_input.html">LoopInput</a> &amp;&#160;</td>
+          <td class="paramname"><em>inner_loop</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Returns <a class="el" href="class_c_w_1_1_face.html">Face</a> objects stored in this object. The vector returns a pairing of the added face's index in the <a class="el" href="class_c_w_1_1_geometry_input.html">GeometryInput</a> object with the <a class="el" href="class_c_w_1_1_face.html">Face</a> object. </p>
+<p>Adds an inner loop to a face in the geometry input. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">face_index</td><td>- Index of the face to receive the inner loop. </td></tr>
+    <tr><td class="paramname">loop_input</td><td>- The inner loop to be added. If the function succeeds (i.e. returns SU_ERROR_NONE), this loop will be deallocated. </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p>Definition at line <a class="el" href="_geometry_input_8cpp_source.html#l00141">141</a> of file <a class="el" href="_geometry_input_8cpp_source.html">GeometryInput.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_geometry_input_8cpp_source.html#l00404">404</a> of file <a class="el" href="_geometry_input_8cpp_source.html">GeometryInput.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a20f4923bbbe6f416061c375db793ed89"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CW::GeometryInput::face_back_material </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>face_index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_c_w_1_1_material_input.html">MaterialInput</a> &amp;&#160;</td>
+          <td class="paramname"><em>material_input</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Sets the back material of a face in the geometry input. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">face_index</td><td>- Index of the face to receive the material. </td></tr>
+    <tr><td class="paramname">material_input</td><td>- The material input to set. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="_geometry_input_8cpp_source.html#l00420">420</a> of file <a class="el" href="_geometry_input_8cpp_source.html">GeometryInput.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="af69cddecd3034894e7ae6062a2b72577"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CW::GeometryInput::face_front_material </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>face_index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_c_w_1_1_material_input.html">MaterialInput</a> &amp;&#160;</td>
+          <td class="paramname"><em>material_input</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Sets the front material of a face in the geometry input. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">face_index</td><td>- Index of the face to receive the material. </td></tr>
+    <tr><td class="paramname">material_input</td><td>- The material input to set. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="_geometry_input_8cpp_source.html#l00412">412</a> of file <a class="el" href="_geometry_input_8cpp_source.html">GeometryInput.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a9e99b737e2f5f7df7b12506dd0ae3f37"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CW::GeometryInput::face_hidden </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>face_index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>hidden</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Sets a flag in the geometry input that, when true, will create a hidden face. </p>
+<dl class="section since"><dt>Since</dt><dd>SketchUp 2017, API 5.0 </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">face_index</td><td>- Index of the face to be hidden. </td></tr>
+    <tr><td class="paramname">hidden</td><td>- The given hidden flag. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="_geometry_input_8cpp_source.html#l00428">428</a> of file <a class="el" href="_geometry_input_8cpp_source.html">GeometryInput.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ab5f61152fcdbbaa64e87517a3b9d70ef"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CW::GeometryInput::face_layer </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>face_index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="class_c_w_1_1_layer.html">Layer</a> &amp;&#160;</td>
+          <td class="paramname"><em>layer</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Sets the layer of a face in the geometry input. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">face_index</td><td>- Index of the face to be reversed. </td></tr>
+    <tr><td class="paramname">layer</td><td>- The layer to be set. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="_geometry_input_8cpp_source.html#l00398">398</a> of file <a class="el" href="_geometry_input_8cpp_source.html">GeometryInput.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="add7dff986c67e2180f19ba4d7388c2c5"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CW::GeometryInput::face_reverse </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>face_index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>reverse</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Sets a flag in the geometry input that, when true, will create a face by reversing the orientations of all of its loops. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">face_index</td><td>- Index of the face to be reversed. </td></tr>
+    <tr><td class="paramname">reverse</td><td>- The given reverse flag. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="_geometry_input_8cpp_source.html#l00392">392</a> of file <a class="el" href="_geometry_input_8cpp_source.html">GeometryInput.cpp</a>.</p>
 
 </div>
 </div>
@@ -258,7 +898,7 @@ index to the added face.</dd></dl>
 </div><div class="memdoc">
 <p>Returns the number of faces have been input into this <a class="el" href="class_c_w_1_1_geometry_input.html">GeometryInput</a> object. </p>
 
-<p>Definition at line <a class="el" href="_geometry_input_8cpp_source.html#l00133">133</a> of file <a class="el" href="_geometry_input_8cpp_source.html">GeometryInput.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_geometry_input_8cpp_source.html#l00149">149</a> of file <a class="el" href="_geometry_input_8cpp_source.html">GeometryInput.cpp</a>.</p>
 
 </div>
 </div>
@@ -276,7 +916,7 @@ index to the added face.</dd></dl>
 </div><div class="memdoc">
 <p>Returns true if the objet is valid, false otherwise. </p>
 
-<p>Definition at line <a class="el" href="_geometry_input_8cpp_source.html#l00128">128</a> of file <a class="el" href="_geometry_input_8cpp_source.html">GeometryInput.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_geometry_input_8cpp_source.html#l00144">144</a> of file <a class="el" href="_geometry_input_8cpp_source.html">GeometryInput.cpp</a>.</p>
 
 </div>
 </div>
@@ -295,7 +935,7 @@ index to the added face.</dd></dl>
 </div><div class="memdoc">
 <p>Copy assignment operator. </p>
 
-<p>Definition at line <a class="el" href="_geometry_input_8cpp_source.html#l00106">106</a> of file <a class="el" href="_geometry_input_8cpp_source.html">GeometryInput.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_geometry_input_8cpp_source.html#l00121">121</a> of file <a class="el" href="_geometry_input_8cpp_source.html">GeometryInput.cpp</a>.</p>
 
 </div>
 </div>
@@ -313,7 +953,32 @@ index to the added face.</dd></dl>
 </div><div class="memdoc">
 <p>Returns Raw <a class="el" href="struct_s_u_geometry_input_ref.html" title="References a geometry input object. It is used as an input to /ref SUEntitiesFill. ">SUGeometryInputRef</a> that is stored. </p>
 
-<p>Definition at line <a class="el" href="_geometry_input_8cpp_source.html#l00123">123</a> of file <a class="el" href="_geometry_input_8cpp_source.html">GeometryInput.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_geometry_input_8cpp_source.html#l00139">139</a> of file <a class="el" href="_geometry_input_8cpp_source.html">GeometryInput.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a60515d0c890007c85811d4b52f76238f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CW::GeometryInput::set_vertices </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; <a class="el" href="struct_s_u_point3_d.html">SUPoint3D</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>points</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Sets all vertices of a geometry input object. Any existing vertices will be overridden. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">points</td><td>- vector of points to set as the vertices </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="_geometry_input_8cpp_source.html#l00305">305</a> of file <a class="el" href="_geometry_input_8cpp_source.html">GeometryInput.cpp</a>.</p>
 
 </div>
 </div>
@@ -324,7 +989,7 @@ index to the added face.</dd></dl>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Apr 24 2018 12:16:12 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Apr 25 2018 09:21:17 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

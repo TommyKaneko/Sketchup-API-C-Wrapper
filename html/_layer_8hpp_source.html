@@ -147,20 +147,38 @@
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="comment">  */</span></div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_c_w_1_1_layer.html#aeb9da5da6733499b60eee6716a019e34">name</a>(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_string.html">String</a>&amp; <span class="keywordtype">string</span>);</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_c_w_1_1_layer.html#aeb9da5da6733499b60eee6716a019e34">name</a>(<span class="keyword">const</span> std::string&amp; <span class="keywordtype">string</span>);</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  </div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;};</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;} <span class="comment">/* namespace CW */</span></div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* Layer_hpp */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  <span class="comment"></span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="comment">  /**</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="comment">  * Hash function for use with unordered_map</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="comment">  */</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;  <span class="keyword">friend</span> <a class="code" href="structstd_1_1hash_3_01_c_w_1_1_layer_01_4.html">std::hash&lt;CW::Layer&gt;</a>;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;};</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;} <span class="comment">/* namespace CW */</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="keyword">namespace </span>std {</div>
+<div class="line"><a name="l00107"></a><span class="lineno"><a class="line" href="structstd_1_1hash_3_01_c_w_1_1_layer_01_4.html">  107</a></span>&#160;  <span class="keyword">template</span> &lt;&gt; <span class="keyword">struct </span>hash&lt;CW::Layer&gt;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;  {</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    <span class="keywordtype">size_t</span> operator()(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_layer.html">CW::Layer</a>&amp; k)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;      <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">size_t</span> shift = (size_t)log2(1 + <span class="keyword">sizeof</span>(<a class="code" href="class_c_w_1_1_layer.html">CW::Layer</a>));</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;      <span class="keywordflow">return</span> (<span class="keywordtype">size_t</span>)(k.<a class="code" href="class_c_w_1_1_entity.html#ad1d5c635add16702f770b6e14c186e9c">m_entity</a>.ptr) &gt;&gt; shift;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    }</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;  };</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;}</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* Layer_hpp */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="class_c_w_1_1_layer_html_aa09e81dccb9fcf83724f06c4766ea683"><div class="ttname"><a href="class_c_w_1_1_layer.html#aa09e81dccb9fcf83724f06c4766ea683">CW::Layer::~Layer</a></div><div class="ttdeci">~Layer()</div><div class="ttdef"><b>Definition:</b> <a href="_layer_8cpp_source.html#l00081">Layer.cpp:81</a></div></div>
 <div class="ttc" id="class_c_w_1_1_layer_html_aeb9da5da6733499b60eee6716a019e34"><div class="ttname"><a href="class_c_w_1_1_layer.html#aeb9da5da6733499b60eee6716a019e34">CW::Layer::name</a></div><div class="ttdeci">String name() const </div><div class="ttdef"><b>Definition:</b> <a href="_layer_8cpp_source.html#l00141">Layer.cpp:141</a></div></div>
 <div class="ttc" id="class_c_w_1_1_layer_html"><div class="ttname"><a href="class_c_w_1_1_layer.html">CW::Layer</a></div><div class="ttdef"><b>Definition:</b> <a href="_layer_8hpp_source.html#l00040">Layer.hpp:40</a></div></div>
-<div class="ttc" id="class_c_w_1_1_entity_html_a64762c829bba997b0b3070d51f7c059d"><div class="ttname"><a href="class_c_w_1_1_entity.html#a64762c829bba997b0b3070d51f7c059d">CW::Entity::attached</a></div><div class="ttdeci">bool attached() const </div><div class="ttdoc">Returns true if the entity is attached to another object. </div><div class="ttdef"><b>Definition:</b> <a href="_entity_8cpp_source.html#l00093">Entity.cpp:93</a></div></div>
+<div class="ttc" id="class_c_w_1_1_entity_html_a64762c829bba997b0b3070d51f7c059d"><div class="ttname"><a href="class_c_w_1_1_entity.html#a64762c829bba997b0b3070d51f7c059d">CW::Entity::attached</a></div><div class="ttdeci">bool attached() const </div><div class="ttdoc">Returns true if the entity is attached to another object. </div><div class="ttdef"><b>Definition:</b> <a href="_entity_8cpp_source.html#l00100">Entity.cpp:100</a></div></div>
 <div class="ttc" id="class_c_w_1_1_layer_html_a44d113fea6b586bd81bea4e3e5077155"><div class="ttname"><a href="class_c_w_1_1_layer.html#a44d113fea6b586bd81bea4e3e5077155">CW::Layer::copy</a></div><div class="ttdeci">Layer copy() const </div><div class="ttdef"><b>Definition:</b> <a href="_layer_8cpp_source.html#l00131">Layer.cpp:131</a></div></div>
 <div class="ttc" id="class_c_w_1_1_layer_html_a54aa3a2e9b68b9f7e6e8b234e17bbbe8"><div class="ttname"><a href="class_c_w_1_1_layer.html#a54aa3a2e9b68b9f7e6e8b234e17bbbe8">CW::Layer::Layer</a></div><div class="ttdeci">Layer()</div><div class="ttdef"><b>Definition:</b> <a href="_layer_8cpp_source.html#l00061">Layer.cpp:61</a></div></div>
 <div class="ttc" id="class_c_w_1_1_layer_html_ab33c621a4cc4ace44e558a12cff02ea7"><div class="ttname"><a href="class_c_w_1_1_layer.html#ab33c621a4cc4ace44e558a12cff02ea7">CW::Layer::operator!</a></div><div class="ttdeci">bool operator!() const </div><div class="ttdef"><b>Definition:</b> <a href="_layer_8cpp_source.html#l00118">Layer.cpp:118</a></div></div>
-<div class="ttc" id="class_c_w_1_1_entity_html"><div class="ttname"><a href="class_c_w_1_1_entity.html">CW::Entity</a></div><div class="ttdef"><b>Definition:</b> <a href="_entity_8hpp_source.html#l00052">Entity.hpp:52</a></div></div>
+<div class="ttc" id="structstd_1_1hash_3_01_c_w_1_1_layer_01_4_html"><div class="ttname"><a href="structstd_1_1hash_3_01_c_w_1_1_layer_01_4.html">std::hash&lt; CW::Layer &gt;</a></div><div class="ttdef"><b>Definition:</b> <a href="_layer_8hpp_source.html#l00107">Layer.hpp:107</a></div></div>
+<div class="ttc" id="class_c_w_1_1_entity_html_ad1d5c635add16702f770b6e14c186e9c"><div class="ttname"><a href="class_c_w_1_1_entity.html#ad1d5c635add16702f770b6e14c186e9c">CW::Entity::m_entity</a></div><div class="ttdeci">SUEntityRef m_entity</div><div class="ttdoc">The C SUEntityRef that this class wraps. </div><div class="ttdef"><b>Definition:</b> <a href="_entity_8hpp_source.html#l00059">Entity.hpp:59</a></div></div>
+<div class="ttc" id="class_c_w_1_1_entity_html"><div class="ttname"><a href="class_c_w_1_1_entity.html">CW::Entity</a></div><div class="ttdef"><b>Definition:</b> <a href="_entity_8hpp_source.html#l00054">Entity.hpp:54</a></div></div>
 <div class="ttc" id="class_c_w_1_1_layer_html_ae9b5899807c5484869f5daf08dda8c67"><div class="ttname"><a href="class_c_w_1_1_layer.html#ae9b5899807c5484869f5daf08dda8c67">CW::Layer::ref</a></div><div class="ttdeci">SULayerRef ref() const </div><div class="ttdef"><b>Definition:</b> <a href="_layer_8cpp_source.html#l00109">Layer.cpp:109</a></div></div>
 <div class="ttc" id="class_c_w_1_1_layer_html_abf4663654bd901707526736987ca7472"><div class="ttname"><a href="class_c_w_1_1_layer.html#abf4663654bd901707526736987ca7472">CW::Layer::operator=</a></div><div class="ttdeci">Layer &amp; operator=(const Layer &amp;other)</div><div class="ttdef"><b>Definition:</b> <a href="_layer_8cpp_source.html#l00093">Layer.cpp:93</a></div></div>
 <div class="ttc" id="struct_s_u_layer_ref_html"><div class="ttname"><a href="struct_s_u_layer_ref.html">SULayerRef</a></div><div class="ttdoc">References a layer object. </div></div>
@@ -168,7 +186,7 @@
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Apr 24 2018 12:15:55 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Apr 25 2018 09:21:02 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

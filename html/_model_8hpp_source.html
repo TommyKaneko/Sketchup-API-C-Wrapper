@@ -263,168 +263,185 @@
 <div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;<span class="comment">  * @param layers - vector of layer objects to add.  The layers must not be attached to any other model object.</span></div>
 <div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;<span class="comment">  */</span></div>
 <div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_c_w_1_1_model.html#a16e573ea95ade90ed97fd920ec0fa579">add_layers</a>(std::vector&lt;Layer&gt;&amp; layers);</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;</div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;  <span class="comment">/*</span></div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;<span class="comment">  * Returns the Location object of the model</span></div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;<span class="comment">  * @return location Location object. If no location has been assigned to the model, the Location object returned will be invalid.</span></div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;<span class="comment">  */</span></div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;   <span class="comment">// Location location();</span></div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;   </div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;  <span class="comment">/*</span></div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;<span class="comment">  * Returns the list of materials in the model.</span></div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;<span class="comment">  * @return materials vector array of Material objects in the model.</span></div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;<span class="comment">  */</span></div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;  std::vector&lt;Material&gt; materials() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;<span class="comment">  /**</span></div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;<span class="comment">  * Add materials to the model.</span></div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;<span class="comment">  * @param materials - vector of material objects which must not be attached to any other model object.</span></div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;<span class="comment">  */</span></div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_c_w_1_1_model.html#a968c568e419faa21ea99a393943b7910">add_materials</a>(std::vector&lt;Material&gt;&amp; materials);</div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;</div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;  <span class="comment">/*</span></div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;<span class="comment">  * Returns the name of the model</span></div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;<span class="comment">  * @return name string of the model name.</span></div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;<span class="comment">  */</span></div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;  <a class="code" href="class_c_w_1_1_string.html">String</a> name() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;  </div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;  <span class="comment">/*</span></div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;<span class="comment">  * Sets the name of the model.</span></div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;<span class="comment">  * @param name_string string to name the model with.</span></div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;<span class="comment">  */</span></div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;  <span class="keywordtype">bool</span> name(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_string.html">String</a>&amp; name_string);</div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;  </div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;  <span class="comment">/*</span></div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;<span class="comment">  * The number of faces in the model.  Useful for statistics.</span></div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;<span class="comment">  */</span></div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;  <span class="keywordtype">size_t</span> num_faces() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;  </div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;  <span class="comment">/*</span></div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;<span class="comment">  * Returns a key=&gt;value list of options for the model.</span></div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;<span class="comment">  * @see SUOptionsProviderRef</span></div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;<span class="comment">  */</span></div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;  <span class="comment">// TODO</span></div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;  <span class="comment">//std::vector&lt;std::pair&lt;std::string, std::string&gt;&gt; options() const;</span></div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;  <a class="code" href="class_c_w_1_1_options_manager.html">OptionsManager</a> options();</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;  </div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;  <span class="comment">/*</span></div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;<span class="comment">  * Returns the path of the model.</span></div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;<span class="comment">  */</span></div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;  <span class="comment">// TODO - probably delete this, as there is no way to get the path of the model through the API.</span></div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;  <span class="comment">//std::string path() const;</span></div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;<span class="comment">  /**</span></div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;<span class="comment">  * Checks if the given layer is in the list of layers in this model.  This is an expensive method, and is recommended to be used only in debugging.</span></div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;<span class="comment">  * @param layer - the layer object to check</span></div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;<span class="comment">  * @return true if the layer is in the model.</span></div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;<span class="comment">  */</span></div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="class_c_w_1_1_model.html#a657b116e7db03a82cf3b109df852a541">layer_exists</a>(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_layer.html">Layer</a>&amp; layer) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;  <span class="comment">/*</span></div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;<span class="comment">  * Returns the Location object of the model</span></div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;<span class="comment">  * @return location Location object. If no location has been assigned to the model, the Location object returned will be invalid.</span></div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;<span class="comment">  */</span></div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;   <span class="comment">// Location location();</span></div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;   </div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;  <span class="comment">/*</span></div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;<span class="comment">  * Returns the list of materials in the model.</span></div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;<span class="comment">  * @return materials vector array of Material objects in the model.</span></div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;<span class="comment">  */</span></div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;  std::vector&lt;Material&gt; materials() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;<span class="comment">  /**</span></div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;<span class="comment">  * Add materials to the model.</span></div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;<span class="comment">  * @param materials - vector of material objects which must not be attached to any other model object.</span></div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;<span class="comment">  */</span></div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_c_w_1_1_model.html#a968c568e419faa21ea99a393943b7910">add_materials</a>(std::vector&lt;Material&gt;&amp; materials);</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;  <span class="comment"></span></div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;<span class="comment">  /**</span></div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;<span class="comment">  * Checks if the given material is in the list of materials in this model.  This is a very expensive method, and is recommended to be used only in debugging.</span></div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;<span class="comment">  * @param material - the material object to check</span></div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;<span class="comment">  * @return true if the material is in the model.</span></div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;<span class="comment">  */</span></div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="class_c_w_1_1_model.html#a39c7322ccd43d3efd23ebf3c180be0e1">material_exists</a>(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_material.html">Material</a>&amp; material) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;  </div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;  <span class="comment">/*</span></div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;<span class="comment">  * Returns the name of the model</span></div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;<span class="comment">  * @return name string of the model name.</span></div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;<span class="comment">  */</span></div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;  <a class="code" href="class_c_w_1_1_string.html">String</a> name() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;  </div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;  <span class="comment">/*</span></div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;<span class="comment">  * Sets the name of the model.</span></div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;<span class="comment">  * @param name_string string to name the model with.</span></div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;<span class="comment">  */</span></div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;  <span class="keywordtype">bool</span> name(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_string.html">String</a>&amp; name_string);</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;  </div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;  <span class="comment">/*</span></div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;<span class="comment">  * The number of faces in the model.  Useful for statistics.</span></div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;<span class="comment">  */</span></div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;  <span class="keywordtype">size_t</span> num_faces() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;  </div>
 <div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;  <span class="comment">/*</span></div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;<span class="comment">  * Returns the first Entity object that a ray from a given point and direction vector will hit.</span></div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;<span class="comment">  */</span></div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;  <span class="comment">//Entity raytest(Point3D point, Vector3D vector);</span></div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;  </div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;  <span class="comment">/*</span></div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;<span class="comment">  * Saves the model in the file path given.</span></div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;<span class="comment">  * @param file_path string path to the file</span></div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;<span class="comment">  * @return SUResult - SU_ERROR_NONE on success. @see SUModelSaveFileToFile for possible return values</span></div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;<span class="comment">  */</span></div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;  SUResult save(<span class="keyword">const</span> std::string&amp; file_path);</div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;</div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;  <span class="comment">/*</span></div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;<span class="comment">  * Saves the model in the file path given, in the given SU version.</span></div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;<span class="comment">  * @param file_path string path to the file</span></div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;<span class="comment">  * @param version SUModelVersion to save</span></div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;<span class="comment">  * @return true on success, false on failure</span></div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;<span class="comment">  */</span></div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;  <span class="keywordtype">bool</span> save_with_version(<span class="keyword">const</span> std::string&amp; file_path, SUModelVersion version);</div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;</div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;  </div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;  <span class="comment">/*</span></div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;<span class="comment">  * Returns the array of Scene objects attached to the model.</span></div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;<span class="comment">  * @return scenes array of Scene objects.</span></div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;<span class="comment">  */</span></div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;  <span class="comment">// std::vector&lt;Scene&gt; scenes();</span></div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;  </div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;  <span class="comment">/*</span></div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;<span class="comment">  * Sets an attribute of the model.</span></div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;<span class="comment">  * @param AttributeDictionary object or string name of AttributeDictionary object that the attribute is in.</span></div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;<span class="comment">  * @param std::string attribute key.</span></div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;<span class="comment">  * @param std::string value to set</span></div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;<span class="comment">  * @return true on success, false on failure</span></div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;<span class="comment">  */</span></div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;  <span class="keywordtype">bool</span> set_attribute(<a class="code" href="class_c_w_1_1_attribute_dictionary.html">AttributeDictionary</a>&amp; dict, <span class="keyword">const</span> std::string&amp; key, <span class="keyword">const</span> <a class="code" href="class_c_w_1_1_typed_value.html">TypedValue</a>&amp; value);</div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;  <span class="keywordtype">bool</span> set_attribute(<span class="keyword">const</span> std::string&amp; dict_name, <span class="keyword">const</span> std::string&amp; key, <span class="keyword">const</span> <a class="code" href="class_c_w_1_1_typed_value.html">TypedValue</a>&amp; value);</div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;  </div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;  <span class="comment">// set_datum()</span></div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;  </div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;  <span class="comment">/*</span></div>
-<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;<span class="comment">  * Returns the ShadowInfo object of the model.</span></div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;<span class="comment">  */</span></div>
-<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;  <a class="code" href="class_c_w_1_1_shadow_info.html">ShadowInfo</a> shadow_info();</div>
-<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;</div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;  <span class="comment">/*</span></div>
-<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;<span class="comment">  * Returns the list of styles in the model.</span></div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;<span class="comment">  * @return styles vector array of Style objects</span></div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;<span class="comment">  * Returns a key=&gt;value list of options for the model.</span></div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;<span class="comment">  * @see SUOptionsProviderRef</span></div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;<span class="comment">  */</span></div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;  <span class="comment">// TODO</span></div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;  <span class="comment">//std::vector&lt;std::pair&lt;std::string, std::string&gt;&gt; options() const;</span></div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;  <a class="code" href="class_c_w_1_1_options_manager.html">OptionsManager</a> options();</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;  </div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;  <span class="comment">/*</span></div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;<span class="comment">  * Returns the path of the model.</span></div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;<span class="comment">  */</span></div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;  <span class="comment">// TODO - probably delete this, as there is no way to get the path of the model through the API.</span></div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;  <span class="comment">//std::string path() const;</span></div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;  </div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;  <span class="comment">/*</span></div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;<span class="comment">  * Returns the first Entity object that a ray from a given point and direction vector will hit.</span></div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;<span class="comment">  */</span></div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;  <span class="comment">//Entity raytest(Point3D point, Vector3D vector);</span></div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;  </div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;  <span class="comment">/*</span></div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;<span class="comment">  * Saves the model in the file path given.</span></div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;<span class="comment">  * @param file_path string path to the file</span></div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;<span class="comment">  * @return SUResult - SU_ERROR_NONE on success. @see SUModelSaveFileToFile for possible return values</span></div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;<span class="comment">  */</span></div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;  SUResult save(<span class="keyword">const</span> std::string&amp; file_path);</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;  <span class="comment">/*</span></div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;<span class="comment">  * Saves the model in the file path given, in the given SU version.</span></div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;<span class="comment">  * @param file_path string path to the file</span></div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;<span class="comment">  * @param version SUModelVersion to save</span></div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;<span class="comment">  * @return true on success, false on failure</span></div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;<span class="comment">  */</span></div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;  <span class="keywordtype">bool</span> save_with_version(<span class="keyword">const</span> std::string&amp; file_path, SUModelVersion version);</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;  </div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;  <span class="comment">/*</span></div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;<span class="comment">  * Returns the array of Scene objects attached to the model.</span></div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;<span class="comment">  * @return scenes array of Scene objects.</span></div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;<span class="comment">  */</span></div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;  <span class="comment">// std::vector&lt;Scene&gt; scenes();</span></div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;  </div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;  <span class="comment">/*</span></div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;<span class="comment">  * Sets an attribute of the model.</span></div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;<span class="comment">  * @param AttributeDictionary object or string name of AttributeDictionary object that the attribute is in.</span></div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;<span class="comment">  * @param std::string attribute key.</span></div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;<span class="comment">  * @param std::string value to set</span></div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;<span class="comment">  * @return true on success, false on failure</span></div>
 <div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;<span class="comment">  */</span></div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;  <span class="comment">// std::vector&lt;Style&gt; styles();</span></div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;  </div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;  <span class="comment">// tags</span></div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;  <span class="comment">// tags=</span></div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;  <span class="keywordtype">bool</span> set_attribute(<a class="code" href="class_c_w_1_1_attribute_dictionary.html">AttributeDictionary</a>&amp; dict, <span class="keyword">const</span> std::string&amp; key, <span class="keyword">const</span> <a class="code" href="class_c_w_1_1_typed_value.html">TypedValue</a>&amp; value);</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;  <span class="keywordtype">bool</span> set_attribute(<span class="keyword">const</span> std::string&amp; dict_name, <span class="keyword">const</span> std::string&amp; key, <span class="keyword">const</span> <a class="code" href="class_c_w_1_1_typed_value.html">TypedValue</a>&amp; value);</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;  </div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;  <span class="comment">// set_datum()</span></div>
 <div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;  </div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;  <span class="comment">//std::string title() { return name();}</span></div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;  <span class="comment">//std::string title(std::string name_value) { return name(name_value);}</span></div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160; <span class="comment"></span></div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;<span class="comment">  /// RenderingOptions</span></div>
-<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;<span class="comment"></span>  <a class="code" href="class_c_w_1_1_rendering_options.html">RenderingOptions</a> <a class="code" href="class_c_w_1_1_model.html#ae448f27b6aaeac6c80ed13e3f4d0f745">rendering_options</a>();</div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;</div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;}; <span class="comment">// class Model</span></div>
-<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;</div>
-<div class="line"><a name="l00324"></a><span class="lineno"><a class="line" href="class_c_w_1_1_model_statistics.html">  324</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_c_w_1_1_model_statistics.html">ModelStatistics</a> {</div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;  <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;  <a class="code" href="struct_s_u_model_statistics.html">SUModelStatistics</a> m_model_statistics;</div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;  </div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;  <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;  <a class="code" href="class_c_w_1_1_model_statistics.html">ModelStatistics</a>(<a class="code" href="struct_s_u_model_statistics.html">SUModelStatistics</a> model_statistics);</div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;  <a class="code" href="class_c_w_1_1_model_statistics.html">ModelStatistics</a>(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_model.html">Model</a>&amp; model);</div>
-<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;  <span class="comment"></span></div>
-<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;<span class="comment">  /**</span></div>
-<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;<span class="comment">  * Return the number of faces in the model.</span></div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;<span class="comment">  */</span></div>
-<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;  <span class="keywordtype">int</span> <a class="code" href="class_c_w_1_1_model_statistics.html#aa2b2ab86edb2e754f4af516161711149">faces</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;  <span class="keywordtype">int</span> edges() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;  <span class="keywordtype">int</span> instances() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;  <span class="keywordtype">int</span> groups() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;  <span class="keywordtype">int</span> images() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;  <span class="keywordtype">int</span> definitions() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;  <span class="keywordtype">int</span> layers() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;  <span class="keywordtype">int</span> materials() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;};</div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;</div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;} <span class="comment">/* namespace CW */</span></div>
-<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;</div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* Model_hpp */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;  <span class="comment">/*</span></div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;<span class="comment">  * Returns the ShadowInfo object of the model.</span></div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;<span class="comment">  */</span></div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;  <a class="code" href="class_c_w_1_1_shadow_info.html">ShadowInfo</a> shadow_info();</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;  <span class="comment">/*</span></div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;<span class="comment">  * Returns the list of styles in the model.</span></div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;<span class="comment">  * @return styles vector array of Style objects</span></div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;<span class="comment">  */</span></div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;  <span class="comment">// std::vector&lt;Style&gt; styles();</span></div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;  </div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;  <span class="comment">// tags</span></div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;  <span class="comment">// tags=</span></div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;  </div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;  <span class="comment">//std::string title() { return name();}</span></div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;  <span class="comment">//std::string title(std::string name_value) { return name(name_value);}</span></div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160; <span class="comment"></span></div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;<span class="comment">  /// RenderingOptions</span></div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;<span class="comment"></span>  <a class="code" href="class_c_w_1_1_rendering_options.html">RenderingOptions</a> <a class="code" href="class_c_w_1_1_model.html#ae448f27b6aaeac6c80ed13e3f4d0f745">rendering_options</a>();</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;}; <span class="comment">// class Model</span></div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;</div>
+<div class="line"><a name="l00338"></a><span class="lineno"><a class="line" href="class_c_w_1_1_model_statistics.html">  338</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_c_w_1_1_model_statistics.html">ModelStatistics</a> {</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;  <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;  <a class="code" href="struct_s_u_model_statistics.html">SUModelStatistics</a> m_model_statistics;</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;  </div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;  <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;  <a class="code" href="class_c_w_1_1_model_statistics.html">ModelStatistics</a>(<a class="code" href="struct_s_u_model_statistics.html">SUModelStatistics</a> model_statistics);</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;  <a class="code" href="class_c_w_1_1_model_statistics.html">ModelStatistics</a>(<span class="keyword">const</span> <a class="code" href="class_c_w_1_1_model.html">Model</a>&amp; model);</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;  <span class="comment"></span></div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;<span class="comment">  /**</span></div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;<span class="comment">  * Return the number of faces in the model.</span></div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;<span class="comment">  */</span></div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;  <span class="keywordtype">int</span> <a class="code" href="class_c_w_1_1_model_statistics.html#aa2b2ab86edb2e754f4af516161711149">faces</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;  <span class="keywordtype">int</span> edges() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;  <span class="keywordtype">int</span> instances() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;  <span class="keywordtype">int</span> groups() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;  <span class="keywordtype">int</span> images() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;  <span class="keywordtype">int</span> definitions() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;  <span class="keywordtype">int</span> layers() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;  <span class="keywordtype">int</span> materials() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;};</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;} <span class="comment">/* namespace CW */</span></div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* Model_hpp */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="class_c_w_1_1_axes_html"><div class="ttname"><a href="class_c_w_1_1_axes.html">CW::Axes</a></div><div class="ttdef"><b>Definition:</b> <a href="_axes_8hpp_source.html#l00046">Axes.hpp:46</a></div></div>
 <div class="ttc" id="struct_s_u_model_ref_html"><div class="ttname"><a href="struct_s_u_model_ref.html">SUModelRef</a></div><div class="ttdoc">A SketchUp model. </div></div>
+<div class="ttc" id="class_c_w_1_1_material_html"><div class="ttname"><a href="class_c_w_1_1_material.html">CW::Material</a></div><div class="ttdef"><b>Definition:</b> <a href="_material_8hpp_source.html#l00043">Material.hpp:43</a></div></div>
 <div class="ttc" id="class_c_w_1_1_layer_html"><div class="ttname"><a href="class_c_w_1_1_layer.html">CW::Layer</a></div><div class="ttdef"><b>Definition:</b> <a href="_layer_8hpp_source.html#l00040">Layer.hpp:40</a></div></div>
-<div class="ttc" id="class_c_w_1_1_model_html_a16e573ea95ade90ed97fd920ec0fa579"><div class="ttname"><a href="class_c_w_1_1_model.html#a16e573ea95ade90ed97fd920ec0fa579">CW::Model::add_layers</a></div><div class="ttdeci">void add_layers(std::vector&lt; Layer &gt; &amp;layers)</div><div class="ttdef"><b>Definition:</b> <a href="_model_8cpp_source.html#l00346">Model.cpp:346</a></div></div>
-<div class="ttc" id="class_c_w_1_1_model_html_a5141b470a1563bddf9228dc2a6d820cb"><div class="ttname"><a href="class_c_w_1_1_model.html#a5141b470a1563bddf9228dc2a6d820cb">CW::Model::version_string</a></div><div class="ttdeci">std::string version_string() const </div><div class="ttdef"><b>Definition:</b> <a href="_model_8cpp_source.html#l00116">Model.cpp:116</a></div></div>
+<div class="ttc" id="class_c_w_1_1_model_html_a16e573ea95ade90ed97fd920ec0fa579"><div class="ttname"><a href="class_c_w_1_1_model.html#a16e573ea95ade90ed97fd920ec0fa579">CW::Model::add_layers</a></div><div class="ttdeci">void add_layers(std::vector&lt; Layer &gt; &amp;layers)</div><div class="ttdef"><b>Definition:</b> <a href="_model_8cpp_source.html#l00347">Model.cpp:347</a></div></div>
+<div class="ttc" id="class_c_w_1_1_model_html_a5141b470a1563bddf9228dc2a6d820cb"><div class="ttname"><a href="class_c_w_1_1_model.html#a5141b470a1563bddf9228dc2a6d820cb">CW::Model::version_string</a></div><div class="ttdeci">std::string version_string() const </div><div class="ttdef"><b>Definition:</b> <a href="_model_8cpp_source.html#l00117">Model.cpp:117</a></div></div>
 <div class="ttc" id="class_c_w_1_1_entities_html"><div class="ttname"><a href="class_c_w_1_1_entities.html">CW::Entities</a></div><div class="ttdef"><b>Definition:</b> <a href="_entities_8hpp_source.html#l00056">Entities.hpp:56</a></div></div>
 <div class="ttc" id="class_c_w_1_1_typed_value_html"><div class="ttname"><a href="class_c_w_1_1_typed_value.html">CW::TypedValue</a></div><div class="ttdef"><b>Definition:</b> <a href="_typed_value_8hpp_source.html#l00045">TypedValue.hpp:45</a></div></div>
-<div class="ttc" id="class_c_w_1_1_model_html_a968c568e419faa21ea99a393943b7910"><div class="ttname"><a href="class_c_w_1_1_model.html#a968c568e419faa21ea99a393943b7910">CW::Model::add_materials</a></div><div class="ttdeci">void add_materials(std::vector&lt; Material &gt; &amp;materials)</div><div class="ttdef"><b>Definition:</b> <a href="_model_8cpp_source.html#l00395">Model.cpp:395</a></div></div>
+<div class="ttc" id="class_c_w_1_1_model_html_a657b116e7db03a82cf3b109df852a541"><div class="ttname"><a href="class_c_w_1_1_model.html#a657b116e7db03a82cf3b109df852a541">CW::Model::layer_exists</a></div><div class="ttdeci">bool layer_exists(const Layer &amp;layer) const </div><div class="ttdef"><b>Definition:</b> <a href="_model_8cpp_source.html#l00367">Model.cpp:367</a></div></div>
+<div class="ttc" id="class_c_w_1_1_model_html_a968c568e419faa21ea99a393943b7910"><div class="ttname"><a href="class_c_w_1_1_model.html#a968c568e419faa21ea99a393943b7910">CW::Model::add_materials</a></div><div class="ttdeci">void add_materials(std::vector&lt; Material &gt; &amp;materials)</div><div class="ttdef"><b>Definition:</b> <a href="_model_8cpp_source.html#l00406">Model.cpp:406</a></div></div>
 <div class="ttc" id="class_c_w_1_1_model_html_a9b98a27c3dca7999ce8b5f03ccf89ddb"><div class="ttname"><a href="class_c_w_1_1_model.html#a9b98a27c3dca7999ce8b5f03ccf89ddb">CW::Model::operator=</a></div><div class="ttdeci">Model &amp; operator=(const Model &amp;other)</div></div>
 <div class="ttc" id="class_c_w_1_1_rendering_options_html"><div class="ttname"><a href="class_c_w_1_1_rendering_options.html">CW::RenderingOptions</a></div><div class="ttdef"><b>Definition:</b> <a href="_rendering_options_8hpp_source.html#l00013">RenderingOptions.hpp:13</a></div></div>
 <div class="ttc" id="class_c_w_1_1_shadow_info_html"><div class="ttname"><a href="class_c_w_1_1_shadow_info.html">CW::ShadowInfo</a></div><div class="ttdef"><b>Definition:</b> <a href="_shadow_info_8hpp_source.html#l00012">ShadowInfo.hpp:12</a></div></div>
 <div class="ttc" id="class_c_w_1_1_component_definition_html"><div class="ttname"><a href="class_c_w_1_1_component_definition.html">CW::ComponentDefinition</a></div><div class="ttdef"><b>Definition:</b> <a href="_component_definition_8hpp_source.html#l00050">ComponentDefinition.hpp:50</a></div></div>
-<div class="ttc" id="class_c_w_1_1_model_html_add4455fc98f791814001af8afd8c9d22"><div class="ttname"><a href="class_c_w_1_1_model.html#add4455fc98f791814001af8afd8c9d22">CW::Model::operator!</a></div><div class="ttdeci">bool operator!() const </div><div class="ttdef"><b>Definition:</b> <a href="_model_8cpp_source.html#l00112">Model.cpp:112</a></div></div>
+<div class="ttc" id="class_c_w_1_1_model_html_add4455fc98f791814001af8afd8c9d22"><div class="ttname"><a href="class_c_w_1_1_model.html#add4455fc98f791814001af8afd8c9d22">CW::Model::operator!</a></div><div class="ttdeci">bool operator!() const </div><div class="ttdef"><b>Definition:</b> <a href="_model_8cpp_source.html#l00113">Model.cpp:113</a></div></div>
 <div class="ttc" id="class_c_w_1_1_model_html"><div class="ttname"><a href="class_c_w_1_1_model.html">CW::Model</a></div><div class="ttdef"><b>Definition:</b> <a href="_model_8hpp_source.html#l00055">Model.hpp:55</a></div></div>
-<div class="ttc" id="class_c_w_1_1_model_statistics_html_aa2b2ab86edb2e754f4af516161711149"><div class="ttname"><a href="class_c_w_1_1_model_statistics.html#aa2b2ab86edb2e754f4af516161711149">CW::ModelStatistics::faces</a></div><div class="ttdeci">int faces() const </div><div class="ttdef"><b>Definition:</b> <a href="_model_8cpp_source.html#l00571">Model.cpp:571</a></div></div>
-<div class="ttc" id="class_c_w_1_1_model_html_ae448f27b6aaeac6c80ed13e3f4d0f745"><div class="ttname"><a href="class_c_w_1_1_model.html#ae448f27b6aaeac6c80ed13e3f4d0f745">CW::Model::rendering_options</a></div><div class="ttdeci">RenderingOptions rendering_options()</div><div class="ttdoc">RenderingOptions. </div><div class="ttdef"><b>Definition:</b> <a href="_model_8cpp_source.html#l00516">Model.cpp:516</a></div></div>
+<div class="ttc" id="class_c_w_1_1_model_statistics_html_aa2b2ab86edb2e754f4af516161711149"><div class="ttname"><a href="class_c_w_1_1_model_statistics.html#aa2b2ab86edb2e754f4af516161711149">CW::ModelStatistics::faces</a></div><div class="ttdeci">int faces() const </div><div class="ttdef"><b>Definition:</b> <a href="_model_8cpp_source.html#l00593">Model.cpp:593</a></div></div>
+<div class="ttc" id="class_c_w_1_1_model_html_ae448f27b6aaeac6c80ed13e3f4d0f745"><div class="ttname"><a href="class_c_w_1_1_model.html#ae448f27b6aaeac6c80ed13e3f4d0f745">CW::Model::rendering_options</a></div><div class="ttdeci">RenderingOptions rendering_options()</div><div class="ttdoc">RenderingOptions. </div><div class="ttdef"><b>Definition:</b> <a href="_model_8cpp_source.html#l00538">Model.cpp:538</a></div></div>
 <div class="ttc" id="class_c_w_1_1_attribute_dictionary_html"><div class="ttname"><a href="class_c_w_1_1_attribute_dictionary.html">CW::AttributeDictionary</a></div><div class="ttdef"><b>Definition:</b> <a href="_attribute_dictionary_8hpp_source.html#l00047">AttributeDictionary.hpp:47</a></div></div>
 <div class="ttc" id="class_c_w_1_1_string_html"><div class="ttname"><a href="class_c_w_1_1_string.html">CW::String</a></div><div class="ttdef"><b>Definition:</b> <a href="_string_8hpp_source.html#l00045">String.hpp:45</a></div></div>
 <div class="ttc" id="class_c_w_1_1_options_manager_html"><div class="ttname"><a href="class_c_w_1_1_options_manager.html">CW::OptionsManager</a></div><div class="ttdef"><b>Definition:</b> <a href="_options_manager_8hpp_source.html#l00056">OptionsManager.hpp:56</a></div></div>
-<div class="ttc" id="class_c_w_1_1_model_html_ad10ec689a9beece3934ddbe9980afc46"><div class="ttname"><a href="class_c_w_1_1_model.html#ad10ec689a9beece3934ddbe9980afc46">CW::Model::add_definition</a></div><div class="ttdeci">bool add_definition(ComponentDefinition &amp;definition)</div><div class="ttdef"><b>Definition:</b> <a href="_model_8cpp_source.html#l00145">Model.cpp:145</a></div></div>
-<div class="ttc" id="class_c_w_1_1_model_html_a586a581447bec7cbad3197400af780fd"><div class="ttname"><a href="class_c_w_1_1_model.html#a586a581447bec7cbad3197400af780fd">CW::Model::ref</a></div><div class="ttdeci">SUModelRef ref() const </div><div class="ttdef"><b>Definition:</b> <a href="_model_8cpp_source.html#l00089">Model.cpp:89</a></div></div>
-<div class="ttc" id="class_c_w_1_1_model_statistics_html"><div class="ttname"><a href="class_c_w_1_1_model_statistics.html">CW::ModelStatistics</a></div><div class="ttdef"><b>Definition:</b> <a href="_model_8hpp_source.html#l00324">Model.hpp:324</a></div></div>
+<div class="ttc" id="class_c_w_1_1_model_html_a39c7322ccd43d3efd23ebf3c180be0e1"><div class="ttname"><a href="class_c_w_1_1_model.html#a39c7322ccd43d3efd23ebf3c180be0e1">CW::Model::material_exists</a></div><div class="ttdeci">bool material_exists(const Material &amp;material) const </div><div class="ttdef"><b>Definition:</b> <a href="_model_8cpp_source.html#l00426">Model.cpp:426</a></div></div>
+<div class="ttc" id="class_c_w_1_1_model_html_ad10ec689a9beece3934ddbe9980afc46"><div class="ttname"><a href="class_c_w_1_1_model.html#ad10ec689a9beece3934ddbe9980afc46">CW::Model::add_definition</a></div><div class="ttdeci">bool add_definition(ComponentDefinition &amp;definition)</div><div class="ttdef"><b>Definition:</b> <a href="_model_8cpp_source.html#l00146">Model.cpp:146</a></div></div>
+<div class="ttc" id="class_c_w_1_1_model_html_a586a581447bec7cbad3197400af780fd"><div class="ttname"><a href="class_c_w_1_1_model.html#a586a581447bec7cbad3197400af780fd">CW::Model::ref</a></div><div class="ttdeci">SUModelRef ref() const </div><div class="ttdef"><b>Definition:</b> <a href="_model_8cpp_source.html#l00090">Model.cpp:90</a></div></div>
+<div class="ttc" id="class_c_w_1_1_model_statistics_html"><div class="ttname"><a href="class_c_w_1_1_model_statistics.html">CW::ModelStatistics</a></div><div class="ttdef"><b>Definition:</b> <a href="_model_8hpp_source.html#l00338">Model.hpp:338</a></div></div>
 <div class="ttc" id="struct_s_u_model_statistics_html"><div class="ttname"><a href="struct_s_u_model_statistics.html">SUModelStatistics</a></div><div class="ttdoc">Contains an array of entity counts that can be indexed per entity type. </div><div class="ttdef"><b>Definition:</b> <a href="mac_2_sketch_up_a_p_i_8framework_2_versions_2_a_2_headers_2model_2model_8h_source.html#l00032">model.h:32</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Apr 24 2018 12:15:55 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Apr 25 2018 09:21:02 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

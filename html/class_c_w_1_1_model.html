@@ -123,11 +123,15 @@ std::vector&lt; <a class="el" href="class_c_w_1_1_layer.html">Layer</a> &gt;&#16
 <tr class="separator:a1be68bb8e80630b0b1a0719ea49f40b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a16e573ea95ade90ed97fd920ec0fa579"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_w_1_1_model.html#a16e573ea95ade90ed97fd920ec0fa579">add_layers</a> (std::vector&lt; <a class="el" href="class_c_w_1_1_layer.html">Layer</a> &gt; &amp;layers)</td></tr>
 <tr class="separator:a16e573ea95ade90ed97fd920ec0fa579"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a657b116e7db03a82cf3b109df852a541"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_w_1_1_model.html#a657b116e7db03a82cf3b109df852a541">layer_exists</a> (const <a class="el" href="class_c_w_1_1_layer.html">Layer</a> &amp;layer) const </td></tr>
+<tr class="separator:a657b116e7db03a82cf3b109df852a541"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a13bf2b1e563ca0857996e7d6195ebb67"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a13bf2b1e563ca0857996e7d6195ebb67"></a>
 std::vector&lt; <a class="el" href="class_c_w_1_1_material.html">Material</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>materials</b> () const </td></tr>
 <tr class="separator:a13bf2b1e563ca0857996e7d6195ebb67"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a968c568e419faa21ea99a393943b7910"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_w_1_1_model.html#a968c568e419faa21ea99a393943b7910">add_materials</a> (std::vector&lt; <a class="el" href="class_c_w_1_1_material.html">Material</a> &gt; &amp;materials)</td></tr>
 <tr class="separator:a968c568e419faa21ea99a393943b7910"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a39c7322ccd43d3efd23ebf3c180be0e1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_w_1_1_model.html#a39c7322ccd43d3efd23ebf3c180be0e1">material_exists</a> (const <a class="el" href="class_c_w_1_1_material.html">Material</a> &amp;material) const </td></tr>
+<tr class="separator:a39c7322ccd43d3efd23ebf3c180be0e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7ac1d5c977e91bdb4327fadf71fe9d25"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7ac1d5c977e91bdb4327fadf71fe9d25"></a>
 <a class="el" href="class_c_w_1_1_string.html">String</a>&#160;</td><td class="memItemRight" valign="bottom"><b>name</b> () const </td></tr>
 <tr class="separator:a7ac1d5c977e91bdb4327fadf71fe9d25"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -206,7 +210,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>set_attribute</b> (co
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if definition was succeffully added, false, if error. </dd></dl>
 
-<p>Definition at line <a class="el" href="_model_8cpp_source.html#l00145">145</a> of file <a class="el" href="_model_8cpp_source.html">Model.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_model_8cpp_source.html#l00146">146</a> of file <a class="el" href="_model_8cpp_source.html">Model.cpp</a>.</p>
 
 </div>
 </div>
@@ -231,7 +235,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>set_attribute</b> (co
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_model_8cpp_source.html#l00346">346</a> of file <a class="el" href="_model_8cpp_source.html">Model.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_model_8cpp_source.html#l00347">347</a> of file <a class="el" href="_model_8cpp_source.html">Model.cpp</a>.</p>
 
 </div>
 </div>
@@ -256,7 +260,59 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>set_attribute</b> (co
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_model_8cpp_source.html#l00395">395</a> of file <a class="el" href="_model_8cpp_source.html">Model.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_model_8cpp_source.html#l00406">406</a> of file <a class="el" href="_model_8cpp_source.html">Model.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a657b116e7db03a82cf3b109df852a541"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CW::Model::layer_exists </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_c_w_1_1_layer.html">Layer</a> &amp;&#160;</td>
+          <td class="paramname"><em>layer</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Checks if the given layer is in the list of layers in this model. This is an expensive method, and is recommended to be used only in debugging. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">layer</td><td>- the layer object to check </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the layer is in the model. </dd></dl>
+
+<p>Definition at line <a class="el" href="_model_8cpp_source.html#l00367">367</a> of file <a class="el" href="_model_8cpp_source.html">Model.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a39c7322ccd43d3efd23ebf3c180be0e1"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CW::Model::material_exists </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_c_w_1_1_material.html">Material</a> &amp;&#160;</td>
+          <td class="paramname"><em>material</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Checks if the given material is in the list of materials in this model. This is a very expensive method, and is recommended to be used only in debugging. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">material</td><td>- the material object to check </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the material is in the model. </dd></dl>
+
+<p>Definition at line <a class="el" href="_model_8cpp_source.html#l00426">426</a> of file <a class="el" href="_model_8cpp_source.html">Model.cpp</a>.</p>
 
 </div>
 </div>
@@ -275,7 +331,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>set_attribute</b> (co
 <p>NOT operator. Checks if the <a class="el" href="struct_s_u_model_ref.html" title="A SketchUp model. ">SUModelRef</a> is invalid. </p>
 <dl class="section return"><dt>Returns</dt><dd>true if the model is invalid </dd></dl>
 
-<p>Definition at line <a class="el" href="_model_8cpp_source.html#l00112">112</a> of file <a class="el" href="_model_8cpp_source.html">Model.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_model_8cpp_source.html#l00113">113</a> of file <a class="el" href="_model_8cpp_source.html">Model.cpp</a>.</p>
 
 </div>
 </div>
@@ -310,7 +366,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>set_attribute</b> (co
 </div><div class="memdoc">
 <p>Returns <a class="el" href="struct_s_u_model_ref.html" title="A SketchUp model. ">SUModelRef</a> object for the <a class="el" href="class_c_w_1_1_model.html">Model</a>. </p>
 
-<p>Definition at line <a class="el" href="_model_8cpp_source.html#l00089">89</a> of file <a class="el" href="_model_8cpp_source.html">Model.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_model_8cpp_source.html#l00090">90</a> of file <a class="el" href="_model_8cpp_source.html">Model.cpp</a>.</p>
 
 </div>
 </div>
@@ -328,7 +384,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>set_attribute</b> (co
 </div><div class="memdoc">
 <p>Returns a string of the model version in the form "major.minor.build" </p>
 
-<p>Definition at line <a class="el" href="_model_8cpp_source.html#l00116">116</a> of file <a class="el" href="_model_8cpp_source.html">Model.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_model_8cpp_source.html#l00117">117</a> of file <a class="el" href="_model_8cpp_source.html">Model.cpp</a>.</p>
 
 </div>
 </div>
@@ -339,7 +395,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>set_attribute</b> (co
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Apr 24 2018 12:16:12 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Apr 25 2018 09:21:17 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
