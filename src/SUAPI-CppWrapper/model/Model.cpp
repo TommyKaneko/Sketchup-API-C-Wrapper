@@ -38,6 +38,7 @@
 //#include "SUAPI-CppWrapper/Behavior.hpp"
 //#include "SUAPI-CppWrapper/model/Classifications.hpp"
 #include "SUAPI-CppWrapper/model/ComponentDefinition.hpp"
+#include "SUAPI-CppWrapper/model/InstancePath.hpp"
 #include "SUAPI-CppWrapper/model/Material.hpp"
 #include "SUAPI-CppWrapper/model/AttributeDictionary.hpp"
 #include "SUAPI-CppWrapper/model/TypedValue.hpp"
@@ -269,6 +270,20 @@ std::vector<ComponentDefinition> Model::group_definitions() const {
       return ComponentDefinition(value);
     });
   return defs;
+}
+
+
+InstancePath Model::instance_path(const String& persistent_id) const {
+  SUInstancePathRef instance_path_ref = SU_INVALID;
+  SUResult res = SUInstancePathCreate(&instance_path_ref);
+  assert(res == SU_ERROR_NONE);
+  res = SUModelGetInstancePathByPid(m_model, persistent_id.ref(), &instance_path_ref);
+  if (res == SU_ERROR_GENERIC) {
+    // Probably passed an empty or invalid string - return an empty instance path
+    return InstancePath();
+  }
+  assert(res == SU_ERROR_NONE); _unused(res);
+  return InstancePath(instance_path_ref);
 }
 
 

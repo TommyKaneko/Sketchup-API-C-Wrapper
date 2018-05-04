@@ -50,6 +50,7 @@ namespace CW {
   class RenderingOptions;
   class ShadowInfo;
   class OptionsManager;
+  class InstancePath;
 
   
 class Model {
@@ -169,6 +170,12 @@ class Model {
   * @return definitions vector array of definitions.
   */
   std::vector<ComponentDefinition> group_definitions() const;
+  
+  /**
+  * Returns the InstancePath of the given persistent ID in this model.
+  * @return InstancePath object of the given persistent ID.
+  */
+  InstancePath instance_path(const String& persistent_id) const;
   
   /*
   * Returns the Entities object for this model.
