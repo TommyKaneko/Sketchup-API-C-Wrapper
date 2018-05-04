@@ -109,6 +109,8 @@ std::vector&lt; <a class="el" href="class_c_w_1_1_component_definition.html">Com
 <tr class="memitem:ae7c2fcc4ad9b255be36fd8039c6e379b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae7c2fcc4ad9b255be36fd8039c6e379b"></a>
 std::vector&lt; <a class="el" href="class_c_w_1_1_component_definition.html">ComponentDefinition</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>group_definitions</b> () const </td></tr>
 <tr class="separator:ae7c2fcc4ad9b255be36fd8039c6e379b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c79f783ec4d2ef23160367fc4bf32f5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_c_w_1_1_instance_path.html">InstancePath</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_w_1_1_model.html#a1c79f783ec4d2ef23160367fc4bf32f5">instance_path</a> (const <a class="el" href="class_c_w_1_1_string.html">String</a> &amp;persistent_id) const </td></tr>
+<tr class="separator:a1c79f783ec4d2ef23160367fc4bf32f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a455e6d9ea6e7c318a1ced752b3d3b1bd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a455e6d9ea6e7c318a1ced752b3d3b1bd"></a>
 <a class="el" href="class_c_w_1_1_entities.html">Entities</a>&#160;</td><td class="memItemRight" valign="bottom"><b>entities</b> () const </td></tr>
 <tr class="separator:a455e6d9ea6e7c318a1ced752b3d3b1bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -166,7 +168,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>set_attribute</b> (co
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p>Definition at line <a class="el" href="_model_8hpp_source.html#l00055">55</a> of file <a class="el" href="_model_8hpp_source.html">Model.hpp</a>.</p>
+<p>Definition at line <a class="el" href="_model_8hpp_source.html#l00056">56</a> of file <a class="el" href="_model_8hpp_source.html">Model.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a85123f119bd49bb54bf49b021d738756"></a>
 <div class="memitem">
@@ -183,7 +185,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>set_attribute</b> (co
 </div><div class="memdoc">
 <p>Copy Constructor </p>
 
-<p>Definition at line <a class="el" href="_model_8cpp_source.html#l00077">77</a> of file <a class="el" href="_model_8cpp_source.html">Model.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_model_8cpp_source.html#l00078">78</a> of file <a class="el" href="_model_8cpp_source.html">Model.cpp</a>.</p>
 
 </div>
 </div>
@@ -210,7 +212,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>set_attribute</b> (co
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if definition was succeffully added, false, if error. </dd></dl>
 
-<p>Definition at line <a class="el" href="_model_8cpp_source.html#l00146">146</a> of file <a class="el" href="_model_8cpp_source.html">Model.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_model_8cpp_source.html#l00147">147</a> of file <a class="el" href="_model_8cpp_source.html">Model.cpp</a>.</p>
 
 </div>
 </div>
@@ -235,7 +237,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>set_attribute</b> (co
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_model_8cpp_source.html#l00347">347</a> of file <a class="el" href="_model_8cpp_source.html">Model.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_model_8cpp_source.html#l00362">362</a> of file <a class="el" href="_model_8cpp_source.html">Model.cpp</a>.</p>
 
 </div>
 </div>
@@ -260,7 +262,27 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>set_attribute</b> (co
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_model_8cpp_source.html#l00406">406</a> of file <a class="el" href="_model_8cpp_source.html">Model.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_model_8cpp_source.html#l00421">421</a> of file <a class="el" href="_model_8cpp_source.html">Model.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a1c79f783ec4d2ef23160367fc4bf32f5"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_c_w_1_1_instance_path.html">InstancePath</a> CW::Model::instance_path </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_c_w_1_1_string.html">String</a> &amp;&#160;</td>
+          <td class="paramname"><em>persistent_id</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Returns the <a class="el" href="class_c_w_1_1_instance_path.html">InstancePath</a> of the given persistent ID in this model. </p>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="class_c_w_1_1_instance_path.html">InstancePath</a> object of the given persistent ID. </dd></dl>
+
+<p>Definition at line <a class="el" href="_model_8cpp_source.html#l00276">276</a> of file <a class="el" href="_model_8cpp_source.html">Model.cpp</a>.</p>
 
 </div>
 </div>
@@ -286,7 +308,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>set_attribute</b> (co
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if the layer is in the model. </dd></dl>
 
-<p>Definition at line <a class="el" href="_model_8cpp_source.html#l00367">367</a> of file <a class="el" href="_model_8cpp_source.html">Model.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_model_8cpp_source.html#l00382">382</a> of file <a class="el" href="_model_8cpp_source.html">Model.cpp</a>.</p>
 
 </div>
 </div>
@@ -312,7 +334,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>set_attribute</b> (co
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if the material is in the model. </dd></dl>
 
-<p>Definition at line <a class="el" href="_model_8cpp_source.html#l00426">426</a> of file <a class="el" href="_model_8cpp_source.html">Model.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_model_8cpp_source.html#l00441">441</a> of file <a class="el" href="_model_8cpp_source.html">Model.cpp</a>.</p>
 
 </div>
 </div>
@@ -331,7 +353,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>set_attribute</b> (co
 <p>NOT operator. Checks if the <a class="el" href="struct_s_u_model_ref.html" title="A SketchUp model. ">SUModelRef</a> is invalid. </p>
 <dl class="section return"><dt>Returns</dt><dd>true if the model is invalid </dd></dl>
 
-<p>Definition at line <a class="el" href="_model_8cpp_source.html#l00113">113</a> of file <a class="el" href="_model_8cpp_source.html">Model.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_model_8cpp_source.html#l00114">114</a> of file <a class="el" href="_model_8cpp_source.html">Model.cpp</a>.</p>
 
 </div>
 </div>
@@ -366,7 +388,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>set_attribute</b> (co
 </div><div class="memdoc">
 <p>Returns <a class="el" href="struct_s_u_model_ref.html" title="A SketchUp model. ">SUModelRef</a> object for the <a class="el" href="class_c_w_1_1_model.html">Model</a>. </p>
 
-<p>Definition at line <a class="el" href="_model_8cpp_source.html#l00090">90</a> of file <a class="el" href="_model_8cpp_source.html">Model.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_model_8cpp_source.html#l00091">91</a> of file <a class="el" href="_model_8cpp_source.html">Model.cpp</a>.</p>
 
 </div>
 </div>
@@ -384,7 +406,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>set_attribute</b> (co
 </div><div class="memdoc">
 <p>Returns a string of the model version in the form "major.minor.build" </p>
 
-<p>Definition at line <a class="el" href="_model_8cpp_source.html#l00117">117</a> of file <a class="el" href="_model_8cpp_source.html">Model.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_model_8cpp_source.html#l00118">118</a> of file <a class="el" href="_model_8cpp_source.html">Model.cpp</a>.</p>
 
 </div>
 </div>
@@ -395,7 +417,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>set_attribute</b> (co
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Apr 25 2018 09:21:17 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri May 4 2018 08:32:18 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
