@@ -177,7 +177,26 @@ String Material::name() const {
   SUResult res = SUStringCreate(&name_ref);
   assert(res == SU_ERROR_NONE);
   res = SUMaterialGetName(this->ref(), &name_ref);
-  //assert(res != SU_ERROR_INVALID_OUTPUT);
+  assert(res != SU_ERROR_INVALID_OUTPUT);
+  if (res == SU_ERROR_NONE) {
+    return String(name_ref);
+  }
+  else {
+    return String();
+  }
+}
+
+
+
+String Material::display_name() const {
+  if (!(*this)) {
+    return String();
+  }
+  SUStringRef name_ref = SU_INVALID;
+  SUResult res = SUStringCreate(&name_ref);
+  assert(res == SU_ERROR_NONE);
+  res = SUMaterialGetNameLegacyBehavior(this->ref(), &name_ref);
+  assert(res != SU_ERROR_INVALID_OUTPUT);
   if (res == SU_ERROR_NONE) {
     return String(name_ref);
   }

@@ -92,7 +92,7 @@ class Material :public Entity {
   void color(const Color& color);
 
   /**
-  * Returns the name of the material.
+  * Returns the internal name of the material.  The internal name is the unprocessed identifier string stored with the material.
   * @return string name of the material.
   */
   String name() const;
@@ -102,6 +102,13 @@ class Material :public Entity {
   * @param string name of the material.
   */
   void name(const String& string);
+  
+  /**
+  * Retrieves the name of a material object. This method was added for users who require the functionality of Material.name() prior to SketchUp 2017, API 5.0. If the internal name is encased in square brackets, [], this method will return the name without brackets, otherwise the name will match the name retrieved by SUMaterialGetName.
+  * @since SketchUp 2017, API 5.0
+  * @return string name of the material.
+  */
+  String display_name() const;
 
   /**
   * Returns the alpha value of the material.
