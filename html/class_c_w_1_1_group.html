@@ -73,8 +73,10 @@
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ac5b331bf2d4ffb1733a51311f65774dd"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_w_1_1_group.html#ac5b331bf2d4ffb1733a51311f65774dd">Group</a> ()</td></tr>
 <tr class="separator:ac5b331bf2d4ffb1733a51311f65774dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aabd66564a104310ca92a18add4672eb0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_w_1_1_group.html#aabd66564a104310ca92a18add4672eb0">Group</a> (<a class="el" href="struct_s_u_group_ref.html">SUGroupRef</a> group, bool <a class="el" href="class_c_w_1_1_entity.html#a64762c829bba997b0b3070d51f7c059d">attached</a>=false)</td></tr>
-<tr class="separator:aabd66564a104310ca92a18add4672eb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d9a3d0487cb9f33ade2f47a4acd9805"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_w_1_1_group.html#a2d9a3d0487cb9f33ade2f47a4acd9805">Group</a> (<a class="el" href="struct_s_u_group_ref.html">SUGroupRef</a> group, bool <a class="el" href="class_c_w_1_1_entity.html#a64762c829bba997b0b3070d51f7c059d">attached</a>=true)</td></tr>
+<tr class="separator:a2d9a3d0487cb9f33ade2f47a4acd9805"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae055378627d6b07d41ec9ea2b343750d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_w_1_1_group.html#ae055378627d6b07d41ec9ea2b343750d">Group</a> (const <a class="el" href="class_c_w_1_1_component_instance.html">ComponentInstance</a> &amp;instance)</td></tr>
+<tr class="separator:ae055378627d6b07d41ec9ea2b343750d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4aff05c681fff6c0bafc4729c20768a9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_w_1_1_group.html#a4aff05c681fff6c0bafc4729c20768a9">Group</a> (const <a class="el" href="class_c_w_1_1_group.html">Group</a> &amp;other)</td></tr>
 <tr class="separator:a4aff05c681fff6c0bafc4729c20768a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3eeece8df27544980192a3ed9a453f8d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_w_1_1_group.html#a3eeece8df27544980192a3ed9a453f8d">~Group</a> ()</td></tr>
@@ -297,7 +299,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 
 </div>
 </div>
-<a class="anchor" id="aabd66564a104310ca92a18add4672eb0"></a>
+<a class="anchor" id="a2d9a3d0487cb9f33ade2f47a4acd9805"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -311,7 +313,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>attached</em> = <code>false</code>&#160;</td>
+          <td class="paramname"><em>attached</em> = <code>true</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -323,6 +325,25 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <p>Construct a <a class="el" href="class_c_w_1_1_group.html">Group</a> from an existing <a class="el" href="struct_s_u_group_ref.html" title="References a group object. ">SUGroupRef</a> object. </p>
 
 <p>Definition at line <a class="el" href="_group_8cpp_source.html#l00074">74</a> of file <a class="el" href="_group_8cpp_source.html">Group.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ae055378627d6b07d41ec9ea2b343750d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CW::Group::Group </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_c_w_1_1_component_instance.html">ComponentInstance</a> &amp;&#160;</td>
+          <td class="paramname"><em>instance</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Construct a <a class="el" href="class_c_w_1_1_group.html">Group</a> from instance object. If the instance is not a group, you will get errors, as the constructor does not check for this. </p>
+
+<p>Definition at line <a class="el" href="_group_8cpp_source.html#l00078">78</a> of file <a class="el" href="_group_8cpp_source.html">Group.cpp</a>.</p>
 
 </div>
 </div>
@@ -341,7 +362,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </div><div class="memdoc">
 <p>Copy constructor </p>
 
-<p>Definition at line <a class="el" href="_group_8cpp_source.html#l00080">80</a> of file <a class="el" href="_group_8cpp_source.html">Group.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_group_8cpp_source.html#l00085">85</a> of file <a class="el" href="_group_8cpp_source.html">Group.cpp</a>.</p>
 
 </div>
 </div>
@@ -359,7 +380,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </div><div class="memdoc">
 <p>Destructor </p>
 
-<p>Definition at line <a class="el" href="_group_8cpp_source.html#l00085">85</a> of file <a class="el" href="_group_8cpp_source.html">Group.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_group_8cpp_source.html#l00090">90</a> of file <a class="el" href="_group_8cpp_source.html">Group.cpp</a>.</p>
 
 </div>
 </div>
@@ -378,7 +399,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </div><div class="memdoc">
 <p>Return the <a class="el" href="class_c_w_1_1_component_definition.html">ComponentDefinition</a> of the <a class="el" href="class_c_w_1_1_group.html">Group</a>. </p>
 
-<p>Definition at line <a class="el" href="_group_8cpp_source.html#l00110">110</a> of file <a class="el" href="_group_8cpp_source.html">Group.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_group_8cpp_source.html#l00115">115</a> of file <a class="el" href="_group_8cpp_source.html">Group.cpp</a>.</p>
 
 </div>
 </div>
@@ -396,7 +417,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </div><div class="memdoc">
 <p>Return the <a class="el" href="class_c_w_1_1_entities.html">Entities</a> object of the <a class="el" href="class_c_w_1_1_group.html">Group</a>. </p>
 
-<p>Definition at line <a class="el" href="_group_8cpp_source.html#l00121">121</a> of file <a class="el" href="_group_8cpp_source.html">Group.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_group_8cpp_source.html#l00126">126</a> of file <a class="el" href="_group_8cpp_source.html">Group.cpp</a>.</p>
 
 </div>
 </div>
@@ -414,7 +435,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </div><div class="memdoc">
 <p>Return the name of the <a class="el" href="class_c_w_1_1_group.html">Group</a>. </p>
 
-<p>Definition at line <a class="el" href="_group_8cpp_source.html#l00131">131</a> of file <a class="el" href="_group_8cpp_source.html">Group.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_group_8cpp_source.html#l00136">136</a> of file <a class="el" href="_group_8cpp_source.html">Group.cpp</a>.</p>
 
 </div>
 </div>
@@ -433,7 +454,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </div><div class="memdoc">
 <p>Set the name of this <a class="el" href="class_c_w_1_1_group.html">Group</a>. </p>
 
-<p>Definition at line <a class="el" href="_group_8cpp_source.html#l00143">143</a> of file <a class="el" href="_group_8cpp_source.html">Group.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_group_8cpp_source.html#l00148">148</a> of file <a class="el" href="_group_8cpp_source.html">Group.cpp</a>.</p>
 
 </div>
 </div>
@@ -452,7 +473,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </div><div class="memdoc">
 <p>Copy assignment operator </p>
 
-<p>Definition at line <a class="el" href="_group_8cpp_source.html#l00092">92</a> of file <a class="el" href="_group_8cpp_source.html">Group.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_group_8cpp_source.html#l00097">97</a> of file <a class="el" href="_group_8cpp_source.html">Group.cpp</a>.</p>
 
 </div>
 </div>
@@ -470,7 +491,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </div><div class="memdoc">
 <p>Returns the raw <a class="el" href="struct_s_u_group_ref.html" title="References a group object. ">SUGroupRef</a> object. </p>
 
-<p>Definition at line <a class="el" href="_group_8cpp_source.html#l00100">100</a> of file <a class="el" href="_group_8cpp_source.html">Group.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_group_8cpp_source.html#l00105">105</a> of file <a class="el" href="_group_8cpp_source.html">Group.cpp</a>.</p>
 
 </div>
 </div>
@@ -488,7 +509,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </div><div class="memdoc">
 <p>Return the <a class="el" href="class_c_w_1_1_transformation.html">Transformation</a> object of the group. </p>
 
-<p>Definition at line <a class="el" href="_group_8cpp_source.html#l00153">153</a> of file <a class="el" href="_group_8cpp_source.html">Group.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_group_8cpp_source.html#l00158">158</a> of file <a class="el" href="_group_8cpp_source.html">Group.cpp</a>.</p>
 
 </div>
 </div>
@@ -507,7 +528,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </div><div class="memdoc">
 <p>Set the <a class="el" href="class_c_w_1_1_transformation.html">Transformation</a> of the group. </p>
 
-<p>Definition at line <a class="el" href="_group_8cpp_source.html#l00163">163</a> of file <a class="el" href="_group_8cpp_source.html">Group.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_group_8cpp_source.html#l00168">168</a> of file <a class="el" href="_group_8cpp_source.html">Group.cpp</a>.</p>
 
 </div>
 </div>
@@ -518,7 +539,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed May 9 2018 13:45:42 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed May 9 2018 13:46:41 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

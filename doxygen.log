@@ -4845,8 +4845,8 @@ Generating docs f/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/S
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ComponentDefinition.hpp:150: warning: Member always_face_camera (variable) of class CW::Behavior is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ComponentDefinition.hpp:152: warning: Member shadows_face_sun (variable) of class CW::Behavior is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ComponentDefinition.hpp:154: warning: Member no_scale_mask (variable) of class CW::Behavior is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ComponentInstance.hpp:52: warning: Member ComponentInstance(SUComponentInstanceRef instance, bool attached=true) (function) of class CW::ComponentInstance is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ComponentInstance.hpp:73: warning: Member operator SUComponentInstanceRef *() (function) of class CW::ComponentInstance is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ComponentInstance.hpp:53: warning: Member ComponentInstance(SUComponentInstanceRef instance, bool attached=true) (function) of class CW::ComponentInstance is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ComponentInstance.hpp:74: warning: Member operator SUComponentInstanceRef *() (function) of class CW::ComponentInstance is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/DrawingElement.hpp:72: warning: Member operator SUDrawingElementRef() const  (function) of class CW::DrawingElement is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/DrawingElement.hpp:73: warning: Member operator SUDrawingElementRef *() (function) of class CW::DrawingElement is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/DrawingElement.hpp:91: warning: Member casts_shadows() const  (function) of class CW::DrawingElement is not documented.
@@ -4977,10 +4977,10 @@ Generating docs f/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/S
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/GeometryInput.hpp:245: warning: argument 'loop_input' of command @param is not found in the argument list of CW::GeometryInput::face_add_inner_loop(size_t face_index, LoopInput &inner_loop)
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/GeometryInput.hpp:245: warning: The following parameters of CW::GeometryInput::face_add_inner_loop(size_t face_index, LoopInput &inner_loop) are not documented:
   parameter 'inner_loop'
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Group.hpp:82: warning: Member operator SUGroupRef() const  (function) of class CW::Group is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Group.hpp:83: warning: Member operator SUGroupRef *() (function) of class CW::Group is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ComponentInstance.hpp:52: warning: Member ComponentInstance(SUComponentInstanceRef instance, bool attached=true) (function) of class CW::ComponentInstance is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ComponentInstance.hpp:73: warning: Member operator SUComponentInstanceRef *() (function) of class CW::ComponentInstance is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Group.hpp:87: warning: Member operator SUGroupRef() const  (function) of class CW::Group is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Group.hpp:88: warning: Member operator SUGroupRef *() (function) of class CW::Group is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ComponentInstance.hpp:53: warning: Member ComponentInstance(SUComponentInstanceRef instance, bool attached=true) (function) of class CW::ComponentInstance is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ComponentInstance.hpp:74: warning: Member operator SUComponentInstanceRef *() (function) of class CW::ComponentInstance is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/DrawingElement.hpp:72: warning: Member operator SUDrawingElementRef() const  (function) of class CW::DrawingElement is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/DrawingElement.hpp:73: warning: Member operator SUDrawingElementRef *() (function) of class CW::DrawingElement is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/DrawingElement.hpp:91: warning: Member casts_shadows() const  (function) of class CW::DrawingElement is not documented.
@@ -8594,5 +8594,5 @@ Generating file index...
 Generating file member index...
 Generating example index...
 finalizing index lists...
-lookup cache used 19199/65536 hits=187930 misses=20542
+lookup cache used 19211/65536 hits=187989 misses=20554
 finished...
