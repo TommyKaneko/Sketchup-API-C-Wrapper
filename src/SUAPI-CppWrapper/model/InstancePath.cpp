@@ -48,7 +48,7 @@ SUInstancePathRef InstancePath::create_instance_path() {
 
 
 SUInstancePathRef InstancePath::copy_reference(const InstancePath& other) {
-  SUInstancePathRef instance_path_ref = create_instance_path();
+  SUInstancePathRef instance_path_ref = SU_INVALID;
   SUResult res = SUInstancePathCreateCopy(&instance_path_ref, other.ref());
   assert(res == SU_ERROR_NONE); _unused(res);
   return instance_path_ref;
@@ -120,7 +120,7 @@ InstancePath& InstancePath::set_leaf(const Entity& entity) {
 }
 
 
-size_t InstancePath::depth() {
+size_t InstancePath::depth() const {
   size_t depth = 0;
   SUResult res = SUInstancePathGetPathDepth(m_instance_path, &depth);
   assert(res == SU_ERROR_NONE); _unused(res);
@@ -128,7 +128,7 @@ size_t InstancePath::depth() {
 }
 
 
-size_t InstancePath::full_depth() {
+size_t InstancePath::full_depth() const {
   size_t depth = 0;
   SUResult res = SUInstancePathGetFullDepth(m_instance_path, &depth);
   assert(res == SU_ERROR_NONE); _unused(res);
@@ -136,7 +136,7 @@ size_t InstancePath::full_depth() {
 }
 
 
-Transformation InstancePath::total_transformation() {
+Transformation InstancePath::total_transformation() const {
   SUTransformation transform;
   SUResult res = SUInstancePathGetTransform(m_instance_path, &transform);
   assert(res == SU_ERROR_NONE); _unused(res);
@@ -144,7 +144,7 @@ Transformation InstancePath::total_transformation() {
 }
 
 
-Transformation InstancePath::transformation_at_depth(size_t depth) {
+Transformation InstancePath::transformation_at_depth(size_t depth) const {
   SUTransformation transform;
   SUResult res = SUInstancePathGetTransformAtDepth(m_instance_path, depth, &transform);
   assert(res == SU_ERROR_NONE); _unused(res);
@@ -152,7 +152,8 @@ Transformation InstancePath::transformation_at_depth(size_t depth) {
 }
 
 
-ComponentInstance InstancePath::instance_at_depth(size_t depth) {
+ComponentInstance InstancePath::instance_at_depth(size_t depth) const {
+  assert(this->valid());
   SUComponentInstanceRef instance = SU_INVALID;
   SUResult res = SUInstancePathGetInstanceAtDepth(m_instance_path, depth, &instance);
   assert(res == SU_ERROR_NONE); _unused(res);
@@ -160,7 +161,7 @@ ComponentInstance InstancePath::instance_at_depth(size_t depth) {
 }
 
 
-Entity InstancePath::leaf_entity() {
+Entity InstancePath::leaf_entity() const {
   SUEntityRef entity = SU_INVALID;
   SUResult res = SUInstancePathGetLeafAsEntity(m_instance_path, &entity);
   assert(res == SU_ERROR_NONE); _unused(res);
@@ -168,7 +169,7 @@ Entity InstancePath::leaf_entity() {
 }
 
 
-DrawingElement InstancePath::leaf() {
+DrawingElement InstancePath::leaf() const {
   SUDrawingElementRef element = SU_INVALID;
   SUResult res = SUInstancePathGetLeaf(m_instance_path, &element);
   assert(res == SU_ERROR_NONE); _unused(res);
@@ -176,7 +177,7 @@ DrawingElement InstancePath::leaf() {
 }
 
 
-bool InstancePath::valid() {
+bool InstancePath::valid() const {
   bool valid;
   SUResult res = SUInstancePathIsValid(m_instance_path, &valid);
   assert(res == SU_ERROR_NONE); _unused(res);
@@ -184,7 +185,7 @@ bool InstancePath::valid() {
 }
 
 
-bool InstancePath::empty() {
+bool InstancePath::empty() const {
   bool empty;
   SUResult res = SUInstancePathIsEmpty(m_instance_path, &empty);
   assert(res == SU_ERROR_NONE); _unused(res);
@@ -192,7 +193,7 @@ bool InstancePath::empty() {
 }
 
 
-bool InstancePath::contains(const Entity& entity) {
+bool InstancePath::contains(const Entity& entity) const {
   bool contains;
   SUResult res = SUInstancePathContains(m_instance_path, entity.ref(), &contains);
   assert(res == SU_ERROR_NONE); _unused(res);
@@ -200,7 +201,7 @@ bool InstancePath::contains(const Entity& entity) {
 }
 
 
-String InstancePath::persistent_id() {
+String InstancePath::persistent_id() const {
   SUStringRef pid = SU_INVALID;
   SUResult res = SUStringCreate(&pid);
   assert(res == SU_ERROR_NONE);
@@ -210,7 +211,7 @@ String InstancePath::persistent_id() {
 }
 
 
-String InstancePath::persistent_id_at_depth(size_t depth) {
+String InstancePath::persistent_id_at_depth(size_t depth) const {
   SUStringRef pid = SU_INVALID;
   SUResult res = SUStringCreate(&pid);
   assert(res == SU_ERROR_NONE);

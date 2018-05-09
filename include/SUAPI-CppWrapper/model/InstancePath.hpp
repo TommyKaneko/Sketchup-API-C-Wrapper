@@ -105,21 +105,21 @@ class InstancePath {
   * @return The depth of instance path object.
   * TODO: This method should be const, but the C API has an error where SUInstancePathGetPathDepth is not const
   */
-  size_t depth();
+  size_t depth() const;
 
   /**
   * Gets the full path depth (including the leaf) for InstancePath.
   * @return The full depth of instance path object.
   * TODO: This method should be const, but the C API has an error where SUInstancePathGetFullDepth is not const
   */
-  size_t full_depth();
+  size_t full_depth() const;
   
   /**
   * Gets the transform for InstancePath.
   * @return The transform from instance path
   * TODO: This method should be const, but the C API has an error where SUInstancePathGetTransform is not const
   */
-  Transformation total_transformation();
+  Transformation total_transformation() const;
 
   /**
   * Gets the transform up to depth level for InstancePath.
@@ -127,7 +127,7 @@ class InstancePath {
   * @return The transform from instance path.
   * TODO: This method should be const, but the C API has an error where SUInstancePathGetTransformAtDepth is not const
   */
-  Transformation transformation_at_depth(size_t depth);
+  Transformation transformation_at_depth(size_t depth) const;
 
   /**
   * Gets a component instance up to path depth level.
@@ -135,7 +135,7 @@ class InstancePath {
   * @return The component instance on the instance path at that depth.
   * TODO: This method should be const, but the C API has an error where SUInstancePathGetInstanceAtDepth is not const
   */
-  ComponentInstance instance_at_depth(size_t depth);
+  ComponentInstance instance_at_depth(size_t depth) const;
 
 
   /**
@@ -143,28 +143,28 @@ class InstancePath {
   * @return The leaf entity from an instance path.
   * TODO: This method should be const, but the C API has an error where SUInstancePathGetLeafAsEntity is not const
   */
-  Entity leaf_entity();
+  Entity leaf_entity() const;
 
   /**
   * Gets a leaf from an entity path as a drawing element object.
   * @return The leaf DrawingElement from an instance path.
   * TODO: This method should be const, but the C API has an error where SUInstancePathGetLeaf is not const
   */
-  DrawingElement leaf();
+  DrawingElement leaf() const;
 
   /**
   * Validates an instance path.
   * @return Whether the instance path is valid or not.
   * TODO: This method should be const, but the C API has an error where SUInstancePathIsValid is not const
   */
-  bool valid();
+  bool valid() const;
   
   /**
   * Checks if an instance path is empty.
   * @return Whether the instance path is empty or not.
   * TODO: This method should be const, but the C API has an error where SUInstancePathIsEmpty is not const
   */
-  bool empty();
+  bool empty() const;
 
   /**
   * Checks if instance path contains a particular entity.
@@ -172,14 +172,14 @@ class InstancePath {
   @return Whether the instance path contains the entity or not.
   * TODO: This method should be const, but the C API has an error where SUInstancePathContains is not const
   */
-  bool contains(const Entity& entity);
+  bool contains(const Entity& entity) const;
   
   /**
   * Retrieves the full persistent id for a given instance path.
   * @return A String of the persistent id (or its full depth?).
   * TODO: This method should be const, but the C API has an error where SUInstancePathGetPersistentID is not const
   */
-  String persistent_id();
+  String persistent_id() const;
 
   /**
   * Retrieves the persistent id of an entity up to depth level in a given instance path.
@@ -187,7 +187,7 @@ class InstancePath {
   * @return The persistent id.
   * TODO: This method should be const, but the C API has an error where SUInstancePathGetPersistentIDAtDepth is not const
   */
-  String persistent_id_at_depth(size_t depth);
+  String persistent_id_at_depth(size_t depth) const;
 
 };
 
