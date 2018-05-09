@@ -99,6 +99,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:aaf78ac20c2389e1f10e2a44e434b4259"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab61202ce2a18603516a0b3d35010d43f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_w_1_1_material.html#ab61202ce2a18603516a0b3d35010d43f">name</a> (const <a class="el" href="class_c_w_1_1_string.html">String</a> &amp;string)</td></tr>
 <tr class="separator:ab61202ce2a18603516a0b3d35010d43f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5fd54c9d30b39e0ba3c34b22a3173b6f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_c_w_1_1_string.html">String</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_w_1_1_material.html#a5fd54c9d30b39e0ba3c34b22a3173b6f">display_name</a> () const </td></tr>
+<tr class="separator:a5fd54c9d30b39e0ba3c34b22a3173b6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a90ef79578d3f8412087d620d1bdfdf1c"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_w_1_1_material.html#a90ef79578d3f8412087d620d1bdfdf1c">opacity</a> () const </td></tr>
 <tr class="separator:a90ef79578d3f8412087d620d1bdfdf1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aee5dfe900aa0e48ccf9bce67b3ccb43f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_w_1_1_material.html#aee5dfe900aa0e48ccf9bce67b3ccb43f">opacity</a> (const double alpha)</td></tr>
@@ -301,6 +303,26 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 
 </div>
 </div>
+<a class="anchor" id="a5fd54c9d30b39e0ba3c34b22a3173b6f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_c_w_1_1_string.html">String</a> CW::Material::display_name </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Retrieves the name of a material object. This method was added for users who require the functionality of <a class="el" href="class_c_w_1_1_material.html#aaf78ac20c2389e1f10e2a44e434b4259">Material.name()</a> prior to SketchUp 2017, API 5.0. If the internal name is encased in square brackets, [], this method will return the name without brackets, otherwise the name will match the name retrieved by SUMaterialGetName. </p>
+<dl class="section since"><dt>Since</dt><dd>SketchUp 2017, API 5.0 </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>string name of the material. </dd></dl>
+
+<p>Definition at line <a class="el" href="_material_8cpp_source.html#l00191">191</a> of file <a class="el" href="_material_8cpp_source.html">Material.cpp</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="aaf78ac20c2389e1f10e2a44e434b4259"></a>
 <div class="memitem">
 <div class="memproto">
@@ -313,7 +335,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Returns the name of the material. </p>
+<p>Returns the internal name of the material. The internal name is the unprocessed identifier string stored with the material. </p>
 <dl class="section return"><dt>Returns</dt><dd>string name of the material. </dd></dl>
 
 <p>Definition at line <a class="el" href="_material_8cpp_source.html#l00172">172</a> of file <a class="el" href="_material_8cpp_source.html">Material.cpp</a>.</p>
@@ -341,7 +363,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_material_8cpp_source.html#l00189">189</a> of file <a class="el" href="_material_8cpp_source.html">Material.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_material_8cpp_source.html#l00208">208</a> of file <a class="el" href="_material_8cpp_source.html">Material.cpp</a>.</p>
 
 </div>
 </div>
@@ -360,7 +382,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <p>Returns the alpha value of the material. </p>
 <dl class="section return"><dt>Returns</dt><dd>opacity The alpha value within range [0.0, 1.0]. </dd></dl>
 
-<p>Definition at line <a class="el" href="_material_8cpp_source.html#l00200">200</a> of file <a class="el" href="_material_8cpp_source.html">Material.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_material_8cpp_source.html#l00219">219</a> of file <a class="el" href="_material_8cpp_source.html">Material.cpp</a>.</p>
 
 </div>
 </div>
@@ -385,7 +407,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_material_8cpp_source.html#l00213">213</a> of file <a class="el" href="_material_8cpp_source.html">Material.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_material_8cpp_source.html#l00232">232</a> of file <a class="el" href="_material_8cpp_source.html">Material.cpp</a>.</p>
 
 </div>
 </div>
@@ -440,7 +462,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </div><div class="memdoc">
 <p>Returns the texture of the material </p>
 
-<p>Definition at line <a class="el" href="_material_8cpp_source.html#l00229">229</a> of file <a class="el" href="_material_8cpp_source.html">Material.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_material_8cpp_source.html#l00248">248</a> of file <a class="el" href="_material_8cpp_source.html">Material.cpp</a>.</p>
 
 </div>
 </div>
@@ -459,7 +481,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </div><div class="memdoc">
 <p>Sets the texture of the material </p>
 
-<p>Definition at line <a class="el" href="_material_8cpp_source.html#l00242">242</a> of file <a class="el" href="_material_8cpp_source.html">Material.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_material_8cpp_source.html#l00261">261</a> of file <a class="el" href="_material_8cpp_source.html">Material.cpp</a>.</p>
 
 </div>
 </div>
@@ -477,7 +499,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </div><div class="memdoc">
 <p>Returns the type of the material </p>
 
-<p>Definition at line <a class="el" href="_material_8cpp_source.html#l00259">259</a> of file <a class="el" href="_material_8cpp_source.html">Material.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_material_8cpp_source.html#l00278">278</a> of file <a class="el" href="_material_8cpp_source.html">Material.cpp</a>.</p>
 
 </div>
 </div>
@@ -496,7 +518,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </div><div class="memdoc">
 <p>Sets the texture of the material </p>
 
-<p>Definition at line <a class="el" href="_material_8cpp_source.html#l00270">270</a> of file <a class="el" href="_material_8cpp_source.html">Material.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_material_8cpp_source.html#l00289">289</a> of file <a class="el" href="_material_8cpp_source.html">Material.cpp</a>.</p>
 
 </div>
 </div>
@@ -514,7 +536,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </div><div class="memdoc">
 <p>Returns whether the opacity value is used </p>
 
-<p>Definition at line <a class="el" href="_material_8cpp_source.html#l00279">279</a> of file <a class="el" href="_material_8cpp_source.html">Material.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_material_8cpp_source.html#l00298">298</a> of file <a class="el" href="_material_8cpp_source.html">Material.cpp</a>.</p>
 
 </div>
 </div>
@@ -533,7 +555,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </div><div class="memdoc">
 <p>Sets whether the opacity value is used </p>
 
-<p>Definition at line <a class="el" href="_material_8cpp_source.html#l00290">290</a> of file <a class="el" href="_material_8cpp_source.html">Material.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_material_8cpp_source.html#l00309">309</a> of file <a class="el" href="_material_8cpp_source.html">Material.cpp</a>.</p>
 
 </div>
 </div>
@@ -544,7 +566,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri May 4 2018 08:32:18 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed May 9 2018 13:45:42 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

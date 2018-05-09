@@ -1664,7 +1664,7 @@ Parsing fi/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/goog
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-actions.h:275: warning: Compound testing::DefaultValue< T & > is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/test/gtest-printers_test.cc:175: warning: Compound foo::StreamableTemplateInFoo is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/gtest-printers.h:781: warning: Compound testing::internal::UniversalTersePrinter is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Material.hpp:158: warning: Compound std::hash< CW::Material > is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Material.hpp:165: warning: Compound std::hash< CW::Material > is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-matchers.h:1234: warning: Compound testing::internal::StartsWithMatcher is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/test/gtest_output_test_.cc:411: warning: Compound NonFatalFailureInSetUpTest is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/samples/sample2.h:41: warning: Compound MyString is not documented.
@@ -1720,7 +1720,7 @@ Parsing fi/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/goog
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:260: warning: documented symbol `hash< CW::Entity >' was not declared or defined.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/GeometryInput.hpp:288: warning: documented symbol `hash< SUGeometryInputRef >' was not declared or defined.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Layer.hpp:101: warning: documented symbol `hash< CW::Layer >' was not declared or defined.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Material.hpp:151: warning: documented symbol `hash< CW::Material >' was not declared or defined.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Material.hpp:158: warning: documented symbol `hash< CW::Material >' was not declared or defined.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/src/gmock-spec-builders.cc:618: warning: documented symbol `void Mock::AllowUninterestingCalls' was not declared or defined.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/src/gmock-spec-builders.cc:625: warning: documented symbol `void Mock::WarnUninterestingCalls' was not declared or defined.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/src/gmock-spec-builders.cc:632: warning: documented symbol `void Mock::FailUninterestingCalls' was not declared or defined.
@@ -5385,7 +5385,7 @@ Generating docs for compound/home/travis/build/TommyKaneko/Sketchup-API-C-Wrappe
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:268: warning: Member operator()(const CW::Entity &k) const  (function) of class std::hash< CW::Entity > is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/GeometryInput.hpp:298: warning: Member operator()(const SUGeometryInputRef &k) const  (function) of class std::hash< SUGeometryInputRef > is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Layer.hpp:109: warning: Member operator()(const CW::Layer &k) const  (function) of class std::hash< CW::Layer > is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Material.hpp:159: warning: Member operator()(const CW::Material &k) const  (function) of class std::hash< CW::Material > is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Material.hpp:166: warning: Member operator()(const CW::Material &k) const  (function) of class std::hash< CW::Material > is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/internal/gtest-tuple.h:619: warning: Member tuple(GTEST_BY_REF_(T0) f0, GTEST_BY_REF_(T1) f1, GTEST_BY_REF_(T2) f2, GTEST_BY_REF_(T3) f3, GTEST_BY_REF_(T4) f4, GTEST_BY_REF_(T5) f5, GTEST_BY_REF_(T6) f6, GTEST_BY_REF_(T7) f7, GTEST_BY_REF_(T8) f8, GTEST_BY_REF_(T9) f9) (function) of class std::tr1::tuple is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/internal/gtest-tuple.h:625: warning: Member tuple(const tuple &t) (function) of class std::tr1::tuple is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googletest/include/gtest/internal/gtest-tuple.h:629: warning: Member tuple(const GTEST_10_TUPLE_(U)&t) (function) of class std::tr1::tuple is not documented.
@@ -8594,5 +8594,5 @@ Generating file index...
 Generating file member index...
 Generating example index...
 finalizing index lists...
-lookup cache used 19195/65536 hits=187883 misses=20538
+lookup cache used 19199/65536 hits=187930 misses=20542
 finished...
