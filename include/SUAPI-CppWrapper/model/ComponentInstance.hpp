@@ -39,6 +39,7 @@
 namespace CW {
 
 class ComponentInstance :public DrawingElement {
+  friend class Group;
   protected:
   /** Creates a copy of the ComponentInstance */
   SUComponentInstanceRef copy_reference(const ComponentInstance& other);

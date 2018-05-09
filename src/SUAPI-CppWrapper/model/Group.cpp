@@ -75,6 +75,11 @@ Group::Group(SUGroupRef group, bool attached):
   ComponentInstance(SUGroupToComponentInstance(group), attached)
 {}
 
+Group::Group(const ComponentInstance& instance):
+  Group(SUGroupFromEntity(instance.m_entity), instance.attached())
+{
+  assert(instance.entity_type() == SURefType_Group);
+}
 
 /** Copy constructor */
 Group::Group(const Group& other):

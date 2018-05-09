@@ -60,7 +60,12 @@ class Group :public ComponentInstance {
   /**
   * Construct a Group from an existing SUGroupRef object.
   */
-  Group(SUGroupRef group, bool attached = false);
+  Group(SUGroupRef group, bool attached = true);
+  
+  /**
+  * Construct a Group from instance object.  If the instance is not a group, you will get errors, as the constructor does not check for this.
+  */
+  Group(const ComponentInstance& instance);
   
   /** Copy constructor */
   Group(const Group& other);

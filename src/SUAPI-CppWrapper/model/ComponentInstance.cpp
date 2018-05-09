@@ -32,6 +32,8 @@
 
 #include "SUAPI-CppWrapper/model/ComponentInstance.hpp"
 
+#include <SketchUpAPI/model/group.h>
+
 #include "SUAPI-CppWrapper/String.hpp"
 
 namespace CW {
@@ -99,6 +101,12 @@ ComponentInstance& ComponentInstance::operator=(const ComponentInstance& other) 
 
 
 SUComponentInstanceRef ComponentInstance::ref() const {
+  // TODO: Due to a bug in the C API, SUComponentInstanceFromEntity returns null if the reference object is a Group. The workaround is cast to group then to a ComponentInstance.
+  SURefType type = this->entity_type();
+  if (type == SURefType_Group) {
+    SUGroupRef group_ref = SUGroupFromEntity(m_entity);
+    return SUGroupToComponentInstance(group_ref);
+  }
   return SUComponentInstanceFromEntity(m_entity);
 }
 
