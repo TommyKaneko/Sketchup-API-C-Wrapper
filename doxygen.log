@@ -5009,9 +5009,9 @@ Generating docs f/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/S
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:103: warning: Member operator SUEntityRef() const  (function) of class CW::Entity is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:110: warning: Member operator SUEntityRef *() (function) of class CW::Entity is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:117: warning: Member ref() const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Loop.hpp:75: warning: Member Loop(SULoopRef loop, bool attached=true) (function) of class CW::Loop is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Loop.hpp:80: warning: Member Loop(const Loop &other) (function) of class CW::Loop is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Loop.hpp:90: warning: Member loop_input() const  (function) of class CW::Loop is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Loop.hpp:74: warning: Member Loop(SULoopRef loop) (function) of class CW::Loop is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Loop.hpp:79: warning: Member Loop(const Loop &other) (function) of class CW::Loop is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Loop.hpp:92: warning: Member loop_input() const  (function) of class CW::Loop is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:103: warning: Member operator SUEntityRef() const  (function) of class CW::Entity is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:110: warning: Member operator SUEntityRef *() (function) of class CW::Entity is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:117: warning: Member ref() const  (function) of class CW::Entity is not documented.
@@ -8594,5 +8594,5 @@ Generating file index...
 Generating file member index...
 Generating example index...
 finalizing index lists...
-lookup cache used 19210/65536 hits=187986 misses=20553
+lookup cache used 19211/65536 hits=188035 misses=20554
 finished...
