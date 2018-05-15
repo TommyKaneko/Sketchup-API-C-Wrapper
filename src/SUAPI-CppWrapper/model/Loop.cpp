@@ -48,14 +48,21 @@ Loop::Loop():
 {}
 
 
-Loop::Loop(SULoopRef loop, bool attached):
-  Entity(SULoopToEntity(loop), attached)
+Loop::Loop(SULoopRef loop):
+  Entity(SULoopToEntity(loop), true)
 {}
 
 
 Loop::Loop(const Loop& other):
-  Entity(other, other.m_entity)
+  Entity(other.m_entity, true)
 {}
+
+
+Loop& Loop::operator=(const Loop& other) {
+  m_entity = other.m_entity;
+  m_attached = true;
+  return (*this);
+}
 
 
 SULoopRef Loop::ref() const {

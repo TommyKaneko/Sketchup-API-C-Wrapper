@@ -70,14 +70,16 @@ class Loop :public Entity {
   /*
   * Creates a Loop object from the SULoopRef.
   * @param SULoopRef object that is already attached to a SUFaceRef
-  * @param bool true if the loop is attached to a face.
   */
-  Loop(SULoopRef loop, bool attached = true);
+  Loop(SULoopRef loop);
 
   /*
   * Copy Constructor.
   */
   Loop(const Loop& other);
+
+  /** Copy assignment operator */
+  Loop& operator=(const Loop& other);
 
   /**
   * Returns the SULoopRef object stored in this loop.
