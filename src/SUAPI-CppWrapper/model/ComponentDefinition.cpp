@@ -216,7 +216,44 @@ void ComponentDefinition::behavior(const Behavior& behavior) const {
   SUResult res = SUComponentDefinitionSetBehavior(this->ref(), &behavior_ref);
   assert(res == SU_ERROR_NONE); _unused(res);
 }
-  
+
+
+size_t ComponentDefinition::num_used_instances() const {
+  size_t num = 0;
+  SUResult res = SUComponentDefinitionGetNumUsedInstances(this->ref(), &num);
+  assert(res == SU_ERROR_NONE); _unused(res);
+  return num;
+}
+
+
+size_t ComponentDefinition::num_instances() const {
+  size_t num = 0;
+  SUResult res = SUComponentDefinitionGetNumInstances(this->ref(), &num);
+  assert(res == SU_ERROR_NONE); _unused(res);
+  return num;
+}
+
+
+std::vector<ComponentInstance> ComponentDefinition::instances() const {
+  if (!SUIsValid(this->ref())) {
+    throw std::logic_error("CW::ComponentDefinition::instances(): definition is null");
+  }
+  size_t count = this->num_instances();
+  if (count == 0) {
+    return std::vector<ComponentInstance>{};
+  }
+  std::vector<SUComponentInstanceRef> instance_refs(count, SU_INVALID);
+  SUResult res = SUComponentDefinitionGetInstances(this->ref(), count, instance_refs.data(), &count);
+  assert(res == SU_ERROR_NONE); _unused(res);
+  std::vector<ComponentInstance> instances(count);
+  std::transform(instance_refs.begin(), instance_refs.end(), instances.begin(),
+  [](const SUComponentInstanceRef& value) {
+    return ComponentInstance(value);
+  });;
+  return instances;
+}
+
+
 /****************
 * Behavior class
 *****************/

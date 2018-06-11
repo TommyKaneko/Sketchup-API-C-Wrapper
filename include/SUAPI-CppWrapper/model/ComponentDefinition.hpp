@@ -128,9 +128,19 @@ class ComponentDefinition :public DrawingElement {
   void behavior(const Behavior& behavior) const;
   
   /**
-  * Returns the instances of this ComponentDefinition. TODO: Not possible
+  * Retrieves the total number of instances of the provided definition. This method takes into account the full hierarchy of the model. Therefore, the count is influenced by adding/removing instances of other definitions which contain an instance of this definition. Users should not use this function to determine the count to be passed to SUComponentDefinitionGetInstances specifying the number of instances to be retrieved.
   */
-  //std::vector<ComponentInstance> instances() const;
+  size_t num_used_instances() const;
+  
+  /**
+  * Retrieves the number of unique instances of the provided definition. The returned count represents the number of instances of this definition in the model's root plus the number instances of this definition contained in other definitions.
+  */
+  size_t num_instances() const;
+
+  /**
+  * Returns the instances of this ComponentDefinition.
+  */
+  std::vector<ComponentInstance> instances() const;
 
 };
   
