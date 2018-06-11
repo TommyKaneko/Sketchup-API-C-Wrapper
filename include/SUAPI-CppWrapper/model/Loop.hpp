@@ -125,6 +125,11 @@ class Loop :public Entity {
   */
   static PointLoopClassify classify_point(const std::vector<Point3D>& loop_points, const Point3D& test_point);
   
+  /**
+  * Retrieves a flag indicating the whether the loop is the outer loop on its associated face.
+  */
+  bool is_outer_loop() const;
+  
 };
 
 } /* namespace CW */

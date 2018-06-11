@@ -261,5 +261,12 @@ PointLoopClassify Loop::classify_point(const std::vector<Point3D>& loop_points, 
   }
 }
 
+bool Loop::is_outer_loop() const {
+  bool is_outer;
+  SUResult res = SULoopIsOuterLoop(this->ref(), &is_outer);
+  assert(res == SU_ERROR_NONE); _unused(res);
+  return is_outer;
+}
+
 
 } /* namespace CW */
