@@ -177,11 +177,16 @@
 <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="comment">  * @return PointLoopClassify object describing the location of the point relative to the loop.</span></div>
 <div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;<span class="comment">  */</span></div>
 <div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;  <span class="keyword">static</span> PointLoopClassify <a class="code" href="class_c_w_1_1_loop.html#a0637c58678b248349fff7c4ef757bcba">classify_point</a>(<span class="keyword">const</span> std::vector&lt;Point3D&gt;&amp; loop_points, <span class="keyword">const</span> <a class="code" href="class_c_w_1_1_point3_d.html">Point3D</a>&amp; test_point);</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;  </div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;};</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;} <span class="comment">/* namespace CW */</span></div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* Loop_hpp */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;  <span class="comment"></span></div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;<span class="comment">  /**</span></div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="comment">  * Retrieves a flag indicating the whether the loop is the outer loop on its associated face.</span></div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<span class="comment">  */</span></div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="class_c_w_1_1_loop.html#add9d983de5804bdbad634908044e3557">is_outer_loop</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;  </div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;};</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;} <span class="comment">/* namespace CW */</span></div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* Loop_hpp */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="class_c_w_1_1_point3_d_html"><div class="ttname"><a href="class_c_w_1_1_point3_d.html">CW::Point3D</a></div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8hpp_source.html#l00264">Geometry.hpp:264</a></div></div>
 <div class="ttc" id="class_c_w_1_1_loop_html_a5e5c94b0b62655ee508943f12231f4cb"><div class="ttname"><a href="class_c_w_1_1_loop.html#a5e5c94b0b62655ee508943f12231f4cb">CW::Loop::ref</a></div><div class="ttdeci">SULoopRef ref() const </div><div class="ttdef"><b>Definition:</b> <a href="_loop_8cpp_source.html#l00068">Loop.cpp:68</a></div></div>
 <div class="ttc" id="class_c_w_1_1_loop_html_abc9600f8e4d18c2058461d8177ac9bd5"><div class="ttname"><a href="class_c_w_1_1_loop.html#abc9600f8e4d18c2058461d8177ac9bd5">CW::Loop::edges</a></div><div class="ttdeci">std::vector&lt; Edge &gt; edges() const </div><div class="ttdef"><b>Definition:</b> <a href="_loop_8cpp_source.html#l00093">Loop.cpp:93</a></div></div>
@@ -195,10 +200,11 @@
 <div class="ttc" id="class_c_w_1_1_loop_html_a4d17d33722865e3da50409c909f61747"><div class="ttname"><a href="class_c_w_1_1_loop.html#a4d17d33722865e3da50409c909f61747">CW::Loop::Loop</a></div><div class="ttdeci">Loop()</div><div class="ttdef"><b>Definition:</b> <a href="_loop_8cpp_source.html#l00046">Loop.cpp:46</a></div></div>
 <div class="ttc" id="class_c_w_1_1_loop_html_a0637c58678b248349fff7c4ef757bcba"><div class="ttname"><a href="class_c_w_1_1_loop.html#a0637c58678b248349fff7c4ef757bcba">CW::Loop::classify_point</a></div><div class="ttdeci">PointLoopClassify classify_point(const Point3D &amp;point) const </div><div class="ttdef"><b>Definition:</b> <a href="_loop_8cpp_source.html#l00145">Loop.cpp:145</a></div></div>
 <div class="ttc" id="class_c_w_1_1_loop_html_a6994648358236c506e0d9fae458f5174"><div class="ttname"><a href="class_c_w_1_1_loop.html#a6994648358236c506e0d9fae458f5174">CW::Loop::vertices</a></div><div class="ttdeci">std::vector&lt; Vertex &gt; vertices() const </div><div class="ttdef"><b>Definition:</b> <a href="_loop_8cpp_source.html#l00112">Loop.cpp:112</a></div></div>
+<div class="ttc" id="class_c_w_1_1_loop_html_add9d983de5804bdbad634908044e3557"><div class="ttname"><a href="class_c_w_1_1_loop.html#add9d983de5804bdbad634908044e3557">CW::Loop::is_outer_loop</a></div><div class="ttdeci">bool is_outer_loop() const </div><div class="ttdef"><b>Definition:</b> <a href="_loop_8cpp_source.html#l00264">Loop.cpp:264</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue May 15 2018 16:36:09 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Jun 11 2018 21:57:29 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
