@@ -453,68 +453,70 @@
 <div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;  <span class="keywordflow">if</span> (!SUIsValid(m_entities)) {</div>
 <div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;    <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::Entities::add_group(): Entities is null&quot;</span>);</div>
 <div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;  }</div>
-<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;  Group new_group;</div>
-<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;  <span class="comment">// Add group to the entities object before populating it.</span></div>
-<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;  SUResult res = SUEntitiesAddGroup(m_entities, new_group.ref());</div>
-<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;  assert(res == SU_ERROR_NONE); _unused(res);</div>
-<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;  <span class="keywordflow">return</span> new_group;</div>
-<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;}</div>
-<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;</div>
-<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;</div>
-<div class="line"><a name="l00411"></a><span class="lineno"><a class="line" href="class_c_w_1_1_entities.html#ab34fd9822bee1ef8765c4ff6e5994255">  411</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="class_c_w_1_1_entities.html#ab34fd9822bee1ef8765c4ff6e5994255">Entities::transform_entities</a>(std::vector&lt;Entity&gt;&amp; elems, <span class="keyword">const</span> <a class="code" href="class_c_w_1_1_transformation.html">Transformation</a>&amp; transform) {</div>
-<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;  <span class="keywordflow">if</span> (!SUIsValid(m_entities)) {</div>
-<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;    <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::Entities::transform_entities(): Entities is null&quot;</span>);</div>
-<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;  }</div>
-<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;  <a class="code" href="struct_s_u_transformation.html">SUTransformation</a> trans_ref = transform.ref();</div>
-<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;  SUResult res = SUEntitiesTransform(m_entities, elems.size(), elems[0], &amp;trans_ref);</div>
-<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;  assert(res == SU_ERROR_NONE || res == SU_ERROR_GENERIC); _unused(res);</div>
-<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;  <span class="keywordflow">if</span> (res == SU_ERROR_UNSUPPORTED) {</div>
-<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;    <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;CW::Entities::transform_entities(): One of the elements given in the Entity vector is not contained by this Entities object.&quot;</span>);</div>
-<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;  }</div>
-<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;  <span class="keywordflow">else</span> <span class="keywordflow">if</span> (SU_ERROR_GENERIC) {</div>
-<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;  }</div>
-<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;}</div>
-<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;</div>
-<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;</div>
-<div class="line"><a name="l00428"></a><span class="lineno"><a class="line" href="class_c_w_1_1_entities.html#a23eb23d7c8b5f8f1ca6ad3124d09b755">  428</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="class_c_w_1_1_entities.html#ab34fd9822bee1ef8765c4ff6e5994255">Entities::transform_entities</a>(std::vector&lt;Entity&gt;&amp; elems, std::vector&lt;Transformation&gt;&amp; transforms) {</div>
-<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;  <span class="keywordflow">if</span> (!SUIsValid(m_entities)) {</div>
-<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;    <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::Entities::transform_entities(): Entities is null&quot;</span>);</div>
-<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;  }</div>
-<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;  <span class="keywordflow">if</span> (elems.size() != transforms.size()) {</div>
-<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;    <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;CW::Entities::transform_entities(): different number of elements to transformation objects given - the same number must be given.&quot;</span>);</div>
-<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;  }</div>
-<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;  assert(elems.size() == transforms.size());</div>
-<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;  SUResult res = SUEntitiesTransformMultiple(m_entities, elems.size(), elems[0], transforms[0]);</div>
-<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;  <span class="keywordflow">if</span> (res == SU_ERROR_UNSUPPORTED) {</div>
-<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;    <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;CW::Entities::transform_entities(): One of the elements given in the Entity vector is not contained by this Entities object.&quot;</span>);</div>
-<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;  }</div>
-<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;  <span class="keywordflow">else</span> <span class="keywordflow">if</span> (SU_ERROR_GENERIC) {</div>
-<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;  }</div>
-<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;}</div>
-<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;</div>
-<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;</div>
-<div class="line"><a name="l00447"></a><span class="lineno"><a class="line" href="class_c_w_1_1_entities.html#a52365bb717425a3da30bdf2516dda5d1">  447</a></span>&#160;<a class="code" href="class_c_w_1_1_model.html">Model</a> <a class="code" href="class_c_w_1_1_entities.html#a52365bb717425a3da30bdf2516dda5d1">Entities::model</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;  <span class="keywordflow">if</span> (SUIsInvalid(m_model)) {</div>
-<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="class_c_w_1_1_model.html">Model</a>();</div>
-<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;  }</div>
-<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="class_c_w_1_1_model.html">Model</a>(m_model, <span class="keyword">false</span>);</div>
-<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;}</div>
-<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;</div>
-<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;</div>
-<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;Entities::operator <a class="code" href="struct_s_u_entities_ref.html">SUEntitiesRef</a>() {</div>
-<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;  <span class="keywordflow">return</span> m_entities;</div>
-<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;}</div>
-<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;</div>
-<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;} <span class="comment">/* namespace CW */</span></div>
-<div class="ttc" id="class_c_w_1_1_entities_html_a52365bb717425a3da30bdf2516dda5d1"><div class="ttname"><a href="class_c_w_1_1_entities.html#a52365bb717425a3da30bdf2516dda5d1">CW::Entities::model</a></div><div class="ttdeci">Model model() const </div><div class="ttdef"><b>Definition:</b> <a href="_entities_8cpp_source.html#l00447">Entities.cpp:447</a></div></div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;  <a class="code" href="struct_s_u_group_ref.html">SUGroupRef</a> group = SU_INVALID;</div>
+<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;  SUResult res = SUGroupCreate(&amp;group);</div>
+<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;  assert(res == SU_ERROR_NONE);</div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;  <span class="comment">// Add group to the entities object before populating it.</span></div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;  res = SUEntitiesAddGroup(m_entities, group);</div>
+<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;  assert(res == SU_ERROR_NONE); _unused(res);</div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;  <span class="keywordflow">return</span> Group(group);</div>
+<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;}</div>
+<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;</div>
+<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;</div>
+<div class="line"><a name="l00413"></a><span class="lineno"><a class="line" href="class_c_w_1_1_entities.html#ab34fd9822bee1ef8765c4ff6e5994255">  413</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="class_c_w_1_1_entities.html#ab34fd9822bee1ef8765c4ff6e5994255">Entities::transform_entities</a>(std::vector&lt;Entity&gt;&amp; elems, <span class="keyword">const</span> <a class="code" href="class_c_w_1_1_transformation.html">Transformation</a>&amp; transform) {</div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;  <span class="keywordflow">if</span> (!SUIsValid(m_entities)) {</div>
+<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;    <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::Entities::transform_entities(): Entities is null&quot;</span>);</div>
+<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;  }</div>
+<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;  <a class="code" href="struct_s_u_transformation.html">SUTransformation</a> trans_ref = transform.ref();</div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;  SUResult res = SUEntitiesTransform(m_entities, elems.size(), elems[0], &amp;trans_ref);</div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;  assert(res == SU_ERROR_NONE || res == SU_ERROR_GENERIC); _unused(res);</div>
+<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;  <span class="keywordflow">if</span> (res == SU_ERROR_UNSUPPORTED) {</div>
+<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;    <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;CW::Entities::transform_entities(): One of the elements given in the Entity vector is not contained by this Entities object.&quot;</span>);</div>
+<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;  }</div>
+<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;  <span class="keywordflow">else</span> <span class="keywordflow">if</span> (SU_ERROR_GENERIC) {</div>
+<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;  }</div>
+<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;}</div>
+<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;</div>
+<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;</div>
+<div class="line"><a name="l00430"></a><span class="lineno"><a class="line" href="class_c_w_1_1_entities.html#a23eb23d7c8b5f8f1ca6ad3124d09b755">  430</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="class_c_w_1_1_entities.html#ab34fd9822bee1ef8765c4ff6e5994255">Entities::transform_entities</a>(std::vector&lt;Entity&gt;&amp; elems, std::vector&lt;Transformation&gt;&amp; transforms) {</div>
+<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;  <span class="keywordflow">if</span> (!SUIsValid(m_entities)) {</div>
+<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;    <span class="keywordflow">throw</span> std::logic_error(<span class="stringliteral">&quot;CW::Entities::transform_entities(): Entities is null&quot;</span>);</div>
+<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;  }</div>
+<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;  <span class="keywordflow">if</span> (elems.size() != transforms.size()) {</div>
+<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;    <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;CW::Entities::transform_entities(): different number of elements to transformation objects given - the same number must be given.&quot;</span>);</div>
+<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;  }</div>
+<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;  assert(elems.size() == transforms.size());</div>
+<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;  SUResult res = SUEntitiesTransformMultiple(m_entities, elems.size(), elems[0], transforms[0]);</div>
+<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;  <span class="keywordflow">if</span> (res == SU_ERROR_UNSUPPORTED) {</div>
+<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;    <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;CW::Entities::transform_entities(): One of the elements given in the Entity vector is not contained by this Entities object.&quot;</span>);</div>
+<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;  }</div>
+<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;  <span class="keywordflow">else</span> <span class="keywordflow">if</span> (SU_ERROR_GENERIC) {</div>
+<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;  }</div>
+<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;}</div>
+<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;</div>
+<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;</div>
+<div class="line"><a name="l00449"></a><span class="lineno"><a class="line" href="class_c_w_1_1_entities.html#a52365bb717425a3da30bdf2516dda5d1">  449</a></span>&#160;<a class="code" href="class_c_w_1_1_model.html">Model</a> <a class="code" href="class_c_w_1_1_entities.html#a52365bb717425a3da30bdf2516dda5d1">Entities::model</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;  <span class="keywordflow">if</span> (SUIsInvalid(m_model)) {</div>
+<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="class_c_w_1_1_model.html">Model</a>();</div>
+<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;  }</div>
+<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="class_c_w_1_1_model.html">Model</a>(m_model, <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;}</div>
+<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;</div>
+<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;</div>
+<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;Entities::operator <a class="code" href="struct_s_u_entities_ref.html">SUEntitiesRef</a>() {</div>
+<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;  <span class="keywordflow">return</span> m_entities;</div>
+<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;}</div>
+<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;</div>
+<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;} <span class="comment">/* namespace CW */</span></div>
+<div class="ttc" id="class_c_w_1_1_entities_html_a52365bb717425a3da30bdf2516dda5d1"><div class="ttname"><a href="class_c_w_1_1_entities.html#a52365bb717425a3da30bdf2516dda5d1">CW::Entities::model</a></div><div class="ttdeci">Model model() const </div><div class="ttdef"><b>Definition:</b> <a href="_entities_8cpp_source.html#l00449">Entities.cpp:449</a></div></div>
 <div class="ttc" id="class_c_w_1_1_edge_html"><div class="ttname"><a href="class_c_w_1_1_edge.html">CW::Edge</a></div><div class="ttdef"><b>Definition:</b> <a href="_edge_8hpp_source.html#l00048">Edge.hpp:48</a></div></div>
 <div class="ttc" id="struct_s_u_model_ref_html"><div class="ttname"><a href="struct_s_u_model_ref.html">SUModelRef</a></div><div class="ttdoc">A SketchUp model. </div></div>
 <div class="ttc" id="struct_s_u_entities_ref_html"><div class="ttname"><a href="struct_s_u_entities_ref.html">SUEntitiesRef</a></div><div class="ttdoc">References a container object for all entities in a model, component definition or a group...</div></div>
-<div class="ttc" id="class_c_w_1_1_entities_html_ab34fd9822bee1ef8765c4ff6e5994255"><div class="ttname"><a href="class_c_w_1_1_entities.html#ab34fd9822bee1ef8765c4ff6e5994255">CW::Entities::transform_entities</a></div><div class="ttdeci">bool transform_entities(std::vector&lt; Entity &gt; &amp;elems, const Transformation &amp;transform)</div><div class="ttdef"><b>Definition:</b> <a href="_entities_8cpp_source.html#l00411">Entities.cpp:411</a></div></div>
+<div class="ttc" id="class_c_w_1_1_entities_html_ab34fd9822bee1ef8765c4ff6e5994255"><div class="ttname"><a href="class_c_w_1_1_entities.html#ab34fd9822bee1ef8765c4ff6e5994255">CW::Entities::transform_entities</a></div><div class="ttdeci">bool transform_entities(std::vector&lt; Entity &gt; &amp;elems, const Transformation &amp;transform)</div><div class="ttdef"><b>Definition:</b> <a href="_entities_8cpp_source.html#l00413">Entities.cpp:413</a></div></div>
 <div class="ttc" id="struct_s_u_string_ref_html"><div class="ttname"><a href="struct_s_u_string_ref.html">SUStringRef</a></div><div class="ttdoc">Stores a Unicode string for use as output string parameters in the API. </div></div>
 <div class="ttc" id="struct_s_u_component_instance_ref_html"><div class="ttname"><a href="struct_s_u_component_instance_ref.html">SUComponentInstanceRef</a></div><div class="ttdoc">References a component instance, i.e. an instance of a component definition. </div></div>
 <div class="ttc" id="class_c_w_1_1_entities_html"><div class="ttname"><a href="class_c_w_1_1_entities.html">CW::Entities</a></div><div class="ttdef"><b>Definition:</b> <a href="_entities_8hpp_source.html#l00056">Entities.hpp:56</a></div></div>
@@ -531,6 +533,7 @@
 <div class="ttc" id="struct_s_u_face_ref_html"><div class="ttname"><a href="struct_s_u_face_ref.html">SUFaceRef</a></div><div class="ttdoc">References a face. </div></div>
 <div class="ttc" id="class_c_w_1_1_entities_html_a50d17b48fa3ef247883ccc343c3476e9"><div class="ttname"><a href="class_c_w_1_1_entities.html#a50d17b48fa3ef247883ccc343c3476e9">CW::Entities::bounding_box</a></div><div class="ttdeci">BoundingBox3D bounding_box() const </div><div class="ttdef"><b>Definition:</b> <a href="_entities_8cpp_source.html#l00149">Entities.cpp:149</a></div></div>
 <div class="ttc" id="class_c_w_1_1_entities_html_a89858f051bf2c05d2c8718c2de281c93"><div class="ttname"><a href="class_c_w_1_1_entities.html#a89858f051bf2c05d2c8718c2de281c93">CW::Entities::add</a></div><div class="ttdeci">void add(const Entities &amp;other)</div><div class="ttdef"><b>Definition:</b> <a href="_entities_8cpp_source.html#l00185">Entities.cpp:185</a></div></div>
+<div class="ttc" id="struct_s_u_group_ref_html"><div class="ttname"><a href="struct_s_u_group_ref.html">SUGroupRef</a></div><div class="ttdoc">References a group object. </div></div>
 <div class="ttc" id="class_c_w_1_1_bounding_box3_d_html"><div class="ttname"><a href="class_c_w_1_1_bounding_box3_d.html">CW::BoundingBox3D</a></div><div class="ttdef"><b>Definition:</b> <a href="_geometry_8hpp_source.html#l00502">Geometry.hpp:502</a></div></div>
 <div class="ttc" id="class_c_w_1_1_transformation_html"><div class="ttname"><a href="class_c_w_1_1_transformation.html">CW::Transformation</a></div><div class="ttdef"><b>Definition:</b> <a href="_transformation_8hpp_source.html#l00043">Transformation.hpp:43</a></div></div>
 <div class="ttc" id="class_c_w_1_1_face_html"><div class="ttname"><a href="class_c_w_1_1_face.html">CW::Face</a></div><div class="ttdef"><b>Definition:</b> <a href="_face_8hpp_source.html#l00062">Face.hpp:62</a></div></div>
@@ -540,7 +543,7 @@
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Jun 11 2018 22:12:18 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Jun 11 2018 22:13:43 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
