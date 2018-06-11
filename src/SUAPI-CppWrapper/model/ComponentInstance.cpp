@@ -90,7 +90,15 @@ ComponentInstance::~ComponentInstance() {
 /** Copy assignment operator */
 ComponentInstance& ComponentInstance::operator=(const ComponentInstance& other) {
   if (!m_attached && SUIsValid(m_entity)) {
-    SUComponentInstanceRef instance = SUComponentInstanceFromEntity(m_entity);
+    SUComponentInstanceRef instance;
+    // Workaround for bug in Sketchup API which prevents an entity that is a group to be cast directly into ComponentInstance
+    if (SUEntityGetType(m_entity) == SURefType_Group) {
+      SUGroupRef group = SUGroupFromEntity(m_entity);
+      instance = SUGroupToComponentInstance(group);
+    }
+    else {
+      instance = SUComponentInstanceFromEntity(m_entity);
+    }
     SUResult res = SUComponentInstanceRelease(&instance);
     assert(res == SU_ERROR_NONE); _unused(res);
   }

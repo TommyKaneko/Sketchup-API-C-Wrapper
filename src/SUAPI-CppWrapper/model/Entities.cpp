@@ -400,11 +400,13 @@ Group Entities::add_group() {
   if (!SUIsValid(m_entities)) {
     throw std::logic_error("CW::Entities::add_group(): Entities is null");
   }
-  Group new_group;
+  SUGroupRef group = SU_INVALID;
+  SUResult res = SUGroupCreate(&group);
+  assert(res == SU_ERROR_NONE);
   // Add group to the entities object before populating it.
-  SUResult res = SUEntitiesAddGroup(m_entities, new_group.ref());
+  res = SUEntitiesAddGroup(m_entities, group);
   assert(res == SU_ERROR_NONE); _unused(res);
-  return new_group;
+  return Group(group);
 }
 
 
