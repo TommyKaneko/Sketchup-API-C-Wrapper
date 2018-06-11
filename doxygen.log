@@ -1441,7 +1441,7 @@ Parsing fi/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/goog
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-generated-actions.h:512: warning: Compound testing::internal::ActionHelper is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/internal/gmock-internal-utils.h:348: warning: Compound testing::internal::remove_reference is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-spec-builders.h:1362: warning: Compound testing::internal::UntypedActionResultHolderBase is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ComponentDefinition.hpp:137: warning: Compound CW::Behavior is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ComponentDefinition.hpp:147: warning: Compound CW::Behavior is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-matchers.h:2108: warning: Compound testing::internal::WhenDynamicCastToMatcherBase is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/include/gmock/gmock-generated-actions.h:375: warning: Compound testing::internal::SelectArgs< Result, ArgumentTuple, k1, k2, k3, k4, k5,-1,-1,-1,-1,-1 > is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/third-party/googletest/googlemock/test/gmock-matchers_test.cc:3393: warning: Compound testing::gmock_matchers_test::DerivedStruct is not documented.
@@ -4838,13 +4838,13 @@ Generating docs f/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/S
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:103: warning: Member operator SUEntityRef() const  (function) of class CW::Entity is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:110: warning: Member operator SUEntityRef *() (function) of class CW::Entity is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:117: warning: Member ref() const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ComponentDefinition.hpp:142: warning: Member Behavior(SUComponentBehavior behavior) (function) of class CW::Behavior is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ComponentDefinition.hpp:146: warning: Member ref() const  (function) of class CW::Behavior is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ComponentDefinition.hpp:144: warning: Member snap (variable) of class CW::Behavior is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ComponentDefinition.hpp:148: warning: Member cuts_opening (variable) of class CW::Behavior is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ComponentDefinition.hpp:150: warning: Member always_face_camera (variable) of class CW::Behavior is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ComponentDefinition.hpp:152: warning: Member shadows_face_sun (variable) of class CW::Behavior is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ComponentDefinition.hpp:154: warning: Member no_scale_mask (variable) of class CW::Behavior is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ComponentDefinition.hpp:152: warning: Member Behavior(SUComponentBehavior behavior) (function) of class CW::Behavior is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ComponentDefinition.hpp:156: warning: Member ref() const  (function) of class CW::Behavior is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ComponentDefinition.hpp:154: warning: Member snap (variable) of class CW::Behavior is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ComponentDefinition.hpp:158: warning: Member cuts_opening (variable) of class CW::Behavior is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ComponentDefinition.hpp:160: warning: Member always_face_camera (variable) of class CW::Behavior is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ComponentDefinition.hpp:162: warning: Member shadows_face_sun (variable) of class CW::Behavior is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ComponentDefinition.hpp:164: warning: Member no_scale_mask (variable) of class CW::Behavior is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ComponentInstance.hpp:53: warning: Member ComponentInstance(SUComponentInstanceRef instance, bool attached=true) (function) of class CW::ComponentInstance is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ComponentInstance.hpp:74: warning: Member operator SUComponentInstanceRef *() (function) of class CW::ComponentInstance is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/DrawingElement.hpp:72: warning: Member operator SUDrawingElementRef() const  (function) of class CW::DrawingElement is not documented.
@@ -8594,5 +8594,5 @@ Generating file index...
 Generating file member index...
 Generating example index...
 finalizing index lists...
-lookup cache used 19211/65536 hits=188090 misses=20554
+lookup cache used 19222/65536 hits=188186 misses=20565
 finished...
