@@ -58,7 +58,7 @@ class Group :public ComponentInstance {
   Group();
   
   /**
-  * Construct a Group from an existing SUGroupRef object.
+  * Construct a Group from an existing SUGroupRef object.  Groups must always be attached to a parent (there is no release function for Groups)
   */
   Group(SUGroupRef group, bool attached = true);
   

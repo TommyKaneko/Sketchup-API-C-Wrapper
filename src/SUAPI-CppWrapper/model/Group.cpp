@@ -57,6 +57,8 @@ SUGroupRef Group::copy_reference(const Group& other) {
   if (other.m_attached) {
     return other.ref();
   }
+  // Groups cannot exist without a parent in the C API, so must always be attached
+  assert(false);
   // The other group has not been attached to the model, so copy its properties to a new object
   Group new_group;
   new_group.transformation(other.transformation());
@@ -67,16 +69,16 @@ SUGroupRef Group::copy_reference(const Group& other) {
 
 
 Group::Group():
-  Group(create_group(), false)
+  Group(SU_INVALID, true)
 {}
 
 
 Group::Group(SUGroupRef group, bool attached):
-  ComponentInstance(SUGroupToComponentInstance(group), attached)
+  ComponentInstance(SUGroupToComponentInstance(group), true)
 {}
 
 Group::Group(const ComponentInstance& instance):
-  Group(SUGroupFromEntity(instance.m_entity), instance.attached())
+  Group(SUGroupFromEntity(instance.m_entity))
 {
   assert(instance.entity_type() == SURefType_Group);
 }
@@ -95,9 +97,9 @@ Group::~Group() {
 
 
 Group& Group::operator=(const Group& other) {
-  // SUGroupRef does not have a release function, so we rely on the component instance to do that for us.
-  ComponentInstance::operator=(other);
-  // Groups have nothing else to copy.
+  // SUGroupRef does not have a release function, as groups must be added to a parent as soon as it is created.  Therefore, we can assume that groups are always attached, and we are simply copying the reference to it.
+  assert(m_attached);
+  m_entity = other.m_entity;
   return *this;
 }
 
