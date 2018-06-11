@@ -28,6 +28,7 @@
 #include <stdio.h>
 #include <cmath>
 #include <stdexcept>
+#include <cassert>
 
 #include <SketchUpAPI/model/vertex.h>
 
@@ -195,14 +196,27 @@ Vector3D& Vector3D::operator=(const SUVector3D &vector) {
 }
 
 // Casting
-Vector3D::operator SUVector3D() const { return m_vector; }
+Vector3D::operator SUVector3D() const {
+  assert(!null);
+  return m_vector;
+}
 
-Vector3D::operator const SUVector3D*() const { return &m_vector; }
+Vector3D::operator const SUVector3D*() const {
+  assert(!null);
+  return &m_vector;
+}
 
-Vector3D::operator Point3D() const { return Point3D(m_vector); }
+Vector3D::operator Point3D() const {
+  Point3D point(!this->null);
+  point.x = x;
+  point.y = y;
+  point.z = z;
+  return point;
+}
 
 // Operator overloads
 Vector3D Vector3D::operator+(const Vector3D &vector) const {
+  assert(!!vector && !null);
   return Vector3D(m_vector.x + vector.x, m_vector.y + vector.y, m_vector.z + vector.z);
 }
 
@@ -215,12 +229,15 @@ Vector3D Vector3D::operator-() const {
 }
 
 Vector3D Vector3D::operator-(const Vector3D &vector) const {
-  return Vector3D(m_vector.x - vector.x, m_vector.y - vector.y, m_vector.z - vector.z);
+  assert(!!vector && !null);
+  return Vector3D(x - vector.x, y - vector.y, z - vector.z);
 }
 Vector3D Vector3D::operator*(const double &scalar) const {
+  assert(!null);
   return Vector3D( x * scalar, y * scalar, z * scalar);
 }
 Vector3D Vector3D::operator/(const double &scalar) const {
+  assert(!null);
   if (std::abs(scalar) < EPSILON) {
     throw std::invalid_argument("CW::Vector3D::operator/() - cannot divide by zero");
   }
@@ -258,27 +275,33 @@ bool Vector3D::operator!() const {
 
 
 double Vector3D::length() const {
+  assert(!null);
   return sqrt(pow(x,2) + pow(y,2) + pow(z,2));
 }
 
 Vector3D Vector3D::unit() const {
+  assert(!null);
   return *this / length();
 }
 
 double Vector3D::angle(const Vector3D& vector_b) const {
+  assert(!null);
   return acos(unit().dot(vector_b.unit()));
 }
 
 double Vector3D::dot(const Vector3D& vector2) const {
+  assert(!!vector2 && !null);
   return (x * vector2.x) + (y * vector2.y) + (z * vector2.z);
 }
 
 double Vector3D::dot(const Point3D& point) const {
+  assert(!!point && !null);
   return (x * point.x) + (y * point.y) + (z * point.z);
 }
 
 
 Vector3D Vector3D::cross(const Vector3D& vector2) const {
+  assert(!!vector2 && !null);
   return Vector3D{y * vector2.z - z * vector2.y,
                 z * vector2.x - x * vector2.z,
                 x * vector2.y - y * vector2.x};
@@ -350,12 +373,10 @@ Point3D::Point3D(double x, double y, double z):
 {}
 
 Point3D::Point3D(const Point3D& other):
-  m_point(other.m_point),
-  null(other.null),
-  x(m_point.x),
-  y(m_point.y),
-  z(m_point.z)
-{}
+  Point3D(other.x, other.y, other.z)
+{
+  null = other.null;
+}
 
 
 Point3D::Point3D( const Vector3D& vector):
@@ -386,24 +407,42 @@ Point3D::operator Vector3D() const { return Vector3D(m_point.x, m_point.y, m_poi
 
 // Operator overloads
 Point3D Point3D::operator+(const Point3D &point) const {
+  assert(!!point && !null);
   return Point3D(m_point.x + point.x, m_point.y + point.y, m_point.z + point.z);
 }
+
 Point3D Point3D::operator+(const Vector3D &vector) const {
+  assert(!!vector && !null);
   return Point3D(m_point.x + vector.x, m_point.y + vector.y, m_point.z + vector.z);
 }
-Point3D Point3D::operator+(const SUPoint3D &point) const { return (*this) + Point3D(point);}
+
+Point3D Point3D::operator+(const SUPoint3D &point) const {
+  assert(!null);
+  return (*this) + Point3D(point);
+}
 
 Vector3D Point3D::operator-(const Point3D &point) const {
+  assert(!!point && !null);
   return Vector3D(m_point.x - point.x, m_point.y - point.y, m_point.z - point.z);
 }
-Point3D Point3D::operator-(const Vector3D &vector) const { return (*this) - static_cast<Point3D>(vector);}
-Point3D Point3D::operator-(const SUPoint3D &point) const  { return (*this) - Point3D(point);}
+
+Point3D Point3D::operator-(const Vector3D &vector) const {
+  assert(!!vector && !null);
+  return (*this) - static_cast<Point3D>(vector);
+}
+
+Point3D Point3D::operator-(const SUPoint3D &point) const  {
+  assert(!null);
+  return (*this) - Point3D(point);
+}
 
 Point3D Point3D::operator*(const double &scalar) const {
+  assert(!null);
   return Point3D(m_point.x * scalar, m_point.y * scalar, m_point.z * scalar);
 }
 
 Point3D Point3D::operator/(const double &scalar) const {
+  assert(!null);
   if (std::abs(scalar) < EPSILON) {
     throw std::invalid_argument("Point3D::operator/: cannot divide by zero");
   }
