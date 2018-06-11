@@ -240,6 +240,11 @@ class Entity {
   Entities parent() const;
   
   /**
+  * Returns the persistent ID of the entity.  If the entity is not an entity that can have a persistent ID, the method will fail.
+  */
+  int64_t persistent_id() const;
+  
+  /**
   * Returns whether these objects are the same.
   */
   //bool operator==(const Entity& entity) const;

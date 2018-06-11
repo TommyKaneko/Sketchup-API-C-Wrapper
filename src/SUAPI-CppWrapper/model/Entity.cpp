@@ -258,6 +258,15 @@ Entities Entity::parent() const {
   return Entities(entities, this->model().ref());
 }
 
+
+int64_t Entity::persistent_id() const {
+  int64_t pid;
+  SUResult res = SUEntityGetPersistentID(m_entity, &pid);
+  assert(res == SU_ERROR_NONE); _unused(res);
+  return pid;
+}
+
+
 /*
 bool Entity::operator==(const Entity& entity) const {
   if (m_entity.ptr == entity.m_entity.ptr) {
