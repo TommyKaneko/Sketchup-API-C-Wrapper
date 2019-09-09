@@ -119,6 +119,40 @@ SU_RESULT SULayerGetVisibility(SULayerRef layer, bool* visible);
 */
 SU_RESULT SULayerSetVisibility(SULayerRef layer, bool visible);
 
+/**
+@brief Get the line style of a layer.
+@since SketchUp 2019, API 7.0
+@param[in]  layer      The layer object.
+@param[out] line_style The line style reference.
+@return
+- \ref SU_ERROR_NONE on success
+- \ref SU_ERROR_INVALID_INPUT if layer is not a valid object
+- \ref SU_ERROR_NULL_POINTER_OUTPUT if line_style is NULL
+- \ref SU_ERROR_NO_DATA if the layer has no custom line style.
+*/
+SU_RESULT SULayerGetLineStyle(SULayerRef layer, SULineStyleRef* line_style);
+
+/**
+@brief Set the line style of a layer.
+@since SketchUp 2019, API 7.0
+@param[in] layer      The layer object.
+@param[in] line_style The line style to set.
+@return
+- \ref SU_ERROR_NONE on success
+- \ref SU_ERROR_INVALID_INPUT if layer or line_style is not a valid object.
+*/
+SU_RESULT SULayerSetLineStyle(SULayerRef layer, SULineStyleRef line_style);
+
+/**
+@brief Clear the line style of a layer. 
+@since SketchUp 2019, API 7.0
+@param[in] layer The layer object.
+@return
+- \ref SU_ERROR_NONE on success
+- \ref SU_ERROR_INVALID_INPUT if layer is not a valid object.
+ */
+SU_RESULT SULayerClearLineStyle(SULayerRef layer);
+
 #ifdef __cplusplus
 }  // extern "C"
 #endif

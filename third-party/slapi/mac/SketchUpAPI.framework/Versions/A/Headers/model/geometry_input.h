@@ -178,6 +178,7 @@ SU_RESULT SUGeometryInputEdgeSetSmooth(SUGeometryInputRef geom_input,
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if geom_input or material is not valid
 - \ref SU_ERROR_OUT_OF_RANGE if edge_index references an edge beyond the total
+- \ref SU_ERROR_INVALID_ARGUMENT is the material is owned by a layer or image
 edge count of geom_input
 */
 SU_RESULT SUGeometryInputEdgeSetMaterial(SUGeometryInputRef geom_input,
@@ -364,6 +365,7 @@ SU_RESULT SULoopInputEdgeSetSmooth(SULoopInputRef loop_input,
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if loop_input or material is not valid
 - \ref SU_ERROR_OUT_OF_RANGE if edge_index references an edge beyond the total
+- \ref SU_ERROR_INVALID_ARGUMENT is the material is owned by a layer or image
 edge count of loop_input
 */
 SU_RESULT SULoopInputEdgeSetMaterial(SULoopInputRef loop_input,
@@ -505,6 +507,7 @@ SU_RESULT SUGeometryInputFaceAddInnerLoop(SUGeometryInputRef geom_input,
 - \ref SU_ERROR_OUT_OF_RANGE if face_index references a face beyond the total
   face count of geom_input
 - \ref SU_ERROR_NULL_POINTER_INPUT if material_input is NULL
+- \ref SU_ERROR_INVALID_ARGUMENT is the material is owned by a layer or image
 */
 SU_RESULT SUGeometryInputFaceSetFrontMaterial(
     SUGeometryInputRef geom_input,
@@ -522,6 +525,7 @@ SU_RESULT SUGeometryInputFaceSetFrontMaterial(
 - \ref SU_ERROR_OUT_OF_RANGE if face_index references a face beyond the total
   face count of geom_input
 - \ref SU_ERROR_NULL_POINTER_INPUT if material_input is NULL
+- \ref SU_ERROR_INVALID_ARGUMENT is the material is owned by a layer or image
 */
 SU_RESULT SUGeometryInputFaceSetBackMaterial(
     SUGeometryInputRef geom_input,

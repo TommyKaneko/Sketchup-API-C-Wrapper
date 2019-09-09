@@ -1,7 +1,7 @@
 // Copyright 2013 Trimble Navigation Ltd. All Rights Reserved.
 
-#ifndef SKETCHUP_MODEL_UVHELPER_H_
-#define SKETCHUP_MODEL_UVHELPER_H_
+#ifndef SKETCHUP_MODEL_UV_HELPER_H_
+#define SKETCHUP_MODEL_UV_HELPER_H_
 
 #include <SketchUpAPI/common.h>
 #include <SketchUpAPI/model/defs.h>
@@ -71,4 +71,4 @@ SU_RESULT SUUVHelperGetBackUVQ(SUUVHelperRef uvhelper,
 #endif
 #pragma pack(pop)
 
-#endif  // SKETCHUP_MODEL_UVHELPER_H_
+#endif  // SKETCHUP_MODEL_UV_HELPER_H_

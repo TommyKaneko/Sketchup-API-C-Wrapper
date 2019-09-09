@@ -1,6 +1,6 @@
 // Copyright 2013 Trimble Navigation Ltd. All Rights Reserved.
-#ifndef SKETCHUP_MODEL_EDGEUSE_H_
-#define SKETCHUP_MODEL_EDGEUSE_H_
+#ifndef SKETCHUP_MODEL_EDGE_USE_H_
+#define SKETCHUP_MODEL_EDGE_USE_H_
 
 #include <SketchUpAPI/common.h>
 #include <SketchUpAPI/geometry.h>
@@ -197,4 +197,4 @@ SU_RESULT SUEdgeUseGetEndVertexNormal(SUEdgeUseRef edgeuse,
 }  //  extern "C" {
 #endif
 
-#endif  // SKETCHUP_MODEL_EDGEUSE_H_
+#endif  // SKETCHUP_MODEL_EDGE_USE_H_

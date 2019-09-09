@@ -1,6 +1,6 @@
 // Copyright 2013 Trimble Navigation Ltd. All Rights Reserved.
-#ifndef SKETCHUP_MODEL_COMPONENT_H_
-#define SKETCHUP_MODEL_COMPONENT_H_
+#ifndef SKETCHUP_MODEL_COMPONENT_DEFINITION_H_
+#define SKETCHUP_MODEL_COMPONENT_DEFINITION_H_
 
 #include <SketchUpAPI/geometry.h>
 #include <SketchUpAPI/common.h>
@@ -131,7 +131,8 @@ SU_EXPORT SUComponentDefinitionRef SUComponentDefinitionFromDrawingElement(
        released with \ref SUComponentDefinitionRelease, or attached to either a
        parent component or parent model. Add the new component definition to
        model using \ref SUModelAddComponentDefinitions before making any
-       modifications to it.
+       modifications to it. Once the component definition is owned by a model,
+       use \ref SUModelRemoveComponentDefinitions to remove it.
 @param[out] comp_def The component object created.
 @return
 - \ref SU_ERROR_NONE on success
@@ -141,8 +142,9 @@ SU_RESULT SUComponentDefinitionCreate(SUComponentDefinitionRef* comp_def);
 
 /**
 @brief Releases a component definition object and its associated resources. If
-       the provided definition was contained by a model, the definition and all
-       instances will be removed from the model.
+       the provided definition was contained by a model, use
+       \ref SUModelRemoveComponentDefinitions to remove the definition and all
+       instances.
 @param[in] comp_def The component definition object.
 @return
 - \ref SU_ERROR_NONE on success
@@ -500,4 +502,4 @@ SU_RESULT SUComponentDefinitionSetAxes(SUComponentDefinitionRef comp_def,
 
 #pragma pack(pop)
 
-#endif  // SKETCHUP_MODEL_COMPONENT_H_
+#endif  // SKETCHUP_MODEL_COMPONENT_DEFINITION_H_

@@ -1,7 +1,7 @@
 // Copyright 2013 Trimble Navigation Ltd. All Rights Reserved.
 
-#ifndef SKETCHUP_MODEL_MESH_H_
-#define SKETCHUP_MODEL_MESH_H_
+#ifndef SKETCHUP_MODEL_MESH_HELPER_H_
+#define SKETCHUP_MODEL_MESH_HELPER_H_
 
 #include <stdlib.h>
 
@@ -171,4 +171,4 @@ SU_RESULT SUMeshHelperGetNormals(SUMeshHelperRef mesh_ref, size_t len,
 }  // extern "C"
 #endif
 
-#endif  // SKETCHUP_MODEL_MESH_H_
+#endif  // SKETCHUP_MODEL_MESH_HELPER_H_

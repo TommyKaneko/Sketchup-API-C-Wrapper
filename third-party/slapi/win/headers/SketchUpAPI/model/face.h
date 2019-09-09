@@ -312,6 +312,7 @@ SU_RESULT SUFaceGetFrontMaterial(SUFaceRef face, SUMaterialRef* material);
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if face is not a valid object
+- \ref SU_ERROR_INVALID_ARGUMENT is the material is owned by a layer or image
 */
 SU_RESULT SUFaceSetFrontMaterial(SUFaceRef face, SUMaterialRef material);
 
@@ -323,6 +324,7 @@ SU_RESULT SUFaceSetFrontMaterial(SUFaceRef face, SUMaterialRef material);
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if face is not a valid object
 - \ref SU_ERROR_NULL_POINTER_OUTPUT if material is NULL
+- \ref SU_ERROR_INVALID_ARGUMENT is the material is owned by a layer or image
 */
 SU_RESULT SUFaceGetBackMaterial(SUFaceRef face,
                                 SUMaterialRef* material);

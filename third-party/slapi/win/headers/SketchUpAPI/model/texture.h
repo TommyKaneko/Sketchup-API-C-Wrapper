@@ -206,7 +206,10 @@ SU_RESULT SUTextureGetImageData(SUTextureRef texture,
 SU_RESULT SUTextureGetImageRep(SUTextureRef texture, SUImageRepRef* image);
 
 /**
-@brief  Writes a texture object as an image to disk.
+@brief  Writes a texture object as an image to disk. If the material has been
+        colorized this will write out a colorized texture.
+        Use \ref SUTextureWriteOriginalToFile to obtain the original texture
+        without colorization.
 @param[in] texture   The texture object.
 @param[in] file_path The file path destination of the texture image. Assumed to
                      be UTF-8 encoded.
@@ -237,7 +240,10 @@ SU_RESULT SUTextureSetFileName(SUTextureRef texture, const char* name);
 /**
 @brief Retrieves the image file name of a texture object. A full path may be
        stored with the texture, but this method will always return a file name
-       string with no path.
+       string with no path. If the texture was created from an
+       \ref SUImageRepRef created with \ref SUImageRepLoadFile then this will
+       return only the file extension representing the file format of the image
+       data (e.g. ".png").
 @param[in]  texture   The texture object.
 @param[out] file_name The file name retrieved.
 @return
@@ -295,6 +301,25 @@ SU_RESULT SUTextureGetAverageColor(SUTextureRef texture,
 */
 SU_RESULT SUTextureGetColorizedImageRep(SUTextureRef texture,
                                         SUImageRepRef* image_rep);
+
+/**
+@brief  Writes a texture object as an image to disk without any colorization.
+        If the texture was created from a file on disk this will write out the
+        original file data if the provided file extension matches. This will be
+        the fastest way to extract the original texture from the model.
+        Use \ref SUTextureGetFilename to obtain the original file format.
+@since SketchUp 2019.2, API 7.1
+@param[in] texture   The texture object.
+@param[in] file_path The file path destination of the texture image. Assumed to
+                     be UTF-8 encoded.
+@return
+- \ref SU_ERROR_NONE on success
+- \ref SU_ERROR_INVALID_INPUT if texture is not a valid object
+- \ref SU_ERROR_NULL_POINTER_INPUT if file_path is NULL
+- \ref SU_ERROR_SERIALIZATION if image file could not be written to disk
+*/
+SU_RESULT SUTextureWriteOriginalToFile(SUTextureRef texture,
+                                       const char* file_path);
 
 #ifdef __cplusplus
 }   // extern "C"

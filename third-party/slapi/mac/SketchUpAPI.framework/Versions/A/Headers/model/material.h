@@ -28,6 +28,28 @@ enum SUMaterialType {
 };
 
 /**
+@enum SUMaterialOwnerType
+@brief Indicates material owner type.
+@since SketchUp 2019.2, API 7.1
+*/
+enum SUMaterialOwnerType {
+  SUMaterialOwnerType_None = 0,       ///< Not owned
+  SUMaterialOwnerType_DrawingElement, ///< Can be applied to SUDrawingElements
+  SUMaterialOwnerType_Image,          ///< Owned exclusively by an Image
+  SUMaterialOwnerType_Layer           ///< Owned exclusively by a Layer
+};
+
+/**
+@enum SUMaterialColorizeType
+@brief Indicates material type.
+@since SketchUp 2019.2, API 7.1
+*/
+enum SUMaterialColorizeType {
+  SUMaterialColorizeType_Shift = 0,   ///< Shifts the texture's Hue
+  SUMaterialColorizeType_Tint,        ///< Colorize the texture
+};
+
+/**
 @brief Converts from an \ref SUMaterialRef to an \ref SUEntityRef.
        This is essentially an upcast operation.
 @param[in] material The given material reference.
@@ -261,6 +283,67 @@ SU_RESULT SUMaterialGetType(SUMaterialRef material,
 */
 SU_RESULT SUMaterialIsDrawnTransparent(SUMaterialRef material,
                                        bool* transparency);
+
+/**
+@brief Retrieves the owner type of a material object.
+@warning *** Materials owned by SUImageRef and SULayerRef may not be applied
+             to any other entity in the model.
+@since SketchUp 2019.2, API 7.1
+@param[in]  material The material object.
+@param[out] type     The type retrieved.
+@return
+- \ref SU_ERROR_NONE on success
+- \ref SU_ERROR_INVALID_INPUT if material is not a valid object
+- \ref SU_ERROR_NULL_POINTER_OUTPUT if type is NULL
+*/
+SU_RESULT SUMaterialGetOwnerType(SUMaterialRef material,
+                                 enum SUMaterialOwnerType* type);
+
+/**
+@brief Sets the colorization type of a material object. This is used when the
+       material's color is set to a custom value. Call this function after
+       calling SUMaterialSetColor as otherwise the colorize type will be reset.
+@since SketchUp 2019.2, API 7.1
+@param[in] material The material object.
+@param[in] type     The type to set.
+@return
+- \ref SU_ERROR_NONE on success
+- \ref SU_ERROR_INVALID_INPUT if material is not a valid object
+- \ref SU_ERROR_INVALID_ARGUMENT if type is not a valid value
+*/
+SU_RESULT SUMaterialSetColorizeType(SUMaterialRef material,
+                                    enum SUMaterialColorizeType type);
+
+/**
+@brief Retrieves the colorization type of a material object.
+@since SketchUp 2019.2, API 7.1
+@param[in]  material The material object.
+@param[out] type     The type retrieved.
+@return
+- \ref SU_ERROR_NONE on success
+- \ref SU_ERROR_INVALID_INPUT if material is not a valid object
+- \ref SU_ERROR_NULL_POINTER_OUTPUT if type is NULL
+*/
+SU_RESULT SUMaterialGetColorizeType(SUMaterialRef material,
+                                    enum SUMaterialColorizeType* type);
+
+/**
+@brief The colorize_deltas method retrieves the HLS deltas for colorized
+       materials.
+@since SketchUp 2019.2, API 7.1
+@param[in]  material   The material object.
+@param[out] hue        The Hue delta.
+@param[out] saturation The Saturation delta.
+@param[out] lightness  The Lightness delta.
+@return
+- \ref SU_ERROR_NONE on success
+- \ref SU_ERROR_INVALID_INPUT if material is not a valid object
+- \ref SU_ERROR_NULL_POINTER_OUTPUT if either hue, saturation or lightness
+                                    is NULL
+*/
+SU_RESULT SUMaterialGetColorizeDeltas(SUMaterialRef material,
+                                      double* hue, double* saturation,
+                                      double* lightness);
 
 #ifdef __cplusplus
 }  // extern "C"

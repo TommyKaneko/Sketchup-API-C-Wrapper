@@ -318,6 +318,39 @@ SU_RESULT SUTextSetColor(SUTextRef text, const SUColor* color);
 */
 SU_RESULT SUTextGetColor(SUTextRef text, SUColor* color);
 
+/**
+@brief Sets the screen position for text with no leader.
+@since SketchUp 2019, API 7.0
+@param[in] text      The text object.
+@param[in] percent_x The x position on screen in a range of 0.0 - 1.0 relative
+                     to the screen width.
+@param[in] percent_y The y position on screen in a range of 0.0 - 1.0 relative
+                     to the screen height.
+@return
+- \ref SU_ERROR_NONE on success
+- \ref SU_ERROR_INVALID_INPUT if text is not a valid object
+- \ref SU_ERROR_NO_DATA if the text has a leader to position with.
+- \ref SU_ERROR_OUT_OF_RANGE if a leader exists, or if the percentages are not
+       between 0 and 1 inclusive.
+*/
+SU_RESULT SUTextSetScreenPosition(SUTextRef text, const double percent_x,
+    const double percent_y);
+
+/**
+@brief Retrieves the screen location for text with no leader.
+@since SketchUp 2019, API 7.0
+@param[in]  text      The text object.
+@param[out] percent_x The percent of screen width to the text position.
+@param[out] percent_y The percent of screen height to the text position.
+@return
+- \ref SU_ERROR_NONE on success
+- \ref SU_ERROR_INVALID_INPUT if text is not a valid object
+- \ref SU_ERROR_NULL_POINTER_OUTPUT if either percent is NULL
+- \ref SU_ERROR_NO_DATA if text has a leader
+*/
+SU_RESULT SUTextGetScreenPosition(SUTextRef text, double* percent_x,
+    double* percent_y);
+
 #ifdef __cplusplus
 }  // extern "C"
 #endif

@@ -206,6 +206,19 @@ SU_RESULT SUVector2DAngleBetween(const struct SUVector2D* vector1,
                                  const struct SUVector2D* vector2,
                                  double* angle);
 
+/**
+@brief Transforms a vector by applying a 2D transformation.
+@since SketchUp 2019, API 7.0
+@param[in]     transform The transformation to be applied.
+@param[in,out] vector    The vector to be transformed.
+@return
+- \ref SU_ERROR_NONE on success
+- \ref SU_ERROR_NULL_POINTER_INPUT if transform is NULL
+- \ref SU_ERROR_NULL_POINTER_OUTPUT if vector is NULL
+*/
+SU_RESULT SUVector2DTransform(const struct SUTransformation2D* transform,
+                              struct SUVector2D* vector);
+
 #ifdef __cplusplus
 }  // extern "C"
 #endif

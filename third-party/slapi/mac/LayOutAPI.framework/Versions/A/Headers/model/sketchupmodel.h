@@ -297,6 +297,35 @@ LO_RESULT LOSketchUpModelSetLineWeight(LOSketchUpModelRef model,
                                        double line_weight);
 
 /**
+@brief Gets the scale for dashes in the SketchUp model. A scale value of 0.0
+       means the dashes are scaled based on the line weight.
+@since LayOut 2019, API 4.0
+@param[in]  model      The SketchUp model object.
+@param[out] dash_scale Dash scale. Will be in the range [0, 10].
+@return
+- \ref SU_ERROR_NONE on success
+- \ref SU_ERROR_INVALID_INPUT if model does not refer to a valid object
+- \ref SU_ERROR_NULL_POINTER_OUTPUT if dash_scale is NULL
+*/
+LO_RESULT LOSketchUpModelGetDashScale(LOSketchUpModelRef model,
+                                      double* dash_scale);
+
+/**
+@brief Sets the scale for dashes in the SketchUp model. A scale value of 0.0 or
+       lower will "auto" scale the dashes based on the line weight.
+@since LayOut 2019, API 4.0
+@param[in] model      The SketchUp model object.
+@param[in] dash_scale Dash scale. A value less than zero will be set to 0.
+@return
+- \ref SU_ERROR_NONE on success
+- \ref SU_ERROR_INVALID_INPUT if model does not refer to a valid object
+- \ref SU_ERROR_LAYER_LOCKED if model is on a locked layer
+- \ref SU_ERROR_ENTITY_LOCKED if model is locked
+*/
+LO_RESULT LOSketchUpModelSetDashScale(LOSketchUpModelRef model,
+                                      double dash_scale);
+
+/**
 @brief Gets whether or not the view is rendered in perspective mode.
 @param[in]  model       The SketchUp model object.
 @param[out] perspective Whether or not the view is rendered in perspective mode.

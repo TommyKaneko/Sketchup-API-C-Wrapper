@@ -1,7 +1,7 @@
 // Copyright 2013 Trimble Navigation Ltd.  All rights reserved.
 
-#ifndef SKETCHUP_RENDERING_OPTIONS_H_
-#define SKETCHUP_RENDERING_OPTIONS_H_
+#ifndef SKETCHUP_MODEL_RENDERING_OPTIONS_H_
+#define SKETCHUP_MODEL_RENDERING_OPTIONS_H_
 
 #include <SketchUpAPI/color.h>
 #include <SketchUpAPI/common.h>
@@ -169,4 +169,4 @@ SU_RESULT SURenderingOptionsGetValue(SURenderingOptionsRef rendering_options,
 }
 #endif
 
-#endif  // SKETCHUP_RENDERING_OPTIONS_H_
+#endif  // SKETCHUP_MODEL_RENDERING_OPTIONS_H_

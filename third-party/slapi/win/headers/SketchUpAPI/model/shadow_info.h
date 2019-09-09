@@ -1,7 +1,7 @@
 // Copyright 2014 Trimble Navigation Ltd.  All rights reserved.
 
-#ifndef SKETCHUP_SHADOW_INFO_H_
-#define SKETCHUP_SHADOW_INFO_H_
+#ifndef SKETCHUP_MODEL_SHADOW_INFO_H_
+#define SKETCHUP_MODEL_SHADOW_INFO_H_
 
 #include <SketchUpAPI/common.h>
 #include <SketchUpAPI/unicodestring.h>
@@ -136,4 +136,4 @@ SU_RESULT SUShadowInfoSetValue(SUShadowInfoRef shadow_info,
 }
 #endif
 
-#endif  // SKETCHUP_SHADOW_INFO_H_
+#endif  // SKETCHUP_MODEL_SHADOW_INFO_H_

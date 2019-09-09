@@ -1,4 +1,4 @@
-// Copyright 2013 Trimble Navigation Ltd. All Rights Reserved.
+// Copyright 2013-2019 Trimble Inc Ltd. All Rights Reserved.
 
 #ifndef SKETCHUP_MODEL_MODEL_H_
 #define SKETCHUP_MODEL_MODEL_H_
@@ -77,7 +77,8 @@ enum SUModelVersion {
   SUModelVersion_SU2015,
   SUModelVersion_SU2016,
   SUModelVersion_SU2017,
-  SUModelVersion_SU2018
+  SUModelVersion_SU2018,
+  SUModelVersion_SU2019
 };
 
 /**
@@ -193,7 +194,8 @@ SU_RESULT SUModelGetMaterials(SUModelRef model, size_t len,
                               SUMaterialRef materials[], size_t* count);
 
 /**
-@brief Adds materials to a model object.
+@brief Adds materials to a model object. Note that the materials cannot be
+       already owned.
 @param[in] model     The model object.
 @param[in] len       The number of material objects to add.
 @param[in] materials The array of material objects to add.
@@ -201,6 +203,7 @@ SU_RESULT SUModelGetMaterials(SUModelRef model, size_t len,
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if model is not a valid object
 - \ref SU_ERROR_NULL_POINTER_INPUT if materials is NULL
+- \ref SU_ERROR_PARTIAL_SUCCESS if any of the materials are already owned
 */
 SU_RESULT SUModelAddMaterials(SUModelRef model, size_t len,
                               const SUMaterialRef materials[]);
@@ -235,6 +238,7 @@ SU_RESULT SUModelGetComponentDefinitions(SUModelRef model, size_t len,
 
 /**
 @brief Retrieves the number of component definitions that define groups.
+@since SketchUp 2016, API 4.0
 @param[in]  model The model object.
 @param[out] count The number of component definitions available.
 @return
@@ -247,6 +251,7 @@ SU_RESULT SUModelGetNumGroupDefinitions(SUModelRef model,
 
 /**
 @brief Retrieves the component definitions that define groups.
+@since SketchUp 2016, API 4.0
 @param[in]  model       The model object.
 @param[in]  len         The number of component definitions to retrieve.
 @param[out] definitions The component definitions retrieved.
@@ -257,6 +262,35 @@ SU_RESULT SUModelGetNumGroupDefinitions(SUModelRef model,
 - \ref SU_ERROR_NULL_POINTER_OUTPUT if definitions or count is NULL
 */
 SU_RESULT SUModelGetGroupDefinitions(SUModelRef model, size_t len,
+                                     SUComponentDefinitionRef definitions[],
+                                     size_t* count);
+
+/**
+@brief Retrieves the number of component definitions that define images.
+@since SketchUp 2019, API 7.0
+@param[in]  model The model object.
+@param[out] count The number of component definitions available.
+@return
+- \ref SU_ERROR_NONE on success
+- \ref SU_ERROR_INVALID_INPUT if model is not a valid object
+- \ref SU_ERROR_NULL_POINTER_OUTPUT if count is NULL
+*/
+SU_RESULT SUModelGetNumImageDefinitions(SUModelRef model,
+                                        size_t* count);
+
+/**
+@brief Retrieves the component definitions that define images.
+@since SketchUp 2019, API 7.0
+@param[in]  model       The model object.
+@param[in]  len         The number of component definitions to retrieve.
+@param[out] definitions The component definitions retrieved.
+@param[out] count       The number of component definitions retrieved.
+@return
+- \ref SU_ERROR_NONE on success
+- \ref SU_ERROR_INVALID_INPUT if model is not a valid object
+- \ref SU_ERROR_NULL_POINTER_OUTPUT if definitions or count is NULL
+*/
+SU_RESULT SUModelGetImageDefinitions(SUModelRef model, size_t len,
                                      SUComponentDefinitionRef definitions[],
                                      size_t* count);
 
@@ -274,7 +308,28 @@ SU_RESULT SUModelAddComponentDefinitions(SUModelRef model, size_t len,
     const SUComponentDefinitionRef components[]);
 
 /**
+@brief Remove definitions of components, images, and groups from a model object. 
+       All component definitions, their geometry, and attached instances will be
+       released.
+@since SketchUp 2019.2, API 7.1
+@param[in] model      The model object.
+@param[in] len        The number of component definitions to remove.
+@param[in] components The array of component definitions to remove.
+@return
+- \ref SU_ERROR_NONE on success
+- \ref SU_ERROR_INVALID_INPUT if model is not a valid object
+- \ref SU_ERROR_OUT_OF_RANGE if the number of components is less than one
+- \ref SU_ERROR_NULL_POINTER_INPUT if components is NULL
+- \ref SU_ERROR_PARTIAL_SUCCESS if removing a component definition fails
+  mid-process
+*/
+SU_RESULT SUModelRemoveComponentDefinitions(SUModelRef model, size_t len,
+    SUComponentDefinitionRef components[]);
+
+/**
 @brief Saves the model to a file.
+@note Prior to SketchUp 2019.2, API 7.1 this function did not generate a new
+      model GUID.
 @param[in] model     The model object.
 @param[in] file_path The file path destination of the serialization operation.
                      Assumed to be UTF-8 encoded.
@@ -288,6 +343,8 @@ SU_RESULT SUModelSaveToFile(SUModelRef model, const char* file_path);
 
 /**
 @brief Saves the model to a file using a specific SketchUp version format.
+@note Prior to SketchUp 2019.2, API 7.1 this function did not generate a new
+      model GUID.
 @since SketchUp 2014, API 2.0
 @param[in] model     The model object.
 @param[in] file_path The file path destination of the serialization operation.
@@ -389,6 +446,23 @@ SU_RESULT SUModelAddLayers(SUModelRef model, size_t len,
 - \ref SU_ERROR_NULL_POINTER_OUTPUT if layer is NULL
 */
 SU_RESULT SUModelGetDefaultLayer(SUModelRef model, SULayerRef* layer);
+
+/**
+@brief Removes all layers provided in the array. The default layer cannot be
+removed. All entities on the deleted layers will be moved to the default layer.
+@since SketchUp 2019.2 API 7.1
+@param[in]  model    The model object.
+@param[in]  len      The length of the array.
+@param[in]  layers   The layers to be deleted.
+@return
+- \ref SU_ERROR_NONE on success
+- \ref SU_ERROR_INVALID_INPUT if model is not a valid object
+- \ref SU_ERROR_NULL_POINTER_INPUT if layers is NULL
+- \ref SU_ERROR_OUT_OF_RANGE if len is less than one.
+- \ref SU_ERROR_PARTIAL_SUCCESS if removing the layers failed mid-process
+*/
+SU_RESULT SUModelRemoveLayers(SUModelRef model, size_t len,
+                              SULayerRef layers[]);
 
 /**
 @brief Retrieves the version of a model object.  The version consists of three
@@ -840,12 +914,12 @@ SU_RESULT SUModelGetInstancePathByPid(SUModelRef model, SUStringRef pid_ref,
 SU_RESULT SUModelGetNumFonts(SUModelRef model, size_t* count);
 
 /**
-@brief Retrieves all the materials associated with a model object.
+@brief Retrieves all the fonts associated with a model object.
 @since SketchUp 2017, API 5.0
 @param[in]  model The model object.
-@param[in]  len   The number of material objects to retrieve.
+@param[in]  len   The number of font objects to retrieve.
 @param[out] fonts The font objects retrieved.
-@param[out] count The number of material objects retrieved.
+@param[out] count The number of font objects retrieved.
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if model is not a valid object
@@ -926,6 +1000,121 @@ SU_RESULT SUModelFixErrors(SUModelRef model);
 */
 SU_RESULT SUModelOrientFacesConsistently(SUModelRef model, 
     bool recurse_components);
+
+
+/**
+@brief Retrieves line styles from the model.
+@since SketchUp 2019, API 7.0
+@param[in]  model       The model object.
+@param[out] line_styles The line styles of the model.
+@return
+- \ref SU_ERROR_NONE on success
+- \ref SU_ERROR_INVALID_INPUT if model is not a valid object
+- \ref SU_ERROR_NULL_POINTER_OUTPUT if line_styles is NULL
+*/
+SU_RESULT SUModelGetLineStyles(SUModelRef model,
+    SULineStylesRef* line_styles);
+
+/**
+@brief Loads a component from a file.
+@since SketchUp 2019.2, API 7.1
+@param[in]  model       The model object.
+@param[in]  filename    The full path and filename to a SkethchUp model.
+@param[out] definition  The component definition that is created after load.
+@return
+- \ref SU_ERROR_NONE on success
+- \ref SU_ERROR_INVALID_INPUT if model is not a valid object
+- \ref SU_ERROR_NULL_POINTER_INPUT if filename is NULL
+- \ref SU_ERROR_NULL_POINTER_OUTPUT if definition is NULL
+- \ref SU_ERROR_OVERWRITE_VALID if definition is already a valid object
+- \ref SU_ERROR_SERIALIZATION if loading the file failed
+*/
+SU_RESULT SUModelLoadDefinition(SUModelRef model, const char *filename, 
+    SUComponentDefinitionRef *definition);
+
+/**
+@brief Removes all materials provided in the array.
+@since SketchUp 2019.2, API 7.1
+@param[in]  model       The model object.
+@param[in]  len         The length of the array.
+@param[in]  materials   The materials to be deleted.
+@return
+- \ref SU_ERROR_NONE on success
+- \ref SU_ERROR_INVALID_INPUT if model is not a valid object
+- \ref SU_ERROR_NULL_POINTER_INPUT if materials is NULL
+- \ref SU_ERROR_OUT_OF_RANGE if len is zero
+- \ref SU_ERROR_PARTIAL_SUCCESS if removing the materials failed mid-process
+- \ref SU_ERROR_NO_DATA if materials provided are invalid
+*/
+SU_RESULT SUModelRemoveMaterials(SUModelRef model, size_t len,
+    SUMaterialRef materials[]);
+
+/**
+@brief Removes selected scenes from a model.
+@since SketchUp 2019.2, API 7.1
+@param[in] model  The model object.
+@param[in] len    The number of scenes in the array for removal.
+@param[in] scenes The scenes to be deleted from the model.
+@return
+- \ref SU_ERROR_NONE on success
+- \ref SU_ERROR_INVALID_INPUT if model is not a valid object
+- \ref SU_ERROR_OUT_OF_RANGE if len is zero
+- \ref SU_ERROR_PARTIAL_SUCCESS if the deletion process failed mid-process or 
+    if not all of scenes for deletion were found in the model
+- \ref SU_ERROR_NO_DATA if none of the requested scenes could be found for deletion
+*/
+SU_RESULT SUModelRemoveScenes(SUModelRef model, size_t len,
+    SUSceneRef scenes[]);
+
+/**
+@brief Retrieves the number of all the materials in a model including those
+       belonging to SUImageRef and SULayerRef.
+@warning *** Materials from SUImageRef and SULayerRef should not be applied to
+             any other entity in the model. They are uniquely owned by the image
+             or layer.
+@since SketchUp 2019.2, API 7.1
+@param[in]  model The model object.
+@param[out] count The number of material objects available.
+@return
+- \ref SU_ERROR_NONE on success
+- \ref SU_ERROR_INVALID_INPUT if model is not a valid object
+- \ref SU_ERROR_NULL_POINTER_OUTPUT if count is NULL
+*/
+SU_RESULT SUModelGetNumAllMaterials(SUModelRef model, size_t* count);
+
+/**
+@brief Retrieves all the materials associated with a model object including
+       those belonging to SUImageRef and SULayerRef.
+@warning *** Materials from SUImageRef and SULayerRef should not be applied to
+             any other entity in the model. They are uniquely owned by the image
+             or layer.
+@since SketchUp 2019.2, API 7.1
+@param[in]  model     The model object.
+@param[in]  len       The number of material objects to retrieve.
+@param[out] materials The material objects retrieved.
+@param[out] count     The number of material objects retrieved.
+@return
+- \ref SU_ERROR_NONE on success
+- \ref SU_ERROR_INVALID_INPUT if model is not a valid object
+- \ref SU_ERROR_NULL_POINTER_OUTPUT if materials or count is NULL
+*/
+SU_RESULT SUModelGetAllMaterials(SUModelRef model, size_t len,
+    SUMaterialRef materials[], size_t* count);
+
+/**
+@since SketchUp 2019.2, API 7.1
+@brief Retrieves the guid of a model object.
+@param[in]  model The model object.
+@param[out] guid  The guid string.
+@return
+- \ref SU_ERROR_NONE on success
+- \ref SU_ERROR_INVALID_INPUT if model is an invalid object
+- \ref SU_ERROR_NULL_POINTER_OUTPUT if guid is NULL
+- \ref SU_ERROR_INVALID_OUTPUT if guid does not point to a valid \ref
+  SUStringRef object
+*/
+SU_RESULT SUModelGetGuid(SUModelRef model, SUStringRef* guid);
+
 #ifdef __cplusplus
 }
 #endif

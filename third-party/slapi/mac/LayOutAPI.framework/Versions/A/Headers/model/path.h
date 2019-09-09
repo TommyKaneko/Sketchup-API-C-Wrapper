@@ -28,6 +28,18 @@ typedef enum {
   LONumPathPointTypes
 } LOPathPointType;
 
+/**
+@enum LOPathWindingType
+@brief Defines the winding direction of the path.
+@since LayOut 2019, API 4.0
+*/
+typedef enum {
+  LOPathWindingType_None = 0,
+  LOPathWindingType_Clockwise,
+  LOPathWindingType_CounterClockwise,
+  LONumPathWindingTypes
+} LOPathWindingType;
+
 #ifdef __cplusplus
 extern "C" {
 #endif  // __cplusplus
@@ -373,7 +385,7 @@ LO_RESULT LOPathGetCircle(LOPathRef path, bool* is_circle, LOPoint2D* center,
        geometric representation of the arc.
 @since LayOut 2017, API 2.0
 @param[in]  path        The path object.
-@param[out] is_arc      Whether or not the path is a circle.
+@param[out] is_arc      Whether or not the path is an arc.
 @param[out] center      Center point of the arc. Will only be set if is_arc
                         returns true.
 @param[out] radius      Radius of the arc. Will only be set if is_arc returns
@@ -454,6 +466,18 @@ LO_RESULT LOPathAppendPathTo(LOPathRef path, LOPathRef other_path);
 - \ref SU_ERROR_ENTITY_LOCKED if path is locked
 */
 LO_RESULT LOPathClose(LOPathRef path);
+
+/**
+@brief Returns the winding type of the path.
+@since LayOut 2019, API 4.0
+@param[in]  path    The path object.
+@param[out] winding The winding type of the path.
+@return
+- \ref SU_ERROR_NONE on success
+- \ref SU_ERROR_INVALID_INPUT if path does not refer to a valid object
+- \ref SU_ERROR_NULL_POINTER_OUTPUT if winding is NULL
+*/
+LO_RESULT LOPathGetWindingType(LOPathRef path, LOPathWindingType* winding);
 
 #ifdef __cplusplus
 }  // end extern "C"

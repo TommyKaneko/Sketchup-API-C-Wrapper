@@ -1,6 +1,6 @@
 // Copyright 2013 Trimble Navigation Ltd. All Rights Reserved.
-#ifndef SKETCHUP_MODEL_DRAWINGELEMENT_H_
-#define SKETCHUP_MODEL_DRAWINGELEMENT_H_
+#ifndef SKETCHUP_MODEL_DRAWING_ELEMENT_H_
+#define SKETCHUP_MODEL_DRAWING_ELEMENT_H_
 
 #include <SketchUpAPI/common.h>
 #include <SketchUpAPI/model/defs.h>
@@ -85,6 +85,7 @@ the drawing element.
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if elem is invalid
+- \ref SU_ERROR_INVALID_ARGUMENT is the material is owned by a layer or image
 */
 SU_RESULT SUDrawingElementSetMaterial(SUDrawingElementRef elem,
                                       SUMaterialRef material);
@@ -185,4 +186,4 @@ SU_RESULT SUDrawingElementGetReceivesShadows(SUDrawingElementRef elem,
 }  // extern "C"
 #endif
 
-#endif  // SKETCHUP_MODEL_DRAWINGELEMENT_H_
+#endif  // SKETCHUP_MODEL_DRAWING_ELEMENT_H_

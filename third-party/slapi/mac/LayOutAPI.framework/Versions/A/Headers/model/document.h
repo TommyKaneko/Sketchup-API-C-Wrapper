@@ -29,8 +29,9 @@ typedef enum {
   LODocumentVersion_2016 = 16,                        ///< LayOut 2016
   LODocumentVersion_2017 = 17,                        ///< LayOut 2017
   LODocumentVersion_2018 = 18,                        ///< LayOut 2018
+  LODocumentVersion_2019 = 19,                        ///< LayOut 2019
 
-  LODocumentVersion_Current = LODocumentVersion_2018, ///< The most current version supported.
+  LODocumentVersion_Current = LODocumentVersion_2019, ///< The most current version supported.
 
   LONumDocumentVersions
 } LODocumentVersion;

@@ -20,6 +20,16 @@ extern "C" {
 */
 
 /**
+@brief Removes all entities in the container.
+@since SketchUp 2019, API 7.0
+@param[in] entities The entities to clear.
+@return
+- \ref SU_ERROR_NONE on success
+- \ref SU_ERROR_INVALID_INPUT if entities is not a valid object
+*/
+SU_RESULT SUEntitiesClear(SUEntitiesRef entities);
+
+/**
 @brief SUEntitiesFill is the fastest way to populate an entities object. The
        important precondition is that no duplicate data should be given.
 
@@ -32,6 +42,9 @@ NOTE: Faces included in the geometry input object will be merged together when
 - Coincident faces with opposite normals are merged into a single face using the
   appropriate materials from both faces as the front and back materials.
 - Faces are created from coplanar edge loops.
+- Conincident edges are merged. Visibility is retained when visible and
+  invisible edges are welded together. Hardness is retained when hard and soft
+  edges are welded together.
 
 @param[in] entities      The entities to populate. Must be an empty entities
                          object.

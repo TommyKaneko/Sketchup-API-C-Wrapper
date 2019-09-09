@@ -1,7 +1,7 @@
 // Copyright 2014 Trimble Navigation Ltd., All rights reserved.
 
-#ifndef SKETCHUP_EXTENSIONLICENSE_H_
-#define SKETCHUP_EXTENSIONLICENSE_H_
+#ifndef SKETCHUP_EXTENSION_LICENSE_H_
+#define SKETCHUP_EXTENSION_LICENSE_H_
 
 #include <SketchUpAPI/common.h>
 
@@ -43,6 +43,7 @@ struct SUExtensionLicense {
 @param[out] out_license  the licensing retrieved.
 @return
 - \ref SU_ERROR_NONE on success
+- \ref SU_ERROR_GENERIC if retrieving the extension license failed
 - \ref SU_ERROR_NULL_POINTER_INPUT if extension_id is NULL
 - \ref SU_ERROR_NULL_POINTER_OUTPUT if out_license is NULL
 */
@@ -54,4 +55,4 @@ SU_RESULT SUGetExtensionLicense(const char* extension_id,
 #endif
 #pragma pack(pop)
 
-#endif // SKETCHUP_EXTENSIONLICENSE_H_
+#endif // SKETCHUP_EXTENSION_LICENSE_H_

@@ -39,6 +39,17 @@ enum SUVerticalTextPositionType {
 };
 
 /**
+@enum SUDimensionLinearAlignmentType
+@brief Indicates the different supported horizontal text position types
+@since SketchUp 2019, API 7.0
+*/
+enum SUDimensionLinearAlignmentType {
+  SUDimensionLinearAlignmentAligned = 0,
+  SUDimensionLinearAlignmentVertical,
+  SUDimensionLinearAlignmentHorizontal
+};
+
+/**
 @brief Converts from an \ref SUDimensionLinearRef to an \ref SUDimensionRef.
        This is essentially an upcast operation.
 @since SketchUp 2017, API 5.0
@@ -351,6 +362,36 @@ SU_RESULT SUDimensionLinearGetHorizontalAlignment(
 SU_RESULT SUDimensionLinearSetHorizontalAlignment(
     SUDimensionLinearRef dimension,
     enum SUHorizontalTextPositionType alignment);
+
+/**
+@brief Retrieves an enum value indicating the linear dimension's alignment
+type.
+@since SketchUp 2019, API 7.0
+@param[in]  dimension The dimension object.
+@param[out] alignment The dimension alignment enum value retrieved.
+@return
+- \ref SU_ERROR_NONE on success
+- \ref SU_ERROR_INVALID_INPUT if dimension is not a valid object
+- \ref SU_ERROR_NULL_POINTER_OUTPUT if alignment is NULL
+*/
+SU_RESULT SUDimensionLinearGetAlignment(SUDimensionLinearRef dimension,
+    enum SUDimensionLinearAlignmentType* alignment);
+
+/**
+@brief Retrieves the position of the text location attachment point of the
+       dimension text. Note that depending on the TextPosition enumerator, this
+       can be the center or side of a text element.
+@since SketchUp 2019, API 7.0
+@param[in]  dimension The dimension object.
+@param[out] position The position of the text element.
+@return
+- \ref SU_ERROR_NONE on success
+- \ref SU_ERROR_OUT_OF_RANGE if the dimension text relation is invalid
+- \ref SU_ERROR_INVALID_INPUT if dimension is not a valid object
+- \ref SU_ERROR_NULL_POINTER_OUTPUT if position is NULL
+*/
+SU_RESULT SUDimensionLinearGetTextPosition(SUDimensionLinearRef dimension,
+    struct SUPoint3D* position);
 
 #ifdef __cplusplus
 }  // extern "C"

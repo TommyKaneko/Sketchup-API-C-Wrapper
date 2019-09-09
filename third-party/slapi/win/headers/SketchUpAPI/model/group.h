@@ -88,7 +88,8 @@ SU_EXPORT SUGroupRef SUGroupFromComponentInstance(SUComponentInstanceRef
 @brief Creates a new group object.
 
 The created group must be subsequently added to the Entities of a model,
-component definition or a group.
+component definition or a group. Use \ref SUModelRemoveComponentDefinitions to
+remove the group from a model.
 @param[out] group The group object created.
 @return
 - \ref SU_ERROR_NONE on success

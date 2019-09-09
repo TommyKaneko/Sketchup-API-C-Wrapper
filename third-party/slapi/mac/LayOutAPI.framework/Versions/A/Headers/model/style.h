@@ -59,6 +59,7 @@ typedef enum {
   LOStrokePattern_DashDashDotDotDot, ///< Repeating dash-dash-dot-dot-dot pattern.
   LOStrokePattern_Center,            ///< Repeating center line type pattern.
   LOStrokePattern_Phantom,           ///< Repeating phantom line type pattern.
+  LOStrokePattern_ShortDash,         ///< Repeating short dash pattern.
   LONumStrokePatterns
 } LOStrokePattern;
 

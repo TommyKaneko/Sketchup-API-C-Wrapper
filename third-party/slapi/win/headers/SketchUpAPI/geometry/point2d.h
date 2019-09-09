@@ -73,6 +73,19 @@ SU_RESULT SUPoint2DDistanceToSUPoint2D(const struct SUPoint2D* point1,
                                        const struct SUPoint2D* point2,
                                        double* distance);
 
+/**
+@brief Transforms a point by applying a 2D transformation.
+@since SketchUp 2019, API 7.0
+@param[in]     transform The transformation to be applied.
+@param[in,out] point     The point to be transformed.
+@return
+- \ref SU_ERROR_NONE on success
+- \ref SU_ERROR_NULL_POINTER_INPUT if transform is NULL
+- \ref SU_ERROR_NULL_POINTER_OUTPUT if point is NULL
+*/
+SU_RESULT SUPoint2DTransform(const struct SUTransformation2D* transform,
+                             struct SUPoint2D* point);
+
 #ifdef __cplusplus
 }  // extern "C"
 #endif

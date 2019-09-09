@@ -95,6 +95,29 @@ SU_RESULT SUFontGetUseWorldSize(SUFontRef font, bool* use_world_size);
 */
 SU_RESULT SUFontGetWorldSize(SUFontRef font, double* world_size);
 
+/**
+@brief Converts from an \ref SUFontRef to an \ref SUEntityRef.
+       This is essentially an upcast operation.
+@since SketchUp 2019, API 7.0
+@param[in] font The given font reference.
+@return
+- The converted SUEntityRef if font is a valid font.
+- If not, the returned reference will be invalid.
+*/
+SU_EXPORT SUEntityRef SUFontToEntity(SUFontRef font);
+
+/**
+@brief Converts from an \ref SUEntityRef to an \ref SUFontRef.
+       This is essentially a downcast operation so the given entity must be
+       convertible to an \ref SUFontRef.
+@since SketchUp 2019, API 7.0
+@param[in] entity The given entity reference.
+@return
+- The converted SUFontRef if the downcast operation succeeds
+- If not, the returned reference will be invalid
+*/
+SU_EXPORT SUFontRef SUFontFromEntity(SUEntityRef entity);
+
 #ifdef __cplusplus
 }  // extern "C"
 #endif

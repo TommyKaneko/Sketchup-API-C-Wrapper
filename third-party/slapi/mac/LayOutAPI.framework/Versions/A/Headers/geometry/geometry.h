@@ -56,14 +56,7 @@ struct LOOrientedRect2D {
  m12 m22 ty
 </pre>
 */
-struct LOTransformMatrix2D {
-  double m11;
-  double m12;
-  double m21;
-  double m22;
-  double tx;
-  double ty;
-};
+typedef SUTransformation2D LOTransformMatrix2D;
 
 /**
 @typedef LOPoint2D

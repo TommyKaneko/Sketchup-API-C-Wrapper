@@ -323,7 +323,10 @@ SU_RESULT SUTypedValueSetUnitVector3d(SUTypedValueRef typed_value,
                                       const double vector3d_value[3]);
 
 /**
-@brief  Retrieve the array of typed value objects of a type value object.
+@brief  Retrieves the array of typed value objects from a typed value of type
+    \ref SUTypedValueType_Array. Note that the returned \ref SUTypedValueRef
+    objects will still be owned by their parent typed value array and therefore
+    they must not be released by the caller.
 @param[in]  typed_value The typed value object.
 @param[in]  len         The length of the array to retrieve.
 @param[out] values      The typed value objects retrieved.
@@ -352,14 +355,16 @@ SU_RESULT SUTypedValueSetArrayItems(SUTypedValueRef typed_value, size_t len,
                                     SUTypedValueRef values[]);
 
 /**
-@brief  Retrieves the number of typed value objects of a typed value object.
+@brief  Retrieves the number of typed value objects from a typed value of type
+    \ref SUTypedValueType_Array.
 @param[in]  typed_value The typed value object.
 @param[out] count       The number of typed value objects in the array.
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if typed_value is not a valid object
 - \ref SU_ERROR_NULL_POINTER_OUTPUT if count is NULL
-- \ref SU_ERROR_NO_DATA if typed_value is not of the requested type
+- \ref SU_ERROR_NO_DATA if typed_value is not of type
+  \ref SUTypedValueType_Array.
 */
 SU_RESULT SUTypedValueGetNumArrayItems(SUTypedValueRef typed_value,
                                        size_t* count);

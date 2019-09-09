@@ -1,4 +1,60 @@
-2017 ?????: API Version 6.0 - SketchUp 2018 M0
+2019 ????? ??: API Version 7.1 - SketchUp 2019.2
+  * Added SUApplicationGetActiveModel()
+  * Added SULengthFormatterGetAreaUnits()
+  * Added SULengthFormatterSetAreaUnits()
+  * Added SULengthFormatterGetVolumeUnits()
+  * Added SULengthFormatterSetVolumeUnits()
+  * Added SUMaterialGetColorizeDeltas()
+  * Added SUMaterialGetColorizeType()
+  * Added SUMaterialSetColorizeType()
+  * Added SUMaterialGetOwnerType()
+  * Added SUModelGetAllMaterials()
+  * Added SUModelGetNumAllMaterials()
+  * Added SUModelGetGuid()
+  * Added SUModelLoadDefinition()
+  * Added SUModelRemoveComponentDefinitions()
+  * Added SUModelRemoveLayers()
+  * Added SUModelRemoveMaterials()
+  * Added SUModelRemoveScenes()
+  * Added SUStylesRemoveStyle()
+  * Added SUStylesSetSelectedStyle()
+  * Added SUTextureWriteOriginalToFile()
+  * Fixed a bug where SUModelSaveToFileWithVersion() and SUModelSaveToFile()
+    wasn't updating the model's GUID.
+  * Fixed SUStylesAddStyle() where it would fail to load some .style files.
+  * Improved performance of exporting colorized textures to PNG.
+  * Added material validation before assignment to prevent material owned by
+    layers or images to be assigned to normal drawing elements.
+  * Removed Deprecated C++ COM Interface.
+
+2019 February 5: API Version 7.0 - SketchUp 2019 M0
+  * Added SUDimensionGetFont()
+  * Added SUDimensionSetFont()
+  * Added SUDimensionLinearGetAlignment()
+  * Added SUDimensionLinearGetTextPosition()
+  * Added SUFontFromEntity()
+  * Added SUFontToEntity()
+  * Added SULayerGetLineStyle()
+  * Added SULayerSetLineStyle()
+  * Added SULengthFormatterGetForceInchDisplay()
+  * Added SULengthFormatterSetForceInchDisplay()
+  * Added SULineStyleGetName()
+  * Added SULineStylesGetLineStyleByName()
+  * Added SULineStylesGetLineStyleNames()
+  * Added SULineStylesGetNumLineStyles()
+  * Added SUModelGetImageDefinitions()
+  * Added SUModelGetLineStyles()
+  * Added SUModelGetNumImageDefinitions()
+  * Added SUTransformationIsMirrored()
+  * Added Return value SU_ERROR_SERIALIZATION for method SUStylesAddStyle()
+  * Fixed SUDimensionLinear bug with setting a hidden property
+  * Fixed SUDimensionRadiaul bug with setting a hidden property
+  * Fixed SUEntitiesErase crash/hang.
+  * Fixed SUTypedValueGetArray bug where the `out` param wasn't being set.
+  * Fixed SUTypedValueGetArray memory leak.
+
+
+2017 November 14: API Version 6.0 - SketchUp 2018 M0
   * Added SUAttributeDictionaryCreate()
   * Added SUAttributeDictionaryRelease()
   * Added SUBoundingBox3DGetMidPoint()
@@ -168,7 +224,7 @@
     * Renamed LessThan() to SULessThan()
     * Renamed LessThanOrEqual() to SULessThanOrEqual()
     * Renamed RadiansToDegrees() to SURadiansToDegrees()
-  
+
 
 
 2017 February 15: API Version 5.2 - SketchUp 2017 M2

@@ -48,6 +48,32 @@ enum SULengthUnitType {
 };
 
 /**
+@enum SUAreaUnitType
+@brief Indicates the different supported area string formatting units
+@since SketchUp 2019.2, API 7.1
+*/
+enum SUAreaUnitType {
+  SU_AUNIT_SQUARE_INCHES,
+  SU_AUNIT_SQUARE_FEET,
+  SU_AUNIT_SQUARE_MILLIMETER,
+  SU_AUNIT_SQUARE_CENTIMETER,
+  SU_AUNIT_SQUARE_METER
+};
+
+/**
+@enum SUVolumeUnitType
+@brief Indicates the different supported volume string formatting units
+@since SketchUp 2019.2, API 7.1
+*/
+enum SUVolumeUnitType {
+  SU_VUNIT_CUBIC_INCHES,
+  SU_VUNIT_CUBIC_FEET,
+  SU_VUNIT_CUBIC_MILLIMETER,
+  SU_VUNIT_CUBIC_CENTIMETER,
+  SU_VUNIT_CUBIC_METER
+};
+
+/**
 @brief Creates a new length formatter with default properties.
 @since SketchUp 2018, API 6.0
 @param[out] formatter The formatter object created.
@@ -134,6 +160,32 @@ SU_RESULT SULengthFormatterGetUnits(SULengthFormatterRef formatter,
     enum SULengthUnitType* units);
 
 /**
+@brief Retrieves the area units of a length formatter.
+@since SketchUp 2019.2, API 7.1
+@param[in]  formatter The formatter object.
+@param[out] units     The unit type retrieved.
+@return
+- \ref SU_ERROR_NONE on success
+- \ref SU_ERROR_INVALID_INPUT if formatter is not a valid object
+- \ref SU_ERROR_NULL_POINTER_OUTPUT if units is NULL
+*/
+SU_RESULT SULengthFormatterGetAreaUnits(SULengthFormatterRef formatter,
+    enum SUAreaUnitType* units);
+
+/**
+@brief Retrieves the volume units of a length formatter.
+@since SketchUp 2019.2, API 7.1
+@param[in]  formatter The formatter object.
+@param[out] units     The unit type retrieved.
+@return
+- \ref SU_ERROR_NONE on success
+- \ref SU_ERROR_INVALID_INPUT if formatter is not a valid object
+- \ref SU_ERROR_NULL_POINTER_OUTPUT if units is NULL
+*/
+SU_RESULT SULengthFormatterGetVolumeUnits(SULengthFormatterRef formatter,
+    enum SUVolumeUnitType* units);
+
+/**
 @brief Sets the units of a length formatter.
 @since SketchUp 2018, API 6.0
 @param[in] formatter The formatter object.
@@ -145,6 +197,32 @@ SU_RESULT SULengthFormatterGetUnits(SULengthFormatterRef formatter,
  */
 SU_RESULT SULengthFormatterSetUnits(SULengthFormatterRef formatter,
     enum SULengthUnitType units);
+
+/**
+@brief Sets the area units of a length formatter.
+@since SketchUp 2019.2, API 7.1
+@param[in] formatter The formatter object.
+@param[in] units     The unit type to be set.
+@return
+- \ref SU_ERROR_NONE on success
+- \ref SU_ERROR_INVALID_INPUT if formatter is not a valid object
+- \ref SU_ERROR_OUT_OF_RANGE if units is not a supported option
+*/
+SU_RESULT SULengthFormatterSetAreaUnits(SULengthFormatterRef formatter,
+    enum SUAreaUnitType units);
+
+/**
+@brief Sets the volume units of a length formatter.
+@since SketchUp 2019.2, API 7.1
+@param[in] formatter The formatter object.
+@param[in] units     The unit type to be set.
+@return
+- \ref SU_ERROR_NONE on success
+- \ref SU_ERROR_INVALID_INPUT if formatter is not a valid object
+- \ref SU_ERROR_OUT_OF_RANGE if units is not a supported option
+*/
+SU_RESULT SULengthFormatterSetVolumeUnits(SULengthFormatterRef formatter,
+    enum SUVolumeUnitType units);
 
 /**
 @brief Retrieves whether units are suppressed.
@@ -232,6 +310,31 @@ SU_RESULT SULengthFormatterGetVolumeString(SULengthFormatterRef formatter,
 */
 SU_RESULT SULengthFormatterParseString(SULengthFormatterRef formatter,
     SUStringRef string, double* value);
+
+/**
+@brief Force the display of Architectural inches even if the value is zero.
+@since SketchUp 2019, API 7.0
+@param[in]  formatter  The formatter object.
+@param[in]  force_inch The boolean value to force inch display.
+@return
+- \ref SU_ERROR_NONE on success
+- \ref SU_ERROR_INVALID_INPUT if formatter is not a valid object
+*/
+SU_RESULT SULengthFormatterSetForceInchDisplay(SULengthFormatterRef formatter,
+    bool force_inch);
+
+/**
+@brief Determine if Architectural inches will display even if the value is zero.
+@since SketchUp 2019, API 7.0
+@param[in]  formatter  The formatter object.
+@param[out]  force_inch The boolean value to force inch display.
+@return
+- \ref SU_ERROR_NONE on success
+- \ref SU_ERROR_INVALID_INPUT if formatter is not a valid object
+- \ref SU_ERROR_NULL_POINTER_OUTPUT if value is NULL
+*/
+SU_RESULT SULengthFormatterGetForceInchDisplay(SULengthFormatterRef formatter,
+    bool* force_inch);
 
 #ifdef __cplusplus
 }  // extern "C"

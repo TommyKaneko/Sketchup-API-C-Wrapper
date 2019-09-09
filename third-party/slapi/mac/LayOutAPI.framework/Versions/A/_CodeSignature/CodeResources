@@ -6,7 +6,7 @@
 	<dict>
 		<key>Resources/Info.plist</key>
 		<data>
-		FOdltH1Q3xx+Jka7RH3gPoqLgHw=
+		lfz7qHPESW017mP7ZMKLii6VBYE=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -37,11 +37,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			JvRBjC/N+RAffea7uN7kSMrnOD8=
+			XbYvRnmKMdgRSqeXQBDNb63jRlY=
 			</data>
 			<key>hash2</key>
 			<data>
-			yQuqLkVmPHFH3IPtaIjTZTWxbPL/d72g7dA/aZx3XIk=
+			WyBLUPaa0NlWwrtwt0dWAG8STbtw/YHD0+QSm8n4eXw=
 			</data>
 		</dict>
 		<key>Headers/initialize.h</key>
@@ -136,11 +136,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			c9GCt1nM9e6HSwkpm8VY+ziJx80=
+			pNRqNRLtuSx2KmAdTm4n+H0g0vY=
 			</data>
 			<key>hash2</key>
 			<data>
-			04XigsJEwVWvfeLr18qia0Ef5cTxqocp/egVEXGmiGc=
+			2WJpaoW0qw+J5kSkX5DCtOvlNJ6qg+VBfm+hHrySoWg=
 			</data>
 		</dict>
 		<key>Headers/model/documentexportoptions.h</key>
@@ -345,11 +345,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			UlH2+ndIEJCSrQduc171j2p4Uew=
+			dtmNWM9q9lxc+ZIbm8mJn3HDsdQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			CfGV0RrLBCva4SqV75Hv8F11tENkcV9Mq6OdXL58Ako=
+			gfzrIK2KrYD5FmF8LAKKBuGqUzcF9rYDQJfRhjf1J58=
 			</data>
 		</dict>
 		<key>Headers/model/rectangle.h</key>
@@ -367,33 +367,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			62yyKnQ7FU+kio6f891MKJ3aIIc=
+			KAvoB2YarKkeTuk3VgVUjQHQU/o=
 			</data>
 			<key>hash2</key>
 			<data>
-			7QdfCPakqhgkeEyCIuYi3mB35BKg8aAHnHE3uIbARKI=
-			</data>
-		</dict>
-		<key>Headers/model/skpfilereference.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			1/VWGzhGFqykwqRkPMLrO5GQR24=
-			</data>
-			<key>hash2</key>
-			<data>
-			l7p2Mto+OYugP7IWWbJlqsCDeMeilnoHXZisNMPF3G4=
+			ZTwj080gr44x1FJ+0p6rXNr6jClHDP09K12WgAPeqSw=
 			</data>
 		</dict>
 		<key>Headers/model/style.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			Y1wiFmE9PEazFbSe3Bk6h8NldrA=
+			UkLsuz6uuPIEHOqerjAuUtlzgMc=
 			</data>
 			<key>hash2</key>
 			<data>
-			+Zp2jcaTdIkIMmn1hEJJA9mQMJa+NLgr11k7a20FZlg=
+			K7CTnwczN15bfxU13Ee/OF8DXVLBKprdEKqx2ZfjhXY=
 			</data>
 		</dict>
 		<key>Headers/model/table.h</key>
@@ -422,176 +411,176 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			qqw2IZQkvxAhxWhvRfvt6TFGyOE=
+			bD8pla7a3TsbR7cGzpt9EqcIVig=
 			</data>
 			<key>hash2</key>
 			<data>
-			JE2xULZTDRe/ANTBpkh0MOP8cgsIyolzSjXvvwgeAQU=
+			I/2hq5PgTFxtOcNnPJAIvHEjC37f/oanzMZ1nutsUAo=
 			</data>
 		</dict>
 		<key>Libraries/libCommonGeometry.dylib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			6iAT1hBz+38cNKm2NY4RelXGQuE=
+			HXO9zZG3VemKDPcbvPio8z8511k=
 			</data>
 			<key>hash2</key>
 			<data>
-			NFvN7ULr/ju6lHOERHtUFMXtnf1HMRNfHJJYsGHr+yU=
+			xxZA2hZ0XX9O4NLskVb083zwteJ4KUHmSjvNwUF+09w=
 			</data>
 		</dict>
 		<key>Libraries/libCommonGeoutils.dylib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			d5ZNMZRzrEih/3g7F6ZF2ldRPR0=
+			qYFu9klhvikZJSfVYMcDmkIAjqQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			MT2t6iSjAlTAWiVz8bE7Lem9ANVmD8eQRCk6RTUPbm0=
+			qv683PTx5anXnYNs0cJY/wkOyti+S0JtXfA7ZlE4Ksw=
 			</data>
 		</dict>
 		<key>Libraries/libCommonImage.dylib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			N8Tt9v8r9h/NGouL5Ngd/NkNjTA=
+			4aOmHgOYaysavQ7HA2spo11JegY=
 			</data>
 			<key>hash2</key>
 			<data>
-			sugDHG0YL24B+j3uKflcyD2DPGU0DCUqO4LgQiWqOAk=
+			C7Xk8MzkckhKuyI37Za+IceG95Xbylxpw1+DknEZ0ss=
 			</data>
 		</dict>
 		<key>Libraries/libCommonInternet.dylib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			wQjo4G3WsBJK3yonADYXsqEHDvw=
+			/A00/kNisA3ch9gibghENgdt4fw=
 			</data>
 			<key>hash2</key>
 			<data>
-			qJhg1zwoVo7cuHHhLOTTaeYe7B3MHa6Z8fEDwC4FZdY=
+			2FMuNxpTqRiRkWjJObaWHlZiGebjPKu8uuxpqcizPzY=
 			</data>
 		</dict>
 		<key>Libraries/libCommonModel.dylib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			IAdb2Xb+zvtBISa/nQlwW+XMje0=
+			qA14wfzGYMAzNqWFNZmKB1lzDqU=
 			</data>
 			<key>hash2</key>
 			<data>
-			g6tysZYyZ/0TVv4CgM2OV1QfRr0prQm+XYzRw5dCC+o=
+			Utk1y0Bwfu+1gqquWZWwkeCretcws86BQ8finDs2pWI=
 			</data>
 		</dict>
 		<key>Libraries/libCommonPreferences.dylib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			Zy8k8YlELr8UNH9ZnjrL29tUP64=
+			IbLNzUhO4upNIwXX/Upu9SUOF1Y=
 			</data>
 			<key>hash2</key>
 			<data>
-			aeEe6Dkgp4A6u5eMuomedigpcJ9yyV4bjO4RAnkZgaU=
+			H/klc83iigF0rv+xql/SzDMq85UFlwGfDTXRkPdu2GU=
 			</data>
 		</dict>
 		<key>Libraries/libCommonRTF.dylib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			YoJn65tdpSAuQOyHcTD8PKNSbho=
+			960ol7VUIgwMBwhyL4keXD8Qnng=
 			</data>
 			<key>hash2</key>
 			<data>
-			IlfDIuGDEJMGEKOH3yXrEcXIwnAHmFdi0//xzRFu6LE=
+			8DC44AoDxGzVPKDBa76jBHzk3h5OHHDRQeysUh8D1P8=
 			</data>
 		</dict>
 		<key>Libraries/libCommonUnits.dylib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			uBxO6aFOozglH6/8izk9fiHzbO4=
+			xvvGhSqxHeHvzDy7AXBSKf6Xh84=
 			</data>
 			<key>hash2</key>
 			<data>
-			iW+ysgYCCikbTVv9mL3+VS66v5ovVHLhVnJcEdZ0Xuk=
+			PLibFmYuThAQJIdb0Mzdx0dUOYQy7J2VMB5XS107TTI=
 			</data>
 		</dict>
 		<key>Libraries/libCommonUtils.dylib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			AYMVw+upnHXQJ0USeHLF7JGiA64=
+			DMxHGeYLhk4rv2zmrY6heMIXbJI=
 			</data>
 			<key>hash2</key>
 			<data>
-			RITr5f73FrT4QJrkgz2hcVYBQzBAOWISyDcKhQkmV/8=
+			fbo7aQzvWQ1tc/sQ88fItnFCvDCyppyAabH56JnUj+I=
 			</data>
 		</dict>
 		<key>Libraries/libCommonZip.dylib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			NIclGK7+6Ld0fj7eUptF1frsUVs=
+			HHbQ0oCRreTF3TUmM/U+QzUATYE=
 			</data>
 			<key>hash2</key>
 			<data>
-			0DnCXpDFVCEY8x+JHAFrIaQtsZFXSwMF3QyQzjA1wF4=
+			wSLOfPV7snWO9S/mKcsnKu0+DgGmaVVJ6GvB4wVVSMw=
 			</data>
 		</dict>
 		<key>Libraries/libLayOutControllers.dylib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			bG+gJ2xxGacrpCe9V9G4qmSZAc4=
+			HrVBIJ4GpqMRKal+tpN3LlUBIMA=
 			</data>
 			<key>hash2</key>
 			<data>
-			OV7OFgjgmyl5y7cI98KYe9GefyTVNO7oQGCpn6+8uw4=
+			Hu/Z5T0SrHWBAlMgXXUP7WgIYoSw8zx5NOI2VSmBxOw=
 			</data>
 		</dict>
 		<key>Libraries/libLayOutModel.dylib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			5OSCO4cOMdQm0cawb4sEpclkSac=
+			+gEPhMGxTf5blFZ9Hq/rhe+6br0=
 			</data>
 			<key>hash2</key>
 			<data>
-			926lmEtnEvZ0lAf9CCQlPnS1qyJUqHduqtHZXL9CHoI=
+			rjhwS/dMOd2LNpaUxP8pV/g5VtymsCzC+Wd7dSkJ0Ko=
 			</data>
 		</dict>
 		<key>Libraries/libLayOutUtils.dylib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			IEyYZUXs+zRxVocdHibNnipfvuk=
+			xLEs2GdZmdWdisEDKNU+00jS2Fg=
 			</data>
 			<key>hash2</key>
 			<data>
-			fskmNaRm7uX5NANS/fKTYjv3Uy0fdXFKQ7hzEfutQhQ=
+			ZjWOQRKJJV+05T/m8EcU6hQFnx3zR8Ty/tcUMIpyItM=
 			</data>
 		</dict>
 		<key>Libraries/libSketchUpViewerAPI.dylib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			Gz9kUnK2Q8csLtnt3yiP852Npb8=
+			h3BXRAqiSI/zliRbSbrMLLaBC84=
 			</data>
 			<key>hash2</key>
 			<data>
-			+Nb56C+cE1vOUUth0X/qhpiLinIhV4pFZK5ahCCBjLc=
+			xJqEjN/zy3+r5oRJs9jUiBiMXxlm5ORlskxwLobEsmo=
 			</data>
 		</dict>
 		<key>Resources/Info.plist</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			FOdltH1Q3xx+Jka7RH3gPoqLgHw=
+			lfz7qHPESW017mP7ZMKLii6VBYE=
 			</data>
 			<key>hash2</key>
 			<data>
-			dX8sX+/PCi9HAFtDWZptHb5+OW2rtEVdi8f/+TNfB5s=
+			/Gm2Hse12GPuzuIKDpObfGqSYbSKMKBinqB6Kn22iKs=
 			</data>
 		</dict>
 	</dict>
@@ -612,6 +601,11 @@
 			<true/>
 			<key>weight</key>
 			<real>1100</real>
+		</dict>
+		<key>^Resources/Base\.lproj/</key>
+		<dict>
+			<key>weight</key>
+			<real>1010</real>
 		</dict>
 		<key>^version.plist$</key>
 		<true/>
@@ -671,6 +665,11 @@
 			<true/>
 			<key>weight</key>
 			<real>1100</real>
+		</dict>
+		<key>^Resources/Base\.lproj/</key>
+		<dict>
+			<key>weight</key>
+			<real>1010</real>
 		</dict>
 		<key>^[^/]+$</key>
 		<dict>

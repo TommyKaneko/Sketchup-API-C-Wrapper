@@ -152,8 +152,8 @@ SU_RESULT SUTransformationNonUniformScaleAboutPoint(
 @param[in]  angle      The rotation in radians for the transformation.
 @return
 - \ref SU_ERROR_NONE on success
-- \ref SU_ERROR_NULL_POINTER_INPUT if transform is NULL
-- \ref SU_ERROR_NULL_POINTER_OUTPUT if is_identity is NULL
+- \ref SU_ERROR_NULL_POINTER_INPUT if point or vector is NULL
+- \ref SU_ERROR_NULL_POINTER_OUTPUT if transform is NULL
 - \ref SU_ERROR_OUT_OF_RANGE if weight is not between 0.0 and 1.0
 */
 SU_RESULT SUTransformationRotation(struct SUTransformation* transform,
@@ -174,8 +174,8 @@ SU_RESULT SUTransformationRotation(struct SUTransformation* transform,
                        t1 to t2.
 @return
 - \ref SU_ERROR_NONE on success
-- \ref SU_ERROR_NULL_POINTER_INPUT if transform is NULL
-- \ref SU_ERROR_NULL_POINTER_OUTPUT if is_identity is NULL
+- \ref SU_ERROR_NULL_POINTER_INPUT if t1 or t2 is NULL
+- \ref SU_ERROR_NULL_POINTER_OUTPUT if transform is NULL
 - \ref SU_ERROR_OUT_OF_RANGE if weight is not between 0.0 and 1.0
 */
 SU_RESULT SUTransformationInterpolate(struct SUTransformation* transform,
@@ -278,18 +278,31 @@ SU_RESULT SUTransformationGetZRotation(const struct SUTransformation* transform,
 /**
 @brief Multiplies a transformation by another transformation.
 @since SketchUp 2018, API 6.0
-@param[in]   transform1  The transformation object to be multiplied.
-@param[in]   transform2  The transformation object to multiply by.
+@param[in]   transform1     The transformation object to be multiplied.
+@param[in]   transform2     The transformation object to multiply by.
 @param[out]  out_transform  The result of the matrix multiplication
                             [transform1 * transform2].
 @return
 - \ref SU_ERROR_NONE on success
-- \ref SU_ERROR_NULL_POINTER_OUTPUT if transform is NULL
-- \ref SU_ERROR_NULL_POINTER_INPUT if in_transform is NULL
+- \ref SU_ERROR_NULL_POINTER_OUTPUT if out_transform is NULL
+- \ref SU_ERROR_NULL_POINTER_INPUT if transform1 or transform2 is NULL
 */
 SU_RESULT SUTransformationMultiply(const struct SUTransformation* transform1,
                                    const struct SUTransformation* transform2,
                                    struct SUTransformation* out_transform);
+  
+/**
+@brief Returns true if transformation has been mirrored.
+@since SketchUp 2019, API 7.0
+@param[in]  transform    The transform object.
+@param[out] is_mirrored  Indicates if mirrored.
+@return
+- \ref SU_ERROR_NONE on success
+- \ref SU_ERROR_NULL_POINTER_OUTPUT if is_mirrored is NULL
+- \ref SU_ERROR_NULL_POINTER_INPUT if transform is NULL
+ */
+SU_RESULT SUTransformationIsMirrored(const struct SUTransformation* transform,
+                                     bool* is_mirrored);
 
 #ifdef __cplusplus
 }  // end extern "C"

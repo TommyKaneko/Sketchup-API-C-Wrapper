@@ -178,6 +178,30 @@ SU_RESULT SUDimensionGetArrowType(SUDimensionRef dimension,
 SU_RESULT SUDimensionSetArrowType(SUDimensionRef dimension,
     enum SUArrowType type);
 
+/**
+@brief Get the dimension's font reference.
+@since SketchUp 2019, API 7.0
+@param[in]  dimension The dimension object.
+@param[out] font      The font retrieved.
+@return
+- \ref SU_ERROR_NONE on success
+- \ref SU_ERROR_INVALID_INPUT if dimension is not a valid object
+- \ref SU_ERROR_NULL_POINTER_OUTPUT if font is NULL
+*/
+SU_RESULT SUDimensionGetFont(SUDimensionRef dimension, SUFontRef* font);
+
+/**
+@brief Sets the dimension's font from a font reference.
+@since SketchUp 2019, API 7.0
+@param[in] dimension The dimension object.
+@param[in] font      The font to be set.
+@return
+- \ref SU_ERROR_NONE on success
+- \ref SU_ERROR_INVALID_INPUT if dimension or font is not a valid object
+- \ref SU_ERROR_NULL_POINTER_INPUT if font is NULL
+*/
+SU_RESULT SUDimensionSetFont(SUDimensionRef dimension, SUFontRef font);
+
 #ifdef __cplusplus
 }  // extern "C"
 #endif

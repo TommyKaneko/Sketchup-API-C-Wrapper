@@ -62,7 +62,8 @@ SU_EXPORT SUImageRef SUImageFromDrawingElement(SUDrawingElementRef
 /**
 @brief Creates a new image object from an image file specified by a path.
        The created image must be subsequently added to the Entities of a model,
-       component definition or a group.
+       component definition or a group. Use \ref SUModelRemoveComponentDefinitions
+       to remove the image from a model.
 @param[out] image     The image object created.
 @param[in]  file_path The file path of the source image file.
                       Assumed to be UTF-8 encoded.
@@ -77,7 +78,8 @@ SU_RESULT SUImageCreateFromFile(SUImageRef* image, const char* file_path);
 /**
 @brief Creates a new SketchUp model image object from an image representation
        object. The created image must be subsequently added to the Entities of
-       a model, component definition or a group.
+       a model, component definition or a group. Use
+       \ref SUModelRemoveComponentDefinitions to remove the image from a model.
 @since SketchUp 2017, API 5.0
 @param[out] image     The image object created.
 @param[in]  image_rep The basic image object retrieved.
