@@ -286,7 +286,15 @@ Vector3D Vector3D::unit() const {
 
 double Vector3D::angle(const Vector3D& vector_b) const {
   assert(!null);
-  return acos(unit().dot(vector_b.unit()));
+  // Check that acos doesn't suffer domain error as a result of being slightly outside the range of -1 to +1
+  double dot_product = unit().dot(vector_b.unit());
+  if (dot_product < -1.0) {
+    dot_product = -1.0;
+  }
+  else if (dot_product > 1.0) {
+    dot_product = 1.0;
+  }
+  return acos(dot_product);
 }
 
 double Vector3D::dot(const Vector3D& vector2) const {
