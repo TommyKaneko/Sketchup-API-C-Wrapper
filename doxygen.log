@@ -789,7 +789,7 @@ Generating docs for page md__home_travis_build_TommyKaneko_Sketchup-A/home/travi
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:122: warning: Member z (variable) of class CW::Vector3D is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:123: warning: Member EPSILON (variable) of class CW::Vector3D is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:116: warning: Member m_vector (variable) of class CW::Vector3D is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:117: warning: Member null (variable) of class CW::Vector3D is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:117: warning: Member is_null (variable) of class CW::Vector3D is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:178: warning: Member operator+(const Vector3D &lhs, const Point3D &rhs) (friend) of class CW::Vector3D is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:196: warning: Member operator!=(const Vector3D &lhs, const Vector3D &rhs) (friend) of class CW::Vector3D is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Vertex.hpp:50: warning: Member Vertex(SUVertexRef vertex) (function) of class CW::Vertex is not documented.
