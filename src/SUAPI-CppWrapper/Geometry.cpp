@@ -149,7 +149,7 @@ Vector3D::Vector3D( double x, double y, double z):
 
 Vector3D::Vector3D(bool valid):
   m_vector(SUVector3D{0.0,0.0,0.0}),
-  null(!valid),
+  is_null(!valid),
   x(m_vector.x),
   y(m_vector.y),
   z(m_vector.z)
@@ -162,7 +162,7 @@ Vector3D::Vector3D(const Edge &edge):
 
 Vector3D::Vector3D(const Vector3D &vector):
   m_vector(vector.m_vector),
-  null(vector.null),
+  is_null(vector.is_null),
   x(m_vector.x),
   y(m_vector.y),
   z(m_vector.z)
@@ -172,7 +172,7 @@ Vector3D::Vector3D(const Vector3D &vector):
 Vector3D::Vector3D(const Point3D& point):
   Vector3D(SUVector3D{point.x, point.y, point.z})
 {
-  null = !point;
+  is_null = !point;
 }
 
 
@@ -183,7 +183,7 @@ Vector3D& Vector3D::operator=(const Vector3D &vector) {
   x = vector.x;
   y = vector.y;
   z = vector.z;
-  null = vector.null;
+  is_null = vector.is_null;
   return *this;
 }
 
@@ -191,23 +191,23 @@ Vector3D& Vector3D::operator=(const SUVector3D &vector) {
   x = vector.x;
   y = vector.y;
   z = vector.z;
-  null = false;
+  is_null = false;
   return *this;
 }
 
 // Casting
 Vector3D::operator SUVector3D() const {
-  assert(!null);
+  assert(!is_null);
   return m_vector;
 }
 
 Vector3D::operator const SUVector3D*() const {
-  assert(!null);
+  assert(!is_null);
   return &m_vector;
 }
 
 Vector3D::operator Point3D() const {
-  Point3D point(!this->null);
+  Point3D point(!this->is_null);
   point.x = x;
   point.y = y;
   point.z = z;
@@ -216,7 +216,7 @@ Vector3D::operator Point3D() const {
 
 // Operator overloads
 Vector3D Vector3D::operator+(const Vector3D &vector) const {
-  assert(!!vector && !null);
+  assert(!!vector && !is_null);
   return Vector3D(m_vector.x + vector.x, m_vector.y + vector.y, m_vector.z + vector.z);
 }
 
@@ -229,15 +229,15 @@ Vector3D Vector3D::operator-() const {
 }
 
 Vector3D Vector3D::operator-(const Vector3D &vector) const {
-  assert(!!vector && !null);
+  assert(!!vector && !is_null);
   return Vector3D(x - vector.x, y - vector.y, z - vector.z);
 }
 Vector3D Vector3D::operator*(const double &scalar) const {
-  assert(!null);
+  assert(!is_null);
   return Vector3D( x * scalar, y * scalar, z * scalar);
 }
 Vector3D Vector3D::operator/(const double &scalar) const {
-  assert(!null);
+  assert(!is_null);
   if (std::abs(scalar) < EPSILON) {
     throw std::invalid_argument("CW::Vector3D::operator/() - cannot divide by zero");
   }
@@ -267,7 +267,7 @@ bool operator!=(const Vector3D &lhs, const Vector3D &rhs) {
 
 
 bool Vector3D::operator!() const {
-  if (this->null) {
+  if (this->is_null) {
     return true;
   }
   return false;
@@ -275,17 +275,17 @@ bool Vector3D::operator!() const {
 
 
 double Vector3D::length() const {
-  assert(!null);
+  assert(!is_null);
   return sqrt(pow(x,2) + pow(y,2) + pow(z,2));
 }
 
 Vector3D Vector3D::unit() const {
-  assert(!null);
+  assert(!is_null);
   return *this / length();
 }
 
 double Vector3D::angle(const Vector3D& vector_b) const {
-  assert(!null);
+  assert(!is_null);
   // Check that acos doesn't suffer domain error as a result of being slightly outside the range of -1 to +1
   double dot_product = unit().dot(vector_b.unit());
   if (dot_product < -1.0) {
@@ -298,18 +298,18 @@ double Vector3D::angle(const Vector3D& vector_b) const {
 }
 
 double Vector3D::dot(const Vector3D& vector2) const {
-  assert(!!vector2 && !null);
+  assert(!!vector2 && !is_null);
   return (x * vector2.x) + (y * vector2.y) + (z * vector2.z);
 }
 
 double Vector3D::dot(const Point3D& point) const {
-  assert(!!point && !null);
+  assert(!!point && !is_null);
   return (x * point.x) + (y * point.y) + (z * point.z);
 }
 
 
 Vector3D Vector3D::cross(const Vector3D& vector2) const {
-  assert(!!vector2 && !null);
+  assert(!!vector2 && !is_null);
   return Vector3D{y * vector2.z - z * vector2.y,
                 z * vector2.x - x * vector2.z,
                 x * vector2.y - y * vector2.x};
@@ -359,7 +359,7 @@ Point3D::Point3D():
 
 Point3D::Point3D(bool valid):
   m_point(SUPoint3D{0.0,0.0,0.0}),
-  null(!valid),
+  is_null(!valid),
   x(m_point.x),
   y(m_point.y),
   z(m_point.z)
@@ -383,7 +383,7 @@ Point3D::Point3D(double x, double y, double z):
 Point3D::Point3D(const Point3D& other):
   Point3D(other.x, other.y, other.z)
 {
-  null = other.null;
+  is_null = other.is_null;
 }
 
 
@@ -398,7 +398,7 @@ Point3D& Point3D::operator=(const Point3D &point) {
   x = point.x;
   y = point.y;
   z = point.z;
-  null = point.null;
+  is_null = point.is_null;
   return *this;
 }
 
@@ -415,42 +415,42 @@ Point3D::operator Vector3D() const { return Vector3D(m_point.x, m_point.y, m_poi
 
 // Operator overloads
 Point3D Point3D::operator+(const Point3D &point) const {
-  assert(!!point && !null);
+  assert(!!point && !is_null);
   return Point3D(m_point.x + point.x, m_point.y + point.y, m_point.z + point.z);
 }
 
 Point3D Point3D::operator+(const Vector3D &vector) const {
-  assert(!!vector && !null);
+  assert(!!vector && !is_null);
   return Point3D(m_point.x + vector.x, m_point.y + vector.y, m_point.z + vector.z);
 }
 
 Point3D Point3D::operator+(const SUPoint3D &point) const {
-  assert(!null);
+  assert(!is_null);
   return (*this) + Point3D(point);
 }
 
 Vector3D Point3D::operator-(const Point3D &point) const {
-  assert(!!point && !null);
+  assert(!!point && !is_null);
   return Vector3D(m_point.x - point.x, m_point.y - point.y, m_point.z - point.z);
 }
 
 Point3D Point3D::operator-(const Vector3D &vector) const {
-  assert(!!vector && !null);
+  assert(!!vector && !is_null);
   return (*this) - static_cast<Point3D>(vector);
 }
 
 Point3D Point3D::operator-(const SUPoint3D &point) const  {
-  assert(!null);
+  assert(!is_null);
   return (*this) - Point3D(point);
 }
 
 Point3D Point3D::operator*(const double &scalar) const {
-  assert(!null);
+  assert(!is_null);
   return Point3D(m_point.x * scalar, m_point.y * scalar, m_point.z * scalar);
 }
 
 Point3D Point3D::operator/(const double &scalar) const {
-  assert(!null);
+  assert(!is_null);
   if (std::abs(scalar) < EPSILON) {
     throw std::invalid_argument("Point3D::operator/: cannot divide by zero");
   }
@@ -461,7 +461,7 @@ Point3D Point3D::operator/(const double &scalar) const {
 * Comparative operators
 */
 bool Point3D::operator!() const {
-  if (null) {
+  if (is_null) {
     return true;
   }
   return false;
@@ -678,7 +678,7 @@ Plane3D::Plane3D():
 
 Plane3D::Plane3D(SUPlane3D plane):
   m_plane(plane),
-  null((m_plane.a == 0.0 && m_plane.b == 0.0 && m_plane.c == 0.0)),
+  is_null((m_plane.a == 0.0 && m_plane.b == 0.0 && m_plane.c == 0.0)),
   a(m_plane.a),
   b(m_plane.b),
   c(m_plane.c),
@@ -698,7 +698,7 @@ Plane3D::Plane3D(const Face &face):
 
 Plane3D::Plane3D(const Plane3D &plane):
   m_plane(plane.m_plane),
-  null(plane.null),
+  is_null(plane.is_null),
   a(m_plane.a),
   b(m_plane.b),
   c(m_plane.c),
@@ -717,7 +717,7 @@ Plane3D::Plane3D(const Point3D& point, const Vector3D& normal):
 
 Plane3D::Plane3D(bool valid):
   m_plane(SUPlane3D{1.0,0.0,0.0,0.0}),
-  null(!valid),
+  is_null(!valid),
   a(m_plane.a),
   b(m_plane.b),
   c(m_plane.c),
@@ -733,12 +733,12 @@ Plane3D& Plane3D::operator=(const Plane3D &plane) {
   b = plane.b;
   c = plane.c;
   d = plane.d;
-  null = plane.null;
+  is_null = plane.is_null;
   return *this;
 }
 
 bool Plane3D::operator!() const {
-  if (null) {
+  if (is_null) {
     return true;
   }
   return false;
@@ -959,7 +959,7 @@ BoundingBox3D::BoundingBox3D():
 
 BoundingBox3D::BoundingBox3D(bool valid):
   m_bounding_box(SUBoundingBox3D{Point3D(), Point3D()}),
-  null(!valid)
+  is_null(!valid)
 {}
 
 BoundingBox3D::BoundingBox3D(SUBoundingBox3D bounding_box):
@@ -967,7 +967,7 @@ BoundingBox3D::BoundingBox3D(SUBoundingBox3D bounding_box):
 {}
 
 bool BoundingBox3D::operator!() const {
-  if (null) {
+  if (is_null) {
     return true;
   }
   return false;
@@ -1019,7 +1019,7 @@ Line3D::Line3D(const Vector3D direction, const Point3D point):
 Line3D::Line3D(bool valid):
   m_point(Point3D(valid)),
   m_direction(Vector3D(valid)),
-  null(!valid),
+  is_null(!valid),
   point(m_point),
   direction(m_direction)
 {}
@@ -1028,7 +1028,7 @@ Line3D::Line3D(bool valid):
 Line3D::Line3D(const Line3D& other):
   m_point(other.m_point),
   m_direction(other.m_direction),
-  null(other.null),
+  is_null(other.is_null),
   point(m_point),
   direction(m_direction)
 {}
@@ -1040,13 +1040,13 @@ Line3D& Line3D::operator=(const Line3D &line) {
   
    point = line.point;
   direction = line.direction;
-  null = line.null;
+  is_null = line.is_null;
   return *this;
 }
 
 
 bool Line3D::operator!() const {
-  if (null) {
+  if (is_null) {
     return true;
   }
   return false;

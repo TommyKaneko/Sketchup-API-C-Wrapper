@@ -114,7 +114,7 @@ class Vector3D {
 
   protected:
   SUVector3D m_vector;
-  bool null = false; // Invalid flag
+  bool is_null = false; // Invalid flag
 
   public:
   double &x;
@@ -264,7 +264,7 @@ class Vector3D {
 class Point3D {
   private:
   SUPoint3D m_point;
-  bool null = false; // Invalid flag
+  bool is_null = false; // Invalid flag
   //constexpr static double EPSILON = 0.001; // Sketchup Tolerance is 1/1000"
 
   public:
@@ -382,7 +382,7 @@ class Line3D;
 class Plane3D {
   private:
   SUPlane3D m_plane;
-  bool null = false; // Invalid flag
+  bool is_null = false; // Invalid flag
   constexpr static double EPSILON = 0.0005; // Sketchup Tolerance is 1/1000"
 
   public:
@@ -502,7 +502,7 @@ class Plane3D {
 class BoundingBox3D {
   private:
   SUBoundingBox3D m_bounding_box;
-  bool null = false; // Invalid flag
+  bool is_null = false; // Invalid flag
 
   public:
   BoundingBox3D();
@@ -550,7 +550,7 @@ class Line3D {
   private:
   Point3D m_point;
   Vector3D m_direction;
-  bool null = false; // Invalid flag
+  bool is_null = false; // Invalid flag
   constexpr static double EPSILON = 0.0005; // Sketchup Tolerance is 1/1000"
 
   public:
