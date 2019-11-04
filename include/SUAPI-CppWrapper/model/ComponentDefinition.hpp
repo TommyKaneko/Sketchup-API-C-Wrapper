@@ -43,6 +43,7 @@ class Group;
 class Behavior;
 class String;
 class Model;
+class Opening;
 
 /**
 * This class represents a component definition.
@@ -141,6 +142,18 @@ class ComponentDefinition :public DrawingElement {
   * Returns the instances of this ComponentDefinition.
   */
   std::vector<ComponentInstance> instances() const;
+  
+  /**
+  * Retrieves the number of openings from the component definition.
+  * @since SketchUp 2016, API 4.0
+  **/
+  size_t num_openings() const;
+  
+  /**
+  * Retrieves the openings from the component definition.
+  * @since SketchUp 2016, API 4.0
+  **/
+  std::vector<Opening> openings() const;
 
 };
   

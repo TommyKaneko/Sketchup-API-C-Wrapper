@@ -35,6 +35,7 @@
 #include "SUAPI-CppWrapper/model/ComponentInstance.hpp"
 #include "SUAPI-CppWrapper/model/Group.hpp"
 #include "SUAPI-CppWrapper/model/Model.hpp"
+#include "SUAPI-CppWrapper/model/Opening.hpp"
 
 namespace CW {
 
@@ -251,6 +252,36 @@ std::vector<ComponentInstance> ComponentDefinition::instances() const {
     return ComponentInstance(value);
   });;
   return instances;
+}
+
+
+size_t ComponentDefinition::num_openings() const {
+  if (!(*this)) {
+    throw std::logic_error("CW::ComponentDefinition::num_openings(): ComponentDefinition is null");
+  }
+  size_t count = 0;
+  SU_RESULT res = SUComponentDefinitionGetNumOpenings(this->ref(), &count);
+  assert(res == SU_ERROR_NONE); _unused(res);
+  return count;
+}
+
+
+std::vector<Opening> ComponentDefinition::openings() const {
+  if (!(*this)) {
+    throw std::logic_error("CW::ComponentDefinition::num_openings(): ComponentDefinition is null");
+  }
+  size_t count = this->num_openings();
+  std::vector<SUOpeningRef> opening_refs(count, SU_INVALID);
+  size_t return_count = 0;
+  SU_RESULT res = SUComponentDefinitionGetOpenings(this->ref(), count, opening_refs.data(), &return_count);
+  assert(return_count == count);
+  assert(res == SU_ERROR_NONE); _unused(res);
+  std::vector<Opening> openings;
+  openings.reserve(return_count);
+  for (SUOpeningRef p : opening_refs) {
+    openings.push_back(Opening(p));
+  }
+  return openings;
 }
 
 
