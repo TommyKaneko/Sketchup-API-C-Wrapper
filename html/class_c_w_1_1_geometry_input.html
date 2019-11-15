@@ -76,6 +76,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a7625da4c6567e3d1abe06191e9da5d22"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab1e78aa79931be36a610550ebcde37c4"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_w_1_1_geometry_input.html#ab1e78aa79931be36a610550ebcde37c4">add_face</a> (const <a class="el" href="class_c_w_1_1_face.html">Face</a> &amp;face, bool copy_material_layer=true)</td></tr>
 <tr class="separator:ab1e78aa79931be36a610550ebcde37c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a55bf243486f607f3f40b3a2ff3d30405"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_w_1_1_geometry_input.html#a55bf243486f607f3f40b3a2ff3d30405">add_face</a> (const std::vector&lt; <a class="el" href="class_c_w_1_1_loop.html">Loop</a> &gt; &amp;loops)</td></tr>
+<tr class="separator:a55bf243486f607f3f40b3a2ff3d30405"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7defdd97aa491070bd7c635b7ce94dac"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7defdd97aa491070bd7c635b7ce94dac"></a>
 size_t&#160;</td><td class="memItemRight" valign="bottom"><b>add_faces</b> (const std::vector&lt; <a class="el" href="class_c_w_1_1_face.html">Face</a> &gt; &amp;faces, bool copy_material_layer=true)</td></tr>
 <tr class="separator:a7defdd97aa491070bd7c635b7ce94dac"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -135,7 +137,7 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>Entities</b></td></t
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Geometry Input class is an abstraction of Sketchup C API's SUGeometryInputRef object. It allows a much easier way for programmers to build Sketchup geometry within this class, before exporting it into a built SUGeometryInputRef object. See below for an example of <a class="el" href="class_c_w_1_1_geometry_input.html">GeometryInput</a> operates: <a class="el" href="class_c_w_1_1_geometry_input.html">GeometryInput</a> geom_input; <a class="el" href="class_c_w_1_1_entities.html">Entities</a> entities; // This is the entities object that we wish to add the geometry to. std::vector&lt;SUPoint3D&gt; outer_loop{SUPoint3D(0.0,0.0,0.0), SUPoint3D(1.0,0.0,0.0), SUPoint3D(0.0,1.0,0.0)}; std::vector&lt;std::vector&lt;SUPoint3D&gt;&gt; inner_loops{{SUPoint3D(0.1,0.1,0.0), SUPoint3D(0.1,0.2,0.0), SUPoint3D(0.2,0.3,0.0)}}; GIFace* face = geom_input.add_face(outer_loop, inner_loops); // <a class="el" href="class_c_w_1_1_geometry_input.html">GeometryInput</a> handles the interface with Sketchup C API when creating geometry. SUResult result = entities.fill(geom_input); // the geometry must be output into a SUEntitiesRef object. </p>
 
-<p>Definition at line <a class="el" href="_geometry_input_8hpp_source.html#l00065">65</a> of file <a class="el" href="_geometry_input_8hpp_source.html">GeometryInput.hpp</a>.</p>
+<p>Definition at line <a class="el" href="_geometry_input_8hpp_source.html#l00066">66</a> of file <a class="el" href="_geometry_input_8hpp_source.html">GeometryInput.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a8e53067b1a90696e108cd9ead874cfed"></a>
 <div class="memitem">
@@ -376,6 +378,29 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>Entities</b></td></t
 <dl class="section return"><dt>Returns</dt><dd>index to the added face. </dd></dl>
 
 <p>Definition at line <a class="el" href="_geometry_input_8cpp_source.html#l00157">157</a> of file <a class="el" href="_geometry_input_8cpp_source.html">GeometryInput.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a55bf243486f607f3f40b3a2ff3d30405"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t CW::GeometryInput::add_face </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; <a class="el" href="class_c_w_1_1_loop.html">Loop</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>loops</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Adds a face to the Geometry Input object using the safer <a class="el" href="class_c_w_1_1_loop_input.html">LoopInput</a> method, which can deal with inner loops. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">loops</td><td>- vector of loops. The first loop in the vector is the outer loop, and all subsequent loops are the inner loops. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>index to the added face. </dd></dl>
 
 </div>
 </div>
@@ -967,7 +992,7 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>Entities</b></td></t
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Oct 18 2019 20:52:07 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Nov 15 2019 17:56:22 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.11
 </small></address>

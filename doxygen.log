@@ -76,6 +76,8 @@ Preprocessing /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAP
 Parsing file /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/MaterialInput.hpp...
 Preprocessing /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp...
 Parsing file /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp...
+Preprocessing /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Opening.hpp...
+Parsing file /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Opening.hpp...
 Preprocessing /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/OptionsManager.hpp...
 Parsing file /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/OptionsManager.hpp...
 Preprocessing /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/RenderingOptions.hpp...
@@ -143,6 +145,8 @@ Preprocessing /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/src/SUAPI-Cp
 Parsing file /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/MaterialInput.cpp...
 Preprocessing /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/Model.cpp...
 Parsing file /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/Model.cpp...
+Preprocessing /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/Opening.cpp...
+Parsing file /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/Opening.cpp...
 Preprocessing /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/OptionsManager.cpp...
 Parsing file /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/OptionsManager.cpp...
 Preprocessing /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/RenderingOptions.cpp...
@@ -155,11 +159,7 @@ Preprocessing /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/src/SUAPI-Cp
 Parsing file /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/TextureWriter.cpp...
 Preprocessing /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/TypedValue.cpp...
 Parsing file /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/TypedValue.cpp...
-Preprocessing /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/UVHelper.cpp...
-Parsing file /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/UVHelper.cpp...
-Preprocessing /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/Vertex.cpp...
-Parsing file /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/Vertex.cpp...
-Preprocessing /home/travis/build/TommyKaneko/Sketch/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/InstancePath.hpp:48: warning: Compound CW::InstancePath is not documented.
+Preprocessing /home/travis/build/TommyKanek/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/InstancePath.hpp:48: warning: Compound CW::InstancePath is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/OptionsManager.hpp:56: warning: Compound CW::OptionsManager is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Color.hpp:39: warning: Compound CW::Color is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:56: warning: Compound CW::Model is not documented.
@@ -167,7 +167,7 @@ Preprocessing /home/travis/build/TommyKaneko/Sketch/home/travis/build/TommyKanek
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Layer.hpp:40: warning: Compound CW::Layer is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Group.hpp:45: warning: Compound CW::Group is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:113: warning: Compound CW::Vector3D is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/GeometryInput.hpp:297: warning: Compound std::hash< SUGeometryInputRef > is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/GeometryInput.hpp:306: warning: Compound std::hash< SUGeometryInputRef > is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Material.hpp:43: warning: Compound CW::Material is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:502: warning: Compound CW::BoundingBox3D is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ImageRep.hpp:46: warning: Compound CW::ImageRep is not documented.
@@ -177,9 +177,10 @@ Preprocessing /home/travis/build/TommyKaneko/Sketch/home/travis/build/TommyKanek
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:54: warning: Compound CW::Entity is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/UVHelper.hpp:40: warning: Compound CW::UVHelper is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entities.hpp:56: warning: Compound CW::Entities is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Opening.hpp:44: warning: Compound CW::Opening is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/OptionsManager.hpp:45: warning: Compound CW::OptionsProvider is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:345: warning: Compound CW::ModelStatistics is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ComponentDefinition.hpp:147: warning: Compound CW::Behavior is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ComponentDefinition.hpp:160: warning: Compound CW::Behavior is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Texture.hpp:46: warning: Compound CW::Texture is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/TextureWriter.hpp:40: warning: Compound CW::TextureWriter is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ComponentInstance.hpp:41: warning: Compound CW::ComponentInstance is not documented.
@@ -199,10 +200,14 @@ Preprocessing /home/travis/build/TommyKaneko/Sketch/home/travis/build/TommyKanek
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/DrawingElement.hpp:46: warning: Compound CW::DrawingElement is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Axes.hpp:46: warning: Compound CW::Axes is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:265: warning: documented symbol `hash< CW::Entity >' was not declared or defined.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/GeometryInput.hpp:288: warning: documented symbol `hash< SUGeometryInputRef >' was not declared or defined.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/GeometryInput.hpp:297: warning: documented symbol `hash< SUGeometryInputRef >' was not declared or defined.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Layer.hpp:101: warning: documented symbol `hash< CW::Layer >' was not declared or defined.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Material.hpp:158: warning: documented symbol `hash< CW::Material >' was not declared or defined.
-up-API-C-Wrapper/src/SUAPI-CppWrapper/String.cpp...
+o/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/UVHelper.cpp...
+Parsing file /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/UVHelper.cpp...
+Preprocessing /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/Vertex.cpp...
+Parsing file /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/Vertex.cpp...
+Preprocessing /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/String.cpp...
 Parsing file /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/String.cpp...
 Preprocessing /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/Transformation.cpp...
 Parsing file /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/Transformation.cpp...
@@ -293,6 +298,7 @@ Generating code for file /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/i
 Generating code for file /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Material.hpp...
 Generating code for file /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/MaterialInput.hpp...
 Generating code for file /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp...
+Generating code for file /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Opening.hpp...
 Generating code for file /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/OptionsManager.hpp...
 Generating code for file /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/RenderingOptions.hpp...
 Generating code for file /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ShadowInfo.hpp...
@@ -327,6 +333,7 @@ Generating code for file /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/s
 Generating code for file /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/Material.cpp...
 Generating code for file /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/MaterialInput.cpp...
 Generating code for file /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/Model.cpp...
+Generating code for file /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/Opening.cpp...
 Generating code for file /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/OptionsManager.cpp...
 Generating code for file /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/RenderingOptions.cpp...
 Generating code for file /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/ShadowInfo.cpp...
@@ -337,15 +344,7 @@ Generating code for file /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/s
 Generating code for file /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/model/Vertex.cpp...
 Generating code for file /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/String.cpp...
 Generating code for file /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/src/SUAPI-CppWrapper/Transformation.cpp...
-Generating code for file /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/tests/ColorTests.cpp...
-Generating code for file /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/tests/RadiansTests.cpp...
-Generating code for file /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/tests/SketchUpAPITests.cpp...
-Generating code for file /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/tests/SketchUpAPITests.hpp...
-Generating code for file /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/tests/StringTests.cpp...
-Generating code for file /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/tests/TypedValueTests.cpp...
-Generating file documentation...
-Generating page documentation...
-Generating docs for page md__home_travis_build_TommyKaneko_Sketchup-A/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/AttributeDictionary.hpp:98: warning: Member operator SUAttributeDictionaryRef() const  (function) of class CW::AttributeDictionary is not documented.
+Generating code for file /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/te/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/AttributeDictionary.hpp:98: warning: Member operator SUAttributeDictionaryRef() const  (function) of class CW::AttributeDictionary is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/AttributeDictionary.hpp:99: warning: Member operator SUAttributeDictionaryRef *() (function) of class CW::AttributeDictionary is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:103: warning: Member operator SUEntityRef() const  (function) of class CW::Entity is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:110: warning: Member operator SUEntityRef *() (function) of class CW::Entity is not documented.
@@ -374,13 +373,13 @@ Generating docs for page md__home_travis_build_TommyKaneko_Sketchup-A/home/travi
   parameter 'x_axis'
   parameter 'y_axis'
   parameter 'z_axis'
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ComponentDefinition.hpp:152: warning: Member Behavior(SUComponentBehavior behavior) (function) of class CW::Behavior is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ComponentDefinition.hpp:156: warning: Member ref() const  (function) of class CW::Behavior is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ComponentDefinition.hpp:154: warning: Member snap (variable) of class CW::Behavior is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ComponentDefinition.hpp:158: warning: Member cuts_opening (variable) of class CW::Behavior is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ComponentDefinition.hpp:160: warning: Member always_face_camera (variable) of class CW::Behavior is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ComponentDefinition.hpp:162: warning: Member shadows_face_sun (variable) of class CW::Behavior is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ComponentDefinition.hpp:164: warning: Member no_scale_mask (variable) of class CW::Behavior is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ComponentDefinition.hpp:165: warning: Member Behavior(SUComponentBehavior behavior) (function) of class CW::Behavior is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ComponentDefinition.hpp:169: warning: Member ref() const  (function) of class CW::Behavior is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ComponentDefinition.hpp:167: warning: Member snap (variable) of class CW::Behavior is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ComponentDefinition.hpp:171: warning: Member cuts_opening (variable) of class CW::Behavior is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ComponentDefinition.hpp:173: warning: Member always_face_camera (variable) of class CW::Behavior is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ComponentDefinition.hpp:175: warning: Member shadows_face_sun (variable) of class CW::Behavior is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ComponentDefinition.hpp:177: warning: Member no_scale_mask (variable) of class CW::Behavior is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Geometry.hpp:509: warning: Member BoundingBox3D(SUBoundingBox3D bounding_box) (function) of class CW::BoundingBox3D is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Color.hpp:50: warning: Member Color(SUColor color_input) (function) of class CW::Color is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Color.hpp:55: warning: Member ref() const  (function) of class CW::Color is not documented.
@@ -389,9 +388,9 @@ Generating docs for page md__home_travis_build_TommyKaneko_Sketchup-A/home/travi
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Color.hpp:45: warning: Member green (variable) of class CW::Color is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Color.hpp:46: warning: Member blue (variable) of class CW::Color is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Color.hpp:47: warning: Member alpha (variable) of class CW::Color is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ComponentDefinition.hpp:89: warning: Member operator SUComponentDefinitionRef() const  (function) of class CW::ComponentDefinition is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ComponentDefinition.hpp:90: warning: Member operator SUComponentDefinitionRef *() (function) of class CW::ComponentDefinition is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ComponentDefinition.hpp:128: warning: Member behavior(const Behavior &behavior) const  (function) of class CW::ComponentDefinition is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ComponentDefinition.hpp:90: warning: Member operator SUComponentDefinitionRef() const  (function) of class CW::ComponentDefinition is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ComponentDefinition.hpp:91: warning: Member operator SUComponentDefinitionRef *() (function) of class CW::ComponentDefinition is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/ComponentDefinition.hpp:129: warning: Member behavior(const Behavior &behavior) const  (function) of class CW::ComponentDefinition is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/DrawingElement.hpp:72: warning: Member operator SUDrawingElementRef() const  (function) of class CW::DrawingElement is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/DrawingElement.hpp:73: warning: Member operator SUDrawingElementRef *() (function) of class CW::DrawingElement is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/DrawingElement.hpp:91: warning: Member casts_shadows() const  (function) of class CW::DrawingElement is not documented.
@@ -528,16 +527,16 @@ Generating docs for page md__home_travis_build_TommyKaneko_Sketchup-A/home/travi
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:103: warning: Member operator SUEntityRef() const  (function) of class CW::Entity is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:110: warning: Member operator SUEntityRef *() (function) of class CW::Entity is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:117: warning: Member ref() const  (function) of class CW::Entity is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/GeometryInput.hpp:125: warning: Member add_faces(const std::vector< Face > &faces, bool copy_material_layer=true) (function) of class CW::GeometryInput is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/GeometryInput.hpp:132: warning: Member add_edges(const std::vector< Edge > &edges) (function) of class CW::GeometryInput is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/GeometryInput.hpp:151: warning: Member set_vertices(const std::vector< Point3D > &points) (function) of class CW::GeometryInput is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/GeometryInput.hpp:201: warning: argument 'num_edges' of command @param is not found in the argument list of CW::GeometryInput::add_curve(const std::vector< size_t > &edge_indices)
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/GeometryInput.hpp:201: warning: argument 'added_curve_index' of command @param is not found in the argument list of CW::GeometryInput::add_curve(const std::vector< size_t > &edge_indices)
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/GeometryInput.hpp:224: warning: argument 'outer_loop' of command @param is not found in the argument list of CW::GeometryInput::add_face(LoopInput &loop_input)
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/GeometryInput.hpp:228: warning: The following parameters of CW::GeometryInput::add_face(LoopInput &loop_input) are not documented:
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/GeometryInput.hpp:134: warning: Member add_faces(const std::vector< Face > &faces, bool copy_material_layer=true) (function) of class CW::GeometryInput is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/GeometryInput.hpp:141: warning: Member add_edges(const std::vector< Edge > &edges) (function) of class CW::GeometryInput is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/GeometryInput.hpp:160: warning: Member set_vertices(const std::vector< Point3D > &points) (function) of class CW::GeometryInput is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/GeometryInput.hpp:210: warning: argument 'num_edges' of command @param is not found in the argument list of CW::GeometryInput::add_curve(const std::vector< size_t > &edge_indices)
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/GeometryInput.hpp:210: warning: argument 'added_curve_index' of command @param is not found in the argument list of CW::GeometryInput::add_curve(const std::vector< size_t > &edge_indices)
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/GeometryInput.hpp:233: warning: argument 'outer_loop' of command @param is not found in the argument list of CW::GeometryInput::add_face(LoopInput &loop_input)
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/GeometryInput.hpp:237: warning: The following parameters of CW::GeometryInput::add_face(LoopInput &loop_input) are not documented:
   parameter 'loop_input'
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/GeometryInput.hpp:245: warning: argument 'loop_input' of command @param is not found in the argument list of CW::GeometryInput::face_add_inner_loop(size_t face_index, LoopInput &inner_loop)
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/GeometryInput.hpp:249: warning: The following parameters of CW::GeometryInput::face_add_inner_loop(size_t face_index, LoopInput &inner_loop) are not documented:
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/GeometryInput.hpp:254: warning: argument 'loop_input' of command @param is not found in the argument list of CW::GeometryInput::face_add_inner_loop(size_t face_index, LoopInput &inner_loop)
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/GeometryInput.hpp:258: warning: The following parameters of CW::GeometryInput::face_add_inner_loop(size_t face_index, LoopInput &inner_loop) are not documented:
   parameter 'inner_loop'
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Group.hpp:87: warning: Member operator SUGroupRef() const  (function) of class CW::Group is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Group.hpp:88: warning: Member operator SUGroupRef *() (function) of class CW::Group is not documented.
@@ -649,6 +648,7 @@ Generating docs for page md__home_travis_build_TommyKaneko_Sketchup-A/home/travi
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:361: warning: Member definitions() const  (function) of class CW::ModelStatistics is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:362: warning: Member layers() const  (function) of class CW::ModelStatistics is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Model.hpp:363: warning: Member materials() const  (function) of class CW::ModelStatistics is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Opening.hpp:72: warning: Member operator!() const  (function) of class CW::Opening is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/OptionsManager.hpp:62: warning: Member OptionsManager(SUOptionsManagerRef options_manager) (function) of class CW::OptionsManager is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/OptionsManager.hpp:65: warning: Member get_provider_names() const  (function) of class CW::OptionsManager is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/OptionsManager.hpp:68: warning: Member get_provider(const std::string &) (function) of class CW::OptionsManager is not documented.
@@ -735,36 +735,47 @@ Generating docs for page md__home_travis_build_TommyKaneko_Sketchup-A/home/travi
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Transformation.hpp:143: warning: Member operator const SUTransformation *() const  (function) of class CW::Transformation is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/Transformation.hpp:234: warning: Member operator==(const Transformation transform) const  (function) of class CW::Transformation is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/TypedValue.hpp:57: warning: Member TypedValue(SUTypedValueRef typed_val, bool attached=false) (function) of class CW::TypedValue is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/TypedValue.hpp:58: warning: Member TypedValue(const char chars[]) (function) of class CW::TypedValue is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/TypedValue.hpp:59: warning: Member TypedValue(const std::string &string) (function) of class CW::TypedValue is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/TypedValue.hpp:69: warning: Member ref() const  (function) of class CW::TypedValue is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/TypedValue.hpp:70: warning: Member operator SUTypedValueRef() (function) of class CW::TypedValue is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/TypedValue.hpp:71: warning: Member operator SUTypedValueRef *() (function) of class CW::TypedValue is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/TypedValue.hpp:94: warning: Member byte_value(const char byte_val) (function) of class CW::TypedValue is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/TypedValue.hpp:95: warning: Member operator char() const  (function) of class CW::TypedValue is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/TypedValue.hpp:67: warning: Member ref() const  (function) of class CW::TypedValue is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/TypedValue.hpp:68: warning: Member operator SUTypedValueRef() (function) of class CW::TypedValue is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/TypedValue.hpp:69: warning: Member operator SUTypedValueRef *() (function) of class CW::TypedValue is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/TypedValue.hpp:92: warning: Member byte_value(const char byte_val) (function) of class CW::TypedValue is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/TypedValue.hpp:93: warning: Member operator char() const  (function) of class CW::TypedValue is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/TypedValue.hpp:95: warning: Member TypedValue(const char byte_val) (function) of class CW::TypedValue is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/TypedValue.hpp:101: warning: Member int16_value(const int16_t int16_val) (function) of class CW::TypedValue is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/TypedValue.hpp:102: warning: Member operator int16_t() const  (function) of class CW::TypedValue is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/TypedValue.hpp:108: warning: Member int32_value(const int32_t int32_val) (function) of class CW::TypedValue is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/TypedValue.hpp:109: warning: Member operator int32_t() const  (function) of class CW::TypedValue is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/TypedValue.hpp:115: warning: Member float_value(const float float_val) (function) of class CW::TypedValue is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/TypedValue.hpp:116: warning: Member operator float() const  (function) of class CW::TypedValue is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/TypedValue.hpp:122: warning: Member double_value(const double double_val) (function) of class CW::TypedValue is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/TypedValue.hpp:123: warning: Member operator double() const  (function) of class CW::TypedValue is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/TypedValue.hpp:129: warning: Member bool_value(bool bool_val) (function) of class CW::TypedValue is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/TypedValue.hpp:130: warning: Member operator bool() const  (function) of class CW::TypedValue is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/TypedValue.hpp:136: warning: Member color_value(const Color &color_val) (function) of class CW::TypedValue is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/TypedValue.hpp:137: warning: Member operator Color() const  (function) of class CW::TypedValue is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/TypedValue.hpp:143: warning: Member time_value(int64_t time_val) (function) of class CW::TypedValue is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/TypedValue.hpp:144: warning: Member operator int64_t() const  (function) of class CW::TypedValue is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/TypedValue.hpp:150: warning: Member string_value(const String &string_val) (function) of class CW::TypedValue is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/TypedValue.hpp:151: warning: Member string_value(const std::string &string_val) (function) of class CW::TypedValue is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/TypedValue.hpp:152: warning: Member operator String() const  (function) of class CW::TypedValue is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/TypedValue.hpp:153: warning: Member operator std::string() const  (function) of class CW::TypedValue is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/TypedValue.hpp:159: warning: Member vector_value(const Vector3D &vector_val) (function) of class CW::TypedValue is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/TypedValue.hpp:160: warning: Member operator Vector3D() const  (function) of class CW::TypedValue is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/TypedValue.hpp:166: warning: Member typed_value_array(std::vector< TypedValue > &typed_val_array) (function) of class CW::TypedValue is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/TypedValue.hpp:167: warning: Member operator std::vector< TypedValue >() const  (function) of class CW::TypedValue is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/TypedValue.hpp:173: warning: Member operator!=(const TypedValue &val1, const TypedValue &val2) (friend) of class CW::TypedValue is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/TypedValue.hpp:104: warning: Member TypedValue(const int16_t int16_val) (function) of class CW::TypedValue is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/TypedValue.hpp:110: warning: Member int32_value(const int32_t int32_val) (function) of class CW::TypedValue is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/TypedValue.hpp:111: warning: Member operator int32_t() const  (function) of class CW::TypedValue is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/TypedValue.hpp:113: warning: Member TypedValue(const int32_t int32_val) (function) of class CW::TypedValue is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/TypedValue.hpp:119: warning: Member float_value(const float float_val) (function) of class CW::TypedValue is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/TypedValue.hpp:120: warning: Member operator float() const  (function) of class CW::TypedValue is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/TypedValue.hpp:122: warning: Member TypedValue(const float float_val) (function) of class CW::TypedValue is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/TypedValue.hpp:128: warning: Member double_value(const double double_val) (function) of class CW::TypedValue is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/TypedValue.hpp:129: warning: Member operator double() const  (function) of class CW::TypedValue is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/TypedValue.hpp:131: warning: Member TypedValue(const double double_val) (function) of class CW::TypedValue is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/TypedValue.hpp:137: warning: Member bool_value(bool bool_val) (function) of class CW::TypedValue is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/TypedValue.hpp:138: warning: Member operator bool() const  (function) of class CW::TypedValue is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/TypedValue.hpp:140: warning: Member TypedValue(const bool bool_val) (function) of class CW::TypedValue is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/TypedValue.hpp:146: warning: Member color_value(const Color &color_val) (function) of class CW::TypedValue is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/TypedValue.hpp:147: warning: Member operator Color() const  (function) of class CW::TypedValue is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/TypedValue.hpp:149: warning: Member TypedValue(const Color &color_val) (function) of class CW::TypedValue is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/TypedValue.hpp:155: warning: Member time_value(int64_t time_val) (function) of class CW::TypedValue is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/TypedValue.hpp:156: warning: Member operator int64_t() const  (function) of class CW::TypedValue is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/TypedValue.hpp:158: warning: Member TypedValue(const int64_t time_value) (function) of class CW::TypedValue is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/TypedValue.hpp:164: warning: Member string_value(const String &string_val) (function) of class CW::TypedValue is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/TypedValue.hpp:165: warning: Member string_value(const std::string &string_val) (function) of class CW::TypedValue is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/TypedValue.hpp:166: warning: Member operator String() const  (function) of class CW::TypedValue is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/TypedValue.hpp:167: warning: Member operator std::string() const  (function) of class CW::TypedValue is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/TypedValue.hpp:169: warning: Member TypedValue(const char chars[]) (function) of class CW::TypedValue is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/TypedValue.hpp:170: warning: Member TypedValue(const std::string &string) (function) of class CW::TypedValue is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/TypedValue.hpp:171: warning: Member TypedValue(const String &string) (function) of class CW::TypedValue is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/TypedValue.hpp:177: warning: Member vector_value(const Vector3D &vector_val) (function) of class CW::TypedValue is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/TypedValue.hpp:178: warning: Member operator Vector3D() const  (function) of class CW::TypedValue is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/TypedValue.hpp:180: warning: Member TypedValue(const Vector3D &vector) (function) of class CW::TypedValue is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/TypedValue.hpp:186: warning: Member typed_value_array(std::vector< TypedValue > &typed_val_array) (function) of class CW::TypedValue is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/TypedValue.hpp:187: warning: Member operator std::vector< TypedValue >() const  (function) of class CW::TypedValue is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/TypedValue.hpp:189: warning: Member TypedValue(std::vector< TypedValue > &array) (function) of class CW::TypedValue is not documented.
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/TypedValue.hpp:195: warning: Member operator!=(const TypedValue &val1, const TypedValue &val2) (friend) of class CW::TypedValue is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/UVHelper.hpp:47: warning: Member UVHelper(SUUVHelperRef uv_helper_ref, bool release_on_destroy=false) (function) of class CW::UVHelper is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/UVHelper.hpp:49: warning: Member operator SUUVHelperRef() const  (function) of class CW::UVHelper is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/UVHelper.hpp:50: warning: Member operator SUUVHelperRef *() const  (function) of class CW::UVHelper is not documented.
@@ -803,8 +814,16 @@ Generating docs for page md__home_travis_build_TommyKaneko_Sketchup-A/home/travi
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Entity.hpp:273: warning: Member operator()(const CW::Entity &k) const  (function) of class std::hash< CW::Entity > is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Layer.hpp:109: warning: Member operator()(const CW::Layer &k) const  (function) of class std::hash< CW::Layer > is not documented.
 /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/Material.hpp:166: warning: Member operator()(const CW::Material &k) const  (function) of class std::hash< CW::Material > is not documented.
-/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/GeometryInput.hpp:298: warning: Member operator()(const SUGeometryInputRef &k) const  (function) of class std::hash< SUGeometryInputRef > is not documented.
-PI-C-Wrapper_README...
+/home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/include/SUAPI-CppWrapper/model/GeometryInput.hpp:307: warning: Member operator()(const SUGeometryInputRef &k) const  (function) of class std::hash< SUGeometryInputRef > is not documented.
+sts/ColorTests.cpp...
+Generating code for file /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/tests/RadiansTests.cpp...
+Generating code for file /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/tests/SketchUpAPITests.cpp...
+Generating code for file /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/tests/SketchUpAPITests.hpp...
+Generating code for file /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/tests/StringTests.cpp...
+Generating code for file /home/travis/build/TommyKaneko/Sketchup-API-C-Wrapper/tests/TypedValueTests.cpp...
+Generating file documentation...
+Generating page documentation...
+Generating docs for page md__home_travis_build_TommyKaneko_Sketchup-API-C-Wrapper_README...
 Generating group documentation...
 Generating class documentation...
 Generating namespace index...
@@ -834,6 +853,7 @@ Generating docs for compound CW::Material...
 Generating docs for compound CW::MaterialInput...
 Generating docs for compound CW::Model...
 Generating docs for compound CW::ModelStatistics...
+Generating docs for compound CW::Opening...
 Generating docs for compound CW::OptionsManager...
 Generating docs for compound CW::OptionsProvider...
 Generating docs for compound CW::Plane3D...
@@ -869,5 +889,5 @@ Generating file member index...
 Generating example index...
 finalizing index lists...
 writing tag file...
-lookup cache used 1928/65536 hits=21126 misses=2043
+lookup cache used 1959/65536 hits=21670 misses=2074
 finished...

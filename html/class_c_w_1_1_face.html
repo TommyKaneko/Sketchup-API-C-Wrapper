@@ -313,6 +313,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
       </table>
 </div><div class="memdoc">
 <p>Copy constructor </p>
+<p>The code below causes errors as the face has not been attached to an object yet. Add the inner loops std::vector&lt;Loop&gt; inner_loops = other.inner_loops(); std::vector&lt;std::vector&lt;Point3D&gt;&gt; inner_loops_points; inner_loops_points.reserve(inner_loops.size()); for (size_t i=0; i &lt; inner_loops.size(); ++i) { std::vector&lt;Point3D&gt; inner_points = inner_loops[i].points(); <a class="el" href="class_c_w_1_1_loop_input.html">LoopInput</a> inner_loop_input = inner_loops[i].loop_input(); add_inner_loop(inner_points, inner_loop_input); }</p>
 
 <p>Definition at line <a class="el" href="_face_8cpp_source.html#l00114">114</a> of file <a class="el" href="_face_8cpp_source.html">Face.cpp</a>.</p>
 
@@ -332,7 +333,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </div><div class="memdoc">
 <p>Destructor </p>
 
-<p>Definition at line <a class="el" href="_face_8cpp_source.html#l00132">132</a> of file <a class="el" href="_face_8cpp_source.html">Face.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_face_8cpp_source.html#l00134">134</a> of file <a class="el" href="_face_8cpp_source.html">Face.cpp</a>.</p>
 
 </div>
 </div>
@@ -368,7 +369,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_face_8cpp_source.html#l00185">185</a> of file <a class="el" href="_face_8cpp_source.html">Face.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_face_8cpp_source.html#l00187">187</a> of file <a class="el" href="_face_8cpp_source.html">Face.cpp</a>.</p>
 
 </div>
 </div>
@@ -386,7 +387,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </div><div class="memdoc">
 <p>NOT POSSIBLE WITH C API - </p><dl class="section see"><dt>See also</dt><dd>class <a class="el" href="class_c_w_1_1_material_input.html">MaterialInput</a> </dd></dl>
 
-<p>Definition at line <a class="el" href="_face_8cpp_source.html#l00313">313</a> of file <a class="el" href="_face_8cpp_source.html">Face.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_face_8cpp_source.html#l00315">315</a> of file <a class="el" href="_face_8cpp_source.html">Face.cpp</a>.</p>
 
 </div>
 </div>
@@ -404,7 +405,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </div><div class="memdoc">
 <p>NOT operator. Checks if the object is valid. </p><dl class="section return"><dt>Returns</dt><dd>true if the curve is invalid </dd></dl>
 
-<p>Definition at line <a class="el" href="_face_8cpp_source.html#l00166">166</a> of file <a class="el" href="_face_8cpp_source.html">Face.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_face_8cpp_source.html#l00168">168</a> of file <a class="el" href="_face_8cpp_source.html">Face.cpp</a>.</p>
 
 </div>
 </div>
@@ -423,7 +424,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </div><div class="memdoc">
 <p>Copy assignment operator </p>
 
-<p>Definition at line <a class="el" href="_face_8cpp_source.html#l00144">144</a> of file <a class="el" href="_face_8cpp_source.html">Face.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_face_8cpp_source.html#l00146">146</a> of file <a class="el" href="_face_8cpp_source.html">Face.cpp</a>.</p>
 
 </div>
 </div>
@@ -441,7 +442,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </div><div class="memdoc">
 <p>NOT POSSIBLE WITH C API - </p><dl class="section see"><dt>See also</dt><dd>class <a class="el" href="class_c_w_1_1_material_input.html">MaterialInput</a> </dd></dl>
 
-<p>Definition at line <a class="el" href="_face_8cpp_source.html#l00382">382</a> of file <a class="el" href="_face_8cpp_source.html">Face.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_face_8cpp_source.html#l00384">384</a> of file <a class="el" href="_face_8cpp_source.html">Face.cpp</a>.</p>
 
 </div>
 </div>
@@ -461,7 +462,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <p>NOT POSSIBLE WITH C API - </p><dl class="section see"><dt>See also</dt><dd>class <a class="el" href="class_c_w_1_1_material_input.html">MaterialInput</a> bool Face::set_texture_projection(const Vector3D&amp; vector, bool frontside) {}</dd></dl>
 <p>bool Face::set_texture_projection(bool remove, bool frontside) {} </p>
 
-<p>Definition at line <a class="el" href="_face_8cpp_source.html#l00406">406</a> of file <a class="el" href="_face_8cpp_source.html">Face.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_face_8cpp_source.html#l00408">408</a> of file <a class="el" href="_face_8cpp_source.html">Face.cpp</a>.</p>
 
 </div>
 </div>
@@ -472,7 +473,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Oct 18 2019 20:52:07 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Nov 15 2019 17:56:22 for SUAPI-CppWrapper by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.11
 </small></address>
