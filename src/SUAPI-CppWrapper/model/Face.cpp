@@ -115,6 +115,7 @@ Face::Face(const Face& other):
   DrawingElement(other, SUFaceToDrawingElement(copy_reference(other)))
 {
   if (!other.m_attached && SUIsValid(other.m_entity)) {
+    /**  The code below causes errors as the face has not been attached to an object yet.
     // Add the inner loops
     std::vector<Loop> inner_loops = other.inner_loops();
     std::vector<std::vector<Point3D>> inner_loops_points;
@@ -124,6 +125,7 @@ Face::Face(const Face& other):
       LoopInput inner_loop_input = inner_loops[i].loop_input();
       add_inner_loop(inner_points, inner_loop_input);
     }
+    */
     this->back_material(other.back_material());
   }
 }

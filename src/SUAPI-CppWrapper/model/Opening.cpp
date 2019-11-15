@@ -61,9 +61,7 @@ Opening::~Opening()
 {
   if (!!(*this) && m_opening.use_count() < 2) {
     SU_RESULT res = SUOpeningRelease(m_opening.get());
-    if (res == SU_ERROR_INVALID_INPUT) {
-      throw std::logic_error("CW::Opening::~Opening: Opening reference in invalid.  The code may point to dereferenced pointer.");
-    }
+    assert (res != SU_ERROR_INVALID_INPUT);
   }
 }
 

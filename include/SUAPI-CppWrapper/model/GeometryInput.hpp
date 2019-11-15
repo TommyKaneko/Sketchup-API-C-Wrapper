@@ -50,6 +50,7 @@ class Material;
 class MaterialInput;
 class Layer;
 class LoopInput;
+class Loop;
 
 /**
 * Geometry Input class is an abstraction of Sketchup C API's SUGeometryInputRef object.  It allows a much easier way for programmers to build Sketchup geometry within this class, before exporting it into a built SUGeometryInputRef object.
@@ -122,6 +123,14 @@ public:
   * @return index to the added face.
   */
   size_t add_face(const Face &face, bool copy_material_layer = true);
+
+  /**
+  * Adds a face to the Geometry Input object using the safer LoopInput method, which can deal with inner loops.
+  * @param loops - vector of loops.  The first loop in the vector is the outer loop, and all subsequent loops are the inner loops.
+  * @return index to the added face.
+  */
+  size_t add_face(const std::vector<Loop>& loops);
+
   size_t add_faces(const std::vector<Face>& faces, bool copy_material_layer = true);
   
   /**

@@ -55,8 +55,6 @@ class TypedValue {
   public:
   TypedValue();
   TypedValue(SUTypedValueRef typed_val, bool attached = false);
-  TypedValue(const char chars[]);
-  TypedValue(const std::string& string);
   
   /** Copy constructor */
   TypedValue(const TypedValue& other);
@@ -94,12 +92,16 @@ class TypedValue {
   TypedValue& byte_value(const char byte_val);
   operator char() const;
   
+  TypedValue(const char byte_val);
+
   /**
    * Retrieves/Sets the int16 value of a typed value object.
   */
   int16_t int16_value() const;
   TypedValue& int16_value(const int16_t int16_val);
   operator int16_t() const;
+  
+  TypedValue(const int16_t int16_val);
 
   /**
    * Retrieves/Sets the int32 value of a typed value object.
@@ -108,12 +110,16 @@ class TypedValue {
   TypedValue& int32_value(const int32_t int32_val);
   operator int32_t() const;
 
+  TypedValue(const int32_t int32_val);
+
   /**
   * Retrieves/Sets the float value of a typed value object.
   */
   float float_value() const;
   TypedValue& float_value(const float float_val);
   operator float() const;
+
+  TypedValue(const float float_val);
 
   /**
   * Retrieves/Sets the double value of a typed value object.
@@ -122,12 +128,16 @@ class TypedValue {
   TypedValue& double_value(const double double_val);
   operator double() const;
 
+  TypedValue(const double double_val);
+
   /**
   * Retrieves the boolean value of a typed value object.
   */
   bool bool_value() const;
   TypedValue& bool_value(bool bool_val);
   operator bool() const;
+
+  TypedValue(const bool bool_val);
 
   /**
   * Retrieves the color value of a typed value object.
@@ -136,12 +146,16 @@ class TypedValue {
   TypedValue& color_value(const Color &color_val);
   operator Color() const;
 
+  TypedValue(const Color &color_val);
+
   /**
   * Retrieves/Sets the time value of a typed value object.  The time value is in seconds since January 1, 1970.
   */
   int64_t time_value() const;
   TypedValue& time_value(int64_t time_val);
   operator int64_t() const;
+
+  TypedValue(const int64_t time_value);
 
   /**
   * Retrieves/Sets the string value of a typed value object.
@@ -152,12 +166,18 @@ class TypedValue {
   operator String() const;
   operator std::string() const;
 
+  explicit TypedValue(const char chars[]);
+  TypedValue(const std::string& string);
+  TypedValue(const String& string);
+
   /**
   * Retrieves/Sets the 3-element vector value of a typed value object
   */
   Vector3D vector_value() const;
   TypedValue& vector_value(const Vector3D &vector_val);
   operator Vector3D() const;
+
+  TypedValue(const Vector3D& vector);
 
   /**
   * Retrieve/Set the array of typed value objects of a type value object.
@@ -166,6 +186,8 @@ class TypedValue {
   TypedValue& typed_value_array(std::vector<TypedValue> &typed_val_array);
   operator std::vector<TypedValue>() const;
   
+  TypedValue(std::vector<TypedValue>& array);
+
   /**
   * Comparison operator overloads
   */

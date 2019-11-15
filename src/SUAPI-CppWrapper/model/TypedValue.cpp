@@ -50,19 +50,6 @@ TypedValue::TypedValue(SUTypedValueRef typed_val, bool attached):
 {}
  
  
-TypedValue::TypedValue(const char chars[]):
-  m_typed_value(create_typed_value()),
-  m_attached(false)
-{
-  this->string_value(String(chars));
-}
-
-
-TypedValue::TypedValue(const std::string& string):
-  TypedValue(string.data())
-{}
-
-
 /** Copy constructor */
 TypedValue::TypedValue(const TypedValue& other):
   TypedValue()
@@ -210,6 +197,13 @@ TypedValue::operator char() const {
 }
 
 
+TypedValue::TypedValue(const char byte_val):
+  TypedValue()
+{
+  this->byte_value(byte_val);
+}
+
+
 int16_t TypedValue::int16_value() const {
   if (!(*this)) {
     throw std::logic_error("CW::TypedValue::int16_value(): TypedValue is null");
@@ -236,6 +230,14 @@ TypedValue& TypedValue::int16_value(const int16_t int16_val) {
 
 TypedValue::operator int16_t() const {
   return int16_value();
+}
+
+
+
+TypedValue::TypedValue(const int16_t int16_val):
+  TypedValue()
+{
+  this->int16_value(int16_val);
 }
 
 
@@ -268,6 +270,13 @@ TypedValue::operator int32_t() const {
 }
 
 
+TypedValue::TypedValue(const int32_t int32_val):
+  TypedValue()
+{
+  this->int32_value(int32_val);
+}
+
+
 float TypedValue::float_value() const{
   if (!(*this)) {
     throw std::logic_error("CW::TypedValue::float_value(): TypedValue is null");
@@ -294,6 +303,13 @@ TypedValue& TypedValue::float_value(const float float_val) {
 
 TypedValue::operator float() const {
   return float_value();
+}
+
+
+TypedValue::TypedValue(const float float_val):
+  TypedValue()
+{
+  this->float_value(float_val);
 }
 
 
@@ -326,6 +342,13 @@ TypedValue::operator double() const {
 }
 
 
+TypedValue::TypedValue(const double double_val):
+  TypedValue()
+{
+  this->double_value(double_val);
+}
+
+
 bool TypedValue::bool_value() const {
   if (!(*this)) {
     throw std::logic_error("CW::TypedValue::bool_value(): TypedValue is null");
@@ -352,6 +375,13 @@ TypedValue& TypedValue::bool_value(const bool bool_val) {
 
 TypedValue::operator bool() const {
   return bool_value();
+}
+
+
+TypedValue::TypedValue(const bool bool_val):
+  TypedValue()
+{
+  this->bool_value(bool_val);
 }
 
 
@@ -385,6 +415,13 @@ TypedValue::operator Color() const {
 }
 
 
+TypedValue::TypedValue(const Color &color_val):
+  TypedValue()
+{
+  this->color_value(color_val);
+}
+
+
 int64_t TypedValue::time_value() const {
   if (!(*this)) {
     throw std::logic_error("CW::TypedValue::time_value(): TypedValue is null");
@@ -411,6 +448,13 @@ TypedValue& TypedValue::time_value(const int64_t time_val) {
 
 TypedValue::operator int64_t() const {
   return time_value();
+}
+
+
+TypedValue::TypedValue(const int64_t time_val):
+  TypedValue()
+{
+  this->time_value(time_val);
 }
 
 
@@ -455,6 +499,24 @@ TypedValue::operator std::string() const {
 }
 
 
+TypedValue::TypedValue(const char chars[]):
+  TypedValue(String(chars))
+{}
+
+
+TypedValue::TypedValue(const std::string& string):
+  TypedValue(string.data())
+{}
+
+
+TypedValue::TypedValue(const String& string):
+  TypedValue()
+{
+  this->string_value(string);
+}
+
+
+
 Vector3D TypedValue::vector_value() const {
   if (!(*this)) {
     throw std::logic_error("CW::TypedValue::vector_value(): TypedValue is null");
@@ -482,6 +544,13 @@ TypedValue& TypedValue::vector_value(const Vector3D &vector_val) {
 
 TypedValue::operator Vector3D() const {
   return vector_value();
+}
+
+
+TypedValue::TypedValue(const Vector3D& vector):
+  TypedValue()
+{
+  this->vector_value(vector);
 }
 
 
@@ -529,6 +598,13 @@ TypedValue& TypedValue::typed_value_array(std::vector<TypedValue> &typed_val_arr
 
 TypedValue::operator std::vector<TypedValue>() const {
   return typed_value_array();
+}
+
+
+TypedValue::TypedValue(std::vector<TypedValue> &typed_val_array):
+  TypedValue()
+{
+  this->typed_value_array(typed_val_array);
 }
 
 
