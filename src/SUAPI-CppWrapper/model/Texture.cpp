@@ -170,8 +170,7 @@ String Texture::file_name() const {
 
 
 void Texture::file_name(const String& string) const {
-  const char* chars = string.std_string().c_str();
-  SUResult res = SUTextureSetFileName(this->ref(), chars);
+  SUResult res = SUTextureSetFileName(this->ref(), string.std_string().c_str());
   assert(res == SU_ERROR_NONE); _unused(res);
 }
 

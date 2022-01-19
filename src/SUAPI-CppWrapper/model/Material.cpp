@@ -209,8 +209,7 @@ void Material::name(const String& string) {
   if(!(*this)) {
     throw std::logic_error("CW::Material::name(): Material is null");
   }
-  const char *cstr = string.std_string().c_str();
-  SUResult res = SUMaterialSetName(this->ref(), cstr);
+  SUResult res = SUMaterialSetName(this->ref(), string.std_string().c_str());
   assert(res == SU_ERROR_NONE); _unused(res);
   return;
 }

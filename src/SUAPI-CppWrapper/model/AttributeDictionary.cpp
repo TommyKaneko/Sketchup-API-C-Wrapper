@@ -176,6 +176,9 @@ std::vector<std::string> AttributeDictionary::get_keys() const {
   size_t num_keys = 0;
   SUResult res = SUAttributeDictionaryGetNumKeys(this->ref(), &num_keys);
   assert(res == SU_ERROR_NONE);
+  if (num_keys == 0) {
+    return std::vector<std::string> {};
+  }
   std::vector<SUStringRef> keys_ref(num_keys, SU_INVALID);
   std::for_each(keys_ref.begin(), keys_ref.end(),
   [](SUStringRef& value) {
