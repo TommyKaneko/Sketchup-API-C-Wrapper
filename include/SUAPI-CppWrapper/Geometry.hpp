@@ -48,7 +48,7 @@ class Face;
 class Edge;
 
 /**
-* Radians class deals with calculating radians.
+* Radians class deals with calculating radians.  There is no equivalent in the SketchUp C API, which uses double for the purpose.
 * Usage: Radians(double) - converts double into radians.  Negative and values more than 2*pi will be made into a value between 0 and 2*pi.
 */
 class Radians
@@ -59,8 +59,8 @@ public:
   double m_val;
   static constexpr double PI = 3.141592653589793;
   static constexpr double PI2 = PI * 2;
-  // Estimate the degree of correctness of angles (Sketchup Tolerance is 1/1000", so try to make some sort of guess - suggest discrepancies of 1/1000" over radians rotations over 30m (approx 1000")
-  constexpr static double EPSILON = 0.0000000000005; // Sketchup Tolerance is 1/1000"
+  // Estimate the degree of correctness of angles (Sketchup Tolerance is 1/1000", so try to make some sort of guess - suggest discrepancies of 1/1000" over radians rotations over 30m (approx 1000").
+  constexpr static double EPSILON = 0.0000005; // Sketchup Tolerance is 1/1000"
   
   Radians() {};
   Radians(const double &rhs);
