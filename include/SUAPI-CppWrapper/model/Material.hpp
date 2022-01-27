@@ -165,8 +165,8 @@ namespace std {
   {
     size_t operator()(const CW::Material& k) const
     {
-      static const size_t shift = (size_t)log2(1 + sizeof(CW::Material));
-      return (size_t)(k.m_entity.ptr) >> shift;
+      static const size_t shift = static_cast<size_t>(log2(1 + sizeof(CW::Material)));
+      return reinterpret_cast<size_t>(k.m_entity.ptr) >> shift;
     }
   };
 
