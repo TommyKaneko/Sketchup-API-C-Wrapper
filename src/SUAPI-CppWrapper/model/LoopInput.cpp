@@ -127,6 +127,7 @@ LoopInput::~LoopInput() {
 ** Public Methods **
 ********************/
 LoopInput& LoopInput::operator=(const LoopInput& other) {
+  // TODO: Non working method - the code below is nonesense to escape the warnings
   // There is no easy way to copy a LoopInput object.
   assert(false);
   // Note that this is a crude copying operation - we are simply creating a reference to the other object.
