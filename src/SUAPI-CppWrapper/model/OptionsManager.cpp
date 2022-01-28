@@ -46,14 +46,14 @@ std::vector<std::string> OptionsManager::get_provider_names() const
   size_t num_returned = 0;
   SUResult res = SUOptionsManagerGetNumOptionsProviders(m_options_manager, &num_requested);
   std::vector<SUStringRef> refs(num_requested);
-  for(auto i = 0; i < num_requested; i++) {
+  for(size_t i = 0; i < num_requested; i++) {
     res = SUStringCreate(&refs[i]);
     assert(res == SU_ERROR_NONE);
   }
   res = SUOptionsManagerGetOptionsProviderNames(m_options_manager, num_requested, &refs[0], &num_returned);
   assert(res == SU_ERROR_NONE); _unused(res);
   std::vector<std::string> keys;
-  for(auto i = 0; i < refs.size(); i++) {
+  for(size_t i = 0; i < refs.size(); i++) {
     keys.push_back(String(refs[i]));
   }
   return keys;
@@ -91,14 +91,14 @@ std::vector<std::string> OptionsProvider::keys() const
 
   size_t num_returned = 0;
   std::vector<SUStringRef> refs(num_requested);
-  for(auto i = 0; i < num_requested; i++) {
+  for(size_t i = 0; i < num_requested; i++) {
     res = SUStringCreate(&refs[i]);
     assert(res == SU_ERROR_NONE);
   }
   res = SUOptionsProviderGetKeys(m_options_provider, num_requested, &refs[0], &num_returned);
   assert(res == SU_ERROR_NONE); _unused(res);
 
-  for(auto i = 0; i < refs.size(); i++) {
+  for(size_t i = 0; i < refs.size(); i++) {
     keys.push_back(String(refs[i]));
   }
   return keys;

@@ -78,7 +78,7 @@ BoundingBox3D DrawingElement::bounds() {
   if (SUIsInvalid(m_entity)) {
     throw std::logic_error("CW::DrawingElement::bounds(): DrawingElement is null");
   }
-  SUBoundingBox3D box = SU_INVALID;
+  SUBoundingBox3D box;
   SUResult res = SUDrawingElementGetBoundingBox(this->ref(), &box);
   assert(res == SU_ERROR_NONE); _unused(res);
   return BoundingBox3D(box);

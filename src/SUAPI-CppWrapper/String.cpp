@@ -132,8 +132,7 @@ SUStringRef String::create_string_ref(const char string_input[]) {
 
 SUStringRef String::create_string_ref(const unichar string_input[]) {
   SUStringRef string_ref = SU_INVALID;
-  // TODO UTF16 to be supported.
-  //SUStringCreateFromUTF16(&string_ref, &string_input[0]);
+  SUStringCreateFromUTF16(&string_ref, &string_input[0]);
   return string_ref;
 }
 

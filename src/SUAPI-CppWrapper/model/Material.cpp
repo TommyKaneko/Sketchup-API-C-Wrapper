@@ -150,7 +150,7 @@ Color Material::color() const {
   if (!(*this)) {
     return Color();
   }
-  SUColor new_color = SU_INVALID;
+  SUColor new_color;
   SUResult res =  SUMaterialGetColor(this->ref(), &new_color);
   if (res == SU_ERROR_NONE) {
     return Color(new_color);

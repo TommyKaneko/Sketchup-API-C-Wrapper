@@ -153,7 +153,7 @@ Color Edge::color() const {
   if (!(*this)) {
     throw std::logic_error("CW::Edge::color(): Edge is null");
   }
-  SUColor color = SU_INVALID;
+  SUColor color;
   SUEdgeGetColor(this->ref(), &color);
   return Color(color);
 }

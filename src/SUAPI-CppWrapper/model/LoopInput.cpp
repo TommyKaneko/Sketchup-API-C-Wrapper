@@ -111,8 +111,9 @@ LoopInput::LoopInput(const std::vector<InputEdgeProperties>& loop_edge_propertie
 LoopInput::LoopInput(const LoopInput& other):
   m_loop_input(create_loop_input_ref())
 {
+  // TODO: Non working method
   // LoopInputRef cannot be copied across at this stage. If it is important, something can be done.
-  assert(false);
+  assert(false && !other);
 }
 
 LoopInput::~LoopInput() {

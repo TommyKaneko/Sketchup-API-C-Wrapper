@@ -371,7 +371,7 @@ Plane3D Face::plane() const {
   if (!(*this)) {
     throw std::logic_error("CW::Face::plane(): Face is null");
   }
-  SUPlane3D plane = SU_INVALID;
+  SUPlane3D plane;
   SUFaceGetPlane(this->ref(), &plane);
   return Plane3D(plane);
 }

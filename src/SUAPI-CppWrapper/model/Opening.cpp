@@ -107,7 +107,7 @@ std::vector<Point3D> Opening::get_points() const {
     throw std::logic_error("CW::Opening::get_points(): Opening is invalid");
   }
   size_t count = this->get_num_points();
-  std::vector<SUPoint3D> points_array(count, SU_INVALID);
+  std::vector<SUPoint3D> points_array(count);
   size_t count_returned = 0;
   SU_RESULT res = SUOpeningGetPoints(*m_opening.get(), count, points_array.data(), &count_returned);
   if (res == SU_ERROR_NULL_POINTER_OUTPUT) {

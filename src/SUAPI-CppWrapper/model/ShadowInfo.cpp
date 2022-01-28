@@ -62,7 +62,7 @@ std::vector<std::string> ShadowInfo::get_keys()
   assert(len > 0);
 
   std::vector<SUStringRef> refs(len, SU_INVALID);
-  for(auto i = 0; i < len; i++) {
+  for(size_t i = 0; i < len; i++) {
     res = SUStringCreate(&refs[i]);
     assert(res == SU_ERROR_NONE);
   }

@@ -205,7 +205,7 @@ Transformation Transformation::inverse() const {
   
 
 Vector3D Transformation::x_axis() const {
-  SUVector3D x_axis = SU_INVALID;
+  SUVector3D x_axis;
   SUResult res = SUTransformationGetXAxis(&m_transformation, &x_axis);
   assert(res == SU_ERROR_NONE); _unused(res);
   return Vector3D(x_axis);
@@ -213,7 +213,7 @@ Vector3D Transformation::x_axis() const {
 
 
 Vector3D Transformation::y_axis() const {
-  SUVector3D y_axis = SU_INVALID;
+  SUVector3D y_axis;
   SUResult res = SUTransformationGetYAxis(&m_transformation, &y_axis);
   assert(res == SU_ERROR_NONE); _unused(res);
   return Vector3D(y_axis);
@@ -221,7 +221,7 @@ Vector3D Transformation::y_axis() const {
 
 
 Vector3D Transformation::z_axis() const {
-  SUVector3D z_axis = SU_INVALID;
+  SUVector3D z_axis;
   SUResult res = SUTransformationGetZAxis(&m_transformation, &z_axis);
   assert(res == SU_ERROR_NONE); _unused(res);
   return Vector3D(z_axis);
@@ -251,7 +251,7 @@ Transformation& Transformation::normalize() {
 
 
 Point3D Transformation::origin() const {
-  SUPoint3D origin = SU_INVALID;
+  SUPoint3D origin;
   SUResult res = SUTransformationGetOrigin(&m_transformation, &origin);
   assert(res == SU_ERROR_NONE); _unused(res);
   return Point3D(origin);

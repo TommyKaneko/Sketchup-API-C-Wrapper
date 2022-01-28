@@ -150,7 +150,7 @@ BoundingBox3D Entities::bounding_box() const {
   if (!SUIsValid(m_entities)) {
     throw std::logic_error("CW::Entities::groups(): Entities is null");
   }
-  SUBoundingBox3D box = SU_INVALID;
+  SUBoundingBox3D box;
   SUResult res = SUEntitiesGetBoundingBox(m_entities, &box);
   assert(res == SU_ERROR_NONE); _unused(res);
   return BoundingBox3D(box);
