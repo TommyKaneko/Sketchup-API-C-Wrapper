@@ -65,7 +65,7 @@ Keep tests small, keep their name descriptive.
 2. Build
 3. Run
 
-Alternativly you can use the [Google Test Adapter extension](https://marketplace.visualstudio.com/items?itemName=ChristianSoltenborn.GoogleTestAdapter) which provides  overview of the tests from the UI. Makes it easy to run induvidual tests.
+Alternatively you can use the [Google Test Adapter extension](https://marketplace.visualstudio.com/items?itemName=ChristianSoltenborn.GoogleTestAdapter) which provides  overview of the tests from the UI. Makes it easy to run individual tests.
 
 #### Xcode
 *Coming soon.*
