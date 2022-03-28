@@ -278,7 +278,7 @@ InstancePath Model::instance_path(const String& persistent_id) const {
   SUResult res = SUInstancePathCreate(&instance_path_ref);
   assert(res == SU_ERROR_NONE);
   res = SUModelGetInstancePathByPid(m_model, persistent_id.ref(), &instance_path_ref);
-  if (res == SU_ERROR_GENERIC) {
+  if (res == SU_ERROR_GENERIC || res == SU_ERROR_NO_DATA) {
     // Probably passed an empty or invalid string - return an empty instance path
     return InstancePath();
   }
