@@ -1,5 +1,10 @@
-// Copyright 2013 Trimble Navigation Ltd.  All Rights Reserved
+// Copyright 2013 Trimble Inc.  All Rights Reserved
 
+
+/**
+ * @file
+ * @brief Interfaces for SUOptionsManagerRef.
+ */
 #ifndef SKETCHUP_MODEL_OPTIONS_MANAGER_H_
 #define SKETCHUP_MODEL_OPTIONS_MANAGER_H_
 
@@ -22,6 +27,7 @@ extern "C" {
 @brief  Gets the number of available options providers.
 @param[in]  options_manager The options manager object.
 @param[out] count           The number of options available.
+@related SUOptionsManagerRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if options_manager is not valid
@@ -38,6 +44,7 @@ SU_RESULT SUOptionsManagerGetNumOptionsProviders(
 @param[out] options_provider_names The options provider names retrieved.
 @param[out] count                  The number of options provider names
                                    retrieved.
+@related SUOptionsManagerRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if options_manager is not a valid object
@@ -55,6 +62,7 @@ SU_RESULT SUOptionsManagerGetOptionsProviderNames(
 @param[in] name              The name of the options provider object to get.
                              Assumed to be UTF-8 encoded.
 @param[out] options_provider The options_provider object retrieved.
+@related SUOptionsManagerRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if options_manager is not a valid object

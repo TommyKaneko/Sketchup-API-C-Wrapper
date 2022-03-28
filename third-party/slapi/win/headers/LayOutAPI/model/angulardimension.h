@@ -184,6 +184,9 @@ LO_RESULT LOAngularDimensionSetUsesCustomText(LOAngularDimensionRef dimension,
 
 /**
 @brief Creates a copy of the dimension text's \ref LOFormattedTextRef object.
+@note With the addition of auto-text in dimensions for LayOut 2019.2, the
+      copy of the dimension text incorrectly provided the plain text when
+      requesting the display text. This has been fixed in LayOut 2020.1, API 5.1.
 @since LayOut 2017, API 2.0
 @param[in]  dimension The angular dimension object.
 @param[out] text      The formatted text object.

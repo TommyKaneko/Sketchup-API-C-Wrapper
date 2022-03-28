@@ -1,5 +1,9 @@
-// Copyright 2015 Trimble Navigation Ltd. All Rights Reserved.
+// Copyright 2015-2020 Trimble Inc. All Rights Reserved.
 
+/**
+ * @file
+ * @brief Interfaces for SUAxesRef.
+ */
 #ifndef SKETCHUP_MODEL_AXES_H_
 #define SKETCHUP_MODEL_AXES_H_
 
@@ -14,6 +18,7 @@ extern "C" {
 
 /**
 @struct SUAxesRef
+@extends SUEntityRef
 @brief  An axes entity reference.
 @since SketchUp 2016, API 4.0
 */
@@ -23,6 +28,7 @@ extern "C" {
        essentially an upcast operation.
 @since SketchUp 2016, API 4.0
 @param[in] axes The axes object.
+@related SUAxesRef
 @return
 - The converted \ref SUEntityRef if axes is a valid object
 - If not, the returned reference will be invalid
@@ -35,6 +41,7 @@ SU_EXPORT SUEntityRef SUAxesToEntity(SUAxesRef axes);
        must be convertible to an \ref SUAxesRef.
 @since SketchUp 2016, API 4.0
 @param[in] entity The entity object.
+@related SUAxesRef
 @return
 - The converted \ref SUAxesRef if the downcast operation succeeds
 - If the downcast operation fails, the returned reference will be invalid
@@ -46,6 +53,7 @@ SU_EXPORT SUAxesRef SUAxesFromEntity(SUEntityRef entity);
        This is essentially an upcast operation.
 @since SketchUp 2016, API 4.0
 @param[in] axes The given axes reference.
+@related SUAxesRef
 @return
 - The converted \ref SUEntityRef if axes is a valid axes
 - If not, the returned reference will be invalid
@@ -58,6 +66,7 @@ SU_EXPORT SUDrawingElementRef SUAxesToDrawingElement(SUAxesRef axes);
        convertible to an \ref SUAxesRef.
 @since SketchUp 2016, API 4.0
 @param[in] drawing_elem The given element reference.
+@related SUAxesRef
 @return
 - The converted \ref SUAxesRef if the downcast operation succeeds
 - If not, the returned reference will be invalid.
@@ -66,10 +75,11 @@ SU_EXPORT SUAxesRef SUAxesFromDrawingElement(SUDrawingElementRef drawing_elem);
 
 /**
 @brief Creates a default constructed axes object. The axes object must be
-       subsequently deallocated with \ref SUAxesRelease unless it is
+       subsequently deallocated with \ref SUAxesRelease() unless it is
        associated with a parent object.
 @since SketchUp 2016, API 4.0
 @param[in] axes The axes object.
+@related SUAxesRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_NULL_POINTER_INPUT if axes is NULL
@@ -79,7 +89,7 @@ SU_RESULT SUAxesCreate(SUAxesRef* axes);
 
 /**
 @brief Creates an axes object. The axes object must be
-subsequently deallocated with \ref SUAxesRelease unless it is
+subsequently deallocated with \ref SUAxesRelease() unless it is
 associated with a parent object.
 @since SketchUp 2016, API 4.0
 @param[in] axes The axes object.
@@ -87,6 +97,7 @@ associated with a parent object.
 @param[in] xaxis The 1st axis for the custom 3D axes.
 @param[in] yaxis The 2nd axis for the custom 3D axes.
 @param[in] zaxis The 3rd axis for the custom 3D axes.
+@related SUAxesRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_NULL_POINTER_OUTPUT if axes is NULL
@@ -103,10 +114,11 @@ SU_RESULT SUAxesCreateCustom(SUAxesRef* axes,
 
 /**
 @brief Releases aa axes object. The axes object must have been created with
-       \ref SUAxesCreate and not subsequently associated with a parent object
+       \ref SUAxesCreate() and not subsequently associated with a parent object
        (e.g. \ref SUEntitiesRef).
 @since SketchUp 2016, API 4.0
 @param[in] axes The axes object.
+@related SUAxesRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_NULL_POINTER_INPUT if axes is NULL
@@ -119,6 +131,7 @@ SU_RESULT SUAxesRelease(SUAxesRef* axes);
 @since SketchUp 2016, API 4.0
 @param[in] axes The axes object.
 @param[out] origin Pointer to a \ref SUPoint3D struct for returning the origin.
+@related SUAxesRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if axes is not a valid object
@@ -131,6 +144,7 @@ SU_RESULT SUAxesGetOrigin(SUAxesRef axes, struct SUPoint3D* origin);
 @since SketchUp 2016, API 4.0
 @param[in] axes The axes object.
 @param[in] origin Pointer to a \ref SUPoint3D struct for setting the origin.
+@related SUAxesRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if axes is not a valid object
@@ -143,6 +157,7 @@ SU_RESULT SUAxesSetOrigin(SUAxesRef axes, const struct SUPoint3D* origin);
 @since SketchUp 2016, API 4.0
 @param[in] axes The axes object.
 @param[out] axis Pointer to a \ref SUVector3D struct for getting the 1st axis.
+@related SUAxesRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if axes is not a valid object
@@ -155,6 +170,7 @@ SU_RESULT SUAxesGetXAxis(SUAxesRef axes, struct SUVector3D* axis);
 @since SketchUp 2016, API 4.0
 @param[in] axes The axes object.
 @param[out] axis Pointer to a \ref SUVector3D struct for getting the 2nd axis.
+@related SUAxesRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if axes is not a valid object
@@ -167,6 +183,7 @@ SU_RESULT SUAxesGetYAxis(SUAxesRef axes, struct SUVector3D* axis);
 @since SketchUp 2016, API 4.0
 @param[in] axes The axes object.
 @param[out] axis Pointer to a \ref SUVector3D struct for getting the 3rd axis.
+@related SUAxesRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if axes is not a valid object
@@ -181,6 +198,7 @@ SU_RESULT SUAxesGetZAxis(SUAxesRef axes, struct SUVector3D* axis);
 @param[in] xaxis Pointer to a \ref SUVector3D struct for setting the 1st axis.
 @param[in] yaxis Pointer to a \ref SUVector3D struct for setting the 2nd axis.
 @param[in] zaxis Pointer to a \ref SUVector3D struct for setting the 3rd axis.
+@related SUAxesRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if axes is not a valid object
@@ -198,6 +216,7 @@ SU_RESULT SUAxesSetAxesVecs(SUAxesRef axes,
 @param[in] axes The axes object.
 @param[out] transform Pointer to a \ref SUTransformation struct for getting the
             transformation data.
+@related SUAxesRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if axes is not a valid object
@@ -211,6 +230,7 @@ SU_RESULT SUAxesGetTransform(SUAxesRef axes, struct SUTransformation* transform)
 @param[in] axes The axes object.
 @param[out] plane Pointer to a \ref SUPlane3D struct for getting the
 plane data.
+@related SUAxesRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if axes is not a valid object

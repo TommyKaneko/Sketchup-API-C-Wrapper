@@ -1,4 +1,67 @@
-2019 ????? ??: API Version 7.1 - SketchUp 2019.2
+2020 Aug 06: API Version 8.2 - SketchUp 2020.2
+  * Added SUModelGetSelection()
+  * Added SUModelGetActiveEntities()
+  * Added SUModelGetActivePath()
+  * Added SUSelectionRef
+  * Added SUSelectionAdd()
+  * Added SUSelectionRemove()
+  * Added SUSelectionToggle()
+  * Added SUSelectionClear()
+  * Added SUSelectionInvert()
+  * Added SUSelectionGetNumElements()
+  * Added SUSelectionGetEntityList()
+  * Added SUSelectionIsType()
+  * Added SUModelGetEntitiesOfTypeByPersistentIDs()
+  * Deprecated SUModelGetLayersByPersistentIDs()
+  * Deprecated SUModelGetEntitiesByPersistentIDs()
+  * Added function to exchange between C API and Ruby API references:
+    * SUEntityToRuby
+    * SUEntityFromRuby
+    * SUImageRepToRuby
+    * SUImageRepFromRuby
+  * Changed the behavior of SULineStyleSetLengthMultiplier() to accept negative
+    multiplier values. The previous behavior was to reject all values less than
+    or equal to zero. Negative values will now trigger "auto" stipple scaling
+    which is described in the documentation. Zero is still an invalid input.
+  * Changed the behavior of SULineStyleSetWidthPixels() to accept line widths
+    less than one. The previous behavior was to reject widths less than one as
+    invalid input. Input widths less than or equal to zero are still invalid.
+  * Clarified dictionary ownership rules for SUEntityAddAttributeDictionary().
+
+2020 April 30: API Version 8.1 - SketchUp 2020.1
+  * Added SUEntitiesWeld()
+  * Added SULineStyleFromEntity()
+  * Added SULineStyleToEntity()
+  * Added SUSceneGetUseHiddenGeometry()
+  * Added SUSceneGetUseHiddenObjects()
+  * Added SUSceneSetUseHiddenGeometry()
+  * Added SUSceneSetUseHiddenObjects()
+
+2020 January 28: API Version 8.0 - SketchUp 2020.0
+  * Added SULayerGetDisplayName()
+  * Added SULayerGetSceneBehavior()
+  * Added SULayerSetSceneBehavior()
+  * Added SULengthFormatterGetAreaPrecision()
+  * Added SULengthFormatterSetAreaPrecision()
+  * Added SULengthFormatterGetVolumePrecision()
+  * Added SULengthFormatterSetVolumePrecision()
+  * Added SUModelGetActiveLayer()
+  * Added SUModelGetEntitiesByPersistentIDs()
+  * Added SUModelGetLayersByPersistentIDs()
+  * Added SUModelIsDrawingElementVisible()
+  * Added SUModelSetActiveLayer()
+  * Added SUSceneGetDrawingElementHidden()
+  * Added SUSceneSetDrawingElementHidden()
+  * Added an extra return code for SUSceneAddLayer() and SUSceneRemoveLayer().
+  * Added support for SUFontRef to the function SUEntitiesGetPersistentId().
+  * Fixed a performance bug in SUEntitiesFill().
+  * Deprecated SUComponentDefinitionSetInsertPoint - it is now a NO-OP.
+  * SUModelSaveToFile updated to handle saving files 2GB and above
+  * Fixed SketchUpModelImporterInterface::ShowOptionsDialog to return the
+    correct type for the MacOS API. This update was previous done in
+    SketchUp 2019.2, API 7.1 for the Windows API.
+
+2019 July 18: API Version 7.1 - SketchUp 2019.2
   * Added SUApplicationGetActiveModel()
   * Added SULengthFormatterGetAreaUnits()
   * Added SULengthFormatterSetAreaUnits()
@@ -26,6 +89,8 @@
   * Added material validation before assignment to prevent material owned by
     layers or images to be assigned to normal drawing elements.
   * Removed Deprecated C++ COM Interface.
+  * Changed return type of SketchUpModelImporterInterface::ShowOptionsDialog
+    from void to SketchUpOptionsDialogResponse.
 
 2019 February 5: API Version 7.0 - SketchUp 2019 M0
   * Added SUDimensionGetFont()

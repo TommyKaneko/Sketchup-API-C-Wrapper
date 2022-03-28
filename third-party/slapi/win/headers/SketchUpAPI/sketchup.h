@@ -1,8 +1,42 @@
-// Copyright 2015 Trimble Navigation Ltd., All rights reserved.
+// Copyright 2015-2020 Trimble Inc., All rights reserved.
 // This file is intended for public distribution.
 
+/**
+ * @file
+ * @brief Utility header that loads all other headers in the SDK package.
+ */
 #ifndef SKETCHUP_SKETCHUP_H_
 #define SKETCHUP_SKETCHUP_H_
+
+/**
+ * @dir SketchUpAPI
+ * @brief Interfaces for the SketchUp SDK.
+ */
+
+/**
+ * @dir SketchUpAPI/application
+ * @brief Interfaces for usage within the SketchUp application.
+ */
+
+/**
+ * @dir SketchUpAPI/geometry
+ * @brief Interfaces for geometric operations.
+ */
+
+/**
+ * @dir SketchUpAPI/import_export
+ * @brief Interfaces for importers and exporters.
+ */
+
+/**
+ * @dir SketchUpAPI/model
+ * @brief Interfaces for the SketchUp model.
+ */
+
+/**
+ * @dir SketchUpAPI/utils
+ * @brief General utility interfaces.
+ */
 
 #include <SketchUpAPI/common.h>
 #include <SketchUpAPI/color.h>
@@ -72,6 +106,7 @@
 #include <SketchUpAPI/model/schema.h>
 #include <SketchUpAPI/model/schema_type.h>
 #include <SketchUpAPI/model/section_plane.h>
+#include <SketchUpAPI/model/selection.h>
 #include <SketchUpAPI/model/shadow_info.h>
 #include <SketchUpAPI/model/style.h>
 #include <SketchUpAPI/model/styles.h>

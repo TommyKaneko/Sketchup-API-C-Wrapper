@@ -1,5 +1,9 @@
-// Copyright 2016 Trimble Navigation Ltd. All Rights Reserved
+// Copyright 2016-2020 Trimble Inc. All Rights Reserved
 
+/**
+ * @file
+ * @brief Interfaces for SUClassificationAttributeRef.
+ */
 #ifndef SKETCHUP_MODEL_CLASSIFICATION_ATTRIBUTE_H_
 #define SKETCHUP_MODEL_CLASSIFICATION_ATTRIBUTE_H_
 
@@ -21,6 +25,7 @@ extern "C" {
 @since SketchUp 2017, API 5.0
 @param[in]  attribute The classification attribute object.
 @param[out] value     The value of the attribute.
+@related SUClassificationAttributeRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if attribute is not a valid object
@@ -38,6 +43,7 @@ SU_RESULT SUClassificationAttributeGetValue(
 @param[in]  attribute The classification attribute object.
 @param[out] path      The attribute name as it should be displayed to the
                          user.
+@related SUClassificationAttributeRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if attribute is not a valid object
@@ -54,6 +60,7 @@ SU_RESULT SUClassificationAttributeGetPath(
 @since SketchUp 2017, API 5.0
 @param[in]  attribute The classification attribute object.
 @param[out] count     The number of children this attribute contains.
+@related SUClassificationAttributeRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if attribute is not a valid object
@@ -69,6 +76,7 @@ SU_RESULT SUClassificationAttributeGetNumChildren(
 @param[in]  attribute The classification attribute object.
 @param[in]  index     The index of the child attribute to get.
 @param[out] child     The child attribute retrieved.
+@related SUClassificationAttributeRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if attribute is not a valid object

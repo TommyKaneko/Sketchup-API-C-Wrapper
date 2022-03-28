@@ -1,5 +1,10 @@
-// Copyright 2016 Trimble Navigation Ltd. All Rights Reserved.
+// Copyright 2016 Trimble Inc. All Rights Reserved.
 
+
+/**
+ * @file
+ * @brief Interfaces for SUFontRef.
+ */
 #ifndef SKETCHUP_MODEL_FONT_H_
 #define SKETCHUP_MODEL_FONT_H_
 
@@ -13,6 +18,7 @@ extern "C" {
 
 /**
 @struct SUFontRef
+@extends SUEntityRef
 @brief  A font entity reference.
 @since SketchUp 2017, API 5.0
 */
@@ -22,6 +28,7 @@ extern "C" {
 @since SketchUp 2017, API 5.0
 @param[in]  font The font object.
 @param[out] name  The name retrieved.
+@related SUFontRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if font is not a valid object
@@ -36,6 +43,7 @@ SU_RESULT SUFontGetFaceName(SUFontRef font, SUStringRef* name);
 @since SketchUp 2017, API 5.0
 @param[in]  font The font object.
 @param[out] size The returned font size.
+@related SUFontRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if font is not a valid object
@@ -48,6 +56,7 @@ SU_RESULT SUFontGetPointSize(SUFontRef font, size_t* size);
 @since SketchUp 2017, API 5.0
 @param[in]  font    The font object.
 @param[out] is_bold The boolean retrieved.
+@related SUFontRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if font is not a valid object
@@ -60,6 +69,7 @@ SU_RESULT SUFontGetBold(SUFontRef font, bool* is_bold);
 @since SketchUp 2017, API 5.0
 @param[in]  font      The font object.
 @param[out] is_italic The boolean retrieved.
+@related SUFontRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if font is not a valid object
@@ -74,6 +84,7 @@ SU_RESULT SUFontGetItalic(SUFontRef font, bool* is_italic);
 @since SketchUp 2017, API 5.0
 @param[in]  font           The font object.
 @param[out] use_world_size The boolean retrieved.
+@related SUFontRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if font is not a valid object
@@ -83,11 +94,12 @@ SU_RESULT SUFontGetUseWorldSize(SUFontRef font, bool* use_world_size);
 
 /**
 @brief Retrieves the height of the font in inches when the font size is defined
-       as a height in world space. That is, when \ref SUFontGetUseWorldSize
+       as a height in world space. That is, when \ref SUFontGetUseWorldSize()
        returns true.
 @since SketchUp 2017, API 5.0
 @param[in]  font       The font object.
 @param[out] world_size The returned world size factor.
+@related SUFontRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if font is not a valid object
@@ -100,6 +112,7 @@ SU_RESULT SUFontGetWorldSize(SUFontRef font, double* world_size);
        This is essentially an upcast operation.
 @since SketchUp 2019, API 7.0
 @param[in] font The given font reference.
+@related SUFontRef
 @return
 - The converted SUEntityRef if font is a valid font.
 - If not, the returned reference will be invalid.
@@ -112,6 +125,7 @@ SU_EXPORT SUEntityRef SUFontToEntity(SUFontRef font);
        convertible to an \ref SUFontRef.
 @since SketchUp 2019, API 7.0
 @param[in] entity The given entity reference.
+@related SUFontRef
 @return
 - The converted SUFontRef if the downcast operation succeeds
 - If not, the returned reference will be invalid

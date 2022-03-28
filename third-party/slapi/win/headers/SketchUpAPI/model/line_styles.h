@@ -1,5 +1,10 @@
 // Copyright 2018 Trimble Inc. All Rights Reserverd.
 
+
+/**
+ * @file
+ * @brief Interfaces for SULineStylesRef.
+ */
 #ifndef SKETCHUP_SOURCE_SKORE_SKETCHUP_PUBLIC_MODEL_LINESTYLES_H_
 #define SKETCHUP_SOURCE_SKORE_SKETCHUP_PUBLIC_MODEL_LINESTYLES_H_
 
@@ -21,6 +26,7 @@ extern "C" {
 @since SketchUp 2019, API 7.0
 @param[in]  line_styles The line_styles manager object.
 @param[out] count       The number of line styles available.
+@related SULineStylesRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if line_style_manager is not valid
@@ -38,6 +44,7 @@ SU_RESULT SULineStylesGetNumLineStyles(
 @param[out] line_styles_provider_names The line_style names retrieved.
 @param[out] count                      The number of line style names
 retrieved.
+@related SULineStylesRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if line_style_manager is not a valid object
@@ -53,20 +60,21 @@ SU_RESULT SULineStylesGetLineStyleNames(
 @brief  Retrieves the line styles provider given a name.
 @since SketchUp 2019, API 7.0
 @param[in] line_styles           The line_styles manager object.
-@param[in] name                  The name of the line_styles provider object to
+@param[in] name                  The name of the line style object to
      get. Assumed to be UTF-8 encoded.
-@param[out] line_styles_provider The line_styles_provider object retrieved.
+@param[out] line_style           The line style object retrieved.
+@related SULineStylesRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if line_styles is not a valid object
 - \ref SU_ERROR_NULL_POINTER_INPUT if name is NULL
 - \ref SU_ERROR_NULL_POINTER_OUTPUT if line_style is NULL
-- \ref SU_ERROR_NO_DATA if the requested line_styles provider object
-does not exist
+- \ref SU_ERROR_NO_DATA if name does not match the name of any existing style.
 */
 SU_RESULT SULineStylesGetLineStyleByName(
     SULineStylesRef line_styles, const char* name,
     SULineStyleRef* line_style);
+
 
 #ifdef __cplusplus
 }

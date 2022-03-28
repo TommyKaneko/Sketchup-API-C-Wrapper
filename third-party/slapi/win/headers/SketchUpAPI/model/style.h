@@ -1,5 +1,10 @@
-// Copyright 2015 Trimble Navigation Ltd. All Rights Reserved.
+// Copyright 2015 Trimble Inc. All Rights Reserved.
 
+
+/**
+ * @file
+ * @brief Interfaces for SUStyleRef.
+ */
 #ifndef SKETCHUP_MODEL_STYLE_H_
 #define SKETCHUP_MODEL_STYLE_H_
 
@@ -14,6 +19,7 @@ extern "C" {
 
 /**
 @struct SUStyleRef
+@extends SUEntityRef
 @brief  A style entity reference.
 @since SketchUp 2017, API 5.0
 */
@@ -22,6 +28,7 @@ extern "C" {
 @brief Creates an empty style object.
 @since SketchUp 2017, API 5.0
 @param[out] style The style object.
+@related SUStylesRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_NULL_POINTER_OUTPUT if style is NULL
@@ -35,6 +42,7 @@ SU_RESULT SUStyleCreate(SUStyleRef* style);
 @param[out] style The style object.
 @param[in]  path  The file path.
 Assumed to be UTF-8 encoded.
+@related SUStylesRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_NULL_POINTER_OUTPUT if style is NULL
@@ -48,6 +56,7 @@ SU_RESULT SUStyleCreateFromFile(SUStyleRef* style, const char* path);
  @brief Releases a style object.
  @since SketchUp 2017, API 5.0
  @param[in] style The style object.
+ @related SUStylesRef
  @return
  - \ref SU_ERROR_NONE on success
  - \ref SU_ERROR_NULL_POINTER_INPUT if style is NULL
@@ -60,6 +69,7 @@ SU_RESULT SUStyleRelease(SUStyleRef* style);
        essentially an upcast operation.
 @since SketchUp 2017, API 5.0
 @param[in] style The style object.
+@related SUStylesRef
 @return
 - The converted \ref SUEntityRef if style is a valid object
 - If not, the returned reference will be invalid
@@ -72,6 +82,7 @@ SU_EXPORT SUEntityRef SUStyleToEntity(SUStyleRef style);
        must be convertible to an \ref SUStyleRef.
 @since SketchUp 2017, API 5.0
 @param[in] entity The entity object.
+@related SUStylesRef
 @return
 - The converted \ref SUStyleRef if the downcast operation succeeds
 - If the downcast operation fails, the returned reference will be invalid
@@ -84,6 +95,7 @@ SU_EXPORT SUStyleRef SUStyleFromEntity(SUEntityRef entity);
 @param[in] style The style object.
 @param[in] name  The name string to set the style object.
 Assumed to be UTF-8 encoded.
+@related SUStylesRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if style is not a valid object
@@ -96,6 +108,7 @@ SU_RESULT SUStyleSetName(SUStyleRef style, const char* name);
 @since SketchUp 2017, API 5.0
 @param[in]  style The style object.
 @param[out] name  The name retrieved.
+@related SUStylesRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if style is not a valid object
@@ -113,6 +126,7 @@ SU_RESULT SUStyleGetName(SUStyleRef style, SUStringRef* name);
 @since SketchUp 2017, API 5.0
 @param[in]  style The style object.
 @param[out] name  The display name retrieved.
+@related SUStylesRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if style is not a valid object
@@ -128,6 +142,7 @@ SU_RESULT SUStyleGetDisplayName(SUStyleRef style, SUStringRef* name);
 @param[in] style       The style object.
 @param[in] description The description string to set the style object.
 Assumed to be UTF-8 encoded.
+@related SUStylesRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if style is not a valid object
@@ -140,6 +155,7 @@ SU_RESULT SUStyleSetDescription(SUStyleRef style, const char* description);
 @since SketchUp 2017, API 5.0
 @param[in]  style       The style object.
 @param[out] description The description retrieved.
+@related SUStylesRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if style is not a valid object
@@ -154,6 +170,7 @@ SU_RESULT SUStyleGetDescription(SUStyleRef style, SUStringRef* description);
 @since SketchUp 2017, API 5.0
 @param[in]  style The style object.
 @param[out] path  The path retrieved.
+@related SUStylesRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if style is not a valid object
@@ -168,6 +185,7 @@ SU_RESULT SUStyleGetPath(SUStyleRef style, SUStringRef* path);
 @since SketchUp 2017, API 5.0
 @param[in]  style The style object.
 @param[out] guid  The GUID retrieved.
+@related SUStylesRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if style is not a valid object
@@ -182,6 +200,7 @@ SU_RESULT SUStyleGetGuid(SUStyleRef style, SUStringRef* guid);
 @since SketchUp 2017, API 5.0
 @param[in]  style      The style object.
 @param[out] shows_mark The boolean retrieved.
+@related SUStylesRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if style is not a valid object
@@ -195,6 +214,7 @@ SU_RESULT SUStyleGetDisplaysWatermark(SUStyleRef style, bool* shows_mark);
 @param[in] style The style object.
 @param[in] path  The path to where the data should be saved. Assumed to be
 UTF-8 encoded.
+@related SUStylesRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if style is not a valid object
@@ -227,6 +247,7 @@ enum SUStylePropertyType {
 @param[in] style The style object.
 @param[in] type  The style type to set.
 @param[in] value The value to set for type.
+@related SUStylesRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if style or value are not valid objects or
@@ -245,6 +266,7 @@ SU_RESULT SUStyleSetProperty(SUStyleRef style,
 @param[in]  style The style object.
 @param[in]  type  The style type to retrieve.
 @param[out] value The \ref SUTypedValueRef retrieved.
+@related SUStylesRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if style is not a valid object
@@ -261,11 +283,12 @@ SU_RESULT SUStyleGetProperty(SUStyleRef style,
 
 /**
 @brief Retrieves an image containing the style's thumbnail.  The given image
-       representation object must have been constructed using \ref
-       SUImageRepCreate. It must be released using \ref SUImageRepRelease.
+       representation object must have been constructed using
+       SUImageRepCreate(). It must be released using SUImageRepRelease().
 @since SketchUp 2017, API 5.0
 @param[in]  style The style object.
 @param[out] image The image object retrieved.
+@related SUStylesRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if style is not a valid object

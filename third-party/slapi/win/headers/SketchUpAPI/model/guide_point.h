@@ -1,5 +1,10 @@
-// Copyright 2014 Trimble Navigation Ltd. All Rights Reserved.
+// Copyright 2014 Trimble Inc. All Rights Reserved.
 
+
+/**
+ * @file
+ * @brief Interfaces for SUGuidePointRef.
+ */
 #ifndef SKETCHUP_MODEL_GUIDE_POINT_H_
 #define SKETCHUP_MODEL_GUIDE_POINT_H_
 
@@ -13,6 +18,7 @@ extern "C" {
 
 /**
 @struct SUGuidePointRef
+@extends SUDrawingElementRef
 @brief  A guide point that has a position.
 @since SketchUp 2014 M1, API 2.1
 */
@@ -22,6 +28,7 @@ extern "C" {
        essentially an upcast operation.
 @since SketchUp 2014 M1, API 2.1
 @param[in] guide_point The guide point object.
+@related SUGuidePointRef
 @return
 - The converted \ref SUEntityRef if guide_point is a valid object
 - If not, the returned reference will be invalid
@@ -34,6 +41,7 @@ SU_EXPORT SUEntityRef SUGuidePointToEntity(SUGuidePointRef guide_point);
        must be convertible to an \ref SUGuidePointRef.
 @since SketchUp 2014 M1, API 2.1
 @param[in] entity The entity object.
+@related SUGuidePointRef
 @return
 - The converted \ref SUGuidePointRef if the downcast operation succeeds
 - If the downcast operation fails, the returned reference will be invalid
@@ -45,6 +53,7 @@ SU_EXPORT SUGuidePointRef SUGuidePointFromEntity(SUEntityRef entity);
        This is essentially an upcast operation.
 @since SketchUp 2015 M0, API 3.0
 @param[in] guide_point The given guide point reference.
+@related SUGuidePointRef
 @return
 - The converted \ref SUEntityRef if guide_point is a valid guide point.
 - If not, the returned reference will be invalid.
@@ -57,6 +66,7 @@ SU_EXPORT SUDrawingElementRef SUGuidePointToDrawingElement(SUGuidePointRef guide
        convertible to an SUGuidePointRef.
 @since SketchUp 2015 M0, API 3.0
 @param[in] drawing_elem The given element reference.
+@related SUGuidePointRef
 @return
 - The converted \ref SUGuidePointRef if the downcast operation succeeds
 - If not, the returned reference will be invalid
@@ -66,11 +76,12 @@ SU_EXPORT SUGuidePointRef SUGuidePointFromDrawingElement(SUDrawingElementRef
 
 /**
 @brief Creates a guide point object. The guide point object must be subsequently
-       deallocated with \ref SUGuidePointRelease unless it is associated with a
-       parent object.
+       deallocated with \ref SUGuidePointRelease() unless it is associated with
+       a parent object.
 @since SketchUp 2014 M1, API 2.1
 @param[in]  guide_point The guide point object.
 @param[out] position    The guide point position.
+@related SUGuidePointRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_NULL_POINTER_INPUT if guide_point is NULL
@@ -82,10 +93,11 @@ SU_RESULT SUGuidePointCreate(SUGuidePointRef* guide_point,
 
 /**
 @brief Releases a guide point object. The guide point object must have been
-       created with \ref SUGuidePointCreate and not subsequently associated with
-       a parent object (e.g. \ref SUEntitiesAddGuidePoints).
+       created with SUGuidePointCreate() and not subsequently associated
+       with a parent object (e.g. SUEntitiesAddGuidePoints()).
 @since SketchUp 2014 M1, API 2.1
 @param[in] guide_point The guide point object.
+@related SUGuidePointRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_NULL_POINTER_INPUT if guide_point is NULL
@@ -98,6 +110,7 @@ SU_RESULT SUGuidePointRelease(SUGuidePointRef* guide_point);
 @since SketchUp 2014 M1, API 2.1
 @param[in]  guide_point The guide point object.
 @param[out] position    The guide point position.
+@related SUGuidePointRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if guide point is an invalid object
@@ -114,6 +127,7 @@ SU_RESULT SUGuidePointGetPosition(SUGuidePointRef guide_point,
 @since SketchUp 2016, API 4.0
 @param[in]  guide_point The guide point object.
 @param[out] position    The guide point anchor position.
+@related SUGuidePointRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if guide point is an invalid object
@@ -129,6 +143,7 @@ SU_RESULT SUGuidePointGetFromPosition(SUGuidePointRef guide_point,
 @param[in]  guide_point The guide point object.
 @param[out] as_line     Return true if the point is set to be displayed as a
                         line.
+@related SUGuidePointRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if guide point is an invalid object

@@ -1,5 +1,9 @@
 // Copyright 2017 Trimble Inc., All rights reserved.
 
+/**
+ * @file
+ * @brief Interfaces for SUTransformation2D.
+ */
 #ifndef SKETCHUP_GEOMETRY_TRANSFORMATION2D_H_
 #define SKETCHUP_GEOMETRY_TRANSFORMATION2D_H_
 
@@ -18,6 +22,7 @@ extern "C" {
 @param[out] transform The transformation to be set.
 @param[in]  vector    The 2D vector specifying the translation for the
                       transformation.
+@related SUTransformation2D
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_NULL_POINTER_OUTPUT if transform is NULL
@@ -31,6 +36,7 @@ SU_RESULT SUTransformation2DTranslation(struct SUTransformation2D* transform,
 @since SketchUp 2019, API 7.0
 @param[out] transform The transformation to be set.
 @param[in]  scale     The scale value for the transformation.
+@related SUTransformation2D
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_NULL_POINTER_OUTPUT if transform is NULL
@@ -44,6 +50,7 @@ SU_RESULT SUTransformation2DScale(struct SUTransformation2D* transform,
 @param[out] transform The transformation to be set.
 @param[in]  x_scale   The x-axis scale value for the transformation.
 @param[in]  y_scale   The y-axis scale value for the transformation.
+@related SUTransformation2D
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_NULL_POINTER_OUTPUT if transform is NULL
@@ -60,6 +67,7 @@ SU_RESULT SUTransformation2DNonUniformScale(struct SUTransformation2D* transform
 @param[in]  point     The point specifying the translation component of the
                       transformation.
 @param[in]  scale     The scale value for the transformation.
+@related SUTransformation2D
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_NULL_POINTER_OUTPUT if transform is NULL
@@ -77,6 +85,7 @@ SU_RESULT SUTransformation2DScaleAboutPoint(struct SUTransformation2D* transform
                       transformation.
 @param[in]  x_scale   The x-axis scale value for the transformation.
 @param[in]  y_scale   The y-axis scale value for the transformation.
+@related SUTransformation2D
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_NULL_POINTER_OUTPUT if transform is NULL
@@ -95,6 +104,7 @@ SU_RESULT SUTransformation2DNonUniformScaleAboutPoint(
 @param[in]  point     The point specifying the translation component of the
                       transformation.
 @param[in]  angle     The rotation in radians for the transformation.
+@related SUTransformation2D
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_NULL_POINTER_INPUT if transform is NULL
@@ -110,6 +120,7 @@ SU_RESULT SUTransformation2DRotation(struct SUTransformation2D* transform,
 @since SketchUp 2019, API 7.0
 @param[in]  transform   The transformation object.
 @param[out] is_identity Whether the transformation is identity.
+@related SUTransformation2D
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_NULL_POINTER_INPUT if transform is NULL
@@ -124,6 +135,7 @@ SU_RESULT SUTransformation2DIsIdentity(
 @since SketchUp 2019, API 7.0
 @param[in]  transform The transformation object.
 @param[out] inverse   The inverse transformation object.
+@related SUTransformation2D
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_NULL_POINTER_OUTPUT if transform is NULL
@@ -141,6 +153,7 @@ SU_RESULT SUTransformation2DGetInverse(
 @param[in]   transform2    The transformation object to multiply by.
 @param[out]  out_transform The result of the matrix multiplication
                            [transform1 * transform2].
+@related SUTransformation2D
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_NULL_POINTER_OUTPUT if out_transform is NULL

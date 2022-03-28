@@ -1,4 +1,4 @@
-// Copyright 2015 Trimble Navigation Ltd. All rights reserved.
+// Copyright 2015-2020 Trimble Navigation Ltd. All rights reserved.
 // This file is intended for public distribution.
 
 #ifndef LAYOUT_MODEL_SKETCHUPMODEL_H_
@@ -150,7 +150,11 @@ LO_RESULT LOSketchUpModelSetRenderMode(LOSketchUpModelRef model,
                                        LOSketchUpModelRenderMode render_mode);
 
 /**
-@brief Renders the SketchUp model.
+ @brief Renders the SketchUp model. If the model belongs to a
+        \ref LODocumentRef, then the render will be performed at the
+        resolution set in document.page_info (see \ref LODocumentRef and
+        \ref LOPageInfoRef). Otherwise, the render will be performed at Low
+        resolution.
 @param[in] model The SketchUp model object.
 @return
 - \ref SU_ERROR_NONE on success
@@ -240,6 +244,116 @@ LO_RESULT LOSketchUpModelGetCurrentScene(LOSketchUpModelRef model,
 */
 LO_RESULT LOSketchUpModelSetCurrentScene(LOSketchUpModelRef model,
                                          size_t scene_index);
+
+/**
+@brief Gets whether the SketchUp model's camera has been modified.
+@param[in]  model    The SketchUp model object.
+@param[out] modified Indicates whether or not the camera has been modified
+                     in LayOut.
+@since LayOut 2020.1, API 5.1
+@return
+- \ref SU_ERROR_NONE on success
+- \ref SU_ERROR_INVALID_INPUT if model does not refer to a valid object
+- \ref SU_ERROR_NULL_POINTER_OUTPUT if modified is NULL
+*/
+LO_RESULT LOSketchUpModelGetCameraModified(LOSketchUpModelRef model,
+                                           bool* modified);
+
+/**
+@brief Resets the SketchUp model's camera to the scene's setting.
+@param[in] model The SketchUp model object.
+@since LayOut 2020.1, API 5.1
+@return
+- \ref SU_ERROR_NONE on success
+- \ref SU_ERROR_INVALID_INPUT if model does not refer to a valid object
+- \ref SU_ERROR_LAYER_LOCKED if model is on a locked layer
+- \ref SU_ERROR_ENTITY_LOCKED if model is locked
+*/
+LO_RESULT LOSketchUpModelResetCamera(LOSketchUpModelRef model);
+
+/**
+@brief Gets whether the SketchUp model's shadow or fog effects have been modified.
+@param[in]  model    The SketchUp model object.
+@param[out] modified Indicates whether or not the shadow or fog effects have
+                     been modified in LayOut.
+@since LayOut 2020.1, API 5.1
+@return
+- \ref SU_ERROR_NONE on success
+- \ref SU_ERROR_INVALID_INPUT if model does not refer to a valid object
+- \ref SU_ERROR_NULL_POINTER_OUTPUT if modified is NULL
+*/
+LO_RESULT LOSketchUpModelGetEffectsModified(LOSketchUpModelRef model,
+                                            bool* modified);
+
+/**
+@brief Resets the SketchUp model's shadow and fog effects to the scene's settings.
+@param[in] model The SketchUp model object.
+@since LayOut 2020.1, API 5.1
+@return
+- \ref SU_ERROR_NONE on success
+- \ref SU_ERROR_INVALID_INPUT if model does not refer to a valid object
+- \ref SU_ERROR_LAYER_LOCKED if model is on a locked layer
+- \ref SU_ERROR_ENTITY_LOCKED if model is locked
+*/
+LO_RESULT LOSketchUpModelResetEffects(LOSketchUpModelRef model);
+
+/**
+@brief Gets whether the SketchUp model's style has been modified.
+@param[in]  model    The SketchUp model object.
+@param[out] modified Indicates whether or not the style has been modified in
+                     LayOut.
+@since LayOut 2020.1, API 5.1
+@return
+- \ref SU_ERROR_NONE on success
+- \ref SU_ERROR_INVALID_INPUT if model does not refer to a valid object
+- \ref SU_ERROR_NULL_POINTER_OUTPUT if modified is NULL
+*/
+LO_RESULT LOSketchUpModelGetStyleModified(LOSketchUpModelRef model,
+                                          bool* modified);
+
+/**
+@brief Resets the SketchUp model's style to the scene's setting.
+@param[in] model The SketchUp model object.
+@since LayOut 2020.1, API 5.1
+@return
+- \ref SU_ERROR_NONE on success
+- \ref SU_ERROR_INVALID_INPUT if model does not refer to a valid object
+- \ref SU_ERROR_LAYER_LOCKED if model is on a locked layer
+- \ref SU_ERROR_ENTITY_LOCKED if model is locked
+*/
+LO_RESULT LOSketchUpModelResetStyle(LOSketchUpModelRef model);
+
+/**
+@brief Gets whether the SketchUp model's layers have been modified.
+@note  In SketchUp 2020, SketchUp "layers" were renamed to "tags". For
+       consistency with the SketchUp API, this will continue to refer to "tags"
+       as "layers".
+@since LayOut 2020.1, API 5.1
+@param[in]  model    The SketchUp model object.
+@param[out] modified Indicates whether or not the tag have been modified in
+                     LayOut.
+@return
+- \ref SU_ERROR_NONE on success
+- \ref SU_ERROR_INVALID_INPUT if model does not refer to a valid object
+- \ref SU_ERROR_NULL_POINTER_OUTPUT if modified is NULL
+*/
+LO_RESULT LOSketchUpModelGetLayersModified(LOSketchUpModelRef model,
+                                           bool* modified);
+
+/**
+@brief Resets the SketchUp model's layers to the scene's setting.
+@note  In SketchUp 2020, SketchUp "layers" were renamed to "tags". For
+       consistency with the SketchUp API, this will continue to refer to "tags"
+       as "layers".
+@since LayOut 2020.1, API 5.1
+@param[in] model The SketchUp model object.
+@return
+- \ref SU_ERROR_NONE on success
+- \ref SU_ERROR_INVALID_INPUT if model does not refer to a valid object
+- \ref SU_ERROR_LAYER_LOCKED if model is on a locked layer
+- \ref SU_ERROR_ENTITY_LOCKED if model is locked
+*/
+LO_RESULT LOSketchUpModelResetLayers(LOSketchUpModelRef model);
 
 /**
 @brief Gets the status of whether or not the background is displayed for the
@@ -472,17 +586,17 @@ LO_RESULT LOSketchUpModelGetClipMask(LOSketchUpModelRef model,
        assigned to this model. The entity being used must not be already part
        of a document or group. The clip mask entity must be either a rectangle,
        ellipse or a path.
+@note  Starting in LayOut 2020.1, API 5.1, clip_mask may be SU_INVALID, which
+       will remove the existing clip mask, if any.
 @since LayOut 2017, API 2.0
 @param[in] model     The SketchUp model object.
 @param[in] clip_mask The new clip mask for the SketchUp model.
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if model does not refer to a valid object
-- \ref SU_ERROR_INVALID_INPUT if clip_mask does not refer to a valid object
-- \ref SU_ERROR_GENERIC if the clip_mask is already in a document.
-- \ref SU_ERROR_UNSUPPORTED if the clip_mask is not a rectangle, ellipse, or 
-       path.
-- \ref SU_ERROR_LAYER_LOCKED if model is on a locked layer.
+- \ref SU_ERROR_GENERIC if clip_mask is already in a document or group
+- \ref SU_ERROR_UNSUPPORTED if clip_mask is not a rectangle, ellipse, or path
+- \ref SU_ERROR_LAYER_LOCKED if model is on a locked layer
 - \ref SU_ERROR_ENTITY_LOCKED if model is locked
 */
 LO_RESULT LOSketchUpModelSetClipMask(LOSketchUpModelRef model,

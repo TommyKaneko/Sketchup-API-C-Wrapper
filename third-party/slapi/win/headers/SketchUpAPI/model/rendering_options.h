@@ -1,5 +1,10 @@
-// Copyright 2013 Trimble Navigation Ltd.  All rights reserved.
+// Copyright 2013 Trimble Inc.  All rights reserved.
 
+
+/**
+ * @file
+ * @brief Interfaces for SURenderingOptionsRef.
+ */
 #ifndef SKETCHUP_MODEL_RENDERING_OPTIONS_H_
 #define SKETCHUP_MODEL_RENDERING_OPTIONS_H_
 
@@ -22,6 +27,7 @@ extern "C" {
 @since SketchUp 2017, API 5.0
 @param[in]  rendering_options The rendering options object.
 @param[out] count             The number of keys available.
+@related SURenderingOptionsRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if rendering_options is not valid
@@ -37,6 +43,7 @@ SU_RESULT SURenderingOptionsGetNumKeys(SURenderingOptionsRef rendering_options,
 @param[in]  len               The number of keys to retrieve.
 @param[out] keys              The keys retrieved.
 @param[out] count             The number of keys retrieved.
+@related SURenderingOptionsRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if rendering_options is not a valid object
@@ -54,6 +61,7 @@ SU_RESULT SURenderingOptionsGetKeys(SURenderingOptionsRef rendering_options,
 @param[in] rendering_options The rendering options object.
 @param[in] key               The key. Assumed to be UTF-8 encoded.
 @param[in] value_in          The value used to set the option.
+@related SURenderingOptionsRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if rendering_options or value_in is an invalid
@@ -69,6 +77,7 @@ SU_RESULT SURenderingOptionsSetValue(SURenderingOptionsRef rendering_options,
 @param[in]  rendering_options The rendering options object.
 @param[in]  key               The key. Assumed to be UTF-8 encoded.
 @param[out] value_out         The value retrieved.
+@related SURenderingOptionsRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if rendering_options is an invalid object

@@ -1,5 +1,10 @@
-// Copyright 2016 Trimble Navigation Ltd. All Rights Reserved.
+// Copyright 2016 Trimble Inc. All Rights Reserved.
 
+
+/**
+ * @file
+ * @brief Interfaces for SUDimensionRef.
+ */
 #ifndef SKETCHUP_MODEL_DIMENSION_H_
 #define SKETCHUP_MODEL_DIMENSION_H_
 
@@ -15,6 +20,7 @@ extern "C" {
 
 /**
 @struct SUDimensionRef
+@extends SUDrawingElementRef
 @brief  A dimension entity reference.
 @since SketchUp 2017, API 5.0
 */
@@ -34,6 +40,7 @@ enum SUDimensionType {
        essentially an upcast operation.
 @since SketchUp 2017, API 5.0
 @param[in] dimension The given dimension reference.
+@related SUDimensionRef
 @return
 - The converted \ref SUEntityRef if dimension is a valid object
 - If not, the returned reference will be invalid
@@ -46,6 +53,7 @@ SU_EXPORT SUEntityRef SUDimensionToEntity(SUDimensionRef dimension);
        convertible to an \ref SUDimensionRef.
 @since SketchUp 2017, API 5.0
 @param[in] entity The given entity reference.
+@related SUDimensionRef
 @return
 - The converted \ref SUDimensionRef if the downcast operation succeeds
 - If not, the returned reference will be invalid
@@ -57,6 +65,7 @@ SU_EXPORT SUDimensionRef SUDimensionFromEntity(SUEntityRef entity);
        This is essentially an upcast operation.
 @since SketchUp 2017, API 5.0
 @param[in] dimension The given dimension reference.
+@related SUDimensionRef
 @return
 - The converted \ref SUDrawingElementRef if dimension is a valid object
 - If not, the returned reference will be invalid
@@ -70,6 +79,7 @@ SU_EXPORT SUDrawingElementRef SUDimensionToDrawingElement(
        be convertible to an \ref SUDimensionRef.
 @since SketchUp 2017, API 5.0
 @param[in] element The given drawing element reference.
+@related SUDimensionRef
 @return
 - The converted \ref SUDimensionRef if the downcast operation succeeds
 - If not, the returned reference will be invalid
@@ -82,6 +92,7 @@ SU_EXPORT SUDimensionRef SUDimensionFromDrawingElement(
 @since SketchUp 2017, API 5.0
 @param[in]  dimension The dimension object.
 @param[out] type      The dimension type enum value retrieved.
+@related SUDimensionRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if dimension is not a valid object
@@ -95,6 +106,7 @@ SU_RESULT SUDimensionGetType(SUDimensionRef dimension,
 @since SketchUp 2017, API 5.0
 @param[in]  dimension The dimension object.
 @param[out] text      The name retrieved.
+@related SUDimensionRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if dimension is not a valid object
@@ -109,6 +121,7 @@ SU_RESULT SUDimensionGetText(SUDimensionRef dimension, SUStringRef* text);
 @since SketchUp 2017, API 5.0
 @param[in] dimension The dimension object.
 @param[in] text      The text to be set. Assumed to be UTF-8 encoded.
+@related SUDimensionRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if dimension is not a valid object
@@ -121,6 +134,7 @@ SU_RESULT SUDimensionSetText(SUDimensionRef dimension, const char* text);
 @since SketchUp 2017, API 5.0
 @param[in]  dimension The dimension object.
 @param[out] plane     The 3d plane retrieved.
+@related SUDimensionRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if dimension is not a valid object
@@ -134,6 +148,7 @@ SU_RESULT SUDimensionGetPlane(SUDimensionRef dimension,
 @since SketchUp 2017, API 5.0
 @param[in]  dimension  The dimension object.
 @param[out] is_text_3d The flag value retrieved.
+@related SUDimensionRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if dimension is not a valid object
@@ -146,6 +161,7 @@ SU_RESULT SUDimensionGetText3D(SUDimensionRef dimension, bool* is_text_3d);
 @since SketchUp 2017, API 5.0
 @param[in] dimension  The dimension object.
 @param[in] is_text_3d The flag to be set.
+@related SUDimensionRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if dimension is not a valid object
@@ -157,6 +173,7 @@ SU_RESULT SUDimensionSetText3D(SUDimensionRef dimension, bool is_text_3d);
 @since SketchUp 2017, API 5.0
 @param[in]  dimension The dimension object.
 @param[out] type      The arrow type enum value retrieved.
+@related SUDimensionRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if dimension is not a valid object
@@ -170,6 +187,7 @@ SU_RESULT SUDimensionGetArrowType(SUDimensionRef dimension,
 @since SketchUp 2017, API 5.0
 @param[in] dimension The dimension object.
 @param[in] type      The arrow type to be set.
+@related SUDimensionRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if dimension is not a valid object
@@ -183,6 +201,7 @@ SU_RESULT SUDimensionSetArrowType(SUDimensionRef dimension,
 @since SketchUp 2019, API 7.0
 @param[in]  dimension The dimension object.
 @param[out] font      The font retrieved.
+@related SUDimensionRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if dimension is not a valid object
@@ -195,6 +214,7 @@ SU_RESULT SUDimensionGetFont(SUDimensionRef dimension, SUFontRef* font);
 @since SketchUp 2019, API 7.0
 @param[in] dimension The dimension object.
 @param[in] font      The font to be set.
+@related SUDimensionRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if dimension or font is not a valid object

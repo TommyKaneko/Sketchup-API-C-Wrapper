@@ -57,7 +57,7 @@ LO_RESULT LOConnectionPointCreate(LOConnectionPointRef* connection_point,
 - \ref SU_ERROR_OVERWRITE_VALID if *connection_point already refers to a valid
   object
 - \ref SU_ERROR_INVALID_INPUT if model does not refer to a valid object
-- \ref SU_ERROR_NULL_POINTER_INPUT if point is NULL
+- \ref SU_ERROR_NULL_POINTER_INPUT if point3d is NULL
 - \ref SU_ERROR_GENERIC if the model is not in a document
 */
 LO_RESULT LOConnectionPointCreateFromPoint3D(
@@ -70,6 +70,8 @@ LO_RESULT LOConnectionPointCreateFromPoint3D(
        at the given 3D point in model space. Note that connection points created
        via this function have a persistent ID assigned to them, resulting in a
        connection point that updates when the geometry is modified.
+@note  Starting in LayOut 2020.1, API 5.1, SU_ERROR_NO_DATA will be returned if
+       persistent_id isn't valid for the given model.
 @since LO 2017, API 2.0
 @param[out] connection_point The connection point object.
 @param[in]  model            The SketchUp model object.
@@ -82,8 +84,8 @@ LO_RESULT LOConnectionPointCreateFromPoint3D(
   object
 - \ref SU_ERROR_INVALID_INPUT if model does not refer to a valid object
 - \ref SU_ERROR_NULL_POINTER_INPUT if point3d or persistent_id is NULL
-- \ref SU_ERROR_GENERIC if the model is not in a document or if the
-  persistent_id does not refer to a valid path.
+- \ref SU_ERROR_GENERIC if the model is not in a document
+- \ref SU_ERROR_NO_DATA if persistent_id does not refer to a valid path
 */
 LO_RESULT LOConnectionPointCreateFromPID(LOConnectionPointRef* connection_point,
                                          LOSketchUpModelRef model,

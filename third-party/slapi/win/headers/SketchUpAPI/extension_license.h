@@ -1,5 +1,9 @@
-// Copyright 2014 Trimble Navigation Ltd., All rights reserved.
+// Copyright 2014 Trimble Inc., All rights reserved.
 
+/**
+ * @file
+ * @brief Interfaces for SUExtensionLicense.
+ */
 #ifndef SKETCHUP_EXTENSION_LICENSE_H_
 #define SKETCHUP_EXTENSION_LICENSE_H_
 
@@ -41,6 +45,7 @@ struct SUExtensionLicense {
 @brief Acquires a license for a given extension.
 @param[in]  extension_id The Extension Warehouse UUID for the extension.
 @param[out] out_license  the licensing retrieved.
+@related SUExtensionLicense
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_GENERIC if retrieving the extension license failed
