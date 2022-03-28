@@ -1,5 +1,9 @@
-// Copyright 2012 Trimble Navigation Ltd. All Rights Reserved.
+// Copyright 2012-2020  Trimble, Inc. All Rights Reserved.
 
+/**
+ * @file
+ * @brief Interfaces for SketchUpModelImporterInterface.
+ */
 #ifndef MODELIMPORTERPLUGIN_H_
 #define MODELIMPORTERPLUGIN_H_
 
@@ -7,6 +11,14 @@
 
 #include <SketchUpAPI/import_export/pluginprogresscallback.h>
 
+/** @brief Return type of SketchUpOptionsDialogResponse::ShowOptionsDialog(). */
+enum SketchUpOptionsDialogResponse {
+  IMPORTER_OPTIONS_UNAVAILABLE = 0, ///< Importer options not available.
+  IMPORTER_OPTIONS_CANCELLED = 1, ///< Importer options cancelled.
+  IMPORTER_OPTIONS_ACCEPTED = 2 ///< Importer options accepted.
+};
+
+/** Return type of GetImporterBehavior(). */
 enum SketchUpModelImporterBehavior {
   IMPORT_MODEL_AT_ORIGIN = 0, ///< Preserves coordinates of the imported
                               ///< geometry.
@@ -79,8 +91,19 @@ class SketchUpModelImporterInterface {
           importer. Implementing this is required if SupportOptions is true.
           Options should be saved someplace which persists between this method
           and ConvertToSkp as well as between sessions.
+  @warning *** Breaking Change: The behavior of this method was changed in
+          SketchUp 2019.2, API 7.1 on the Windows API and SketchUp 2020, API 8.0
+          on the MacOS API. In previous releases, the method returned void. Now
+          it will return \ref SketchUpOptionsDialogResponse.
+  @return SketchUpOptionsDialogResponse
+          IMPORTER_OPTIONS_UNAVAILABLE if unable to display options,
+          IMPORTER_OPTIONS_CANCELLED if options were cancelled,
+          IMPORTER_OPTIONS_ACCEPTED if options were accepted
+
   */
-  virtual void ShowOptionsDialog() {}
+  virtual SketchUpOptionsDialogResponse ShowOptionsDialog() {
+      return IMPORTER_OPTIONS_UNAVAILABLE;
+  }
 
   /**
   @brief Indicates whether the plugin supports the progress callback.
@@ -141,7 +164,7 @@ class SketchUpModelImporterInterface {
   */
 + (id<SketchUpModelImporterPlugin>)importer;
 
-  /** 
+  /**
   @brief  This returns our c++ interface from the obj-c wrapper.
   */
   // This grabs our c++ interface from the obj-c wrapper.

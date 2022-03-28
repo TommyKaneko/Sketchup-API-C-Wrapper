@@ -1,5 +1,10 @@
-// Copyright 2013 Trimble Navigation Ltd. All Rights Reserved.
+// Copyright 2013 Trimble Inc. All Rights Reserved.
 
+
+/**
+ * @file
+ * @brief Interfaces for SUVertexRef.
+ */
 #ifndef SKETCHUP_MODEL_VERTEX_H_
 #define SKETCHUP_MODEL_VERTEX_H_
 
@@ -13,6 +18,7 @@ extern "C" {
 
 /**
 @struct SUVertexRef
+@extends SUEntityRef
 @brief  A vertex type that has a position and is associated with other geometry
         like edges, faces, and loops.
 */
@@ -21,6 +27,7 @@ extern "C" {
 @brief  Converts from an \ref SUVertexRef to an \ref SUEntityRef.  This is
         essentially an upcast operation.
 @param[in] vertex The vertex object.
+@related SUVertexRef
 @return
 - The converted \ref SUEntityRef if vertex is a valid object
 - If not, the returned reference will be invalid
@@ -32,6 +39,7 @@ SU_EXPORT SUEntityRef SUVertexToEntity(SUVertexRef vertex);
         essentially a downcast operation so the given \ref SUEntityRef must be
         convertible to an \ref SUVertexRef.
 @param[in] entity The entity object.
+@related SUVertexRef
 @return
 - The converted \ref SUVertexRef if the downcast operation succeeds
 - If the downcast operation fails, the returned reference will be invalid
@@ -42,6 +50,7 @@ SU_EXPORT SUVertexRef SUVertexFromEntity(SUEntityRef entity);
 @brief  Retrieves the position of a vertex object.
 @param[in]  vertex   The vertex object.
 @param[out] position The vertex position.
+@related SUVertexRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if vertex is an invalid object
@@ -54,6 +63,7 @@ SU_RESULT SUVertexGetPosition(SUVertexRef vertex,
 @brief  Sets the position of a vertex object.
 @param[in] vertex   The vertex object.
 @param[in] position The value used to set the vertex position.
+@related SUVertexRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if vertex is an invalid object
@@ -66,6 +76,7 @@ SU_RESULT SUVertexSetPosition(SUVertexRef vertex,
 @brief  Retrieves the number of edges that the vertex is associated with.
 @param[in]  vertex The vertex object.
 @param[out] count  The number of edges.
+@related SUVertexRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if vertex is an invalid object
@@ -79,6 +90,7 @@ SU_RESULT SUVertexGetNumEdges(SUVertexRef vertex, size_t* count);
 @param[in]  len    The number of edges to retrieve.
 @param[out] edges  The edges retrieved.
 @param[out] count  The number of edges retrieved.
+@related SUVertexRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if vertex is an invalid object
@@ -91,6 +103,7 @@ SU_RESULT SUVertexGetEdges(SUVertexRef vertex, size_t len,
 @brief  Retrieves the number of faces that the vertex is associated with.
 @param[in]  vertex The vertex object.
 @param[out] count  The number of faces.
+@related SUVertexRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if vertex is an invalid object
@@ -104,6 +117,7 @@ SU_RESULT SUVertexGetNumFaces(SUVertexRef vertex, size_t* count);
 @param[in]  len    The number of faces to retrieve.
 @param[out] faces  The faces retrieved.
 @param[out] count  The number of faces retrieved.
+@related SUVertexRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if vertex is an invalid object
@@ -116,6 +130,7 @@ SU_RESULT SUVertexGetFaces(SUVertexRef vertex, size_t len,
 @brief  Retrieves the number of loops that the vertex is associated with.
 @param[in]  vertex The vertex object.
 @param[out] count  The number of loops.
+@related SUVertexRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if vertex is an invalid object
@@ -129,6 +144,7 @@ SU_RESULT SUVertexGetNumLoops(SUVertexRef vertex, size_t* count);
 @param[in]  len    The number of loops to retrieve.
 @param[out] loops  The loops retrieved.
 @param[out] count  The number of loops retrieved.
+@related SUVertexRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if vertex is an invalid object

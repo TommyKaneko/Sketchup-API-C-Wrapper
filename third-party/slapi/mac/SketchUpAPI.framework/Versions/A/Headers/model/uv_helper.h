@@ -1,5 +1,10 @@
-// Copyright 2013 Trimble Navigation Ltd. All Rights Reserved.
+// Copyright 2013 Trimble Inc. All Rights Reserved.
 
+
+/**
+ * @file
+ * @brief Interfaces for SUUVHelperRef.
+ */
 #ifndef SKETCHUP_MODEL_UV_HELPER_H_
 #define SKETCHUP_MODEL_UV_HELPER_H_
 
@@ -21,14 +26,15 @@ extern "C" {
 @brief Stores UV texture coordinates.
 */
 struct SUUVQ {
-  double u;
-  double v;
-  double q;
+  double u; ///< U coordinate
+  double v; ///< V coordinate
+  double q; ///< Q coordinate
 };
 
 /**
 @brief  Releases a UVHelper object that was obtained from a face.
 @param[in] uvhelper The UV helper object.
+@related SUUVHelperRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_NULL_POINTER_INPUT if uvhelper is NULL
@@ -41,6 +47,7 @@ SU_RESULT SUUVHelperRelease(SUUVHelperRef* uvhelper);
 @param[in]  uvhelper The UV helper object.
 @param[in]  point    The point where the coordinates are to be computed.
 @param[out] uvq      The coordinates retrieved.
+@related SUUVHelperRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if uvhelper is an invalid object
@@ -56,6 +63,7 @@ SU_RESULT SUUVHelperGetFrontUVQ(SUUVHelperRef uvhelper,
 @param[in]  uvhelper The UVHelper object.
 @param[in]  point    The point where the coordinates are to be computed.
 @param[out] uvq      The coordinates retrieved.
+@related SUUVHelperRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if uvhelper is an invalid object

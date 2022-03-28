@@ -30,8 +30,9 @@ typedef enum {
   LODocumentVersion_2017 = 17,                        ///< LayOut 2017
   LODocumentVersion_2018 = 18,                        ///< LayOut 2018
   LODocumentVersion_2019 = 19,                        ///< LayOut 2019
+  LODocumentVersion_2020 = 20,                        ///< LayOut 2020
 
-  LODocumentVersion_Current = LODocumentVersion_2019, ///< The most current version supported.
+  LODocumentVersion_Current = LODocumentVersion_2020, ///< The most current version supported.
 
   LONumDocumentVersions
 } LODocumentVersion;
@@ -133,7 +134,8 @@ LO_RESULT LODocumentAddReference(LODocumentRef document);
 - \ref SU_ERROR_INVALID_INPUT if document does not refer to a valid object
 - \ref SU_ERROR_NULL_POINTER_INPUT if path is NULL
 - \ref SU_ERROR_OUT_OF_RANGE if version is not a valid version
-- \ref SU_ERROR_SERIALIZATION if there was an error writing the file
+- \ref SU_ERROR_SERIALIZATION if there was an error writing the file. This may
+  be due to the LayOut file being open in the LayOut application
 */
 LO_RESULT LODocumentSaveToFile(LODocumentRef document,
                                const char* path,

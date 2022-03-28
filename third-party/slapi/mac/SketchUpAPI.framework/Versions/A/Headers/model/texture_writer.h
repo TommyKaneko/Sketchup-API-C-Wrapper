@@ -1,5 +1,10 @@
-// Copyright 2013 Trimble Navigation Ltd. All Rights Reserved.
+// Copyright 2013 Trimble Inc. All Rights Reserved.
 
+
+/**
+ * @file
+ * @brief Interfaces for SUTextureWriterRef.
+ */
 #ifndef SKETCHUP_MODEL_TEXTURE_WRITER_H_
 #define SKETCHUP_MODEL_TEXTURE_WRITER_H_
 
@@ -18,14 +23,15 @@ extern "C" {
         disk.  For face objects texture writer modifies non-affine textures on
         write so that the resulting texture image can be mapped with
         2-dimensional texture coordinates.  The modified UV coordinates are
-        retrieved from a mesh object created with \ref
-        SUMeshHelperCreateWithTextureWriter.
+        retrieved from a mesh object created with
+        SUMeshHelperCreateWithTextureWriter().
 */
 
 /**
 @brief  Creates a new texture writer object. The texture writer must be
-        subsequently deallocated with \ref SUTextureWriterRelease.
+        subsequently deallocated with SUTextureWriterRelease().
 @param[out] writer The created texture writer object.
+@related SUTextureWriterRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_NULL_POINTER_OUTPUT if writer is NULL
@@ -35,6 +41,7 @@ SU_RESULT SUTextureWriterCreate(SUTextureWriterRef* writer);
 /**
 @brief  Deallocates a texture writer object.
 @param[in] writer The texture writer object.
+@related SUTextureWriterRef
 @return
 - \ref SU_ERROR_NONE on return
 - \ref SU_ERROR_INVALID_INPUT if writer does not reference a valid object
@@ -50,6 +57,7 @@ SU_RESULT SUTextureWriterRelease(SUTextureWriterRef* writer);
 @param[in]  writer     The texture writer object.
 @param[in]  entity     The entity object.
 @param[out] texture_id The id of the texture.
+@related SUTextureWriterRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if writer or entity is not a valid object
@@ -68,6 +76,7 @@ SU_RESULT SUTextureWriterLoadEntity(SUTextureWriterRef writer,
 @param[in]  face             The face object.
 @param[out] front_texture_id The texture ID of the front texture.
 @param[out] back_texture_id  The texture ID of the back texture.
+@related SUTextureWriterRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if writer or face is not a valid object
@@ -87,6 +96,7 @@ SU_RESULT SUTextureWriterLoadFace(SUTextureWriterRef writer,
         writer object.
 @param[in]  writer The texture writer object.
 @param[out] count  The number of textures.
+@related SUTextureWriterRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if writer is not a valid object
@@ -106,6 +116,7 @@ SU_RESULT SUTextureWriterGetNumTextures(SUTextureWriterRef writer,
                        "png". Assumed to be UTF-8 encoded.
 @param[in] reduce_size Indicates whether the texture image should be reduced in
                        size through scaling.
+@related SUTextureWriterRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if writer is not a valid object
@@ -121,12 +132,13 @@ SU_RESULT SUTextureWriterWriteTexture(SUTextureWriterRef writer,
 /**
  @brief  Retrieves an image from the given texture_id. The given image
          representation object must have been constructed using one of the
-         SUImageRepCreate* functions. It must be released using \ref 
-         SUImageRepRelease.
+         SUImageRepCreate* functions. It must be released using
+         SUImageRepRelease().
 @since SketchUp 2017 M2, API 5.2
 @param[in] writer      The texture writer object.
 @param[in] texture_id  The id of the texture.
 @param[out] image      The image object retrieved.
+@related SUTextureWriterRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if writer is not a valid object
@@ -145,6 +157,7 @@ SU_RESULT SUTextureWriterGetImageRep(SUTextureWriterRef writer,
 @param[in] writer    The texture writer object.
 @param[in] directory The directory on disk to write the textures. Assumed to be
                      UTF-8 encoded.
+@related SUTextureWriterRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if writer is not a valid object
@@ -162,6 +175,7 @@ SU_RESULT SUTextureWriterWriteAllTextures(SUTextureWriterRef writer,
 @param[in]  writer     The texture writer object.
 @param[in]  texture_id The id of the texture.
 @param[out] is_affine  The affine flag retrieved.
+@related SUTextureWriterRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if writer is not a valid object
@@ -178,6 +192,7 @@ SU_RESULT SUTextureWriterIsTextureAffine(SUTextureWriterRef writer,
 @param[in]  writer     The texture writer object.
 @param[in]  texture_id The id of the texture.
 @param[out] file_path  The file path retrieved.
+@related SUTextureWriterRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if writer is not a valid object
@@ -200,6 +215,7 @@ SU_RESULT SUTextureWriterGetTextureFilePath(SUTextureWriterRef writer,
 @param[in]  len       The number of vertex positions.
 @param[in]  points    The vertex positions.
 @param[out] uv_coords The UV coordinates retrieved.
+@related SUTextureWriterRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if writer or face is not a valid object
@@ -221,6 +237,7 @@ SU_RESULT SUTextureWriterGetFrontFaceUVCoords(SUTextureWriterRef writer,
 @param[in]  len       The number of vertex positions.
 @param[in]  points    The vertex positions.
 @param[out] uv_coords The UV coordinates retrieved.
+@related SUTextureWriterRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if writer or face is not a valid object
@@ -240,6 +257,7 @@ SU_RESULT SUTextureWriterGetBackFaceUVCoords(SUTextureWriterRef writer,
 @param[in]  writer     The texture writer object.
 @param[in]  entity     The entity object.
 @param[out] texture_id The texture id retrieved.
+@related SUTextureWriterRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if writer or entity is not a valid object
@@ -259,6 +277,7 @@ SU_RESULT SUTextureWriterGetTextureIdForEntity(SUTextureWriterRef writer,
                    texture for the front face, false if we want the texture for
                    the back face.
 @param[out] texture_id The texture id retrieved.
+@related SUTextureWriterRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if writer or face is not a valid object

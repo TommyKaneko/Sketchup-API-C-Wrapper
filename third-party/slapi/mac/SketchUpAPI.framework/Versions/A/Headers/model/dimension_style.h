@@ -1,5 +1,10 @@
-// Copyright 2016 Trimble Navigation Ltd. All Rights Reserved.
+// Copyright 2016 Trimble Inc. All Rights Reserved.
 
+
+/**
+ * @file
+ * @brief Interfaces for SUDimensionStyleRef.
+ */
 #ifndef SKETCHUP_MODEL_DIMENSION_STYLE_H_
 #define SKETCHUP_MODEL_DIMENSION_STYLE_H_
 
@@ -22,6 +27,7 @@ extern "C" {
 @since SketchUp 2017, API 5.0
 @param[in]  style The dimension style object.
 @param[out] font  The font retrieved.
+@related SUDimensionStyleRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if style is not a valid object
@@ -34,6 +40,7 @@ SU_RESULT SUDimensionStyleGetFont(SUDimensionStyleRef style, SUFontRef* font);
 @since SketchUp 2017, API 5.0
 @param[in]  style  The dimension style object.
 @param[out] has_3d The flag value retrieved.
+@related SUDimensionStyleRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if dimension is not a valid object
@@ -47,6 +54,7 @@ SU_RESULT SUDimensionStyleGet3D(SUDimensionStyleRef style, bool* has_3d);
 @since SketchUp 2017, API 5.0
 @param[in]  style The dimension style object.
 @param[out] type  The arrow type enum value retrieved.
+@related SUDimensionStyleRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if style is not a valid object
@@ -59,6 +67,7 @@ SU_RESULT SUDimensionStyleGetArrowType(SUDimensionStyleRef style, enum SUArrowTy
 @since SketchUp 2017, API 5.0
 @param[in]  style The dimension style object.
 @param[out] size  The size retrieved.
+@related SUDimensionStyleRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if style is not a valid object
@@ -71,6 +80,7 @@ SU_RESULT SUDimensionStyleGetArrowSize(SUDimensionStyleRef style, size_t* size);
 @since SketchUp 2017, API 5.0
 @param[in]  style The dimension style object.
 @param[out] color The color retrieved.
+@related SUDimensionStyleRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if style is not a valid object
@@ -84,6 +94,7 @@ SU_RESULT SUDimensionStyleGetColor(SUDimensionStyleRef style,
 @since SketchUp 2017, API 5.0
 @param[in]  style The dimension style object.
 @param[out] color The color retrieved.
+@related SUDimensionStyleRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if style is not a valid object
@@ -99,6 +110,7 @@ SU_RESULT SUDimensionStyleGetTextColor(SUDimensionStyleRef style,
 @since SketchUp 2017, API 5.0
 @param[in]  style  The dimension style object.
 @param[out] offset The offset retrieved.
+@related SUDimensionStyleRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if style is not a valid object
@@ -114,6 +126,7 @@ SU_RESULT SUDimensionStyleGetExtensionLineOffset(SUDimensionStyleRef style,
 @since SketchUp 2017, API 5.0
 @param[in]  style     The dimension style object.
 @param[out] overshoot The overshoot retrieved.
+@related SUDimensionStyleRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if style is not a valid object
@@ -127,6 +140,7 @@ SU_RESULT SUDimensionStyleGetExtensionLineOvershoot(SUDimensionStyleRef style,
 @since SketchUp 2017, API 5.0
 @param[in]  style  The dimension style object.
 @param[out] weight The weight retrieved.
+@related SUDimensionStyleRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if style is not a valid object
@@ -143,6 +157,7 @@ SU_RESULT SUDimensionStyleGetLineWeight(SUDimensionStyleRef style,
 @since SketchUp 2017, API 5.0
 @param[in]  style     The dimension style object.
 @param[out] highlight The flag value retrieved.
+@related SUDimensionStyleRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if style is not a valid object
@@ -157,6 +172,7 @@ SU_RESULT SUDimensionStyleGetHighlightNonAssociativeDimensions(
 @since SketchUp 2017, API 5.0
 @param[in]  style The dimension style object.
 @param[out] color The color retrieved.
+@related SUDimensionStyleRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if style is not a valid object
@@ -171,6 +187,7 @@ SU_RESULT SUDimensionStyleGetHighlightNonAssociativeDimensionsColor(
 @since SketchUp 2017, API 5.0
 @param[in]  style The dimension style object.
 @param[out] show  The flag value retrieved.
+@related SUDimensionStyleRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if style is not a valid object
@@ -186,6 +203,7 @@ SU_RESULT SUDimensionStyleGetShowRadialPrefix(SUDimensionStyleRef style,
 @since SketchUp 2017, API 5.0
 @param[in]  style The dimension style object.
 @param[out] hide  The flag value retrieved.
+@related SUDimensionStyleRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if style is not a valid object
@@ -200,6 +218,7 @@ SU_RESULT SUDimensionStyleGetHideOutOfPlane(SUDimensionStyleRef style,
 @since SketchUp 2017, API 5.0
 @param[in]  style     The dimension style object.
 @param[out] tolerance The value retrieved.
+@related SUDimensionStyleRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if style is not a valid object
@@ -214,6 +233,7 @@ SU_RESULT SUDimensionStyleGetHideOutOfPlaneValue(SUDimensionStyleRef style,
 @since SketchUp 2017, API 5.0
 @param[in]  style The dimension style object.
 @param[out] hide  The flag value retrieved.
+@related SUDimensionStyleRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if style is not a valid object
@@ -227,6 +247,7 @@ SU_RESULT SUDimensionStyleGetHideSmall(SUDimensionStyleRef style, bool* hide);
 @since SketchUp 2017, API 5.0
 @param[in]  style     The dimension style object.
 @param[out] tolerance The value retrieved.
+@related SUDimensionStyleRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if style is not a valid object

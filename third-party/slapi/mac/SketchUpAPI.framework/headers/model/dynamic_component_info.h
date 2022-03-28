@@ -1,5 +1,10 @@
-// Copyright 2015 Trimble Navigation Ltd.  All Rights Reserved
+// Copyright 2015 Trimble Inc.  All Rights Reserved
 
+
+/**
+ * @file
+ * @brief Interfaces for SUDynamicComponentInfoRef.
+ */
 #ifndef SKETCHUP_MODEL_DYNAMIC_COMPONENT_INFO_H_
 #define SKETCHUP_MODEL_DYNAMIC_COMPONENT_INFO_H_
 
@@ -18,10 +23,11 @@ extern "C" {
 
 /**
 @brief Releases the DC info. DC info objects are created from component instance
-       using \ref SUComponentInstanceCreateDCInfo, and must be released using
+       using SUComponentInstanceCreateDCInfo(), and must be released using
        this function. This function also invalidates the given DC info.
 @since SketchUp 2016, API 4.0
 @param[in,out]  dc_info The dynamic component info object.
+@related SUDynamicComponentInfoRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_NULL_POINTER_INPUT if dc_info is NULL
@@ -33,6 +39,7 @@ SU_RESULT SUDynamicComponentInfoRelease(SUDynamicComponentInfoRef* dc_info);
 @brief Retrieves the number of dynamic component attributes.
 @param[in]  dc_info The dynamic component info object.
 @param[out] count   The number of attributes.
+@related SUDynamicComponentInfoRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if dc_info is an invalid object
@@ -47,6 +54,7 @@ SU_RESULT SUDynamicComponentInfoGetNumDCAttributes(
 @param[in]  len        The number of attributes to retrieve.
 @param[out] attributes The attributes retrieved.
 @param[out] count      The number of attributes retrieved.
+@related SUDynamicComponentInfoRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if dc_info is an invalid object

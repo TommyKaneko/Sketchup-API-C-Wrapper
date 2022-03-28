@@ -37,4 +37,5 @@ DEFINE_SU_TYPE(LOStyleRef)
 DEFINE_SU_TYPE(LOTableRef)
 DEFINE_SU_TYPE(LOTypedValueRef)
 
+#pragma pack(pop)
 #endif

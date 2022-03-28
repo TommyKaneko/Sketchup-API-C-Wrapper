@@ -1,5 +1,10 @@
-// Copyright 2014 Trimble Navigation Ltd. All Rights Reserved.
+// Copyright 2014 Trimble Inc. All Rights Reserved.
 
+
+/**
+ * @file
+ * @brief Interfaces for SUSchemaRef.
+ */
 #ifndef SKETCHUP_MODEL_SCHEMA_H_
 #define SKETCHUP_MODEL_SCHEMA_H_
 
@@ -20,6 +25,7 @@ extern "C" {
   @param[in]  schema_ref       The schema object.
   @param[in]  schema_type_name The name of the schema type to get.
   @param[out] schema_type_ref  The schema type retrieved.
+  @related SUSchemaRef
   @return
   - \ref SU_ERROR_NONE on success
   - \ref SU_ERROR_INVALID_INPUT if schema_ref is not a valid object

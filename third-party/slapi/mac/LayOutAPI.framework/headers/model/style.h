@@ -52,7 +52,7 @@ typedef enum {
   LOStrokePattern_Dot,               ///< Dotted pattern.
   LOStrokePattern_DashDot,           ///< Repeating dash-dot pattern.
   LOStrokePattern_DashDotDot,        ///< Repeating dash-dot-dot pattern.
-  LOStrokePattern_DashSpace,         ///< Repeating dash-space pattern.
+  LOStrokePattern_DashSpace,         ///< Deprecated in 2020.2. Use LOStrokePattern_Dash instead.
   LOStrokePattern_DashDotDotDot,     ///< Repeating dash-dot-dot-dot pattern.
   LOStrokePattern_DashDashDot,       ///< Repeating dash-dash-dot pattern.
   LOStrokePattern_DashDashDotDot,    ///< Repeating dash-dash-dot-dot pattern.

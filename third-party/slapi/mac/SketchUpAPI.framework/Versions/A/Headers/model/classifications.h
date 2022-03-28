@@ -1,5 +1,9 @@
-// Copyright 2014 Trimble Navigation Ltd. All Rights Reserved.
+// Copyright 2014-2020 Trimble Inc. All Rights Reserved.
 
+/**
+ * @file
+ * @brief Interfaces for SUClassificationsRef.
+ */
 #ifndef SKETCHUP_MODEL_CLASSIFICATIONS_H_
 #define SKETCHUP_MODEL_CLASSIFICATIONS_H_
 
@@ -19,6 +23,7 @@ extern "C" {
 @brief Loads a schema into a classification object.
 @param[in]  classifications  The classification object.
 @param[in]  schema_file_name The full path of the schema to load.
+@related SUClassificationsRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if classifications is not a valid object
@@ -33,6 +38,7 @@ SU_RESULT SUClassificationsLoadSchema(SUClassificationsRef classifications,
 @param[in]  classifications  The classification object.
 @param[in]  schema_name      The name of the schema to get.
 @param[out] schema_ref       The schema retrieved.
+@related SUClassificationsRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if classifications is not a valid object

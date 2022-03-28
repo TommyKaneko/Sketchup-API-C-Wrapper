@@ -1,5 +1,10 @@
-// Copyright 2016 Trimble Navigation Ltd. All Rights Reserved.
+// Copyright 2016 Trimble Inc. All Rights Reserved.
 
+
+/**
+ * @file
+ * @brief Interfaces for SUDimensionRadialRef.
+ */
 #ifndef SKETCHUP_MODEL_DIMENSION_RADIAL_H_
 #define SKETCHUP_MODEL_DIMENSION_RADIAL_H_
 
@@ -12,6 +17,7 @@ extern "C" {
 
 /**
 @struct SUDimensionRadialRef
+@extends SUDimensionRef
 @brief  A radial dimension entity reference.
 @since SketchUp 2017, API 5.0
 */
@@ -21,6 +27,7 @@ extern "C" {
        This is essentially an upcast operation.
 @since SketchUp 2017, API 5.0
 @param[in] dimension The given dimension reference.
+@related SUDimensionRadialRef
 @return
 - The converted \ref SUDimensionRef if dimension is a valid object
 - If not, the returned reference will be invalid
@@ -34,6 +41,7 @@ SU_EXPORT SUDimensionRef SUDimensionRadialToDimension(
        convertible to an \ref SUDimensionRadialRef.
 @since SketchUp 2017, API 5.0
 @param[in] dimension The given dimension reference.
+@related SUDimensionRadialRef
 @return
 - The converted \ref SUDimensionRadialRef if the downcast operation succeeds
 - If not, the returned reference will be invalid
@@ -46,6 +54,7 @@ SU_EXPORT SUDimensionRadialRef SUDimensionRadialFromDimension(
 @since SketchUp 2017, API 5.0
 @param[in,out] dimension The dimension object created.
 @param[in]  path      The and instance path to the arccurve to be measured.
+@related SUDimensionRadialRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_NULL_POINTER_OUTPUT if dimension is NULL
@@ -63,6 +72,7 @@ SU_RESULT SUDimensionRadialCreate(SUDimensionRadialRef* dimension,
 @brief Releases a dimension object.
 @since SketchUp 2017, API 5.0
 @param[in] dimension The dimension object.
+@related SUDimensionRadialRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if dimension is an invalid object
@@ -74,11 +84,12 @@ SU_RESULT SUDimensionRadialRelease(SUDimensionRadialRef* dimension);
 @brief Retrieves the arccurve instance being mesured by a dimension object. The
        given instance path object either must have been constructed using one
        of the SUInstancePathCreate* functions or it will be generated on the
-       fly if it is invalid. It must be released using \ref
-       SUInstancePathRelease when it is no longer needed.
+       fly if it is invalid. It must be released using
+       SUInstancePathRelease() when it is no longer needed.
 @since SketchUp 2017, API 5.0
 @param[in]  dimension The dimension object.
 @param[out] path      The instance path retrieved.
+@related SUDimensionRadialRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if dimension is not a valid object
@@ -94,6 +105,7 @@ SU_RESULT SUDimensionRadialGetCurveInstancePath(SUDimensionRadialRef dimension,
 @since SketchUp 2017, API 5.0
 @param[in] dimension The dimension object modified.
 @param[in] path      The and instance path to the arccurve to be measured.
+@related SUDimensionRadialRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if dimension or path are not valid objects
@@ -111,6 +123,7 @@ SU_RESULT SUDimensionRadialSetCurveInstancePath(SUDimensionRadialRef dimension,
 @since SketchUp 2017, API 5.0
 @param[in]  dimension   The dimension object.
 @param[out] is_diameter The flag value retrieved.
+@related SUDimensionRadialRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if dimension is not a valid object
@@ -124,6 +137,7 @@ SU_RESULT SUDimensionRadialGetDiameter(SUDimensionRadialRef dimension,
 @since SketchUp 2017, API 5.0
 @param[in] dimension   The dimension object.
 @param[in] is_diameter The flag specifying if the dimension measures diameter.
+@related SUDimensionRadialRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if dimension is not a valid object
@@ -138,6 +152,7 @@ SU_RESULT SUDimensionRadialSetDiameter(SUDimensionRadialRef dimension,
 @since SketchUp 2017, API 5.0
 @param[in]  dimension The dimension object.
 @param[out] point     The point retrieved.
+@related SUDimensionRadialRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if dimension is not a valid object
@@ -151,6 +166,7 @@ SU_RESULT SUDimensionRadialGetLeaderBreakPoint(
 @since SketchUp 2017, API 5.0
 @param[in] dimension The dimension object.
 @param[in] point     The point retrieved.
+@related SUDimensionRadialRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if dimension is not a valid object
@@ -168,6 +184,7 @@ SU_RESULT SUDimensionRadialSetLeaderBreakPoint(
 @since SketchUp 2017, API 5.0
 @param[in]  dimension The dimension object.
 @param[out] points    The array of 3 3d points retrieved.
+@related SUDimensionRadialRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if dimension is not a valid object

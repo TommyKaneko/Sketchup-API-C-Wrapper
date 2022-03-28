@@ -1,5 +1,9 @@
-// Copyright 2016 Trimble Navigation Ltd. All Rights Reserved
+// Copyright 2016-2020 Trimble Inc. All Rights Reserved
 
+/**
+ * @file
+ * @brief Interfaces for SUClassificationInfoRef.
+ */
 #ifndef SKETCHUP_MODEL_CLASSIFICATION_INFO_H_
 #define SKETCHUP_MODEL_CLASSIFICATION_INFO_H_
 
@@ -15,18 +19,19 @@ extern "C" {
 @struct SUClassificationInfoRef
 @brief  References an object with classification information. Each
         SUClassificationInfoRef contains the names of the schemas and the schema
-        types, and the types attributes. See \ref
-        SUClassificationAttributeRef for details on the type attributes.
+        types, and the types attributes. See SUClassificationAttributeRef for
+        details on the type attributes.
 */
 
 /**
 @brief Releases the classification info. Classification info objects are created
-       from component instance using \ref
-       SUComponentInstanceCreateClassificationInfo, and must be released using
+       from component instance using
+       SUComponentInstanceCreateClassificationInfo(), and must be released using
        this function. This function also invalidates the given
        SUClassificationInfoRef.
 @since SketchUp 2017, API 5.0
 @param[in,out]  classification_info The classification info object.
+@related SUClassificationInfoRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_NULL_POINTER_INPUT if classification_info is NULL
@@ -41,6 +46,7 @@ SU_RESULT SUClassificationInfoRelease(
 @since SketchUp 2017, API 5.0
 @param[in]  classification_info The classification info object.
 @param[out] count               The number of classifications.
+@related SUClassificationInfoRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if classification_info is not a valid object
@@ -55,6 +61,7 @@ SU_RESULT SUClassificationInfoGetNumSchemas(
 @param[in]  classification_info The classification info object.
 @param[in]  index               The classification index.
 @param[out] schema_name         The name of the schema.
+@related SUClassificationInfoRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if classification_info is an invalid object
@@ -72,6 +79,7 @@ SU_RESULT SUClassificationInfoGetSchemaName(
 @param[in]  classification_info The classification info object.
 @param[in]  index               The classification index.
 @param[out] schema_type         The applied type from the schema.
+@related SUClassificationInfoRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if classification_info is an invalid object
@@ -90,6 +98,7 @@ SU_RESULT SUClassificationInfoGetSchemaType(
 @param[in]  classification_info The classification info object.
 @param[in]  index               The classification index.
 @param[out] attribute           The attribute retrieved.
+@related SUClassificationInfoRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if classification_info is an invalid object
@@ -106,6 +115,7 @@ SU_RESULT SUClassificationInfoGetSchemaAttribute(
 @param[in]  classification_info The classification info object.
 @param[in]  path                The path of the classification attribute to get.
 @param[out] attribute           The attribute retrieved.
+@related SUClassificationInfoRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if classification_info is an invalid object

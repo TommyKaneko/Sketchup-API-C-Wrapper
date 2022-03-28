@@ -1,4 +1,9 @@
-// Copyright 2013 Trimble Navigation Ltd. All Rights Reserved.
+// Copyright 2013-2020 Trimble Inc. All Rights Reserved.
+
+/**
+ * @file
+ * @brief Interfaces for SUEntitiesRef.
+ */
 #ifndef SKETCHUP_MODEL_ENTITIES_H_
 #define SKETCHUP_MODEL_ENTITIES_H_
 
@@ -23,6 +28,7 @@ extern "C" {
 @brief Removes all entities in the container.
 @since SketchUp 2019, API 7.0
 @param[in] entities The entities to clear.
+@related SUEntitiesRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if entities is not a valid object
@@ -51,6 +57,7 @@ NOTE: Faces included in the geometry input object will be merged together when
 @param[in] geom_input    The geometry input that the entities object is to be
                          populated with.
 @param[in] weld_vertices Flag indicating whether to join coincident vertices.
+@related SUEntitiesRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if entities or geom_input are invalid objects
@@ -63,6 +70,7 @@ SU_RESULT SUEntitiesFill(SUEntitiesRef entities,
 @brief Retrieves the bounding box of the entities.
 @param[in]  entities The entities object.
 @param[out] bbox     The bounding box retrieved.
+@related SUEntitiesRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if entities is not a valid object
@@ -72,18 +80,19 @@ SU_RESULT SUEntitiesGetBoundingBox(SUEntitiesRef entities,
                                    struct SUBoundingBox3D* bbox);
 
 /**
-@brief Retrieves the LLA coordinates (Latidue, Longitude and Altitude) bounding 
-       box of the given entities object. 
-       Note that the altitude is calculated based on the model origin, Example: 
+@brief Retrieves the LLA coordinates (Latidue, Longitude and Altitude) bounding
+       box of the given entities object.
+       Note that the altitude is calculated based on the model origin, Example:
        If an entities object has a bounding box with the following values
-       {{100,100,100}, {200,200,200}} the result will be something like the 
-       following: {{Latitude, Longitude, 100/METERS_TO_INCHES}, 
-       {Latitude, Longitude, 200/METERS_TO_INCHES}} where Latitude and Longitude 
+       {{100,100,100}, {200,200,200}} the result will be something like the
+       following: {{Latitude, Longitude, 100/METERS_TO_INCHES},
+       {Latitude, Longitude, 200/METERS_TO_INCHES}} where Latitude and Longitude
        are the geographical coordinates and altitude is just a conversion from
        inches to meters.
 @since SketchUp 2018 M0, API 6.0
 @param[in]  entities The entities object.
 @param[out] bbox     The latidue longitude and altitude bounding box retrieved.
+@related SUEntitiesRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if entities is not a valid object
@@ -97,6 +106,7 @@ SU_RESULT SUEntitiesGetBoundingBoxLLA(SUEntitiesRef entities,
 @brief Retrieves the number of faces in the entities object.
 @param[in] entities The entities object.
 @param[out] count   The number of faces.
+@related SUEntitiesRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if entities is not a valid object
@@ -110,6 +120,7 @@ SU_RESULT SUEntitiesGetNumFaces(SUEntitiesRef entities, size_t* count);
 @param[in]  len      The number of faces to retrieve.
 @param[out] faces    The faces retrieved.
 @param[out] count    The number of faces retrieved.
+@related SUEntitiesRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if entities is not a valid object
@@ -125,6 +136,7 @@ SU_RESULT SUEntitiesGetFaces(SUEntitiesRef entities,
        associated with a face.
 @param[in]  entities The entities object.
 @param[out] count    The number of curves.
+@related SUEntitiesRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if entities is not a valid object
@@ -139,6 +151,7 @@ SU_RESULT SUEntitiesGetNumCurves(SUEntitiesRef entities, size_t* count);
 @param[in]  len      The number of curves to retrieve.
 @param[out] curves   The curves retrieved.
 @param[out] count    The number of curves retrieved.
+@related SUEntitiesRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if entities is not a valid object
@@ -155,6 +168,7 @@ SU_RESULT SUEntitiesGetCurves(SUEntitiesRef entities,
 @since SketchUp 2016, API 4.0
 @param[in]  entities The entities object.
 @param[out] count    The number of arccurves.
+@related SUEntitiesRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if entities is not a valid object
@@ -170,6 +184,7 @@ SU_RESULT SUEntitiesGetNumArcCurves(SUEntitiesRef entities, size_t* count);
 @param[in]  len         The number of arccurves to retrieve.
 @param[out] arccurves   The arccurves retrieved.
 @param[out] count       The number of curves retrieved.
+@related SUEntitiesRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if entities is not a valid object
@@ -185,6 +200,7 @@ SU_RESULT SUEntitiesGetArcCurves(SUEntitiesRef entities,
 @since SketchUp 2014 M1, API 2.1
 @param[in]  entities The entities object.
 @param[out] count    The number of guide_points.
+@related SUEntitiesRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if entities is not a valid object
@@ -200,6 +216,7 @@ SU_RESULT SUEntitiesGetNumGuidePoints(SUEntitiesRef entities,
 @param[in]  len          The number of guide points to retrieve.
 @param[out] guide_points The guide_points retrieved.
 @param[out] count        The number of guide_points retrieved.
+@related SUEntitiesRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if entities is not a valid object
@@ -215,6 +232,7 @@ SU_RESULT SUEntitiesGetGuidePoints(SUEntitiesRef entities,
 @since SketchUp 2016, API 4.0
 @param[in]  entities The entities object.
 @param[out] count    The number of guide_lines.
+@related SUEntitiesRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if entities is not a valid object
@@ -230,6 +248,7 @@ SU_RESULT SUEntitiesGetNumGuideLines(SUEntitiesRef entities,
 @param[in]  len         The number of guide lines to retrieve.
 @param[out] guide_lines The guide_lines retrieved.
 @param[out] count       The number of guide_lines retrieved.
+@related SUEntitiesRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if entities is not a valid object
@@ -246,6 +265,7 @@ SU_RESULT SUEntitiesGetGuideLines(SUEntitiesRef entities,
 @param[in]  standalone_only Whether to count all edges (false) or only the edges
                             not attached to curves and faces (true).
 @param[out] count           The number of edges.
+@related SUEntitiesRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if entities is not a valid object
@@ -263,6 +283,7 @@ SU_RESULT SUEntitiesGetNumEdges(SUEntitiesRef entities,
 @param[in]  len             The number of edges to retrieve.
 @param[out] edges           The edges retrieved.
 @param[out] count           The number of edges retrieved.
+@related SUEntitiesRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if entities is not a valid object
@@ -276,6 +297,7 @@ SU_RESULT SUEntitiesGetEdges(SUEntitiesRef entities,
 @brief Retrieves the number of polyline3d's in the entities object.
 @param[in]  entities The entities object.
 @param[out] count    The the number of polyline3d's.
+@related SUEntitiesRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if entities is not a valid object
@@ -290,6 +312,7 @@ SU_RESULT SUEntitiesGetNumPolyline3ds(SUEntitiesRef entities,
 @param[in]  entities The entities object.
 @param[out] lines    The polyline3d's retrieved.
 @param[out] count    The number of polyline3d's retrieved.
+@related SUEntitiesRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if entities is not a valid object
@@ -310,6 +333,7 @@ correctly merge geometry.
 @param[in] entities The entities object.
 @param[in] len      The length of the array of face objects.
 @param[in] faces    The array of face objects to add.
+@related SUEntitiesRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if entities is not a valid object
@@ -329,6 +353,7 @@ correctly merge geometry.
 @param[in] entities The entities object.
 @param[in] len      The length of the array of edge objects.
 @param[in] edges    The array of edge objects to add.
+@related SUEntitiesRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if entities is not a valid object
@@ -348,6 +373,7 @@ correctly merge geometry.
 @param[in] entities The entities object.
 @param[in] len      The length of the array of curve objects.
 @param[in] curves   The array of curve objects to add.
+@related SUEntitiesRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if entities is not a valid object
@@ -368,6 +394,7 @@ correctly merge geometry.
 @param[in] entities The entities object.
 @param[in] len      The length of the array of curve objects.
 @param[in] curves   The array of arccurve objects to add.
+@related SUEntitiesRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if entities is not a valid object
@@ -383,6 +410,7 @@ SU_RESULT SUEntitiesAddArcCurves(SUEntitiesRef entities,
 @param[in] entities     The entities object.
 @param[in] len          The length of the array of guide point objects.
 @param[in] guide_points The array of guide point objects to add.
+@related SUEntitiesRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if entities is not a valid object
@@ -397,6 +425,7 @@ SU_RESULT SUEntitiesAddGuidePoints(SUEntitiesRef entities, size_t len,
 @param[in] entities    The entities object.
 @param[in] len         The length of the array of guide line objects.
 @param[in] guide_lines The array of guide line objects to add.
+@related SUEntitiesRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if entities is not a valid object
@@ -409,6 +438,7 @@ SU_RESULT SUEntitiesAddGuideLines(SUEntitiesRef entities, size_t len,
 @brief Adds a group object to an entities object.
 @param[in] entities The entities object.
 @param[in] group    The group object to add.
+@related SUEntitiesRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if entities or group is not a valid object
@@ -419,6 +449,7 @@ SU_RESULT SUEntitiesAddGroup(SUEntitiesRef entities, SUGroupRef group);
 @brief Adds an image object to an entities object.
 @param[in] entities The entities object.
 @param[in] image    The image object to add.
+@related SUEntitiesRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if entities or image is not a valid object
@@ -432,6 +463,7 @@ SU_RESULT SUEntitiesAddImage(SUEntitiesRef entities, SUImageRef image);
 @param[out] name     The unique name that is assigned to definition of the
                      component instance. This can be NULL in which case the
                      caller does not need to retrieve the assigned name.
+@related SUEntitiesRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if entities or instance is not a valid object
@@ -448,6 +480,7 @@ SU_RESULT SUEntitiesAddInstance(SUEntitiesRef entities,
 @param[in] entities        The entities object.
 @param[in] len             The length of the array of section planes objects.
 @param[in] section_planes  The array of section planes objects to add.
+@related SUEntitiesRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if entities is not a valid object
@@ -463,6 +496,7 @@ SU_RESULT SUEntitiesAddSectionPlanes(SUEntitiesRef entities,
 @param[in] entities The entities object.
 @param[in] len      The length of the array of text objects.
 @param[in] texts    The array of text objects to add.
+@related SUEntitiesRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if entities is not a valid object
@@ -475,6 +509,7 @@ SU_RESULT SUEntitiesAddTexts(SUEntitiesRef entities, size_t len,
 @brief Retrieves the number of groups in the entities.
 @param[in]  entities The entities object.
 @param[out] count    The number of groups.
+@related SUEntitiesRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if entities is an invalid entities object
@@ -488,6 +523,7 @@ SU_RESULT SUEntitiesGetNumGroups(SUEntitiesRef entities, size_t* count);
 @param[in]  len      The number of groups to retrieve.
 @param[out] groups   The groups retrieved.
 @param[out] count    The number of groups retrieved.
+@related SUEntitiesRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if entities is not a valid object
@@ -502,6 +538,7 @@ SU_RESULT SUEntitiesGetGroups(SUEntitiesRef entities,
 @brief Retrieves the number of images in the entities.
 @param[in]  entities  The entities object.
 @param[out] count     The number of image objects.
+@related SUEntitiesRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if entities is not a valid object
@@ -515,6 +552,7 @@ SU_RESULT SUEntitiesGetNumImages(SUEntitiesRef entities, size_t* count);
 @param[in]  len      The number of image objects to retrieve.
 @param[out] images   The image objects retrieved.
 @param[out] count    The number of image objects retrieved.
+@related SUEntitiesRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if entities is not a valid object
@@ -529,6 +567,7 @@ SU_RESULT SUEntitiesGetImages(SUEntitiesRef entities,
 @brief Retrieves the number of component instances in the entities.
 @param[in] entities The entities object.
 @param[out] count   The number of component instances.
+@related SUEntitiesRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if entities is an invalid entities object.
@@ -542,6 +581,7 @@ SU_RESULT SUEntitiesGetNumInstances(SUEntitiesRef entities, size_t* count);
 @param[in]  len       The number of component instances to retrieve.
 @param[out] instances The component instances retrieved.
 @param[out] count     The number of component instances retrieved.
+@related SUEntitiesRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if entities is not a valid object
@@ -557,6 +597,7 @@ SU_RESULT SUEntitiesGetInstances(SUEntitiesRef entities,
 @since SketchUp 2016, API 4.0
 @param[in]  entities The entities object.
 @param[out] count    The number of section planes.
+@related SUEntitiesRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if entities is not a valid object
@@ -569,6 +610,7 @@ SU_RESULT SUEntitiesGetNumSectionPlanes(SUEntitiesRef entities, size_t* count);
 @since SketchUp 2018, API 6.0
 @param[in]  entities The entities object.
 @param[out] count    The number of texts.
+@related SUEntitiesRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if entities is not a valid object
@@ -583,6 +625,7 @@ SU_RESULT SUEntitiesGetNumTexts(SUEntitiesRef entities, size_t* count);
 @param[in]  len            The number of section planes to retrieve.
 @param[out] section_planes The section planes retrieved.
 @param[out] count          The number of section planes retrieved.
+@related SUEntitiesRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if entities is not a valid object
@@ -598,6 +641,7 @@ SU_RESULT SUEntitiesGetSectionPlanes(SUEntitiesRef entities,
 @since SketchUp 2017, API 5.0
 @param[in]  entities The entities object.
 @param[out] count    The number of dimensions.
+@related SUEntitiesRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if entities is not a valid object
@@ -612,6 +656,7 @@ SU_RESULT SUEntitiesGetNumDimensions(SUEntitiesRef entities, size_t* count);
 @param[in]  len        The number of dimensions to retrieve.
 @param[out] dimensions The dimensions retrieved.
 @param[out] count      The number of dimensions retrieved.
+@related SUEntitiesRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if entities is not a valid object
@@ -627,6 +672,7 @@ SU_RESULT SUEntitiesGetDimensions(SUEntitiesRef entities, size_t len,
 @param[in]  len      The number of section planes to retrieve.
 @param[out] texts    The texts retrieved.
 @param[out] count    The number of texts retrieved.
+@related SUEntitiesRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if entities is not a valid object
@@ -642,6 +688,7 @@ SU_RESULT SUEntitiesGetTexts(SUEntitiesRef entities, size_t len,
 @param[in] len      The number of entities in the array.
 @param[in] elements The elements to be transformed.
 @param[in] trans    The transform to be applied.
+@related SUEntitiesRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if entities is not a valid object
@@ -662,6 +709,7 @@ SU_RESULT SUEntitiesTransform(SUEntitiesRef entities, size_t len,
 @param[in] len       The number of entities in the array.
 @param[in] elements  The elements to be transformed.
 @param[in] tranforms The transformations to be applied.
+@related SUEntitiesRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if entities is not a valid object
@@ -681,6 +729,7 @@ SU_RESULT SUEntitiesTransformMultiple(SUEntitiesRef entities, size_t len,
 @param[in] entities The entities object.
 @param[in] len      The number of entities in the array.
 @param[in] elements The elements to be destroyed.
+@related SUEntitiesRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if entities is not a valid object
@@ -692,13 +741,14 @@ SU_RESULT SUEntitiesErase(SUEntitiesRef entities, size_t len,
     SUEntityRef elements[]);
 
 /**
-@brief Retrieves a boolean indicating whether the entities object is 
+@brief Retrieves a boolean indicating whether the entities object is
        recursively empty. A recursively empty entities object is defined as one
-       that either has zero entities or contains only instances of definitions 
+       that either has zero entities or contains only instances of definitions
        with recursively empty entities objects.
 @since SketchUp 2017, API 5.0
 @param[in]  entities The entities object.
 @param[out] is_empty The bool value retrieved.
+@related SUEntitiesRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if entities is invalid
@@ -713,6 +763,7 @@ SU_RESULT SUEntitiesIsRecursivelyEmpty(SUEntitiesRef entities, bool* is_empty);
 @since SketchUp 2018, API 6.0
 @param[in]  entities          The entities object.
 @param[out] has_section_cuts  The bool value retrieved.
+@related SUEntitiesRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if entities is invalid
@@ -728,6 +779,7 @@ SU_RESULT SUEntitiesHasSectionCuts(SUEntitiesRef entities,
 @param[in]  entities The entities object to be queried.
 @param[in]  type     The type of entities to be collected.
 @param[out] list     The list object to be filled.
+@related SUEntitiesRef
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if entities is not a valid object
@@ -735,6 +787,32 @@ SU_RESULT SUEntitiesHasSectionCuts(SUEntitiesRef entities,
 */
 SU_RESULT SUEntitiesEntityListFill(SUEntitiesRef entities,
     enum SURefType type, SUEntityListRef list);
+
+/**
+@brief Takes a set of edges and find all possible chains of edges and connect
+       them with a \ref SUCurveRef.
+
+       A curve will not cross another curve. They will split where multiple
+       curves meet.
+
+@since SketchUp 2020.1, API 8.1
+@param[in]  entities   The entities object to be queried.
+@param[in]  num_edges  The length of the array of edge objects.
+@param[in]  edges      The array of edge objects to weld.
+@param[out] list       The list object to be filled with \ref SUCurveRef objects.
+@related SUEntitiesRef
+@see SUArcCurveRef
+@see SUCurveRef
+@return
+- \ref SU_ERROR_NONE on success
+- \ref SU_ERROR_INVALID_INPUT if entities is not a valid object
+- \ref SU_ERROR_NULL_POINTER_INPUT if edges is NULL
+- \ref SU_ERROR_INVALID_OUTPUT if list is not a valid object
+- \ref SU_ERROR_INVALID_ARGUMENT if edges contains edges that don't belong to
+         the same entities collection.
+*/
+SU_RESULT SUEntitiesWeld(SUEntitiesRef entities, size_t num_edges,
+    SUEdgeRef edges[], SUEntityListRef list);
 
 #ifdef __cplusplus
 }  // extern "C"

@@ -110,16 +110,17 @@ LO_RESULT LOImageGetClipMask(LOImageRef image, LOEntityRef* clip_mask);
        assigned to this image. The entity being used must not be already part
        of a document or group. The clip mask entity must be either a
        rectangle, ellipse or a path.
+@note  Starting in LayOut 2020.1, API 5.1, clip_mask may be SU_INVALID, which
+       will remove the existing clip mask, if any.
 @since LayOut 2017, API 2.0
 @param[in] model     The image object.
 @param[in] clip_mask The new clip mask for the image.
 @return
 - \ref SU_ERROR_NONE on success
 - \ref SU_ERROR_INVALID_INPUT if image does not refer to a valid object
-- \ref SU_ERROR_INVALID_INPUT if clip_mask does not refer to a valid object
-- \ref SU_ERROR_GENERIC if the clip_mask is already in a document.
-- \ref SU_ERROR_GENERIC if the clip_mask is not a rectangle, ellipse, or path.
-- \ref SU_ERROR_LAYER_LOCKED if image is on a locked layer.
+- \ref SU_ERROR_INVALID_ARGUMENT if clip_mask is already in a document or group
+- \ref SU_ERROR_UNSUPPORTED if clip_mask is not a rectangle, ellipse, or path
+- \ref SU_ERROR_LAYER_LOCKED if image is on a locked layer
 - \ref SU_ERROR_ENTITY_LOCKED if image is locked
 */
 LO_RESULT LOImageSetClipMask(LOImageRef model, LOEntityRef clip_mask);
