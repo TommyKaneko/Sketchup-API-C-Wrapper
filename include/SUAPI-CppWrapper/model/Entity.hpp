@@ -90,7 +90,7 @@ class Entity {
   *
   * The C++ wrapper deals with releasing objects, so user does not have to keep track of memory allocations.
   */
-  ~Entity();
+  virtual ~Entity();
 
   /** @brief Copy assignment operator */
   Entity& operator=(const Entity& other);
