@@ -33,10 +33,10 @@
 
 namespace CW {
   // Forward Declarations:
-  class Model
+  class Model;
 
 class Application {
-
+  public:
   /**
   @brief Gets a reference to the active model.
   @since SketchUp 2019.2, API 7.1
@@ -44,7 +44,7 @@ class Application {
   */
   static Model get_active_model();
   
-} /* class Application */
+}; /* class Application */
 
 } /* namespace CW */
 

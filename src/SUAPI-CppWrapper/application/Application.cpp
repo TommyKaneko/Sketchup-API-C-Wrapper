@@ -38,7 +38,7 @@ namespace CW {
 /**************************
 * Public static methods **
 ***************************/
-Model get_active_model() {
+Model Application::get_active_model() {
   SUModelRef model_ref = SU_INVALID;
   SU_RESULT res = SUApplicationGetActiveModel(&model_ref);
   if (res == SU_ERROR_NO_DATA) {

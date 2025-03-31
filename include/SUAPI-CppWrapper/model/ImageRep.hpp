@@ -44,6 +44,9 @@ namespace CW {
 * @since SU 2017, API 5.0
 */
 class ImageRep  {
+
+ friend class RubyAPI;
+
   private:
   SUImageRepRef m_image_rep;
   bool m_attached;

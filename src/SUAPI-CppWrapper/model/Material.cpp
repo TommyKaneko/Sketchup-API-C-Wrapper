@@ -52,7 +52,7 @@ SUMaterialRef Material::create_material() {
 
 
 SUMaterialRef Material::copy_reference(const Material& other) {
-  if (other.m_attached || SUIsInvalid(other.m_entity)) {
+  if (other.m_attached || !other) {
     return other.ref();
   }
   return create_material();;
