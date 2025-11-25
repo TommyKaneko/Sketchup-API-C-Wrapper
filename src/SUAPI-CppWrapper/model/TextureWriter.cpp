@@ -28,5 +28,16 @@
 #include "SUAPI-CppWrapper/model/TextureWriter.hpp"
 namespace CW {
 
+TextureWriter::TextureWriter() {
+}
+
+TextureWriter::TextureWriter(SUTextureWriterRef texture_writer) {
+}
+
+TextureWriter::operator SUTextureWriterRef() const {
+}
+
+TextureWriter::operator SUTextureWriterRef*() const {
+}
 
 }

@@ -31,6 +31,9 @@
 #include <cassert>
 
 #include <SketchUpAPI/model/vertex.h>
+#include <SketchUpAPI/geometry.h>
+#include <SketchUpAPI/model/edge.h>
+#include <SketchUpAPI/model/face.h>
 
 #include "SUAPI-CppWrapper/Geometry.hpp"
 
@@ -70,7 +73,7 @@ Radians::operator double() const
 Radians& Radians::operator=(const Radians &radians) {
   if (this == &radians)
     return *this;
-  
+
   m_val = radians.m_val;
   return *this;
 }
@@ -532,7 +535,7 @@ Point3D Point3D::intersection_between_lines(const Point3D& point_a, const Vector
       }
       // Lines are disjoint
       return Point3D(false);
-      
+
     }
     else {
       // Lines are parallel, and so there is no intersection.
@@ -559,7 +562,7 @@ Point3D Point3D::intersection_between_lines(const Point3D& point_a, const Vector
   double b_direction_factor = 0.0;
   if (b_to_int != zero_vector)
     b_direction_factor = vector_b.unit().dot(b_to_int.unit());
- 
+
   double a_factor = a_direction_factor * a_to_int.length() / vector_a.length();
   double b_factor = b_direction_factor * b_to_int.length() / vector_b.length();
   double a_epsilon = Vector3D::EPSILON / vector_a.length();
@@ -611,7 +614,7 @@ Point3D Point3D::ray_line_intersection(const Point3D& point_a, const Vector3D& v
       }
       // Lines are disjoint
       return Point3D(false);
-      
+
     }
     else {
       // Lines are parallel, and so there is no intersection.
@@ -638,7 +641,7 @@ Point3D Point3D::ray_line_intersection(const Point3D& point_a, const Vector3D& v
   double b_direction_factor = 0.0;
   if (b_to_int != zero_vector)
     b_direction_factor = ray_b.unit().dot(b_to_int.unit());
- 
+
   double a_factor = a_direction_factor * a_to_int.length() / vector_a.length();
   double b_factor = b_direction_factor * b_to_int.length() / ray_b.length();
   double a_epsilon = Vector3D::EPSILON / vector_a.length();
@@ -648,7 +651,7 @@ Point3D Point3D::ray_line_intersection(const Point3D& point_a, const Vector3D& v
     return intersection;
   }
   return Point3D(false);
-  
+
   /*
   else if (a_to_b_cross_vec_a_z_comp != zero_vector) {
     Vector3D vec_a_cross_b = vector_a.cross(ray_b);
@@ -668,7 +671,7 @@ Point3D Point3D::ray_line_intersection(const Point3D& point_a, const Vector3D& v
 }
 
 
-  
+
 /********
 * Plane3D
 *********/
@@ -782,7 +785,7 @@ bool Plane3D::coplanar(const Plane3D& test_plane) const {
 Line3D Plane3D::intersection(const Plane3D& plane2) const {
   const Vector3D line_vector = (*this).normal().cross(plane2.normal());
   const double determinant = pow(line_vector.length(), 2);
-  
+
   if (determinant < EPSILON) {
     // Parallel planes
     return Line3D(false);
@@ -925,7 +928,7 @@ Plane3D Plane3D::plane_from_loop(const std::vector<Point3D>& loop_points) {
   */
   // Solution for finding the planes here: http://www.euclideanspace.com/maths/algebra/vectors/applications/normals/
   // We will use two adjacent edges of the the loop to create a plane from.  The vertex that is furthest from the centre of the loop is where we will start
-  
+
   // Or this solution: https://www.khronos.org/opengl/wiki/Calculating_a_Surface_Normal
   Vector3D normal(0.0, 0.0, 0.0);
   for (size_t i=0; i < loop_points.size(); i++) {
@@ -988,7 +991,7 @@ void BoundingBox3D::min_point(const Point3D& point) {
 Point3D BoundingBox3D::max() const {
   return Point3D(m_bounding_box.max_point);
 }
-  
+
 void BoundingBox3D::max_point(const Point3D& point) {
   m_bounding_box.max_point = point;
 }
@@ -1037,7 +1040,7 @@ Line3D::Line3D(const Line3D& other):
 Line3D& Line3D::operator=(const Line3D &line) {
   if (this == &line)
     return *this;
-  
+
    point = line.point;
   direction = line.direction;
   is_null = line.is_null;
@@ -1102,7 +1105,7 @@ std::pair<Point3D, Point3D> Line3D::closest_points(const Line3D &other_line) con
   if (!(*this)) {
     throw std::logic_error("CW::Line3D::closest_points(): this line is null");
   }
-  
+
   // @see http://paulbourke.net/geometry/pointlineplane/
   double d1343,d4321,d1321,d4343,d2121;
   double numer,denom;
@@ -1123,7 +1126,7 @@ std::pair<Point3D, Point3D> Line3D::closest_points(const Line3D &other_line) con
   d1321 = p13.x * p21.x + p13.y * p21.y + p13.z * p21.z;
   d4343 = p43.x * p43.x + p43.y * p43.y + p43.z * p43.z;
   d2121 = p21.x * p21.x + p21.y * p21.y + p21.z * p21.z;
-  
+
   denom = d2121 * d4343 - d4321 * d4321;
   if (std::abs(denom) < EPSILON) {
     // Lines are parallel

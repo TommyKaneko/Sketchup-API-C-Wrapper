@@ -50,37 +50,37 @@ class Material :public Entity {
   * @return if the Material object is already attached to a model, its SUMaterialRef object will be returned. If the Material object has not been attached to a model, a new SUMaterialRef object will be created. Bear in mind all properties will not be copied in the latter case
   */
   static SUMaterialRef copy_reference(const Material& mat);
-  
+
   public:
   Material();
   Material(SUMaterialRef material_ref, bool attached = true);
-  
+
   /** Copy constructor */
   Material(const Material& other);
-  
+
   /** Copy assigment operator */
   Material& operator=(const Material& other);
-  
+
   /**
   * Destructor
   */
   ~Material();
-  
+
   SUMaterialRef ref() const;
-  
+
   operator SUMaterialRef() const;
   operator SUMaterialRef*();
-  
+
   /**
   * Returns true if this is an invalid object, or if no material is set.  An entitity with the default material would return false.
   */
   bool operator !() const;
-  
+
   /**
   * Returns a copy of the Material object, which is not attached to a model.
   */
   Material copy() const;
-  
+
   /**
   * Returns the color of the material.
   */
@@ -96,13 +96,13 @@ class Material :public Entity {
   * @return string name of the material.
   */
   String name() const;
-  
+
   /**
   * Sets the name of the material.
   * @param string name of the material.
   */
   void name(const String& string);
-  
+
   /**
   * Retrieves the name of a material object. This method was added for users who require the functionality of Material.name() prior to SketchUp 2017, API 5.0. If the internal name is encased in square brackets, [], this method will return the name without brackets, otherwise the name will match the name retrieved by SUMaterialGetName.
   * @since SketchUp 2017, API 5.0
@@ -115,33 +115,33 @@ class Material :public Entity {
   * @return opacity The alpha value within range [0.0, 1.0].
   */
   double opacity() const;
-  
+
   /**
   * Sets the alpha value of the material.
   * @param alpha The alpha value within range [0.0, 1.0].
   */
   void opacity(const double alpha);
-  
+
   /**
   * Returns the texture of the material
   */
   Texture texture() const;
-  
+
   /**
   * Sets the texture of the material
   */
   void texture(const Texture& texture);
-  
+
   /**
   * Returns the type of the material
   */
   SUMaterialType type() const;
-  
+
   /**
   * Sets the texture of the material
   */
   void type(const SUMaterialType& material_type);
-  
+
   /**
   * Returns whether the opacity value is used
   */
@@ -151,7 +151,7 @@ class Material :public Entity {
   * Sets whether the opacity value is used
   */
   void use_alpha(bool flag);
-  
+
   /**
   * Hash function for use with unordered_map
   */

@@ -1,11 +1,32 @@
 # TODO(thomthom): Configure for Mac:
 include_directories(SYSTEM "${SLAPI_INCLUDE_PATH}")
+#include_directories(SYSTEM "${RUBY_INCLUDE_PATH}")
 include_directories("${CPP_API_INCLUDE_PATH}")
 
 file(GLOB_RECURSE CPP_API_HEADERS ${CPP_API_INCLUDE_PATH}/*.hpp)
 file(GLOB_RECURSE CPP_API_SOURCES ${CPP_API_SOURCE_PATH}/*.cpp)
 
 add_library(SketchUpAPICpp STATIC ${CPP_API_HEADERS} ${CPP_API_SOURCES})
+
+# Include headers for the library:
+target_include_directories(SketchUpAPICpp PUBLIC
+  ${CMAKE_CURRENT_SOURECE_DIR}
+  ${SLAPI_INCLUDE_PATH}
+)
+
+# Link the SketchUpAPI framework on macOS
+if (APPLE)
+    # TK: the framework is not being found - link it here with the necessary flag
+    target_link_options(SketchUpAPICpp INTERFACE "-F${SLAPI_PATH}/mac")
+    message(DEBUG "SketchUpAPI path for SketchUpAPICpp: ${SLAPI_PATH}/mac")
+    # Add the framework search path
+    target_link_directories(SketchUpAPICpp PUBLIC "${SLAPI_PATH}/mac")
+    # Link the SketchUpAPI framework
+    target_link_libraries(SketchUpAPICpp "-framework SketchUpAPI")
+else()
+    # Windows-specific linking
+    target_link_libraries(SketchUpAPICpp "${SLAPI_LIB}")
+endif()
 
 # https://stackoverflow.com/a/14235055/486990
 if ( MSVC )
@@ -17,7 +38,12 @@ if ( MSVC )
 else()
   # target_compile_options(SketchUpAPICpp PRIVATE "-Wall")
   target_compile_options(SketchUpAPICpp PRIVATE "-Wno-missing-braces")
-  target_compile_options(SketchUpAPICpp PRIVATE "-Werror")
+  if (EXTERNALLY_BUILT)
+    target_compile_options(SketchUpAPICpp PRIVATE "-Wno-error") # TK: suppress warnings when built externally
+  else()
+    #target_compile_options(SketchUpAPICpp PRIVATE "-Werror")
+    target_compile_options(SketchUpAPICpp PRIVATE "-Wno-error") # TODO: remove this flag later.
+  endif()
 endif()
 
 source_group(

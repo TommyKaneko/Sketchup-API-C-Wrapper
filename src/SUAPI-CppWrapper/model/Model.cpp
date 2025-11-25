@@ -71,20 +71,66 @@ Model::Model(SUModelRef model_ref, bool release_on_destroy):
 
 Model::Model(std::string file_path):
   m_model(SU_INVALID),
-  m_release_on_destroy(true),
-  m_result(SUModelCreateFromFile(&m_model, file_path.c_str()))
-{}
+  m_release_on_destroy(true)
+{
+  enum SUModelLoadStatus status;
+  m_result = SUModelCreateFromFileWithStatus(&m_model, file_path.c_str(), &status);
+  // TODO: deal with the status issue.
+}
 
 Model::Model(const Model& other):
   m_model(other.m_model),
-  m_release_on_destroy(other.m_release_on_destroy)
+  m_release_on_destroy(false),
+  m_result(other.m_result)
 {}
+
+Model::Model(Model&& other) noexcept:
+  m_model(other.m_model),
+  m_release_on_destroy(other.m_release_on_destroy),
+  m_result(other.m_result)
+{
+  other.m_model = SU_INVALID;
+  other.m_release_on_destroy = false;
+}
+
 
 Model::~Model() {
   if (m_release_on_destroy && SUIsValid(m_model)) {
     SUResult res = SUModelRelease(&m_model);
     assert(res == SU_ERROR_NONE); _unused(res);
+    m_model = SU_INVALID;
+    m_release_on_destroy = false;
   }
+}
+
+Model& Model::operator=(const Model& other) {
+  if (this != &other) {
+    if (m_release_on_destroy && SUIsValid(m_model)) {
+      SUResult res = SUModelRelease(&m_model);
+      assert(res == SU_ERROR_NONE); _unused(res);
+      m_model = SU_INVALID;
+      m_release_on_destroy = false;
+    }
+    m_model = other.m_model;
+    m_release_on_destroy = false; // copies are non-owning
+    m_result = other.m_result;
+  }
+  return *this;
+}
+
+Model& Model::operator=(Model&& other) noexcept {
+  if (this != &other) {
+    if (m_release_on_destroy && SUIsValid(m_model)) {
+      SUResult res = SUModelRelease(&m_model);
+      assert(res == SU_ERROR_NONE); _unused(res);
+    }
+    m_model = other.m_model;
+    m_release_on_destroy = other.m_release_on_destroy;
+    m_result = other.m_result;
+    other.m_model = SU_INVALID;
+    other.m_release_on_destroy = false;
+  }
+  return *this;
 }
 
 
@@ -599,7 +645,7 @@ ModelStatistics::ModelStatistics(const Model& model):
   SUResult res = SUModelGetStatistics(model, &m_model_statistics);
   assert(res == SU_ERROR_NONE); _unused(res);
 }
-  
+
 int ModelStatistics::edges() const
 {
   return m_model_statistics.entity_counts[SUModelStatistics::SUEntityType_Edge];
@@ -634,6 +680,6 @@ int ModelStatistics::images() const
   return m_model_statistics.entity_counts[SUModelStatistics::SUEntityType_Image];
 }
 
-  
+
 
 } /* namespace CW */

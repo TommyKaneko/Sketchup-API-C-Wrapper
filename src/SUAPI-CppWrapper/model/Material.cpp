@@ -52,10 +52,13 @@ SUMaterialRef Material::create_material() {
 
 
 SUMaterialRef Material::copy_reference(const Material& other) {
-  if (other.m_attached || !other) {
+  if (!other) {
+    return SU_INVALID;
+  }
+  if (other.m_attached) {
     return other.ref();
   }
-  return create_material();;
+  return create_material();
 }
 
 /*****************************
@@ -72,7 +75,9 @@ Material::Material(SUMaterialRef material_ref, bool attached):
 
 
 Material::Material(const Material& other):
-  Entity(other, SUMaterialToEntity(copy_reference(other)))
+  //Material(copy_reference(other), false)
+  //Entity(SUMaterialToEntity(copy_reference(other)))
+  Entity(other, SUMaterialToEntity(copy_reference(other))) // Because Material class owns the entity, we call the Entity constructor, not the copy constructor.
 {
   // Copy across properties of the other material
   if (!other.m_attached && SUIsValid(m_entity)) {
@@ -125,10 +130,11 @@ Material::operator SUMaterialRef() const {
 }
 
 bool Material::operator!() const {
-  if (SUIsInvalid(m_entity)) {
-    return true;
-  }
-  return false;
+  return Entity::operator!();
+  // if (SUIsInvalid(m_entity)) {
+  //   return true;
+  // }
+  // return false;
 }
 
 Material Material::copy() const {
@@ -226,7 +232,7 @@ double Material::opacity() const {
   }
   return 1.0;
 }
-  
+
 
 void Material::opacity(const double alpha) {
   if(!(*this)) {
@@ -242,7 +248,7 @@ void Material::opacity(const double alpha) {
   SUResult res = SUMaterialSetOpacity(this->ref(), input_alpha);
   assert(res != SU_ERROR_OUT_OF_RANGE); _unused(res);
 }
-  
+
 
 Texture Material::texture() const {
   if(!(*this)) {
@@ -272,8 +278,8 @@ void Material::texture(const Texture& texture) {
   SUResult res = SUMaterialSetTexture(this->ref(), texture_ref);
   assert(res == SU_ERROR_NONE); _unused(res);
 }
-  
-  
+
+
 SUMaterialType Material::type() const {
   if(!(*this)) {
     throw std::logic_error("CW::Material::type(): Material is null");

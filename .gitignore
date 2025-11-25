@@ -53,3 +53,7 @@ Release/
 
 # CMake
 build/
+
+# Third party libraries
+third-party/
+

@@ -108,7 +108,7 @@ class Entity {
   * Note that the Entity object still manages the lifetime of the reference, so the SUEntityRef could become invalid.
   */
   operator SUEntityRef*();
-  
+
   /*
   * @brief Returns the wrapped SUEntityRef. USE WITH CAUTION.
   *
@@ -120,7 +120,7 @@ class Entity {
   * @brief Returns true if the entity is attached to another object.
   */
   bool attached() const;
-  
+
   /**
   * @brief Method lets the object know that it has been attached to a model.  This is important as it will let the object know that it does not need to "release" the object.
   * @param attach - (optional) true to let the object know that it has been attached to a model.  False to let the object know that it has not been attached.
@@ -139,14 +139,14 @@ class Entity {
   * @return AttributeDictionary object with the given name.
   */
   AttributeDictionary attribute_dictionary(const std::string& name) const;
-  
+
   /**
   * @brief Adds the AttributeDictionary to the Entity.
   * @param dict - AttributeDictionary to add
   * @return true for success, false for failure.
   */
   bool add_dictionary(AttributeDictionary& dict);
-  
+
   /**
   * @brief Copies attributes from another Entity object to this one.
   * @param entity - object to get the attributes from.
@@ -170,12 +170,12 @@ class Entity {
   *
   * Note that this function does not check if the entity has been deleted. @see operator!().
   */
-  bool is_valid() const;
+  virtual bool is_valid() const;
 
   /**
   * @brief Returns true if this entity is not valid. Alias of !is_valid().
   */
-  bool operator!() const;
+  virtual bool operator!() const;
 
   /**
   * @brief Retrieve a unique ID assigned to an entity.
@@ -228,7 +228,7 @@ class Entity {
   * @brief Returns the type of the entity. See enum SURefType.
   */
   enum SURefType entity_type() const;
-  
+
   /**
   * Returns the model object that holds this entity.
   */
@@ -238,12 +238,12 @@ class Entity {
   * Returns the parent Entities object.
   */
   Entities parent() const;
-  
+
   /**
   * Returns the persistent ID of the entity.  If the entity is not an entity that can have a persistent ID, the method will fail.
   */
   int64_t persistent_id() const;
-  
+
   /**
   * Returns whether these objects are the same.
   */

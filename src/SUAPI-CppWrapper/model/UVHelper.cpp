@@ -28,6 +28,16 @@
 #include "SUAPI-CppWrapper/model/UVHelper.hpp"
 namespace CW {
 
+UVHelper::UVHelper() {
+}
 
+UVHelper::UVHelper(SUUVHelperRef uv_helper_ref, bool release_on_destroy) {
+}
+
+UVHelper::operator SUUVHelperRef() const {
+}
+
+UVHelper::operator SUUVHelperRef*() const {
+}
 
 } /* namespace CW */
