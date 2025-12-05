@@ -57,3 +57,7 @@ build/
 # SLAPI
 third-party/slapi/**/*
 !third-party/slapi/*.md
+
+# Ruby
+third-party/ruby/**/*
+!third-party/ruby/*.md
