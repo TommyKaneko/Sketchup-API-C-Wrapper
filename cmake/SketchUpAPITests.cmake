@@ -1,3 +1,4 @@
+message(STATUS "================= SketchUp API C++ Wrapper Tests =================")
 # Where we keep the test models
 set(CPP_API_TESTS_MODELS_PATH "${PROJECT_SOURCE_DIR}/models")
 
@@ -16,7 +17,8 @@ file(GLOB_RECURSE TESTS_SOURCES ${CPP_API_TESTS_PATH}/*.cpp)
 
 add_executable(SketchUpAPITests ${TESTS_HEADERS} ${TESTS_SOURCES})
 
-target_link_libraries(SketchUpAPITests GoogleTest SketchUpAPICpp ${SLAPI_LIB})
+target_link_libraries(SketchUpAPITests GoogleTest ${TEST_LIBRARY_NAME} ${SLAPI_LIB})
+message(STATUS "Linking to Library: ${SLAPI_LIB}")
 
 set_target_properties(${SketchUpAPITests} PROPERTIES COMPILE_FLAGS "-Wall")
 

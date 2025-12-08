@@ -149,6 +149,7 @@ find_package(SketchUpAPI 2025.0 REQUIRED)
 # See if the SketchUpAPI is externally built or not.
 if (DEFINED SketchUpAPI_INCLUDE_DIR)
   set(EXTERNALLY_BUILT TRUE)
+
 else()
   set(EXTERNALLY_BUILT FALSE)
 endif()
@@ -162,8 +163,7 @@ set(CPP_API_CMAKE_PATH "${PROJECT_SOURCE_DIR}/cmake")
 
 set(CPP_API_THIRD_PARTY_PATH "${PROJECT_SOURCE_DIR}/third-party")
 
-# TODO(thomthom): Configure for Mac:
-set(SLAPI_PATH "${CPP_API_THIRD_PARTY_PATH}/slapi")
+set (SLAPI_PATH "${_SketchUpAPI_LIBRARY_DIR}")
 set(RUBY_PATH "${CPP_API_THIRD_PARTY_PATH}/ruby")
 # TODO: Ruby version is set here, but a cleverer version is likely needed in future.
 set(RUBY_VERSION "3.2")
@@ -179,31 +179,30 @@ if ( MSVC )
   if (EXTERNALLY_BUILT)
     set(SLAPI_INCLUDE_PATH "${SketchUpAPI_INCLUDE_DIR}")
   else()
-    set(SLAPI_INCLUDE_PATH "${SLAPI_PATH}/win/headers")
+    set(SLAPI_INCLUDE_PATH "${SLAPI_PATH}/headers")
   endif()
-  set(SLAPI_INCLUDE_PATH "${SLAPI_PATH}/win/headers")
+  set(SLAPI_INCLUDE_PATH "${SLAPI_PATH}/headers")
   
-  # Not Setting SLAPI path, as this should be done by FindSketchUpAPI.cmake
-  # set(SLAPI_BINARIES_PATH "${SLAPI_PATH}/win/binaries")
-  # set(SLAPI_BINARIES_X64_PATH "${SLAPI_BINARIES_PATH}/sketchup/x64")
-  # # TODO(thomthom): Add library paths per platform, and try to add just "SketchUpAPI"
-  # #                 to `target_link_libraries`.
-  # set(SLAPI_LIB "${SLAPI_BINARIES_X64_PATH}/SketchUpAPI.lib")
+  set(SLAPI_BINARIES_PATH "${SLAPI_PATH}/win/binaries")
+  set(SLAPI_BINARIES_X64_PATH "${SLAPI_BINARIES_PATH}/sketchup/x64")
+  # TODO(thomthom): Add library paths per platform, and try to add just "SketchUpAPI"
+  #                 to `target_link_libraries`.
+  set(SLAPI_LIB "${SLAPI_BINARIES_X64_PATH}/SketchUpAPI.lib")
   
-  # # configure Ruby library
-  # set(RUBY_INCLUDE_PATH "${RUBY_PATH}/include/${RUBY_VERSION}/win32_x64")
-  # set(RUBY_BINARIES_PATH "${RUBY_PATH}/lib/win32")
-  # set(RUBY_BINARIES_X64_PATH "${RUBY_BINARIES_PATH}")
-  # set(RUBY_LIB "${RUBY_BINARIES_X64_PATH}/x64-msvcrt-ruby250.lib")
+  # configure Ruby library
+  set(RUBY_INCLUDE_PATH "${RUBY_PATH}/include/${RUBY_VERSION}/win32_x64")
+  set(RUBY_BINARIES_PATH "${RUBY_PATH}/lib/win32")
+  set(RUBY_BINARIES_X64_PATH "${RUBY_BINARIES_PATH}")
+  set(RUBY_LIB "${RUBY_BINARIES_X64_PATH}/x64-msvcrt-ruby250.lib")
 else()
   # TK: include path in case this library is built externally.  
   if (EXTERNALLY_BUILT)
     set(SLAPI_INCLUDE_PATH "${SketchUpAPI_INCLUDE_DIR}")
   else()
-    set(SLAPI_INCLUDE_PATH "${SLAPI_PATH}/mac/SketchUpAPI.framework/Headers")
+    set(SLAPI_INCLUDE_PATH "${SLAPI_PATH}/SketchUpAPI.framework/Headers")
   endif()
   
-  set(SLAPI_LIB "${SLAPI_PATH}/mac/SketchUpAPI.framework")
+  set(SLAPI_LIB "${SLAPI_PATH}/SketchUpAPI.framework")
   set(SLAPI_SYMLINK_PATH "${SLAPI_INCLUDE_PATH}/SketchUpAPI")
 
   # Add symbolic links so that #include paths to the SketchUpAPI headers can read <SketchUpAPI/header.h>
@@ -240,5 +239,5 @@ add_definitions(-DNOMINMAX)
 
 
 include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/SketchUpAPICpp.cmake)
-#include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/GoogleTest.cmake)
-#include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/SketchUpAPITests.cmake)
+include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/GoogleTest.cmake)
+include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/SketchUpAPITests.cmake)
