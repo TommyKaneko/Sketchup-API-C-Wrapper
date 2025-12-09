@@ -40,6 +40,7 @@
 #include "SUAPI-CppWrapper/model/ComponentDefinition.hpp"
 #include "SUAPI-CppWrapper/model/InstancePath.hpp"
 #include "SUAPI-CppWrapper/model/Material.hpp"
+#include "SUAPI-CppWrapper/model/Texture.hpp"
 #include "SUAPI-CppWrapper/model/AttributeDictionary.hpp"
 #include "SUAPI-CppWrapper/model/TypedValue.hpp"
 #include "SUAPI-CppWrapper/model/OptionsManager.hpp"
@@ -405,31 +406,72 @@ std::vector<Layer> Model::layers() const {
 }
 
 
-void Model::add_layers(std::vector<Layer>& layers) {
-  for (size_t i=0; i < layers.size(); i++) {
-    // Check that each material is not attached to another model
-    if (layers[i].attached()) {
-      throw std::invalid_argument("CW::Model::add_layers(): At least one of the Layer objects passed is attached to another model.  Use Layer::copy() to create a new unattached Layer object and try again.");
+void Model::add_layers(std::vector<Layer>& layers, bool overwrite_existing) {
+  std::vector<Layer> existing_layers = this->layers();
+  std::vector<Layer> layers_to_add; layers_to_add.reserve(layers.size());
+  for (const Layer& lay : layers) {
+    if (!lay) {
+      continue;
+    }
+    // Find a matching layer in the model
+    const auto found_layer = std::find_if(existing_layers.begin(), existing_layers.end(),
+          [lay](const Layer& value2){ return lay.name() == value2.name();});
+    if (found_layer != existing_layers.end()) {
+      if (overwrite_existing) {
+        // Update properties of existing layer
+        //found_layer->name(lay.name());
+        // TODO: as more properties are added to Layer, they should be updated here
+      }
+      else {
+        // Skip adding this layer as it already exists
+        continue;
+      }
+    }
+    else {
+      // Check that each layer is not attached to another model
+      if (lay.attached()) {
+        layers_to_add.push_back(lay.copy());
+      }
+      else {
+        layers_to_add.push_back(lay);
+      }
     }
   }
-  std::vector<SULayerRef> layer_refs(layers.size(), SU_INVALID);
-  std::transform(layers.begin(), layers.end(), layer_refs.begin(),
+  // for (size_t i=0; i < layers.size(); i++) {
+  //   // Check that each material is not attached to another model
+  //   if (layers[i].attached()) {
+  //     throw std::invalid_argument("CW::Model::add_layers(): At least one of the Layer objects passed is attached to another model.  Use Layer::copy() to create a new unattached Layer object and try again.");
+  //   }
+  // }
+  std::vector<SULayerRef> layer_refs(layers_to_add.size(), SU_INVALID);
+  std::transform(layers_to_add.begin(), layers_to_add.end(), layer_refs.begin(),
     [](const Layer& value){
       return value.ref();
     });
-  SUResult res = SUModelAddLayers(m_model, layers.size(), layer_refs.data());
+  SUResult res = SUModelAddLayers(m_model, layers_to_add.size(), layer_refs.data());
   assert(res == SU_ERROR_NONE); _unused(res);
-  for (size_t i=0; i < layers.size(); i++) {
-    layers[i].attached(true);
+  for (size_t i=0; i < layers_to_add.size(); i++) {
+    layers_to_add[i].attached(true);
   }
 }
 
 
-bool Model::layer_exists(const Layer& layer) const {
+bool Model::layer_exists(const Layer& layer, bool strict) const {
   std::vector<Layer> layers = this->layers();
-  for (auto& lay : layers) {
-    if (lay == layer) {
-      return true;
+  if (strict) {
+    // For strict checking, the layer object must be the same
+    for (auto& lay : layers) {
+      if (lay == layer) {
+        return true;
+      }
+    }
+  }
+  else {
+    // For non-strict checking, we simply compare the name of the layer
+    for (auto& lay : layers) {
+      if (lay.name() == layer.name()) {
+        return true;
+      }
     }
   }
   return false;
@@ -464,22 +506,58 @@ std::vector<Material> Model::materials() const {
 }
 
 
-void Model::add_materials(std::vector<Material>& materials) {
-  for (size_t i=0; i < materials.size(); i++) {
-    // Check that each material is not attached to another model
-    if (materials[i].attached()) {
-      throw std::invalid_argument("CW::Model::add_materials(): At least one of the Material objects passed is attached to another model.  Use Material::copy() to create a new unattached Material object and try again.");
+void Model::add_materials(std::vector<Material>& materials,  bool overwrite_existing) {
+  std::vector<Material> existing_materials = this->materials();
+  std::vector<Material> materials_to_add; materials_to_add.reserve(materials.size());
+  for (Material& mat : materials) {
+    if (!mat) {
+      continue;
+    }
+    // Find a matching material in the model
+    const auto found_material = std::find_if(existing_materials.begin(), existing_materials.end(),
+          [mat](const Material& value2){ return mat.name() == value2.name();});
+    if (found_material != existing_materials.end()) {
+      if (overwrite_existing) {
+        // Update properties of existing material
+        // TODO: as more properties are added to Material, they should be updated here
+        found_material->opacity(mat.opacity());
+        found_material->type(mat.type());
+        found_material->use_alpha(mat.use_alpha());
+        Texture texture = mat.texture();
+        if (!!texture) {
+          found_material->texture(texture);
+        }
+      }
+      else {
+        // Skip adding this material as it already exists
+        continue;
+      }
+    }
+    else {
+      // Check that each material is not attached to another model
+      if (mat.attached()) {
+        materials_to_add.push_back(mat.copy());
+      }
+      else {
+        materials_to_add.push_back(mat);
+      }
     }
   }
-  std::vector<SUMaterialRef> material_refs(materials.size(), SU_INVALID);
-  std::transform(materials.begin(), materials.end(), material_refs.begin(),
+  // for (size_t i=0; i < materials.size(); i++) {
+  //   // Check that each material is not attached to another model
+  //   if (materials[i].attached()) {
+  //     throw std::invalid_argument("CW::Model::add_materials(): At least one of the Material objects passed is attached to another model.  Use Material::copy() to create a new unattached Material object and try again.");
+  //   }
+  // }
+  std::vector<SUMaterialRef> material_refs(materials_to_add.size(), SU_INVALID);
+  std::transform(materials_to_add.begin(), materials_to_add.end(), material_refs.begin(),
     [](const Material& value){
       return value.ref();
     });
-  SUResult res = SUModelAddMaterials(m_model, materials.size(), material_refs.data());
+  SUResult res = SUModelAddMaterials(m_model, materials_to_add.size(), material_refs.data());
   assert(res == SU_ERROR_NONE); _unused(res);
-  for (size_t i=0; i < materials.size(); i++) {
-    materials[i].attached(true);
+  for (size_t i=0; i < materials_to_add.size(); i++) {
+    materials_to_add[i].attached(true);
   }
 }
 

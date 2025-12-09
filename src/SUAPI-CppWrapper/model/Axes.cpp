@@ -67,27 +67,31 @@ SUAxesRef Axes::copy_reference(const Axes& other) {
   return new_axes;
 }
 
-  
+
 /*****************************
 * Constructors / Destructor **
 ******************************/
 Axes::Axes():
-  DrawingElement(SU_INVALID)
+  Entity(SU_INVALID)
+//  DrawingElement(SU_INVALID)
 {}
 
 
 Axes::Axes(SUAxesRef axes, bool attached):
-  DrawingElement(SUAxesToDrawingElement(axes), attached)
+  Entity(SUAxesToEntity(axes), attached)
+//  DrawingElement(SUAxesToDrawingElement(axes), attached)
 {}
 
 
 Axes::Axes(Point3D origin, Vector3D x_axis, Vector3D y_axis, Vector3D z_axis):
-  DrawingElement(SUAxesToDrawingElement(create_custom_axes(origin, x_axis, y_axis, z_axis)), false)
+  Entity(SUAxesToEntity(create_custom_axes(origin, x_axis, y_axis, z_axis)), false)
+//  DrawingElement(SUAxesToDrawingElement(create_custom_axes(origin, x_axis, y_axis, z_axis)), false)
 {}
 
 /** Copy constructor */
 Axes::Axes(const Axes& other):
-  DrawingElement(other, SUAxesToDrawingElement(copy_reference(other)))
+  Entity(other, SUAxesToEntity(copy_reference(other)))
+//  DrawingElement(other, SUAxesToDrawingElement(copy_reference(other)))
 {}
 
 
@@ -99,8 +103,8 @@ Axes::~Axes() {
     _unused(res);
   }
 }
-  
-  
+
+
 /******************
 * Public Methods **
 *******************/
@@ -114,7 +118,8 @@ Axes& Axes::operator=(const Axes& other) {
     _unused(res);
   }
   m_entity = SUAxesToEntity(copy_reference(other));
-  DrawingElement::operator=(other);
+  Entity::operator=(other);
+  //DrawingElement::operator=(other);
   return *this;
 }
 

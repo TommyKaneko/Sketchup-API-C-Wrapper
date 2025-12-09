@@ -85,7 +85,8 @@ Material::Material(const Material& other):
     this->type(other.type());
     this->opacity(other.opacity());
     this->color(other.color());
-    this->texture(other.texture());
+    Texture texture_copy = other.texture();
+    this->texture(texture_copy);
   }
 }
 
@@ -104,7 +105,8 @@ Material& Material::operator=(const Material& other) {
     this->type(other.type());
     this->opacity(other.opacity());
     this->color(other.color());
-    this->texture(other.texture());
+    Texture texture_copy = other.texture();
+    this->texture(texture_copy);
   }
   Entity::operator=(other);
   return *this;
@@ -146,7 +148,8 @@ Material Material::copy() const {
   new_material.type(this->type());
   new_material.opacity(this->opacity());
   new_material.color(this->color());
-  new_material.texture(this->texture());
+  Texture temp_texture = this->texture().copy(); // TODO: there is a problem with texture scaling here - API issue
+  new_material.texture(temp_texture);
   new_material.copy_attributes_from((*this));
   return new_material;
 }
@@ -259,11 +262,11 @@ Texture Material::texture() const {
   if (res != SU_ERROR_NONE) {
     return Texture();
   }
-  return Texture(get_texture);
+  return Texture(get_texture, true); // Texture is always attached to the material
 }
 
 
-void Material::texture(const Texture& texture) {
+void Material::texture(Texture& texture) {
   if(!(*this)) {
     throw std::logic_error("CW::Material::texture(): Material is null");
   }
@@ -272,10 +275,12 @@ void Material::texture(const Texture& texture) {
     return;
   }
   if (texture.attached()) {
-    return this->texture(texture.copy());
+    Texture texture_copy = texture.copy();
+    return this->texture(texture_copy);
   }
   SUTextureRef texture_ref = texture.ref();
   SUResult res = SUMaterialSetTexture(this->ref(), texture_ref);
+  texture.attached(true); // Texture is now attached to the material
   assert(res == SU_ERROR_NONE); _unused(res);
 }
 

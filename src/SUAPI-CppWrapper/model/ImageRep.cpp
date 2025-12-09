@@ -50,22 +50,22 @@ SUImageRepRef ImageRep::copy_reference(const ImageRep& other) {
 /***************************
 * Constructors / Destructors
 ****************************/
-  
+
 ImageRep::ImageRep():
   m_image_rep(SU_INVALID),
   m_attached(false)
 {}
-  
+
 ImageRep::ImageRep(SUImageRepRef image_rep, bool attached):
   m_image_rep(image_rep),
   m_attached(attached)
 {}
-  
+
 
 ImageRep::ImageRep(const ImageRep& other):
   ImageRep(copy_reference(other), other.m_attached)
 {}
-  
+
 
 ImageRep::~ImageRep() {
   if (SUIsValid(m_image_rep) && !m_attached) {
@@ -84,7 +84,7 @@ ImageRep& ImageRep::operator=(const ImageRep& other) {
   m_attached = other.m_attached;
   return (*this);
 }
-  
+
 
 bool ImageRep::operator!() const {
   return SUIsInvalid(m_image_rep);
@@ -186,7 +186,7 @@ size_t ImageRep::height() const {
   assert(res == SU_ERROR_NONE); _unused(res);
   return height;
 }
-  
+
 
 size_t ImageRep::row_padding() const {
   if(!(*this)) {
@@ -233,8 +233,8 @@ size_t ImageRep::data_size() const {
   assert(res == SU_ERROR_NONE); _unused(res);
   return data_size;
 }
- 
-  
+
+
 size_t ImageRep::bits_per_pixel() const {
   if(!(*this)) {
     throw std::logic_error("CW::ImageRep::bits_per_pixel(): ImageRep is null");
@@ -258,5 +258,5 @@ std::vector<SUByte> ImageRep::pixel_data() const {
   assert(res == SU_ERROR_NONE); _unused(res);
   return pixel_data;
 }
-  
+
 } // END namespace CW

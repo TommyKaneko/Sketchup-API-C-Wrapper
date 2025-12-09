@@ -134,6 +134,7 @@ Layer Layer::copy() const {
   }
   Layer new_layer(create_layer(), false);
   new_layer.name(this->name());
+  // TODO: there are more layer properties to copy
   return new_layer;
 }
 

@@ -234,15 +234,17 @@ class Model {
   /**
   * Add layers to the model.
   * @param layers - vector of layer objects to add.  The layers must not be attached to any other model object.
+  * @param overwrite_existing - where an added layer matches the name of an existing layer, overwrite the properties of the existing layer with the added layer.
   */
-  void add_layers(std::vector<Layer>& layers);
+  void add_layers(std::vector<Layer>& layers, bool overwrite_existing = false);
 
   /**
   * Checks if the given layer is in the list of layers in this model.  This is an expensive method, and is recommended to be used only in debugging.
   * @param layer - the layer object to check
+  * @param strict - default true.  If true, the check will ensure the layers being compared are the same object.  If false, only the layer names will be checked
   * @return true if the layer is in the model.
   */
-  bool layer_exists(const Layer& layer) const;
+  bool layer_exists(const Layer& layer, bool strict = true) const;
 
   /*
   * Returns the Location object of the model
@@ -259,8 +261,9 @@ class Model {
   /**
   * Add materials to the model.
   * @param materials - vector of material objects which must not be attached to any other model object.
+  * @param overwrite_existing - where an added material matches the name of an existing material, overwrite the properties of the existing material with the added material.
   */
-  void add_materials(std::vector<Material>& materials);
+  void add_materials(std::vector<Material>& materials, bool overwrite_existing = false);
 
   /**
   * Checks if the given material is in the list of materials in this model.  This is a very expensive method, and is recommended to be used only in debugging.

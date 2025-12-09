@@ -130,7 +130,7 @@ class Material :public Entity {
   /**
   * Sets the texture of the material
   */
-  void texture(const Texture& texture);
+  void texture(Texture& texture);
 
   /**
   * Returns the type of the material
