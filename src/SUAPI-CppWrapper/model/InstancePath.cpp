@@ -71,14 +71,18 @@ InstancePath::InstancePath(const InstancePath& other):
 
 
 InstancePath::~InstancePath() {
-  SUResult res = SUInstancePathRelease(&m_instance_path);
-  assert(res == SU_ERROR_NONE); _unused(res);
+  if (!SUIsValid(m_instance_path)) {
+    SUResult res = SUInstancePathRelease(&m_instance_path);
+    assert(res == SU_ERROR_NONE); _unused(res);
+  }
 }
 
 
 InstancePath& InstancePath::operator=(const InstancePath& other) {
-  SUResult res = SUInstancePathRelease(&m_instance_path);
-  assert(res == SU_ERROR_NONE); _unused(res);
+  if (SUIsValid(this->ref())) {
+    SUResult res = SUInstancePathRelease(&m_instance_path);
+    assert(res == SU_ERROR_NONE); _unused(res);
+  }
   m_instance_path = copy_reference(other);
   return *this;
 }
