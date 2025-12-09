@@ -1,3 +1,4 @@
+#include <string>
 // where are the models?
 // #define CPP_API_TESTS_MODELS_PATH "@CPP_API_TESTS_MODELS_PATH@"
 
