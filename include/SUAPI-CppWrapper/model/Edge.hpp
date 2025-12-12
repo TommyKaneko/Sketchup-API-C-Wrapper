@@ -50,13 +50,13 @@ class Edge :public DrawingElement {
   static SUEdgeRef create_edge(const Point3D& start, const Point3D& end);
 
   static SUEdgeRef copy_reference(const Edge& other);
-  
+
   public:
   /**
   * Constructor for null Edge object.
   */
   Edge();
-  
+
   /*
   * Construct an Edge from a vector of two points.
   * @param points - where points[0] is the start vertex and points[1] is the end vertex.
@@ -69,26 +69,31 @@ class Edge :public DrawingElement {
   * @param end - the end vertex.
   */
   Edge(const Point3D& start, const Point3D& end);
-  
+
   /**
   * Creates new edge using vertices position.  Note that this will not join the new edge to existing vertices.  Use GeometryInput for welding edges.
   */
   Edge(const Vertex& start, const Vertex& end);
-  
+
   /*
   * Edge constructor that essentially wraps around an already created SUFaceRef object.
   * @param SUEdgeRef pointer to the edge.
   * @param bool true if the edge should be released when this class object is destroyed.  False, if the release of the face object is handled elsewhere (use with caution).
   */
   Edge(SUEdgeRef edge, bool attached = true);
-  
+
   /** Copy Constructor */
   Edge(const Edge& other);
-  
+
   ~Edge();
-  
+
   Edge& operator=(const Edge& other);
-  
+
+  /**
+   * @brief Creates an explicit copy of the Edge object, detached from the original.
+   */
+  Edge copy() const;
+
   /**
   * Returns SUEdgeRef object for the Edge.
   */
@@ -98,7 +103,7 @@ class Edge :public DrawingElement {
   * The class object can be converted to a SUEdgeRef without loss of data.
   */
   operator SUEdgeRef() const;
-  
+
   /*
   * Returns whether the class is a valid object.
   */
@@ -108,17 +113,17 @@ class Edge :public DrawingElement {
   * @return true if the edge is invalid
   */
   bool operator!() const;
-  
+
   /*
   * Returns the Color object assigned to the Edge
   */
   Color color() const;
-  
+
   /*
   * Sets the color of the Edge.
   */
   bool color(const Color& input_color);
-  
+
   /*
   * Return the vertex at the end of the Edge.
   */
@@ -128,7 +133,7 @@ class Edge :public DrawingElement {
   * Return the faces connected to this edge.
   */
   std::vector<Face> faces() const;
-  
+
   /*
   * Gets the SUResult of the create edge operation.
   * @return * SU_ERROR_NONE on success
@@ -143,20 +148,20 @@ class Edge :public DrawingElement {
   * @return true if the Edge is smooth.
   */
   bool smooth() const;
-  
+
   /*
   * Set the smooth status for an Edge.
   * @param bool true to make the edge smooth, false to make the edge hard.
   * @return true for successful, false for unsuccessful.
   */
   bool smooth(bool smooth);
-  
+
   /*
   * Determine if the Edge is soft.
   * @return true if the Edge is soft.
   */
   bool soft() const;
-  
+
   /*
   * Set the soft status for an edge.
   * @param bool true if you want soften the edge, false if you do not want to soften the edge.
@@ -168,7 +173,7 @@ class Edge :public DrawingElement {
   * Return the vertex at the start of the Edge.
   */
   Vertex start() const;
-  
+
   /*
   * Return Vector between the start and end points
   */

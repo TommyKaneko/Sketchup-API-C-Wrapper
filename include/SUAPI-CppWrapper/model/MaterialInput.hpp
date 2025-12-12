@@ -37,22 +37,27 @@ namespace CW {
 // Forward declarations
 class Material;
 
+/**
+ * @brief
+ * @deprecated From Sketchup 2021.2, SUMaterialPositionInput is used
+ *
+ */
 class MaterialInput {
   private:
   SUMaterialInput m_material_input;
-  
+
   /**
   * Creates a SUMaterialInput struct, with default values derived from the Material object.
   */
   static SUMaterialInput create_material_input(Material material);
-  
+
   public:
   //MaterialInput();
   MaterialInput(Material material);
   MaterialInput(SUMaterialInput material_input);
-  
+
   SUMaterialInput ref();
-  
+
   Material material() const;
 };
 

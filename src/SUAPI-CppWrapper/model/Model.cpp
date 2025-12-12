@@ -383,19 +383,25 @@ TypedValue Model::get_attribute(const std::string& dict_name, const std::string&
 */
 //guid();
 
-/*
-* Returns the list of layers in the model.
-* @return layers a vector array of Layer objects in the model.
-*/
-std::vector<Layer> Model::layers() const {
+
+size_t Model::num_layers() const {
   if (!(*this)) {
     throw std::logic_error("CW::Model::layers(): Model is null");
   }
   size_t count = 0;
   SUResult res = SUModelGetNumLayers(m_model, &count);
   assert(res == SU_ERROR_NONE);
+  return count;
+}
+
+/*
+* Returns the list of layers in the model.
+* @return layers a vector array of Layer objects in the model.
+*/
+std::vector<Layer> Model::layers() const {
+  size_t count = this->num_layers();
   std::vector<SULayerRef> layer_refs(count, SU_INVALID);
-  res = SUModelGetLayers(m_model, count, layer_refs.data(), &count);
+  SUResult res = SUModelGetLayers(m_model, count, layer_refs.data(), &count);
   assert(res == SU_ERROR_NONE); _unused(res);
   std::vector<Layer> layers(count);
   std::transform(layer_refs.begin(), layer_refs.end(), layers.begin(),
@@ -477,6 +483,18 @@ bool Model::layer_exists(const Layer& layer, bool strict) const {
   return false;
 }
 
+
+size_t Model::num_materials() const {
+  if (!(*this)) {
+    throw std::logic_error("CW::Model::materials(): Model is null");
+  }
+  size_t count = 0;
+  SUResult res = SUModelGetNumMaterials(m_model, &count);
+  assert(res == SU_ERROR_NONE);
+  return count;
+}
+
+
 /*
 * Returns the Location object of the model
 * @return location Location object. If no location has been assigned to the model, the Location object returned will be invalid.
@@ -485,17 +503,12 @@ bool Model::layer_exists(const Layer& layer, bool strict) const {
 
 
 std::vector<Material> Model::materials() const {
-  if (!(*this)) {
-    throw std::logic_error("CW::Model::materials(): Model is null");
-  }
-  size_t count = 0;
-  SUResult res = SUModelGetNumMaterials(m_model, &count);
-  assert(res == SU_ERROR_NONE);
+  size_t count = this->num_materials();
   if (count == 0) {
     return std::vector<Material> {};
   }
   std::vector<SUMaterialRef> material_refs(count, SU_INVALID);
-  res = SUModelGetMaterials(m_model, count, material_refs.data(), &count);
+  SUResult res = SUModelGetMaterials(m_model, count, material_refs.data(), &count);
   assert(res == SU_ERROR_NONE); _unused(res);
   std::vector<Material> materials(count);
   std::transform(material_refs.begin(), material_refs.end(), materials.begin(),

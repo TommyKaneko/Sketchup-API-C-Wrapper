@@ -52,6 +52,10 @@ class Entities;
 * Keep in mind that the methods below are available on all subclasses. For example, an Edge's parent class is Drawingelement, and a Drawingelement's parent class is Entity. Therefore an Edge has all of the methods defined in Drawingelement and Entity.
 */
 class Entity {
+
+  friend class RubyAPI;
+  friend class InstancePath;
+
   protected:
   /**
   * @brief The C SUEntityRef that this class wraps.
@@ -63,7 +67,6 @@ class Entity {
   */
   bool m_attached;
 
-  public:
   /**
   * @brief Constructor representing a null objject.
   */
@@ -95,6 +98,12 @@ class Entity {
   /** @brief Copy assignment operator */
   Entity& operator=(const Entity& other);
 
+  /**
+  * @brief Copies properties fo the entity from another entity.
+  */
+  bool copy_properties_from(const Entity& entity);
+
+  public:
   /*
   * @brief Returns a copy of the wrapped SUEntityRef. USE WITH CAUTION.
   *

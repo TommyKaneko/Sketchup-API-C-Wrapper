@@ -225,6 +225,11 @@ class Model {
   */
   //guid();
 
+  /**
+   * @brief Returns the number of layers in the model
+   */
+  size_t num_layers() const;
+
   /*
   * Returns the list of layers in the model.
   * @return layers a vector array of Layer objects in the model.
@@ -251,6 +256,11 @@ class Model {
   * @return location Location object. If no location has been assigned to the model, the Location object returned will be invalid.
   */
    // Location location();
+
+  /**
+   * @brief Returns the number of materials in the model
+   */
+  size_t num_materials() const;
 
   /*
   * Returns the list of materials in the model.

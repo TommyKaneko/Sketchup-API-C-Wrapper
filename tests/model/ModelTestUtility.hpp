@@ -10,6 +10,9 @@ class Material;
 class Texture;
 class ImageRep;
 class Layer;
+class Entity;
+class DrawingElement;
+class Edge;
 }
 
 namespace CW {
@@ -55,6 +58,14 @@ class ModelLoad : public testing::Test {
   void ImageRepsAreEqual(const CW::ImageRep& image1, const CW::ImageRep& image2);
 
   void LayersAreEqual(const CW::Layer& layer1, const CW::Layer& layer2);
+
+  void EntitysAreEqual(const CW::Entity& entity1, const CW::Entity& entity2);
+
+  void DrawingElementsAreEqual(const CW::DrawingElement& element1, const CW::DrawingElement& element2);
+
+  void EdgesAreEqual(const CW::Edge& edge1, const CW::Edge& edge2);
+
+  void AttributeDictionariesAreEqual(const CW::AttributeDictionary& dict1, const CW::AttributeDictionary& dict2);
 
 };
 

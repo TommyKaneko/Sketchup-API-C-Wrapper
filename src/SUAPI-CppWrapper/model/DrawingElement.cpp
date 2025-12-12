@@ -47,7 +47,11 @@ DrawingElement::DrawingElement(SUDrawingElementRef drawing_element, bool attache
 
 DrawingElement::DrawingElement(const DrawingElement& other, SUDrawingElementRef element_ref):
   Entity(other, SUDrawingElementToEntity(element_ref))
-{}
+{
+  if (!other.m_attached && SUIsValid(other.ref())) {
+    this->copy_properties_from(other);
+  }
+}
 
 DrawingElement::DrawingElement():
   Entity()
@@ -57,7 +61,10 @@ DrawingElement::DrawingElement():
 /** Copy assignment operator */
 DrawingElement& DrawingElement::operator=(const DrawingElement& other) {
   if (!other.m_attached && SUIsValid(other.m_entity)) {
-    this->copy_properties_from(other);
+    bool success = this->copy_properties_from(other);
+    if (!success) {
+      throw std::runtime_error("CW::DrawingElement::operator=: Failed to copy properties from detached DrawingElement");
+    }
   }
   Entity::operator=(other);
   return (*this);
@@ -87,23 +94,18 @@ BoundingBox3D DrawingElement::bounds() {
 
 bool DrawingElement::copy_properties_from(const DrawingElement& element) {
   bool success = this->casts_shadows(element.casts_shadows());
-  if (!success)
-    return false;
+  assert(success);
   success = this->hidden(element.hidden());
-  if (!success)
-    return false;
+  assert(success);
   success = this->receive_shadows(element.receive_shadows());
-  if (!success)
-    return false;
-  Layer elem_layer = element.layer();
-  success = this->layer(elem_layer);
-  if (!success)
-    return false;
+  assert(success);
+  // We copy the Layer as is, even if the layer is attached to a different model.
+  // TODO: layers can only be assigned to objects that are attached to a model.  Calling the line below in most cases will fail.  This is a fundamental problem with the API.  @GeomInput may produce better results.
+  success = this->layer(element.layer()); // this fails silently
+  //assert(success);
   success = this->material(element.material());
-  if (!success)
-    return false;
-  
-  return true;
+  assert(success);
+  return success;
 }
 
 
@@ -166,13 +168,16 @@ Layer DrawingElement::layer() const {
 }
 
 
-bool DrawingElement::layer(Layer& layer){
+bool DrawingElement::layer(const Layer& layer){
   if (SUIsInvalid(m_entity)) {
     throw std::logic_error("CW::DrawingElement::layer(): DrawingElement is null");
   }
+  if (!layer.attached() && layer.is_valid()) {
+    throw std::logic_error("CW::DrawingElement::layer(): Only a layer that is attached to a model can be assigned to a DrawingElement");
+  }
   SUResult res = SUDrawingElementSetLayer(this->ref(), layer);
   if (res == SU_ERROR_NONE) {
-    layer.attached(true);
+    // layer.attached(true); // layers do not get attached by assigning them to a drawing element - they are attached by adding to a model.
     return true;
   }
   return false;
@@ -196,6 +201,9 @@ Material DrawingElement::material() const {
 bool DrawingElement::material(const Material& material) {
   if (SUIsInvalid(m_entity)) {
     throw std::logic_error("CW::DrawingElement::material(): DrawingElement is null");
+  }
+  if (material.is_valid() && !material.attached()) {
+    throw std::logic_error("CW::DrawingElement::material(): Only a material that is attached to a model can be assigned to a DrawingElement");
   }
   SUResult res = SUDrawingElementSetMaterial(this->ref(), material);
   if (res == SU_ERROR_NONE) {

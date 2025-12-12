@@ -75,7 +75,7 @@ SUAttributeDictionaryRef AttributeDictionary::copy_reference(const AttributeDict
 AttributeDictionary::AttributeDictionary():
   Entity(SU_INVALID)
 {}
-  
+
 
 AttributeDictionary::AttributeDictionary(std::string name):
   AttributeDictionary(create_attribute_dictionary(name), false)
@@ -207,6 +207,12 @@ std::string AttributeDictionary::get_name() const {
   _unused(res);
   return string;
 }
+
+std::string AttributeDictionary::name() const {
+  return get_name();
+}
+
+
 
 bool AttributeDictionary::operator !() const {
   if (SUIsValid(m_entity)) {

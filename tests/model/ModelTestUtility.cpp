@@ -6,6 +6,12 @@
 #include "SUAPI-CppWrapper/model/Texture.hpp"
 #include "SUAPI-CppWrapper/model/ImageRep.hpp"
 #include "SUAPI-CppWrapper/model/Layer.hpp"
+#include "SUAPI-CppWrapper/model/Entity.hpp"
+#include "SUAPI-CppWrapper/model/DrawingElement.hpp"
+#include "SUAPI-CppWrapper/model/AttributeDictionary.hpp"
+#include "SUAPI-CppWrapper/model/Vertex.hpp"
+#include "SUAPI-CppWrapper/model/Edge.hpp"
+#include "SUAPI-CppWrapper/Color.hpp"
 #include "SUAPI-CppWrapper/String.hpp"
 
 
@@ -42,27 +48,24 @@ void ModelLoad::TearDown() {
   // before the destructor).
 }
 
-void ModelLoad::MaterialsAreEqual(const CW::Material& mat1, const CW::Material& mat2){
-  if (!mat1.is_valid()) {
-      if (!mat2.is_valid()) {
-        return;
-      }
-      throw std::invalid_argument("One Material is invalid and the other is not");
+void ModelLoad::MaterialsAreEqual(const CW::Material& material1, const CW::Material& material2){
+  if (!material1.is_valid() || !material2.is_valid()) {
+    EXPECT_EQ(material1.is_valid(), material2.is_valid());
+    return;
   }
-  EXPECT_EQ(mat1.name(), mat2.name());
-  EXPECT_EQ(mat1.opacity(), mat2.opacity());
-  EXPECT_EQ(mat1.type(), mat2.type());
-  EXPECT_EQ(mat1.use_alpha(), mat2.use_alpha());
-  TexturesAreEqual(mat1.texture(), mat2.texture());
+  this->EntitysAreEqual(material1, material2);
+  ASSERT_EQ(material1.name().std_string(), material2.name().std_string()) << "\033[33mMaterials cannot be added to unattached DrawingElements - review how material was applied\033[0m";
+  EXPECT_EQ(material1.opacity(), material2.opacity());
+  EXPECT_EQ(material1.type(), material2.type());
+  EXPECT_EQ(material1.use_alpha(), material2.use_alpha());
+  TexturesAreEqual(material1.texture(), material2.texture());
 }
 
 
 void ModelLoad::TexturesAreEqual(const CW::Texture& tex1, const CW::Texture& tex2){
-  if (!tex1.is_valid()) {
-      if (!tex2.is_valid()) {
-        return;
-      }
-      throw std::invalid_argument("One Texture is invalid and the other is not");
+  if (!tex1.is_valid() || !tex2.is_valid()) {
+    EXPECT_EQ(tex1.is_valid(), tex2.is_valid());
+    return;
   }
   EXPECT_EQ(tex1.width(), tex2.width());
   EXPECT_EQ(tex1.height(), tex2.height());
@@ -74,11 +77,9 @@ void ModelLoad::TexturesAreEqual(const CW::Texture& tex1, const CW::Texture& tex
 }
 
 void ModelLoad::ImageRepsAreEqual(const CW::ImageRep& image1, const CW::ImageRep& image2){
-  if (!image1) {
-      if (!image2) {
-        return;
-      }
-      throw std::invalid_argument("One ImageRep is invalid and the other is not");
+  if (!image1 || !image1) {
+    EXPECT_EQ(!image1, !image2);
+    return;
   }
   EXPECT_EQ(image1.width(), image2.width());
   EXPECT_EQ(image1.height(), image2.height());
@@ -94,17 +95,92 @@ void ModelLoad::ImageRepsAreEqual(const CW::ImageRep& image1, const CW::ImageRep
 
 
 void ModelLoad::LayersAreEqual(const CW::Layer& layer1, const CW::Layer& layer2) {
-  if (!layer1.is_valid()) {
-      if (!layer2.is_valid()) {
-        return;
-      }
-      throw std::invalid_argument("One Layer is invalid and the other is not");
+  if (!layer1 || !layer2) {
+    EXPECT_EQ(layer1.is_valid(), layer2.is_valid()); // Current version failing: SUDrawingElementSetLayer followed by SUDrawingElementGetLayer gives inconsistent results.
+    return;
   }
-  EXPECT_EQ(layer1.name(), layer2.name());
+  EXPECT_EQ(layer1.name().std_string(), layer2.name().std_string());
+  this->EntitysAreEqual(layer1, layer2);
   // TODO: add more properties as they are added to the API.
+}
+
+
+void ModelLoad::AttributeDictionariesAreEqual(const CW::AttributeDictionary& dict1, const CW::AttributeDictionary& dict2) {
+  if (!dict1.is_valid() || !dict2.is_valid()) {
+    EXPECT_EQ(dict1.is_valid(), dict2.is_valid());
+    return;
+  }
+  EXPECT_EQ(dict1.name(), dict2.name());
+  std::vector<std::string> keys1 = dict1.get_keys();
+  std::vector<std::string> keys2 = dict2.get_keys();
+  EXPECT_EQ(keys1.size(), keys2.size());
+  for (size_t i = 0; i < keys1.size(); ++i) {
+    EXPECT_EQ(keys1[i], keys2[i]);
+    EXPECT_EQ(dict1.get_value(keys1[i]), dict2.get_value(keys2[i]));
+  }
+}
+
+
+void ModelLoad::EntitysAreEqual(const CW::Entity& entity1, const CW::Entity& entity2) {
+  if (!entity1.is_valid() || !entity1.is_valid()) {
+    EXPECT_EQ(entity1.is_valid(), entity2.is_valid());
+    return;
+  }
+  EXPECT_EQ(entity1.entity_type(), entity2.entity_type());
+  // Check Atribute Dictionaries
+  std::vector<CW::AttributeDictionary> dicts1 = entity1.attribute_dictionaries();
+  std::vector<CW::AttributeDictionary> dicts2 = entity2.attribute_dictionaries();
+  EXPECT_EQ(dicts1.size(), dicts2.size());
+  for (size_t i = 0; i < dicts1.size(); ++i) {
+    this->AttributeDictionariesAreEqual(dicts1[i], dicts2[i]);
+  }
+}
+
+
+void ModelLoad::DrawingElementsAreEqual(const CW::DrawingElement& element1, const CW::DrawingElement& element2) {
+  if (!element1.is_valid() || !element2.is_valid()) {
+    EXPECT_EQ(!element1.is_valid(), !element2.is_valid());
+    return;
+  }
+  this->EntitysAreEqual(element1, element2);
+  EXPECT_EQ(element1.casts_shadows(), element2.casts_shadows());
+  EXPECT_EQ(element1.hidden(), element2.hidden());
+  if (!!element1.layer()) {
+    EXPECT_EQ(element1.layer().attached(), element2.layer().attached()); // Only attached layers should be assigned to a DrawingElement
+    this->LayersAreEqual(element1.layer(), element2.layer());
+  }
+  if (!!element1.material()) {
+    EXPECT_EQ(element1.material().attached(), element2.material().attached()); // Only attached layers should be assigned to a DrawingElement
+    this->MaterialsAreEqual(element1.material(), element2.material());
+  }
+  EXPECT_EQ(element1.receive_shadows(), element2.receive_shadows());
+}
+
+
+void ModelLoad::EdgesAreEqual(const CW::Edge& edge1, const CW::Edge& edge2) {
+  if (!edge1.is_valid() || !edge2.is_valid()) {
+    EXPECT_EQ(edge1.is_valid(), edge2.is_valid());
+    return;
+  }
+  DrawingElementsAreEqual(edge1, edge2);
+
+  // Compare start and end positions
+  EXPECT_EQ(edge1.start().position(), edge2.start().position());
+  EXPECT_EQ(edge1.end().position(), edge2.end().position());
+
+  // Compare geometric vector
+  EXPECT_EQ(edge1.vector(), edge2.vector());
+
+  // Compare drawing properties
+  EXPECT_EQ(edge1.smooth(), edge2.smooth());
+  EXPECT_EQ(edge1.soft(), edge2.soft());
+
+  // Compare color
+  EXPECT_EQ(edge1.color(), edge2.color());
 }
 
   // Code here will be called immediately after the constructor (right
   // before each test).
 
 } // namespace CW::Tests
+

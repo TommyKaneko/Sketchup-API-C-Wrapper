@@ -48,13 +48,17 @@ namespace CW {
 
 
 Entities::Entities(SUEntitiesRef entities, const SUModelRef model):
+  Entities(entities, Model(model, false))
+{}
+
+Entities::Entities(SUEntitiesRef entities, const Model model):
   m_entities(entities),
   m_model(model)
 {}
 
 Entities::Entities():
   m_entities(SU_INVALID),
-  m_model(SU_INVALID)
+  m_model(Model())
 {}
 
 
@@ -186,7 +190,7 @@ void Entities::add(const Entities& other) {
   if (!SUIsValid(m_entities) || !SUIsValid(other.m_entities)) {
     throw std::logic_error("CW::Entities::add(): Entities is null");
   }
-  GeometryInput geom_input(m_model);
+  GeometryInput geom_input(&m_model);
   geom_input.add_faces(other.faces());
   geom_input.add_edges(other.edges());
   this->fill(geom_input);
@@ -214,7 +218,12 @@ SUResult Entities::fill(GeometryInput &geom_input) {
   if (geom_input.empty()) {
     return SU_ERROR_NONE;
   }
-
+  if (geom_input.m_attached) {
+    throw std::logic_error("CW::Entities::fill(): GeometryInput has already been attached to a model, cannot fill Entities object.");
+  }
+  if (geom_input.m_target_model->ref().ptr != m_model.ref().ptr) {
+    throw std::logic_error("CW::Entities::fill(): GeometryInput is associated with a different model than the Entities object.");
+  }
   // For the indexes of the GeometryInputRef to make sense after we fill the Entities object with its contents, we need to know how many of each entitity currently exists in the Entities object
   size_t num_faces_before = 0;
   SUResult res = SUEntitiesGetNumFaces(m_entities, &num_faces_before);
@@ -285,17 +294,30 @@ std::vector<Edge> Entities::add_edges(std::vector<Edge>& edges) {
   if (!SUIsValid(m_entities)) {
     throw std::logic_error("CW::Entities::add_edges(): Entities is null");
   }
-  std::vector<SUEdgeRef> refs(edges.size(), SU_INVALID);
-  std::transform(edges.begin(), edges.end(), refs.begin(), [](const CW::Edge& edge) {return edge.ref(); });
+  std::vector<Edge> existing_edges = this->edges();
+  std::vector<Edge> edges_to_add; edges_to_add.reserve(edges.size());
+  for (Edge& edge : edges) {
+    if (!edge) {
+      continue;
+    }
+    // Check that each edge is not attached to another entities object
+    if (edge.attached()) {
+      edges_to_add.push_back(edge.copy());
+    }
+    else {
+      edges_to_add.push_back(edge);
+    }
+  }
+
+  std::vector<SUEdgeRef> refs(edges_to_add.size(), SU_INVALID);
+  std::transform(edges_to_add.begin(), edges_to_add.end(), refs.begin(), [](const CW::Edge& edge) {return edge.ref(); });
 
   SUResult res = SUEntitiesAddEdges(m_entities, refs.size(), refs.data());
   assert(res == SU_ERROR_NONE); _unused(res);
-
   // Transfer ownership of each edge
-  for (auto& edge : edges)
+  for (auto& edge : edges_to_add)
       edge.attached(true);
-
-  return edges;
+  return edges_to_add;
 }
 
 
@@ -366,7 +388,7 @@ Group Entities::add_group(const ComponentDefinition& definition, const Transform
   Entities group_entities = new_group.entities();
   Entities def_entities = definition.entities();
   // Add geometry one by one to Geometry input.
-  GeometryInput geom_input(m_model);
+  GeometryInput geom_input(&m_model);
   std::vector<Face> def_faces = def_entities.faces();
   for (size_t i=0; i < def_faces.size(); ++i) {
     geom_input.add_face(def_faces[i]);
@@ -447,10 +469,7 @@ bool Entities::transform_entities(std::vector<Entity>& elems, std::vector<Transf
 
 
 Model Entities::model() const {
-  if (SUIsInvalid(m_model)) {
-    return Model();
-  }
-  return Model(m_model, false);
+  return m_model;
 }
 
 

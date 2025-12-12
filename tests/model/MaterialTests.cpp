@@ -8,7 +8,10 @@
 
 namespace CW::Tests {
 
-
+/**********************
+ * Material Tests
+ * Tests Material, Texture and ImageRep classes
+ **********************/
 
 
 // Material Referencing Tests that references of a material point to the same object

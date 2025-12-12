@@ -107,6 +107,25 @@ void Entity::attached(bool attach) {
 }
 
 
+bool Entity::is_valid() const {
+  return !!(*this);
+}
+
+
+bool Entity::operator!() const {
+  return SUIsInvalid(m_entity);
+}
+
+
+bool Entity::copy_properties_from(const Entity& entity) {
+  if (!(*this) || !entity) {
+    throw std::logic_error("CW::Entity::copy_properties_from(): Entity is null");
+  }
+  // Currently, the only properties that can be copied are the attribute dictionaries
+  return this->copy_attributes_from(entity);
+}
+
+
 std::vector<AttributeDictionary>  Entity::attribute_dictionaries() const {
   if (!(*this)) {
     throw std::logic_error("CW::Entity::attribute_dictionaries(): Entity is null");
@@ -171,15 +190,6 @@ bool Entity::copy_attributes_from(const Entity& entity) {
 /* TODO: deleting attributes is not possible with the current C API.  It could be used, however, to store a list of deleted attributes, so if this object is copied, the deleted attributes are not copied over to the new object.
 void delete_attribute(AttributeDictionary &dict, std::string key);
 */
-
-bool Entity::is_valid() const {
-  return !!(*this);
-}
-
-
-bool Entity::operator!() const {
-  return SUIsInvalid(m_entity);
-}
 
 
 int32_t Entity::entityID() const{
@@ -284,7 +294,7 @@ bool operator==(const Entity& lhs, const Entity& rhs) {
     }
     return false;
   }
-  
+
   return lhs.m_entity.ptr == rhs.m_entity.ptr;
 }
 

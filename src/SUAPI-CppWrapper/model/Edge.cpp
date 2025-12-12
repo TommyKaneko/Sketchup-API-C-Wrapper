@@ -149,6 +149,27 @@ bool Edge::operator!() const {
 }
 
 
+Edge Edge::copy() const {
+  if(!(*this)) {
+    throw std::logic_error("CW::Edge::copy(): Edge is null");
+  }
+  Edge new_edge(create_edge(this->start().position(), this->end().position()), false);
+  new_edge.color(this->color());
+  new_edge.smooth(this->smooth());
+  new_edge.soft(this->soft());
+  // copy parent class properties
+  bool success = new_edge.DrawingElement::copy_properties_from((*this));
+  if (!success) {
+    throw std::logic_error("CW::Edge::copy(): Failed to copy DrawingElement properties from Edge");
+  }
+  success = new_edge.Entity::copy_properties_from((*this));
+  if (!success) {
+    throw std::logic_error("CW::Edge::copy(): Failed to copy Entity properties from Edge");
+  }
+  return new_edge;
+}
+
+
 Color Edge::color() const {
   if (!(*this)) {
     throw std::logic_error("CW::Edge::color(): Edge is null");

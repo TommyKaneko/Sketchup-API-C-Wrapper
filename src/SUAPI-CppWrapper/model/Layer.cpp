@@ -130,7 +130,8 @@ bool Layer::operator!() const {
 
 Layer Layer::copy() const {
   if(!(*this)) {
-    return Layer(create_layer(), false);
+    throw std::logic_error("CW::Material::copy(): Material is null");
+    //return Layer(create_layer(), false);
   }
   Layer new_layer(create_layer(), false);
   new_layer.name(this->name());

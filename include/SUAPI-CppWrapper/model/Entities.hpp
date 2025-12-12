@@ -34,6 +34,7 @@
 #include <SketchUpAPI/model/entities.h>
 
 #include "SUAPI-CppWrapper/String.hpp"
+#include "SUAPI-CppWrapper/model/Model.hpp"
 
 namespace CW {
 
@@ -56,51 +57,69 @@ class BoundingBox3D;
 class Entities {
   private:
   SUEntitiesRef m_entities;
-  // Store associated model ref, for type checking purposes
-  SUModelRef m_model;
-  
+  // Store associated model, for type checking purposes
+  Model m_model;
+
   public:
   /**
   * Default constructor.
   * @param model - SUModelRef object that this entities object resides in. Used for checking that entities added to the entities object is valid for adding to this model.
   */
   Entities(SUEntitiesRef entities, const SUModelRef model);
-  
+  Entities(SUEntitiesRef entities, const Model model);
+
   /**
   * Null Entities object
   */
   Entities();
-  
+
   /**
   * Fills an Entities object with geometry in GeometryInput object.
   */
   SUResult fill(GeometryInput &geom_input);
 
+  /**
+   * Gets the Faces in the Entities object.
+   * @return std::vector<Face>
+   */
   std::vector<Face> faces() const;
+
+  /**
+   * Gets the Edges in the Entities object.
+   * @param stray_only - if true, only stray edges (not bounding faces) are returned.
+   * @return std::vector<Face>
+   */
   std::vector<Edge> edges(bool stray_only = true) const;
+
+  /**
+  * Return the ComponentInstances in the Entities object.
+  */
   std::vector<ComponentInstance> instances() const;
+
+  /**
+  * Return the Groups in the Entities object.
+  */
   std::vector<Group> groups() const;
-  
+
   /**
   * Return the BoundingBox of the Entities object.
   */
   BoundingBox3D bounding_box() const;
-  
+
   /**
   * Returns the number of entities that exist in the entities object.
   */
   size_t size() const;
-  
+
   /**
   * Adds the contents of an entities object into this one.
   */
   void add(const Entities& other);
-  
+
   /*
   * Creates faces in the Entities object.
-  *
-  * Note that this function does not merge overlapping geometry. See GeometryInput for merging functionality.
-  * @param vector of Face objects from CW
+  * NOTE: that this function does not merge overlapping geometry, which will likely create an invalid SketchUp model.  It is recommended to use @see GeometryInput and Entities::fill() generally for adding geometry to an Entities object.
+  * @param vector - of Face objects from CW
   */
   std::vector<Face> add_faces(std::vector<Face>& faces);
   Face add_face(Face& face);
@@ -108,7 +127,7 @@ class Entities {
   /*
   * Creates edges in the Entities object.
   *
-  * Note that this function does not merge overlapping geometry. @see GeometryInput and Entities::fill() for merging functionality.
+  * NOTE: that this function does not merge overlapping geometry, which will likely create an invalid SketchUp model.  It is recommended to use @see GeometryInput and Entities::fill() generally for adding geometry to an Entities object.
   * @param vector of Edge objects to add
   */
   std::vector<Edge> add_edges(std::vector<Edge>& edges);
@@ -135,8 +154,8 @@ class Entities {
   // TODO: this needs to be revised.
   Group add_group(const ComponentDefinition& definition, const Transformation& transformation);
   Group add_group();
-  
-  
+
+
   /**
   * Transforms given entities by the transformation object
   * @since SketchUp 2017, API 5.0
@@ -153,12 +172,12 @@ class Entities {
   * @return true if the operation was successful.  false, if transform failed.
   */
   bool transform_entities(std::vector<Entity>& elems, std::vector<Transformation>& transforms);
-  
+
   /**
   * Returns the model object that conrtains this entities object.
   */
   Model model() const;
-  
+
   /*
   * The class object can be converted to a SUEntitiesRef without loss of data.
   */

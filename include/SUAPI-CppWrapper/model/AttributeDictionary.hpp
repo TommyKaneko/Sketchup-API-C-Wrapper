@@ -73,7 +73,7 @@ class AttributeDictionary :public Entity {
   * @since SketchUp 2018, API v6.0
   */
   AttributeDictionary(std::string name);
-  
+
   /**
   * Constructor from existing SUAttributeDictionaryRef object
   * @param dict - existing SUAttributeDictionaryRef object to wrap with this class.
@@ -83,7 +83,7 @@ class AttributeDictionary :public Entity {
 
   /** Copy constructor */
   AttributeDictionary(const AttributeDictionary& other);
-  
+
   /**
   * Destructor
   * @since SketchUp 2018, API v6.0
@@ -97,14 +97,14 @@ class AttributeDictionary :public Entity {
   SUAttributeDictionaryRef ref() const;
   operator SUAttributeDictionaryRef() const;
   operator SUAttributeDictionaryRef*();
-  
+
   /**
   * Returns the value of the attribute with the specified key.
   * @param &key - the key of the attribute
   * @param &default_value - the default value to return if the attribute with the key does not exist.
   */
   TypedValue get_attribute(const std::string &key, const TypedValue &default_value) const;
-  
+
   /**
   * Alias of AttributeDictionary::get_attribute().
   * @return TypedValue object.  If the attribute does not exist, a null TypedValue object will be returned.
@@ -122,12 +122,13 @@ class AttributeDictionary :public Entity {
   * Returns a vector array of keys in the Attribute Dictionary.
   */
   std::vector<std::string> get_keys() const;
-  
+
   /**
   * Returns the name of the AttributeDictionary.
   */
   std::string get_name() const;
-  
+  std::string name() const; // alias for get_name()
+
   /**
   * Returns true if this is a null object.
   */
