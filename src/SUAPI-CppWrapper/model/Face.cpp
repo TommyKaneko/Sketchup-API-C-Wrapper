@@ -37,10 +37,13 @@
 
 #include "SUAPI-CppWrapper/Geometry.hpp"
 #include "SUAPI-CppWrapper/model/Material.hpp"
+#include "SUAPI-CppWrapper/model/Texture.hpp"
 #include "SUAPI-CppWrapper/model/Vertex.hpp"
 #include "SUAPI-CppWrapper/model/Edge.hpp"
 #include "SUAPI-CppWrapper/model/Loop.hpp"
 #include "SUAPI-CppWrapper/model/LoopInput.hpp"
+#include "SUAPI-CppWrapper/model/GeometryInput.hpp"
+#include "SUAPI-CppWrapper/model/MaterialInput.hpp"
 
 namespace CW {
 
@@ -158,7 +161,7 @@ Face& Face::operator=(const Face& other) {
   return *this;
 }
 
-  
+
 SUFaceRef Face::ref() const {  return SUFaceFromEntity(m_entity); }
 
 
@@ -308,10 +311,6 @@ UVHelper Face::get_UVHelper(bool front, bool back, TextureWriter tex_writer) {
 */
 
 
-/** NOT POSSIBLE WITH C API - @see class MaterialInput **/
-// Vector3D Face::get_texture_projection(const bool frontside) const {}
-
-
 std::vector<Loop> Face::inner_loops() const {
   if (!(*this)) {
     throw std::logic_error("CW::Face::inner_loops(): Face is null");
@@ -379,7 +378,128 @@ Plane3D Face::plane() const {
 
 /** NOT POSSIBLE WITH C API - @see class MaterialInput **/
 //bool Face::position_material(const Material& material, const std::vector<Point3D>& pt_array, bool o_front) {}
+#if SketchUpAPI_VERSION_MAJOR >= 2021
 
+Vector3D Face::get_texture_projection(const bool frontside) const {
+  if (!(*this)) {
+    throw std::logic_error("CW::Face::get_texture_projection(): Face is null");
+  }
+  SUVector3D projection;
+  SUResult res = SUFaceGetTextureProjection(this->ref(), frontside, &projection);
+  if (res == SU_ERROR_NO_DATA) {
+    throw std::logic_error("CW::Face::get_texture_projection(): the Face does not have a projected texture applied");
+  }
+  assert(res == SU_ERROR_NONE);
+  return Vector3D(projection);
+}
+
+
+bool Face::is_texture_positioned(bool front) const {
+  if (!(*this)) {
+    throw std::logic_error("CW::Face::is_texture_positioned(): Face is null");
+  }
+  bool is_positioned;
+  SUResult res = SUFaceIsTexturePositioned(this->ref(), front, &is_positioned);
+  assert(res == SU_ERROR_NONE);
+  return is_positioned;
+}
+
+
+bool Face::is_texture_positioned_front() const {
+  return is_texture_positioned(true);
+}
+
+
+bool Face::is_texture_positioned_back() const {
+  return is_texture_positioned(false);
+}
+
+
+bool Face::is_texture_projected(bool front) const {
+  if (!(*this)) {
+    throw std::logic_error("CW::Face::is_texture_projected(): Face is null");
+  }
+  bool is_projected;
+  SUResult res = SUFaceIsTextureProjected(this->ref(), front, &is_projected);
+  assert(res == SU_ERROR_NONE);
+  return is_projected;
+}
+
+
+bool Face::is_texture_projected_front() const {
+  return is_texture_projected(true);
+}
+
+
+bool Face::is_texture_projected_back() const {
+  return is_texture_projected(false);
+}
+
+
+MaterialPositionInput Face::material_position(bool front) const {
+  if (!(*this)) {
+    throw std::logic_error("CW::Face::material_position(): Face is null");
+  }
+  if (!this->material()) {
+    throw std::logic_error("CW::Face::material_position(): Face does not have a material");
+  }
+  SUPoint3D reference_point = this->vertices()[0].position(); // TODO: this is an arbitrary reference point - find a better way
+  SUMaterialPositionInput material_input = {
+    .num_uv_coords = 4,
+    //.uv_coords = uv_coords,
+    //.points = points,
+    .material = this->material(),
+    .projection = SU_INVALID
+  };
+  if (((front && !!this->material().texture()) || (!front && !!this->back_material().texture())) && this->is_texture_projected(front)) {
+    material_input.projection = this->get_texture_projection(front);
+  }
+  SUResult res = SUFaceGetUVTileAt(this->ref(), &reference_point, front, material_input.points, material_input.uv_coords);
+  // TODO: test returns - a MaterialPositionInput without any textures should be valid.
+  return MaterialPositionInput(material_input);
+}
+
+
+MaterialPositionInput Face::material_position_front() const {
+  return this->material_position(true);
+}
+
+
+MaterialPositionInput Face::material_position_back() const {
+  return this->material_position(false);
+}
+
+
+bool Face::material_position(const MaterialPositionInput& material_input, bool front) {
+  if (!(*this)) {
+    throw std::logic_error("CW::Face::material_position(): Face is null");
+  }
+  SUPoint3D reference_point = this->vertices()[0].position();
+  SUMaterialPositionInput material_input_out = material_input.ref();
+  SUResult res = SUFacePositionMaterial( this->ref(), front, &material_input_out);
+  if (res == SU_ERROR_INVALID_ARGUMENT) {
+    if (!material_input.material() || !material_input.material().texture()) {
+      throw std::logic_error("CW::Face::material_position(): No texture was given to project");
+    }
+    else {
+      throw std::logic_error("CW::Face::material_position(): given material_input parameters are invalid");
+    }
+  }
+  assert(res == SU_ERROR_NONE);
+  return true;
+}
+
+
+bool Face::material_position_front(const MaterialPositionInput& material_input){
+  return this->material_position(material_input,  true);
+}
+
+
+bool Face::material_position_back(const MaterialPositionInput& material_input) {
+  return this->material_position(material_input, false);
+}
+
+#endif
 
 Face& Face::reverse() {
   if (!(*this)) {
@@ -420,5 +540,5 @@ std::vector<Vertex> Face::vertices() const {
     });
   return vertices;
 }
-  
+
 } /* namespace CW */

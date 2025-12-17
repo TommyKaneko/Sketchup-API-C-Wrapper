@@ -66,5 +66,44 @@ Material MaterialInput::material() const {
   return Material(m_material_input.material);
 }
 
+#if SketchUpAPI_VERSION_MAJOR >= 2021
+/**
+* MaterialPositionInput
+*/
+
+SUMaterialPositionInput MaterialPositionInput::create_material_input(const Material& material) {
+  SUMaterialPositionInput su_material_input = {
+    .num_uv_coords = 0,
+    .uv_coords = SU_INVALID,
+    .points = SU_INVALID,
+    .material = material.ref(),
+    .projection = SU_INVALID
+  };
+  return su_material_input;
+}
+
+MaterialPositionInput::MaterialPositionInput(const Material& material):
+  MaterialPositionInput(create_material_input(material))
+{}
+
+MaterialPositionInput::MaterialPositionInput(SUMaterialPositionInput material_input):
+  m_material_input(material_input)
+{}
+
+SUMaterialPositionInput MaterialPositionInput::ref() const {
+  return m_material_input;
+}
+
+Material MaterialPositionInput::material() const {
+  return Material(m_material_input.material);
+}
+
+void MaterialPositionInput::material(const Material& mat) {
+  m_material_input.material = mat.ref();
+}
+
+
+#endif
+
 
 } /* namespace CW */

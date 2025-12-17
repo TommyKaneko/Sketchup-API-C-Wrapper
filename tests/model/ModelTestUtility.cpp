@@ -11,6 +11,8 @@
 #include "SUAPI-CppWrapper/model/AttributeDictionary.hpp"
 #include "SUAPI-CppWrapper/model/Vertex.hpp"
 #include "SUAPI-CppWrapper/model/Edge.hpp"
+#include "SUAPI-CppWrapper/model/Face.hpp"
+#include "SUAPI-CppWrapper/model/Loop.hpp"
 #include "SUAPI-CppWrapper/Color.hpp"
 #include "SUAPI-CppWrapper/String.hpp"
 
@@ -54,7 +56,13 @@ void ModelLoad::MaterialsAreEqual(const CW::Material& material1, const CW::Mater
     return;
   }
   this->EntitysAreEqual(material1, material2);
-  ASSERT_EQ(material1.name().std_string(), material2.name().std_string()) << "\033[33mMaterials cannot be added to unattached DrawingElements - review how material was applied\033[0m";
+  bool names_equal = material1.name().std_string() == material2.name().std_string();
+  EXPECT_EQ(material1.name().std_string(), material2.name().std_string()) << "\033[33mMaterials cannot be added to unattached DrawingElements - review how material was applied\033[0m";
+  if (!names_equal) {
+    //Check attached or not
+    std::cerr << "Material1 attached:" << material1.attached() << ", Material2 attached: " << material2.attached() << std::endl;
+    return;
+  }
   EXPECT_EQ(material1.opacity(), material2.opacity());
   EXPECT_EQ(material1.type(), material2.type());
   EXPECT_EQ(material1.use_alpha(), material2.use_alpha());
@@ -179,7 +187,41 @@ void ModelLoad::EdgesAreEqual(const CW::Edge& edge1, const CW::Edge& edge2) {
   EXPECT_EQ(edge1.color(), edge2.color());
 }
 
-  // Code here will be called immediately after the constructor (right
+
+void ModelLoad::FacesAreEqual(const CW::Face& face1, const CW::Face& face2) {
+  if (!face1.is_valid() || !face2.is_valid()) {
+    EXPECT_EQ(face1.is_valid(), face2.is_valid());
+    return;
+  }
+  DrawingElementsAreEqual(face1, face2);
+
+  // Compare loops
+  LoopsAreEqual(face1.outer_loop(), face2.outer_loop());
+  std::vector<Loop> face1_inner_loops = face1.inner_loops();
+  std::vector<Loop> face2_inner_loops = face2.inner_loops();
+  for (size_t i=0; i < face1_inner_loops.size(); i++) {
+    LoopsAreEqual(face1_inner_loops[i], face2_inner_loops[i]);
+  }
+  EXPECT_EQ(face1.normal(), face2.normal());
+  EXPECT_EQ(face1.plane(), face2.plane());
+  MaterialsAreEqual(face1.back_material(), face2.back_material());
+  EXPECT_EQ(face1.area(), face2.area());
+}
+
+void ModelLoad::LoopsAreEqual(const CW::Loop& loop1, const CW::Loop& loop2) {
+  if (!loop1.is_valid() || !loop2.is_valid()) {
+    EXPECT_EQ(loop1.is_valid(), loop2.is_valid());
+    return;
+  }
+  EXPECT_EQ(loop1.points(), loop2.points());
+  std::vector<Edge> loop1_edges = loop1.edges();
+  std::vector<Edge> loop2_edges = loop2.edges();
+  for (size_t i=0; i < loop1_edges.size(); i++) {
+    EdgesAreEqual(loop1_edges[i], loop2_edges[i]);
+  }
+}
+
+// Code here will be called immediately after the constructor (right
   // before each test).
 
 } // namespace CW::Tests

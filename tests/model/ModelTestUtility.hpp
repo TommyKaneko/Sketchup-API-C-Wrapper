@@ -13,6 +13,8 @@ class Layer;
 class Entity;
 class DrawingElement;
 class Edge;
+class Face;
+class Loop;
 }
 
 namespace CW {
@@ -64,6 +66,10 @@ class ModelLoad : public testing::Test {
   void DrawingElementsAreEqual(const CW::DrawingElement& element1, const CW::DrawingElement& element2);
 
   void EdgesAreEqual(const CW::Edge& edge1, const CW::Edge& edge2);
+
+  void FacesAreEqual(const CW::Face& face1, const CW::Face& face2);
+
+  void LoopsAreEqual(const CW::Loop& loop1, const CW::Loop& loop2);
 
   void AttributeDictionariesAreEqual(const CW::AttributeDictionary& dict1, const CW::AttributeDictionary& dict2);
 

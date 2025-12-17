@@ -56,7 +56,7 @@ std::unordered_map<SUGeometryInputRef, size_t> GeometryInput::num_objects_ = {};
 ****************************/
 SUGeometryInputRef GeometryInput::create_geometry_input() {
   SUGeometryInputRef geom_input = SU_INVALID;
-  SUResult res = SUGeometryInputCreate(&geom_input);
+  SUResult res = SUGeometryInputCreate(&geom_input); // this is equivalent to allocating memory
   assert(res == SU_ERROR_NONE); _unused(res);
   return geom_input;
 }
@@ -64,7 +64,7 @@ SUGeometryInputRef GeometryInput::create_geometry_input() {
 /*
 SUResult GeometryInput::add_loop(LoopInput &loop) {
   std::vector<Point3D> vertices = loop.get_vertices();
-  
+
   std::vector<size_t> indices = add_vertices(vertices);
   std::vector<Edge> edges = loop.get_edges();
 
@@ -80,10 +80,20 @@ SUResult GeometryInput::add_loop(LoopInput &loop) {
 /******************************
 ** Constructors / Destructor **
 *******************************/
-GeometryInput::GeometryInput(SUModelRef target_model):
+// GeometryInput::GeometryInput(SUModelRef target_model):
+//   m_geometry_input(create_geometry_input()),
+//   m_attached(false),
+//   m_target_model(target_model)
+// {
+//   num_objects_[m_geometry_input] = 1;
+// }
+
+GeometryInput::GeometryInput(Model* target_model):
   m_geometry_input(create_geometry_input()),
   m_attached(false),
-  m_target_model(target_model)
+  m_target_model(target_model),
+  m_material_dict(target_model),
+  m_layer_dict(target_model)
 {
   num_objects_[m_geometry_input] = 1;
 }
@@ -92,7 +102,7 @@ GeometryInput::GeometryInput(SUModelRef target_model):
 GeometryInput::~GeometryInput() {
   if (SUIsValid(m_geometry_input) && !m_attached && num_objects_[m_geometry_input] == 1) {
     num_objects_.erase(m_geometry_input);
-    SUResult res = SUGeometryInputRelease(&m_geometry_input);
+    SUResult res = SUGeometryInputRelease(&m_geometry_input); // This is equivalent to the delete command.
     assert(res == SU_ERROR_NONE); _unused(res);
   }
   else {
@@ -102,7 +112,9 @@ GeometryInput::~GeometryInput() {
 
 
 GeometryInput::GeometryInput(const GeometryInput& other):
-  m_target_model(other.m_target_model)
+  m_target_model(other.m_target_model),
+  m_material_dict(other.m_target_model),
+  m_layer_dict(other.m_target_model)
 {
   if (SUIsValid(m_geometry_input) && !m_attached && num_objects_[m_geometry_input] == 1) {
     num_objects_.erase(m_geometry_input);
@@ -116,8 +128,8 @@ GeometryInput::GeometryInput(const GeometryInput& other):
   m_attached = other.m_attached;
   ++num_objects_[m_geometry_input];
 }
-  
-  
+
+
 GeometryInput& GeometryInput::operator=(const GeometryInput& other) {
   if (SUIsValid(m_geometry_input) && !m_attached && num_objects_[m_geometry_input] == 1) {
     num_objects_.erase(m_geometry_input);
@@ -130,6 +142,8 @@ GeometryInput& GeometryInput::operator=(const GeometryInput& other) {
   m_geometry_input = other.m_geometry_input;
   m_attached = other.m_attached;
   m_target_model = other.m_target_model;
+  m_material_dict = other.m_material_dict;
+  m_layer_dict = other.m_layer_dict;
   ++num_objects_[m_geometry_input];
   return (*this);
 }
@@ -143,6 +157,100 @@ SUGeometryInputRef GeometryInput::ref() const {
 
 bool GeometryInput::operator!() const {
   return SUIsInvalid(m_geometry_input);
+}
+
+
+void GeometryInput::load_materials(const std::vector<Material>& materials) {
+  // Check to see if each material is in the model already
+  std::vector<Material> target_materials = m_target_model->materials();
+  std::vector<Material> materials_to_add; materials_to_add.reserve(materials.size());
+  for (const Material& material : materials) {
+    bool matched = false;
+    for (const Material& target_material : target_materials) {
+      if (material == target_material) {
+        // We can directly add the material to the map
+        m_material_dict.add_reference(material, target_material);
+        matched = true;
+        break;
+      }
+      else if (material.name() == target_material.name()) {
+        // match with name
+        m_material_dict.add_reference(material, target_material);
+        matched = true;
+        break;
+      }
+    }
+    if (!matched) {
+      // Create a new material in the
+      materials_to_add.push_back(material);
+    }
+  }
+  if (materials_to_add.size() == 0) return;
+  // Add the materials that do not exist in the model.
+  m_target_model->add_materials(materials_to_add, false);
+  target_materials = m_target_model->materials(); // Refresh the list of materials.
+  for (const Material& material : materials_to_add) {
+    for (const Material& target_material : target_materials) {
+      if (material == target_material) {
+        // We can directly add the material to the map
+        m_material_dict.add_reference(material, target_material);
+        break;
+      }
+      else if (material.name() == target_material.name()) {
+        // match with name
+        m_material_dict.add_reference(material, target_material);
+        break;
+      }
+    }
+  }
+  return;
+}
+
+
+void GeometryInput::load_layers(const std::vector<Layer>& layers) {
+  // Check to see if each layer is in the model already
+  std::vector<Layer> target_layers = m_target_model->layers();
+  std::vector<Layer> layers_to_add; layers_to_add.reserve(layers.size());
+  for (const Layer& layer : layers) {
+    bool matched = false;
+    for (const Layer& target_layer : target_layers) {
+      if (layer == target_layer) {
+        // We can directly add the layer to the map
+        m_layer_dict.add_reference(layer, target_layer);
+        matched = true;
+        break;
+      }
+      else if (layer.name() == target_layer.name()) {
+        // match with name
+        m_layer_dict.add_reference(layer, target_layer);
+        matched = true;
+        break;
+      }
+    }
+    if (!matched) {
+      // Create a new layer in the
+      layers_to_add.push_back(layer);
+    }
+  }
+  if (layers_to_add.size() == 0) return;
+  // Add the layers that do not exist in the model.
+  m_target_model->add_layers(layers_to_add, false);
+  target_layers = m_target_model->layers(); // Refresh the list of materials.
+  for (const Layer& layer : layers_to_add) {
+    for (const Layer& target_layer : target_layers) {
+      if (layer == target_layer) {
+        // We can directly add the layer to the map
+        m_layer_dict.add_reference(layer, target_layer);
+        break;
+      }
+      else if (layer.name() == target_layer.name()) {
+        // match with name
+        m_layer_dict.add_reference(layer, target_layer);
+        break;
+      }
+    }
+  }
+  return;
 }
 
 
@@ -177,7 +285,12 @@ size_t GeometryInput::add_face(const Face &face, bool copy_material_layer) {
     if (outer_edges[i].soft()) {
       outer_loop_input.set_edge_soft(v_index, true);
     }
-    // TODO: set layer and material
+    if (!!outer_edges[i].material()) {
+      outer_loop_input.set_edge_material(v_index, m_material_dict.get_reference(outer_edges[i].material()));
+    }
+    if (!!outer_edges[i].layer()) {
+      outer_loop_input.set_edge_layer(v_index, m_layer_dict.get_reference(outer_edges[i].layer()));
+    }
   }
   size_t added_face_index = this->add_face(outer_loop_input);
   // Add inner loops
@@ -198,7 +311,12 @@ size_t GeometryInput::add_face(const Face &face, bool copy_material_layer) {
       if (inner_edges[i].soft()) {
         inner_loop_input.set_edge_soft(v_index, true);
       }
-      // TODO: set layer and material
+      if (!!inner_edges[i].material()) {
+        inner_loop_input.set_edge_material(v_index, m_material_dict.get_reference(inner_edges[i].material()));
+      }
+      if (!!inner_edges[i].layer()) {
+        inner_loop_input.set_edge_layer(v_index, m_layer_dict.get_reference(inner_edges[i].layer()));
+      }
     }
     this->face_add_inner_loop(added_face_index, inner_loop_input);
   }
@@ -206,23 +324,37 @@ size_t GeometryInput::add_face(const Face &face, bool copy_material_layer) {
     // Add layer
     Layer face_layer = face.layer();
     if (!!face_layer) {
-      assert(Model(m_target_model, false).layer_exists(face_layer));
-      this->face_layer(added_face_index, face_layer);
+      this->face_layer(added_face_index, m_layer_dict.get_reference(face_layer));
       face_layer.attached(true);
     }
-    // Set Materials TODO: not done quite right here, I don't think... uv coords are not set.
+    #if SketchUpAPI_VERSION_MAJOR < 2021
+    // Old way of setting the material
     Material front_mat = face.material();
     if (!!front_mat) {
       MaterialInput front_material_input(front_mat);
-      assert(Model(m_target_model, false).material_exists(front_material_input.material()));
+      //assert(m_target_model->material_exists(front_material_input.material()));
       this->face_front_material(added_face_index, front_material_input);
     }
     Material back_mat = face.back_material();
     if (!!back_mat) {
       MaterialInput back_material_input(face.back_material());
-      assert(Model(m_target_model, false).material_exists(back_material_input.material()));
+      assert(m_target_model->material_exists(back_material_input.material()));
       this->face_back_material(added_face_index, back_material_input);
     }
+    #else
+    // New way of setting the material with MaterialInputPosition
+    if (!!face.material()) {
+      MaterialPositionInput material_input = face.material_position_front();
+      // Replace material with one in the target model
+      material_input.material(this->material_reference(face.material()));
+      face_front_material_position(added_face_index, material_input);
+    }
+    if (!!face.back_material()) {
+      MaterialPositionInput material_input = face.material_position_back();
+      material_input.material(this->material_reference(face.back_material()));
+      face_back_material_position(added_face_index, material_input);
+    }
+    #endif
     // TODO: create a way to add attributes to the faces.
   }
   return added_face_index;
@@ -241,7 +373,7 @@ size_t GeometryInput::add_faces(const std::vector<Face>& faces, bool copy_materi
 }
 
 
-size_t GeometryInput::add_edge(const Edge &edge) {
+size_t GeometryInput::add_edge(const Edge &edge, const Material& material, const Layer& layer) {
   if(!edge) {
     throw std::invalid_argument("CW::GeometryInput::add_edge(): Edge argument is null");
   }
@@ -254,7 +386,7 @@ size_t GeometryInput::add_edge(const Edge &edge) {
   Point3D end_point = edge.end().position();
   size_t end_index = this->add_vertex(end_point);
   size_t added_edge_index = this->add_edge(start_index, end_index);
-  
+
   // Add other information about the edge
   if (edge.hidden()) {
     this->edge_hidden(added_edge_index, true);
@@ -265,7 +397,12 @@ size_t GeometryInput::add_edge(const Edge &edge) {
   if (edge.soft()) {
     this->edge_soft(added_edge_index, true);
   }
-  // TODO: add edge Layer and Material
+  if (!!material) {
+    this->edge_material(added_edge_index, m_material_dict.get_reference(material));
+  }
+  if (!!layer) {
+    this->edge_layer(added_edge_index, m_layer_dict.get_reference(layer));
+  }
   return added_edge_index;
 }
 
@@ -279,6 +416,21 @@ size_t GeometryInput::add_edges(const std::vector<Edge>& edges) {
     index = add_edge(edges[i]);
   }
   return index;
+}
+
+
+size_t GeometryInput::add_edges(const std::vector<Edge>& edges, const std::vector<Material>& materials, const std::vector<Layer>& layers) {
+  if(!(*this)) {
+    throw std::logic_error("CW::GeometryInput::add_edges(): GeometryInput is null");
+  }
+  if(edges.size() != materials.size() || edges.size() != layers.size()) {
+    throw std::logic_error("CW::GeometryInput::add_edges(): size of layers and materials vector must match the size of edges");
+  }
+  size_t edge_index = 0;
+  for (size_t i=0; i < edges.size(); ++i) {
+    edge_index = this->add_edge(edges[i], materials[i], layers[i]);
+  }
+  return edge_index;
 }
 
 
@@ -423,6 +575,35 @@ void GeometryInput::face_back_material(size_t face_index, MaterialInput& materia
   assert(res == SU_ERROR_NONE); _unused(res);
   // TODO: assert MateriealRef in the MaterialInput is not attached to a different model from the one it will be added to.
 }
+#if SketchUpAPI_VERSION_MAJOR >= 2021
+
+
+void GeometryInput::face_front_material_position(size_t face_index, const MaterialPositionInput& material_input) {
+  Material material = material_input.material();
+  if (material.model() != *this->m_target_model) {
+    throw std::logic_error("CW::GeometryInput::face_front_material_position(): material does not reference a material in the target model");
+  }
+  SUMaterialPositionInput material_input_ref = material_input.ref();
+  SUResult res = SUGeometryInputFaceSetFrontMaterialByPosition(this->ref(), face_index, &material_input_ref);
+  assert(res == SU_ERROR_NONE); _unused(res);
+  if (res == SU_ERROR_OUT_OF_RANGE) {
+    throw std::invalid_argument("CW::GeometryInput::face_front_material_position(): Face index is out of range");
+  }
+}
+
+void GeometryInput::face_back_material_position(size_t face_index, const MaterialPositionInput& material_input) {
+  Material material = material_input.material();
+  if (material.model() != *this->m_target_model) {
+    throw std::logic_error("CW::GeometryInput::face_back_material_position(): material does not reference a material in the target model");
+  }
+  SUMaterialPositionInput material_input_ref = material_input.ref();
+  SUResult res = SUGeometryInputFaceSetBackMaterialByPosition(this->ref(), face_index, &material_input_ref);
+  assert(res == SU_ERROR_NONE); _unused(res);
+  if (res == SU_ERROR_OUT_OF_RANGE) {
+    throw std::invalid_argument("CW::GeometryInput::face_back_material_position(): Face index is out of range");
+  }
+}
+#endif
 
 
 void GeometryInput::face_hidden(size_t face_index, bool hidden) {
@@ -438,9 +619,21 @@ std::array<size_t, 5> GeometryInput::counts() const {
   return count_arr;
 }
 
+
+Material GeometryInput::material_reference(const Material& material) const {
+  Material reference = m_material_dict.get_reference(material);
+  return reference;
+}
+
+
+Layer GeometryInput::layer_reference(const Layer& layer) const {
+  Layer reference = m_layer_dict.get_reference(layer);
+  return reference;
+}
+
+
 } /* namespace CW */
 
 bool operator==(const SUGeometryInputRef& lhs, const SUGeometryInputRef& rhs) {
   return lhs.ptr == rhs.ptr;
 }
-

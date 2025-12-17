@@ -61,6 +61,38 @@ class MaterialInput {
   Material material() const;
 };
 
+
+#if SketchUpAPI_VERSION_MAJOR >= 2021
+
+/**
+ * @brief
+ * @since From Sketchup 2021.2, API 9.1, SUMaterialPositionInput is used
+ *
+ */
+class MaterialPositionInput {
+  private:
+  SUMaterialPositionInput m_material_input;
+
+  /**
+  * Creates a SUMaterialInput struct, with default values derived from the Material object.
+  */
+  static SUMaterialPositionInput create_material_input(const Material& material);
+
+  public:
+  //MaterialInput();
+  MaterialPositionInput(const Material& material);
+  MaterialPositionInput(SUMaterialPositionInput material_input);
+
+  SUMaterialPositionInput ref() const;
+
+  Material material() const;
+
+  void material(const Material& mat);
+
+};
+
+#endif
+
 } /* namespace CW */
 
 #endif /* MaterialInput_hpp */

@@ -135,6 +135,16 @@ Model& Model::operator=(Model&& other) noexcept {
 }
 
 
+bool Model::operator==(const Model& rhs) const {
+  return (this->m_model.ptr == rhs.m_model.ptr);
+}
+
+
+bool Model::operator!=(const Model& rhs) const {
+  return !operator==(rhs);
+}
+
+
 SUModelRef Model::ref() const {
   return m_model;
 }

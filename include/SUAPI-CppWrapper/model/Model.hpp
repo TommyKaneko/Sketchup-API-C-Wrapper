@@ -93,6 +93,16 @@ class Model {
   /** Move Assignment - transfers ownership **/
   Model& operator=(Model&& other) noexcept;
 
+  /**
+  * @brief Equality operator for two entity objects
+  */
+  bool operator==(const Model& rhs) const;
+
+  /**
+  * @brief Non-equality operator for two entity objects
+  */
+  bool operator!=(const Model& rhs) const;
+
   //public:
   /**
   * Returns SUModelRef object for the Model.
@@ -373,6 +383,7 @@ class Model {
   RenderingOptions rendering_options();
 
 }; // class Model
+
 
 class ModelStatistics {
   private:

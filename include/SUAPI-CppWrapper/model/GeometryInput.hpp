@@ -38,6 +38,7 @@
 #include <SketchUpAPI/model/entities.h>
 
 #include "SUAPI-CppWrapper/Geometry.hpp"
+#include "SUAPI-CppWrapper/model/GeometryInputHelper.hpp"
 
 namespace CW {
 
@@ -48,13 +49,14 @@ class Face;
 class Edge;
 class Material;
 class MaterialInput;
+class MaterialPositionInput;
 class Layer;
 class LoopInput;
 class Loop;
 
 /**
 * Geometry Input class is an abstraction of Sketchup C API's SUGeometryInputRef object.  It allows a much easier way for programmers to build Sketchup geometry within this class, before exporting it into a built SUGeometryInputRef object.
-* See below for an example of GeometryInput operates:
+* See below for an example of how GeometryInput operates:
 GeometryInput geom_input;
 Entities entities; // This is the entities object that we wish to add the geometry to.
 std::vector<SUPoint3D> outer_loop{SUPoint3D(0.0,0.0,0.0), SUPoint3D(1.0,0.0,0.0), SUPoint3D(0.0,1.0,0.0)};
@@ -65,14 +67,24 @@ SUResult result = entities.fill(geom_input); // the geometry must be output into
 */
 class GeometryInput {
   friend class Entities;
-  
+
 private:
   SUGeometryInputRef m_geometry_input;
-  
+
+  /**
+   * Store a lookup table of materials that can be applied to geometry, given the target_model given.
+   */
+  MaterialDictionary m_material_dict;
+
+  /**
+   * Store a lookup table of layers that can be applied to geometry, given the target_model given.
+   */
+  LayerDictionary m_layer_dict;
+
   bool m_attached;
   // GeometryInput objects require that the target model (for inputting information) be known, to ensure that materials and layers assigned to geometry exists in the target model.
-  SUModelRef m_target_model;
-  
+  Model* m_target_model;
+
   size_t m_vertex_index = 0;
 
   // Tracks the number of GeometrryInput objects have been allocated, to allow the destructor to release an object only at the right time.
@@ -86,21 +98,22 @@ private:
 public:
   /**
   * Creates a valid, but empty GeometryInput object.
-  * @param target_model - model which will receive this GeometryInput object.
+  * @param target_model - model which will receive this GeometryInput object.  This is required to ensure that Layers(Tags) and Materials that are added to the model are checked for validity.
   */
-  GeometryInput(SUModelRef target_model);
+  //GeometryInput(SUModelRef target_model);
+  GeometryInput(Model* target_model);
 
   /** Copy Constructor **/
   GeometryInput(const GeometryInput& other);
-  
+
   /** Destructor  */
   ~GeometryInput();
-  
+
   /**
   * Copy assignment operator.
   */
   GeometryInput& operator=(const GeometryInput& other);
-   
+
   /**
   * Returns Raw SUGeometryInputRef that is stored.
   */
@@ -110,12 +123,24 @@ public:
   * Returns true if the objet is valid, false otherwise.
   */
   bool operator!() const;
-  
+
+  /**
+   * @brief Prepares the GeometryInput object's materials, and if required, add materials to the target model.
+   * @param materials
+   */
+  void load_materials(const std::vector<Material>& materials);
+
+    /**
+   * @brief Prepares the GeometryInput object's materials, and if required, add materials to the target model.
+   * @param materials
+   */
+  void load_layers(const std::vector<Layer>& layers);
+
   /**
   * Returns the number of faces have been input into this GeometryInput object.
   */
   size_t num_faces() const;
-  
+
   /**
   * Adds a face to the Geometry Input object.
   * @param face - the face object to be copied into the GeometryInput object.  Note that materials and layers will NOT be copied.  This must be done manually using face_front_material(), face_back_material(), and face_layer() methods.
@@ -132,33 +157,42 @@ public:
   size_t add_face(const std::vector<Loop>& loops);
 
   size_t add_faces(const std::vector<Face>& faces, bool copy_material_layer = true);
-  
+
   /**
   * Adds an Edge to the Geometry Input object.
+  * @param edge - edge object from which a copy will be created in the GeometryInput object
+  * @param material - optionally apply a material to the edge (the material from the edge object will not be applied directly from the edge object)
+  * @param layer - optionally apply a layer to the edge (the layer from the edge object will not be applied directly from the edge object)
   * @return index to the added edge.
   */
-  size_t add_edge(const Edge &edge);
+  size_t add_edge(const Edge &edge, const Material& material = Material(), const Layer& layer = Layer());
   size_t add_edges(const std::vector<Edge>& edges);
-  
+
+  /**
+   * @brief Adds an Edge with Material and Layer assigned to it.  The number of edges and number of materials and layers must be equal, so that each edge can be associated with a material/layer
+   * @return size_t - index of the last added edge
+   */
+  size_t add_edges(const std::vector<Edge>& edges, const std::vector<Material>& materials, const std::vector<Layer>& layers);
+
   /**
   * Returns true if no geometry has been added to this object.
   */
   bool empty() const;
-  
+
   /**
   * Adds a vertex to the GeometryInput object.
   * @param point - the Point3D location of the vertex to add.
   * @return the index number of the added vertex
   */
   size_t add_vertex(const Point3D& point);
-  
+
   /**
   * Sets all vertices of a geometry input object. Any existing vertices will be overridden.
   * @param points - vector of points to set as the vertices
   */
   void set_vertices(const std::vector<SUPoint3D>& points);
   void set_vertices(const std::vector<Point3D>& points);
-  
+
   /**
   * Adds an edge to a geometry input object. This method is intended for specifying edges which are not associated with loop inputs. For specifying edge properties on a face use the SULoopInput interface. More...
   * @param vertex0_index - vertex index of start point of edge.
@@ -166,14 +200,14 @@ public:
   * @return index of added edge
   */
   size_t add_edge(size_t vertex0_index, size_t vertex1_index);
-  
+
   /**
   * Sets the hidden flag of an edge in a geometry input object which is not associated with a loop input.
   * @param edge_index - index of the edge to set the hidden flag.
   * @param hidden - the flag to set.
   */
   void edge_hidden(size_t edge_index, bool hidden);
-  
+
   /**
   * Sets the soft flag of an edge in a geometry input object which is not associated with a loop input.
   * @since SketchUp 2017, API 5.0
@@ -189,7 +223,7 @@ public:
   * @param smooth - The flag to set.
   */
   void edge_smooth(size_t edge_index, bool smooth);
-  
+
   /**
   * Sets the material of an edge in the geometry input.
   * @since SketchUp 2017, API 5.0
@@ -197,7 +231,7 @@ public:
   * @param material - The material to be set.
   */
   void edge_material(size_t edge_index, const Material& material);
-  
+
   /**
   *  Sets the layer of an edge in the geometry input.
   * @since SketchUp 2017, API 5.0
@@ -205,7 +239,7 @@ public:
   * @param layer - The layer to be set.
   */
   void edge_layer(size_t edge_index, const Layer& layer);
-  
+
   /**
   * Adds a curve to a geometry input object. This method is intended for specifying curves which are not associated with loop inputs. For specifying curves on faces use the SULoopInput interface.
   * @since SketchUp 2017, API 5.0
@@ -214,7 +248,7 @@ public:
   * @param  added_curve_index  (optional) If not NULL, returns the index of the added curve.
   */
   size_t add_curve(const std::vector<size_t>& edge_indices);
-  
+
   /**
   * Adds an arccurve to a geometry input object. In addition to adding an arccurve to the geometry input this method will append num_segments edges to the geometry's edge collection where control_edge_index is the index of the first new edge. Also, num_segments-1 vertices along the arc will be appended to the geometry's collection of verttices. In order to include an arccurve in a loop the user only needs add the arccurve's points to a loop using SULoopInputAddVertexIndex.
   * @since SketchUp 2017 M2, API 5.2
@@ -228,48 +262,68 @@ public:
   *   - second - control_edge_index - the index of the the arc's control edge which can be used to set the arc's edge properties.
   */
   std::pair<size_t, size_t> add_arc_curve(size_t start_point, size_t end_point, const Point3D& center, const Vector3D& normal, size_t num_segments);
-  
+
   /**
   * Adds a face to a geometry input object with a given outer loop for the face.
   * @param outer_loop - The outer loop to be set for the face. If the function succeeds (i.e. returns SU_ERROR_NONE), this loop will be deallocated.
   * @return returns the index of the added face.
   */
   size_t add_face(LoopInput& loop_input);
-  
+
   /**
   * Sets a flag in the geometry input that, when true, will create a face by reversing the orientations of all of its loops.
   * @param face_index - Index of the face to be reversed.
   * @param reverse - The given reverse flag.
   */
   void face_reverse(size_t face_index, bool reverse);
-  
+
   /**
   * Sets the layer of a face in the geometry input.
   * @param face_index - Index of the face to be reversed.
   * @param layer - The layer to be set.
   */
   void face_layer(size_t face_index, const Layer& layer);
-  
+
   /**
   * Adds an inner loop to a face in the geometry input.
   * @param face_index - Index of the face to receive the inner loop.
   * @param loop_input - The inner loop to be added. If the function succeeds (i.e. returns SU_ERROR_NONE), this loop will be deallocated.
   */
   void face_add_inner_loop(size_t face_index, LoopInput& inner_loop);
-  
+
   /**
   * Sets the front material of a face in the geometry input.
+  * @deprecated - @since Sketchup API 2020.1 - This struct is made obsolete by the newer SUMaterialPositionInput and left in place only for compatibility.
   * @param face_index - Index of the face to receive the material.
   * @param material_input - The material input to set.
   */
   void face_front_material(size_t face_index, MaterialInput& material_input);
-  
+
   /**
   * Sets the back material of a face in the geometry input.
+  * @deprecated - @since Sketchup API 2020.1 - This struct is made obsolete by the newer SUMaterialPositionInput and left in place only for compatibility.
   * @param face_index - Index of the face to receive the material.
   * @param material_input - The material input to set.
   */
   void face_back_material(size_t face_index, MaterialInput& material_input);
+
+  #if SketchUpAPI_VERSION_MAJOR >= 2021
+  /**
+  * Sets the front material of a face in the geometry input.
+  * @since Sketchup API 2020.1, API 9.1
+  * @param face_index - Index of the face to receive the material.
+  * @param material_input - The material input to set.
+  */
+  void face_front_material_position(size_t face_index, const MaterialPositionInput& material_input);
+
+  /**
+  * Sets the back material of a face in the geometry input.
+  * @since Sketchup API 2020.1, API 9.1
+  * @param face_index - Index of the face to receive the material.
+  * @param material_input - The material input to set.
+  */
+  void face_back_material_position(size_t face_index, const MaterialPositionInput& material_input);
+  #endif
 
   /**
   * Sets a flag in the geometry input that, when true, will create a hidden face.
@@ -292,11 +346,23 @@ public:
   std::array<size_t, 5> counts() const;
 
   /**
+   * @brief Returns a material reference from the target model associated with the given material. This is a helper function to help the user add only materials that are in the target model.
+   *
+   */
+  Material material_reference(const Material& material) const;
+
+  /**
+   * @brief Returns a layer reference from the target model associated with the given material.  This is a helper function to help the user add only layers that are in the target model.
+   *
+   */
+  Layer layer_reference(const Layer& layer) const;
+
+  /**
   * Hash function for use with unordered_map
   */
   friend std::hash<SUGeometryInputRef>;
-
 };
+
 
 
 } /* namespace CW */

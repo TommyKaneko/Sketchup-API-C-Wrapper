@@ -255,7 +255,7 @@ void Material::opacity(const double alpha) {
 
 Texture Material::texture() const {
   if(!(*this)) {
-    throw std::logic_error("CW::Material::TEXTURE(): Material is null");
+    return Texture(); // return a NULL texture if Material is NULL
   }
   SUTextureRef get_texture = SU_INVALID;
   SUResult res = SUMaterialGetTexture(this->ref(), &get_texture);

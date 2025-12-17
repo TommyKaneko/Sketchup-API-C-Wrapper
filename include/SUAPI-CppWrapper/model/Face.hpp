@@ -58,6 +58,7 @@ class Vertex;
 class Loop;
 class LoopInput;
 class Edge;
+class MaterialPositionInput;
 
 class Face :public DrawingElement {
   private:
@@ -68,7 +69,7 @@ class Face :public DrawingElement {
   */
   static SUFaceRef create_face(std::vector<Point3D>& outer_points);
   static SUFaceRef create_face(std::vector<Point3D>& outer_points, LoopInput& loop_input);
-  
+
   /**
   * Creates a SUFaceRef object from an array of points that represent the loops.
   * @param outer_loop vector of points for the vertices in the outer loop.
@@ -76,30 +77,30 @@ class Face :public DrawingElement {
   * @return SUFaceRef object with the defined loops.  If there was an error, a SU_INVALID SUFaceRef will be returned.
   */
   //static SUFaceRef create_face(std::vector<Point3D> outer_loop, std::vector<std::vector<Point3D>> inner_loops);
-  
+
   /**
   * Creates a SUFaceRef derived from an existing Face object.
   * @param face - Face object to derive the new SUFaceRef object from
   * @return if the Face object is already attached to a model, its SUFaceRef object will be returned. If the Face object has not been attached to a model, a new SUFaceRef object will be created. Bear in mind all properties will not be copied in the latter case
   */
   static SUFaceRef copy_reference(const Face& face);
-  
+
   //static SUFaceRef create_face(std::vector<Point3D> outer_loop, std::vector<std::vector<Point3D>> inner_loops, SUResult &create_result);
   //static SUFaceRef check_face(SUFaceRef face, SUResult &create_result);
-  
+
   public:
   /**
   * Constructor for creating a null object.
   */
   Face();
-  
+
   /*
   * Face constructor, which takes an array of points representing the outer loop, and an array of arrays of points representing the inner loops of the face.  A new SUFaceRef object will be created within this class and handled internally.
   */
   Face(std::vector<Point3D>& outer_loop);
   Face(std::vector<Point3D>& outer_loop, LoopInput& loop_input);
   //Face(std::vector<Point3D> outer_loop, std::vector<std::vector<Point3D>> inner_loops = {{}});
-  
+
   /*
   * Face constructor that essentially wraps around an already created SUFaceRef object.
   * @param SUFaceRef* pointer to the face.
@@ -109,60 +110,60 @@ class Face :public DrawingElement {
 
   /** Copy constructor */
   Face(const Face& other);
-  
+
   /** Destructor */
   ~Face();
 
   /** Copy assignment operator */
   Face& operator=(const Face& other);
-  
+
   /*
   * Returns the C-style face_ref object
   */
   SUFaceRef ref() const;
-  
+
   /*
   * The class object can be converted to a SUFaceRef without loss of data.
   */
   operator SUFaceRef() const;
-  
+
   /*
   * Returns whether the class is a valid SU object.
   */
   operator bool() const;
-  
+
   /**
   * NOT operator.  Checks if the object is valid.
   * @return true if the curve is invalid
   */
   bool operator!() const;
-  
+
   /*
   * Retrieves the area of a face in SU units.
   * @return double area in square inches (SU units).
   */
   double area() const;
-  
+
   /**
   * Adds an inner loop to the face.
   * @param points - a vector of points representing the vertices of the inner loop.
   * @param loop_input - the loop input object with details about the edges
   */
   void add_inner_loop(std::vector<Point3D>& points, LoopInput &loop_input);
-  
+
   /*
   * Retrieves the material assigned to the back side of the face.
   * @return Material object of the back side of the face
   */
   Material back_material() const;
-  
+
   /*
   * Sets the material assigned to the back side of the face.
   * @param Material object or the name of a valid material.
   * @return Material object of the back side of the face
   */
   Material back_material(const Material& material);
-  
+
   /*
   * determine if a given Point3d is on the referenced Face. The return value is calculated from this list:
     PointUnknown (indicates an error),
@@ -175,13 +176,13 @@ class Face :public DrawingElement {
   * @return FacePointClass enum indicating the status of the point relative to the face.
   */
   FacePointClass classify_point(const Point3D& point);
-  
+
   /*
   * Get an array of edges that bound the face, including the edges of inner loops.
   * @return std::vector of Edge objects that bound the Face.
   */
   std::vector<Edge> edges();
-  
+
   /*
   * Retrieves a UVHelper object for use in texture manipulation on a face.
   * @param front true if you want the texture coordinates for the front face, false if not. Defaults to true.
@@ -191,43 +192,37 @@ class Face :public DrawingElement {
   */
   // TODO
   //UVHelper get_UVHelper(bool front = true, bool back = true, TextureWriter tex_writer = TextureWriter());
-  
-  /*
-  * Returns a vector representing the projection for either the front or back side of the face.
-  * @param bool true for frontside, false for back side.
-  */
-  Vector3D get_texture_projection(const bool frontside) const;
-  
+
   /*
   * Gets an array of all of the inner loops that bound the face.
   */
   std::vector<Loop> inner_loops() const;
-  
+
   /*
   * Gets an array of all of the loops that bound the face.  The first Loop is the outer loop.
   */
   std::vector<Loop> loops() const;
-  
+
   /*
   // TODO
   PolygonMesh mesh();
   */
-  
+
   /*
   * Retrieve the 3D vector normal to the face in the front direction.
   */
   Vector3D normal() const;
-  
+
   /*
   * Retrieves the outer loop that bounds the face.
   */
   Loop outer_loop() const;
-  
+
   /*
   * Retreives the plane of this face.
   */
   Plane3D plane() const;
-  
+
   /*
   * Positions a material on a face.
   * The pt_array must contain 2, 4, 6 or 8 points. The points are used in pairs to tell where a point in the texture image is positioned on the Face. The first point in each pair is a 3D point in the model. It should be a point on the Face. The second point in each pair of points is a 2D point that gives the (u,v) coordinates of a point in the image to match up with the 3D point.
@@ -238,12 +233,52 @@ class Face :public DrawingElement {
   /** NOT POSSIBLE WITH C API - @see class MaterialInput **/
   // bool position_material(const Material& material, const std::vector<Point3D>& pt_array, bool o_front);
 
+  #if SketchUpAPI_VERSION_MAJOR >= 2021
+  /*
+  * Returns a vector representing the projection for either the front or back side of the face.
+  * @param bool true for frontside, false for back side.
+  */
+  Vector3D get_texture_projection(const bool frontside) const;
+
+  /*
+  * Returns true if the texture is positioned on the face
+  */
+  bool is_texture_positioned(bool front = true) const;
+  bool is_texture_positioned_front() const;
+  bool is_texture_positioned_back() const;
+
+  /*
+  * Returns true if the texture is projected on the face
+  */
+  bool is_texture_projected(bool front = true) const;
+  bool is_texture_projected_front() const;
+  bool is_texture_projected_back() const;
+
+  /*
+  * Gets the position of the a material on a face.
+  * @since SketchUp 2021.1, API v9.1
+  * TODO: more documentation
+  */
+  MaterialPositionInput material_position(bool front = true) const;
+  MaterialPositionInput material_position_front() const;
+  MaterialPositionInput material_position_back() const;
+
+  /*
+  * Positions a material on a face.
+  * @since SketchUp 2021.1, API v9.1
+  * TODO: more documentation
+  */
+  bool material_position(const MaterialPositionInput& material_input, bool front = true);
+  bool material_position_front(const MaterialPositionInput& material_input);
+  bool material_position_back(const MaterialPositionInput& material_input);
+
+  #endif
   /*
   * Reverses the face's orientation, meaning the front becomes the back.
   * @return the reversed Face object
   */
   Face& reverse();
-  
+
   /*
   * Sets the texture projection direction.
   * @param SUVector3D object representing the direction of the projection. Or bool true to remove texture projection.
@@ -253,13 +288,13 @@ class Face :public DrawingElement {
   /** NOT POSSIBLE WITH C API - @see class MaterialInput **/
   //bool set_texture_projection(const Vector3D& vector, bool frontside);
   //bool set_texture_projection(bool remove, bool frontside);
-  
+
   /*
   * Gets an array of all of the vertices that bound the face.
   * @return std::vector array of Vertex objects.
   */
   std::vector<Vertex> vertices() const;
-  
+
 };
 
 } /* namespace CW */
