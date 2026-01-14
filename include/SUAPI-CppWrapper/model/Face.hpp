@@ -193,6 +193,13 @@ class Face :public DrawingElement {
   // TODO
   //UVHelper get_UVHelper(bool front = true, bool back = true, TextureWriter tex_writer = TextureWriter());
 
+  /**
+   * @brief Gets the number of inner loops that bound the face.
+   *
+   * @return size_t
+   */
+  size_t num_inner_loops() const;
+
   /*
   * Gets an array of all of the inner loops that bound the face.
   */

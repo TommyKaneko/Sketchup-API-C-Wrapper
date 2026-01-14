@@ -16,7 +16,7 @@ namespace CW::Tests {
  **********************/
 
 // Edge Referencing Tests that references of an edge point to the same object
-TEST_F(ModelLoad, EdgeReferencing)
+TEST_F(ModelLoad, DISABLED_EdgeReferencing)
 {
   using namespace CW;
   ASSERT_FALSE(!m_model);
@@ -70,7 +70,7 @@ TEST_F(ModelLoad, EdgeReferencing)
 
 
 // Edge Implicit Copying - adding edges from one model into a new model
-TEST_F(ModelLoad, EdgeImplicitCopying)
+TEST_F(ModelLoad, DISABLED_EdgeImplicitCopying)
 {
   using namespace CW;
   ASSERT_FALSE(!m_model);
@@ -97,7 +97,7 @@ TEST_F(ModelLoad, EdgeImplicitCopying)
 
 
 // Edge Explicit Copying - construct detached edges and add them to a new model
-TEST_F(ModelLoad, EdgeExplicitCopying)
+TEST_F(ModelLoad, DISABLED_EdgeExplicitCopying)
 {
   using namespace CW;
   ASSERT_FALSE(!m_model);

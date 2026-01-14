@@ -4,8 +4,10 @@
 #include "SUAPI-CppWrapper/model/Entities.hpp"
 // #include "SUAPI-CppWrapper/model/Vertex.hpp"
 // #include "SUAPI-CppWrapper/Color.hpp"
+#include "SUAPI-CppWrapper/model/Vertex.hpp"
 #include "SUAPI-CppWrapper/model/Edge.hpp"
 #include "SUAPI-CppWrapper/model/Face.hpp"
+#include "SUAPI-CppWrapper/model/Loop.hpp"
 // #include "SUAPI-CppWrapper/model/Layer.hpp"
 #include "SUAPI-CppWrapper/model/GeometryInput.hpp"
 
@@ -152,16 +154,22 @@ TEST_F(ModelLoad, GeometryInputFace)
   for (size_t i=0; i < original_model_materials.size(); i++) {
     MaterialsAreEqual(original_model_materials[i], target_model_materials[i]);
   }
-  geom_input.add_faces(faces, true);
+  for (Face& face : faces) {
+    geom_input.add_face(face, true);
+  }
 
   // Fill the entities of the copy model with the geometry input
   CW::Entities dest_entities = m_model_copy->entities();
   SUResult res = dest_entities.fill(geom_input);
   EXPECT_EQ(res, SU_ERROR_NONE);
-
+  // Save the model output for visual verification
+  SaveModel("GeometryInputFace");
   // Verify faces were added
   std::vector<Face> added_faces = dest_entities.faces();
   EXPECT_EQ(faces.size(), added_faces.size());
+  // We need to match each face by properties, as the order may not be the same
+  SortFacesByProperties(faces);
+  SortFacesByProperties(added_faces);
   std::vector<Material> copied_materials = m_model_copy->materials();
   for (size_t i = 0; i < faces.size(); ++i) {
     FacesAreEqual(faces[i], added_faces[i]);

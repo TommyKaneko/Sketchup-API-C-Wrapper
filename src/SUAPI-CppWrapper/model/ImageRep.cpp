@@ -251,9 +251,9 @@ std::vector<SUByte> ImageRep::pixel_data() const {
   if(!(*this)) {
     throw std::logic_error("CW::ImageRep::pixel_data(): ImageRep is null");
   }
-  std::vector<SUByte> pixel_data;
   size_t data_size = this->data_size();
-  pixel_data.reserve(this->data_size());
+  std::vector<SUByte> pixel_data(data_size);
+  //pixel_data.reserve(data_size);
   SUResult res = SUImageRepGetData(m_image_rep, data_size, &pixel_data[0]);
   assert(res == SU_ERROR_NONE); _unused(res);
   return pixel_data;

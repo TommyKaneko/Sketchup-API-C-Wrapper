@@ -60,7 +60,11 @@ SUComponentDefinitionRef ComponentDefinition::copy_reference(const ComponentDefi
     SUEntitiesRef new_entities_ref = SU_INVALID;
     SUResult res = SUComponentDefinitionGetEntities(new_definition, &new_entities_ref);
     assert(res == SU_ERROR_NONE); _unused(res);
+    #if SketchUpAPI_VERSION_MAJOR < 2021
     Entities new_entities(new_entities_ref, other.model().ref());
+    #else
+    Entities new_entities(new_entities_ref);
+    #endif
     new_entities.add(other.entities());
   }
   return new_definition;
@@ -154,7 +158,11 @@ Entities ComponentDefinition::entities() const {
   SUEntitiesRef entities = SU_INVALID;
   SUResult res = SUComponentDefinitionGetEntities(this->ref(), &entities);
   assert(res == SU_ERROR_NONE); _unused(res);
+  #if SketchUpAPI_VERSION_MAJOR < 2021
   return Entities(entities, this->model().ref());
+  #else
+  return Entities(entities);
+  #endif
 }
 
 

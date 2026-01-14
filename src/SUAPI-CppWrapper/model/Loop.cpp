@@ -108,16 +108,27 @@ std::vector<Edge> Loop::edges() const {
   return edges;
 }
 
+size_t Loop::num_vertices() const {
+  if(!(*this)) {
+    throw std::logic_error("CW::Loop::num_vertices(): Loop is null");
+  }
+  size_t count = 0;
+  SUResult res = SULoopGetNumVertices(this->ref(), &count);
+  assert(res == SU_ERROR_NONE); _unused(res);
+  return count;
+}
+
 
 std::vector<Vertex> Loop::vertices() const {
   if(!(*this)) {
     throw std::logic_error("CW::Loop::vertices(): Loop is null");
   }
-  size_t count = 0;
-  SUResult res = SULoopGetNumVertices(this->ref(), &count);
-  assert(res == SU_ERROR_NONE);
+  size_t count = this->num_vertices();
+  if (count == 0) {
+    throw std::logic_error("CW::Loop::vertices(): Loop has no vertices");
+  }
   std::vector<SUVertexRef> verts_array(count, SU_INVALID);
-  res = SULoopGetVertices(this->ref(), count, verts_array.data(), &count);
+  SUResult res = SULoopGetVertices(this->ref(), count, verts_array.data(), &count);
   assert(res == SU_ERROR_NONE); _unused(res);
   std::vector<Vertex> vertices(count);
   std::transform(verts_array.begin(), verts_array.end(), vertices.begin(),
@@ -162,8 +173,8 @@ size_t Loop::size() const {
   assert(res == SU_ERROR_NONE); _unused(res);
   return count;
 }
-  
-  
+
+
 PointLoopClassify Loop::classify_point(const std::vector<Point3D>& loop_points, const Point3D& test_point) {
   if(loop_points.size() < 3) {
     throw std::invalid_argument("CW::Loop::classify_point(): Fewer than 3 points given - not a valid loop.");
@@ -268,5 +279,14 @@ bool Loop::is_outer_loop() const {
   return is_outer;
 }
 
+SULoopWinding Loop::winding_direction(const Vector3D& normal) const {
+  if(!(*this)) {
+    throw std::logic_error("CW::Loop::winding_direction(): Loop is null");
+  }
+  SULoopWinding winding;
+  SUResult res = SULoopGetWinding(this->ref(), normal, &winding);
+  assert(res == SU_ERROR_NONE); _unused(res);
+  return winding;
+}
 
 } /* namespace CW */

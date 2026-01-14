@@ -28,6 +28,10 @@
 #ifndef Entities_hpp
 #define Entities_hpp
 
+#ifndef SketchUpAPI_VERSION_MAJOR
+#error "SketchUpAPI_VERSION_MAJOR must be defined to include SUAPI-CppWrapper headers"
+#endif
+
 #include <stdio.h>
 #include <vector>
 
@@ -58,15 +62,25 @@ class Entities {
   private:
   SUEntitiesRef m_entities;
   // Store associated model, for type checking purposes
+  #if SketchUpAPI_VERSION_MAJOR < 2021
   Model m_model;
+  #endif
 
   public:
+  #if SketchUpAPI_VERSION_MAJOR < 2021
   /**
   * Default constructor.
   * @param model - SUModelRef object that this entities object resides in. Used for checking that entities added to the entities object is valid for adding to this model.
   */
   Entities(SUEntitiesRef entities, const SUModelRef model);
   Entities(SUEntitiesRef entities, const Model model);
+  #else
+  /**
+  * Default constructor.
+  * @param model - SUModelRef object that this entities object resides in. Used for checking that entities added to the entities object is valid for adding to this model.
+  */
+  Entities(SUEntitiesRef entities);
+  #endif
 
   /**
   * Null Entities object
@@ -174,7 +188,7 @@ class Entities {
   bool transform_entities(std::vector<Entity>& elems, std::vector<Transformation>& transforms);
 
   /**
-  * Returns the model object that conrtains this entities object.
+  * Returns the model object that contains this entities object.
   */
   Model model() const;
 

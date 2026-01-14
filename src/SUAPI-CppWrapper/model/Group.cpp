@@ -74,11 +74,11 @@ Group::Group():
 
 
 Group::Group(SUGroupRef group, bool attached):
-  ComponentInstance(SUGroupToComponentInstance(group), true)
+  ComponentInstance(SUGroupToComponentInstance(group), attached)
 {}
 
 Group::Group(const ComponentInstance& instance):
-  Group(SUGroupFromEntity(instance.m_entity))
+  Group(SUGroupFromComponentInstance(instance.ref()), instance.attached())
 {
   assert(instance.entity_type() == SURefType_Group);
 }
@@ -91,8 +91,9 @@ Group::Group(const Group& other):
 
 Group::~Group() {
   if (!m_attached && SUIsValid(m_entity)) {
-    // There is no release function - we assume that the parent class ComponentInstance takes care of releasing.
+    // There is no release function - groups should always be attached to a parent
   }
+  assert(m_attached || !SUIsValid(m_entity));
 }
 
 
@@ -100,6 +101,7 @@ Group& Group::operator=(const Group& other) {
   // SUGroupRef does not have a release function, as groups must be added to a parent as soon as it is created.  Therefore, we can assume that groups are always attached, and we are simply copying the reference to it.
   assert(m_attached);
   m_entity = other.m_entity;
+  // TODO: we need to copy properties of parents as well
   return *this;
 }
 
@@ -131,7 +133,11 @@ Entities Group::entities() const {
   }
   SUEntitiesRef entities = SU_INVALID;
   SUGroupGetEntities(this->ref(), &entities);
+  #if SketchUpAPI_VERSION_MAJOR < 2021
   return Entities(entities, this->model().ref());
+  #else
+  return Entities(entities);
+  #endif
 }
 
 

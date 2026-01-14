@@ -76,6 +76,29 @@ Model::Model(std::string file_path):
 {
   enum SUModelLoadStatus status;
   m_result = SUModelCreateFromFileWithStatus(&m_model, file_path.c_str(), &status);
+  switch (m_result) {
+    case SU_ERROR_NONE:
+      // Model loaded successfully
+      break;
+    case SU_ERROR_NULL_POINTER_INPUT:
+      throw std::invalid_argument{"No model exists in the path: "} + file_path;
+      break;
+    case SU_ERROR_NULL_POINTER_OUTPUT:
+      throw std::logic_error{"Model failed to load"}; // this shoud never happen
+      break;
+    case SU_ERROR_SERIALIZATION:
+      throw std::logic_error{"Model failed to load"};
+      break;
+    case SU_ERROR_MODEL_INVALID:
+      throw std::invalid_argument{"Tried to open an invalid model: "}  + file_path;
+      break;
+    case SU_ERROR_MODEL_VERSION:
+      throw std::invalid_argument{"This model is from a newer version of Sketchup: "}  + file_path;
+      break;
+    default:
+      throw std::logic_error{"unhandled exception"};
+      break;
+  }
   // TODO: deal with the status issue.
 }
 
@@ -201,7 +224,7 @@ Layer Model::active_layer() const {
 //bool active_layer(Layer default_layer) {}
 
 
-bool Model::add_definition(ComponentDefinition& definition) {
+void Model::add_definition(ComponentDefinition& definition) {
   if(!(*this)) {
     throw std::logic_error("CW::Model::add_definition(): Model is null");
   }
@@ -210,7 +233,7 @@ bool Model::add_definition(ComponentDefinition& definition) {
 }
 
 
-bool Model::add_definitions(std::vector<ComponentDefinition>& definitions) {
+void Model::add_definitions(std::vector<ComponentDefinition>& definitions) {
   if(!(*this)) {
     throw std::logic_error("CW::Model::add_definitions(): Model is null");
   }
@@ -221,10 +244,22 @@ bool Model::add_definitions(std::vector<ComponentDefinition>& definitions) {
     }
   );
   SUResult res = SUModelAddComponentDefinitions(m_model, definitions.size(), defs.data());
-  if (res == SU_ERROR_NONE) {
-    return true;
+  switch (res) {
+    case SU_ERROR_NONE:
+      // success
+      return;
+      break;
+    case SU_ERROR_NULL_POINTER_INPUT:
+      throw std::invalid_argument("CW::Model::add_definition(s): component definitions(s) passed as parametersare invalid");
+      break;
+    case SU_ERROR_INVALID_INPUT:
+      throw std::logic_error("CW::Model::add_definition(s): model is invalid");
+      break;
+    default:
+      throw std::logic_error("CW::Model::add_definition(s): unhandled exception");
+      break;
   }
-  return false;
+  return;
 }
 
 
@@ -351,7 +386,11 @@ Entities Model::entities() const {
   SUEntitiesRef entities = SU_INVALID;
   SUResult res = SUModelGetEntities(m_model, &entities);
   assert(res == SU_ERROR_NONE); _unused(res);
+  #if SketchUpAPI_VERSION_MAJOR < 2021
   return Entities(entities, m_model);
+  #else
+  return Entities(entities);
+  #endif
 }
 
 
@@ -429,13 +468,13 @@ void Model::add_layers(std::vector<Layer>& layers, bool overwrite_existing) {
     if (!lay) {
       continue;
     }
-    // Find a matching layer in the model
+    // Find a layer matched by name in the model
     const auto found_layer = std::find_if(existing_layers.begin(), existing_layers.end(),
           [lay](const Layer& value2){ return lay.name() == value2.name();});
     if (found_layer != existing_layers.end()) {
+      // Layer to add is already in the model
       if (overwrite_existing) {
         // Update properties of existing layer
-        //found_layer->name(lay.name());
         // TODO: as more properties are added to Layer, they should be updated here
       }
       else {
@@ -444,6 +483,7 @@ void Model::add_layers(std::vector<Layer>& layers, bool overwrite_existing) {
       }
     }
     else {
+      // No layer with matching name found - add it
       // Check that each layer is not attached to another model
       if (lay.attached()) {
         layers_to_add.push_back(lay.copy());
@@ -453,12 +493,6 @@ void Model::add_layers(std::vector<Layer>& layers, bool overwrite_existing) {
       }
     }
   }
-  // for (size_t i=0; i < layers.size(); i++) {
-  //   // Check that each material is not attached to another model
-  //   if (layers[i].attached()) {
-  //     throw std::invalid_argument("CW::Model::add_layers(): At least one of the Layer objects passed is attached to another model.  Use Layer::copy() to create a new unattached Layer object and try again.");
-  //   }
-  // }
   std::vector<SULayerRef> layer_refs(layers_to_add.size(), SU_INVALID);
   std::transform(layers_to_add.begin(), layers_to_add.end(), layer_refs.begin(),
     [](const Layer& value){
@@ -530,6 +564,9 @@ std::vector<Material> Model::materials() const {
 
 
 void Model::add_materials(std::vector<Material>& materials,  bool overwrite_existing) {
+  if (materials.size() == 0) {
+    throw std::invalid_argument("CW::Model::add_materials(): No Material objects were passed to add to the model.");
+  }
   std::vector<Material> existing_materials = this->materials();
   std::vector<Material> materials_to_add; materials_to_add.reserve(materials.size());
   for (Material& mat : materials) {
@@ -550,6 +587,7 @@ void Model::add_materials(std::vector<Material>& materials,  bool overwrite_exis
         if (!!texture) {
           found_material->texture(texture);
         }
+        found_material->copy_attributes_from(mat);
       }
       else {
         // Skip adding this material as it already exists
@@ -565,6 +603,10 @@ void Model::add_materials(std::vector<Material>& materials,  bool overwrite_exis
         materials_to_add.push_back(mat);
       }
     }
+  }
+  if (materials_to_add.size() == 0) {
+    // Nothing to add
+    return;
   }
   // for (size_t i=0; i < materials.size(); i++) {
   //   // Check that each material is not attached to another model

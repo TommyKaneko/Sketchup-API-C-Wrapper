@@ -46,7 +46,7 @@
 
 namespace CW {
 
-
+#if SketchUpAPI_VERSION_MAJOR < 2021
 Entities::Entities(SUEntitiesRef entities, const SUModelRef model):
   Entities(entities, Model(model, false))
 {}
@@ -60,7 +60,15 @@ Entities::Entities():
   m_entities(SU_INVALID),
   m_model(Model())
 {}
+#else
+Entities::Entities(SUEntitiesRef entities):
+  m_entities(entities)
+{}
 
+Entities::Entities():
+  m_entities(SU_INVALID)
+{}
+#endif
 
 std::vector<Face> Entities::faces() const {
   if (!SUIsValid(m_entities)) {
@@ -190,7 +198,8 @@ void Entities::add(const Entities& other) {
   if (!SUIsValid(m_entities) || !SUIsValid(other.m_entities)) {
     throw std::logic_error("CW::Entities::add(): Entities is null");
   }
-  GeometryInput geom_input(&m_model);
+  Model model = this->model();
+  GeometryInput geom_input(&model);
   geom_input.add_faces(other.faces());
   geom_input.add_edges(other.edges());
   this->fill(geom_input);
@@ -218,58 +227,20 @@ SUResult Entities::fill(GeometryInput &geom_input) {
   if (geom_input.empty()) {
     return SU_ERROR_NONE;
   }
-  if (geom_input.m_attached) {
-    throw std::logic_error("CW::Entities::fill(): GeometryInput has already been attached to a model, cannot fill Entities object.");
-  }
-  if (geom_input.m_target_model->ref().ptr != m_model.ref().ptr) {
+  // if (geom_input.m_attached) {
+  //   throw std::logic_error("CW::Entities::fill(): GeometryInput has already been attached to a model, cannot fill Entities object.");
+  // }
+  Model model = this->model();
+  if (geom_input.m_target_model->ref().ptr != model.ref().ptr) {
     throw std::logic_error("CW::Entities::fill(): GeometryInput is associated with a different model than the Entities object.");
   }
-  // For the indexes of the GeometryInputRef to make sense after we fill the Entities object with its contents, we need to know how many of each entitity currently exists in the Entities object
-  size_t num_faces_before = 0;
-  SUResult res = SUEntitiesGetNumFaces(m_entities, &num_faces_before);
-  assert(res == SU_ERROR_NONE); _unused(res);
+  // For the indexes of the GeometryInputRef to make sense after we fill the Entities object with its contents, we need to know how many of each entity currently exists in the Entities object
+  //size_t num_faces_before = 0;
+  //SUResult res = SUEntitiesGetNumFaces(m_entities, &num_faces_before);
+  //assert(res == SU_ERROR_NONE); _unused(res);
 
   SUResult fill_res = SUEntitiesFill(m_entities, geom_input.m_geometry_input, true);
   assert(fill_res == SU_ERROR_NONE); _unused(fill_res);
-  /**
-  // Now add other data that SUEntitiesFill cannot add to the entities.
-  // Apply properties to Faces
-  // TODO: there is an assumption that the faces added to an Entities object is added in sequence, according to the index number.  So that (num_faces_before + face_index_of_geom_input) correspond to the Face number in the Entities object. This needs to be tested.
-  size_t num_faces_after = 0;
-  res = SUEntitiesGetNumFaces(m_entities, &num_faces_after);
-  assert(res == SU_ERROR_NONE);
-  std::vector<std::pair<size_t, Face>> faces_to_add = geom_input.faces();
-  // If all of the faces in the geom_input were not added, it will not be possible to find the added face by looking at its index.
-  assert((num_faces_after-num_faces_before) == geom_input.num_faces());
-  // Copy any attributes to the added faces
-  std::vector<Face> faces_after = this->faces();
-  for (size_t i=0; i < faces_to_add.size(); ++i) {
-    assert(this->model().material_exists(faces_to_add[i].second.material()));
-    size_t new_face_index = faces_to_add[i].first;
-    size_t after_face_index = num_faces_before + new_face_index;
-    faces_after[after_face_index].copy_attributes_from(faces_to_add[i].second);
-    // Set attributes for the edges that bound the face.
-    std::vector<Loop> loops = faces_to_add[i].second.loops();
-    std::vector<Loop> new_loops = faces_after[after_face_index].loops();
-    for (size_t j=0; j < loops.size(); ++j) {
-      std::vector<Edge> old_edges = loops[j].edges();
-      std::vector<Edge> new_edges = new_loops[j].edges();
-      // If there are more new edges, then it means that some edges have been split during a merging operation.  The trick to find these is to see if the end location of the new and old edges match.
-      size_t new_edge_index = 0;
-      size_t old_edge_index = 0;
-      while( old_edge_index < old_edges.size()) {
-        do {
-          new_edges[new_edge_index].copy_attributes_from(old_edges[old_edge_index]);
-          ++new_edge_index;
-        }
-        while ((old_edges.size() < new_edges.size()) &&
-               (new_edge_index < new_edges.size()) &&
-               (new_edges[new_edge_index-1].end().position() != old_edges[old_edge_index+1].end().position()));
-        ++old_edge_index;
-      }
-    }
-  }
-  */
   return fill_res;
 }
 
@@ -325,6 +296,9 @@ Edge Entities::add_edge(Edge& edge) {
   if (!SUIsValid(m_entities)) {
     throw std::logic_error("CW::Entities::add_edge(): Entities is null");
   }
+  if (edge.attached()) {
+    throw std::invalid_argument("CW::Entities::add_edge(): Edge is already attached to an Entities object.");
+  }
   SUEdgeRef edge_ref = edge.ref();
   SUResult res = SUEntitiesAddEdges(m_entities, 1, &edge_ref);
   assert(res == SU_ERROR_NONE); _unused(res);
@@ -340,6 +314,9 @@ void Entities::add_instance(ComponentInstance& instance) {
   if (!instance) {
     throw std::invalid_argument("CW::Entities::add_instance(): ComponentInstance argument is invalid");
   }
+  if (instance.attached()) {
+    throw std::invalid_argument("CW::Entities::add_instance(): ComponentInstance has already been added to a model.");
+  }
   SUResult res = SUEntitiesAddInstance(m_entities, instance, nullptr);
   assert(res == SU_ERROR_NONE); _unused(res);
   instance.attached(true);
@@ -352,6 +329,13 @@ ComponentInstance Entities::add_instance(const ComponentDefinition& definition, 
   }
   if (!definition) {
     throw std::invalid_argument("CW::Entities::add_instance(): ComponentDefinition argument is invalid");
+  }
+  if (!definition.attached()) {
+    throw std::invalid_argument("CW::Entities::add_instance(): ComponentDefinition must be attached to a model before creating an instance.");
+  }
+  // Check that the definition is attached to this model
+  if (definition.model().ref().ptr != this->model().ref().ptr) {
+    throw std::invalid_argument("CW::Entities::add_instance(): ComponentDefinition is attached to a different model than this Entities object.");
   }
   SUComponentInstanceRef instance = SU_INVALID;
   SUResult res = SUComponentDefinitionCreateInstance(definition.ref(), &instance);
@@ -385,19 +369,28 @@ Group Entities::add_group(const ComponentDefinition& definition, const Transform
   }
   // Groups cannot be created with a component definition and transformation objects.  Instead, the geometry must be copied in to a new Entities object in the group.
   Group new_group = this->add_group();
+  new_group.transformation(transformation);
   Entities group_entities = new_group.entities();
   Entities def_entities = definition.entities();
   // Add geometry one by one to Geometry input.
-  GeometryInput geom_input(&m_model);
+  Model model = this->model();
+  GeometryInput geom_input(&model);
+  // GeometryInput object must first load layers and materials from the definition's model.
+  // TODO: this is unsatisfatory for performance - need a better way to handle this.
+  geom_input.load_materials(definition.model().materials());
+  geom_input.load_layers(definition.model().layers());
   std::vector<Face> def_faces = def_entities.faces();
   for (size_t i=0; i < def_faces.size(); ++i) {
-    geom_input.add_face(def_faces[i]);
+    //geom_input.add_face(def_faces[i]);
+    geom_input.add_face(def_faces[i], false);
   }
-  std::vector<Edge> def_edges = def_entities.edges(true);
+  std::vector<Edge> def_edges = def_entities.edges(true); // add stray edges only
   for (size_t i=0; i < def_edges.size(); ++i) {
-    group_entities.add_edge(def_edges[i]);
+    geom_input.add_edge(def_edges[i], def_edges[i].material(), def_edges[i].layer());
   }
-  group_entities.fill(geom_input);
+  if((def_faces.size() + def_edges.size()) > 0) {
+    group_entities.fill(geom_input);
+  }
   // Also add instances and groups
   std::vector<Group> def_groups = def_entities.groups();
   for (size_t i=0; i < def_groups.size(); ++i) {
@@ -428,7 +421,7 @@ Group Entities::add_group() {
   // Add group to the entities object before populating it.
   res = SUEntitiesAddGroup(m_entities, group);
   assert(res == SU_ERROR_NONE); _unused(res);
-  return Group(group);
+  return Group(group, true);
 }
 
 
@@ -468,9 +461,28 @@ bool Entities::transform_entities(std::vector<Entity>& elems, std::vector<Transf
 }
 
 
+#if SketchUpAPI_VERSION_MAJOR < 2021
 Model Entities::model() const {
   return m_model;
 }
+#else
+Model Entities::model() const {
+  SUEntitiesParent parent;
+  parent.model = SU_INVALID;
+  parent.definition = SU_INVALID;
+  SUResult res = SUEntitiesGetParent(m_entities, &parent);
+  if (res != SU_ERROR_NONE) {
+    throw std::logic_error("CW::Entities::model(): could not get parent of Entities object.");
+  }
+  if (SUIsValid(parent.model)) {
+    return Model(parent.model, false);
+  }
+  else {
+    ComponentDefinition def(parent.definition, true); // assume that it is attached?!
+    return def.model();
+  }
+}
+#endif
 
 
 Entities::operator SUEntitiesRef() {

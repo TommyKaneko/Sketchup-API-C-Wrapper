@@ -81,11 +81,10 @@ private:
    */
   LayerDictionary m_layer_dict;
 
-  bool m_attached;
   // GeometryInput objects require that the target model (for inputting information) be known, to ensure that materials and layers assigned to geometry exists in the target model.
   Model* m_target_model;
 
-  size_t m_vertex_index = 0;
+  size_t m_vertex_count = 0;
 
   // Tracks the number of GeometrryInput objects have been allocated, to allow the destructor to release an object only at the right time.
   static std::unordered_map<SUGeometryInputRef, size_t> num_objects_;
@@ -269,6 +268,12 @@ public:
   * @return returns the index of the added face.
   */
   size_t add_face(LoopInput& loop_input);
+
+  /**
+   * Helper methods that copies all entities from an Entities object into this GeometryInput object.
+   * Note: it will not copy nested ComponentDefinitions or Groups.
+   */
+  void add_entities(const Entities& entities);
 
   /**
   * Sets a flag in the geometry input that, when true, will create a face by reversing the orientations of all of its loops.

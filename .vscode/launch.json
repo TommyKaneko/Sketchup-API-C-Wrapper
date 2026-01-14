@@ -15,12 +15,15 @@
     },
     {
       "name": "Debug SketchUpAPITests",
-      "type": "cppdbg",
+      "type": "lldb-dap",
       "request": "launch",
       "program": "${workspaceFolder}/build/SketchUpAPITests",
       "args": [],
       "cwd": "${workspaceFolder}/build",
-      "MIMode": "lldb",
-    }
+      "initCommands": [
+        //"breakpoint set -r '^SU.*Release$'"
+      ]
+    },
+
   ]
 }

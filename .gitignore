@@ -29,6 +29,9 @@
 *.out
 *.app
 
+# Test Outputs
+test_model_output/*
+
 # OS generated files #
 ######################
 .DS_Store

@@ -48,8 +48,8 @@ TypedValue::TypedValue(SUTypedValueRef typed_val, bool attached):
   m_typed_value(typed_val),
   m_attached(attached)
 {}
- 
- 
+
+
 /** Copy constructor */
 TypedValue::TypedValue(const TypedValue& other):
   TypedValue()

@@ -1,7 +1,8 @@
 message(STATUS "================= SketchUp API C++ Wrapper Tests =================")
 # Where we keep the test models
 set(CPP_API_TESTS_MODELS_PATH "${PROJECT_SOURCE_DIR}/models")
-
+# Where we keep the test output models
+set(CPP_API_TESTS_MODELS_OUTPUT_PATH "${PROJECT_SOURCE_DIR}/test_model_output")
 # Tell the test source code where to find the models
 configure_file (
   "${CPP_API_TESTS_PATH}/ModelPath.h.in"
@@ -21,6 +22,14 @@ target_link_libraries(SketchUpAPITests GoogleTest ${TEST_LIBRARY_NAME} ${SLAPI_L
 message(STATUS "Linking to Library: ${SLAPI_LIB}")
 
 set_target_properties(${SketchUpAPITests} PROPERTIES COMPILE_FLAGS "-Wall")
+
+# Address Sanitizer option (Comment out if not needed)
+target_compile_options(SketchUpAPITests
+  PRIVATE -fsanitize=address
+  #PRIVATE -g -O1 -fno-omit-frame-pointer
+  )
+target_link_options(SketchUpAPITests PRIVATE -fsanitize=address)
+message(STATUS "Address Sanitizer enabled for SketchUpAPITests - Make sure this is disabled for production builds!")
 
 source_group(
   "Tests"
@@ -42,3 +51,4 @@ if ( MSVC )
   )
 else()
 endif()
+

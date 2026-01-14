@@ -52,7 +52,7 @@ SULoopInputRef LoopInput::create_loop_input_ref() {
 ** Constructors / Destructor **
 *******************************/
 LoopInput::LoopInput():
-  m_loop_input(create_loop_input_ref())
+  LoopInput(create_loop_input_ref(), false)
 {}
 
 

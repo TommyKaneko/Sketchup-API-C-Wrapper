@@ -61,7 +61,7 @@ enum class PointLoopClassify {
 * A face is made up of an outer loop and inner loops.
 */
 class Loop :public Entity {
-  public:  
+  public:
   /**
   * Creates an invalid Loop object.
   */
@@ -90,33 +90,38 @@ class Loop :public Entity {
   * Returns the LoopInput object for this loop. A SULoopInputRef will be created using the values of the original SULoopRef object.
   */
   LoopInput loop_input() const;
-  
+
   /**
   * Returns the Edges in the Loop
   */
   std::vector<Edge> edges() const;
 
   /**
+  * @brief Get the number of vertices in the loop.
+  */
+  size_t num_vertices() const;
+
+  /**
   * Returns the Vertices in the Loop
   */
   std::vector<Vertex> vertices() const;
-  
+
   /**
   * Returns the points representing the vertices in the Loop
   */
   std::vector<Point3D> points() const;
-  
+
   /**
   * Determine where on the loop a point lies.  @see PointLoopClassify.
   * @param point - the Point3D object ot check.
   */
   PointLoopClassify classify_point(const Point3D& point) const;
-  
+
   /**
   * Returns the number of edges/vertices in the loop.
   */
   size_t size() const;
-  
+
   /**
   * Returns whether a point is within a loop, given by the vector of points.
   * @param loop_points - a vector of points representing the vertices of a loop.
@@ -124,12 +129,17 @@ class Loop :public Entity {
   * @return PointLoopClassify object describing the location of the point relative to the loop.
   */
   static PointLoopClassify classify_point(const std::vector<Point3D>& loop_points, const Point3D& test_point);
-  
+
   /**
   * Retrieves a flag indicating the whether the loop is the outer loop on its associated face.
   */
   bool is_outer_loop() const;
-  
+
+  /**
+   * @brief Returns the winding direction the loop relative to a vector normal
+   */
+  SULoopWinding winding_direction(const Vector3D& normal) const;
+
 };
 
 } /* namespace CW */

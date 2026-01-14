@@ -36,6 +36,7 @@
 
 #include <algorithm>
 #include <vector>
+#include <ostream>
 
 #include <SketchUpAPI/geometry.h>
 #include <SketchUpAPI/model/edge.h>
@@ -250,6 +251,15 @@ class Vector3D {
   */
   static Vector3D zero_vector();
 
+  /**
+   * @brief custom iostream output for printing Vector3D objects
+   */
+  friend std::ostream& operator<< (std::ostream &os, const Vector3D& vector) {
+    os << "Vector3D(" << vector.x << ", " << vector.y << ", " << vector.z << ")";
+    return os;
+  }
+
+
 };
 
 
@@ -369,8 +379,16 @@ class Point3D {
   */
   static Point3D ray_line_intersection(const Point3D& point_a, const Vector3D& vector_a, const Point3D& point_b, const Vector3D& ray_b, bool return_colinear = false);
 
+  /**
+   * @brief custom iostream output for printing Point3D objects
+   */
+  friend std::ostream& operator<< (std::ostream &os, const Point3D& point) {
+    os << "Point3D(" << point.x << ", " << point.y << ", " << point.z << ")";
+    return os;
+  }
 
 };
+
 
 // Forward declaration
 class Line3D;

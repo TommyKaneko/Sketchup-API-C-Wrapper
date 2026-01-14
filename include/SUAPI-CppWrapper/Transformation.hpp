@@ -44,26 +44,26 @@ class Transformation {
   private:
   SUTransformation m_transformation;
   constexpr static double EPSILON = 0.001; // Sketchup Tolerance is 1/1000"
-  
+
   /**
   * Multiplies 4x1 matrix by this transformation matrix
   * @param matrix4_1 array of size 4 to mulitply with this transformation.
   * @return double[4] array representing 4x1 matrix
   */
   std::array<double, 4> multiply4x1(std::array<double, 4> matrix4_1) const;
-  
+
   /**
   * Returns the determinant of the matrix.
   */
   double determinant() const;
-  
+
   public:
   /**
   * Construct a Transformation with a simple scale of 1 (no change).
   * @since SketchUp 2018, API v6.0
   */
   Transformation();
-  
+
   /**
   * Construct a Transformation from native SUTransformation object.
   */
@@ -80,7 +80,7 @@ class Transformation {
   * @since SketchUp 2018, API v6.0
   */
   Transformation(const Point3D& origin, const Vector3D& x_axis, const Vector3D& y_axis, const Vector3D& z_axis, double scalar = 1.0);
-  
+
   /**
   * Construct a scale Transformation.
   * @since SketchUp 2018, API v6.0
@@ -98,7 +98,7 @@ class Transformation {
   * @since SketchUp 2018, API v6.0
   */
   explicit Transformation(const Vector3D& translation);
-  
+
   /**
   * Construct a Transformation from a point representing the translation, and a scale.
   * @since SketchUp 2018, API v6.0
@@ -110,7 +110,7 @@ class Transformation {
   * @since SketchUp 2017, API v5.0
   */
   Transformation(const Point3D& translation, const Vector3D& normal);
-  
+
   /**
   * Construct a Transformation given an origin, vector of rotation, and angle.
   * @since SketchUp 2018, API v6.0
@@ -134,25 +134,25 @@ class Transformation {
   */
   double operator[](size_t i) const;
   double& operator[](size_t i);
-  
+
   /*
   * Cast to SUTransformation struct
   */
   SUTransformation ref() const;
   operator SUTransformation() const;
   operator const SUTransformation*() const;
-  
+
   /**
   * Returns true if this Transformation is identity (no change).
   */
   bool is_identity() const;
-  
+
   /**
   * Return the inverse Transformation object (see inverse Transformation matrices)
   * @since SketchUp 2018, API v6.0
   */
   Transformation inverse() const;
-  
+
   /**
   * Returns the X-axis of the rigid transformation.
   * @since SketchUp 2018, API v6.0
@@ -170,29 +170,29 @@ class Transformation {
   * @since SketchUp 2018, API v6.0
   */
   Vector3D z_axis() const;
-  
+
   /**
   * Returns the rotation about the Z-axis in radians.
   * @since SketchUp 2018, API v6.0
   */
   double z_rotation() const;
-  
+
   /**
   * Normalise the transformation, so that the bottom row of the 4x4 matrix reads (0,0,0,1)
   */
   Transformation& normalize();
-  
+
   /**
   * Retrieves the origin of a rigid transformation.
   * @since SketchUp 2018, API v6.0
   */
   Point3D origin() const;
-  
+
   /**
   * Retrieves the translation part of the transformation
   */
   Vector3D translation() const;
-  
+
   /**
   * Mulitplication of Transformation matrices.
   * @since SketchUp 2018, API v6.0
@@ -214,7 +214,7 @@ class Transformation {
   friend Point3D operator*(const Transformation &lhs, const Point3D &rhs);
   /** You can't technically multiply a 4x1 matrix by a 4x4 matrix (only the other way around), so return it flipped */
   friend Point3D operator*(const Point3D &lhs, const Transformation &rhs);
-  
+
   /**
   * Return transformed plane.
   * @since SketchUp 2018, API v6.0
@@ -226,17 +226,50 @@ class Transformation {
   * Return transformed face.
   */
   friend Face operator*(const Face &lhs, const Transformation &rhs);
-  
+
   /**
   * Compare equality of tranformation objects.
   */
   bool equal(const Transformation transform, const double epsilon = EPSILON) const;
   bool operator==(const Transformation transform) const;
-  
+
   /**
   * Returns a Transformation object that represents rotation of the given angle in radians about a line.  The rotation direction follows the right hand rule along the direction vector of the line.
   */
   static Transformation transformation_rotate_about_line(const double angle, const Line3D line);
+
+  /**
+   * @brief custom iostream output for printing Transformation objects
+   */
+  friend std::ostream& operator<< (std::ostream &os, const Transformation& transformation) {
+    os << std::endl << "Transformation( ";
+    for (size_t i = 0; i < 4; ++i) {
+      os << transformation[i];
+      if (i < 3) { os << ", " ;
+      }
+    }
+    os << std::endl << "                ";
+    for (size_t i = 4; i < 8; ++i) {
+      os << transformation[i];
+      if (i < 7) { os << ", " ;
+      }
+    }
+    os << std::endl << "                ";
+    for (size_t i = 8; i < 12; ++i) {
+      os << transformation[i];
+      if (i < 11) { os << ", " ;
+      }
+    }
+    os << std::endl << "                ";
+    for (size_t i = 12; i < 16; ++i) {
+      os << transformation[i];
+      if (i < 15) { os << ", " ;
+      }
+    }
+    os << " )" <<std::endl;
+    return os;
+  }
+
 };
 
 } /* namespace CW */

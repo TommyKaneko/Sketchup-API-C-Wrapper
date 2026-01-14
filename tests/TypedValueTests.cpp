@@ -83,4 +83,5 @@ TEST(TypedValue, get_mixed_array_items)
   size_t count = 0;
   SUResult res = SUTypedValueGetNumArrayItems(typed_value_array, &count);
   ASSERT_EQ(3, count);
+  // No CW::Teriminate() function here?
 }

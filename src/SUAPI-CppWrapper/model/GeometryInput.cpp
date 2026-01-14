@@ -90,7 +90,6 @@ SUResult GeometryInput::add_loop(LoopInput &loop) {
 
 GeometryInput::GeometryInput(Model* target_model):
   m_geometry_input(create_geometry_input()),
-  m_attached(false),
   m_target_model(target_model),
   m_material_dict(target_model),
   m_layer_dict(target_model)
@@ -100,13 +99,16 @@ GeometryInput::GeometryInput(Model* target_model):
 
 
 GeometryInput::~GeometryInput() {
-  if (SUIsValid(m_geometry_input) && !m_attached && num_objects_[m_geometry_input] == 1) {
+  if (SUIsValid(m_geometry_input) && num_objects_[m_geometry_input] == 1) {
     num_objects_.erase(m_geometry_input);
     SUResult res = SUGeometryInputRelease(&m_geometry_input); // This is equivalent to the delete command.
     assert(res == SU_ERROR_NONE); _unused(res);
   }
   else {
     --num_objects_[m_geometry_input];
+    if (num_objects_[m_geometry_input] == 0) {
+      num_objects_.erase(m_geometry_input);
+    }
   }
 }
 
@@ -116,7 +118,7 @@ GeometryInput::GeometryInput(const GeometryInput& other):
   m_material_dict(other.m_target_model),
   m_layer_dict(other.m_target_model)
 {
-  if (SUIsValid(m_geometry_input) && !m_attached && num_objects_[m_geometry_input] == 1) {
+  if (SUIsValid(m_geometry_input) && num_objects_[m_geometry_input] == 1) {
     num_objects_.erase(m_geometry_input);
     SUResult res = SUGeometryInputRelease(&m_geometry_input);
     assert(res == SU_ERROR_NONE); _unused(res);
@@ -125,13 +127,12 @@ GeometryInput::GeometryInput(const GeometryInput& other):
     --num_objects_[m_geometry_input];
   }
   m_geometry_input = other.m_geometry_input;
-  m_attached = other.m_attached;
   ++num_objects_[m_geometry_input];
 }
 
 
 GeometryInput& GeometryInput::operator=(const GeometryInput& other) {
-  if (SUIsValid(m_geometry_input) && !m_attached && num_objects_[m_geometry_input] == 1) {
+  if (SUIsValid(m_geometry_input) && num_objects_[m_geometry_input] == 1) {
     num_objects_.erase(m_geometry_input);
     SUResult res = SUGeometryInputRelease(&m_geometry_input);
     assert(res == SU_ERROR_NONE); _unused(res);
@@ -140,7 +141,6 @@ GeometryInput& GeometryInput::operator=(const GeometryInput& other) {
     --num_objects_[m_geometry_input];
   }
   m_geometry_input = other.m_geometry_input;
-  m_attached = other.m_attached;
   m_target_model = other.m_target_model;
   m_material_dict = other.m_material_dict;
   m_layer_dict = other.m_layer_dict;
@@ -272,26 +272,33 @@ size_t GeometryInput::add_face(const Face &face, bool copy_material_layer) {
   LoopInput outer_loop_input;
   // Add outer loop
   std::vector<Point3D> outer_points = face.outer_loop().points();
+  if(outer_points.size() < 3) {
+    throw std::logic_error("CW::GeometryInput::add_face(): face has less than 3 points in outer loop");
+  }
   std::vector<Edge> outer_edges = face.outer_loop().edges();
+  size_t first_vertex_index;
   for (size_t i=0; i < outer_points.size(); ++i) {
     size_t v_index = this->add_vertex(outer_points[i]);
     outer_loop_input.add_vertex_index(v_index);
+    if (i==0) first_vertex_index = v_index;
     if (outer_edges[i].hidden()) {
-      outer_loop_input.set_edge_hidden(v_index, true);
+      outer_loop_input.set_edge_hidden(i, true);
     }
     if (outer_edges[i].smooth()) {
-      outer_loop_input.set_edge_smooth(v_index, true);
+      outer_loop_input.set_edge_smooth(i, true);
     }
     if (outer_edges[i].soft()) {
-      outer_loop_input.set_edge_soft(v_index, true);
+      outer_loop_input.set_edge_soft(i, true);
     }
     if (!!outer_edges[i].material()) {
-      outer_loop_input.set_edge_material(v_index, m_material_dict.get_reference(outer_edges[i].material()));
+      outer_loop_input.set_edge_material(i, m_material_dict.get_reference(outer_edges[i].material()));
     }
     if (!!outer_edges[i].layer()) {
-      outer_loop_input.set_edge_layer(v_index, m_layer_dict.get_reference(outer_edges[i].layer()));
+      outer_loop_input.set_edge_layer(i, m_layer_dict.get_reference(outer_edges[i].layer()));
     }
   }
+  outer_loop_input.add_vertex_index(first_vertex_index); // Close the loop TODO: not strictly necessary, and messes with the m_edge_num count...
+
   size_t added_face_index = this->add_face(outer_loop_input);
   // Add inner loops
   std::vector<Loop> inner_loops = face.inner_loops();
@@ -300,24 +307,26 @@ size_t GeometryInput::add_face(const Face &face, bool copy_material_layer) {
     std::vector<Point3D> inner_points = inner_loops[i].points();
     std::vector<Edge> inner_edges = inner_loops[i].edges();
     for (size_t j=0; j < inner_points.size(); ++j) {
-      size_t v_index = this->add_vertex(inner_points[i]);
+      size_t v_index = this->add_vertex(inner_points[j]);
       inner_loop_input.add_vertex_index(v_index);
-      if (inner_edges[i].hidden()) {
-        inner_loop_input.set_edge_hidden(v_index, true);
+      if (j==0) first_vertex_index = v_index;
+      if (inner_edges[j].hidden()) {
+        inner_loop_input.set_edge_hidden(j, true);
       }
-      if (inner_edges[i].smooth()) {
-        inner_loop_input.set_edge_smooth(v_index, true);
+      if (inner_edges[j].smooth()) {
+        inner_loop_input.set_edge_smooth(j, true);
       }
-      if (inner_edges[i].soft()) {
-        inner_loop_input.set_edge_soft(v_index, true);
+      if (inner_edges[j].soft()) {
+        inner_loop_input.set_edge_soft(j, true);
       }
-      if (!!inner_edges[i].material()) {
-        inner_loop_input.set_edge_material(v_index, m_material_dict.get_reference(inner_edges[i].material()));
+      if (!!inner_edges[j].material()) {
+        inner_loop_input.set_edge_material(j, m_material_dict.get_reference(inner_edges[j].material()));
       }
-      if (!!inner_edges[i].layer()) {
-        inner_loop_input.set_edge_layer(v_index, m_layer_dict.get_reference(inner_edges[i].layer()));
+      if (!!inner_edges[j].layer()) {
+        inner_loop_input.set_edge_layer(j, m_layer_dict.get_reference(inner_edges[j].layer()));
       }
     }
+    inner_loop_input.add_vertex_index(first_vertex_index); // Close the loop TODO: not strictly necessary, and messes with the m_edge_num count...
     this->face_add_inner_loop(added_face_index, inner_loop_input);
   }
   if (copy_material_layer) {
@@ -449,8 +458,8 @@ bool GeometryInput::empty() const {
 size_t GeometryInput::add_vertex(const Point3D& point) {
   SUResult res = SUGeometryInputAddVertex(m_geometry_input, point);
   assert(res == SU_ERROR_NONE); _unused(res);
-  m_vertex_index++;
-  return m_vertex_index-1;
+  m_vertex_count++;
+  return m_vertex_count-1;
 }
 
 
@@ -460,7 +469,7 @@ void GeometryInput::set_vertices(const std::vector<SUPoint3D>& points) {
   SUResult res = SUGeometryInputSetVertices(m_geometry_input, points.size(), points.data());
   assert(res == SU_ERROR_NONE); _unused(res);
   // Overwrite the existing vertex count
-  m_vertex_index = points.size();
+  m_vertex_count = points.size();
 }
 
 
@@ -532,12 +541,31 @@ std::pair<size_t, size_t> GeometryInput::add_arc_curve(size_t start_point, size_
 
 
 size_t GeometryInput::add_face(LoopInput& loop_input) {
+  if(loop_input.m_attached) {
+    throw std::logic_error("CW::GeometryInput::add_face(): LoopInput is already attached to a GeometryInput object and cannot be added again");
+  }
   size_t added_face_index;
   SULoopInputRef loop_ref = loop_input.ref();
   SUResult res = SUGeometryInputAddFace(m_geometry_input, &loop_ref, &added_face_index);
   assert(res == SU_ERROR_NONE); _unused(res);
   loop_input.m_attached = true;
   return added_face_index;
+}
+
+
+void GeometryInput::add_entities(const Entities& entities) {
+  // Add materials
+  std::vector<Material> materials = entities.model().materials();
+  this->load_materials(materials);
+  // Add layers
+  std::vector<Layer> layers = entities.model().layers();
+  this->load_layers(layers);
+  // Add faces
+  std::vector<Face> faces = entities.faces();
+  this->add_faces(faces, true);
+  // Add edges
+  std::vector<Edge> edges = entities.edges();
+  this->add_edges(edges);
 }
 
 
@@ -630,7 +658,6 @@ Layer GeometryInput::layer_reference(const Layer& layer) const {
   Layer reference = m_layer_dict.get_reference(layer);
   return reference;
 }
-
 
 } /* namespace CW */
 

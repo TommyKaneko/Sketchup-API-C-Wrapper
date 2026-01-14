@@ -119,6 +119,7 @@ Face::Face(const Face& other):
 {
   if (!other.m_attached && SUIsValid(other.m_entity)) {
     /**  The code below causes errors as the face has not been attached to an object yet.
+    // TODO: copy other properties....?
     // Add the inner loops
     std::vector<Loop> inner_loops = other.inner_loops();
     std::vector<std::vector<Point3D>> inner_loops_points;
@@ -310,15 +311,28 @@ UVHelper Face::get_UVHelper(bool front, bool back, TextureWriter tex_writer) {
 }
 */
 
+size_t Face::num_inner_loops() const {
+  if (!(*this)) {
+    throw std::logic_error("CW::Face::num_inner_loops(): Face is null");
+  }
+  size_t num_loops = 0;
+  SUResult res = SUFaceGetNumInnerLoops(this->ref(), &num_loops);
+  assert(res == SU_ERROR_NONE); _unused(res);
+  return num_loops;
+}
+
 
 std::vector<Loop> Face::inner_loops() const {
   if (!(*this)) {
     throw std::logic_error("CW::Face::inner_loops(): Face is null");
   }
-  size_t num_loops = 0;
-  SUFaceGetNumInnerLoops(this->ref(), &num_loops);
+  size_t num_loops = this->num_inner_loops();
+  if (num_loops == 0) {
+    return std::vector<Loop>{};
+  }
   std::vector<SULoopRef> inner_loops(num_loops, SU_INVALID);
-  SUFaceGetInnerLoops(this->ref(), num_loops, inner_loops.data(), &num_loops);
+  SUResult res = SUFaceGetInnerLoops(this->ref(), num_loops, inner_loops.data(), &num_loops);
+  assert(res == SU_ERROR_NONE); _unused(res);
   std::vector<Loop> loops(num_loops);
   std::transform(inner_loops.begin(), inner_loops.end(), loops.begin(),
     [](const SULoopRef& value){
