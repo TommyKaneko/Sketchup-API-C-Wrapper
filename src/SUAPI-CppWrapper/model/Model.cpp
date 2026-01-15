@@ -81,22 +81,22 @@ Model::Model(std::string file_path):
       // Model loaded successfully
       break;
     case SU_ERROR_NULL_POINTER_INPUT:
-      throw std::invalid_argument{"No model exists in the path: "} + file_path;
+      throw std::invalid_argument("No model exists in the path: " + file_path);
       break;
     case SU_ERROR_NULL_POINTER_OUTPUT:
-      throw std::logic_error{"Model failed to load"}; // this shoud never happen
+      throw std::logic_error("Model failed to load"); // this shoud never happen
       break;
     case SU_ERROR_SERIALIZATION:
-      throw std::logic_error{"Model failed to load"};
+      throw std::logic_error("Model failed to load");
       break;
     case SU_ERROR_MODEL_INVALID:
-      throw std::invalid_argument{"Tried to open an invalid model: "}  + file_path;
+      throw std::invalid_argument("Tried to open an invalid model: " + file_path);
       break;
     case SU_ERROR_MODEL_VERSION:
-      throw std::invalid_argument{"This model is from a newer version of Sketchup: "}  + file_path;
+      throw std::invalid_argument("This model is from a newer version of Sketchup: " + file_path);
       break;
     default:
-      throw std::logic_error{"unhandled exception"};
+      throw std::logic_error("unhandled exception");
       break;
   }
   // TODO: deal with the status issue.
