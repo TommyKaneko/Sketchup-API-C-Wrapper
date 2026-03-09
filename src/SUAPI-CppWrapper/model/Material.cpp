@@ -65,8 +65,15 @@ SUMaterialRef Material::copy_reference(const Material& other) {
 * Constructors / Destructor **
 ****************************/
 Material::Material():
-  Entity()
+  Entity(SU_INVALID, false)
 {}
+
+
+Material::Material(String name):
+  Material(create_material(), false)
+{
+  this->name(name);
+}
 
 
 Material::Material(SUMaterialRef material_ref, bool attached):
@@ -133,7 +140,10 @@ Material::operator SUMaterialRef() const {
 
 bool Material::operator!() const {
   return Entity::operator!();
-  // if (SUIsInvalid(m_entity)) {
+  // if (Entity::operator!()) {
+  //   return true;
+  // }
+  // if (!m_attached) {
   //   return true;
   // }
   // return false;

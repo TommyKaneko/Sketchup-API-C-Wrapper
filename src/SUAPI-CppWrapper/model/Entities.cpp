@@ -33,6 +33,7 @@
 #include "SUAPI-CppWrapper/model/Entities.hpp"
 
 #include "SUAPI-CppWrapper/model/GeometryInput.hpp"
+#include "SUAPI-CppWrapper/model/GeometryInputHelper.hpp"
 #include "SUAPI-CppWrapper/model/Vertex.hpp"
 #include "SUAPI-CppWrapper/model/Loop.hpp"
 #include "SUAPI-CppWrapper/Transformation.hpp"
@@ -199,7 +200,7 @@ void Entities::add(const Entities& other) {
     throw std::logic_error("CW::Entities::add(): Entities is null");
   }
   Model model = this->model();
-  GeometryInput geom_input(&model);
+  GeometryInputPlus geom_input(&model);
   geom_input.add_faces(other.faces());
   geom_input.add_edges(other.edges());
   this->fill(geom_input);
@@ -227,19 +228,7 @@ SUResult Entities::fill(GeometryInput &geom_input) {
   if (geom_input.empty()) {
     return SU_ERROR_NONE;
   }
-  // if (geom_input.m_attached) {
-  //   throw std::logic_error("CW::Entities::fill(): GeometryInput has already been attached to a model, cannot fill Entities object.");
-  // }
-  Model model = this->model();
-  if (geom_input.m_target_model->ref().ptr != model.ref().ptr) {
-    throw std::logic_error("CW::Entities::fill(): GeometryInput is associated with a different model than the Entities object.");
-  }
-  // For the indexes of the GeometryInputRef to make sense after we fill the Entities object with its contents, we need to know how many of each entity currently exists in the Entities object
-  //size_t num_faces_before = 0;
-  //SUResult res = SUEntitiesGetNumFaces(m_entities, &num_faces_before);
-  //assert(res == SU_ERROR_NONE); _unused(res);
-
-  SUResult fill_res = SUEntitiesFill(m_entities, geom_input.m_geometry_input, true);
+  SUResult fill_res = SUEntitiesFill(m_entities, geom_input.ref(), true);
   assert(fill_res == SU_ERROR_NONE); _unused(fill_res);
   return fill_res;
 }
@@ -374,8 +363,8 @@ Group Entities::add_group(const ComponentDefinition& definition, const Transform
   Entities def_entities = definition.entities();
   // Add geometry one by one to Geometry input.
   Model model = this->model();
-  GeometryInput geom_input(&model);
-  // GeometryInput object must first load layers and materials from the definition's model.
+  GeometryInputPlus geom_input(&model);
+  // GeometryInputPlus object must first load layers and materials from the definition's model.
   // TODO: this is unsatisfatory for performance - need a better way to handle this.
   geom_input.load_materials(definition.model().materials());
   geom_input.load_layers(definition.model().layers());

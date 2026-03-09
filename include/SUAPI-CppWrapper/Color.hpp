@@ -39,28 +39,30 @@ namespace CW {
 class Color {
   private:
   SUColor m_color;
-  
+
   public:
   SUByte& red;
   SUByte& green;
   SUByte& blue;
   SUByte& alpha;
-  
+
   Color();
   Color(SUColor color_input);
-  
+
+  //Color(SUByte red_input, SUByte green_input, SUByte blue_input, SUByte alpha_input = 255);
+
   /*
   * Return the SUColor object.
   */
   SUColor ref() const;
-  
+
   operator SUColor() const;
-  
+
   /**
   * Compare equality of the Color object
   */
   friend bool operator ==(const Color &lhs, const Color &rhs);
-  
+
 };
 
 } /* namespace CW */

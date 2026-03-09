@@ -515,6 +515,15 @@ class Plane3D {
   * Note that the normal of the returned plane (if successful) will point in the direction expected of an OUTER_LOOP.
   */
   static Plane3D plane_from_loop(const std::vector<Point3D>& loop_points);
+
+
+  /**
+   * @brief custom iostream output for printing Point3D objects
+   */
+  friend std::ostream& operator<< (std::ostream &os, const Plane3D& plane) {
+    os << "Plane3D(" << plane.a << ", " << plane.b << ", " << plane.c << ", " << plane.d << ")";
+    return os;
+  }
 };
 
 class BoundingBox3D {
@@ -525,6 +534,8 @@ class BoundingBox3D {
   public:
   BoundingBox3D();
   BoundingBox3D(SUBoundingBox3D bounding_box);
+
+  BoundingBox3D(Point3D min_point, Point3D max_point);
 
   /**
   * Invalid, or NULL BoundingBox3D objects can be simulated with this constructor.

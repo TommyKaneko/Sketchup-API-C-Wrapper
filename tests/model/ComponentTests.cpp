@@ -4,7 +4,7 @@
 #include "SUAPI-CppWrapper/model/Entities.hpp"
 #include "SUAPI-CppWrapper/model/ComponentInstance.hpp"
 #include "SUAPI-CppWrapper/model/ComponentDefinition.hpp"
-#include "SUAPI-CppWrapper/model/GeometryInput.hpp"
+#include "SUAPI-CppWrapper/model/GeometryInputHelper.hpp"
 
 namespace CW::Tests {
 
@@ -31,7 +31,7 @@ namespace CW::Tests {
 void copy_nested_components(const Entities& src_entities, Entities& dest_entities, Model* dest_model,
   std::unordered_map<ComponentDefinition, ComponentDefinition> &def_map) {
   // add simple geometry first
-  GeometryInput geom_input(dest_model);
+  GeometryInputPlus geom_input(dest_model);
   geom_input.add_entities(src_entities);
   dest_entities.fill(geom_input);
     // add definitions and then instances

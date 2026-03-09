@@ -9,7 +9,7 @@
 #include "SUAPI-CppWrapper/model/Face.hpp"
 #include "SUAPI-CppWrapper/model/Loop.hpp"
 // #include "SUAPI-CppWrapper/model/Layer.hpp"
-#include "SUAPI-CppWrapper/model/GeometryInput.hpp"
+#include "SUAPI-CppWrapper/model/GeometryInputHelper.hpp"
 
 namespace CW::Tests {
 
@@ -27,8 +27,8 @@ TEST_F(ModelLoad, GeometryInputEdge)
     edge_layers.push_back(edge.layer());
   }
 
-  // Create GeometryInput targeting the copy model
-  CW::GeometryInput geom_input(m_model_copy);
+  // Create GeometryInputPlus targeting the copy model
+  CW::GeometryInputPlus geom_input(m_model_copy);
   geom_input.load_materials(m_model->materials());
   geom_input.load_layers(m_model->layers());
   geom_input.add_edges(edges, edge_materials, edge_layers);
@@ -64,8 +64,8 @@ TEST_F(ModelLoad, GeometryInputEdgeCopy)
     edge_layers.push_back(edge.layer());
   }
 
-  // Create GeometryInput targeting the copy model
-  CW::GeometryInput geom_input(m_model_copy);
+  // Create GeometryInputPlus targeting the copy model
+  CW::GeometryInputPlus geom_input(m_model_copy);
   geom_input.load_materials(m_model->materials());
   geom_input.load_layers(m_model->layers());
   geom_input.add_edges(copied_edges, edge_materials, edge_layers);
@@ -99,8 +99,8 @@ TEST_F(ModelLoad, GeometryInputMaterials)
     face_layers.push_back(face.layer());
   }
 
-  // Create GeometryInput targeting the copy model
-  CW::GeometryInput geom_input(m_model_copy);
+  // Create GeometryInputPlus targeting the copy model
+  CW::GeometryInputPlus geom_input(m_model_copy);
   geom_input.load_materials(m_model->materials());
   geom_input.load_layers(m_model->layers());
   // Check that target model has layers and materials loaded correctly:
@@ -144,8 +144,8 @@ TEST_F(ModelLoad, GeometryInputFace)
     face_layers.push_back(face.layer());
   }
 
-  // Create GeometryInput targeting the copy model
-  CW::GeometryInput geom_input(m_model_copy);
+  // Create GeometryInputPlus targeting the copy model
+  CW::GeometryInputPlus geom_input(m_model_copy);
   geom_input.load_materials(m_model->materials());
   geom_input.load_layers(m_model->layers());
   // Check that target model has layers and materials loaded correctly:

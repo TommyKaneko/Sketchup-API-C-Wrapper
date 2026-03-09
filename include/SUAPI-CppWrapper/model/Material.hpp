@@ -52,7 +52,19 @@ class Material :public Entity {
   static SUMaterialRef copy_reference(const Material& mat);
 
   public:
+  /**
+   * @brief Construct a NULL Material object
+   */
   Material();
+
+  /**
+   * @brief Construct a new Material object with given name
+   */
+  Material(String name);
+
+  /**
+   * @brief Construct a new Material object from existing SUMaterialRef object
+   */
   Material(SUMaterialRef material_ref, bool attached = true);
 
   /** Copy constructor */

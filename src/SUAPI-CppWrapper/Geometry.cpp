@@ -969,6 +969,10 @@ BoundingBox3D::BoundingBox3D(SUBoundingBox3D bounding_box):
   m_bounding_box(bounding_box)
 {}
 
+BoundingBox3D::BoundingBox3D(Point3D min_point, Point3D max_point):
+  m_bounding_box(SUBoundingBox3D{min_point, max_point})
+{}
+
 bool BoundingBox3D::operator!() const {
   if (is_null) {
     return true;

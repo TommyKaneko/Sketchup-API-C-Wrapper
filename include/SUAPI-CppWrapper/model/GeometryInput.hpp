@@ -38,32 +38,21 @@
 #include <SketchUpAPI/model/entities.h>
 
 #include "SUAPI-CppWrapper/Geometry.hpp"
-#include "SUAPI-CppWrapper/model/GeometryInputHelper.hpp"
 
 namespace CW {
 
 // Forward declarations:
-class Model;
 class Entities;
-class Face;
-class Edge;
 class Material;
 class MaterialInput;
 class MaterialPositionInput;
 class Layer;
 class LoopInput;
-class Loop;
 
 /**
-* Geometry Input class is an abstraction of Sketchup C API's SUGeometryInputRef object.  It allows a much easier way for programmers to build Sketchup geometry within this class, before exporting it into a built SUGeometryInputRef object.
-* See below for an example of how GeometryInput operates:
-GeometryInput geom_input;
-Entities entities; // This is the entities object that we wish to add the geometry to.
-std::vector<SUPoint3D> outer_loop{SUPoint3D(0.0,0.0,0.0), SUPoint3D(1.0,0.0,0.0), SUPoint3D(0.0,1.0,0.0)};
-std::vector<std::vector<SUPoint3D>> inner_loops{{SUPoint3D(0.1,0.1,0.0), SUPoint3D(0.1,0.2,0.0), SUPoint3D(0.2,0.3,0.0)}};
-GIFace* face = geom_input.add_face(outer_loop, inner_loops); // GeometryInput handles the interface with Sketchup C API when creating geometry.
-SUResult result = entities.fill(geom_input); // the geometry must be output into a SUEntitiesRef object.
-
+* Geometry Input class is a minimal abstraction of Sketchup C API's SUGeometryInputRef object.
+* It provides thin wrappers around the C API functions for building geometry.
+* For higher-level operations involving materials and layers, see GeometryInputPlus.
 */
 class GeometryInput {
   friend class Entities;
@@ -71,22 +60,9 @@ class GeometryInput {
 private:
   SUGeometryInputRef m_geometry_input;
 
-  /**
-   * Store a lookup table of materials that can be applied to geometry, given the target_model given.
-   */
-  MaterialDictionary m_material_dict;
-
-  /**
-   * Store a lookup table of layers that can be applied to geometry, given the target_model given.
-   */
-  LayerDictionary m_layer_dict;
-
-  // GeometryInput objects require that the target model (for inputting information) be known, to ensure that materials and layers assigned to geometry exists in the target model.
-  Model* m_target_model;
-
   size_t m_vertex_count = 0;
 
-  // Tracks the number of GeometrryInput objects have been allocated, to allow the destructor to release an object only at the right time.
+  // Tracks the number of GeometryInput objects have been allocated, to allow the destructor to release an object only at the right time.
   static std::unordered_map<SUGeometryInputRef, size_t> num_objects_;
 
   /**
@@ -97,16 +73,14 @@ private:
 public:
   /**
   * Creates a valid, but empty GeometryInput object.
-  * @param target_model - model which will receive this GeometryInput object.  This is required to ensure that Layers(Tags) and Materials that are added to the model are checked for validity.
   */
-  //GeometryInput(SUModelRef target_model);
-  GeometryInput(Model* target_model);
+  GeometryInput();
 
   /** Copy Constructor **/
   GeometryInput(const GeometryInput& other);
 
-  /** Destructor  */
-  ~GeometryInput();
+  /** Destructor (virtual to allow derived classes) */
+  virtual ~GeometryInput();
 
   /**
   * Copy assignment operator.
@@ -124,54 +98,9 @@ public:
   bool operator!() const;
 
   /**
-   * @brief Prepares the GeometryInput object's materials, and if required, add materials to the target model.
-   * @param materials
-   */
-  void load_materials(const std::vector<Material>& materials);
-
-    /**
-   * @brief Prepares the GeometryInput object's materials, and if required, add materials to the target model.
-   * @param materials
-   */
-  void load_layers(const std::vector<Layer>& layers);
-
-  /**
   * Returns the number of faces have been input into this GeometryInput object.
   */
   size_t num_faces() const;
-
-  /**
-  * Adds a face to the Geometry Input object.
-  * @param face - the face object to be copied into the GeometryInput object.  Note that materials and layers will NOT be copied.  This must be done manually using face_front_material(), face_back_material(), and face_layer() methods.
-  * @param copy_material_layer - (optional) when true, materials and layers will be copied to the GeometryInput object.  Set to false if you are copying faces from another model - you will have to add a material manually.
-  * @return index to the added face.
-  */
-  size_t add_face(const Face &face, bool copy_material_layer = true);
-
-  /**
-  * Adds a face to the Geometry Input object using the safer LoopInput method, which can deal with inner loops.
-  * @param loops - vector of loops.  The first loop in the vector is the outer loop, and all subsequent loops are the inner loops.
-  * @return index to the added face.
-  */
-  size_t add_face(const std::vector<Loop>& loops);
-
-  size_t add_faces(const std::vector<Face>& faces, bool copy_material_layer = true);
-
-  /**
-  * Adds an Edge to the Geometry Input object.
-  * @param edge - edge object from which a copy will be created in the GeometryInput object
-  * @param material - optionally apply a material to the edge (the material from the edge object will not be applied directly from the edge object)
-  * @param layer - optionally apply a layer to the edge (the layer from the edge object will not be applied directly from the edge object)
-  * @return index to the added edge.
-  */
-  size_t add_edge(const Edge &edge, const Material& material = Material(), const Layer& layer = Layer());
-  size_t add_edges(const std::vector<Edge>& edges);
-
-  /**
-   * @brief Adds an Edge with Material and Layer assigned to it.  The number of edges and number of materials and layers must be equal, so that each edge can be associated with a material/layer
-   * @return size_t - index of the last added edge
-   */
-  size_t add_edges(const std::vector<Edge>& edges, const std::vector<Material>& materials, const std::vector<Layer>& layers);
 
   /**
   * Returns true if no geometry has been added to this object.
@@ -270,12 +199,6 @@ public:
   size_t add_face(LoopInput& loop_input);
 
   /**
-   * Helper methods that copies all entities from an Entities object into this GeometryInput object.
-   * Note: it will not copy nested ComponentDefinitions or Groups.
-   */
-  void add_entities(const Entities& entities);
-
-  /**
   * Sets a flag in the geometry input that, when true, will create a face by reversing the orientations of all of its loops.
   * @param face_index - Index of the face to be reversed.
   * @param reverse - The given reverse flag.
@@ -349,18 +272,6 @@ public:
   *   - [4] - arc_count  The total count of arcs.
   */
   std::array<size_t, 5> counts() const;
-
-  /**
-   * @brief Returns a material reference from the target model associated with the given material. This is a helper function to help the user add only materials that are in the target model.
-   *
-   */
-  Material material_reference(const Material& material) const;
-
-  /**
-   * @brief Returns a layer reference from the target model associated with the given material.  This is a helper function to help the user add only layers that are in the target model.
-   *
-   */
-  Layer layer_reference(const Layer& layer) const;
 
   /**
   * Hash function for use with unordered_map

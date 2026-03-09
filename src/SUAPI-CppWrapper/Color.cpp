@@ -44,6 +44,10 @@ Color::Color(SUColor color_input):
   alpha(m_color.alpha)
 {}
 
+// Color::Color(SUByte red_input, SUByte green_input, SUByte blue_input, SUByte alpha_input):
+//   Color(SUColor{red_input, green_input, blue_input, alpha_input})
+// {}
+
 SUColor Color::ref() const {
   return m_color;
 }
