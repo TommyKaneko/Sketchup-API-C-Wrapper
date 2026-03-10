@@ -4,7 +4,7 @@
 // Sketchup C++ Wrapper for C API
 // MIT License
 //
-// Copyright (c) 2017 Tom Kaneko
+// Copyright (c) 2026 Tom Kaneko
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -28,8 +28,6 @@
 #ifndef MaterialInput_hpp
 #define MaterialInput_hpp
 
-#include <stdio.h>
-
 #include <SketchUpAPI/model/geometry_input.h>
 
 namespace CW {
@@ -38,9 +36,11 @@ namespace CW {
 class Material;
 
 /**
- * @brief
- * @deprecated From Sketchup 2021.2, SUMaterialPositionInput is used
+ * @brief Wrapper for SUMaterialInput, representing material data
+ *        to be applied to a face during geometry creation.
  *
+ * @deprecated Since SketchUp 2021.2 (API 9.1), use MaterialPositionInput instead.
+ * @see MaterialPositionInput
  */
 class MaterialInput {
   private:
@@ -53,11 +53,29 @@ class MaterialInput {
 
   public:
   //MaterialInput();
+
+  /**
+  * Constructs a MaterialInput from a Material object.
+  * @param material the Material to use as input.
+  */
   MaterialInput(Material material);
+
+  /**
+  * Constructs a MaterialInput from a raw SUMaterialInput struct.
+  * @param material_input the raw C API material input struct.
+  */
   MaterialInput(SUMaterialInput material_input);
 
+  /**
+  * Returns the underlying SUMaterialInput struct.
+  * @return the raw C API material input struct.
+  */
   SUMaterialInput ref();
 
+  /**
+  * Returns the Material associated with this input.
+  * @return the Material object.
+  */
   Material material() const;
 };
 
@@ -65,9 +83,11 @@ class MaterialInput {
 #if SketchUpAPI_VERSION_MAJOR >= 2021
 
 /**
- * @brief
- * @since From Sketchup 2021.2, API 9.1, SUMaterialPositionInput is used
+ * @brief Wrapper for SUMaterialPositionInput, representing material data
+ *        with positioning to be applied to a face during geometry creation.
  *
+ * @since SketchUp 2021.2 (API 9.1)
+ * @see MaterialInput (deprecated predecessor)
  */
 class MaterialPositionInput {
   private:
@@ -80,13 +100,35 @@ class MaterialPositionInput {
 
   public:
   //MaterialInput();
+
+  /**
+  * Constructs a MaterialPositionInput from a Material object.
+  * @param material the Material to use as input.
+  */
   MaterialPositionInput(const Material& material);
+
+  /**
+  * Constructs a MaterialPositionInput from a raw SUMaterialPositionInput struct.
+  * @param material_input the raw C API material position input struct.
+  */
   MaterialPositionInput(SUMaterialPositionInput material_input);
 
+  /**
+  * Returns the underlying SUMaterialPositionInput struct.
+  * @return the raw C API material position input struct.
+  */
   SUMaterialPositionInput ref() const;
 
+  /**
+  * Returns the Material associated with this input.
+  * @return the Material object.
+  */
   Material material() const;
 
+  /**
+  * Sets the Material for this input.
+  * @param mat the Material to assign.
+  */
   void material(const Material& mat);
 
 };

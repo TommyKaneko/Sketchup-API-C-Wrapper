@@ -199,8 +199,13 @@ void SectionPlane::symbol(const String& symbol) {
     throw std::logic_error("CW::SectionPlane::symbol(): SectionPlane is null");
   }
   SUResult res = SUSectionPlaneSetSymbol(this->ref(), symbol.std_string().c_str());
-  if (res != SU_ERROR_NONE) {
-    throw std::invalid_argument("CW::SectionPlane::symbol(): failed to set symbol (max 3 characters)");
+  switch (res) {
+    case SU_ERROR_INVALID_INPUT: {
+      throw std::invalid_argument("CW::SectionPlane::symbol(): symbol exceeds the maximum of 3 characters");
+    }
+    default: {
+      assert(res == SU_ERROR_NONE); _unused(res);
+    }
   }
 }
 
@@ -210,8 +215,13 @@ void SectionPlane::symbol(const std::string& symbol) {
     throw std::logic_error("CW::SectionPlane::symbol(): SectionPlane is null");
   }
   SUResult res = SUSectionPlaneSetSymbol(this->ref(), symbol.c_str());
-  if (res != SU_ERROR_NONE) {
-    throw std::invalid_argument("CW::SectionPlane::symbol(): failed to set symbol (max 3 characters)");
+  switch (res) {
+    case SU_ERROR_INVALID_INPUT: {
+      throw std::invalid_argument("CW::SectionPlane::symbol(): symbol exceeds the maximum of 3 characters");
+    }
+    default: {
+      assert(res == SU_ERROR_NONE); _unused(res);
+    }
   }
 }
 

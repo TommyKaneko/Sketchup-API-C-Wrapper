@@ -4,7 +4,7 @@
 // Sketchup C++ Wrapper for C API
 // MIT License
 //
-// Copyright (c) 2017 Tom Kaneko
+// Copyright (c) 2026 Tom Kaneko
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -28,24 +28,37 @@
 #ifndef TextureWriter_hpp
 #define TextureWriter_hpp
 
-#include <stdio.h>
-
 #include <SketchUpAPI/model/texture_writer.h>
 
 namespace CW {
 
-/*
-* TextureWriter wrapper
-*/
+/**
+ * @brief Wrapper for SUTextureWriterRef, used to write texture
+ *        images associated with a model to disk.
+ *
+ * TextureWriter provides the capability to extract texture images
+ * from faces and materials and save them to files.
+ *
+ * @see https://extensions.sketchup.com/developer_center/sketchup_c_api/
+ */
 class TextureWriter {
   private:
   SUTextureWriterRef m_texture_writer;
   
   public:
+  /** @brief Default constructor – creates an invalid TextureWriter. */
   TextureWriter();
+
+  /**
+   * @brief Constructs a TextureWriter wrapping a raw API ref.
+   * @param texture_writer the SUTextureWriterRef to wrap.
+   */
   TextureWriter(SUTextureWriterRef texture_writer);
   
+  /** @brief Conversion to SUTextureWriterRef. */
   operator SUTextureWriterRef() const;
+
+  /** @brief Conversion to SUTextureWriterRef pointer. */
   operator SUTextureWriterRef*() const;
 };
 

@@ -4,7 +4,7 @@
 // Sketchup C++ Wrapper for C API
 // MIT License
 //
-// Copyright (c) 2017 Tom Kaneko
+// Copyright (c) 2026 Tom Kaneko
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -661,16 +661,13 @@ String Model::name() const {
 }
 
 
-bool Model::name(const String& name_string) {
+void Model::name(const String& name_string) {
   if (!(*this)) {
     throw std::logic_error("CW::Model::name(): Model is null");
   }
   std::string std_string = name_string;
   SUResult res = SUModelSetName(m_model, std_string.c_str());
-  if (res == SU_ERROR_NONE) {
-    return true;
-  }
-  return false;
+  assert(res == SU_ERROR_NONE); _unused(res);
 }
 
 
@@ -708,25 +705,32 @@ OptionsManager Model::options()
 //Entity raytest(Point3D point, Vector3D vector);
 
 
-SUResult Model::save(const std::string& file_path) {
+void Model::save(const std::string& file_path) {
   if (!(*this)) {
     throw std::logic_error("CW::Model::save(): Model is null");
   }
   const char * c_string = file_path.c_str();
   SUResult res = SUModelSaveToFile(m_model, c_string);
-  return res;
+  switch (res) {
+    case SU_ERROR_SERIALIZATION:
+      throw std::runtime_error("CW::Model::save(): serialization error occurred while saving the model");
+    default:
+      assert(res == SU_ERROR_NONE); _unused(res);
+  }
 }
 
 
-bool Model::save_with_version(const std::string& file_path, SUModelVersion version) {
+void Model::save_with_version(const std::string& file_path, SUModelVersion version) {
   if (!(*this)) {
     throw std::logic_error("CW::Model::save_with_version(): Model is null");
   }
   SUResult res = SUModelSaveToFileWithVersion(m_model, file_path.c_str(), version);
-  if (res == SU_ERROR_NONE) {
-    return true;
+  switch (res) {
+    case SU_ERROR_SERIALIZATION:
+      throw std::runtime_error("CW::Model::save_with_version(): serialization error occurred while saving the model");
+    default:
+      assert(res == SU_ERROR_NONE); _unused(res);
   }
-  return false;
 }
 
 
@@ -815,19 +819,19 @@ void Model::set_active_scene(const Scene& scene) {
 }
 
 
-bool Model::set_attribute(AttributeDictionary& dict, const std::string& key, const TypedValue& value) {
+void Model::set_attribute(AttributeDictionary& dict, const std::string& key, const TypedValue& value) {
   if (!(*this)) {
     throw std::logic_error("CW::Model::set_attribute(): Model is null");
   }
-  return dict.set_attribute(key, value);
+  dict.set_attribute(key, value);
 }
 
-bool Model::set_attribute(const std::string& dict_name, const std::string& key, const TypedValue& value) {
+void Model::set_attribute(const std::string& dict_name, const std::string& key, const TypedValue& value) {
   if (!(*this)) {
     throw std::logic_error("CW::Model::set_attribute(): Model is null");
   }
   AttributeDictionary dict = attribute_dictionary(dict_name);
-  return set_attribute(dict, key, value);
+  set_attribute(dict, key, value);
 }
 
 RenderingOptions Model::rendering_options()

@@ -4,7 +4,7 @@
 // Sketchup C++ Wrapper for C API
 // MIT License
 //
-// Copyright (c) 2017 Tom Kaneko
+// Copyright (c) 2026 Tom Kaneko
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -180,16 +180,16 @@ Color Edge::color() const {
 }
 
 
-bool Edge::color(const Color& input_color) {
+void Edge::color(const Color& input_color) {
   if (!(*this)) {
     throw std::logic_error("CW::Edge::color(): Edge is null");
   }
   SUColor color = input_color.ref();
   SUResult result = SUEdgeSetColor(this->ref(), &color);
-  if (result == SU_ERROR_NONE) {
-    return true;
+  if (result == SU_ERROR_NULL_POINTER_INPUT) {
+    throw std::invalid_argument("CW::Edge::color(): Invalid color argument");
   }
-  return false;
+  assert(result == SU_ERROR_NONE); _unused(result);
 }
 
 
@@ -242,15 +242,12 @@ bool Edge::smooth() const {
 }
 
 
-bool Edge::smooth(bool smooth) {
+void Edge::smooth(bool smooth) {
   if (!(*this)) {
     throw std::logic_error("CW::Edge::smooth(): Edge is null");
   }
   SUResult result = SUEdgeSetSmooth(this->ref(), smooth);
-  if (result == SU_ERROR_NONE) {
-    return true;
-  }
-  return false;
+  assert(result == SU_ERROR_NONE); _unused(result);
 }
 
 
@@ -264,15 +261,12 @@ bool Edge::soft() const {
 }
 
 
-bool Edge::soft(bool soft) {
+void Edge::soft(bool soft) {
   if (!(*this)) {
     throw std::logic_error("CW::Edge::soft(): Edge is null");
   }
   SUResult result = SUEdgeSetSoft(this->ref(), soft);
-  if (result == SU_ERROR_NONE) {
-    return true;
-  }
-  return false;
+  assert(result == SU_ERROR_NONE); _unused(result);
 }
 
 

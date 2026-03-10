@@ -4,7 +4,7 @@
 // Sketchup C++ Wrapper for C API
 // MIT License
 //
-// Copyright (c) 2017 Tom Kaneko
+// Copyright (c) 2026 Tom Kaneko
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -28,7 +28,6 @@
 #ifndef Loop_hpp
 #define Loop_hpp
 
-#include <stdio.h>
 #include <vector>
 
 #include "SUAPI-CppWrapper/model/Entity.hpp"
@@ -58,8 +57,11 @@ enum class PointLoopClassify {
 };
 
 /**
-* A face is made up of an outer loop and inner loops.
-*/
+ * @brief C++ wrapper for the SketchUp C API's SULoopRef object.
+ *
+ * A Loop represents the boundary of a face. A face has one outer loop and
+ * may contain inner loops (holes).
+ */
 class Loop :public Entity {
   public:
   /**
@@ -67,13 +69,13 @@ class Loop :public Entity {
   */
   Loop();
 
-  /*
+  /**
   * Creates a Loop object from the SULoopRef.
   * @param SULoopRef object that is already attached to a SUFaceRef
   */
   Loop(SULoopRef loop);
 
-  /*
+  /**
   * Copy Constructor.
   */
   Loop(const Loop& other);
@@ -86,7 +88,7 @@ class Loop :public Entity {
   */
   SULoopRef ref() const;
 
-  /*
+  /**
   * Returns the LoopInput object for this loop. A SULoopInputRef will be created using the values of the original SULoopRef object.
   */
   LoopInput loop_input() const;

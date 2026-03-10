@@ -4,7 +4,7 @@
 // Sketchup C++ Wrapper for C API
 // MIT License
 //
-// Copyright (c) 2017 Tom Kaneko
+// Copyright (c) 2026 Tom Kaneko
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -28,8 +28,6 @@
 #ifndef DrawingElement_hpp
 #define DrawingElement_hpp
 
-#include <stdio.h>
-
 #include <SketchUpAPI/model/drawing_element.h>
 
 #include "SUAPI-CppWrapper/model/Entity.hpp"
@@ -40,116 +38,143 @@ class Layer;
 class Material;
 class BoundingBox3D;
 
-/*
-* Drawing Element wrapper
-*/
+/**
+ * @brief DrawingElement wrapper.
+ *
+ * References a drawing element, which is an abstract base type for some API
+ * types. This is a subclass of Entity.
+ */
 class DrawingElement :public Entity {
   friend class InstancePath;
   protected:
   /**
-  * Most common constructor.
-  * @param drawing_element - SUDrawingElementRef object to assign to the object.
-  * @param attached - flag indicating if the entity should be treated as attached to another object @see CW::Entity
-  */
+   * @brief Creates a new DrawingElement object.
+   * @param drawing_element SUDrawingElementRef object to assign.
+   * @param attached Flag indicating if the entity should be treated as
+   *                 attached to another object. @see CW::Entity
+   */
   DrawingElement(SUDrawingElementRef drawing_element, bool attached = true);
 
-   /**
-  * Copy constructor with an optional parameter for the entity reference.  SUDrawingElementRef objects cannot be created from this class, so the Ref object must be passed to this constructor from a derived class object.
-  * @param other - DrawingElement object from which properties will be copied.
-  * @param element_ref - SUDrawingElementRef object to assign to the copied object.
-  */
+  /**
+   * @brief Copy constructor with an optional parameter for the element
+   *        reference.
+   *
+   * SUDrawingElementRef objects cannot be created from this class, so the Ref
+   * object must be passed to this constructor from a derived class object.
+   * @param other DrawingElement object from which properties will be copied.
+   * @param element_ref SUDrawingElementRef object to assign to the copied
+   *                    object.
+   */
   DrawingElement(const DrawingElement& other, SUDrawingElementRef element_ref = SU_INVALID);
 
   /**
-  * Constructor representing a null object.
-  */
+   * @brief Constructor representing a null object.
+   */
   DrawingElement();
 
-  /** Copy assignment operator */
+  /**
+   * @brief Copy assignment operator.
+   */
   DrawingElement& operator=(const DrawingElement& other);
 
   /**
-  * Copies all DrawingElement properties from the given element to this one.
-  * @param element DrawingElement object from which to get properties
-  * @return bool true for success, or false for a failure.
-  */
+   * @brief Copies all DrawingElement properties from the given element to
+   *        this one.
+   * @param element DrawingElement object from which to get properties.
+   * @return true on success, false on failure.
+   */
   bool copy_properties_from(const DrawingElement& element);
 
   public:
-  /** Cast to native objects */
+  /**
+   * @brief Returns the wrapped SUDrawingElementRef.
+   */
   SUDrawingElementRef ref() const;
+
+  /**
+   * @brief Conversion operator to SUDrawingElementRef.
+   */
   operator SUDrawingElementRef() const;
+
+  /**
+   * @brief Conversion operator to SUDrawingElementRef pointer.
+   */
   operator SUDrawingElementRef*();
 
   /**
-  * Returns the bounding box of the drawing element.
-  */
+   * @brief Retrieves the bounding box of the drawing element.
+   * @return BoundingBox3D of this element.
+   */
   BoundingBox3D bounds();
 
-  /*
-  * Determine if the Drawingelement is casting shadows.
-  * @return true if the Drawingelement is casting shadows, false if not.
-  */
+  /**
+   * @brief Retrieves the casts shadows flag of the drawing element.
+   * @return true if the drawing element casts shadows.
+   */
   bool casts_shadows() const;
 
-  /*
-  * Sets the Drawingelement to cast shadows.
-  * @param bool settign for casting shadows.
-  * @return true for successful, false for unsuccessful.
-  */
-  bool casts_shadows(bool casts_shadows);
+  /**
+   * @brief Sets the casts shadows flag of the drawing element.
+   * @param casts_shadows The casts shadows flag to set.
+   */
+  void casts_shadows(bool casts_shadows);
 
-  /*
-  * Determine if the Drawingelement is hidden.
-  * @return true if the Drawingelement is hidden.
-  */
+  /**
+   * @brief Retrieves the hidden flag of the drawing element.
+   * @return true if the drawing element is hidden.
+   */
   bool hidden() const;
 
-  /*
-  * Set the hidden status for an element.
-  * @param bool true if you want to hide the element, false if you do not want to hide the element.
-  * @return true for successful, false for unsuccessful.
-  */
-  bool hidden(bool hidden);
+  /**
+   * @brief Sets the hidden flag of the drawing element.
+   * @param hidden true to hide the element, false to show it.
+   */
+  void hidden(bool hidden);
 
-  /*
-  * Retrieves the Layer object of the drawing element.
-  */
+  /**
+   * @brief Retrieves the Layer object associated with the drawing element.
+   * @return Layer object. Returns a null Layer if no layer is assigned.
+   */
   Layer layer() const;
 
-  /*
-  * Sets the Layer for the drawing element.  There are several limitations to the use of this method:
-  * 1. The layer that is set must be attached to a model, otherwise this method will throw an exception.
-  * 2. The DrawingElement object to which the layer is to be set must be attached to a model.  To assign new geometry, use GeometryInput class
-  * @param Layer object
-  */
-  bool layer(const Layer& layer);
+  /**
+   * @brief Sets the Layer for the drawing element.
+   * @param layer The Layer object to assign. The layer must be attached to
+   *              a model.
+   * @throws std::logic_error if the layer is valid but not attached to a
+   *         model.
+   */
+  void layer(const Layer& layer);
 
-  /*
-  * Retrieves the Material object of the drawing element.
-  * @return Material object assigned to the drawing element.
-  */
+  /**
+   * @brief Retrieves the Material object of the drawing element.
+   * @return Material object. Returns a null Material if no front face
+   *         material is assigned.
+   */
   Material material() const;
 
-  /*
-  * Sets the Material of the drawing element.
-  * @param Material object to assign to the drawing element.
-  * @return Material object assigned to the drawing element.
-  */
-  bool material(const Material& material);
+  /**
+   * @brief Sets the Material of the drawing element.
+   * @param material The Material object to assign. If an invalid material
+   *                 is given, the material of the element will be removed.
+   * @throws std::logic_error if the material is valid but not attached to
+   *         a model.
+   * @throws std::invalid_argument if the material is owned by a layer or
+   *         image.
+   */
+  void material(const Material& material);
 
-  /*
-  * Determine if the Drawingelement receives shadows.
-  * @return true if the Drawingelement receives shadows, false if not.
-  */
-  bool receive_shadows() const;
+  /**
+   * @brief Retrieves the receives shadows flag of the drawing element.
+   * @return true if the drawing element receives shadows.
+   */
+  bool receives_shadows() const;
 
-  /*
-  * Set the Drawingelement to receive shadows.
-  * @param bool true if you want the element to receive shadows, false if you not.
-  * @return true for successful, false for unsuccessful.
-  */
-  bool receive_shadows(bool receive_shadows);
+  /**
+   * @brief Sets the receives shadows flag of the drawing element.
+   * @param receives_shadows true to receive shadows, false otherwise.
+   */
+  void receives_shadows(bool receives_shadows);
 };
 
 } /* namespace CW */

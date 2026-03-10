@@ -4,7 +4,7 @@
 // Sketchup C++ Wrapper for C API
 // MIT License
 //
-// Copyright (c) 2017 Tom Kaneko
+// Copyright (c) 2026 Tom Kaneko
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -28,7 +28,6 @@
 #ifndef Material_hpp
 #define Material_hpp
 
-#include <stdio.h>
 #include "SUAPI-CppWrapper/model/Entity.hpp"
 
 #include <SketchUpAPI/model/material.h>
@@ -40,133 +39,205 @@ class String;
 class Color;
 class Texture;
 
+/**
+ * @brief Wrapper for SUMaterialRef.
+ *
+ * Represents a material that can be applied to drawing elements. A material
+ * can have a color, texture, opacity, and type (colored, textured, or
+ * colorized texture).
+ *
+ * @see SUMaterialRef in the SketchUp C API
+ */
 class Material :public Entity {
   private:
   static SUMaterialRef create_material();
 
   /**
-  * Creates a SUMaterialRef derived from an existing Material object.
-  * @param mat - Material object to derive the new SUMaterialRef object from
-  * @return if the Material object is already attached to a model, its SUMaterialRef object will be returned. If the Material object has not been attached to a model, a new SUMaterialRef object will be created. Bear in mind all properties will not be copied in the latter case
-  */
+   * @brief Creates a SUMaterialRef derived from an existing Material.
+   *
+   * If the Material is already attached to a model, its existing ref is
+   * returned. Otherwise a new SUMaterialRef is created.
+   *
+   * @param mat The Material to derive from.
+   * @return The SUMaterialRef.
+   */
   static SUMaterialRef copy_reference(const Material& mat);
 
   public:
   /**
-   * @brief Construct a NULL Material object
+   * @brief Constructs a null Material.
    */
   Material();
 
   /**
-   * @brief Construct a new Material object with given name
+   * @brief Constructs a new Material with the given name.
+   * @param name The name for the material (UTF-8 encoded).
    */
   Material(String name);
 
   /**
-   * @brief Construct a new Material object from existing SUMaterialRef object
+   * @brief Constructs a Material from an existing SUMaterialRef.
+   * @param material_ref The native material reference.
+   * @param attached     Whether the material is already owned by a model.
    */
   Material(SUMaterialRef material_ref, bool attached = true);
 
-  /** Copy constructor */
+  /**
+   * @brief Copy constructor.
+   * @param other The Material to copy.
+   */
   Material(const Material& other);
 
-  /** Copy assigment operator */
+  /**
+   * @brief Copy assignment operator.
+   * @param other The Material to assign from.
+   * @return Reference to this object.
+   */
   Material& operator=(const Material& other);
 
   /**
-  * Destructor
-  */
+   * @brief Destructor. Releases the material if it is not attached to a model.
+   */
   ~Material();
 
+  /**
+   * @brief Returns the wrapped SUMaterialRef.
+   * @return The raw SUMaterialRef.
+   */
   SUMaterialRef ref() const;
 
+  /** @brief Implicit conversion to SUMaterialRef. */
   operator SUMaterialRef() const;
+
+  /** @brief Implicit conversion to SUMaterialRef*. */
   operator SUMaterialRef*();
 
   /**
-  * Returns true if this is an invalid object, or if no material is set.  An entitity with the default material would return false.
-  */
+   * @brief Returns true if this is an invalid or unset material.
+   * @return True if the material is null or has no entity reference.
+   */
   bool operator !() const;
 
   /**
-  * Returns a copy of the Material object, which is not attached to a model.
-  */
+   * @brief Returns a copy of this Material, not attached to any model.
+   * @return A new unattached Material with the same properties.
+   */
   Material copy() const;
 
   /**
-  * Returns the color of the material.
-  */
+   * @brief Retrieves the color of the material.
+   * @return The Color.
+   * @throws std::logic_error If the material is null.
+   * @see SUMaterialGetColor
+   */
   Color color() const;
 
   /**
-  * Sets the color of the material.
-  */
+   * @brief Sets the color of the material.
+   * @param color The Color to set.
+   * @throws std::logic_error If the material is null.
+   * @see SUMaterialSetColor
+   */
   void color(const Color& color);
 
   /**
-  * Returns the internal name of the material.  The internal name is the unprocessed identifier string stored with the material.
-  * @return string name of the material.
-  */
+   * @brief Retrieves the internal name of the material.
+   *
+   * The internal name is the unprocessed identifier string stored with
+   * the material.
+   *
+   * @return The name as a String.
+   * @throws std::logic_error If the material is null.
+   * @see SUMaterialGetName
+   */
   String name() const;
 
   /**
-  * Sets the name of the material.
-  * @param string name of the material.
-  */
+   * @brief Sets the name of the material.
+   * @param string The name to set (UTF-8 encoded).
+   * @throws std::logic_error If the material is null.
+   * @see SUMaterialSetName
+   */
   void name(const String& string);
 
   /**
-  * Retrieves the name of a material object. This method was added for users who require the functionality of Material.name() prior to SketchUp 2017, API 5.0. If the internal name is encased in square brackets, [], this method will return the name without brackets, otherwise the name will match the name retrieved by SUMaterialGetName.
-  * @since SketchUp 2017, API 5.0
-  * @return string name of the material.
-  */
+   * @brief Retrieves the display name of the material.
+   *
+   * If the internal name is encased in square brackets, this returns the
+   * name without brackets. Otherwise it matches the name from GetName.
+   *
+   * @return The display name as a String.
+   * @throws std::logic_error If the material is null.
+   * @since SketchUp 2017, API 5.0
+   * @see SUMaterialGetNameLegacyBehavior
+   */
   String display_name() const;
 
   /**
-  * Returns the alpha value of the material.
-  * @return opacity The alpha value within range [0.0, 1.0].
-  */
+   * @brief Retrieves the opacity of the material.
+   * @return The alpha value in the range [0.0, 1.0].
+   * @throws std::logic_error If the material is null.
+   * @see SUMaterialGetOpacity
+   */
   double opacity() const;
 
   /**
-  * Sets the alpha value of the material.
-  * @param alpha The alpha value within range [0.0, 1.0].
-  */
+   * @brief Sets the opacity of the material.
+   * @param alpha The alpha value in the range [0.0, 1.0].
+   * @throws std::logic_error If the material is null.
+   * @see SUMaterialSetOpacity
+   */
   void opacity(const double alpha);
 
   /**
-  * Returns the texture of the material
-  */
+   * @brief Retrieves the texture of the material.
+   * @return The Texture object.
+   * @throws std::logic_error If the material is null.
+   * @see SUMaterialGetTexture
+   */
   Texture texture() const;
 
   /**
-  * Sets the texture of the material
-  */
+   * @brief Sets the texture of the material.
+   * @param texture The Texture to set.
+   * @throws std::logic_error If the material is null.
+   * @see SUMaterialSetTexture
+   */
   void texture(Texture& texture);
 
   /**
-  * Returns the type of the material
-  */
+   * @brief Retrieves the type of the material.
+   * @return The SUMaterialType (e.g. colored, textured, colorized texture).
+   * @throws std::logic_error If the material is null.
+   * @see SUMaterialGetType
+   */
   SUMaterialType type() const;
 
   /**
-  * Sets the texture of the material
-  */
+   * @brief Sets the type of the material.
+   * @param material_type The SUMaterialType to set.
+   * @throws std::logic_error If the material is null.
+   * @see SUMaterialSetType
+   */
   void type(const SUMaterialType& material_type);
 
   /**
-  * Returns whether the opacity value is used
-  */
+   * @brief Returns whether the opacity value is used.
+   * @return True if alpha is used.
+   * @throws std::logic_error If the material is null.
+   * @see SUMaterialGetUseOpacity
+   */
   bool use_alpha() const;
 
   /**
-  * Sets whether the opacity value is used
-  */
+   * @brief Sets whether the opacity value is used.
+   * @param flag True to use alpha, false otherwise.
+   * @throws std::logic_error If the material is null.
+   * @see SUMaterialSetUseOpacity
+   */
   void use_alpha(bool flag);
 
-  /**
-  * Hash function for use with unordered_map
-  */
+  /** @brief Hash function for use with unordered_map. */
   friend std::hash<CW::Material>;
 };
 

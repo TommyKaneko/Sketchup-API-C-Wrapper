@@ -3,7 +3,7 @@
 // Sketchup C++ Wrapper for C API
 // MIT License
 //
-// Copyright (c) 2022 Tom Kaneko
+// Copyright (c) 2026 Tom Kaneko
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -27,8 +27,6 @@
 #ifndef RubyAPI_hpp
 #define RubyAPI_hpp
 
-#include <stdio.h>
-
 #include <SketchUpAPI/application/ruby_api.h>
 
 namespace CW {
@@ -41,7 +39,7 @@ namespace CW {
 */
 
 
-/*
+/**
 * RubyAPI wrapper
 */
 class RubyAPI {

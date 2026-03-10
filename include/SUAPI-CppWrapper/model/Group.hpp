@@ -4,7 +4,7 @@
 // Sketchup C++ Wrapper for C API
 // MIT License
 //
-// Copyright (c) 2017 Tom Kaneko
+// Copyright (c) 2026 Tom Kaneko
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -28,8 +28,6 @@
 #ifndef Group_hpp
 #define Group_hpp
 
-#include <stdio.h>
-
 #include <SketchUpAPI/model/group.h>
 
 #include "SUAPI-CppWrapper/model/ComponentInstance.hpp"
@@ -42,79 +40,139 @@ class Transformation;
 class ComponentDefinition;
 class String;
 
+/**
+ * @brief Wrapper for SUGroupRef.
+ *
+ * A group is a special type of component instance that is always unique.
+ * Groups inherit from ComponentInstance and provide direct access to their
+ * entities, name, and transformation.
+ *
+ * @note Groups must always be attached to a parent. There is no release
+ *       function for groups in the C API.
+ *
+ * @see SUGroupRef in the SketchUp C API
+ */
 class Group :public ComponentInstance {
   private:
   /**
-  * Create new SUGroupRef object
-  */
+   * @brief Creates a new empty SUGroupRef.
+   * @return The newly created SUGroupRef.
+   */
   static SUGroupRef create_group();
   
+  /**
+   * @brief Copies a Group reference.
+   * @param other The Group to copy.
+   * @return The copied SUGroupRef.
+   */
   static SUGroupRef copy_reference(const Group& other);
 
   public:
   /**
-  * Construct a new, empty Group object.
-  */
+   * @brief Constructs a new, empty Group object.
+   */
   Group();
   
   /**
-  * Construct a Group from an existing SUGroupRef object.  Groups must always be attached to a parent (there is no release function for Groups)
-  */
+   * @brief Constructs a Group from an existing SUGroupRef.
+   * @param group    The native SUGroupRef to wrap.
+   * @param attached Whether the group is already owned by a model.
+   */
   Group(SUGroupRef group, bool attached = true);
   
   /**
-  * Construct a Group from instance object.  If the instance is not a group, you will get errors, as the constructor does not check for this.
-  */
+   * @brief Constructs a Group from a ComponentInstance.
+   *
+   * The instance must be of type SURefType_Group. If it is not, an
+   * assertion will fail.
+   *
+   * @param instance The ComponentInstance to convert.
+   */
   Group(const ComponentInstance& instance);
   
-  /** Copy constructor */
+  /**
+   * @brief Copy constructor.
+   * @param other The Group to copy.
+   */
   Group(const Group& other);
   
-  /** Destructor */
+  /**
+   * @brief Destructor.
+   */
   ~Group();
 
-  /** Copy assignment operator */
+  /**
+   * @brief Copy assignment operator.
+   * @param other The Group to assign from.
+   * @return Reference to this object.
+   */
   Group& operator=(const Group& other);
 
   /**
-  * Returns the raw SUGroupRef object.
-  */
+   * @brief Returns the wrapped SUGroupRef.
+   * @return The raw SUGroupRef.
+   */
   SUGroupRef ref() const;
 
-  /*
-  * The class object can be converted to a SUGroupRef.
-  */
+  /**
+   * @brief Implicit conversion to SUGroupRef.
+   */
   operator SUGroupRef() const;
+
+  /** @brief Implicit conversion to SUGroupRef*. */
   operator SUGroupRef*();
   
   /**
-  * Return the ComponentDefinition of the Group.
-  */
+   * @brief Retrieves the component definition of this group.
+   * @return The ComponentDefinition.
+   * @throws std::logic_error If the group is null.
+   * @since SketchUp 2014, API 2.0
+   * @see SUGroupGetDefinition
+   */
   ComponentDefinition definition() const;
   
   /**
-  * Return the Entities object of the Group.
-  */
+   * @brief Retrieves the entities of the group.
+   * @return The Entities container.
+   * @throws std::logic_error If the group is null.
+   * @see SUGroupGetEntities
+   */
   Entities entities() const;
   
   /**
-  * Return the name of the Group.
-  */
+   * @brief Retrieves the name of the group.
+   * @return The name as a String.
+   * @throws std::logic_error If the group is null.
+   * @see SUGroupGetName
+   */
   String name() const;
   
   /**
-  * Set the name of this Group.
-  */
+   * @brief Sets the name of this group.
+   * @param string The name to set (UTF-8 encoded).
+   * @throws std::logic_error If the group is null.
+   * @see SUGroupSetName
+   */
   void name(const String& string);
   
   /**
-  * Return the Transformation object of the group.
-  */
+   * @brief Retrieves the transformation applied to this group.
+   *
+   * The transform is relative to the parent component. If the parent is
+   * the root component of a model, it is relative to absolute coordinates.
+   *
+   * @return The Transformation.
+   * @throws std::logic_error If the group is null.
+   * @see SUGroupGetTransform
+   */
   Transformation transformation() const;
 
   /**
-  * Set the Transformation of the group.
-  */
+   * @brief Sets the transformation of this group.
+   * @param transform The Transformation to apply.
+   * @throws std::logic_error If the group is null.
+   * @see SUGroupSetTransform
+   */
   void transformation(const Transformation& transform);
   
 };

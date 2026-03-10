@@ -4,7 +4,7 @@
 // Sketchup C++ Wrapper for C API
 // MIT License
 //
-// Copyright (c) 2017 Tom Kaneko
+// Copyright (c) 2026 Tom Kaneko
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -179,15 +179,15 @@ String ComponentDefinition::name() const {
 }
 
 
-bool ComponentDefinition::name(String name) {
+void ComponentDefinition::name(String name) {
   if (!(*this)) {
     throw std::logic_error("CW::ComponentDefinition::name(): ComponentDefinition is null");
   }
   SUResult res = SUComponentDefinitionSetName(this->ref(), std::string(name).c_str());
-  if (res == SU_ERROR_NONE) {
-    return true;
+  if (res == SU_ERROR_NULL_POINTER_INPUT) {
+    throw std::invalid_argument("CW::ComponentDefinition::name(): Invalid name argument");
   }
-  return false;
+  assert(res == SU_ERROR_NONE); _unused(res);
 }
 
 

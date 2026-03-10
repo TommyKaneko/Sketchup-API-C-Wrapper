@@ -4,7 +4,7 @@
 // Sketchup C++ Wrapper for C API
 // MIT License
 //
-// Copyright (c) 2017 Tom Kaneko
+// Copyright (c) 2026 Tom Kaneko
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -27,8 +27,6 @@
 #ifndef Vertex_hpp
 #define Vertex_hpp
 
-#include <stdio.h>
-
 #include <SketchUpAPI/model/vertex.h>
 
 #include "SUAPI-CppWrapper/model/Entity.hpp"
@@ -36,44 +34,64 @@
 
 namespace CW {
 
-/*
-* Vertex wrapper
-*/
+/**
+ * @brief C++ wrapper for the SketchUp C API's SUVertexRef object.
+ *
+ * A Vertex is a point in 3D space that is associated with edges, faces, and loops.
+ */
 class Vertex :public Entity {
   private:  
   static SUVertexRef copy_reference(const Vertex& other);
   
   public:
-  /** Constructor for null Vertex value */
+  /** @brief Constructor for null Vertex value */
   Vertex();
 
+  /**
+   * @brief Constructs a Vertex from a pre-existing SUVertexRef.
+   * @param vertex the SUVertexRef to wrap.
+   */
   Vertex(SUVertexRef vertex);
 
-  /** Copy constructor */
+  /** @brief Copy constructor */
   Vertex(const Vertex& other);
   
-  /** Destructor */
+  /** @brief Destructor */
   ~Vertex();
 
-  /** Copy assignment operator */
+  /** @brief Copy assignment operator */
   Vertex& operator=(const Vertex& other);
   
   /**
-  * Returns the position of the vertex.
-  */
+   * @brief Retrieves the position of the vertex.
+   * @return Point3D position of the vertex.
+   * @throws std::logic_error if the vertex is null.
+   */
   Point3D position() const;
   
-  /*
-  * The class object can be converted to a SUVertexRef without loss of data.
-  */
+  /**
+   * @brief Returns the SUVertexRef object for the Vertex.
+   */
   SUVertexRef ref() const;
+
+  /**
+   * @brief Conversion operator to SUVertexRef.
+   */
   operator SUVertexRef() const;
+
+  /**
+   * @brief Conversion operator to SUVertexRef pointer.
+   */
   operator SUVertexRef*();
   
   /**
-  * Returns the position of the vertex. An aliaas of method poistion();
-  */
+   * @brief Conversion operator to SUPoint3D. Returns the vertex position.
+   */
   operator SUPoint3D() const;
+
+  /**
+   * @brief Conversion operator to Point3D. Returns the vertex position.
+   */
   operator Point3D() const;
 };
 

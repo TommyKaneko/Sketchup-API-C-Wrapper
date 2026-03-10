@@ -28,8 +28,6 @@
 #ifndef SectionPlane_hpp
 #define SectionPlane_hpp
 
-#include <stdio.h>
-
 #include <SketchUpAPI/model/section_plane.h>
 
 #include "SUAPI-CppWrapper/Geometry.hpp"

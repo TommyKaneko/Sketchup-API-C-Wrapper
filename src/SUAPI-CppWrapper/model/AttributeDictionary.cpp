@@ -4,7 +4,7 @@
 // Sketchup C++ Wrapper for C API
 // MIT License
 //
-// Copyright (c) 2017 Tom Kaneko
+// Copyright (c) 2026 Tom Kaneko
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -156,16 +156,16 @@ TypedValue AttributeDictionary::get_attribute(const std::string &key, const Type
   return TypedValue(val);
 }
 
-bool AttributeDictionary::set_attribute(const std::string &key, const TypedValue &value) {
+void AttributeDictionary::set_attribute(const std::string &key, const TypedValue &value) {
   if (!(*this)) {
     throw std::logic_error("CW::AttributeDictionary::set_attribute(): AttributeDictionary is null");
   }
   SUResult res = SUAttributeDictionarySetValue(this->ref(), key.data(), value.ref());
-  if (res == SU_ERROR_NONE) {
-    return true;
-  }
-  else {
-    return false;
+  switch (res) {
+    case SU_ERROR_INVALID_OPERATION:
+      throw std::logic_error("CW::AttributeDictionary::set_attribute(): the dictionary is read-only");
+    default:
+      assert(res == SU_ERROR_NONE); _unused(res);
   }
 }
 

@@ -4,7 +4,7 @@
 // Sketchup C++ Wrapper for C API
 // MIT License
 //
-// Copyright (c) 2017 Tom Kaneko
+// Copyright (c) 2026 Tom Kaneko
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -145,7 +145,7 @@ class Vector3D {
   */
   explicit Vector3D( const Point3D& point);
 
-  /*
+  /**
   * Cast to SUVector3D object
   */
   operator SUVector3D() const;
@@ -155,12 +155,12 @@ class Vector3D {
   */
   operator const SUVector3D*() const;
 
-  /*
+  /**
   * Cast to Point3D object
   */
   operator Point3D() const;
 
-   /*
+  /**
   * Copy constructor
   */
   Vector3D(const Vector3D &vector);
@@ -202,17 +202,17 @@ class Vector3D {
   bool operator!() const;
 
 
-  /*
+  /**
   * Returns the length of the vector
   */
   double length() const;
 
-  /*
+  /**
   * Returns the unit vector
   */
   Vector3D unit() const;
 
-  /*
+  /**
   * Returns the angle between this vector and that of another.
   */
   double angle(const Vector3D& vector_b) const;
@@ -264,7 +264,7 @@ class Vector3D {
 
 
 
-/*
+/**
 * Point3D class is analagous to SUPoint3D struct, and holds the same variables.
 *
 * Class methods are given to allow easy vector mathematics.
@@ -329,13 +329,13 @@ class Point3D {
   */
   Point3D &operator=(const Point3D &point);
 
-  /*
+  /**
   * Cast to SUPoint3D struct
   */
   operator SUPoint3D() const;
   operator const SUPoint3D*() const;
 
-  /*
+  /**
   * Cast to Vector3D
   */
   operator Vector3D() const;
@@ -392,7 +392,7 @@ class Point3D {
 
 // Forward declaration
 class Line3D;
-/*
+/**
 * Plane3D class is analagous to SUPlane3D struct, and holds the same variables.
 *
 * Class methods are included to allow easy vector mathematics.

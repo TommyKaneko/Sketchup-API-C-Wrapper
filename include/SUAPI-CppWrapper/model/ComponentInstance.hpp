@@ -4,7 +4,7 @@
 // Sketchup C++ Wrapper for C API
 // MIT License
 //
-// Copyright (c) 2017 Tom Kaneko
+// Copyright (c) 2026 Tom Kaneko
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -28,8 +28,6 @@
 #ifndef ComponentInstance_hpp
 #define ComponentInstance_hpp
 
-#include <stdio.h>
-
 #include <SketchUpAPI/model/component_instance.h>
 
 #include "SUAPI-CppWrapper/Transformation.hpp"
@@ -38,64 +36,116 @@
 
 namespace CW {
 
+/**
+ * @brief Wrapper for SUComponentInstanceRef.
+ *
+ * Represents an instance of a component definition placed in the model.
+ * Each instance has its own transformation, name, and attribute dictionaries.
+ *
+ * @see SUComponentInstanceRef in the SketchUp C API
+ */
 class ComponentInstance :public DrawingElement {
   friend class Group;
   protected:
-  /** Creates a copy of the ComponentInstance */
+  /**
+   * @brief Creates a copy of the underlying SUComponentInstanceRef.
+   * @param other The ComponentInstance to copy.
+   * @return The copied SUComponentInstanceRef.
+   */
   SUComponentInstanceRef copy_reference(const ComponentInstance& other);
 
   public:
   /**
-  * Constructor for null object
-  */
+   * @brief Constructs a null ComponentInstance.
+   */
   ComponentInstance();
 
+  /**
+   * @brief Constructs a ComponentInstance from an existing SUComponentInstanceRef.
+   * @param instance The native instance reference.
+   * @param attached Whether the instance is already owned by a model.
+   */
   ComponentInstance(SUComponentInstanceRef instance, bool attached = true);
   
-  /** Copy constructor */
+  /**
+   * @brief Copy constructor.
+   * @param other The ComponentInstance to copy.
+   */
   ComponentInstance(const ComponentInstance& other);
   
-  /** Copy constructor for derived classes (Group) */
+  /**
+   * @brief Copy constructor for derived classes (Group).
+   * @param other        The source ComponentInstance.
+   * @param instance_ref The native reference for the derived copy.
+   */
   ComponentInstance(const ComponentInstance& other, SUComponentInstanceRef instance_ref);
   
-  /** Destructor */
+  /**
+   * @brief Destructor. Releases the instance if it is not attached to a model.
+   */
   ~ComponentInstance();
 
-  /** Copy assignment operator */
+  /**
+   * @brief Copy assignment operator.
+   * @param other The ComponentInstance to assign from.
+   * @return Reference to this object.
+   */
   ComponentInstance& operator=(const ComponentInstance& other);
   
   /**
-  * Returns the raw SUComponentInstance object.
-  */
+   * @brief Returns the wrapped SUComponentInstanceRef.
+   * @return The raw SUComponentInstanceRef.
+   */
   SUComponentInstanceRef ref() const;
 
-  /** Cast to native objects */
+  /** @brief Implicit conversion to SUComponentInstanceRef. */
   operator SUComponentInstanceRef() const;
+
+  /** @brief Implicit conversion to SUComponentInstanceRef*. */
   operator SUComponentInstanceRef*();
   
   /**
-  * Returns the Transformation object applied to this instance.
-  */
+   * @brief Retrieves the transformation applied to this instance.
+   *
+   * The transform is relative to the parent component. If the parent is
+   * the root component of a model, it is relative to absolute coordinates.
+   *
+   * @return The Transformation applied to this instance.
+   * @throws std::logic_error If the instance is null.
+   * @see SUComponentInstanceGetTransform
+   */
   Transformation transformation() const;
   
   /**
-  * Set the transformation applied to this Component Instance
-  */
+   * @brief Sets the transformation applied to this instance.
+   * @param tranform The Transformation to apply.
+   * @throws std::logic_error If the instance is null.
+   * @see SUComponentInstanceSetTransform
+   */
   void transformation(const Transformation& tranform);
 
   /**
-  * Returns the Component Definition object of this instance.
-  */
+   * @brief Retrieves the component definition of this instance.
+   * @return The ComponentDefinition.
+   * @throws std::logic_error If the instance is null.
+   * @see SUComponentInstanceGetDefinition
+   */
   ComponentDefinition definition() const;
 
   /**
-  * Returns the name of this instance.
-  */
+   * @brief Retrieves the name of this instance.
+   * @return The name as a String.
+   * @throws std::logic_error If the instance is null.
+   * @see SUComponentInstanceGetName
+   */
   String name() const;
 
   /**
-  * Sets the name of this instance.
-  */
+   * @brief Sets the name of this instance.
+   * @param string The name to set (UTF-8 encoded).
+   * @throws std::logic_error If the instance is null.
+   * @see SUComponentInstanceSetName
+   */
   void name(const String& string);
   
 };

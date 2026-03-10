@@ -4,7 +4,7 @@
 // Sketchup C++ Wrapper for C API
 // MIT License
 //
-// Copyright (c) 2017 Tom Kaneko
+// Copyright (c) 2026 Tom Kaneko
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -28,7 +28,6 @@
 #ifndef LoopInput_hpp
 #define LoopInput_hpp
 
-#include <stdio.h>
 #include <vector>
 
 #include <SketchUpAPI/model/geometry_input.h>
@@ -56,6 +55,17 @@ struct InputEdgeProperties {
   Layer layer = Layer();
 };
 
+/**
+ * @brief Wrapper for SULoopInputRef, representing a loop of edges
+ *        that form the boundary of a face.
+ *
+ * LoopInput holds edge indices and per-edge properties (hidden, soft,
+ * smooth, material, layer) and is consumed by Face or GeometryInput.
+ * Methods that set edge properties return a reference to this object
+ * for chaining.
+ *
+ * @see https://extensions.sketchup.com/developer_center/sketchup_c_api/
+ */
 class LoopInput {
   friend class Face;
   friend class GeometryInput;
@@ -107,12 +117,12 @@ class LoopInput {
   /** Copy assignment operator **/
   LoopInput& operator=(const LoopInput& other);
 
-  /*
+  /**
   * Returns the stored SULoopInputRef object.
   */
   SULoopInputRef ref() const;
 
-  /*
+  /**
   * The class object can be converted to a SULoopInputRef without loss of data.
   */
   operator SULoopInputRef() const;
@@ -130,10 +140,44 @@ class LoopInput {
   */
   LoopInput& add_vertex_index(const size_t index);
 
+  /**
+  * Sets whether the edge at the given index is hidden.
+  * @param edge_index the zero-based edge index within this loop.
+  * @param hidden true to mark the edge as hidden.
+  * @return reference to this LoopInput for method chaining.
+  */
   LoopInput& set_edge_hidden(const size_t edge_index, const bool hidden);
+
+  /**
+  * Sets whether the edge at the given index is soft.
+  * @param edge_index the zero-based edge index within this loop.
+  * @param soft true to mark the edge as soft.
+  * @return reference to this LoopInput for method chaining.
+  */
   LoopInput& set_edge_soft(const size_t edge_index, const bool soft);
+
+  /**
+  * Sets whether the edge at the given index is smooth.
+  * @param edge_index the zero-based edge index within this loop.
+  * @param smooth true to mark the edge as smooth.
+  * @return reference to this LoopInput for method chaining.
+  */
   LoopInput& set_edge_smooth(const size_t edge_index, const bool smooth);
+
+  /**
+  * Sets the material of the edge at the given index.
+  * @param edge_index the zero-based edge index within this loop.
+  * @param material the Material to assign to the edge.
+  * @return reference to this LoopInput for method chaining.
+  */
   LoopInput& set_edge_material(const size_t edge_index, const Material& material);
+
+  /**
+  * Sets the layer of the edge at the given index.
+  * @param edge_index the zero-based edge index within this loop.
+  * @param layer the Layer to assign to the edge.
+  * @return reference to this LoopInput for method chaining.
+  */
   LoopInput& set_edge_layer(const size_t edge_index, const Layer& layer);
 
 

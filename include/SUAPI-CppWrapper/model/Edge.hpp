@@ -4,7 +4,7 @@
 // Sketchup C++ Wrapper for C API
 // MIT License
 //
-// Copyright (c) 2017 Tom Kaneko
+// Copyright (c) 2026 Tom Kaneko
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -28,8 +28,6 @@
 #ifndef Edge_hpp
 #define Edge_hpp
 
-#include <stdio.h>
-
 #include <SketchUpAPI/model/edge.h>
 
 #include "SUAPI-CppWrapper/Geometry.hpp"
@@ -43,8 +41,11 @@ class Face;
 class Color;
 
 /**
-*
-*/
+ * @brief C++ wrapper for the SketchUp C API's SUEdgeRef object.
+ *
+ * An Edge represents a line segment in 3D space that connects two vertices.
+ * Edges can be associated with faces and curves.
+ */
 class Edge :public DrawingElement {
   private:
   static SUEdgeRef create_edge(const Point3D& start, const Point3D& end);
@@ -53,130 +54,138 @@ class Edge :public DrawingElement {
 
   public:
   /**
-  * Constructor for null Edge object.
-  */
+   * @brief Constructor for null Edge object.
+   */
   Edge();
 
-  /*
-  * Construct an Edge from a vector of two points.
-  * @param points - where points[0] is the start vertex and points[1] is the end vertex.
-  */
+  /**
+   * @brief Construct an Edge from a vector of two points.
+   * @param points where points[0] is the start vertex and points[1] is the end vertex.
+   */
   Edge(const std::vector<Point3D>& points);
 
-  /*
-  * Construct an Edge from a vector of two points.
-  * @param start - the start vertex
-  * @param end - the end vertex.
-  */
+  /**
+   * @brief Construct an Edge from two points.
+   * @param start the start vertex position.
+   * @param end the end vertex position.
+   */
   Edge(const Point3D& start, const Point3D& end);
 
   /**
-  * Creates new edge using vertices position.  Note that this will not join the new edge to existing vertices.  Use GeometryInput for welding edges.
-  */
+   * @brief Creates a new edge using vertex positions. Note that this will not
+   *        join the new edge to existing vertices. Use GeometryInput for welding edges.
+   * @param start the start vertex.
+   * @param end the end vertex.
+   */
   Edge(const Vertex& start, const Vertex& end);
 
-  /*
-  * Edge constructor that essentially wraps around an already created SUFaceRef object.
-  * @param SUEdgeRef pointer to the edge.
-  * @param bool true if the edge should be released when this class object is destroyed.  False, if the release of the face object is handled elsewhere (use with caution).
-  */
+  /**
+   * @brief Constructs an Edge object from a pre-existing SUEdgeRef.
+   * @param edge the SUEdgeRef to wrap.
+   * @param attached true if the edge is already owned by a model (default: true).
+   */
   Edge(SUEdgeRef edge, bool attached = true);
 
-  /** Copy Constructor */
+  /** @brief Copy Constructor */
   Edge(const Edge& other);
 
+  /** @brief Destructor */
   ~Edge();
 
+  /** @brief Copy assignment operator */
   Edge& operator=(const Edge& other);
 
   /**
    * @brief Creates an explicit copy of the Edge object, detached from the original.
+   * @return a new Edge with the same properties, not attached to any model.
+   * @throws std::logic_error if the edge is null.
    */
   Edge copy() const;
 
   /**
-  * Returns SUEdgeRef object for the Edge.
-  */
+   * @brief Returns the SUEdgeRef object for the Edge.
+   */
   SUEdgeRef ref() const;
 
-  /*
-  * The class object can be converted to a SUEdgeRef without loss of data.
-  */
+  /**
+   * @brief The class object can be converted to a SUEdgeRef without loss of data.
+   */
   operator SUEdgeRef() const;
 
-  /*
-  * Returns whether the class is a valid object.
-  */
-  // operator bool() const;
   /**
-  * NOT operator.  Checks if the SUEdgeRef is valid.
-  * @return true if the edge is invalid
-  */
+   * @brief NOT operator. Checks if the SUEdgeRef is invalid.
+   * @return true if the edge is invalid.
+   */
   bool operator!() const;
 
-  /*
-  * Returns the Color object assigned to the Edge
-  */
+  /**
+   * @brief Retrieves the color of the edge.
+   * @return Color object assigned to the edge.
+   * @throws std::logic_error if the edge is null.
+   */
   Color color() const;
 
-  /*
-  * Sets the color of the Edge.
-  */
-  bool color(const Color& input_color);
+  /**
+   * @brief Sets the color of the edge.
+   * @param input_color the Color to set.
+   * @throws std::logic_error if the edge is null.
+   */
+  void color(const Color& input_color);
 
-  /*
-  * Return the vertex at the end of the Edge.
-  */
+  /**
+   * @brief Retrieves the end vertex of the edge.
+   * @return Vertex at the end of the edge.
+   * @throws std::logic_error if the edge is null.
+   */
   Vertex end() const;
 
-  /*
-  * Return the faces connected to this edge.
-  */
+  /**
+   * @brief Retrieves the face objects associated with the edge.
+   * @return vector of Face objects connected to this edge.
+   * @throws std::logic_error if the edge is null.
+   */
   std::vector<Face> faces() const;
 
-  /*
-  * Gets the SUResult of the create edge operation.
-  * @return * SU_ERROR_NONE on success
-            * SU_ERROR_NULL_POINTER_INPUT if start or end is NULL
-            * SU_ERROR_NULL_POINTER_OUTPUT if edge is NULL
-            * SU_ERROR_GENERIC if start and end specify the same position.
-  */
-  // SUResult get_result() const;
-
-  /*
-  * Determine if the Edge is smooth.
-  * @return true if the Edge is smooth.
-  */
+  /**
+   * @brief Retrieves the smooth flag of the edge.
+   * @return true if the edge is smooth.
+   * @throws std::logic_error if the edge is null.
+   */
   bool smooth() const;
 
-  /*
-  * Set the smooth status for an Edge.
-  * @param bool true to make the edge smooth, false to make the edge hard.
-  * @return true for successful, false for unsuccessful.
-  */
-  bool smooth(bool smooth);
+  /**
+   * @brief Sets the smooth flag of the edge.
+   * @param smooth true to make the edge smooth, false to make it hard.
+   * @throws std::logic_error if the edge is null.
+   */
+  void smooth(bool smooth);
 
-  /*
-  * Determine if the Edge is soft.
-  * @return true if the Edge is soft.
-  */
+  /**
+   * @brief Retrieves the soft flag of the edge.
+   * @return true if the edge is soft.
+   * @throws std::logic_error if the edge is null.
+   */
   bool soft() const;
 
-  /*
-  * Set the soft status for an edge.
-  * @param bool true if you want soften the edge, false if you do not want to soften the edge.
-  * @return true for successful, false for unsuccessful.
-  */
-  bool soft(bool soft);
+  /**
+   * @brief Sets the soft flag of the edge.
+   * @param soft true to soften the edge, false to harden it.
+   * @throws std::logic_error if the edge is null.
+   */
+  void soft(bool soft);
 
-  /*
-  * Return the vertex at the start of the Edge.
-  */
+  /**
+   * @brief Retrieves the starting vertex of the edge.
+   * @return Vertex at the start of the edge.
+   * @throws std::logic_error if the edge is null.
+   */
   Vertex start() const;
 
-  /*
-  * Return Vector between the start and end points
-  */
+  /**
+   * @brief Returns the vector between the start and end points.
+   * @return Vector3D from start to end.
+   * @throws std::logic_error if the edge is null.
+   */
   Vector3D vector() const;
 };
 

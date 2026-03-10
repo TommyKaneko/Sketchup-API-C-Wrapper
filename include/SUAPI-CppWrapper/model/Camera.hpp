@@ -28,8 +28,6 @@
 #ifndef Camera_hpp
 #define Camera_hpp
 
-#include <stdio.h>
-
 #include <SketchUpAPI/model/camera.h>
 
 #include "SUAPI-CppWrapper/Geometry.hpp"

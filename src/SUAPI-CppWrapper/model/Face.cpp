@@ -4,7 +4,7 @@
 // Sketchup C++ Wrapper for C API
 // MIT License
 //
-// Copyright (c) 2017 Tom Kaneko
+// Copyright (c) 2026 Tom Kaneko
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -484,33 +484,43 @@ MaterialPositionInput Face::material_position_back() const {
 }
 
 
-bool Face::material_position(const MaterialPositionInput& material_input, bool front) {
+void Face::material_position(const MaterialPositionInput& material_input, bool front) {
   if (!(*this)) {
     throw std::logic_error("CW::Face::material_position(): Face is null");
   }
   SUPoint3D reference_point = this->vertices()[0].position();
   SUMaterialPositionInput material_input_out = material_input.ref();
   SUResult res = SUFacePositionMaterial( this->ref(), front, &material_input_out);
+  switch (res) {
+    case SU_ERROR_INVALID_ARGUMENT:
+      if (!material_input.material() || !material_input.material().texture()) {
+        throw std::logic_error("CW::Face::material_position(): No texture was given to project");
+      }
+      else {
+        throw std::invalid_argument("CW::Face::material_position(): given material_input parameters are invalid");
+      }
+    default:
+      assert(false); // unexpected error code
+  }
   if (res == SU_ERROR_INVALID_ARGUMENT) {
     if (!material_input.material() || !material_input.material().texture()) {
       throw std::logic_error("CW::Face::material_position(): No texture was given to project");
     }
     else {
-      throw std::logic_error("CW::Face::material_position(): given material_input parameters are invalid");
+      throw std::invalid_argument("CW::Face::material_position(): given material_input parameters are invalid");
     }
   }
   assert(res == SU_ERROR_NONE);
-  return true;
 }
 
 
-bool Face::material_position_front(const MaterialPositionInput& material_input){
-  return this->material_position(material_input,  true);
+void Face::material_position_front(const MaterialPositionInput& material_input){
+  this->material_position(material_input,  true);
 }
 
 
-bool Face::material_position_back(const MaterialPositionInput& material_input) {
-  return this->material_position(material_input, false);
+void Face::material_position_back(const MaterialPositionInput& material_input) {
+  this->material_position(material_input, false);
 }
 
 #endif

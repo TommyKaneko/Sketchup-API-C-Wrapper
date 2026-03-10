@@ -4,7 +4,7 @@
 // Sketchup C++ Wrapper for C API
 // MIT License
 //
-// Copyright (c) 2017 Tom Kaneko
+// Copyright (c) 2026 Tom Kaneko
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -28,7 +28,6 @@
 #ifndef Model_hpp
 #define Model_hpp
 
-#include <stdio.h>
 #include <string>
 #include <vector>
 
@@ -55,6 +54,14 @@ namespace CW {
   class Scene;
 
 
+/**
+ * @brief C++ wrapper for SUModelRef.
+ *
+ * Represents a SketchUp model. Provides access to the model's entities,
+ * layers, materials, component definitions, scenes, cameras, and other
+ * model-level properties.
+ * @see SUModelRef
+ */
 class Model {
   private:
   SUModelRef m_model;
@@ -310,7 +317,7 @@ class Model {
   * Sets the name of the model.
   * @param name_string string to name the model with.
   */
-  bool name(const String& name_string);
+  void name(const String& name_string);
 
   /*
   * The number of faces in the model.  Useful for statistics.
@@ -336,20 +343,22 @@ class Model {
   */
   //Entity raytest(Point3D point, Vector3D vector);
 
-  /*
-  * Saves the model in the file path given.
-  * @param file_path string path to the file
-  * @return SUResult - SU_ERROR_NONE on success. @see SUModelSaveFileToFile for possible return values
-  */
-  SUResult save(const std::string& file_path);
+  /**
+   * @brief Saves the model to a file.
+   * @param file_path  Path to the file to save to.
+   * @throws std::logic_error if the Model is null.
+   * @throws std::runtime_error if a serialization error occurs.
+   */
+  void save(const std::string& file_path);
 
-  /*
-  * Saves the model in the file path given, in the given SU version.
-  * @param file_path string path to the file
-  * @param version SUModelVersion to save
-  * @return true on success, false on failure
-  */
-  bool save_with_version(const std::string& file_path, SUModelVersion version);
+  /**
+   * @brief Saves the model to a file in the specified version format.
+   * @param file_path  Path to the file to save to.
+   * @param version    The SketchUp version format to use.
+   * @throws std::logic_error if the Model is null.
+   * @throws std::runtime_error if a serialization error occurs.
+   */
+  void save_with_version(const std::string& file_path, SUModelVersion version);
 
 
   /*
@@ -397,8 +406,8 @@ class Model {
   * @param std::string value to set
   * @return true on success, false on failure
   */
-  bool set_attribute(AttributeDictionary& dict, const std::string& key, const TypedValue& value);
-  bool set_attribute(const std::string& dict_name, const std::string& key, const TypedValue& value);
+  void set_attribute(AttributeDictionary& dict, const std::string& key, const TypedValue& value);
+  void set_attribute(const std::string& dict_name, const std::string& key, const TypedValue& value);
 
   // set_datum()
 

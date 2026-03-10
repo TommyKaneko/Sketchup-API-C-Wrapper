@@ -170,8 +170,13 @@ void Scene::name(const String& name) {
     throw std::logic_error("CW::Scene::name(): Scene is null");
   }
   SUResult res = SUSceneSetName(this->ref(), name.std_string().c_str());
-  if (res != SU_ERROR_NONE) {
-    throw std::invalid_argument("CW::Scene::name(): failed to set name (may already exist in model)");
+  switch (res) {
+    case SU_ERROR_INVALID_ARGUMENT: {
+      throw std::invalid_argument("CW::Scene::name(): the name already exists in the scene's model");
+    }
+    default: {
+      assert(res == SU_ERROR_NONE); _unused(res);
+    }
   }
 }
 
@@ -181,8 +186,13 @@ void Scene::name(const std::string& name) {
     throw std::logic_error("CW::Scene::name(): Scene is null");
   }
   SUResult res = SUSceneSetName(this->ref(), name.c_str());
-  if (res != SU_ERROR_NONE) {
-    throw std::invalid_argument("CW::Scene::name(): failed to set name (may already exist in model)");
+  switch (res) {
+    case SU_ERROR_INVALID_ARGUMENT: {
+      throw std::invalid_argument("CW::Scene::name(): the name already exists in the scene's model");
+    }
+    default: {
+      assert(res == SU_ERROR_NONE); _unused(res);
+    }
   }
 }
 
@@ -495,8 +505,19 @@ void Scene::add_layer(const Layer& layer) {
     throw std::logic_error("CW::Scene::add_layer(): Scene is null");
   }
   SUResult res = SUSceneAddLayer(this->ref(), layer.ref());
-  if (res != SU_ERROR_NONE) {
-    throw std::invalid_argument("CW::Scene::add_layer(): failed to add layer to scene");
+  switch (res) {
+    case SU_ERROR_NO_DATA: {
+      throw std::logic_error("CW::Scene::add_layer(): Scene is not owned by a valid model");
+    }
+    case SU_ERROR_GENERIC: {
+      throw std::logic_error("CW::Scene::add_layer(): the scene's model does not contain the layer");
+    }
+    case SU_ERROR_INVALID_ARGUMENT: {
+      throw std::invalid_argument("CW::Scene::add_layer(): the layer already exists in the scene");
+    }
+    default: {
+      assert(res == SU_ERROR_NONE); _unused(res);
+    }
   }
 }
 
@@ -506,9 +527,10 @@ void Scene::remove_layer(const Layer& layer) {
     throw std::logic_error("CW::Scene::remove_layer(): Scene is null");
   }
   SUResult res = SUSceneRemoveLayer(this->ref(), layer.ref());
-  if (res != SU_ERROR_NONE) {
-    throw std::invalid_argument("CW::Scene::remove_layer(): failed to remove layer from scene");
+  if (res == SU_ERROR_INVALID_ARGUMENT) {
+    throw std::invalid_argument("CW::Scene::remove_layer(): the layer doesn't exist in the scene");
   }
+  assert(res == SU_ERROR_NONE); _unused(res);
 }
 
 

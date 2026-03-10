@@ -28,8 +28,6 @@
 #ifndef GuideLine_hpp
 #define GuideLine_hpp
 
-#include <stdio.h>
-
 #include <SketchUpAPI/model/guide_line.h>
 
 #include "SUAPI-CppWrapper/Geometry.hpp"

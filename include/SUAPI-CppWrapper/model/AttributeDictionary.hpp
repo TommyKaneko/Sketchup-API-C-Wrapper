@@ -4,7 +4,7 @@
 // Sketchup C++ Wrapper for C API
 // MIT License
 //
-// Copyright (c) 2017 Tom Kaneko
+// Copyright (c) 2026 Tom Kaneko
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -28,7 +28,6 @@
 #ifndef AttributeDictionary_hpp
 #define AttributeDictionary_hpp
 
-#include <stdio.h>
 #include <vector>
 #include <string>
 
@@ -41,97 +40,121 @@ namespace CW {
 class TypedValue;
 class String;
 
-/*
-* Entity object wrapper
-*/
+/**
+ * @brief C++ wrapper for SUAttributeDictionaryRef.
+ *
+ * An attribute dictionary is a collection of key-value pairs where keys
+ * are strings and values are TypedValue objects. Attribute dictionaries
+ * can be attached to any Entity.
+ * @see SUAttributeDictionaryRef
+ */
 class AttributeDictionary :public Entity {
   /**
-  * Creates a SUAttributeDictionaryRef object using the given name.
-  * @param name - name of the created AttributeDictionary object.
-  * @since SketchUp 2018, API v6.0
-  * @return SUAttributeDictionaryRef object with the given name.
-  */
+   * @brief Creates a SUAttributeDictionaryRef object using the given name.
+   * @param name  Name of the created AttributeDictionary object.
+   * @since SketchUp 2018, API v6.0
+   * @return SUAttributeDictionaryRef object with the given name.
+   */
   static SUAttributeDictionaryRef create_attribute_dictionary(const std::string& name);
 
   /**
-  * Creates a SUAttributeDictionaryRef derived from an existing AttributeDictionary object.
-  * @param dict - AttributeDictionary object to derive the new SUAttributeDictionaryRef from
-  * @since SketchUp 2018, API v6.0
-  * @return if the AttributeDictionary object is already attached to a model, its SUAttributeDictionaryRef will be returned. If the AttributeDicitonary object has not been attached to a model, a new SUAttributeDictionaryRef object will be created.  In the latter case, bear in mind that keys and values will not be copied to the new object - this would have to be done manually.
-  */
+   * @brief Creates a SUAttributeDictionaryRef derived from an existing object.
+   * @param dict  AttributeDictionary object to derive the new ref from.
+   * @since SketchUp 2018, API v6.0
+   * @return If the AttributeDictionary is already attached to a model, its
+   *         ref is returned. Otherwise a new ref is created (keys and
+   *         values will not be copied — this must be done manually).
+   */
   static SUAttributeDictionaryRef copy_reference(const AttributeDictionary& dict);
 
   public:
-  /**
-  * Constructor for null object.
-  */
+  /** @brief Constructs a null AttributeDictionary. */
   AttributeDictionary();
 
   /**
-  * Constructor to create a new object.
-  * @param name - name of the dictionary to create.
-  * @since SketchUp 2018, API v6.0
-  */
+   * @brief Constructs a new AttributeDictionary with the given name.
+   * @param name  Name of the dictionary to create.
+   * @since SketchUp 2018, API v6.0
+   */
   AttributeDictionary(std::string name);
 
   /**
-  * Constructor from existing SUAttributeDictionaryRef object
-  * @param dict - existing SUAttributeDictionaryRef object to wrap with this class.
-  * @param attached - indicates whether the dictionary is attached to an entity or not.
-  */
+   * @brief Wraps an existing SUAttributeDictionaryRef.
+   * @param dict      Existing SUAttributeDictionaryRef to wrap.
+   * @param attached  true if the ref is already owned by a model.
+   */
   AttributeDictionary(SUAttributeDictionaryRef dict, bool attached = true);
 
-  /** Copy constructor */
+  /** @brief Copy constructor. */
   AttributeDictionary(const AttributeDictionary& other);
 
   /**
-  * Destructor
-  * @since SketchUp 2018, API v6.0
-  */
+   * @brief Destructor — releases the dictionary if not attached.
+   * @since SketchUp 2018, API v6.0
+   */
   ~AttributeDictionary();
 
-  /** Copy assignment operator */
+  /** @brief Copy assignment operator. */
   AttributeDictionary& operator=(const AttributeDictionary& other);
 
-  /** Cast to native object **/
+  /** @brief Returns the underlying SUAttributeDictionaryRef. */
   SUAttributeDictionaryRef ref() const;
+
+  /** @brief Implicit conversion to SUAttributeDictionaryRef. */
   operator SUAttributeDictionaryRef() const;
+
+  /** @brief Returns a pointer to the underlying SUAttributeDictionaryRef. */
   operator SUAttributeDictionaryRef*();
 
   /**
-  * Returns the value of the attribute with the specified key.
-  * @param &key - the key of the attribute
-  * @param &default_value - the default value to return if the attribute with the key does not exist.
-  */
+   * @brief Returns the value of the attribute with the specified key.
+   * @param key            The key of the attribute.
+   * @param default_value  The value to return if the key does not exist.
+   * @return The TypedValue for the key, or @p default_value if not found.
+   * @throws std::logic_error if the AttributeDictionary is null.
+   */
   TypedValue get_attribute(const std::string &key, const TypedValue &default_value) const;
 
   /**
-  * Alias of AttributeDictionary::get_attribute().
-  * @return TypedValue object.  If the attribute does not exist, a null TypedValue object will be returned.
-  */
+   * @brief Returns the value of the attribute with the specified key.
+   * @param key  The key of the attribute.
+   * @return The TypedValue for the key, or a null TypedValue if not found.
+   * @throws std::logic_error if the AttributeDictionary is null.
+   */
   TypedValue get_value(const std::string &key) const;
 
   /**
-  * Sets the specified attribute's value.
-  * @param &key - the key of the attribute to set.
-  * @param &value - the value to set.
-  */
-  bool set_attribute(const std::string &key, const TypedValue &value);
+   * @brief Sets the specified attribute's value.
+   * @param key    The key of the attribute to set.
+   * @param value  The value to set.
+   * @throws std::logic_error if the AttributeDictionary is null.
+   * @throws std::logic_error if the dictionary is read-only.
+   */
+  void set_attribute(const std::string &key, const TypedValue &value);
 
   /**
-  * Returns a vector array of keys in the Attribute Dictionary.
-  */
+   * @brief Returns a vector of all keys in the AttributeDictionary.
+   * @return A vector of key strings.
+   * @throws std::logic_error if the AttributeDictionary is null.
+   */
   std::vector<std::string> get_keys() const;
 
   /**
-  * Returns the name of the AttributeDictionary.
-  */
+   * @brief Returns the name of the AttributeDictionary.
+   * @return The dictionary name as a string.
+   */
   std::string get_name() const;
-  std::string name() const; // alias for get_name()
 
   /**
-  * Returns true if this is a null object.
-  */
+   * @brief Returns the name of the AttributeDictionary.
+   * @return The dictionary name as a string.
+   */
+  std::string name() const;
+
+  /**
+   * @brief Checks whether the AttributeDictionary is invalid (null).
+   * @return true if the underlying ref is invalid.
+   */
   bool operator!() const;
 
 };

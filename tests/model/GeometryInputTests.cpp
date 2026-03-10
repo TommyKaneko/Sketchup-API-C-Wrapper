@@ -1,3 +1,27 @@
+// Sketchup C++ Wrapper for C API
+// MIT License
+//
+// Copyright (c) 2026 Tom Kaneko
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+
+// The above copyright notice and this permission notice shall be included in all
+// copies or substantial portions of the Software.
+
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+// SOFTWARE.
+//
+
 #include "gtest/gtest.h"
 
 #include "ModelTestUtility.hpp"
@@ -35,8 +59,7 @@ TEST_F(ModelLoad, GeometryInputEdge)
 
   // Fill the entities of the copy model with the geometry input
   CW::Entities dest_entities = m_model_copy->entities();
-  SUResult res = dest_entities.fill(geom_input);
-  EXPECT_EQ(res, SU_ERROR_NONE);
+  dest_entities.fill(geom_input);
 
   // Verify edges were added
   std::vector<Edge> added_edges = dest_entities.edges(false);
@@ -72,8 +95,7 @@ TEST_F(ModelLoad, GeometryInputEdgeCopy)
 
   // Fill the entities of the copy model with the geometry input
   CW::Entities dest_entities = m_model_copy->entities();
-  SUResult res = dest_entities.fill(geom_input);
-  EXPECT_EQ(res, SU_ERROR_NONE);
+  dest_entities.fill(geom_input);
 
   // Verify edges were added
   std::vector<Edge> added_edges = dest_entities.edges(false);
@@ -124,8 +146,7 @@ TEST_F(ModelLoad, GeometryInputMaterials)
 
   // Fill the entities of the copy model with the geometry input
   CW::Entities dest_entities = m_model_copy->entities();
-  SUResult res = dest_entities.fill(geom_input);
-  EXPECT_EQ(res, SU_ERROR_NONE);
+  dest_entities.fill(geom_input);
   // TODO: test edges nested in groups and components.
 }
 
@@ -160,8 +181,7 @@ TEST_F(ModelLoad, GeometryInputFace)
 
   // Fill the entities of the copy model with the geometry input
   CW::Entities dest_entities = m_model_copy->entities();
-  SUResult res = dest_entities.fill(geom_input);
-  EXPECT_EQ(res, SU_ERROR_NONE);
+  dest_entities.fill(geom_input);
   // Save the model output for visual verification
   SaveModel("GeometryInputFace");
   // Verify faces were added

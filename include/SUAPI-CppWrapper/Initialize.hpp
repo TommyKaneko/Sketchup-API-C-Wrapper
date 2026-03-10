@@ -3,7 +3,7 @@
 // Sketchup C++ Wrapper for C API
 // MIT License
 //
-// Copyright (c) 2017 Tom Kaneko
+// Copyright (c) 2026 Tom Kaneko
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -26,8 +26,6 @@
 
 #ifndef Initialize_hpp
 #define Initialize_hpp
-
-#include <stdio.h>
 
 #include <SketchUpAPI/initialize.h>
 namespace CW {
@@ -57,7 +55,16 @@ namespace CW {
   */
   void set_api_version();
   
+  /**
+  * Returns the major API version number.
+  * @return major version number.
+  */
   size_t get_api_version_major();
+
+  /**
+  * Returns the minor API version number.
+  * @return minor version number.
+  */
   size_t get_api_version_minor();
   
 }

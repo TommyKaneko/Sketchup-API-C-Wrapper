@@ -28,8 +28,6 @@
 #ifndef GuidePoint_hpp
 #define GuidePoint_hpp
 
-#include <stdio.h>
-
 #include <SketchUpAPI/model/guide_point.h>
 
 #include "SUAPI-CppWrapper/Geometry.hpp"

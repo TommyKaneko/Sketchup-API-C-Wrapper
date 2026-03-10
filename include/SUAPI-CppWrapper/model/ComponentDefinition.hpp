@@ -4,7 +4,7 @@
 // Sketchup C++ Wrapper for C API
 // MIT License
 //
-// Copyright (c) 2017 Tom Kaneko
+// Copyright (c) 2026 Tom Kaneko
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -28,8 +28,6 @@
 #ifndef ComponentDefinition_hpp
 #define ComponentDefinition_hpp
 
-#include <stdio.h>
-
 #include <SketchUpAPI/model/component_definition.h>
 
 #include "SUAPI-CppWrapper/model/DrawingElement.hpp"
@@ -46,140 +44,229 @@ class Model;
 class Opening;
 
 /**
-* This class represents a component definition.
-*/
+ * @brief Wrapper for SUComponentDefinitionRef.
+ *
+ * A component definition specifies the geometry and metadata for a reusable
+ * component. Instances of a definition share the same geometry but each have
+ * their own transformation, name, and attribute dictionaries.
+ *
+ * @see SUComponentDefinitionRef in the SketchUp C API
+ */
 class ComponentDefinition :public DrawingElement {
   private:
 
   static SUComponentDefinitionRef create_definition();
 
   /**
-  * Copies a ComponentDefinition object into a new SUComponentDefinitionRef.  If the other ComponentDefinition object has been attached to a model already, it will return the same SUComponentDefinitionRef object that it points to.
-  */
+   * @brief Copies a ComponentDefinition reference.
+   *
+   * If the other ComponentDefinition has been attached to a model, returns
+   * the same SUComponentDefinitionRef. Otherwise copies geometry into a new
+   * definition.
+   *
+   * @param other The ComponentDefinition to copy.
+   * @return The copied or shared SUComponentDefinitionRef.
+   */
   static SUComponentDefinitionRef copy_reference(const ComponentDefinition& other);
 
   public:
   /**
-  * Constructor creates empty Component Definition, ready to add to a model.
-  */
+   * @brief Constructs an empty ComponentDefinition, ready to add to a model.
+   */
   ComponentDefinition();
 
   /**
-  * Constructor creates Component Definition from existing SUComponentDefinitionRef.
-  */
+   * @brief Constructs a ComponentDefinition from an existing SUComponentDefinitionRef.
+   * @param definition The SUComponentDefinitionRef to wrap.
+   * @param attached   Whether the definition is already owned by a model.
+   */
   ComponentDefinition(SUComponentDefinitionRef definition, bool attached = true);
 
   /**
-  * Copy constructor.
-  */
+   * @brief Copy constructor.
+   * @param other The ComponentDefinition to copy.
+   */
   ComponentDefinition(const ComponentDefinition& other);
 
   /**
-  * Destructor will release the definition object if it had not been added to a model.
-  */
+   * @brief Destructor. Releases the definition if it has not been added to a model.
+   */
   ~ComponentDefinition();
 
-  /** Copy assignment operator */
+  /**
+   * @brief Copy assignment operator.
+   * @param other The ComponentDefinition to assign from.
+   * @return Reference to this object.
+   */
   ComponentDefinition& operator=(const ComponentDefinition& other);
 
-  /** Cast to native objects */
   /**
-  * Returns the SUComponentDefinitionRef that this class wraps.
-  */
+   * @brief Returns the wrapped SUComponentDefinitionRef.
+   * @return The raw SUComponentDefinitionRef.
+   */
   SUComponentDefinitionRef ref() const;
+
+  /** @brief Implicit conversion to SUComponentDefinitionRef. */
   operator SUComponentDefinitionRef() const;
+
+  /** @brief Implicit conversion to SUComponentDefinitionRef*. */
   operator SUComponentDefinitionRef*();
 
   /**
-  * Creates a new ComponentInstance from this ComponentDefinition.
-  */
+   * @brief Creates a new ComponentInstance from this definition.
+   * @return A new unattached ComponentInstance.
+   * @throws std::logic_error If the definition is null.
+   */
   ComponentInstance create_instance() const;
 
   /**
-  * Creates a new Group from this ComponentDefinition. If the definition is not a Group definition, the method will fail. TODO: requires testing
-  *
-  * This method is not possible to implement with the current API (2017)
-  */
-  //Group create_group() const;
-
-  /**
-  * Gets the entities in the definition.
-  */
+   * @brief Retrieves the entities in the definition.
+   * @return The Entities container for this definition.
+   * @throws std::logic_error If the definition is null.
+   */
   Entities entities() const;
 
   /**
-  * Gets the name of the component.
-  */
+   * @brief Retrieves the name of the component definition.
+   * @return The name as a String.
+   * @throws std::logic_error If the definition is null.
+   * @see SUComponentDefinitionGetName
+   */
   String name() const;
 
   /**
-  * Sets the name of the component.
-  */
-  bool name(String name);
+   * @brief Sets the name of the component definition.
+   *
+   * If the requested name already belongs to another definition in the model,
+   * a unique name will be generated automatically.
+   *
+   * @param name The name to set (UTF-8 encoded).
+   * @throws std::logic_error If the definition is null.
+   * @see SUComponentDefinitionSetName
+   */
+  void name(String name);
 
   /**
-  * Returns whether this definition is of a group.
-  */
+   * @brief Returns whether this definition is of a group.
+   * @return True if the definition type is SUComponentType_Group.
+   * @throws std::logic_error If the definition is null.
+   * @see SUComponentDefinitionGetType
+   */
   bool is_group() const;
 
   /**
-  * Returns the Behavior object of this component.
-  */
+   * @brief Retrieves the behavior of this component definition.
+   * @return The Behavior object.
+   * @throws std::logic_error If the definition is null.
+   * @see SUComponentDefinitionGetBehavior
+   */
   Behavior behavior() const;
+
+  /**
+   * @brief Sets the component behavior of this definition.
+   * @param behavior The Behavior to set.
+   * @throws std::logic_error If the definition is null.
+   * @see SUComponentDefinitionSetBehavior
+   */
   void behavior(const Behavior& behavior) const;
 
   /**
-  * Retrieves the total number of instances of the provided definition. This method takes into account the full hierarchy of the model. Therefore, the count is influenced by adding/removing instances of other definitions which contain an instance of this definition. Users should not use this function to determine the count to be passed to SUComponentDefinitionGetInstances specifying the number of instances to be retrieved.
-  */
+   * @brief Retrieves the total number of instances of this definition.
+   *
+   * Takes into account the full hierarchy of the model. The count is
+   * influenced by adding/removing instances of other definitions which
+   * contain an instance of this definition.
+   *
+   * @return The total instance count across the hierarchy.
+   * @since SketchUp 2017, API 5.0
+   * @see SUComponentDefinitionGetNumUsedInstances
+   */
   size_t num_used_instances() const;
 
   /**
-  * Retrieves the number of unique instances of the provided definition. The returned count represents the number of instances of this definition in the model's root plus the number instances of this definition contained in other definitions.
-  */
+   * @brief Retrieves the number of unique instances of this definition.
+   *
+   * The returned count represents the number of instances of this
+   * definition in the model's root plus the number of instances contained
+   * in other definitions.
+   *
+   * @return The unique instance count.
+   * @since SketchUp 2017, API 5.0
+   * @see SUComponentDefinitionGetNumInstances
+   */
   size_t num_instances() const;
 
   /**
-  * Returns the instances of this ComponentDefinition.
-  */
+   * @brief Retrieves the instances of this definition.
+   * @return A vector of ComponentInstance objects.
+   * @throws std::logic_error If the definition is null.
+   * @since SketchUp 2017, API 5.0
+   * @see SUComponentDefinitionGetInstances
+   */
   std::vector<ComponentInstance> instances() const;
 
   /**
-  * Retrieves the number of openings from the component definition.
-  * @since SketchUp 2016, API 4.0
-  **/
+   * @brief Retrieves the number of openings from this definition.
+   * @return The number of openings.
+   * @throws std::logic_error If the definition is null.
+   * @since SketchUp 2016, API 4.0
+   * @see SUComponentDefinitionGetNumOpenings
+   */
   size_t num_openings() const;
 
   /**
-  * Retrieves the openings from the component definition.
-  * @since SketchUp 2016, API 4.0
-  **/
+   * @brief Retrieves the openings from this definition.
+   * @return A vector of Opening objects.
+   * @throws std::logic_error If the definition is null.
+   * @since SketchUp 2016, API 4.0
+   * @see SUComponentDefinitionGetOpenings
+   */
   std::vector<Opening> openings() const;
 
-  /**
-  * Hash function for use with unordered_map
-  */
+  /** @brief Hash function for use with unordered_map. */
   friend std::hash<CW::ComponentDefinition>;
 
 };
 
 
+/**
+ * @brief Wrapper for SUComponentBehavior.
+ *
+ * Describes how a component behaves in a SketchUp model, such as how it
+ * glues to surfaces, whether it always faces the camera, etc.
+ *
+ * @see SUComponentBehavior
+ */
 class Behavior {
 private:
   SUComponentBehavior m_behavior;
 
 public:
+  /**
+   * @brief Constructs a Behavior from an SUComponentBehavior struct.
+   * @param behavior The raw SUComponentBehavior.
+   */
   Behavior(SUComponentBehavior behavior);
 
+  /** @brief How the component should snap to the surface where it's placed. */
   SUComponentBehavior::SUSnapToBehavior &snap = m_behavior.component_snap;
 
+  /**
+   * @brief Returns the wrapped SUComponentBehavior struct.
+   * @return The raw SUComponentBehavior.
+   */
   SUComponentBehavior ref() const;
 
+  /** @brief Whether the component creates an opening when placed on a surface. */
   bool &cuts_opening = m_behavior.component_cuts_opening;
 
+  /** @brief Whether the component visually revolves to face the camera. */
   bool &always_face_camera = m_behavior.component_always_face_camera;
 
+  /** @brief Whether the component always casts a shadow as if facing the sun. */
   bool &shadows_face_sun = m_behavior.component_shadows_face_sun;
 
+  /** @brief Bitmask indicating which scale tool handles are hidden. */
   size_t &no_scale_mask = m_behavior.component_no_scale_mask;
 };
 

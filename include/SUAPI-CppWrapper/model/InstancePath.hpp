@@ -4,7 +4,7 @@
 // Sketchup C++ Wrapper for C API
 // MIT License
 //
-// Copyright (c) 2017 Tom Kaneko
+// Copyright (c) 2026 Tom Kaneko
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -28,8 +28,6 @@
 #ifndef InstancePath_hpp
 #define InstancePath_hpp
 
-#include <stdio.h>
-
 #include <SketchUpAPI/model/instancepath.h>
 
 namespace CW {
@@ -42,9 +40,17 @@ class DrawingElement;
 class String;
 
 
-/*
-* InstancePath wrapper
-*/
+/**
+ * @brief Wrapper for SUInstancePathRef, representing a path through the
+ *        component hierarchy to a specific entity instance.
+ *
+ * An InstancePath describes the nesting of component instances
+ * from the model root down to a specific entity (the "leaf").
+ * It is used to resolve transformations and persistent IDs
+ * for nested geometry.
+ *
+ * @see https://extensions.sketchup.com/developer_center/sketchup_c_api/
+ */
 class InstancePath {
   private:
   SUInstancePathRef m_instance_path;
@@ -73,7 +79,7 @@ class InstancePath {
   /** Copy assignment operator */
   InstancePath& operator=(const InstancePath& other);
   
-  /*
+  /**
   * The class object can be converted to a SUInstancePathRef without loss of data.
   */
   SUInstancePathRef ref() const;

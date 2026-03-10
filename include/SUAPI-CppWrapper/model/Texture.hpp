@@ -4,7 +4,7 @@
 // Sketchup C++ Wrapper for C API
 // MIT License
 //
-// Copyright (c) 2017 Tom Kaneko
+// Copyright (c) 2026 Tom Kaneko
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -28,8 +28,6 @@
 #ifndef Texture_hpp
 #define Texture_hpp
 
-#include <stdio.h>
-
 #include <SketchUpAPI/model/texture.h>
 
 #include "SUAPI-CppWrapper/model/Entity.hpp"
@@ -40,159 +38,228 @@ namespace CW {
 class ImageRep;
 class String;
 
-/*
-* Texture wrapper
-*/
+/**
+ * @brief Wrapper for SUTextureRef.
+ *
+ * Represents a texture image that can be applied to a material. Textures
+ * can be created from file paths, pixel data, or ImageRep objects.
+ *
+ * @see SUTextureRef in the SketchUp C API
+ */
 class Texture :public Entity {
 
   friend class Material;
 
   private:
   /**
-  * Create texture from ImageRep
-  */
+   * @brief Creates a texture from an ImageRep.
+   * @param image_rep The source ImageRep.
+   * @return The created SUTextureRef.
+   */
   static SUTextureRef create_texture(ImageRep& image_rep);
 
   /**
-  * Create texture from file path
-  */
+   * @brief Creates a texture from a file path.
+   * @param file_path The file path of the source image (UTF-8 encoded).
+   * @param s_scale   The scale factor for the s coordinate.
+   * @param t_scale   The scale factor for the t coordinate.
+   * @return The created SUTextureRef.
+   */
   static SUTextureRef create_texture(const std::string file_path, double s_scale = 1.0, double t_scale = 1.0);
 
+  /**
+   * @brief Copies the underlying SUTextureRef.
+   * @param other The Texture to copy.
+   * @return The copied SUTextureRef.
+   */
   static SUTextureRef copy_reference(const Texture& other);
+
   public:
-  /** Constructor for null Texture value */
+  /**
+   * @brief Constructs a null Texture.
+   */
   Texture();
 
-  /** Construct Texture from existing texture object */
+  /**
+   * @brief Constructs a Texture from an existing SUTextureRef.
+   * @param texture  The native texture reference.
+   * @param attached Whether the texture is already owned by a material.
+   */
   Texture(SUTextureRef texture, bool attached = true);
 
   /**
-  * Creates a new texture object from an image file specified by a path.
-  * @param file_path - The file path of the source image file. Assumed to be UTF-8 encoded
-  * @param s_scale - The scale factor for s coordinate value.
-  * @param t_scale - The scale factor for t coordinate value.
-  */
+   * @brief Creates a new texture from an image file.
+   * @param file_path The file path of the source image (UTF-8 encoded).
+   * @param s_scale   The scale factor for the s coordinate.
+   * @param t_scale   The scale factor for the t coordinate.
+   */
   Texture(const std::string file_path, double s_scale = 1.0, double t_scale = 1.0);
 
   /**
-  * Creates a new texture object with the specified image data.
-  * This function is due to be depreciated - use Texture(ImageRep& image) instead from SU 2017, API 5.0 onwards.
-  * @param width - the width in pixels of the texture data
-  * @param height - the height in pixels of the texture data
-  * @param bits_per_pixel - the number of bits per pixel of the image data
-  * @param pixel_data[] - the source of the pixel data
-  */
+   * @brief Creates a new texture from raw pixel data.
+   *
+   * @deprecated Use Texture(ImageRep&) instead from SU 2017, API 5.0 onwards.
+   *
+   * @param width          The width in pixels.
+   * @param height         The height in pixels.
+   * @param bits_per_pixel The number of bits per pixel.
+   * @param pixel_data     The source pixel data.
+   */
   Texture (size_t width, size_t height, size_t bits_per_pixel, const SUByte pixel_data[]);
 
   /**
-  * Creates a new texture object from an image representation object.
-  * @since Sketchup 2017, API 5.0
-  */
+   * @brief Creates a new texture from an ImageRep.
+   * @param image The source ImageRep.
+   * @since SketchUp 2017, API 5.0
+   */
   Texture(ImageRep& image);
 
-  /** Copy constructor */
+  /**
+   * @brief Copy constructor.
+   * @param other The Texture to copy.
+   */
   Texture(const Texture& other);
 
-  /** Destructor */
+  /**
+   * @brief Destructor. Releases the texture if not attached.
+   */
   ~Texture();
 
-  /** Copy assignment operator */
+  /**
+   * @brief Copy assignment operator.
+   * @param other The Texture to assign from.
+   * @return Reference to this object.
+   */
   Texture& operator=(const Texture& other);
 
-  /*
-  * The class object can be converted to a SUTextureRef without loss of data.
-  */
+  /**
+   * @brief Returns the wrapped SUTextureRef.
+   * @return The raw SUTextureRef.
+   */
   SUTextureRef ref() const;
+
+  /** @brief Implicit conversion to SUTextureRef. */
   operator SUTextureRef() const;
+
+  /** @brief Implicit conversion to SUTextureRef*. */
   operator SUTextureRef*();
 
   /**
-  * Returns a copy of the texture object - note that a Texture object can only be assigned to one Material object.  So this method is useful for copying Textures to new Material objects.
-  * @since SU 2017, API 5.0
-  */
+   * @brief Returns a copy of this texture, not attached to any material.
+   *
+   * A Texture can only be assigned to one Material, so this method is
+   * useful for copying textures to new materials.
+   *
+   * @return A new unattached Texture copy.
+   * @since SketchUp 2017, API 5.0
+   */
   Texture copy() const;
 
   /**
-  * Returns whether the alpha channel is used by the texture image.
-  */
+   * @brief Returns whether the alpha channel is used by the texture image.
+   * @return True if the alpha channel is used.
+   * @see SUTextureGetUseAlphaChannel
+   */
   bool alpha_used() const;
 
   /**
-  * Returns the ImageRep object of the texture.
-  * @since SU 2017, API 5.0
-  */
+   * @brief Retrieves the ImageRep of this texture.
+   * @return The ImageRep object.
+   * @since SketchUp 2017, API 5.0
+   * @see SUTextureGetImageRep
+   */
   ImageRep image_rep() const;
 
   /**
-  * Returns the file name of the texture
-  */
+   * @brief Retrieves the file name of the texture.
+   * @return The file name as a String.
+   * @see SUTextureGetFileName
+   */
   String file_name() const;
 
   /**
-  * Sets theimage file name associated with the texture object. If the input texture was constructed using SUTextureCreateFromFile the name will already be set, so calling this function will override the texture's file name string.
-  */
+   * @brief Sets the image file name associated with the texture.
+   *
+   * If the texture was created from a file, this overrides the stored name.
+   *
+   * @param string The file name to set.
+   * @see SUTextureSetFileName
+   */
   void file_name(const String& string) const;
 
   /**
-  * Returns the width of the texture in pixels.
-  */
+   * @brief Returns the width of the texture in pixels.
+   * @return The pixel width.
+   * @see SUTextureGetDimensions
+   */
   size_t width() const;
 
   /**
-  * Returns the height of the texture in pixels.
-  */
+   * @brief Returns the height of the texture in pixels.
+   * @return The pixel height.
+   * @see SUTextureGetDimensions
+   */
   size_t height() const;
 
   /**
-  * Returns the s_scale of the texture. The s_scale and t_scale values are useful when a face doesn't have a material applied directly, but instead inherit from a parent group or component instance. Then you want use these values to multiply the result of SUMeshHelperGetFrontSTQCoords or SUUVHelperGetFrontUVQ. If the material is applied directly then this would not be needed.
-  */
+   * @brief Returns the s-axis scale factor of the texture.
+   *
+   * The s_scale and t_scale values are useful when a face inherits a
+   * material from a parent group or component instance, to multiply
+   * the result of SUMeshHelperGetFrontSTQCoords or SUUVHelperGetFrontUVQ.
+   *
+   * @return The s-axis scale factor.
+   * @see SUTextureGetDimensions
+   */
   double s_scale() const;
 
   /**
-  * Returns the t_scale of the texture. The s_scale and t_scale values are useful when a face doesn't have a material applied directly, but instead inherit from a parent group or component instance. Then you want use these values to multiply the result of SUMeshHelperGetFrontSTQCoords or SUUVHelperGetFrontUVQ. If the material is applied directly then this would not be needed.
-  */
+   * @brief Returns the t-axis scale factor of the texture.
+   * @return The t-axis scale factor.
+   * @see SUTextureGetDimensions
+   */
   double t_scale() const;
 
   #if (SketchUpAPI_VERSION_MAJOR >= 2025)
   /**
-  * Sets the scale of the texture.
-  * @since SU 2025, API 13.0
-  */
+   * @brief Sets the dimensions (scale) of the texture.
+   * @param s_scale The s-axis scale factor.
+   * @param t_scale The t-axis scale factor.
+   * @since SketchUp 2025, API 13.0
+   * @see SUTextureSetDimensions
+   */
   void set_dimensions(double s_scale, double t_scale);
 
   /**
-  * Sets the s_scale of the texture.
-  * @since SU 2025, API 13.0
-  */
+   * @brief Sets the s-axis scale factor.
+   * @param s_scale The s-axis scale factor.
+   * @since SketchUp 2025, API 13.0
+   */
   void s_scale(double s_scale);
 
   /**
-  * Sets the t_scale of the texture.
-  * @since SU 2025, API 13.0
-  */
+   * @brief Sets the t-axis scale factor.
+   * @param t_scale The t-axis scale factor.
+   * @since SketchUp 2025, API 13.0
+   */
   void t_scale(double t_scale);
 
   #endif
   /**
-  * Writes a texture object as an image to disk, with colorization applied if the material has been colorized.
-  * @return SUResult object with the following possible values:
-  *      - SU_ERROR_NONE on success
-  *      - SU_ERROR_INVALID_INPUT if texture is not a valid object
-  *      - SU_ERROR_NULL_POINTER_INPUT if file_path is NULL
-  *      - SU_ERROR_SERIALIZATION if image file could not be written to disk
-  *
-  */
+   * @brief Writes the texture as an image to disk, with colorization applied.
+   * @param file_path The destination file path.
+   * @return SU_ERROR_NONE on success, or an error code.
+   * @see SUTextureWriteToFile
+   */
   SUResult save(const std::string& file_path) const;
 
   /**
-  * Writes a texture object as an image to disk, without any colorization that may have been applied to the texture.
-  * @return SUResult object with the following possible values:
-  *      - SU_ERROR_NONE on success
-  *      - SU_ERROR_INVALID_INPUT if texture is not a valid object
-  *      - SU_ERROR_NULL_POINTER_INPUT if file_path is NULL
-  *      - SU_ERROR_SERIALIZATION if image file could not be written to disk
-  * @since SketchUp 2019.2, API 7.1
-  */
+   * @brief Writes the texture to disk without any colorization.
+   * @param file_path The destination file path.
+   * @return SU_ERROR_NONE on success, or an error code.
+   * @since SketchUp 2019.2, API 7.1
+   * @see SUTextureWriteOriginalToFile
+   */
   SUResult save_original(const std::string& file_path) const;
 
 };

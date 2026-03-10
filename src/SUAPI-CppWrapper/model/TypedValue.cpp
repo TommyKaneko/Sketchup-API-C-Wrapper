@@ -4,7 +4,7 @@
 // Sketchup C++ Wrapper for C API
 // MIT License
 //
-// Copyright (c) 2017 Tom Kaneko
+// Copyright (c) 2026 Tom Kaneko
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -89,8 +89,7 @@ TypedValue& TypedValue::operator= (const TypedValue& other) {
       int32_value(other.int32_value());
       break;
     case SUTypedValueType_Short:
-      // TODO
-      throw "this part hasn't been made yet.";
+      int16_value(other.int16_value());
       break;
     case SUTypedValueType_String:
       string_value(other.string_value());
@@ -610,14 +609,14 @@ TypedValue::TypedValue(std::vector<TypedValue> &typed_val_array):
 
 bool operator== (const TypedValue &val1, const TypedValue &val2) {
   // Check validity
-  if (SUIsInvalid(val1.m_typed_value) || SUIsInvalid(val1.m_typed_value)) {
-    if (SUIsInvalid(val1.m_typed_value) && SUIsInvalid(val1.m_typed_value)) {
+  if (SUIsInvalid(val1.m_typed_value) || SUIsInvalid(val2.m_typed_value)) {
+    if (SUIsInvalid(val1.m_typed_value) && SUIsInvalid(val2.m_typed_value)) {
       return true;
     }
     return false;
   }
   // Check types
-  if (val1.get_type() != val1.get_type()) {
+  if (val1.get_type() != val2.get_type()) {
     return false;
   }
   switch (val1.get_type()) {
@@ -668,8 +667,10 @@ bool operator== (const TypedValue &val1, const TypedValue &val2) {
       return false;
       break;
     case SUTypedValueType_Short:
-      // TODO
-      throw "this part hasn't been made yet.";
+      if (val1.int16_value() == val2.int16_value()) {
+        return true;
+      }
+      return false;
       break;
     case SUTypedValueType_String:
       if (val1.string_value() == val2.string_value()) {

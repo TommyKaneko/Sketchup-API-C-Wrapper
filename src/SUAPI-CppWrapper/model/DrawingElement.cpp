@@ -4,7 +4,7 @@
 // Sketchup C++ Wrapper for C API
 // MIT License
 //
-// Copyright (c) 2017 Tom Kaneko
+// Copyright (c) 2026 Tom Kaneko
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -35,6 +35,8 @@
 
 #include "SUAPI-CppWrapper/model/Layer.hpp"
 #include "SUAPI-CppWrapper/model/Material.hpp"
+#include "SUAPI-CppWrapper/model/Model.hpp"
+#include "SUAPI-CppWrapper/String.hpp"
 #include "SUAPI-CppWrapper/Geometry.hpp"
 
 
@@ -93,19 +95,54 @@ BoundingBox3D DrawingElement::bounds() {
 
 
 bool DrawingElement::copy_properties_from(const DrawingElement& element) {
-  bool success = this->casts_shadows(element.casts_shadows());
-  assert(success);
-  success = this->hidden(element.hidden());
-  assert(success);
-  success = this->receive_shadows(element.receive_shadows());
-  assert(success);
-  // We copy the Layer as is, even if the layer is attached to a different model.
-  // TODO: layers can only be assigned to objects that are attached to a model.  Calling the line below in most cases will fail.  This is a fundamental problem with the API.  @GeomInput may produce better results.
-  success = this->layer(element.layer()); // this fails silently
-  //assert(success);
-  success = this->material(element.material());
-  assert(success);
-  return success;
+  this->casts_shadows(element.casts_shadows());
+  this->hidden(element.hidden());
+  this->receives_shadows(element.receives_shadows());
+  // assigning layer and material properties may fail if the element is not attached to the model, so we only attempt it if both elements are attached
+  if (!element.attached() || !this->attached()) {
+    return true; // No-op for detached elements
+  }
+  // Only a layer or material that is attached to the same model can be assigned to the element
+  if (element.model() != this->model()) {
+    // Look for a layer with the same name
+    std::vector<Layer> layers = this->model().layers();
+    Layer matching_layer;
+    for (const Layer& layer : layers) {
+      if (layer.name() == element.layer().name()) {
+        matching_layer = layer;
+        break;
+      }
+    }
+    if (matching_layer.is_valid()) {
+      this->layer(matching_layer);
+    } else {
+      // No matching layer found, so we should create one in the model
+      Layer new_layer = element.layer().copy();
+      std::vector<Layer> new_layers = {new_layer};
+      this->model().add_layers(new_layers);
+      this->layer(new_layer);
+    }
+
+    // Look for a material with the same name
+    std::vector<Material> materials = this->model().materials();
+    Material matching_material;
+    for (const Material& material : materials) {
+      if (material.name() == element.material().name()) {
+        matching_material = material;
+        break;
+      }
+    }
+    if (matching_material.is_valid()) {
+      this->material(matching_material);
+    } else {
+      // No matching material found, so we should create one in the model
+      Material new_material = element.material().copy();
+      std::vector<Material> new_materials = {new_material};
+      this->model().add_materials(new_materials);
+      this->material(new_material);
+    }
+  }
+  return true;
 }
 
 
@@ -120,15 +157,12 @@ bool DrawingElement::casts_shadows() const {
 }
 
 
-bool DrawingElement::casts_shadows(bool casts_shadows) {
+void DrawingElement::casts_shadows(bool casts_shadows) {
   if (SUIsInvalid(m_entity)) {
     throw std::logic_error("CW::DrawingElement::casts_shadows(): DrawingElement is null");
   }
   SUResult res = SUDrawingElementSetCastsShadows(this->ref(), casts_shadows);
-  if (res == SU_ERROR_NONE) {
-    return true;
-  }
-  return false;
+  assert(res == SU_ERROR_NONE); _unused(res);
 }
 
 
@@ -142,15 +176,12 @@ bool DrawingElement::hidden() const {
 }
 
 
-bool DrawingElement::hidden(bool hidden) {
+void DrawingElement::hidden(bool hidden) {
   if (SUIsInvalid(m_entity)) {
     throw std::logic_error("CW::DrawingElement::hidden(): DrawingElement is null");
   }
   SUResult res = SUDrawingElementSetHidden(this->ref(), hidden);
-  if (res == SU_ERROR_NONE) {
-    return true;
-  }
-  return false;
+  assert(res == SU_ERROR_NONE); _unused(res);
 }
 
 
@@ -168,19 +199,18 @@ Layer DrawingElement::layer() const {
 }
 
 
-bool DrawingElement::layer(const Layer& layer){
+void DrawingElement::layer(const Layer& layer){
   if (SUIsInvalid(m_entity)) {
     throw std::logic_error("CW::DrawingElement::layer(): DrawingElement is null");
   }
-  if (!layer.attached() && layer.is_valid()) {
-    throw std::logic_error("CW::DrawingElement::layer(): Only a layer that is attached to a model can be assigned to a DrawingElement");
+  if (!layer.is_valid()) {
+    return; // No-op for invalid/empty layer
+  }
+  if (!layer.attached()) {
+    throw std::logic_error("CW::DrawingElement::layer(): only a layer that is attached to a model can be assigned to a DrawingElement");
   }
   SUResult res = SUDrawingElementSetLayer(this->ref(), layer);
-  if (res == SU_ERROR_NONE) {
-    // layer.attached(true); // layers do not get attached by assigning them to a drawing element - they are attached by adding to a model.
-    return true;
-  }
-  return false;
+  assert(res == SU_ERROR_NONE); _unused(res);
 }
 
 
@@ -198,22 +228,29 @@ Material DrawingElement::material() const {
 }
 
 
-bool DrawingElement::material(const Material& material) {
+void DrawingElement::material(const Material& material) {
   if (SUIsInvalid(m_entity)) {
     throw std::logic_error("CW::DrawingElement::material(): DrawingElement is null");
   }
-  if (material.is_valid() && !material.attached()) {
-    throw std::logic_error("CW::DrawingElement::material(): Only a material that is attached to a model can be assigned to a DrawingElement");
+  if (!material.is_valid()) {
+    return; // No-op for invalid/empty material
+  }
+  if (!material.attached()) {
+    throw std::logic_error("CW::DrawingElement::material(): only a material that is attached to a model can be assigned to a DrawingElement");
   }
   SUResult res = SUDrawingElementSetMaterial(this->ref(), material);
-  if (res == SU_ERROR_NONE) {
-    return true;
+  switch (res) {
+    case SU_ERROR_INVALID_ARGUMENT: {
+      throw std::invalid_argument("CW::DrawingElement::material(): the material is owned by a layer or image");
+    }
+    default: {
+      assert(res == SU_ERROR_NONE); _unused(res);
+    }
   }
-  return false;
 }
 
 
-bool DrawingElement::receive_shadows() const {
+bool DrawingElement::receives_shadows() const {
   if (SUIsInvalid(m_entity)) {
     throw std::logic_error("CW::DrawingElement::receive_shadows(): DrawingElement is null");
   }
@@ -224,15 +261,12 @@ bool DrawingElement::receive_shadows() const {
 }
 
 
-bool DrawingElement::receive_shadows(bool receives_shadows_flag) {
+void DrawingElement::receives_shadows(bool receives_shadows_flag) {
   if (SUIsInvalid(m_entity)) {
     throw std::logic_error("CW::DrawingElement::receive_shadows(): DrawingElement is null");
   }
   SUResult res = SUDrawingElementSetReceivesShadows(this->ref(), receives_shadows_flag);
-  if (res == SU_ERROR_NONE) {
-    return true;
-  }
-  return false;
+  assert(res == SU_ERROR_NONE); _unused(res);
 }
 
 } /* namespace CW */

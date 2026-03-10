@@ -4,7 +4,7 @@
 // Sketchup C++ Wrapper for C API
 // MIT License
 //
-// Copyright (c) 2017 Tom Kaneko
+// Copyright (c) 2026 Tom Kaneko
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -32,7 +32,6 @@
 #error "SketchUpAPI_VERSION_MAJOR must be defined to include SUAPI-CppWrapper headers"
 #endif
 
-#include <stdio.h>
 #include <vector>
 
 #include <SketchUpAPI/model/entities.h>
@@ -58,9 +57,14 @@ class GuideLine;
 class GuidePoint;
 class SectionPlane;
 
-/*
-* Entities wrapper
-*/
+/**
+ * @brief C++ wrapper for SUEntitiesRef.
+ *
+ * An Entities object holds the geometric entities (faces, edges,
+ * component instances, groups, etc.) that belong to a model or
+ * component definition.
+ * @see SUEntitiesRef
+ */
 class Entities {
   private:
   SUEntitiesRef m_entities;
@@ -91,9 +95,11 @@ class Entities {
   Entities();
 
   /**
-  * Fills an Entities object with geometry in GeometryInput object.
-  */
-  SUResult fill(GeometryInput &geom_input);
+   * @brief Fills this Entities object with geometry from a GeometryInput object.
+   * @param geom_input  The GeometryInput to merge into this Entities.
+   * @throws std::logic_error if the Entities is null.
+   */
+  void fill(GeometryInput &geom_input);
 
   /**
    * Gets the Faces in the Entities object.

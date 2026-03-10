@@ -4,7 +4,7 @@
 // Sketchup C++ Wrapper for C API
 // MIT License
 //
-// Copyright (c) 2017 Tom Kaneko
+// Copyright (c) 2026 Tom Kaneko
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -28,89 +28,115 @@
 #ifndef Axes_hpp
 #define Axes_hpp
 
-#include <stdio.h>
 #include <vector>
 #include <string>
 
 #include <SketchUpAPI/model/axes.h>
 
-#include "SUAPI-CppWrapper/model/DrawingElement.hpp"
+#include "SUAPI-CppWrapper/model/Entity.hpp"
 #include "SUAPI-CppWrapper/Geometry.hpp"
 #include "SUAPI-CppWrapper/Transformation.hpp"
 
 namespace CW {
 
-/*
-* Entity object wrapper
-*/
-//class Axes :public DrawingElement { // The C API allows SUAxesRef to be converted to SUDrawingElementRef, but this seems wrong and contrary to the Ruby API.  Old behaviour partially worked.
+/**
+ * @brief C++ wrapper for SUAxesRef.
+ *
+ * Represents a set of coordinate axes defined by an origin and three
+ * orthogonal unit vectors (x, y, z).
+ * @see SUAxesRef
+ */
 class Axes :public Entity {
   private:
-  /** Returns an empty SUAxesRef object using SUAxesCreate(). **/
+  /** @brief Creates a new default SUAxesRef via SUAxesCreate(). */
   static SUAxesRef create_axes();
 
-  /** Returns a custom SUAxesRef object using SUAxesCreateCustom(). **/
+  /**
+   * @brief Creates a custom SUAxesRef from an origin and three orthogonal axes.
+   * @param origin  The origin point.
+   * @param xaxis   The x-axis vector.
+   * @param yaxis   The y-axis vector.
+   * @param zaxis   The z-axis vector.
+   * @return A valid SUAxesRef, or SU_INVALID if the vectors are not orthogonal.
+   */
   static SUAxesRef create_custom_axes(const SUPoint3D& origin, const SUVector3D& xaxis, const SUVector3D& yaxis, const SUVector3D& zaxis);
 
-  /** Returns a copied SUAxesRef object from the given Axes object **/
+  /** @brief Returns a copied SUAxesRef from the given Axes object. */
   static SUAxesRef copy_reference(const Axes& other);
 
   public:
-  /**
-  * Constructor for null object.
-  */
+  /** @brief Constructs a null Axes object. */
   Axes();
 
   /**
-  * Standard constructor from existing SUAxesRef object.
-  * @param axes - existing SUAxesRef object to wrap.
-  * @param attached - true if the SUAxesRef has been attached to the model.  Required for object release purposes.
-  */
+   * @brief Wraps an existing SUAxesRef.
+   * @param axes      Existing SUAxesRef to wrap.
+   * @param attached  true if the ref is already owned by a model.
+   */
   Axes(SUAxesRef axes, bool attached = true);
 
   /**
-  * Constructs Axes object from the given origin, x, y and z axes.  The vectors passed to the constructor must be orthogonal, otherwise, a null object will be created.
-  * @param origin - origin of the Axes.
-  * @param x_axes - vector representing the x axis.
-  * @param y_axes - vector representing the y axis.
-  * @param z_axes - vector representing the z axis.
-  */
+   * @brief Constructs an Axes object from the given origin and axis vectors.
+   *
+   * The vectors must be orthogonal; otherwise a null object is created.
+   * @param origin  The origin of the axes.
+   * @param x_axis  Vector representing the x axis.
+   * @param y_axis  Vector representing the y axis.
+   * @param z_axis  Vector representing the z axis.
+   */
   Axes(Point3D origin, Vector3D x_axis, Vector3D y_axis, Vector3D z_axis);
 
-  /** Copy constructor */
+  /** @brief Copy constructor. */
   Axes(const Axes& other);
 
-  /** Destructor */
+  /** @brief Destructor — releases the axes if not attached. */
   ~Axes();
 
-  /**
-  * Returns the SU native reference
-  */
+  /** @brief Returns the underlying SUAxesRef. */
   SUAxesRef ref() const;
 
-  /** Copy assignment operator override */
+  /** @brief Copy assignment operator. */
   Axes& operator=(const Axes& other);
 
   /**
-  * Operator overload signifies if this a valid object.
-  */
+   * @brief Checks whether the Axes is invalid (null).
+   * @return true if the underlying ref is invalid.
+   */
   bool operator!() const;
 
   /**
-  * Return the vectors representing the axes.
-  */
+   * @brief Retrieves the x-axis vector.
+   * @return The x-axis as a Vector3D.
+   * @throws std::logic_error if the Axes is null.
+   */
   Vector3D x_axis() const;
+
+  /**
+   * @brief Retrieves the y-axis vector.
+   * @return The y-axis as a Vector3D.
+   * @throws std::logic_error if the Axes is null.
+   */
   Vector3D y_axis() const;
+
+  /**
+   * @brief Retrieves the z-axis vector.
+   * @return The z-axis as a Vector3D.
+   * @throws std::logic_error if the Axes is null.
+   */
   Vector3D z_axis() const;
 
   /**
-  * Return the origin of the axes as a Point3D object.
-  */
+   * @brief Retrieves the origin of the axes.
+   * @return The origin as a Point3D.
+   * @throws std::logic_error if the Axes is null.
+   */
   Point3D origin() const;
 
   /**
-  * Return the transformation object of the axes.
-  */
+   * @brief Retrieves the transformation of the axes.
+   * @return A Transformation representing the axes' coordinate system.
+   * @throws std::logic_error if the Axes is null.
+   */
   Transformation transformation() const;
 };
 

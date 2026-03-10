@@ -4,7 +4,7 @@
 // Sketchup C++ Wrapper for C API
 // MIT License
 //
-// Copyright (c) 2017 Tom Kaneko
+// Copyright (c) 2026 Tom Kaneko
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -28,20 +28,27 @@
 #ifndef String_hpp
 #define String_hpp
 
-#include <stdio.h>
 #include <string>
 
 #include <SketchUpAPI/unicodestring.h>
 namespace CW {
 
-/*
-* StringRef wrapper
-*/
+/**
+ * @brief Encoding for String construction.
+ */
 enum class StringEncoding {
   UTF8,
   UTF16
 };
 
+/**
+ * @brief Wrapper for SUStringRef, representing a SketchUp API string.
+ *
+ * Provides constructors from std::string, C strings, and unichar
+ * arrays, with conversion operators and UTF-8/UTF-16 encoding support.
+ *
+ * @see https://extensions.sketchup.com/developer_center/sketchup_c_api/
+ */
 class String {
   private:
   SUStringRef m_string;
@@ -81,7 +88,7 @@ class String {
   */
   friend bool operator==(const String &lhs, const String &rhs);
   
-  /*
+  /**
   * Convert to std::string
   */
   std::string std_string() const;
@@ -89,12 +96,12 @@ class String {
   
 //  char& operator [](size_t i);
 
-  /*
+  /**
   * Return the SUStringRef object.
   */
   SUStringRef ref() const;
   
-  /*
+  /**
   * Return the length of the string, in bytes. Including the null terminator at the end.
   */
   size_t size() const;

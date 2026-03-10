@@ -28,7 +28,6 @@
 #ifndef Scene_hpp
 #define Scene_hpp
 
-#include <stdio.h>
 #include <vector>
 
 #include <SketchUpAPI/model/scene.h>

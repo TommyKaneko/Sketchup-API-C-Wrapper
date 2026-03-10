@@ -4,7 +4,7 @@
 // Sketchup C++ Wrapper for C API
 // MIT License
 //
-// Copyright (c) 2017 Tom Kaneko
+// Copyright (c) 2026 Tom Kaneko
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -162,13 +162,23 @@ AttributeDictionary Entity::attribute_dictionary(const std::string& name) const 
 }
 
 
-bool Entity::add_dictionary(AttributeDictionary& dict) {
-  SUResult res = SUEntityAddAttributeDictionary(m_entity, dict.ref());
-  if (res == SU_ERROR_NONE) {
-    dict.attached(true);
-    return true;
+void Entity::add_dictionary(AttributeDictionary& dict) {
+  if (!(*this)) {
+    throw std::logic_error("CW::Entity::add_dictionary(): Entity is null");
   }
-  return false;
+  SUResult res = SUEntityAddAttributeDictionary(m_entity, dict.ref());
+  switch (res) {
+    case SU_ERROR_DUPLICATE: {
+      throw std::logic_error("CW::Entity::add_dictionary(): an attribute dictionary with the same name already exists");
+    }
+    case SU_ERROR_INVALID_ARGUMENT: {
+      throw std::invalid_argument("CW::Entity::add_dictionary(): dictionary name is empty or reserved for internal use");
+    }
+    default: {
+      assert(res == SU_ERROR_NONE); _unused(res);
+    }
+  }
+  dict.attached(true);
 }
 
 
@@ -224,20 +234,20 @@ parent()
 */
 
 
-bool Entity::set_attribute(const std::string& dict_name, const std::string& key, const TypedValue& value) {
+void Entity::set_attribute(const std::string& dict_name, const std::string& key, const TypedValue& value) {
   if (!(*this)) {
     throw std::logic_error("CW::Entity::set_attribute(): Entity is null");
   }
   AttributeDictionary dict = attribute_dictionary(dict_name);
-  return set_attribute(dict, key, value);
+  set_attribute(dict, key, value);
 }
 
 
-bool Entity::set_attribute(AttributeDictionary& dict, const std::string& key, const TypedValue& value) {
+void Entity::set_attribute(AttributeDictionary& dict, const std::string& key, const TypedValue& value) {
   if (!(*this)) {
     throw std::logic_error("CW::Entity::set_attribute(): Entity is null");
   }
-  return dict.set_attribute(key, value);
+  dict.set_attribute(key, value);
 }
 
 
@@ -250,10 +260,13 @@ enum SURefType Entity::entity_type() const{
 
 Model Entity::model() const {
   if (!(*this)) {
-    throw std::logic_error("CW::Entity::parent(): Entity is null");
+    throw std::logic_error("CW::Entity::model(): Entity is null");
   }
   SUModelRef model = SU_INVALID;
   SUResult res = SUEntityGetModel(m_entity, &model);
+  if (res == SU_ERROR_NO_DATA) {
+    throw std::logic_error("CW::Entity::model(): entity is not associated with a model");
+  }
   assert(res == SU_ERROR_NONE); _unused(res);
   return Model(model, false);
 }
@@ -264,6 +277,9 @@ Entities Entity::parent() const {
   }
   SUEntitiesRef entities = SU_INVALID;
   SUResult res = SUEntityGetParentEntities(m_entity, &entities);
+  if (res == SU_ERROR_NO_DATA) {
+    throw std::logic_error("CW::Entity::parent(): entity is not contained by an entities object");
+  }
   assert(res == SU_ERROR_NONE); _unused(res);
   #if SketchUpAPI_VERSION_MAJOR < 2021
   return Entities(entities, this->model().ref());
@@ -274,22 +290,15 @@ Entities Entity::parent() const {
 
 
 int64_t Entity::persistent_id() const {
+  if (!(*this)) {
+    throw std::logic_error("CW::Entity::persistent_id(): Entity is null");
+  }
   int64_t pid;
   SUResult res = SUEntityGetPersistentID(m_entity, &pid);
   assert(res == SU_ERROR_NONE); _unused(res);
   return pid;
 }
 
-
-/*
-bool Entity::operator==(const Entity& entity) const {
-  if (m_entity.ptr == entity.m_entity.ptr) {
-    return true;
-  }
-  return false;
-  //return entityID() == entity.entityID();
-}
-*/
 
 bool operator==(const Entity& lhs, const Entity& rhs) {
   if (!lhs || !rhs) {

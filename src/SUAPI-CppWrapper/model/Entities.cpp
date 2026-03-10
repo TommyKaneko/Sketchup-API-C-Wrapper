@@ -4,7 +4,7 @@
 // Sketchup C++ Wrapper for C API
 // MIT License
 //
-// Copyright (c) 2017 Tom Kaneko
+// Copyright (c) 2026 Tom Kaneko
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -164,7 +164,7 @@ std::vector<Group> Entities::groups() const {
 
 BoundingBox3D Entities::bounding_box() const {
   if (!SUIsValid(m_entities)) {
-    throw std::logic_error("CW::Entities::groups(): Entities is null");
+    throw std::logic_error("CW::Entities::bounding_box(): Entities is null");
   }
   SUBoundingBox3D box;
   SUResult res = SUEntitiesGetBoundingBox(m_entities, &box);
@@ -222,19 +222,18 @@ void Entities::add(const Entities& other) {
 }
 
 
-
-SUResult Entities::fill(GeometryInput &geom_input) {
+void Entities::fill(GeometryInput &geom_input) {
   if (!SUIsValid(m_entities)) {
     throw std::logic_error("CW::Entities::fill(): Entities is null");
   }
   // Check geom_input is not empty.
   if (geom_input.empty()) {
-    return SU_ERROR_NONE;
+    return;
   }
   SUResult fill_res = SUEntitiesFill(m_entities, geom_input.ref(), true);
   assert(fill_res == SU_ERROR_NONE); _unused(fill_res);
-  return fill_res;
 }
+
 
 std::vector<Face> Entities::add_faces(std::vector<Face>& faces) {
   if (!SUIsValid(m_entities)) {
@@ -252,6 +251,7 @@ std::vector<Face> Entities::add_faces(std::vector<Face>& faces) {
 
   return faces;
 }
+
 
 std::vector<Edge> Entities::add_edges(std::vector<Edge>& edges) {
   if (!SUIsValid(m_entities)) {
@@ -531,13 +531,13 @@ bool Entities::transform_entities(std::vector<Entity>& elems, const Transformati
   }
   SUTransformation trans_ref = transform.ref();
   SUResult res = SUEntitiesTransform(m_entities, elems.size(), elems[0], &trans_ref);
-  assert(res == SU_ERROR_NONE || res == SU_ERROR_GENERIC); _unused(res);
   if (res == SU_ERROR_UNSUPPORTED) {
     throw std::invalid_argument("CW::Entities::transform_entities(): One of the elements given in the Entity vector is not contained by this Entities object.");
   }
-  else if (SU_ERROR_GENERIC) {
+  else if (res == SU_ERROR_GENERIC) {
     return false;
   }
+  assert(res == SU_ERROR_NONE); _unused(res);
   return true;
 }
 
@@ -554,9 +554,10 @@ bool Entities::transform_entities(std::vector<Entity>& elems, std::vector<Transf
   if (res == SU_ERROR_UNSUPPORTED) {
     throw std::invalid_argument("CW::Entities::transform_entities(): One of the elements given in the Entity vector is not contained by this Entities object.");
   }
-  else if (SU_ERROR_GENERIC) {
+  else if (res == SU_ERROR_GENERIC) {
     return false;
   }
+  assert(res == SU_ERROR_NONE); _unused(res);
   return true;
 }
 

@@ -260,8 +260,13 @@ void Camera::aspect_ratio(double ratio) {
     throw std::logic_error("CW::Camera::aspect_ratio(): Camera is null");
   }
   SUResult res = SUCameraSetAspectRatio(m_camera, ratio);
-  if (res != SU_ERROR_NONE) {
-    throw std::invalid_argument("CW::Camera::aspect_ratio(): invalid aspect ratio");
+  switch (res) {
+    case SU_ERROR_OUT_OF_RANGE: {
+      throw std::out_of_range("CW::Camera::aspect_ratio(): aspect_ratio must be >= 0.0");
+    }
+    default: {
+      assert(res == SU_ERROR_NONE); _unused(res);
+    }
   }
 }
 

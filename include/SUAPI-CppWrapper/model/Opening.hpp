@@ -4,7 +4,7 @@
 // Sketchup C++ Wrapper for C API
 // MIT License
 //
-// Copyright (c) 2019 Tom Kaneko
+// Copyright (c) 2026 Tom Kaneko
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -28,8 +28,6 @@
 #ifndef Opening_h
 #define Opening_h
 
-#include <stdio.h>
-
 #include <SketchUpAPI/model/opening.h>
 
 #include "SUAPI-CppWrapper/Geometry.hpp"
@@ -38,51 +36,61 @@
 
 namespace CW {
 
-/*
-* Opening wrapper
-*/
+/**
+ * @brief C++ wrapper for the SketchUp C API's SUOpeningRef object.
+ *
+ * An Opening represents a hole cut in a face by an attached component instance or group.
+ * @since SketchUp 2014, API 2.0
+ */
 class Opening {
   private:
   
-  // Smart pointer used to keep track of copies of this object.
+  /// Smart pointer used to keep track of copies of this object.
   std::shared_ptr<SUOpeningRef> m_opening;
   
   public:
-  /** Constructor for null Opening value */
+  /** @brief Constructor for null Opening value */
   Opening();
 
-  /** Unsafe Constructor **/
+  /**
+   * @brief Constructs an Opening from a raw SUOpeningRef.
+   * @param opening the SUOpeningRef to wrap.
+   */
   Opening(SUOpeningRef opening);
   
-  /** Safe Constructor **/
+  /**
+   * @brief Constructs an Opening from a shared pointer to SUOpeningRef.
+   * @param opening shared pointer managing the SUOpeningRef lifetime.
+   */
   Opening(std::shared_ptr<SUOpeningRef> opening);
 
-  /** Copy constructor */
+  /** @brief Copy constructor */
   Opening(const Opening& other);
   
-  /** Destructor */
+  /** @brief Destructor */
   ~Opening();
 
-  /** Copy assignment operator */
+  /** @brief Copy assignment operator */
   Opening& operator=(const Opening& other);
   
-  /*
-  * Test for invalid object
-  */
+  /**
+   * @brief NOT operator. Tests if the Opening is invalid.
+   * @return true if the opening is invalid.
+   */
   bool operator!() const;
   
   /**
-  * Retrieves the number of points of an opening.
-  * @since SketchUp 2014, API 2.0
-  * @return The number of points.
-  */
+   * @brief Retrieves the number of points of the opening.
+   * @return the number of points.
+   * @throws std::logic_error if the opening is invalid.
+   */
   size_t get_num_points() const;
   
   /**
-  * Retrieves the points of an opening object.
-  * @since SketchUp 2014, API 2.0
-  * @return The points in the opening.
-  */
+   * @brief Retrieves the points of the opening.
+   * @return vector of Point3D objects.
+   * @throws std::logic_error if the opening is invalid.
+   */
   std::vector<Point3D> get_points() const;
   
 };

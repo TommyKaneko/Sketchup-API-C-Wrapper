@@ -4,7 +4,7 @@
 // Sketchup C++ Wrapper for C API
 // MIT License
 //
-// Copyright (c) 2017 Tom Kaneko
+// Copyright (c) 2026 Tom Kaneko
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -28,7 +28,6 @@
 #ifndef Curve_hpp
 #define Curve_hpp
 
-#include <stdio.h>
 #include <vector>
 
 #include <SketchUpAPI/model/curve.h>
@@ -37,6 +36,11 @@
 
 namespace CW {
 
+/**
+ * @brief C++ wrapper for the SketchUp C API's SUCurveRef object.
+ *
+ * A Curve represents a series of connected Edge objects that form a smooth path.
+ */
 class Curve :public Entity {
   private:
   SUCurveType m_curve_type;
@@ -46,50 +50,56 @@ class Curve :public Entity {
   
   public:
   /**
-  * A curve is created from an array of Edge objects.
-  * @param edges - a vector array of Edge objects.
-  * @param curve_type (optional) the type of curve
-  */
+   * @brief Creates a Curve from an array of Edge objects.
+   * @param edges vector of Edge objects forming the curve.
+   * @param curve_type the type of curve (default: SUCurveType_Simple).
+   */
   Curve(std::vector<Edge> edges, SUCurveType curve_type = SUCurveType_Simple);
+
+  /**
+   * @brief Constructs a Curve from a pre-existing SUCurveRef.
+   * @param curve the SUCurveRef to wrap.
+   * @param curve_type the type of curve.
+   */
   Curve(SUCurveRef curve, SUCurveType curve_type);
   
+  /** @brief Destructor */
   ~Curve();
   
   /**
-  * Returns SUCurveRef object of this curve.
-  */
+   * @brief Returns the SUCurveRef object for this curve.
+   */
   SUCurveRef ref() const;
   
   /**
-  * Returns the series of Edge objects in the Curve.
-  */
+   * @brief Retrieves the edges that make up the curve.
+   * @return vector of Edge objects.
+   * @throws std::logic_error if the curve is null.
+   */
   std::vector<Edge> get_edges() const;
 
   /**
-  * Returns the type of Curve.
-  */
+   * @brief Retrieves the type of curve.
+   * @return SUCurveType value.
+   * @throws std::logic_error if the curve is null.
+   */
   SUCurveType get_type();
   
-  /*
-  * Returns the SUResult object form when the Curve was created.
-  * @return  * SU_ERROR_NONE on success
-            * SU_ERROR_NULL_POINTER_INPUT if edges is NULL
-            * SU_ERROR_OUT_OF_RANGE if len is 0
-            * SU_ERROR_NULL_POINTER_OUTPUT if curve is NULL
-            * SU_ERROR_OVERWRITE_VALID if curve already references a valid object
-            * SU_ERROR_GENERIC if edge array contains an invalid edge, if the edges in the array are not connected, if any of the edges are associated with a face object, or the edges describe a loop
-  */
+  /**
+   * @brief Returns the SUResult from when the Curve was created.
+   * @return SUResult indicating the creation status.
+   */
   SUResult get_result() const;
   
-  /*
-  * Returns whether the class is a valid object.
-  */
+  /**
+   * @brief Returns whether the Curve is valid (was created successfully).
+   */
   operator bool() const;
   
   /**
-  * NOT operator.  Checks if the CurveRef is valid.
-  * @return true if the curve is invalid
-  */
+   * @brief NOT operator. Checks if the Curve is invalid.
+   * @return true if the curve is invalid.
+   */
   bool operator!() const;
   
 };

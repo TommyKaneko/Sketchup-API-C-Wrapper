@@ -4,7 +4,7 @@
 // Sketchup C++ Wrapper for C API
 // MIT License
 //
-// Copyright (c) 2017 Tom Kaneko
+// Copyright (c) 2026 Tom Kaneko
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -150,7 +150,7 @@ Vector3D Axes::x_axis() const {
 
 Vector3D Axes::y_axis() const {
   if (!(*this)) {
-    throw std::logic_error("CW::Axes::x_axis(): Axes is null");
+    throw std::logic_error("CW::Axes::y_axis(): Axes is null");
   }
   SUVector3D axis;
   SUResult res = SUAxesGetYAxis(this->ref(), &axis);
@@ -160,7 +160,7 @@ Vector3D Axes::y_axis() const {
 
 Vector3D Axes::z_axis() const {
   if (!(*this)) {
-    throw std::logic_error("CW::Axes::x_axis(): Axes is null");
+    throw std::logic_error("CW::Axes::z_axis(): Axes is null");
   }
   SUVector3D axis;
   SUResult res = SUAxesGetZAxis(this->ref(), &axis);
@@ -171,7 +171,7 @@ Vector3D Axes::z_axis() const {
 
 Point3D Axes::origin() const {
   if (!(*this)) {
-    throw std::logic_error("CW::Axes::x_axis(): Axes is null");
+    throw std::logic_error("CW::Axes::origin(): Axes is null");
   }
   SUPoint3D origin;
   SUResult res = SUAxesGetOrigin(this->ref(), &origin);
@@ -182,7 +182,7 @@ Point3D Axes::origin() const {
 
 Transformation Axes::transformation() const {
   if (!(*this)) {
-    throw std::logic_error("CW::Axes::x_axis(): Axes is null");
+    throw std::logic_error("CW::Axes::transformation(): Axes is null");
   }
   SUTransformation transform;
   SUResult res = SUAxesGetTransform(this->ref(), &transform);

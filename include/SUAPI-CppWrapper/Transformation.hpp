@@ -4,7 +4,7 @@
 // Sketchup C++ Wrapper for C API
 // MIT License
 //
-// Copyright (c) 2017 Tom Kaneko
+// Copyright (c) 2026 Tom Kaneko
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -28,7 +28,6 @@
 #ifndef Transformation_hpp
 #define Transformation_hpp
 
-#include <stdio.h>
 #include <array>
 
 #include <SketchUpAPI/geometry/transformation.h>
@@ -40,6 +39,16 @@ namespace CW {
 class Axes;
 class Face;
 
+/**
+ * @brief Wrapper for SUTransformation, representing a 4x4
+ *        affine transformation matrix.
+ *
+ * Provides constructors from translation, rotation, scale, and
+ * various combinations, along with arithmetic operators for
+ * combining transformations and transforming geometry.
+ *
+ * @see https://extensions.sketchup.com/developer_center/sketchup_c_api/
+ */
 class Transformation {
   private:
   SUTransformation m_transformation;
@@ -129,13 +138,13 @@ class Transformation {
   */
   Transformation(const Transformation& transform1, const Transformation& transform2, double weight);
 
-  /*
+  /**
   * Allows access to the array of numbers in the SUTransformation struct.
   */
   double operator[](size_t i) const;
   double& operator[](size_t i);
 
-  /*
+  /**
   * Cast to SUTransformation struct
   */
   SUTransformation ref() const;

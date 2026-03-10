@@ -4,7 +4,7 @@
 // Sketchup C++ Wrapper for C API
 // MIT License
 //
-// Copyright (c) 2017 Tom Kaneko
+// Copyright (c) 2026 Tom Kaneko
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -28,25 +28,39 @@
 #ifndef UVHelper_hpp
 #define UVHelper_hpp
 
-#include <stdio.h>
-
 #include <SketchUpAPI/model/uv_helper.h>
 
 namespace CW {
 
-/*
-* UVHelper wrapper
-*/
+/**
+ * @brief C++ wrapper for the SketchUp C API's SUUVHelperRef object.
+ *
+ * A UVHelper is used to retrieve texture coordinates for faces.
+ */
 class UVHelper {
   private:
   SUUVHelperRef m_uv_helper;
   bool m_attached;
   
   public:
+  /** @brief Constructor for null UVHelper. */
   UVHelper();
+
+  /**
+   * @brief Constructs a UVHelper from a pre-existing SUUVHelperRef.
+   * @param uv_helper_ref the SUUVHelperRef to wrap.
+   * @param release_on_destroy true if this object should release the ref on destruction.
+   */
   UVHelper(SUUVHelperRef uv_helper_ref, bool release_on_destroy = false);
   
+  /**
+   * @brief Conversion operator to SUUVHelperRef.
+   */
   operator SUUVHelperRef() const;
+
+  /**
+   * @brief Conversion operator to SUUVHelperRef pointer.
+   */
   operator SUUVHelperRef*() const;
   
 };
