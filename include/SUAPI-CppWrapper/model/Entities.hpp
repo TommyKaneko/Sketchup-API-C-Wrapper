@@ -54,6 +54,9 @@ class GeometryInput;
 class Transformation;
 class String;
 class BoundingBox3D;
+class GuideLine;
+class GuidePoint;
+class SectionPlane;
 
 /*
 * Entities wrapper
@@ -168,6 +171,51 @@ class Entities {
   // TODO: this needs to be revised.
   Group add_group(const ComponentDefinition& definition, const Transformation& transformation);
   Group add_group();
+
+  /**
+  * Gets the GuidePoints in the Entities object.
+  * @since SketchUp 2014 M1, API 2.1
+  * @return std::vector of GuidePoint objects.
+  */
+  std::vector<GuidePoint> guide_points() const;
+
+  /**
+  * Adds guide points to the Entities object.
+  * @since SketchUp 2014 M1, API 2.1
+  * @param points - vector of GuidePoint objects to add. The guide points must
+  *   not already be associated with a parent object.
+  */
+  void add_guide_points(std::vector<GuidePoint>& points);
+
+  /**
+  * Gets the GuideLines in the Entities object.
+  * @since SketchUp 2016, API 4.0
+  * @return std::vector of GuideLine objects.
+  */
+  std::vector<GuideLine> guide_lines() const;
+
+  /**
+  * Adds guide lines to the Entities object.
+  * @since SketchUp 2016, API 4.0
+  * @param lines - vector of GuideLine objects to add. The guide lines must
+  *   not already be associated with a parent object.
+  */
+  void add_guide_lines(std::vector<GuideLine>& lines);
+
+  /**
+  * Gets the SectionPlanes in the Entities object.
+  * @since SketchUp 2016, API 4.0
+  * @return std::vector of SectionPlane objects.
+  */
+  std::vector<SectionPlane> section_planes() const;
+
+  /**
+  * Adds section planes to the Entities object.
+  * @since SketchUp 2016, API 4.0
+  * @param planes - vector of SectionPlane objects to add. The section planes
+  *   must not already be associated with a parent object.
+  */
+  void add_section_planes(std::vector<SectionPlane>& planes);
 
 
   /**

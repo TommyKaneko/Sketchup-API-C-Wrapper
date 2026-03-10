@@ -46,6 +46,8 @@
 #include "SUAPI-CppWrapper/model/OptionsManager.hpp"
 #include "SUAPI-CppWrapper/model/RenderingOptions.hpp"
 #include "SUAPI-CppWrapper/model/ShadowInfo.hpp"
+#include "SUAPI-CppWrapper/model/Scene.hpp"
+#include "SUAPI-CppWrapper/model/Camera.hpp"
 
 
 namespace CW {
@@ -302,6 +304,17 @@ Axes Model::axes() const {
   SUResult res = SUModelGetAxes(m_model, &axes);
   assert(res == SU_ERROR_NONE); _unused(res);
   return Axes(axes);
+}
+
+
+Camera Model::camera() const {
+  if(!(*this)) {
+    throw std::logic_error("CW::Model::camera(): Model is null");
+  }
+  SUCameraRef camera = SU_INVALID;
+  SUResult res = SUModelGetCamera(m_model, &camera);
+  assert(res == SU_ERROR_NONE); _unused(res);
+  return Camera(camera, true);
 }
 
 
@@ -717,11 +730,89 @@ bool Model::save_with_version(const std::string& file_path, SUModelVersion versi
 }
 
 
-/*
-* Returns the array of Scene objects attached to the model.
-* @return scenes array of Scene objects.
-*/
-// std::vector<Scene> scenes();
+std::vector<Scene> Model::scenes() const {
+  if (!(*this)) {
+    throw std::logic_error("CW::Model::scenes(): Model is null");
+  }
+  size_t count = 0;
+  SUResult res = SUModelGetNumScenes(m_model, &count);
+  assert(res == SU_ERROR_NONE);
+  if (count == 0) {
+    return std::vector<Scene>(0);
+  }
+  std::vector<SUSceneRef> refs(count, SU_INVALID);
+  res = SUModelGetScenes(m_model, count, refs.data(), &count);
+  assert(res == SU_ERROR_NONE); _unused(res);
+  std::vector<Scene> scenes(count);
+  std::transform(refs.begin(), refs.end(), scenes.begin(),
+  [](const SUSceneRef& value) {
+    return Scene(value, true);
+  });
+  return scenes;
+}
+
+
+size_t Model::num_scenes() const {
+  if (!(*this)) {
+    throw std::logic_error("CW::Model::num_scenes(): Model is null");
+  }
+  size_t count = 0;
+  SUResult res = SUModelGetNumScenes(m_model, &count);
+  assert(res == SU_ERROR_NONE); _unused(res);
+  return count;
+}
+
+
+void Model::add_scenes(std::vector<Scene>& scenes) {
+  if (!(*this)) {
+    throw std::logic_error("CW::Model::add_scenes(): Model is null");
+  }
+  std::vector<SUSceneRef> refs(scenes.size(), SU_INVALID);
+  std::transform(scenes.begin(), scenes.end(), refs.begin(),
+  [](const Scene& scene) { return scene.ref(); });
+  SUResult res = SUModelAddScenes(m_model, refs.size(), refs.data());
+  if (res == SU_ERROR_INVALID_ARGUMENT) {
+    throw std::logic_error("CW::Model::add_scenes():  the names of the given scenes are not unique among themselves or among existing scenes in the model");
+  }
+  assert(res == SU_ERROR_NONE); _unused(res);
+  for (auto& scene : scenes)
+    scene.attached(true);
+}
+
+
+int Model::add_scene(Scene& scene, int index) {
+  if (!(*this)) {
+    throw std::logic_error("CW::Model::add_scene(): Model is null");
+  }
+  int out_index;
+  SUResult res = SUModelAddScene(m_model, index, scene.ref(), &out_index);
+  assert(res == SU_ERROR_NONE); _unused(res);
+  scene.attached(true);
+  return out_index;
+}
+
+
+Scene Model::active_scene() const {
+  if (!(*this)) {
+    throw std::logic_error("CW::Model::active_scene(): Model is null");
+  }
+  SUSceneRef scene = SU_INVALID;
+  SUResult res = SUModelGetActiveScene(m_model, &scene);
+  if (res == SU_ERROR_NO_DATA) {
+    return Scene();
+  }
+  assert(res == SU_ERROR_NONE); _unused(res);
+  return Scene(scene, true);
+}
+
+
+void Model::set_active_scene(const Scene& scene) {
+  if (!(*this)) {
+    throw std::logic_error("CW::Model::set_active_scene(): Model is null");
+  }
+  SUResult res = SUModelSetActiveScene(m_model, scene.ref());
+  assert(res == SU_ERROR_NONE); _unused(res);
+}
 
 
 bool Model::set_attribute(AttributeDictionary& dict, const std::string& key, const TypedValue& value) {

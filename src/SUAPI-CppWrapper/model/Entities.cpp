@@ -44,6 +44,9 @@
 #include "SUAPI-CppWrapper/model/Edge.hpp"
 #include "SUAPI-CppWrapper/model/Model.hpp"
 #include "SUAPI-CppWrapper/model/Material.hpp"
+#include "SUAPI-CppWrapper/model/GuideLine.hpp"
+#include "SUAPI-CppWrapper/model/GuidePoint.hpp"
+#include "SUAPI-CppWrapper/model/SectionPlane.hpp"
 
 namespace CW {
 
@@ -411,6 +414,114 @@ Group Entities::add_group() {
   res = SUEntitiesAddGroup(m_entities, group);
   assert(res == SU_ERROR_NONE); _unused(res);
   return Group(group, true);
+}
+
+
+std::vector<GuidePoint> Entities::guide_points() const {
+  if (!SUIsValid(m_entities)) {
+    throw std::logic_error("CW::Entities::guide_points(): Entities is null");
+  }
+  size_t count = 0;
+  SUResult res = SUEntitiesGetNumGuidePoints(m_entities, &count);
+  assert(res == SU_ERROR_NONE);
+  if (count == 0) {
+    return std::vector<GuidePoint>(0);
+  }
+  std::vector<SUGuidePointRef> refs(count, SU_INVALID);
+  res = SUEntitiesGetGuidePoints(m_entities, count, refs.data(), &count);
+  assert(res == SU_ERROR_NONE); _unused(res);
+  std::vector<GuidePoint> points(count);
+  std::transform(refs.begin(), refs.end(), points.begin(),
+  [](const SUGuidePointRef& value) {
+    return GuidePoint(value);
+  });
+  return points;
+}
+
+
+void Entities::add_guide_points(std::vector<GuidePoint>& points) {
+  if (!SUIsValid(m_entities)) {
+    throw std::logic_error("CW::Entities::add_guide_points(): Entities is null");
+  }
+  std::vector<SUGuidePointRef> refs(points.size(), SU_INVALID);
+  std::transform(points.begin(), points.end(), refs.begin(),
+  [](const GuidePoint& pt) { return pt.ref(); });
+  SUResult res = SUEntitiesAddGuidePoints(m_entities, refs.size(), refs.data());
+  assert(res == SU_ERROR_NONE); _unused(res);
+  for (auto& pt : points)
+    pt.attached(true);
+}
+
+
+std::vector<GuideLine> Entities::guide_lines() const {
+  if (!SUIsValid(m_entities)) {
+    throw std::logic_error("CW::Entities::guide_lines(): Entities is null");
+  }
+  size_t count = 0;
+  SUResult res = SUEntitiesGetNumGuideLines(m_entities, &count);
+  assert(res == SU_ERROR_NONE);
+  if (count == 0) {
+    return std::vector<GuideLine>(0);
+  }
+  std::vector<SUGuideLineRef> refs(count, SU_INVALID);
+  res = SUEntitiesGetGuideLines(m_entities, count, refs.data(), &count);
+  assert(res == SU_ERROR_NONE); _unused(res);
+  std::vector<GuideLine> lines(count);
+  std::transform(refs.begin(), refs.end(), lines.begin(),
+  [](const SUGuideLineRef& value) {
+    return GuideLine(value);
+  });
+  return lines;
+}
+
+
+void Entities::add_guide_lines(std::vector<GuideLine>& lines) {
+  if (!SUIsValid(m_entities)) {
+    throw std::logic_error("CW::Entities::add_guide_lines(): Entities is null");
+  }
+  std::vector<SUGuideLineRef> refs(lines.size(), SU_INVALID);
+  std::transform(lines.begin(), lines.end(), refs.begin(),
+  [](const GuideLine& line) { return line.ref(); });
+  SUResult res = SUEntitiesAddGuideLines(m_entities, refs.size(), refs.data());
+  assert(res == SU_ERROR_NONE); _unused(res);
+  for (auto& line : lines)
+    line.attached(true);
+}
+
+
+std::vector<SectionPlane> Entities::section_planes() const {
+  if (!SUIsValid(m_entities)) {
+    throw std::logic_error("CW::Entities::section_planes(): Entities is null");
+  }
+  size_t count = 0;
+  SUResult res = SUEntitiesGetNumSectionPlanes(m_entities, &count);
+  assert(res == SU_ERROR_NONE);
+  if (count == 0) {
+    return std::vector<SectionPlane>(0);
+  }
+  std::vector<SUSectionPlaneRef> refs(count, SU_INVALID);
+  res = SUEntitiesGetSectionPlanes(m_entities, count, refs.data(), &count);
+  assert(res == SU_ERROR_NONE); _unused(res);
+  std::vector<SectionPlane> planes(count);
+  std::transform(refs.begin(), refs.end(), planes.begin(),
+  [](const SUSectionPlaneRef& value) {
+    return SectionPlane(value);
+  });
+  return planes;
+}
+
+
+void Entities::add_section_planes(std::vector<SectionPlane>& planes) {
+  if (!SUIsValid(m_entities)) {
+    throw std::logic_error("CW::Entities::add_section_planes(): Entities is null");
+  }
+  std::vector<SUSectionPlaneRef> refs(planes.size(), SU_INVALID);
+  std::transform(planes.begin(), planes.end(), refs.begin(),
+  [](const SectionPlane& sp) { return sp.ref(); });
+  SUResult res = SUEntitiesAddSectionPlanes(m_entities, refs.size(), refs.data());
+  assert(res == SU_ERROR_NONE); _unused(res);
+  for (auto& sp : planes)
+    sp.attached(true);
 }
 
 

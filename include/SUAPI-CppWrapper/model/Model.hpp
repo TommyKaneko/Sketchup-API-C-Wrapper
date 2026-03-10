@@ -39,6 +39,7 @@ namespace CW {
   // Forward Declarations:
   class Entities;
   class Behavior;
+  class Camera;
   class Classifications;
   class ComponentDefinition;
   class Layer;
@@ -51,6 +52,7 @@ namespace CW {
   class ShadowInfo;
   class OptionsManager;
   class InstancePath;
+  class Scene;
 
 
 class Model {
@@ -171,6 +173,13 @@ class Model {
   * @return axes Axes object of the model.
   */
   Axes axes() const;
+
+  /**
+  * Returns the Camera object of the model.
+  * @return camera Camera object of the model. The returned camera is attached
+  *   to the model and must not be released.
+  */
+  Camera camera() const;
 
 
   //Behavior behavior(); // TODO: this may not be possible to retrieve
@@ -347,7 +356,39 @@ class Model {
   * Returns the array of Scene objects attached to the model.
   * @return scenes array of Scene objects.
   */
-  // std::vector<Scene> scenes();
+  std::vector<Scene> scenes() const;
+
+  /*
+  * Returns the number of scenes attached to the model.
+  */
+  size_t num_scenes() const;
+
+  /*
+  * Adds an array of Scene objects to the model.
+  * @param scenes - vector of Scene objects to add.
+  */
+  void add_scenes(std::vector<Scene>& scenes);
+
+  /*
+  * Adds a single Scene to the model. The scene's name must be unique within
+  * the model.
+  * @param scene - Scene object to add.
+  * @param index - (optional) index at which to add the scene.  If not provided, the scene will be added at the end of the list.
+  * @return the index at which the scene was added.
+  */
+  int add_scene(Scene& scene, int index = -1);
+
+  /*
+  * Retrieves the active scene of the model.
+  * @return Scene - the active scene, or an invalid scene if none is active.
+  */
+  Scene active_scene() const;
+
+  /*
+  * Sets the active scene of the model.
+  * @param scene - the scene to activate.
+  */
+  void set_active_scene(const Scene& scene);
 
   /*
   * Sets an attribute of the model.
