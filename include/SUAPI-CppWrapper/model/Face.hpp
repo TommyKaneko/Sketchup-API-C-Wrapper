@@ -139,6 +139,13 @@ class Face :public DrawingElement {
   bool operator!() const;
 
   /**
+  * @brief Creates a detached copy of this face.
+  * @throws std::logic_error if the face is null.
+  * @return A new detached Face with the same geometry and materials.
+  */
+  Face copy() const;
+
+  /**
    * @brief Computes the area of the face, taking into account inner loops and openings.
    * @return area in square inches (SketchUp internal units).
    * @throws std::logic_error if the face is null.

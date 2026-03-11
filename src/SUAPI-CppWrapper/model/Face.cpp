@@ -177,6 +177,22 @@ bool Face::operator!() const {
 }
 
 
+Face Face::copy() const {
+  if (!(*this)) {
+    throw std::logic_error("CW::Face::copy(): Face is null");
+  }
+  Loop other_outer_loop = this->outer_loop();
+  std::vector<Point3D> outer_points = other_outer_loop.points();
+  LoopInput outer_loop_input = other_outer_loop.loop_input();
+  Face new_face(outer_points, outer_loop_input);
+  if (!!new_face && !this->m_attached) {
+    new_face.back_material(this->back_material());
+  }
+  new_face.copy_attributes_from(*this);
+  return new_face;
+}
+
+
 double Face::area() const {
   if (!(*this)) {
     throw std::logic_error("CW::Face::area(): Face is null");

@@ -123,6 +123,8 @@ TEST_F(ModelLoad, LayerExplicitCopying)
     LayersAreEqual(original_lay, copied_lay);
     EXPECT_TRUE(copied_lay.attached());
   }
+
+  SaveModel("Layers");
 }
 
 

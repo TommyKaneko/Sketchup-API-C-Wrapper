@@ -47,6 +47,10 @@
 #include "SUAPI-CppWrapper/model/GuideLine.hpp"
 #include "SUAPI-CppWrapper/model/GuidePoint.hpp"
 #include "SUAPI-CppWrapper/model/SectionPlane.hpp"
+#include "SUAPI-CppWrapper/model/Image.hpp"
+#include "SUAPI-CppWrapper/model/Text.hpp"
+#include "SUAPI-CppWrapper/model/Dimension.hpp"
+#include "SUAPI-CppWrapper/model/ArcCurve.hpp"
 
 namespace CW {
 
@@ -238,6 +242,11 @@ void Entities::fill(GeometryInput &geom_input) {
 std::vector<Face> Entities::add_faces(std::vector<Face>& faces) {
   if (!SUIsValid(m_entities)) {
     throw std::logic_error("CW::Entities::add_faces(): Entities is null");
+  }
+  for (const auto& face : faces) {
+    if (face.attached()) {
+      throw std::invalid_argument("CW::Entities::add_faces(): Face is already attached to a model. Use Face::copy() to create a detached copy first.");
+    }
   }
   std::vector<SUFaceRef> refs(faces.size(), SU_INVALID);
   std::transform(faces.begin(), faces.end(), refs.begin(), [](const CW::Face& face) {return face.ref(); });
@@ -443,6 +452,11 @@ void Entities::add_guide_points(std::vector<GuidePoint>& points) {
   if (!SUIsValid(m_entities)) {
     throw std::logic_error("CW::Entities::add_guide_points(): Entities is null");
   }
+  for (const auto& pt : points) {
+    if (pt.attached()) {
+      throw std::invalid_argument("CW::Entities::add_guide_points(): GuidePoint is already attached to a model");
+    }
+  }
   std::vector<SUGuidePointRef> refs(points.size(), SU_INVALID);
   std::transform(points.begin(), points.end(), refs.begin(),
   [](const GuidePoint& pt) { return pt.ref(); });
@@ -478,6 +492,11 @@ std::vector<GuideLine> Entities::guide_lines() const {
 void Entities::add_guide_lines(std::vector<GuideLine>& lines) {
   if (!SUIsValid(m_entities)) {
     throw std::logic_error("CW::Entities::add_guide_lines(): Entities is null");
+  }
+  for (const auto& line : lines) {
+    if (line.attached()) {
+      throw std::invalid_argument("CW::Entities::add_guide_lines(): GuideLine is already attached to a model");
+    }
   }
   std::vector<SUGuideLineRef> refs(lines.size(), SU_INVALID);
   std::transform(lines.begin(), lines.end(), refs.begin(),
@@ -515,6 +534,11 @@ void Entities::add_section_planes(std::vector<SectionPlane>& planes) {
   if (!SUIsValid(m_entities)) {
     throw std::logic_error("CW::Entities::add_section_planes(): Entities is null");
   }
+  for (const auto& sp : planes) {
+    if (sp.attached()) {
+      throw std::invalid_argument("CW::Entities::add_section_planes(): SectionPlane is already attached to a model");
+    }
+  }
   std::vector<SUSectionPlaneRef> refs(planes.size(), SU_INVALID);
   std::transform(planes.begin(), planes.end(), refs.begin(),
   [](const SectionPlane& sp) { return sp.ref(); });
@@ -522,6 +546,166 @@ void Entities::add_section_planes(std::vector<SectionPlane>& planes) {
   assert(res == SU_ERROR_NONE); _unused(res);
   for (auto& sp : planes)
     sp.attached(true);
+}
+
+
+std::vector<Image> Entities::images() const {
+  if (!SUIsValid(m_entities)) {
+    throw std::logic_error("CW::Entities::images(): Entities is null");
+  }
+  size_t count = 0;
+  SUResult res = SUEntitiesGetNumImages(m_entities, &count);
+  assert(res == SU_ERROR_NONE);
+  if (count == 0) {
+    return std::vector<Image>(0);
+  }
+  std::vector<SUImageRef> refs(count, SU_INVALID);
+  res = SUEntitiesGetImages(m_entities, count, refs.data(), &count);
+  assert(res == SU_ERROR_NONE); _unused(res);
+  std::vector<Image> images(count);
+  std::transform(refs.begin(), refs.end(), images.begin(),
+  [](const SUImageRef& value) {
+    return Image(value);
+  });
+  return images;
+}
+
+
+void Entities::add_image(Image& image) {
+  if (!SUIsValid(m_entities)) {
+    throw std::logic_error("CW::Entities::add_image(): Entities is null");
+  }
+  if (image.attached()) {
+    throw std::invalid_argument("CW::Entities::add_image(): Image is already attached to a model");
+  }
+  SUResult res = SUEntitiesAddImage(m_entities, image.ref());
+  assert(res == SU_ERROR_NONE); _unused(res);
+  image.attached(true);
+}
+
+
+std::vector<Text> Entities::texts() const {
+  if (!SUIsValid(m_entities)) {
+    throw std::logic_error("CW::Entities::texts(): Entities is null");
+  }
+  size_t count = 0;
+  SUResult res = SUEntitiesGetNumTexts(m_entities, &count);
+  assert(res == SU_ERROR_NONE);
+  if (count == 0) {
+    return std::vector<Text>(0);
+  }
+  std::vector<SUTextRef> refs(count, SU_INVALID);
+  res = SUEntitiesGetTexts(m_entities, count, refs.data(), &count);
+  assert(res == SU_ERROR_NONE); _unused(res);
+  std::vector<Text> texts(count);
+  std::transform(refs.begin(), refs.end(), texts.begin(),
+  [](const SUTextRef& value) {
+    return Text(value);
+  });
+  return texts;
+}
+
+
+void Entities::add_texts(std::vector<Text>& texts) {
+  if (!SUIsValid(m_entities)) {
+    throw std::logic_error("CW::Entities::add_texts(): Entities is null");
+  }
+  for (const auto& t : texts) {
+    if (t.attached()) {
+      throw std::invalid_argument("CW::Entities::add_texts(): Text is already attached to a model");
+    }
+  }
+  std::vector<SUTextRef> refs(texts.size(), SU_INVALID);
+  std::transform(texts.begin(), texts.end(), refs.begin(),
+  [](const Text& t) { return t.ref(); });
+  SUResult res = SUEntitiesAddTexts(m_entities, refs.size(), refs.data());
+  assert(res == SU_ERROR_NONE); _unused(res);
+  for (auto& t : texts)
+    t.attached(true);
+}
+
+
+std::vector<Dimension> Entities::dimensions() const {
+  if (!SUIsValid(m_entities)) {
+    throw std::logic_error("CW::Entities::dimensions(): Entities is null");
+  }
+  size_t count = 0;
+  SUResult res = SUEntitiesGetNumDimensions(m_entities, &count);
+  assert(res == SU_ERROR_NONE);
+  if (count == 0) {
+    return std::vector<Dimension>{};
+  }
+  std::vector<SUDimensionRef> refs(count, SU_INVALID);
+  res = SUEntitiesGetDimensions(m_entities, count, refs.data(), &count);
+  assert(res == SU_ERROR_NONE); _unused(res);
+  std::vector<Dimension> dims(count);
+  std::transform(refs.begin(), refs.end(), dims.begin(),
+  [](const SUDimensionRef& value) {
+    return Dimension(value, true);
+  });
+  return dims;
+}
+
+
+#if SketchUpAPI_VERSION_MAJOR >= 2026
+void Entities::add_dimensions(std::vector<Dimension>& dimensions)  {
+  if (!SUIsValid(m_entities)) {
+    throw std::logic_error("CW::Entities::add_dimensions(): Entities is null");
+  }
+  for (const auto& dim : dimensions) {
+    if (dim.attached()) {
+      throw std::invalid_argument("CW::Entities::add_dimensions(): Dimension is already attached to a model");
+    }
+  }
+  std::vector<SUDimensionRef> refs(dimensions.size(), SU_INVALID);
+  std::transform(dimensions.begin(), dimensions.end(), refs.begin(),
+  [](const Dimension& dim) { return dim.ref(); });
+  SUResult res = SUEntitiesAddDimensions(m_entities, refs.size(), refs.data());
+  assert(res == SU_ERROR_NONE); _unused(res);
+  for (auto& dim : dimensions)
+    dim.attached(true);
+}
+#endif
+
+
+std::vector<ArcCurve> Entities::arc_curves() const {
+  if (!SUIsValid(m_entities)) {
+    throw std::logic_error("CW::Entities::arc_curves(): Entities is null");
+  }
+  size_t count = 0;
+  SUResult res = SUEntitiesGetNumArcCurves(m_entities, &count);
+  assert(res == SU_ERROR_NONE);
+  if (count == 0) {
+    return std::vector<ArcCurve>{};
+  }
+  std::vector<SUArcCurveRef> refs(count, SU_INVALID);
+  res = SUEntitiesGetArcCurves(m_entities, count, refs.data(), &count);
+  assert(res == SU_ERROR_NONE); _unused(res);
+  std::vector<ArcCurve> arcs;
+  arcs.reserve(count);
+  for (size_t i = 0; i < count; ++i) {
+    arcs.emplace_back(refs[i], true);
+  }
+  return arcs;
+}
+
+
+void Entities::add_arc_curves(std::vector<ArcCurve>& arcs) {
+  if (!SUIsValid(m_entities)) {
+    throw std::logic_error("CW::Entities::add_arc_curves(): Entities is null");
+  }
+  for (const auto& arc : arcs) {
+    if (arc.attached()) {
+      throw std::invalid_argument("CW::Entities::add_arc_curves(): ArcCurve is already attached to a model");
+    }
+  }
+  std::vector<SUArcCurveRef> refs(arcs.size(), SU_INVALID);
+  std::transform(arcs.begin(), arcs.end(), refs.begin(),
+  [](const ArcCurve& arc) { return arc.ref(); });
+  SUResult res = SUEntitiesAddArcCurves(m_entities, refs.size(), refs.data());
+  assert(res == SU_ERROR_NONE); _unused(res);
+  for (auto& arc : arcs)
+    arc.attached(true);
 }
 
 

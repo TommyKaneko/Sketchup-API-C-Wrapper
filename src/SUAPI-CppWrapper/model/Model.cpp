@@ -36,7 +36,8 @@
 #include "SUAPI-CppWrapper/model/Axes.hpp"
 #include "SUAPI-CppWrapper/model/Entities.hpp"
 //#include "SUAPI-CppWrapper/Behavior.hpp"
-//#include "SUAPI-CppWrapper/model/Classifications.hpp"
+#include "SUAPI-CppWrapper/model/Classifications.hpp"
+#include "SUAPI-CppWrapper/model/Location.hpp"
 #include "SUAPI-CppWrapper/model/ComponentDefinition.hpp"
 #include "SUAPI-CppWrapper/model/InstancePath.hpp"
 #include "SUAPI-CppWrapper/model/Material.hpp"
@@ -48,6 +49,10 @@
 #include "SUAPI-CppWrapper/model/ShadowInfo.hpp"
 #include "SUAPI-CppWrapper/model/Scene.hpp"
 #include "SUAPI-CppWrapper/model/Camera.hpp"
+#include "SUAPI-CppWrapper/model/DimensionStyle.hpp"
+#include "SUAPI-CppWrapper/model/LayerFolder.hpp"
+#include "SUAPI-CppWrapper/model/LineStyles.hpp"
+#include "SUAPI-CppWrapper/model/Styles.hpp"
 
 
 namespace CW {
@@ -320,7 +325,6 @@ Camera Model::camera() const {
 
 //Behavior behavior(); // TODO: this may not be possible to retrieve
 
-/*
 Classifications Model::classifications() const {
   if(!(*this)) {
     throw std::logic_error("CW::Model::classifications(): Model is null");
@@ -330,7 +334,6 @@ Classifications Model::classifications() const {
   assert(res == SU_ERROR_NONE);
   return Classifications(classifications);
 }
-*/
 
 /*
 * Returns the description attached to this model.
@@ -409,19 +412,17 @@ Entities Model::entities() const {
 
 //find_entity_by_id();  // TODO can this be done?
 
-// TODO - build Location class before this method
-/*
 bool Model::georeferenced() const {
+  if (!(*this)) {
+    throw std::logic_error("CW::Model::georeferenced(): Model is null");
+  }
   SULocationRef loc = SU_INVALID;
   SUResult res = SUModelGetLocation(m_model, &loc);
-  assert(res == SU_ERROR_NONE);
-  Location location(loc);
-  if (loc) {
-    return true;
+  if (res != SU_ERROR_NONE || SUIsInvalid(loc)) {
+    return false;
   }
-  return false;
+  return true;
 }
-*/
 
 
 TypedValue Model::get_attribute(const AttributeDictionary& dict, const std::string& key, const TypedValue& default_value) const {
@@ -474,7 +475,8 @@ std::vector<Layer> Model::layers() const {
 }
 
 
-void Model::add_layers(std::vector<Layer>& layers, bool overwrite_existing) {
+/*
+void Model::add_layers(const std::vector<Layer>& layers, bool overwrite_existing) {
   std::vector<Layer> existing_layers = this->layers();
   std::vector<Layer> layers_to_add; layers_to_add.reserve(layers.size());
   for (const Layer& lay : layers) {
@@ -517,6 +519,67 @@ void Model::add_layers(std::vector<Layer>& layers, bool overwrite_existing) {
     layers_to_add[i].attached(true);
   }
 }
+*/
+
+void Model::add_layers(std::vector<Layer>& layers, bool overwrite_existing) {
+  if (!(*this)) {
+    throw std::logic_error("CW::Model::add_layers(): Model is null");
+  }
+
+  if (layers.empty()) {
+    return;
+  }
+
+  std::vector<Layer> existing_layers = this->layers();
+
+  // Pointer-based add path for new layers only.
+  std::vector<Layer> copied_layers;
+  copied_layers.reserve(layers.size());
+  std::vector<Layer*> layers_to_add;
+  layers_to_add.reserve(layers.size());
+
+  for (Layer& layer : layers) {
+    if (!layer) {
+      continue;
+    }
+
+    const auto found_layer = std::find_if(existing_layers.begin(), existing_layers.end(),
+      [&layer](const Layer& value2){ return layer.name() == value2.name(); });
+
+    if (found_layer != existing_layers.end()) {
+      if (overwrite_existing) {
+        // As Layer gains more properties, update them here.
+        found_layer->copy_attributes_from(layer);
+      }
+      continue;
+    }
+
+    if (layer.attached()) {
+      copied_layers.push_back(layer.copy());
+      layers_to_add.push_back(&copied_layers.back());
+    }
+    else {
+      layers_to_add.push_back(&layer);
+    }
+  }
+
+  if (layers_to_add.empty()) {
+    return;
+  }
+
+  std::vector<SULayerRef> layer_refs(layers_to_add.size(), SU_INVALID);
+  std::transform(layers_to_add.begin(), layers_to_add.end(), layer_refs.begin(),
+    [](const Layer* value){
+      return value->ref();
+    });
+
+  SUResult res = SUModelAddLayers(m_model, layer_refs.size(), layer_refs.data());
+  assert(res == SU_ERROR_NONE); _unused(res);
+
+  for (Layer* layer : layers_to_add) {
+    layer->attached(true);
+  }
+}
 
 
 bool Model::layer_exists(const Layer& layer, bool strict) const {
@@ -552,11 +615,15 @@ size_t Model::num_materials() const {
 }
 
 
-/*
-* Returns the Location object of the model
-* @return location Location object. If no location has been assigned to the model, the Location object returned will be invalid.
-*/
-// Location location();
+Location Model::location() const {
+  if (!(*this)) {
+    throw std::logic_error("CW::Model::location(): Model is null");
+  }
+  SULocationRef loc = SU_INVALID;
+  SUResult res = SUModelGetLocation(m_model, &loc);
+  assert(res == SU_ERROR_NONE); _unused(res);
+  return Location(loc);
+}
 
 
 std::vector<Material> Model::materials() const {
@@ -842,6 +909,18 @@ RenderingOptions Model::rendering_options()
   return RenderingOptions(ref);
 }
 
+
+DimensionStyle Model::dimension_style() const {
+  if (!(*this)) {
+    throw std::logic_error("CW::Model::dimension_style(): Model is null");
+  }
+  SUDimensionStyleRef style = SU_INVALID;
+  SUResult res = SUModelGetDimensionStyle(m_model, &style);
+  assert(res == SU_ERROR_NONE); _unused(res);
+  return DimensionStyle(style);
+}
+
+
 ShadowInfo Model::shadow_info()
 {
   SUShadowInfoRef ref = SU_INVALID;
@@ -863,6 +942,59 @@ ShadowInfo Model::shadow_info()
 * @return styles vector array of Style objects
 */
 // std::vector<Style> styles();
+
+Styles Model::styles() const {
+  if (!(*this)) {
+    throw std::logic_error("CW::Model::styles(): Model is null");
+  }
+  SUStylesRef styles = SU_INVALID;
+  SUResult res = SUModelGetStyles(m_model, &styles);
+  assert(res == SU_ERROR_NONE); _unused(res);
+  return Styles(styles);
+}
+
+
+std::vector<LayerFolder> Model::layer_folders() const {
+  if (!(*this)) {
+    throw std::logic_error("CW::Model::layer_folders(): Model is null");
+  }
+  size_t count = 0;
+  SUResult res = SUModelGetNumLayerFolders(m_model, &count);
+  assert(res == SU_ERROR_NONE);
+  if (count == 0) {
+    return std::vector<LayerFolder>(0);
+  }
+  std::vector<SULayerFolderRef> refs(count, SU_INVALID);
+  res = SUModelGetLayerFolders(m_model, count, refs.data(), &count);
+  assert(res == SU_ERROR_NONE); _unused(res);
+  std::vector<LayerFolder> result;
+  result.reserve(count);
+  for (size_t i = 0; i < count; ++i) {
+    result.emplace_back(refs[i], true);
+  }
+  return result;
+}
+
+
+void Model::add_layer_folder(LayerFolder& folder) {
+  if (!(*this)) {
+    throw std::logic_error("CW::Model::add_layer_folder(): Model is null");
+  }
+  SUResult res = SUModelAddLayerFolder(m_model, folder.ref());
+  assert(res == SU_ERROR_NONE); _unused(res);
+  folder.attached(true);
+}
+
+
+LineStyles Model::line_styles() const {
+  if (!(*this)) {
+    throw std::logic_error("CW::Model::line_styles(): Model is null");
+  }
+  SULineStylesRef line_styles = SU_INVALID;
+  SUResult res = SUModelGetLineStyles(m_model, &line_styles);
+  assert(res == SU_ERROR_NONE); _unused(res);
+  return LineStyles(line_styles);
+}
 
 // tags
 // tags=

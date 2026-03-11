@@ -141,6 +141,8 @@ TEST_F(ModelLoad, MaterialExplicitCopying)
       EXPECT_TRUE(copied_mat.attached());
     }
   }
+
+  SaveModel("Materials");
 }
 
 

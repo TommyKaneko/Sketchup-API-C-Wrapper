@@ -172,5 +172,46 @@ TEST_F(ModelLoad, DISABLED_EdgeExplicitCopying)
 }
 
 
+/**********************
+ * Edge Model Copy Tests
+ **********************/
+
+class EdgeModelTest : public ModelLoad {};
+
+TEST_F(EdgeModelTest, CopyEdges) {
+  using namespace CW;
+  Entities src_entities = m_model->entities();
+  std::vector<Edge> source_edges = src_entities.edges(false);
+  ASSERT_GT(source_edges.size(), 0u);
+
+  // Create detached copies of each edge
+  std::vector<Edge> new_edges;
+  for (const auto& src : source_edges) {
+    new_edges.push_back(src.copy());
+  }
+
+  Entities dest_entities = m_model_copy->entities();
+  dest_entities.add_edges(new_edges);
+
+  // Read back from destination and verify count matches
+  std::vector<Edge> copied_edges = dest_entities.edges(false);
+  ASSERT_EQ(copied_edges.size(), source_edges.size());
+
+  // Verify start/end vertex positions match
+  for (size_t i = 0; i < source_edges.size(); ++i) {
+    Point3D src_start = source_edges[i].start().position();
+    Point3D src_end = source_edges[i].end().position();
+    // Find matching edge in copied_edges by vertex positions
+    auto found = std::find_if(copied_edges.begin(), copied_edges.end(),
+      [&src_start, &src_end](const Edge& e) {
+        return (e.start().position() == src_start && e.end().position() == src_end);
+      });
+    EXPECT_NE(found, copied_edges.end())
+      << "Could not find matching edge for source edge " << i;
+  }
+
+  SaveModel("Edges");
+}
+
 
 } // namespace CW::Tests

@@ -35,6 +35,8 @@
 #include <SketchUpAPI/model/group.h>
 
 #include "SUAPI-CppWrapper/String.hpp"
+#include "SUAPI-CppWrapper/model/ClassificationInfo.hpp"
+#include "SUAPI-CppWrapper/model/DynamicComponentInfo.hpp"
 
 namespace CW {
 
@@ -175,6 +177,34 @@ void ComponentInstance::name(const String& string) {
   std::string name_string = string.std_string();
   SUResult res = SUComponentInstanceSetName(this->ref(), name_string.c_str());
   assert(res == SU_ERROR_NONE); _unused(res);
+}
+
+
+DynamicComponentInfo ComponentInstance::create_dc_info() const {
+  if (!(*this)) {
+    throw std::logic_error("CW::ComponentInstance::create_dc_info(): ComponentInstance is null");
+  }
+  SUDynamicComponentInfoRef dc_info = SU_INVALID;
+  SUResult res = SUComponentInstanceCreateDCInfo(this->ref(), &dc_info);
+  if (res == SU_ERROR_NO_DATA) {
+    return DynamicComponentInfo(); // Not a dynamic component
+  }
+  assert(res == SU_ERROR_NONE); _unused(res);
+  return DynamicComponentInfo(dc_info);
+}
+
+
+ClassificationInfo ComponentInstance::create_classification_info() const {
+  if (!(*this)) {
+    throw std::logic_error("CW::ComponentInstance::create_classification_info(): ComponentInstance is null");
+  }
+  SUClassificationInfoRef classification_info = SU_INVALID;
+  SUResult res = SUComponentInstanceCreateClassificationInfo(this->ref(), &classification_info);
+  if (res == SU_ERROR_NO_DATA) {
+    return ClassificationInfo(); // Not classified
+  }
+  assert(res == SU_ERROR_NONE); _unused(res);
+  return ClassificationInfo(classification_info);
 }
 
 

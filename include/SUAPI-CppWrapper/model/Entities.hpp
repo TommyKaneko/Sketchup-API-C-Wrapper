@@ -56,6 +56,10 @@ class BoundingBox3D;
 class GuideLine;
 class GuidePoint;
 class SectionPlane;
+class Image;
+class Text;
+class Dimension;
+class ArcCurve;
 
 /**
  * @brief C++ wrapper for SUEntitiesRef.
@@ -222,6 +226,70 @@ class Entities {
   *   must not already be associated with a parent object.
   */
   void add_section_planes(std::vector<SectionPlane>& planes);
+
+  /**
+  * Gets the Images in the Entities object.
+  * @since SketchUp 2017 M0, API 5.0
+  * @return std::vector of Image objects.
+  */
+  std::vector<Image> images() const;
+
+  /**
+  * Adds an image to the Entities object.
+  * @since SketchUp 2017 M0, API 5.0
+  * @param image - Image object to add. The image must not already be
+  *   associated with a parent object.
+  */
+  void add_image(Image& image);
+
+  /**
+  * Gets the Text annotations in the Entities object.
+  * @since SketchUp 2018, API 6.0
+  * @return std::vector of Text objects.
+  */
+  std::vector<Text> texts() const;
+
+  /**
+  * Adds text annotations to the Entities object.
+  * @since SketchUp 2018, API 6.0
+  * @param texts - vector of Text objects to add. The texts must not
+  *   already be associated with a parent object.
+  */
+  void add_texts(std::vector<Text>& texts);
+
+  /**
+  * Gets the Dimensions in the Entities object. This returns all dimensions
+  * (both linear and radial) as base Dimension objects.
+  * @since SketchUp 2017, API 5.0
+  * @return std::vector of Dimension objects.
+  * @note The SketchUp C API does not provide a function to add dimensions
+  *   to entities. Dimensions can only be retrieved from existing models.
+  */
+  std::vector<Dimension> dimensions() const;
+
+  #if SketchUpAPI_VERSION_MAJOR >= 2026
+  /**
+   * @brief Adds dimensions to the Entities object.
+   * @since SketchUp 2026.1, API 14.1
+   * @param dimensions - vector of Dimension objects to add. The dimensions must
+   *   not already be associated with a parent object.
+   */
+  void add_dimensions(std::vector<Dimension>& dimensions);
+  #endif
+  /**
+  * Gets the ArcCurves in the Entities object.
+  * @since SketchUp 2016, API 4.0
+  * @return std::vector of ArcCurve objects.
+  */
+  std::vector<ArcCurve> arc_curves() const;
+
+  /**
+  * Adds arc curves to the Entities object.
+  * @since SketchUp 2016, API 4.0
+  * @param arcs - vector of ArcCurve objects to add. The arc curves must
+  *   not already be associated with a parent object.
+  */
+  void add_arc_curves(std::vector<ArcCurve>& arcs);
 
 
   /**

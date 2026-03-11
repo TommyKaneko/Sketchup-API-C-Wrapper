@@ -69,7 +69,7 @@ SUEdgeRef Edge::copy_reference(const Edge& other) {
 * Constructors / Destructor **
 ******************************/
 Edge::Edge():
-  DrawingElement(SU_INVALID, true)
+  DrawingElement(SU_INVALID, false)
 {}
 
 

@@ -36,6 +36,10 @@
 
 namespace CW {
 
+// Forward declarations
+class ClassificationInfo;
+class DynamicComponentInfo;
+
 /**
  * @brief Wrapper for SUComponentInstanceRef.
  *
@@ -66,20 +70,20 @@ class ComponentInstance :public DrawingElement {
    * @param attached Whether the instance is already owned by a model.
    */
   ComponentInstance(SUComponentInstanceRef instance, bool attached = true);
-  
+
   /**
    * @brief Copy constructor.
    * @param other The ComponentInstance to copy.
    */
   ComponentInstance(const ComponentInstance& other);
-  
+
   /**
    * @brief Copy constructor for derived classes (Group).
    * @param other        The source ComponentInstance.
    * @param instance_ref The native reference for the derived copy.
    */
   ComponentInstance(const ComponentInstance& other, SUComponentInstanceRef instance_ref);
-  
+
   /**
    * @brief Destructor. Releases the instance if it is not attached to a model.
    */
@@ -91,7 +95,7 @@ class ComponentInstance :public DrawingElement {
    * @return Reference to this object.
    */
   ComponentInstance& operator=(const ComponentInstance& other);
-  
+
   /**
    * @brief Returns the wrapped SUComponentInstanceRef.
    * @return The raw SUComponentInstanceRef.
@@ -103,7 +107,7 @@ class ComponentInstance :public DrawingElement {
 
   /** @brief Implicit conversion to SUComponentInstanceRef*. */
   operator SUComponentInstanceRef*();
-  
+
   /**
    * @brief Retrieves the transformation applied to this instance.
    *
@@ -115,7 +119,7 @@ class ComponentInstance :public DrawingElement {
    * @see SUComponentInstanceGetTransform
    */
   Transformation transformation() const;
-  
+
   /**
    * @brief Sets the transformation applied to this instance.
    * @param tranform The Transformation to apply.
@@ -147,7 +151,31 @@ class ComponentInstance :public DrawingElement {
    * @see SUComponentInstanceSetName
    */
   void name(const String& string);
-  
+
+  /**
+   * @brief Creates a DynamicComponentInfo object for this instance.
+   *
+   * The caller takes ownership of the returned object.
+   *
+   * @return DynamicComponentInfo object (null if the instance is not a dynamic component).
+   * @throws std::logic_error If the instance is null.
+   * @since SketchUp 2016, API 4.0
+   * @see SUComponentInstanceCreateDCInfo
+   */
+  DynamicComponentInfo create_dc_info() const;
+
+  /**
+   * @brief Creates a ClassificationInfo object for this instance.
+   *
+   * The caller takes ownership of the returned object.
+   *
+   * @return ClassificationInfo object (null if the instance is not classified).
+   * @throws std::logic_error If the instance is null.
+   * @since SketchUp 2017, API 5.0
+   * @see SUComponentInstanceCreateClassificationInfo
+   */
+  ClassificationInfo create_classification_info() const;
+
 };
 
 } /* namespace CW */

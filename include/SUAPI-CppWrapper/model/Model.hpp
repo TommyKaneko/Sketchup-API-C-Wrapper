@@ -52,6 +52,11 @@ namespace CW {
   class OptionsManager;
   class InstancePath;
   class Scene;
+  class DimensionStyle;
+  class LayerFolder;
+  class LineStyles;
+  class Location;
+  class Styles;
 
 
 /**
@@ -233,8 +238,11 @@ class Model {
   * Determine whether the model has been geolocated
   * @return true if georeferenced (the model is assigned a location), false if not.
   */
-  // TODO build Location class before enablign this method;
-  //bool georeferenced() const;
+  /**
+  * @brief Determine whether the model has been geo-located.
+  * @return true if the model is assigned a location.
+  */
+  bool georeferenced() const;
 
   /*
   * Returns the value of the specified attribute.
@@ -276,11 +284,11 @@ class Model {
   */
   bool layer_exists(const Layer& layer, bool strict = true) const;
 
-  /*
-  * Returns the Location object of the model
-  * @return location Location object. If no location has been assigned to the model, the Location object returned will be invalid.
+  /**
+  * @brief Returns the Location object of the model.
+  * @return Location object. If no location has been assigned to the model, the Location object returned will be invalid.
   */
-   // Location location();
+  Location location() const;
 
   /**
    * @brief Returns the number of materials in the model
@@ -418,15 +426,44 @@ class Model {
 
   /*
   * Returns the list of styles in the model.
-  * @return styles vector array of Style objects
+  * @return Styles manager object.
+  * @since SketchUp 2017, API 5.0
   */
-  // std::vector<Style> styles();
+  Styles styles() const;
+
+  /**
+  * Returns the list of layer folders in the model.  It returns only the top-level folders
+  * @return vector of LayerFolder objects.
+  * @since SketchUp 2021.1, API 9.1
+  */
+  std::vector<LayerFolder> layer_folders() const;
+
+  /**
+  * Adds a layer folder to the model.
+  * @param folder - the LayerFolder to add. Must not be attached to any other model.
+  * @since SketchUp 2021.1, API 9.1
+  */
+  void add_layer_folder(LayerFolder& folder);
+
+  /**
+  * Returns the LineStyles manager for the model.
+  * @return LineStyles manager object.
+  * @since SketchUp 2019.2, API 7.1
+  */
+  LineStyles line_styles() const;
 
   // tags
   // tags=
 
   //std::string title() { return name();}
   //std::string title(std::string name_value) { return name(name_value);}
+
+  /**
+  * Returns the dimension style of the model.
+  * @since SketchUp 2017, API 5.0
+  * @return DimensionStyle object representing the model's dimension style.
+  */
+  DimensionStyle dimension_style() const;
 
   /// RenderingOptions
   RenderingOptions rendering_options();
