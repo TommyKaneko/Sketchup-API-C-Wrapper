@@ -30,6 +30,18 @@ Added to this benefit, the wrapper classes have helper functions to help with ge
 The project is documented in Doxygen, accessible here:
 https://tommykaneko.github.io/Sketchup-API-C-Wrapper/html
 
+The documentation is published from the `gh-pages` branch by the GitHub Actions workflow in `.github/workflows/docs.yml`. Any push to `master` that changes source or documentation files will regenerate the site and update that URL.
+
+### Regenerating Documentation Locally
+
+Install Doxygen and Graphviz, then run:
+
+```
+./generateDocumentationAndDeploy.sh
+```
+
+That command writes the generated site to `.doxygen/html/`. If you want to inspect it locally, open `.doxygen/html/index.html` in a browser.
+
 ## CMake
 
 ### Visual Studio

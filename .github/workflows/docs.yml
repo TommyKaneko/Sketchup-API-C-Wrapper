@@ -1,0 +1,51 @@
+name: Publish Documentation
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - '.github/workflows/docs.yml'
+      - 'DOXYFILE'
+      - 'README.md'
+      - 'generateDocumentationAndDeploy.sh'
+      - 'include/**'
+      - 'src/**'
+      - 'cmake/**'
+      - 'tests/**'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: docs-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install Doxygen
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y doxygen graphviz
+
+      - name: Generate documentation
+        run: |
+          chmod +x ./generateDocumentationAndDeploy.sh
+          ./generateDocumentationAndDeploy.sh
+
+      - name: Publish to gh-pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: ./.doxygen/html
+          force_orphan: true
